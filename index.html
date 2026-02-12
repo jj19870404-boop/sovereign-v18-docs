@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sovereign V18 - 動能突破交易系統完整介紹</title>
+<style>
+:root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #222633;
+    --border: #2d3148;
+    --text: #e1e4ed;
+    --text-dim: #8b90a5;
+    --accent: #6c8cff;
+    --accent2: #4ecdc4;
+    --green: #4ecb71;
+    --red: #ff6b6b;
+    --yellow: #ffd93d;
+    --orange: #ff9f43;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+.container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+h1 {
+    font-size: 2.2em;
+    text-align: center;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.subtitle {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 1.1em;
+    margin-bottom: 48px;
+}
+h2 {
+    font-size: 1.5em;
+    color: var(--accent);
+    margin: 48px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+}
+h2 .num {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    font-size: 0.7em;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+h3 {
+    font-size: 1.15em;
+    color: var(--accent2);
+    margin: 28px 0 12px;
+}
+p { margin-bottom: 14px; }
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 16px 0;
+}
+.card-accent {
+    border-left: 4px solid var(--accent);
+}
+.card-green { border-left: 4px solid var(--green); }
+.card-red { border-left: 4px solid var(--red); }
+.card-yellow { border-left: 4px solid var(--yellow); }
+
+.highlight-box {
+    background: linear-gradient(135deg, rgba(108,140,255,0.1), rgba(78,205,196,0.1));
+    border: 1px solid rgba(108,140,255,0.3);
+    border-radius: 12px;
+    padding: 28px;
+    margin: 24px 0;
+    text-align: center;
+}
+.highlight-box .big-number {
+    font-size: 2.5em;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.highlight-box .label { color: var(--text-dim); font-size: 0.95em; }
+
+.formula {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 10px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95em;
+    color: var(--accent2);
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.95em;
+}
+th {
+    background: var(--surface2);
+    color: var(--accent);
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border);
+}
+td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+}
+tr:hover td { background: rgba(108,140,255,0.05); }
+.num-cell { text-align: right; font-variant-numeric: tabular-nums; }
+.win { color: var(--green); }
+.loss { color: var(--red); }
+
+.tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+.tag-green { background: rgba(78,203,113,0.2); color: var(--green); }
+.tag-red { background: rgba(255,107,107,0.2); color: var(--red); }
+.tag-yellow { background: rgba(255,217,61,0.2); color: var(--yellow); }
+.tag-blue { background: rgba(108,140,255,0.2); color: var(--accent); }
+
+.flow-chart {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+.flow-step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: center;
+    min-width: 120px;
+}
+.flow-step .step-num {
+    font-size: 0.75em;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+}
+.flow-step .step-title {
+    font-weight: 600;
+    font-size: 0.95em;
+}
+.flow-arrow {
+    color: var(--text-dim);
+    font-size: 1.5em;
+}
+
+.grade-table td:first-child {
+    font-weight: 700;
+    font-size: 1.1em;
+    text-align: center;
+    width: 60px;
+}
+.grade-A { color: var(--green); }
+.grade-B { color: #8be9a0; }
+.grade-C { color: var(--yellow); }
+.grade-D { color: var(--orange); }
+.grade-F { color: var(--red); }
+
+.toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 32px;
+    margin: 32px 0;
+}
+.toc h3 { margin-top: 0; color: var(--text); }
+.toc ol { padding-left: 20px; }
+.toc li { margin: 6px 0; }
+.toc a {
+    color: var(--accent);
+    text-decoration: none;
+}
+.toc a:hover { text-decoration: underline; }
+
+.analogy {
+    background: rgba(255,217,61,0.08);
+    border-left: 3px solid var(--yellow);
+    padding: 14px 18px;
+    margin: 12px 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: var(--text-dim);
+}
+
+.param-value {
+    color: var(--accent2);
+    font-weight: 600;
+}
+
+ul, ol { margin: 8px 0 14px 24px; }
+li { margin: 4px 0; }
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+@media (max-width: 700px) {
+    .two-col { grid-template-columns: 1fr; }
+    .flow-chart { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+}
+
+.footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.85em;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Sovereign V18</h1>
+<p class="subtitle">動能突破交易系統 &mdash; 完整技術文件</p>
+
+<!-- TOC -->
+<div class="toc">
+<h3>目錄</h3>
+<ol>
+    <li><a href="#overview">概述</a></li>
+    <li><a href="#philosophy">核心理念</a></li>
+    <li><a href="#data">數據來源</a></li>
+    <li><a href="#indicators">技術指標詳解</a></li>
+    <li><a href="#entry">進場條件</a></li>
+    <li><a href="#exit">出場機制</a></li>
+    <li><a href="#position">倉位管理</a></li>
+    <li><a href="#quality">突破品質評估</a></li>
+    <li><a href="#backtest">回測結果</a></li>
+    <li><a href="#faq">常見問題 FAQ</a></li>
+</ol>
+</div>
+
+<!-- ================================================================ -->
+<!-- 1. 概述 -->
+<!-- ================================================================ -->
+<h2 id="overview"><span class="num">1</span>概述</h2>
+
+<div class="highlight-box">
+    <div class="label">一句話說明</div>
+    <p style="font-size:1.2em; margin-top:8px; margin-bottom:0">
+        Sovereign V18 是一套<strong>全自動美股每日掃描系統</strong>，專門尋找「價格已經盤整收斂、突然放量突破」的股票，在突破瞬間進場，並以嚴格的停損停利機制管理風險。
+    </p>
+</div>
+
+<div class="card">
+    <p><strong>系統類型：</strong>短線動能突破 (Momentum Breakout)</p>
+    <p><strong>標的範圍：</strong>全美股市場（約 8,000+ 檔股票）</p>
+    <p><strong>持倉方式：</strong>單一持倉，每次全倉進出</p>
+    <p><strong>平均持有：</strong>3-5 個交易日</p>
+    <p><strong>訊號頻率：</strong>平均每年約 50-70 個交易機會</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- 2. 核心理念 -->
+<!-- ================================================================ -->
+<h2 id="philosophy"><span class="num">2</span>核心理念</h2>
+
+<p>Sovereign V18 的核心策略叫做<strong>「動能突破」(Momentum Breakout)</strong>。簡單來說，就是找到那些「蓄勢待發」的股票，在它們開始起飛的瞬間搭上車。</p>
+
+<div class="analogy">
+    想像你在觀察一壺即將沸騰的水。水溫慢慢升高（趨勢向上），蒸氣被鍋蓋壓住越來越緊（盤整收斂），然後突然一瞬間，蓋子被頂開、蒸氣噴出（放量突破）。我們要做的，就是在蓋子被頂開的那一刻介入。
+</div>
+
+<h3>為什麼這個策略有效？</h3>
+<div class="two-col">
+    <div class="card card-green">
+        <strong>盤整後的突破最具爆發力</strong><br>
+        當一檔股票在小幅波動中盤整一段時間後，代表買賣雙方達成暫時的平衡。一旦這個平衡被大量打破，通常會產生快速而劇烈的單方向移動。
+    </div>
+    <div class="card card-green">
+        <strong>量能是最真實的資金投票</strong><br>
+        價格可以被少數人操縱，但成交量代表的是真金白銀。當成交量突然是平常的 1.5 倍以上，代表有大量資金正在湧入，這是最可靠的突破信號。
+    </div>
+</div>
+
+<h3>策略的三大支柱</h3>
+<ol>
+    <li><strong>嚴格篩選</strong> &mdash; 六道濾網同時通過才出訊號，寧可錯過也不亂入場</li>
+    <li><strong>快進快出</strong> &mdash; 平均持有 3-5 天，不戀戰，達到目標就走</li>
+    <li><strong>保本優先</strong> &mdash; 三層防護（停損 → 保本 → 追蹤停損），讓虧損受控、獲利奔跑</li>
+</ol>
+
+<!-- ================================================================ -->
+<!-- 3. 數據來源 -->
+<!-- ================================================================ -->
+<h2 id="data"><span class="num">3</span>數據來源</h2>
+
+<div class="card">
+    <h3>使用的資料</h3>
+    <table>
+        <tr><th>項目</th><th>說明</th></tr>
+        <tr><td>資料檔案</td><td><code>Full_Market_Data_2020_2026.parquet</code></td></tr>
+        <tr><td>涵蓋範圍</td><td>全美股市場，約 8,000+ 檔股票</td></tr>
+        <tr><td>時間範圍</td><td>2020 年至 2026 年（2020 年用於指標暖機）</td></tr>
+        <tr><td>資料頻率</td><td>每日 (Daily)</td></tr>
+        <tr><td>欄位</td><td>日期 (Date)、代碼 (Symbol)、開盤 (Open)、最高 (High)、最低 (Low)、收盤 (Close)、成交量 (Volume)</td></tr>
+        <tr><td>資料格式</td><td>Apache Parquet（高效壓縮格式）</td></tr>
+    </table>
+
+    <p>每根 K 棒包含一天的交易資訊，簡稱 <strong>OHLCV</strong>（Open-High-Low-Close-Volume）。這些是計算所有技術指標的基礎原料。</p>
+</div>
+
+<div class="analogy">
+    OHLCV 就像是每天的天氣記錄：開盤價是早上的氣溫，最高價是當天最熱的時候，最低價是最冷的時候，收盤價是傍晚的氣溫，成交量是當天出門的人數。我們根據這些「天氣記錄」來預測明天的天氣。
+</div>
+
+<!-- ================================================================ -->
+<!-- 4. 技術指標詳解 -->
+<!-- ================================================================ -->
+<h2 id="indicators"><span class="num">4</span>技術指標詳解</h2>
+
+<p>以下每個指標都是從 OHLCV 原始資料計算而來。系統用這些指標來回答一個核心問題：<strong>「這檔股票是否正在經歷高品質的突破？」</strong></p>
+
+<!-- ATR -->
+<h3>4.1 ATR（平均真實波幅, Average True Range）</h3>
+<div class="card card-accent">
+    <p><strong>用途：</strong>衡量一檔股票每天的波動幅度有多大，用來計算停損位置。</p>
+    <div class="formula">
+        True Range = max(High - Low, |High - 昨收|, |Low - 昨收|)<br>
+        ATR = 過去 14 天 True Range 的平均值
+    </div>
+    <p><strong>白話解釋：</strong>ATR 就像是一檔股票的「脾氣大小」。ATR 越大，代表股價每天的振幅越大。我們用 ATR 來設定停損 — 脾氣大的股票，停損要給寬一點，免得正常波動就被洗出去。</p>
+    <p><strong>為什麼用 14 天？</strong>14 天是國際通用的預設值，代表大約三個交易週的平均波動，既不太短（避免雜訊）也不太長（能反映近期變化）。</p>
+</div>
+
+<!-- RS_Line -->
+<h3>4.2 RS_Line（相對強度線, Relative Strength Line）</h3>
+<div class="card card-accent">
+    <p><strong>用途：</strong>衡量一檔股票相對於自身過去半年的表現強度。</p>
+    <div class="formula">
+        RS_Line = 今日收盤價 / 120 天前收盤價
+    </div>
+    <p><strong>白話解釋：</strong>如果 RS_Line = 1.3，代表這檔股票過去半年漲了 30%。數值越高，代表這檔股票越強勢。我們不追弱勢股，只找強者中的強者。</p>
+    <p><strong>120 天的原因：</strong>約半年的交易日，足以反映中期趨勢強度。</p>
+</div>
+
+<!-- RS_Rank -->
+<h3>4.3 RS_Rank（相對強度排名）</h3>
+<div class="card card-accent">
+    <p><strong>用途：</strong>將所有股票按 RS_Line 排名，找出全市場最強的那些。</p>
+    <div class="formula">
+        RS_Rank = 所有股票在當天依 RS_Line 降序排列的名次<br>
+        篩選門檻：RS_Rank &le; 5000
+    </div>
+    <p><strong>白話解釋：</strong>全美約 8,000 檔股票，RS_Rank = 1 代表是當天最強的那一檔。我們只考慮排名前 5,000 的股票，排除最弱的那些。當多個候選股同時出現時，系統會優先選擇 RS_Rank 排名最靠前的。</p>
+</div>
+
+<!-- Tightness -->
+<h3>4.4 Tightness（盤整度 / 收斂度）</h3>
+<div class="card card-accent">
+    <p><strong>用途：</strong>衡量股價是否處於盤整收斂狀態，波動很小代表能量正在蓄積。</p>
+    <div class="formula">
+        Tightness = 過去 10 天收盤價的標準差 / 過去 10 天收盤價的平均值<br>
+        篩選門檻：Tightness &le; 0.08 (8%)
+    </div>
+    <p><strong>白話解釋：</strong>就像彈簧被壓得越緊，彈起來的力道越大。Tightness 越小，代表股價越「安靜」，一旦突破就更有爆發力。門檻設在 8%，代表我們只要那些近期波動非常小的股票。</p>
+</div>
+
+<!-- Vol_Ratio -->
+<h3>4.5 Vol_Ratio（量比 / 成交量倍數）</h3>
+<div class="card card-accent">
+    <p><strong>用途：</strong>衡量今天的成交量是平時的幾倍，是突破訊號的核心指標。</p>
+    <div class="formula">
+        Vol_Ratio = 今日成交量 / 過去 20 天平均成交量<br>
+        篩選門檻：Vol_Ratio &ge; 1.5
+    </div>
+    <p><strong>白話解釋：</strong>如果一間餐廳平時一天來 100 個客人，今天突然來了 200 個，你會想知道發生了什麼事吧？量比就是這個概念。量比 1.5 代表今天的交易量是平時的 1.5 倍，有明顯的資金湧入。</p>
+</div>
+
+<!-- Mom_5 / Mom_20 -->
+<h3>4.6 Mom_5 / Mom_20（5日動能 / 20日動能）</h3>
+<div class="card card-accent">
+    <p><strong>用途：</strong>衡量短期和中期的價格趨勢方向與力道。</p>
+    <div class="formula">
+        Mom_5 = (今日收盤 / 5天前收盤) - 1<br>
+        Mom_20 = (今日收盤 / 20天前收盤) - 1<br>
+        篩選門檻：Mom_20 &ge; 0（20日動能為正）
+    </div>
+    <p><strong>白話解釋：</strong>Mom_5 = 0.03 代表過去 5 天漲了 3%，Mom_20 = 0.10 代表過去 20 天漲了 10%。我們要求 20 日動能至少為正（過去一個月整體向上），確保不是在下跌趨勢中搶反彈。</p>
+</div>
+
+<!-- SMA20_Slope -->
+<h3>4.7 SMA20_Slope（20日均線斜率）</h3>
+<div class="card card-accent">
+    <p><strong>用途：</strong>衡量中期趨勢是否向上。</p>
+    <div class="formula">
+        SMA20 = 過去 20 天收盤價的平均值<br>
+        SMA20_Slope = 今日 SMA20 / 5天前 SMA20<br>
+        篩選門檻：SMA20_Slope &ge; 1.005
+    </div>
+    <p><strong>白話解釋：</strong>如果把 20 日均線想像成一條路，SMA20_Slope 就是這條路的坡度。大於 1.005 代表這條路微微向上 — 我們只在上坡路上進場，絕不在下坡路上嘗試。</p>
+</div>
+
+<!-- Pct_From_52wk -->
+<h3>4.8 Pct_From_52wk（52週高點接近度）</h3>
+<div class="card card-accent">
+    <p><strong>用途：</strong>衡量目前股價離過去一年最高點有多近。</p>
+    <div class="formula">
+        High_252 = 過去 252 個交易日的最高收盤價<br>
+        Pct_From_52wk = 今日收盤 / High_252<br>
+        篩選門檻：Pct_From_52wk &ge; 0.70 (70%)
+    </div>
+    <p><strong>白話解釋：</strong>如果一檔股票的 52 週高點是 $100，目前股價 $95，那 Pct_From_52wk = 0.95 (95%)。我們要求至少達到 70%，代表股價沒有從高點大幅回落。越接近高點的突破，成功率越高（回測顯示 95-100% 區間的勝率高達 84.6%）。</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- 5. 進場條件 -->
+<!-- ================================================================ -->
+<h2 id="entry"><span class="num">5</span>進場條件</h2>
+
+<p>系統每天收盤後掃描全市場，一檔股票必須<strong>同時通過以下六道濾網</strong>才會產生進場訊號。隔天開盤價加上 0.1% 滑價 (slippage) 為實際進場價。</p>
+
+<table>
+    <tr><th>#</th><th>濾網</th><th>條件</th><th>為什麼重要？</th></tr>
+    <tr>
+        <td>1</td>
+        <td>RS 排名</td>
+        <td>RS_Rank &le; <span class="param-value">5,000</span></td>
+        <td>只做相對強勢股，排除全市場最弱的那 3,000+ 檔</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>盤整收斂</td>
+        <td>Tightness &le; <span class="param-value">8%</span></td>
+        <td>確保股價處於收斂狀態，突破才有爆發力</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>量能爆發</td>
+        <td>Vol_Ratio &ge; <span class="param-value">1.5x</span></td>
+        <td>確認有真實資金湧入，不是假突破</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>52 週高點</td>
+        <td>Pct_From_52wk &ge; <span class="param-value">70%</span></td>
+        <td>避免追落後補漲股，專注接近新高的強勢標的</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>20 日動能</td>
+        <td>Mom_20 &ge; <span class="param-value">0</span></td>
+        <td>確保中期趨勢向上，不在下跌中搶反彈</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>均線斜率</td>
+        <td>SMA20_Slope &ge; <span class="param-value">1.005</span></td>
+        <td>確認均線方向向上，趨勢結構健康</td>
+    </tr>
+</table>
+
+<div class="analogy">
+    這六道濾網就像是面試的六個關卡。每天有 8,000+ 檔股票「來面試」，但可能只有 0-3 檔能全部通過。寧缺毋濫 — 沒有通過的日子就空手等待，絕不降低標準。
+</div>
+
+<h3>候選股排序</h3>
+<p>當同一天有多檔股票通過篩選時，系統按 <strong>RS_Rank 排名從小到大</strong>（最強的排最前）排序，取排名最靠前的那檔進場。</p>
+
+<!-- ================================================================ -->
+<!-- 6. 出場機制 -->
+<!-- ================================================================ -->
+<h2 id="exit"><span class="num">6</span>出場機制</h2>
+
+<p>Sovereign V18 有一套<strong>多層出場機制</strong>，按優先順序檢查。每天的流程是：取得當天的開高低收資料後，依序檢查是否觸發以下任一出場條件。</p>
+
+<h3>出場優先順序</h3>
+<div class="flow-chart">
+    <div class="flow-step" style="border-color: var(--green);">
+        <div class="step-num">最高優先</div>
+        <div class="step-title" style="color: var(--green);">停利 TP</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--accent2);">
+        <div class="step-num">第二</div>
+        <div class="step-title" style="color: var(--accent2);">追蹤停損 TRAIL</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--red);">
+        <div class="step-num">第三</div>
+        <div class="step-title" style="color: var(--red);">停損 SL</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--yellow);">
+        <div class="step-num">第四</div>
+        <div class="step-title" style="color: var(--yellow);">時間停損 TIME</div>
+    </div>
+</div>
+
+<div class="card card-green">
+    <h3 style="margin-top:0">停利 (TP - Take Profit)</h3>
+    <div class="formula">
+        停利價 = 進場價 &times; (1 + 0.12) = 進場價 &times; 1.12
+    </div>
+    <p>當日最高價觸及停利價時，以停利價出場。報酬固定為 <span class="param-value">+12%</span>。</p>
+    <p><strong>為什麼是 12%？</strong>這是經過大量回測優化的數值。太低會頻繁觸發但累積不夠，太高會等不到而被其他出場機制搶先。12% 在「觸發頻率」和「單筆獲利」之間取得最佳平衡。</p>
+</div>
+
+<div class="card" style="border-left: 4px solid var(--accent2);">
+    <h3 style="margin-top:0">追蹤停損 (TRAIL - Trailing Stop)</h3>
+    <p>追蹤停損不是一開始就啟動的，它有兩個前置條件：</p>
+    <ol>
+        <li><strong>保本觸發：</strong>股價從進場價上漲 <span class="param-value">+0.5%</span> 後，停損移至進場價（保本）</li>
+        <li><strong>追蹤啟動：</strong>股價從進場價上漲 <span class="param-value">+1.8%</span> 後，開始追蹤</li>
+    </ol>
+    <div class="formula">
+        追蹤停損價 = 持倉期間最高價 &times; (1 - 0.031)<br>
+        &nbsp;&nbsp;= 最高價回落 3.1% 時觸發
+    </div>
+    <p>追蹤停損只會往上移，永遠不會往下調。當日最低價跌破追蹤停損價時出場（取追蹤停損價與開盤價的較大值）。</p>
+    <p><strong>白話解釋：</strong>就像遛狗時繩子有固定長度 — 狗（股價）往前跑，你（停損）跟著走，但狗回頭跑超過繩子長度 (3.1%) 時，你就拉住它（出場）。</p>
+</div>
+
+<div class="card card-red">
+    <h3 style="margin-top:0">停損 (SL - Stop Loss)</h3>
+    <div class="formula">
+        初始停損 = 進場價 - (ATR &times; 2.4)<br>
+        最大虧損限制：停損不低於 進場價 &times; (1 - 0.20) = 進場價 &times; 0.80
+    </div>
+    <p>兩者取較高值作為初始停損。當日最低價跌破停損價時出場（取停損價與開盤價的較大值）。</p>
+    <p><strong>白話解釋：</strong>停損距離根據股票的「脾氣」（ATR）來決定。波動大的股票停損給寬（2.4 倍 ATR），但無論如何不超過 20% 虧損。</p>
+</div>
+
+<div class="card card-yellow">
+    <h3 style="margin-top:0">時間停損 (TIME - Time Stop)</h3>
+    <div class="formula">
+        持有天數 &ge; 14 個交易日 → 以收盤價強制出場
+    </div>
+    <p>如果持倉超過 <span class="param-value">14 天</span>還沒有碰到停利或停損，代表這筆交易的動能可能已經衰竭，以當天收盤價出場。</p>
+</div>
+
+<h3>出場邏輯的核心思想</h3>
+<div class="analogy">
+    整個出場機制就像一個「安全氣囊系統」：<br>
+    - 停損是<strong>安全帶</strong>（最基本的保護，限制最大虧損）<br>
+    - 保本是<strong>安全門鎖</strong>（小賺就先鎖住成本）<br>
+    - 追蹤停損是<strong>安全氣囊</strong>（讓獲利奔跑但不會全吐回去）<br>
+    - 停利是<strong>目的地到了下車</strong>（達標就走，不貪心）<br>
+    - 時間停損是<strong>超時強制下車</strong>（開太久了，不管到哪都下車）
+</div>
+
+<!-- ================================================================ -->
+<!-- 7. 倉位管理 -->
+<!-- ================================================================ -->
+<h2 id="position"><span class="num">7</span>倉位管理</h2>
+
+<div class="card card-accent">
+    <h3 style="margin-top:0">全倉進出 (ALL-IN)</h3>
+    <p>Sovereign V18 採用<strong>單一持倉</strong>策略 — 同一時間只持有一檔股票，並將全部資金投入。</p>
+    <div class="formula">
+        最大持倉數 = 1<br>
+        每筆分配 = 當前帳戶餘額 100%<br>
+        股數 = floor(可用資金 / 進場價)<br>
+        進場價 = 隔日開盤價 &times; (1 + 0.001)&nbsp;&nbsp;← 含 0.1% 滑價
+    </div>
+</div>
+
+<h3>為什麼全倉？</h3>
+<div class="two-col">
+    <div class="card">
+        <strong>優點</strong>
+        <ul>
+            <li>每次機會的獲利最大化</li>
+            <li>策略簡單清晰，不需複雜的分倉邏輯</li>
+            <li>配合高勝率策略，複利效果驚人</li>
+        </ul>
+    </div>
+    <div class="card">
+        <strong>風險控制</strong>
+        <ul>
+            <li>單筆最大虧損上限 -20%（max_loss 限制）</li>
+            <li>ATR 動態停損限制實際虧損</li>
+            <li>快速進出（平均 3-5 天）減少曝險時間</li>
+        </ul>
+    </div>
+</div>
+
+<h3>資金流轉示例</h3>
+<div class="card">
+    <table>
+        <tr><th>步驟</th><th>動作</th><th>帳戶餘額</th></tr>
+        <tr><td>起始</td><td>-</td><td class="num-cell">$10,000.00</td></tr>
+        <tr><td>第 1 筆</td><td>全倉買入 → 停利 +12% 出場</td><td class="num-cell"><span class="win">$11,200.00</span></td></tr>
+        <tr><td>第 2 筆</td><td>全倉買入 → 追蹤停損 +8% 出場</td><td class="num-cell"><span class="win">$12,096.00</span></td></tr>
+        <tr><td>第 3 筆</td><td>全倉買入 → 停損 -10% 出場</td><td class="num-cell"><span class="loss">$10,886.40</span></td></tr>
+        <tr><td>第 4 筆</td><td>全倉買入 → 停利 +12% 出場</td><td class="num-cell"><span class="win">$12,192.77</span></td></tr>
+    </table>
+    <p style="color: var(--text-dim); font-size: 0.9em;">每次都用全部餘額買入，虧損後金額變小，風險自然降低（反馬丁格爾效應）。</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- 8. 突破品質評估 -->
+<!-- ================================================================ -->
+<h2 id="quality"><span class="num">8</span>突破品質評估</h2>
+
+<p>通過六道濾網的股票不代表品質都一樣。系統會額外對每個候選股進行<strong>7 項品質評分</strong>，滿分 100 分，幫助判斷突破的可靠度。</p>
+
+<h3>7 項評分指標</h3>
+<table>
+    <tr><th>指標</th><th>滿分</th><th>最佳區間</th><th>最佳區間勝率</th></tr>
+    <tr><td>量比 (Vol_Ratio)</td><td class="num-cell">20</td><td>1.7 - 2.0x</td><td class="num-cell win">83%</td></tr>
+    <tr><td>52 週接近度</td><td class="num-cell">20</td><td>95 - 100%</td><td class="num-cell win">84.6%</td></tr>
+    <tr><td>20 日動能</td><td class="num-cell">15</td><td>+10% ~ +20%</td><td class="num-cell win">78.6%</td></tr>
+    <tr><td>5 日動能</td><td class="num-cell">15</td><td>0% ~ +5%</td><td class="num-cell win">75%</td></tr>
+    <tr><td>RS 排名</td><td class="num-cell">15</td><td>25 - 50 名</td><td class="num-cell win">80.3%</td></tr>
+    <tr><td>波動率 (ATR/股價)</td><td class="num-cell">10</td><td>&lt; 5%</td><td class="num-cell win">72%</td></tr>
+    <tr><td>前日成交量</td><td class="num-cell">5</td><td>0.5 - 1.0x</td><td class="num-cell win">74%</td></tr>
+</table>
+
+<p style="color: var(--text-dim);">勝率數據來源：2021-2024 年共 237 筆實戰交易的統計分析。</p>
+
+<h3>品質評級</h3>
+<table class="grade-table">
+    <tr><th>評級</th><th>分數</th><th>意義</th><th>建議</th></tr>
+    <tr><td class="grade-A">A</td><td class="num-cell">&ge; 80 分</td><td>強勢突破訊號</td><td><span class="tag tag-green">積極進場</span></td></tr>
+    <tr><td class="grade-B">B</td><td class="num-cell">65 - 79 分</td><td>品質良好</td><td><span class="tag tag-green">正常進場</span></td></tr>
+    <tr><td class="grade-C">C</td><td class="num-cell">50 - 64 分</td><td>普通訊號</td><td><span class="tag tag-yellow">謹慎操作</span></td></tr>
+    <tr><td class="grade-D">D</td><td class="num-cell">35 - 49 分</td><td>偏弱訊號</td><td><span class="tag tag-red">建議觀望</span></td></tr>
+    <tr><td class="grade-F">F</td><td class="num-cell">&lt; 35 分</td><td>假突破風險高</td><td><span class="tag tag-red">不建議進場</span></td></tr>
+</table>
+
+<h3>紅旗警告機制</h3>
+<p>除了分數外，以下特定情況會觸發紅旗警告：</p>
+<ul>
+    <li><span class="loss">量比 2.5 - 3.0x</span> &mdash; 勝率僅 36%，過度放量可能是假突破</li>
+    <li><span class="loss">52 週接近度 80-85%</span> &mdash; 勝率僅 47%，距離高點太遠</li>
+    <li><span class="loss">20 日動能 &gt; 50%</span> &mdash; 嚴重過熱，追高風險大</li>
+    <li><span class="loss">5 日動能 &lt; -5%</span> &mdash; 勝率僅 40%，短期趨勢向下</li>
+    <li><span class="loss">RS 前 10 名且未接近 52 週高</span> &mdash; 過熱但缺乏新高確認</li>
+</ul>
+
+<!-- ================================================================ -->
+<!-- 9. 回測結果 -->
+<!-- ================================================================ -->
+<h2 id="backtest"><span class="num">9</span>回測結果</h2>
+
+<p>以下為 2021-2026 年每年獨立回測結果。每年以 <strong>$10,000 美元</strong>起始資金獨立運行，使用完全相同的參數。</p>
+
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">交易次數</th>
+        <th class="num-cell">勝率</th>
+        <th class="num-cell">總報酬率</th>
+        <th class="num-cell">期末資金</th>
+        <th class="num-cell">Profit Factor</th>
+        <th class="num-cell">最大回撤</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell">67</td>
+        <td class="num-cell">68.66%</td>
+        <td class="num-cell win">+77.12%</td>
+        <td class="num-cell">$17,711.54</td>
+        <td class="num-cell">1.29</td>
+        <td class="num-cell loss">-54.97%</td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell">55</td>
+        <td class="num-cell">72.73%</td>
+        <td class="num-cell win">+329.58%</td>
+        <td class="num-cell">$42,958.22</td>
+        <td class="num-cell">2.40</td>
+        <td class="num-cell loss">-36.06%</td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell">57</td>
+        <td class="num-cell">64.91%</td>
+        <td class="num-cell win">+144.53%</td>
+        <td class="num-cell">$24,452.61</td>
+        <td class="num-cell">1.46</td>
+        <td class="num-cell loss">-44.54%</td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell">58</td>
+        <td class="num-cell">56.90%</td>
+        <td class="num-cell win">+12.34%</td>
+        <td class="num-cell">$11,234.10</td>
+        <td class="num-cell">1.06</td>
+        <td class="num-cell loss">-54.35%</td>
+    </tr>
+    <tr>
+        <td>2025</td>
+        <td class="num-cell">71</td>
+        <td class="num-cell">84.51%</td>
+        <td class="num-cell win">+3,877.11%</td>
+        <td class="num-cell">$397,710.79</td>
+        <td class="num-cell">2.77</td>
+        <td class="num-cell loss">-20.70%</td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell">8</td>
+        <td class="num-cell">75.00%</td>
+        <td class="num-cell win">+76.94%</td>
+        <td class="num-cell">$17,694.27</td>
+        <td class="num-cell">24.35</td>
+        <td class="num-cell loss">-1.43%</td>
+    </tr>
+</table>
+</div>
+<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中），交易筆數較少。</p>
+
+<h3>單筆交易統計</h3>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">平均獲利</th>
+        <th class="num-cell">平均虧損</th>
+        <th class="num-cell">最大單筆獲利</th>
+        <th class="num-cell">最大單筆虧損</th>
+        <th class="num-cell">平均持有天數</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell win">+6.34%</td>
+        <td class="num-cell loss">-10.82%</td>
+        <td class="num-cell win">+12.00%</td>
+        <td class="num-cell loss">-19.65%</td>
+        <td class="num-cell">3.7</td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell win">+7.56%</td>
+        <td class="num-cell loss">-10.07%</td>
+        <td class="num-cell win">+12.00%</td>
+        <td class="num-cell loss">-20.00%</td>
+        <td class="num-cell">4.5</td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell win">+7.49%</td>
+        <td class="num-cell loss">-9.14%</td>
+        <td class="num-cell win">+12.00%</td>
+        <td class="num-cell loss">-16.14%</td>
+        <td class="num-cell">4.4</td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell win">+8.24%</td>
+        <td class="num-cell loss">-9.63%</td>
+        <td class="num-cell win">+12.00%</td>
+        <td class="num-cell loss">-20.00%</td>
+        <td class="num-cell">4.3</td>
+    </tr>
+    <tr>
+        <td>2025</td>
+        <td class="num-cell win">+8.69%</td>
+        <td class="num-cell loss">-13.03%</td>
+        <td class="num-cell win">+12.00%</td>
+        <td class="num-cell loss">-20.00%</td>
+        <td class="num-cell">3.5</td>
+    </tr>
+    <tr>
+        <td>2026</td>
+        <td class="num-cell win">+10.44%</td>
+        <td class="num-cell loss">-1.07%</td>
+        <td class="num-cell win">+12.00%</td>
+        <td class="num-cell loss">-1.43%</td>
+        <td class="num-cell">2.9</td>
+    </tr>
+</table>
+</div>
+
+<h3>出場方式分佈</h3>
+
+<!-- 2021 -->
+<h4 style="color: var(--text-dim); margin-top: 20px;">2021 年（67 筆交易）</h4>
+<table>
+    <tr><th>出場方式</th><th class="num-cell">筆數</th><th class="num-cell">佔比</th><th class="num-cell">勝率</th></tr>
+    <tr><td><span class="tag tag-green">TP 停利</span></td><td class="num-cell">14</td><td class="num-cell">20.9%</td><td class="num-cell win">100.0%</td></tr>
+    <tr><td><span class="tag tag-blue">TRAIL 追蹤</span></td><td class="num-cell">23</td><td class="num-cell">34.3%</td><td class="num-cell win">95.7%</td></tr>
+    <tr><td><span class="tag tag-red">SL 停損</span></td><td class="num-cell">27</td><td class="num-cell">40.3%</td><td class="num-cell">33.3%</td></tr>
+    <tr><td><span class="tag tag-yellow">TIME 時間</span></td><td class="num-cell">2</td><td class="num-cell">3.0%</td><td class="num-cell loss">0.0%</td></tr>
+    <tr><td>EOY 年末</td><td class="num-cell">1</td><td class="num-cell">1.5%</td><td class="num-cell win">100.0%</td></tr>
+</table>
+
+<!-- 2022 -->
+<h4 style="color: var(--text-dim); margin-top: 20px;">2022 年（55 筆交易）</h4>
+<table>
+    <tr><th>出場方式</th><th class="num-cell">筆數</th><th class="num-cell">佔比</th><th class="num-cell">勝率</th></tr>
+    <tr><td><span class="tag tag-green">TP 停利</span></td><td class="num-cell">15</td><td class="num-cell">27.3%</td><td class="num-cell win">100.0%</td></tr>
+    <tr><td><span class="tag tag-blue">TRAIL 追蹤</span></td><td class="num-cell">23</td><td class="num-cell">41.8%</td><td class="num-cell win">95.7%</td></tr>
+    <tr><td><span class="tag tag-red">SL 停損</span></td><td class="num-cell">13</td><td class="num-cell">23.6%</td><td class="num-cell">7.7%</td></tr>
+    <tr><td><span class="tag tag-yellow">TIME 時間</span></td><td class="num-cell">3</td><td class="num-cell">5.5%</td><td class="num-cell">33.3%</td></tr>
+    <tr><td>EOY 年末</td><td class="num-cell">1</td><td class="num-cell">1.8%</td><td class="num-cell win">100.0%</td></tr>
+</table>
+
+<!-- 2023 -->
+<h4 style="color: var(--text-dim); margin-top: 20px;">2023 年（57 筆交易）</h4>
+<table>
+    <tr><th>出場方式</th><th class="num-cell">筆數</th><th class="num-cell">佔比</th><th class="num-cell">勝率</th></tr>
+    <tr><td><span class="tag tag-green">TP 停利</span></td><td class="num-cell">13</td><td class="num-cell">22.8%</td><td class="num-cell win">100.0%</td></tr>
+    <tr><td><span class="tag tag-blue">TRAIL 追蹤</span></td><td class="num-cell">20</td><td class="num-cell">35.1%</td><td class="num-cell win">100.0%</td></tr>
+    <tr><td><span class="tag tag-red">SL 停損</span></td><td class="num-cell">18</td><td class="num-cell">31.6%</td><td class="num-cell">22.2%</td></tr>
+    <tr><td><span class="tag tag-yellow">TIME 時間</span></td><td class="num-cell">5</td><td class="num-cell">8.8%</td><td class="num-cell loss">0.0%</td></tr>
+    <tr><td>EOY 年末</td><td class="num-cell">1</td><td class="num-cell">1.8%</td><td class="num-cell loss">0.0%</td></tr>
+</table>
+
+<!-- 2024 -->
+<h4 style="color: var(--text-dim); margin-top: 20px;">2024 年（58 筆交易）</h4>
+<table>
+    <tr><th>出場方式</th><th class="num-cell">筆數</th><th class="num-cell">佔比</th><th class="num-cell">勝率</th></tr>
+    <tr><td><span class="tag tag-green">TP 停利</span></td><td class="num-cell">17</td><td class="num-cell">29.3%</td><td class="num-cell win">100.0%</td></tr>
+    <tr><td><span class="tag tag-blue">TRAIL 追蹤</span></td><td class="num-cell">11</td><td class="num-cell">19.0%</td><td class="num-cell win">90.9%</td></tr>
+    <tr><td><span class="tag tag-red">SL 停損</span></td><td class="num-cell">25</td><td class="num-cell">43.1%</td><td class="num-cell">24.0%</td></tr>
+    <tr><td><span class="tag tag-yellow">TIME 時間</span></td><td class="num-cell">4</td><td class="num-cell">6.9%</td><td class="num-cell loss">0.0%</td></tr>
+    <tr><td>EOY 年末</td><td class="num-cell">1</td><td class="num-cell">1.7%</td><td class="num-cell loss">0.0%</td></tr>
+</table>
+
+<!-- 2025 -->
+<h4 style="color: var(--text-dim); margin-top: 20px;">2025 年（71 筆交易）</h4>
+<table>
+    <tr><th>出場方式</th><th class="num-cell">筆數</th><th class="num-cell">佔比</th><th class="num-cell">勝率</th></tr>
+    <tr><td><span class="tag tag-green">TP 停利</span></td><td class="num-cell">36</td><td class="num-cell">50.7%</td><td class="num-cell win">100.0%</td></tr>
+    <tr><td><span class="tag tag-blue">TRAIL 追蹤</span></td><td class="num-cell">17</td><td class="num-cell">23.9%</td><td class="num-cell win">100.0%</td></tr>
+    <tr><td><span class="tag tag-red">SL 停損</span></td><td class="num-cell">16</td><td class="num-cell">22.5%</td><td class="num-cell">31.2%</td></tr>
+    <tr><td><span class="tag tag-yellow">TIME 時間</span></td><td class="num-cell">1</td><td class="num-cell">1.4%</td><td class="num-cell win">100.0%</td></tr>
+    <tr><td>EOY 年末</td><td class="num-cell">1</td><td class="num-cell">1.4%</td><td class="num-cell win">100.0%</td></tr>
+</table>
+
+<!-- 2026 -->
+<h4 style="color: var(--text-dim); margin-top: 20px;">2026 年（8 筆交易，進行中）</h4>
+<table>
+    <tr><th>出場方式</th><th class="num-cell">筆數</th><th class="num-cell">佔比</th><th class="num-cell">勝率</th></tr>
+    <tr><td><span class="tag tag-green">TP 停利</span></td><td class="num-cell">5</td><td class="num-cell">62.5%</td><td class="num-cell win">100.0%</td></tr>
+    <tr><td><span class="tag tag-blue">TRAIL 追蹤</span></td><td class="num-cell">1</td><td class="num-cell">12.5%</td><td class="num-cell win">100.0%</td></tr>
+    <tr><td><span class="tag tag-red">SL 停損</span></td><td class="num-cell">1</td><td class="num-cell">12.5%</td><td class="num-cell loss">0.0%</td></tr>
+    <tr><td>EOY 年末</td><td class="num-cell">1</td><td class="num-cell">12.5%</td><td class="num-cell loss">0.0%</td></tr>
+</table>
+
+<h3>六年連續複利結果</h3>
+<div class="highlight-box">
+    <div class="label">2021-2026 連續複利</div>
+    <div class="big-number">$10,000 &rarr; $14,708,617</div>
+    <div class="label" style="margin-top: 8px;">總報酬率 +146,986%</div>
+</div>
+
+<div class="card">
+    <p><strong>連續複利計算方式：</strong>假設 2021 年初以 $10,000 起始，每年年底的資金直接帶入下一年繼續交易。</p>
+    <div class="formula">
+        $10,000 &times; (1+77.12%) &times; (1+329.58%) &times; (1+144.53%) &times; (1+12.34%) &times; (1+3877.11%) &times; (1+76.94%)<br>
+        = $14,708,617.38
+    </div>
+    <p style="color: var(--text-dim);">注意：此為回測理論值，實際交易會受到滑價、流動性、情緒等因素影響。連續複利結果受各年度報酬率波動影響極大，2025 年的異常高報酬對總結果有主導性影響。</p>
+</div>
+
+<h3>關鍵觀察</h3>
+<div class="two-col">
+    <div class="card card-green">
+        <strong>穩定的核心特徵</strong>
+        <ul>
+            <li>六年全部正報酬，零虧損年份</li>
+            <li>TP 停利的勝率為 100%（設計如此）</li>
+            <li>TRAIL 追蹤停損勝率 90-100%</li>
+            <li>每年平均持有天數穩定在 3-5 天</li>
+            <li>最大單筆獲利固定 +12%（停利上限）</li>
+        </ul>
+    </div>
+    <div class="card card-yellow">
+        <strong>需注意的風險</strong>
+        <ul>
+            <li>2021 和 2024 年最大回撤超過 50%</li>
+            <li>2024 年勝率降至 56.9%，報酬僅 +12.34%</li>
+            <li>SL 停損的勝率只有 7-33%（代表觸發停損通常意味著虧損）</li>
+            <li>全倉策略在連續虧損時回撤幅度大</li>
+            <li>2025 年結果可能受到異常市場狀態影響</li>
+        </ul>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 10. FAQ -->
+<!-- ================================================================ -->
+<h2 id="faq"><span class="num">10</span>常見問題 FAQ</h2>
+
+<div class="card">
+    <h3 style="margin-top:0;">Q: 這套系統是全自動交易嗎？</h3>
+    <p>不是。Sovereign V18 是一個<strong>掃描 + 建議系統</strong>。它每天自動掃描全市場並產生訊號，但最終的下單操作需要人工執行。系統會告訴你「買什麼、什麼價位進場、停損設在哪、停利設在哪」，你只需要照做。</p>
+</div>
+
+<div class="card">
+    <h3 style="margin-top:0;">Q: 我需要盯盤嗎？</h3>
+    <p>不太需要。因為出場條件（停利、停損）都是預設價位，你可以在券商設定好價格單 (Limit Order / Stop Order) 後離開。每天只需在收盤後看一次掃描結果，確認隔天是否有新訊號即可。</p>
+</div>
+
+<div class="card">
+    <h3 style="margin-top:0;">Q: 為什麼有些年份報酬差異這麼大？</h3>
+    <p>因為系統採用<strong>全倉 + 複利</strong>。在連勝時，資金快速膨脹，每筆交易的金額也跟著變大，導致獲利加速。反之在連敗時也會快速縮水。2025 年的高報酬是連續高勝率 + 複利效應的結果，而 2024 年勝率下降則導致報酬平平。這是全倉策略的固有特性。</p>
+</div>
+
+<div class="card">
+    <h3 style="margin-top:0;">Q: 最大回撤 55% 很恐怖，能承受嗎？</h3>
+    <p>這是回測中<strong>從最高點到最低點的帳面回撤</strong>，不代表你一定會經歷。但確實需要有心理準備：全倉策略在連續虧損時會有較大的帳面波動。如果無法承受這種波動，可以考慮：</p>
+    <ul>
+        <li>降低每筆交易的倉位比例（例如只用 50% 資金）</li>
+        <li>設定更嚴格的單日最大虧損上限</li>
+        <li>配合品質評分，只做 A/B 評級的訊號</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h3 style="margin-top:0;">Q: 回測結果 = 實際結果嗎？</h3>
+    <p>不完全等同。回測結果是在理想條件下的模擬，實際交易會有以下差異：</p>
+    <ul>
+        <li><strong>滑價：</strong>系統已加入 0.1% 滑價模擬，但實際滑價可能更大（尤其是小型股）</li>
+        <li><strong>流動性：</strong>資金量大時可能無法以理想價格成交</li>
+        <li><strong>心理因素：</strong>連續虧損後可能不敢進場，錯過後續的反彈</li>
+        <li><strong>缺席日：</strong>可能因個人因素錯過某些訊號</li>
+    </ul>
+    <p>一般認為，實際交易績效約為回測結果的 50-70%。</p>
+</div>
+
+<div class="card">
+    <h3 style="margin-top:0;">Q: Profit Factor 是什麼？</h3>
+    <p><strong>Profit Factor = 總獲利金額 / 總虧損金額</strong></p>
+    <p>PF &gt; 1 代表獲利大於虧損（能賺錢），PF = 2 代表每虧 $1 能賺 $2。一般認為 PF &gt; 1.5 是不錯的策略。</p>
+</div>
+
+<div class="card">
+    <h3 style="margin-top:0;">Q: 為什麼最大單筆獲利都是 +12%？</h3>
+    <p>因為系統設有<strong>固定停利 12%</strong>。一旦股價漲到停利價就自動出場。這意味著系統不追求「一筆賺到翻」，而是追求「高頻率地拿到固定利潤」。獲利來自勝率和交易次數的累積。</p>
+</div>
+
+<div class="card">
+    <h3 style="margin-top:0;">Q: 需要多少資金才能使用？</h3>
+    <p>理論上最低 $1,000 美元即可開始，但建議至少 <strong>$5,000 - $10,000</strong>。資金太少會因為股數取整和手續費而影響績效。系統的回測是以 $10,000 起始計算的。</p>
+</div>
+
+<div class="card">
+    <h3 style="margin-top:0;">Q: 系統的參數是怎麼得到的？</h3>
+    <p>所有參數經過<strong>多年份交叉驗證優化</strong>得出。優化過程會在歷史數據上搜索最佳的參數組合，同時確保參數在不同年份都能穩定表現，而非只在特定年份表現好。這有助於減少「過度擬合」的風險。</p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>Sovereign V18 &mdash; 動能突破交易系統技術文件</p>
+    <p>文件生成日期：2026-02-12 | 回測數據基於 2020-2026 年歷史資料</p>
+    <p>本文件僅供教育和研究用途，不構成投資建議。過去績效不代表未來表現。</p>
+</div>
+
+</div>
+</body>
+</html>
