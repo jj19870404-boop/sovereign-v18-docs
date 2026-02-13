@@ -264,6 +264,7 @@ li { margin: 4px 0; }
     <li><a href="#quality">突破品質評估</a></li>
     <li><a href="#backtest">回測結果</a></li>
     <li><a href="#faq">常見問題 FAQ</a></li>
+    <li><a href="#v20">V20 更新 — Stale Exit + Gap-Down Rejection</a></li>
 </ol>
 </div>
 
@@ -972,6 +973,139 @@ li { margin: 4px 0; }
 <div class="card">
     <h3 style="margin-top:0;">Q: 系統的參數是怎麼得到的？</h3>
     <p>所有參數經過<strong>多年份交叉驗證優化</strong>得出。優化過程會在歷史數據上搜索最佳的參數組合，同時確保參數在不同年份都能穩定表現，而非只在特定年份表現好。這有助於減少「過度擬合」的風險。</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- V20 更新 -->
+<!-- ================================================================ -->
+<h2 id="v20"><span class="num">★</span>V20 更新 &mdash; Stale Exit + Gap-Down Rejection</h2>
+
+<div class="highlight-box">
+    <div class="label">版本升級</div>
+    <p style="font-size:1.2em; margin-top:8px; margin-bottom:0">
+        V20 針對 V18 的<strong>兩大損失來源</strong>做精確修正：<br>
+        長期持倉的時間虧損（TIME stop）與開盤跳空的即日停損（Day-1 SL）。
+    </p>
+</div>
+
+<h3>更新動機</h3>
+<div class="card card-yellow">
+    <p>V18 回測分析發現兩類交易造成不成比例的損失：</p>
+    <ol>
+        <li><strong>TIME stop 大虧損</strong> &mdash; 持倉拖到 14 天才被時間停損清掉，此時已累積大額虧損（例如 ASTS -12.73%, IRWD -16.92%）</li>
+        <li><strong>Day-1 SL 大虧損</strong> &mdash; 進場第一天就被停損打掉，往往因為開盤跳空下跌（例如 RAY -17.36%, AMPX -20%）</li>
+    </ol>
+    <p>V20 新增兩個機制分別針對這兩類問題。</p>
+</div>
+
+<h3>新機制 1：Stale Exit（提前出場）</h3>
+<div class="card card-accent">
+    <div class="formula">
+        持倉天數 &ge; 9 天 且 當前報酬 &lt; -5% &rarr; 以收盤價提前出場（STALE）
+    </div>
+    <p><strong>目標：</strong>減少 TIME stop 造成的大虧損。與其等到 14 天才被時間停損清出，不如在第 9 天就檢查：如果還在虧損超過 5%，代表動能已消失，提前離場。</p>
+    <p><strong>參數：</strong>stale_days = <span class="param-value">9</span>，stale_threshold = <span class="param-value">-5%</span></p>
+</div>
+
+<div class="analogy">
+    如果你等公車等了 9 分鐘（持倉 9 天），而且天氣越來越差（虧損 &gt; 5%），不如提前叫計程車走人（STALE 出場），而不是硬等到 14 分鐘時限到才被迫離開。
+</div>
+
+<h3>新機制 2：Gap-Down Rejection（跳空拒絕）</h3>
+<div class="card card-accent">
+    <div class="formula">
+        進場日開盤價相對前日收盤跌幅 &gt; 3% &rarr; 放棄進場
+    </div>
+    <p><strong>目標：</strong>減少 Day-1 SL 大虧損。當計畫進場的股票隔天開盤跳空下跌超過 3%，代表市場情緒已轉變，直接放棄這次進場機會。</p>
+    <p><strong>參數：</strong>gap_reject_pct = <span class="param-value">3%</span></p>
+</div>
+
+<div class="analogy">
+    你本來計畫去一家新餐廳吃飯（進場訊號），但到了門口發現門面破損、客人在逃跑（跳空下跌 &gt; 3%）。明智的做法是轉身離開（拒絕進場），而不是硬走進去。
+</div>
+
+<h3>V20 vs V18 回測比較</h3>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">交易數</th>
+        <th class="num-cell">勝率</th>
+        <th class="num-cell">V20 總報酬</th>
+        <th class="num-cell">V18 總報酬</th>
+        <th class="num-cell">報酬差異</th>
+        <th class="num-cell">V20 MDD</th>
+    </tr>
+    <tr>
+        <td>2025</td>
+        <td class="num-cell">76</td>
+        <td class="num-cell">78.95%</td>
+        <td class="num-cell win">+3,848.51%</td>
+        <td class="num-cell">+2,595.64%</td>
+        <td class="num-cell win">+1,252.87 pp</td>
+        <td class="num-cell loss">31.15%</td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell">8</td>
+        <td class="num-cell">87.5%</td>
+        <td class="num-cell win">+78.31%</td>
+        <td class="num-cell">+78.31%</td>
+        <td class="num-cell">&mdash;</td>
+        <td class="num-cell loss">1.43%</td>
+    </tr>
+</table>
+</div>
+<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。pp = percentage points（百分點）。</p>
+
+<div class="highlight-box">
+    <div class="label">2025 年報酬提升</div>
+    <div class="big-number">+1,252.87 百分點</div>
+    <div class="label" style="margin-top: 8px;">V18 +2,595.64% &rarr; V20 +3,848.51%</div>
+</div>
+
+<h3>V20 出場流程</h3>
+<p>V20 在 V18 的四層出場機制基礎上，新增 <span class="tag tag-yellow">STALE</span> 出場，插入於 TIME 停損之後：</p>
+<div class="flow-chart">
+    <div class="flow-step" style="border-color: var(--green);">
+        <div class="step-num">最高優先</div>
+        <div class="step-title" style="color: var(--green);">停利 TP</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--accent2);">
+        <div class="step-num">第二</div>
+        <div class="step-title" style="color: var(--accent2);">追蹤停損 TRAIL</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--red);">
+        <div class="step-num">第三</div>
+        <div class="step-title" style="color: var(--red);">停損 SL</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--yellow);">
+        <div class="step-num">第四</div>
+        <div class="step-title" style="color: var(--yellow);">時間停損 TIME</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--orange);">
+        <div class="step-num">第五 (V20 新增)</div>
+        <div class="step-title" style="color: var(--orange);">提前出場 STALE</div>
+    </div>
+</div>
+
+<div class="card" style="border-left: 4px solid var(--orange);">
+    <h3 style="margin-top:0">提前出場 (STALE - Stale Exit) <span class="tag tag-yellow">V20 新增</span></h3>
+    <div class="formula">
+        持倉天數 &ge; 9 天 且 (收盤價 / 進場價 - 1) &lt; -5% &rarr; 以收盤價出場
+    </div>
+    <p>在時間停損（14 天）之前的第 9 天進行額外檢查。若此時仍虧損超過 5%，判定動能已枯竭，提前出場以減少進一步損失。</p>
+    <p><strong>實際案例：</strong>V20 回測中，SUPX 在持倉 11 天後以 -5.14% 觸發 STALE 出場，避免了持續持有到第 14 天可能產生的更大虧損。</p>
+</div>
+
+<div class="analogy">
+    Gap-Down Rejection 是「進場前的門衛」— 在進門之前擋住壞天氣。<br>
+    Stale Exit 是「場內的巡邏員」— 進場後定期檢查，如果狀況不對就提前請你離開。<br>
+    兩者搭配，從進場和持倉兩個維度減少不必要的損失。
 </div>
 
 <!-- Footer -->
