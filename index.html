@@ -264,6 +264,7 @@ li { margin: 4px 0; }
     <li><a href="#quality">突破品質評估</a></li>
     <li><a href="#backtest">回測結果</a></li>
     <li><a href="#faq">常見問題 FAQ</a></li>
+    <li><a href="#scan-winrate">每日掃描勝率分析</a></li>
     <li><a href="#v20">V20 更新 — Stale Exit + Gap-Down Rejection</a></li>
 </ol>
 </div>
@@ -976,6 +977,248 @@ li { margin: 4px 0; }
 </div>
 
 <!-- ================================================================ -->
+<!-- 每日掃描勝率分析 -->
+<!-- ================================================================ -->
+<h2 id="scan-winrate"><span class="num">11</span>每日掃描勝率分析</h2>
+
+<div class="highlight-box">
+    <div class="label">2021-2026 全美股每日掃描回測</div>
+    <div class="big-number">287,180 筆模擬交易</div>
+    <div class="label" style="margin-top: 8px;">整體勝率 62.6% &mdash; 首選勝率 64.9%-73.3%</div>
+</div>
+
+<p>本分析模擬 2021-2026 年間<strong>每一個交易日</strong>的所有候選股票，不受資金限制、不受倉位限制，每個候選股獨立模擬進場到出場的完整流程。目的是衡量<strong>選股訊號本身的品質</strong>，而非資金管理後的實際績效。</p>
+
+<div class="card card-accent">
+    <h3 style="margin-top:0">與回測的差異</h3>
+    <ul>
+        <li><strong>回測 (Backtest)：</strong>每天只能持有 1 檔（資金全押），受到倉位限制</li>
+        <li><strong>掃描分析 (Daily Scan)：</strong>每天所有候選股都模擬交易，衡量訊號整體品質</li>
+    </ul>
+    <p style="margin-bottom:0">如果掃描勝率穩定 &gt;60%，代表選股邏輯本身具備統計優勢，不依賴運氣選到特定股票。</p>
+</div>
+
+<h3>各年度掃描績效總覽</h3>
+<div class="table-wrap">
+<table>
+<tr>
+    <th>年份</th>
+    <th>交易日</th>
+    <th>日均候選</th>
+    <th>總候選數</th>
+    <th>整體勝率</th>
+    <th>日均勝率</th>
+    <th>首選勝率</th>
+    <th>平均報酬</th>
+    <th>盈虧比</th>
+</tr>
+<tr>
+    <td>2021</td>
+    <td class="num-cell">251</td>
+    <td class="num-cell">223.6</td>
+    <td class="num-cell">56,118</td>
+    <td class="num-cell win">64.7%</td>
+    <td class="num-cell win">64.3%</td>
+    <td class="num-cell win">73.3%</td>
+    <td class="num-cell win">+1.22%</td>
+    <td class="num-cell">2.21</td>
+</tr>
+<tr>
+    <td>2022</td>
+    <td class="num-cell">250</td>
+    <td class="num-cell">170.5</td>
+    <td class="num-cell">42,634</td>
+    <td class="num-cell win">58.9%</td>
+    <td class="num-cell win">62.0%</td>
+    <td class="num-cell win">71.2%</td>
+    <td class="num-cell win">+0.67%</td>
+    <td class="num-cell">1.59</td>
+</tr>
+<tr>
+    <td>2023</td>
+    <td class="num-cell">249</td>
+    <td class="num-cell">231.4</td>
+    <td class="num-cell">57,620</td>
+    <td class="num-cell win">62.6%</td>
+    <td class="num-cell win">61.9%</td>
+    <td class="num-cell win">65.9%</td>
+    <td class="num-cell win">+1.04%</td>
+    <td class="num-cell">2.22</td>
+</tr>
+<tr>
+    <td>2024</td>
+    <td class="num-cell">251</td>
+    <td class="num-cell">255.2</td>
+    <td class="num-cell">64,058</td>
+    <td class="num-cell win">60.7%</td>
+    <td class="num-cell win">62.4%</td>
+    <td class="num-cell win">64.9%</td>
+    <td class="num-cell win">+0.94%</td>
+    <td class="num-cell">2.00</td>
+</tr>
+<tr>
+    <td>2025</td>
+    <td class="num-cell">249</td>
+    <td class="num-cell">235.9</td>
+    <td class="num-cell">58,751</td>
+    <td class="num-cell win">64.5%</td>
+    <td class="num-cell win">62.8%</td>
+    <td class="num-cell win">70.3%</td>
+    <td class="num-cell win">+1.09%</td>
+    <td class="num-cell">2.23</td>
+</tr>
+<tr>
+    <td>2026*</td>
+    <td class="num-cell">29</td>
+    <td class="num-cell">275.8</td>
+    <td class="num-cell">7,999</td>
+    <td class="num-cell win">67.2%</td>
+    <td class="num-cell win">60.8%</td>
+    <td class="num-cell win">70.4%</td>
+    <td class="num-cell win">+2.05%</td>
+    <td class="num-cell">4.07</td>
+</tr>
+</table>
+</div>
+<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。首選 = 每天 RS Rank 最高的候選股。盈虧比 = Profit Factor（總獲利 / 總虧損）。</p>
+
+<h3>首選勝率 (Rank#1)</h3>
+<div class="card card-green">
+    <p style="margin-bottom:8px"><strong>首選勝率</strong>是指每天候選名單中 RS Rank 排名第一的股票的勝率 — 也就是系統實際會選擇交易的那檔。</p>
+    <table>
+    <tr>
+        <th>年份</th>
+        <th>交易數</th>
+        <th>勝場</th>
+        <th>敗場</th>
+        <th>勝率</th>
+        <th>平均報酬</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell">251</td>
+        <td class="num-cell win">184</td>
+        <td class="num-cell loss">67</td>
+        <td class="num-cell win">73.3%</td>
+        <td class="num-cell win">+3.03%</td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell">250</td>
+        <td class="num-cell win">178</td>
+        <td class="num-cell loss">72</td>
+        <td class="num-cell win">71.2%</td>
+        <td class="num-cell win">+2.55%</td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell">249</td>
+        <td class="num-cell win">164</td>
+        <td class="num-cell loss">85</td>
+        <td class="num-cell win">65.9%</td>
+        <td class="num-cell win">+1.76%</td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell">251</td>
+        <td class="num-cell win">163</td>
+        <td class="num-cell loss">88</td>
+        <td class="num-cell win">64.9%</td>
+        <td class="num-cell win">+1.40%</td>
+    </tr>
+    <tr>
+        <td>2025</td>
+        <td class="num-cell">249</td>
+        <td class="num-cell win">175</td>
+        <td class="num-cell loss">74</td>
+        <td class="num-cell win">70.3%</td>
+        <td class="num-cell win">+3.11%</td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell">27</td>
+        <td class="num-cell win">19</td>
+        <td class="num-cell loss">8</td>
+        <td class="num-cell win">70.4%</td>
+        <td class="num-cell win">+4.93%</td>
+    </tr>
+    </table>
+    <p style="margin-bottom:0; margin-top:12px; color: var(--text-dim); font-size:0.9em">首選勝率一致高於整體勝率 2-9 個百分點，驗證 RS Rank 排序機制有效將最強候選股排在最前。</p>
+</div>
+
+<h3>出場原因勝率</h3>
+<p>不同出場方式的勝率揭示了系統各層機制的角色：</p>
+<table>
+<tr>
+    <th>出場方式</th>
+    <th>交易數</th>
+    <th>佔比</th>
+    <th>勝率</th>
+    <th>說明</th>
+</tr>
+<tr>
+    <td><span class="tag tag-green">TP</span> 停利</td>
+    <td class="num-cell">15,364</td>
+    <td class="num-cell">5.3%</td>
+    <td class="num-cell win">100.0%</td>
+    <td>觸及 12% 停利目標，全部獲利</td>
+</tr>
+<tr>
+    <td><span class="tag tag-blue">TRAIL</span> 追蹤停損</td>
+    <td class="num-cell">56,407</td>
+    <td class="num-cell">19.6%</td>
+    <td class="num-cell win">91.6%</td>
+    <td>趨勢結束後鎖住大部分獲利</td>
+</tr>
+<tr>
+    <td><span class="tag tag-yellow">TIME</span> 時間停損</td>
+    <td class="num-cell">47,343</td>
+    <td class="num-cell">16.5%</td>
+    <td class="num-cell win">84.0%</td>
+    <td>持倉 14 天到期，多數仍在獲利</td>
+</tr>
+<tr>
+    <td><span class="tag tag-red">SL</span> 停損</td>
+    <td class="num-cell">161,005</td>
+    <td class="num-cell">56.1%</td>
+    <td class="num-cell">44.6%</td>
+    <td>ATR 停損觸發，限制單筆虧損</td>
+</tr>
+<tr>
+    <td><span class="tag tag-yellow">STALE</span> 提前出場</td>
+    <td class="num-cell">5,687</td>
+    <td class="num-cell">2.0%</td>
+    <td class="num-cell loss">0.0%</td>
+    <td>持倉 9 天仍虧 &gt;5%，果斷離場</td>
+</tr>
+</table>
+
+<div class="analogy">
+    TP 和 TRAIL 是獲利的主引擎（勝率 91-100%），TIME 意外地有 84% 勝率，表示多數動能突破即使不猛漲也不會虧。<br>
+    SL 佔最大宗（56%）是因為全部候選股都測試 — 實際交易時 RS Rank#1 的 SL 比率遠低於此。
+</div>
+
+<h3>關鍵發現</h3>
+<div class="two-col">
+    <div class="card card-green">
+        <h3 style="margin-top:0">訊號品質穩定</h3>
+        <p style="margin-bottom:0">6 年間每日平均勝率維持在 <strong>60.8%-64.3%</strong>，即使 2022 年熊市也有 62.0%。選股邏輯具備跨市場週期的穩健性。</p>
+    </div>
+    <div class="card card-green">
+        <h3 style="margin-top:0">RS Rank 排序有效</h3>
+        <p style="margin-bottom:0">首選（Rank#1）勝率 <strong>64.9%-73.3%</strong>，持續優於整體平均。RS 相對強度排名機制成功篩選出最強候選。</p>
+    </div>
+    <div class="card card-green">
+        <h3 style="margin-top:0">盈虧比全年為正</h3>
+        <p style="margin-bottom:0">Profit Factor 最低為 2022 年的 <strong>1.59</strong>，最高為 2026 年的 <strong>4.07</strong>。所有年份的總獲利均大於總虧損。</p>
+    </div>
+    <div class="card card-green">
+        <h3 style="margin-top:0">候選數量充足</h3>
+        <p style="margin-bottom:0">日均候選 <strong>170-276 檔</strong>，即使在訊號最少的 2022 年也有充足的交易機會可供選擇。</p>
+    </div>
+</div>
+
+<!-- ================================================================ -->
 <!-- V20 更新 -->
 <!-- ================================================================ -->
 <h2 id="v20"><span class="num">★</span>V20 更新 &mdash; Stale Exit + Gap-Down Rejection</h2>
@@ -1111,7 +1354,7 @@ li { margin: 4px 0; }
 <!-- Footer -->
 <div class="footer">
     <p>Sovereign V18 &mdash; 動能突破交易系統技術文件</p>
-    <p>文件生成日期：2026-02-12 | 回測數據基於 2020-2026 年歷史資料</p>
+    <p>文件生成日期：2026-02-13 | 回測數據基於 2020-2026 年歷史資料</p>
     <p>本文件僅供教育和研究用途，不構成投資建議。過去績效不代表未來表現。</p>
 </div>
 
