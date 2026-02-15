@@ -560,11 +560,11 @@ function renderAll(data) {
 
 // ── Dashboard ────────────────────────────────────
 function renderDashboard(data) {
-    const v = data.v20;
-    const p = data.performance;
+    const v = data.v20 || {};
+    const p = data.performance || {};
 
     const modeEl = $('s-mode');
-    modeEl.textContent = v.label;
+    modeEl.textContent = v.label || '--';
     if (v.mode === 'TP') {
         modeEl.style.color = 'var(--green)';
     } else {
@@ -574,10 +574,10 @@ function renderDashboard(data) {
     $('s-rwr').textContent = v.rolling_wr != null ? pct(v.rolling_wr) : '--';
     $('s-rwr').style.color = v.rolling_wr != null ? (v.rolling_wr >= 58 ? 'var(--green)' : 'var(--orange)') : '';
 
-    $('s-wr').textContent = pct(p.win_rate);
+    $('s-wr').textContent = p.win_rate != null ? pct(p.win_rate) : '--';
     $('s-wr').style.color = p.win_rate >= 60 ? 'var(--green)' : p.win_rate >= 50 ? 'var(--yellow)' : 'var(--red)';
 
-    $('s-total').textContent = `${p.total_trades}`;
+    $('s-total').textContent = p.total_trades != null ? `${p.total_trades}` : '--';
     $('s-total').style.color = 'var(--text)';
 
     $('s-open').textContent = `${(data.open_trades || []).length}`;
@@ -768,6 +768,14 @@ function renderPicks(picks) {
 
 // ── State Messages ───────────────────────────────
 function showState(title, desc) {
+    // Clear all dynamic sections
+    $('history').innerHTML = '';
+    $('exits-section').style.display = 'none';
+    $('open-trades').innerHTML = '';
+    $('open-label').textContent = '';
+    $('picks-table').innerHTML = '';
+    $('pick-count').textContent = '';
+    ['s-mode','s-rwr','s-wr','s-total','s-open'].forEach(id => { $(id).textContent = '--'; $(id).style.color = ''; });
     $('signal').innerHTML = `<div class="state-msg">
         <div class="icon">&#x1F4CA;</div>
         <p><strong>${title}</strong></p>
