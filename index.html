@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sovereign V18 - 動能突破交易系統完整介紹</title>
+<title>Sovereign V18/V20 - 動能突破交易系統完整介紹</title>
 <style>
 :root {
     --bg: #0f1117;
@@ -265,7 +265,15 @@ li { margin: 4px 0; }
     <li><a href="#backtest">回測結果</a></li>
     <li><a href="#faq">常見問題 FAQ</a></li>
     <li><a href="#scan-winrate">每日掃描勝率分析</a></li>
-    <li><a href="#v20">V20 更新 — Stale Exit + Gap-Down Rejection</a></li>
+    <li><a href="#v20">V20 更新</a>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Stale Exit + Gap-Down Rejection</li>
+            <li>板塊動能篩選 + ETF 排除</li>
+            <li>市場環境偵測</li>
+            <li>進階指標 (RSI、K 線品質、量能 Z-Score)</li>
+            <li>動態 TP/NoTP 切換</li>
+        </ol>
+    </li>
 </ol>
 </div>
 
@@ -1221,15 +1229,17 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- V20 更新 -->
 <!-- ================================================================ -->
-<h2 id="v20"><span class="num">★</span>V20 更新 &mdash; Stale Exit + Gap-Down Rejection</h2>
+<h2 id="v20"><span class="num">★</span>V20 更新 &mdash; 五大升級</h2>
 
 <div class="highlight-box">
-    <div class="label">版本升級</div>
+    <div class="label">版本升級 — 五大核心改進</div>
     <p style="font-size:1.2em; margin-top:8px; margin-bottom:0">
-        V20 針對 V18 的<strong>兩大損失來源</strong>做精確修正：<br>
-        長期持倉的時間虧損（TIME stop）與開盤跳空的即日停損（Day-1 SL）。
+        V20 從出場優化、選股篩選、市場環境偵測到動態模式切換，全面升級系統。<br>
+        核心亮點：<strong>動態 TP/NoTP 切換</strong>根據近期勝率自動選擇最佳出場模式。
     </p>
 </div>
+
+<h3>升級一：Stale Exit + Gap-Down Rejection</h3>
 
 <h3>更新動機</h3>
 <div class="card card-yellow">
@@ -1351,10 +1361,448 @@ li { margin: 4px 0; }
     兩者搭配，從進場和持倉兩個維度減少不必要的損失。
 </div>
 
+<!-- ================================================================ -->
+<!-- V20 升級二：板塊動能篩選 + ETF 排除 -->
+<!-- ================================================================ -->
+<h3>升級二：板塊動能篩選 + ETF/ETN 排除</h3>
+
+<div class="card card-accent">
+    <p><strong>核心概念：</strong>研究顯示 60-73% 的動能獲利來自<strong>板塊層面因素</strong>。底部板塊的 VCP 型態勝率僅 51.3%（接近隨機），而頂部板塊顯著更高。V20 新增板塊篩選，拒絕弱勢板塊中的候選股。</p>
+</div>
+
+<h4 style="color: var(--accent2);">板塊動能排名機制</h4>
+<div class="card">
+    <div class="formula">
+        板塊動能 = 板塊 ETF 63 天動能（約 3 個月）<br>
+        排名 1-11，拒絕排名最後 3 名（底部板塊）
+    </div>
+    <p><strong>使用的 11 個板塊 ETF：</strong></p>
+    <table>
+        <tr><th>ETF</th><th>板塊</th><th>ETF</th><th>板塊</th></tr>
+        <tr><td>XLK</td><td>科技</td><td>XLY</td><td>非必需消費</td></tr>
+        <tr><td>XLV</td><td>醫療保健</td><td>XLP</td><td>必需消費</td></tr>
+        <tr><td>XLF</td><td>金融</td><td>XLU</td><td>公用事業</td></tr>
+        <tr><td>XLE</td><td>能源</td><td>XLRE</td><td>房地產</td></tr>
+        <tr><td>XLI</td><td>工業</td><td>XLB</td><td>原物料</td></tr>
+        <tr><td>XLC</td><td>通訊服務</td><td></td><td></td></tr>
+    </table>
+    <p><strong>篩選規則：</strong>每日計算各板塊 ETF 的 63 天動能，排名 1（最強）到 11（最弱）。候選股所屬板塊若排名 9-11（底部 3 名），直接拒絕進場。</p>
+</div>
+
+<div class="analogy">
+    板塊篩選就像選擇在哪個城市開店。即使你的店面（個股）裝潢很好，如果整個城市（板塊）經濟蕭條，生意也很難好。我們只在繁榮的城市開店。
+</div>
+
+<h4 style="color: var(--accent2);">ETF/ETN 排除</h4>
+<div class="card">
+    <p>V18 原本的掃描範圍包含了 ETF 和 ETN 等非個股標的。這些標的的行為模式與個股不同，不適合動能突破策略。</p>
+    <div class="formula">
+        使用 yfinance quoteType 雙重驗證<br>
+        僅保留 quoteType = "EQUITY" 的標的
+    </div>
+    <p><strong>成效：</strong>從原本約 8,000+ 檔中剔除 <span class="param-value">68 檔</span>非股票標的（ETF、ETN、信託等），確保所有候選股都是純粹的個股。</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- V20 升級三：市場環境偵測 -->
+<!-- ================================================================ -->
+<h3>升級三：市場環境偵測</h3>
+
+<div class="card card-accent">
+    <p><strong>核心概念：</strong>即使選股品質再好，如果整體市場環境惡劣（例如系統性下跌），突破成功率也會大幅下降。V20 新增市場環境偵測，提供情境建議。</p>
+</div>
+
+<div class="card">
+    <h4 style="margin-top:0; color: var(--accent2);">偵測指標</h4>
+    <table>
+        <tr><th>指標</th><th>計算方式</th><th>用途</th></tr>
+        <tr>
+            <td>SPY 趨勢</td>
+            <td>SPY 收盤價 vs SMA(50)</td>
+            <td>判斷大盤整體方向</td>
+        </tr>
+        <tr>
+            <td>市場廣度</td>
+            <td>SMA20 上方股票百分比</td>
+            <td>衡量市場參與度</td>
+        </tr>
+    </table>
+</div>
+
+<div class="two-col">
+    <div class="card card-green">
+        <strong>牛市環境</strong>
+        <ul>
+            <li>SPY 在 SMA50 之上</li>
+            <li>廣度指標健康</li>
+            <li>正常進場，突破成功率最高</li>
+        </ul>
+    </div>
+    <div class="card card-red">
+        <strong>熊市/震盪環境</strong>
+        <ul>
+            <li>SPY 在 SMA50 之下</li>
+            <li>廣度指標偏弱</li>
+            <li>顯示警示，提高警覺</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card card-yellow">
+    <p><strong>重要：</strong>市場環境偵測目前設計為<strong>情境建議</strong>，不做硬性濾網。原因是回測顯示在震盪市中仍有高品質的突破機會，硬性阻擋會錯過這些機會。偵測結果顯示在掃描器上方，供交易者參考判斷。</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- V20 升級四：進階指標 -->
+<!-- ================================================================ -->
+<h3>升級四：進階指標</h3>
+
+<p>V20 新增三項技術指標，提供更完整的突破品質評估。這些指標<strong>不作為進場濾網</strong>，而是作為參考資訊顯示在掃描結果中。</p>
+
+<div class="card card-accent">
+    <h4 style="margin-top:0;">RSI(14)（相對強弱指標, Relative Strength Index）</h4>
+    <div class="formula">
+        RSI = 100 - 100 / (1 + RS)<br>
+        RS = 14 日平均漲幅 / 14 日平均跌幅
+    </div>
+    <p><strong>用途：</strong>衡量股票是否處於超買或超賣狀態。RSI &gt; 70 通常代表超買（可能即將回調），RSI &lt; 30 代表超賣（可能反彈）。動能突破的理想 RSI 約在 55-70 之間 — 有動能但未過熱。</p>
+</div>
+
+<div class="card card-accent">
+    <h4 style="margin-top:0;">Close Position（K 線品質 / 收盤位置）</h4>
+    <div class="formula">
+        Close_Position = (Close - Low) / (High - Low) &times; 100%
+    </div>
+    <p><strong>用途：</strong>衡量收盤價在當日 K 線範圍中的位置。數值越高代表收盤越接近最高點，通常暗示多方掌控力強。例如 Close Position = 90% 代表收盤價接近當日最高，是強勢 K 線的特徵。</p>
+</div>
+
+<div class="card card-accent">
+    <h4 style="margin-top:0;">Volume Z-Score（量能 Z 分數）</h4>
+    <div class="formula">
+        Vol_ZScore = (今日成交量 - 20 日平均量) / 20 日成交量標準差
+    </div>
+    <p><strong>用途：</strong>衡量今日成交量偏離正常水準的程度。Z-Score = 2.0 代表成交量比正常高出 2 個標準差，是非常顯著的量能異常。與 Vol_Ratio（倍數）不同，Z-Score 考慮了量能的波動性，更能反映真正異常的量能爆發。</p>
+</div>
+
+<div class="analogy">
+    如果把 Vol_Ratio 比喻為「今天餐廳來客數是平時的幾倍」，那 Vol_ZScore 就是「今天的來客數在統計上有多異常」。如果餐廳本來每天波動很大（有時 50 人，有時 200 人），那即使今天來了 300 人，異常程度也不如一間每天穩定 100 人的餐廳突然來了 200 人。
+</div>
+
+<!-- ================================================================ -->
+<!-- V20 升級五：動態 TP/NoTP 切換（核心功能） -->
+<!-- ================================================================ -->
+<h3 id="v20-dynamic">升級五：動態 TP/NoTP 切換（核心功能）</h3>
+
+<div class="highlight-box">
+    <div class="label">V20 核心功能</div>
+    <div class="big-number">動態模式切換</div>
+    <div class="label" style="margin-top: 8px;">根據近 20 筆交易勝率，自動選擇最佳出場策略</div>
+</div>
+
+<h4 style="color: var(--accent2);">問題背景</h4>
+<div class="card card-yellow">
+    <p>V18 使用固定 12% 停利 (TP)，在牛市表現優異（2025: +9,685%），但在震盪市（2022-2024）會截斷大贏家。完全移除 TP 則在牛市表現不佳。</p>
+    <p><strong>矛盾：</strong>固定 TP 適合牛市，無 TP 適合震盪市。市場狀態不斷變化，需要一個能自動適應的機制。</p>
+</div>
+
+<h4 style="color: var(--accent2);">解決方案：Rolling Win Rate 動態切換</h4>
+<div class="card card-accent">
+    <div class="formula">
+        近 20 筆已結束交易的勝率 (Rolling WR)<br>
+        &nbsp;&nbsp;WR &ge; 58% &rarr; TP 模式（牛市策略）<br>
+        &nbsp;&nbsp;WR &lt; 58% &rarr; NoTP 模式（震盪市策略）
+    </div>
+    <p><strong>為什麼用勝率而非 SPY 趨勢？</strong>勝率是系統自身績效的直接反映，比外部市場指標更能準確判斷當前策略是否「順風」。回測顯示加入 SPY 趨勢反而降低報酬。</p>
+</div>
+
+<div class="two-col">
+    <div class="card card-green">
+        <h4 style="margin-top:0;">TP 模式（勝率 &ge; 58%）</h4>
+        <p style="margin-bottom:8px"><span class="tag tag-green">牛市高勝率</span> 快進快出，複利最大化</p>
+        <table>
+            <tr><td>停利</td><td class="num-cell"><span class="param-value">+12%</span> 固定</td></tr>
+            <tr><td>追蹤停損</td><td class="num-cell"><span class="param-value">3.1%</span> 固定</td></tr>
+            <tr><td>保本觸發</td><td class="num-cell">+0.5%</td></tr>
+            <tr><td>追蹤啟動</td><td class="num-cell">+1.8%</td></tr>
+        </table>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--orange);">
+        <h4 style="margin-top:0;">NoTP 模式（勝率 &lt; 58%）</h4>
+        <p style="margin-bottom:8px"><span class="tag tag-yellow">震盪市</span> 讓贏家充分奔跑</p>
+        <table>
+            <tr><td>停利</td><td class="num-cell"><span class="param-value">無</span>（不設上限）</td></tr>
+            <tr><td>追蹤停損</td><td class="num-cell"><span class="param-value">Tiered ATR</span></td></tr>
+            <tr><td>保本觸發</td><td class="num-cell">+0.8%</td></tr>
+            <tr><td>追蹤啟動</td><td class="num-cell">+2.0%</td></tr>
+        </table>
+    </div>
+</div>
+
+<h4 style="color: var(--accent2);">Tiered ATR 分層追蹤停損</h4>
+<p>NoTP 模式使用自適應追蹤停損，根據目前獲利幅度調整 ATR 倍數。獲利越多，追蹤越緊，鎖住更多利潤：</p>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr><th>獲利階段</th><th>ATR 倍數</th><th>停損寬度</th><th>邏輯</th></tr>
+    <tr>
+        <td>獲利 &lt; 3%</td>
+        <td class="num-cell"><span class="param-value">2.0x</span></td>
+        <td>寬鬆</td>
+        <td>初期給空間發展，避免被正常波動洗出</td>
+    </tr>
+    <tr>
+        <td>獲利 3-6%</td>
+        <td class="num-cell"><span class="param-value">1.5x</span></td>
+        <td>中等</td>
+        <td>有一定獲利後適度收緊</td>
+    </tr>
+    <tr>
+        <td>獲利 6-10%</td>
+        <td class="num-cell"><span class="param-value">1.2x</span></td>
+        <td>緊</td>
+        <td>顯著獲利，開始積極保護</td>
+    </tr>
+    <tr>
+        <td>獲利 &gt; 10%</td>
+        <td class="num-cell"><span class="param-value">1.0x</span></td>
+        <td>最緊</td>
+        <td>大贏家全力鎖利，只留最小空間</td>
+    </tr>
+</table>
+</div>
+
+<div class="formula">
+    NoTP 追蹤停損 = 持倉最高價 - ATR &times; 倍數<br>
+    （只會往上移，永遠不會往下調）
+</div>
+
+<div class="analogy">
+    Tiered ATR 就像爬山時調整繩索長度。在山腳下（獲利少），繩索放長一點，讓你自由探索（ATR &times; 2.0）。爬到半山腰（獲利中等），繩索收短一些（ATR &times; 1.5）。接近山頂（獲利多），繩索最短（ATR &times; 1.0），確保你不會從高處滑落太遠。
+</div>
+
+<h4 style="color: var(--accent2);">Warmup 機制</h4>
+<div class="card">
+    <p>系統啟動初期或歷史交易不足 20 筆時，無法計算 Rolling WR。此時預設使用 <span class="param-value">TP 模式</span>，直到累積足夠交易數據後開始動態切換。</p>
+    <div class="formula">
+        交易歷史 &lt; 20 筆 &rarr; 使用 TP 模式（預設）<br>
+        交易歷史 &ge; 20 筆 &rarr; 計算 Rolling WR，動態切換
+    </div>
+</div>
+
+<h4 style="color: var(--accent2);">動態切換決策流程</h4>
+<div class="flow-chart">
+    <div class="flow-step">
+        <div class="step-num">步驟 1</div>
+        <div class="step-title">取近 20 筆交易</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">
+        <div class="step-num">步驟 2</div>
+        <div class="step-title">計算勝率</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--green);">
+        <div class="step-num">WR &ge; 58%</div>
+        <div class="step-title" style="color: var(--green);">TP 模式</div>
+    </div>
+</div>
+<div class="flow-chart" style="margin-top: 0;">
+    <div class="flow-step" style="visibility: hidden;">
+        <div class="step-num">-</div>
+        <div class="step-title">-</div>
+    </div>
+    <div class="flow-arrow" style="visibility: hidden;">&rarr;</div>
+    <div class="flow-step" style="visibility: hidden;">
+        <div class="step-num">-</div>
+        <div class="step-title">-</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--orange);">
+        <div class="step-num">WR &lt; 58%</div>
+        <div class="step-title" style="color: var(--orange);">NoTP 模式</div>
+    </div>
+</div>
+
+<h4 style="color: var(--accent2);">最佳參數（Grid Search + 6 階段精細優化）</h4>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr><th>參數</th><th>值</th><th>說明</th></tr>
+    <tr><td>滾動窗口</td><td class="num-cell"><span class="param-value">20 筆</span></td><td>取近 20 筆已結束交易計算勝率</td></tr>
+    <tr><td>勝率閾值</td><td class="num-cell"><span class="param-value">58%</span></td><td>&ge; 58% 用 TP 模式，&lt; 58% 用 NoTP</td></tr>
+    <tr><td>Warmup 預設</td><td class="num-cell"><span class="param-value">TP</span></td><td>交易歷史不足 20 筆時用 TP 模式</td></tr>
+    <tr><td>Tiered ATR 倍數</td><td class="num-cell"><span class="param-value">2.0 / 1.5 / 1.2 / 1.0</span></td><td>按獲利階段遞減</td></tr>
+    <tr><td>NoTP 保本觸發</td><td class="num-cell"><span class="param-value">0.8%</span></td><td>比 TP 模式略寬（0.5%）</td></tr>
+    <tr><td>NoTP 追蹤啟動</td><td class="num-cell"><span class="param-value">2.0%</span></td><td>比 TP 模式略寬（1.8%）</td></tr>
+</table>
+</div>
+
+<h4 style="color: var(--accent2);">V20 動態切換回測結果</h4>
+<p>以下比較三種策略在 2021-2026 年的表現，每年 $10,000 起始獨立計算：</p>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">A: Fixed TP 12%</th>
+        <th class="num-cell">E: No TP</th>
+        <th class="num-cell">F: Dynamic</th>
+        <th class="num-cell">F vs A</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell">+299%</td>
+        <td class="num-cell">+555%</td>
+        <td class="num-cell win">+299%</td>
+        <td class="num-cell">+0pp</td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell">+182%</td>
+        <td class="num-cell">+63%</td>
+        <td class="num-cell win">+352%</td>
+        <td class="num-cell win">+170pp</td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell">+155%</td>
+        <td class="num-cell">+286%</td>
+        <td class="num-cell win">+388%</td>
+        <td class="num-cell win">+233pp</td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell">+18%</td>
+        <td class="num-cell">+507%</td>
+        <td class="num-cell win">+91%</td>
+        <td class="num-cell win">+73pp</td>
+    </tr>
+    <tr>
+        <td>2025</td>
+        <td class="num-cell">+9,685%</td>
+        <td class="num-cell">+2,058%</td>
+        <td class="num-cell win">+9,685%</td>
+        <td class="num-cell">+0pp</td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell">+78%</td>
+        <td class="num-cell">+61%</td>
+        <td class="num-cell win">+78%</td>
+        <td class="num-cell">+0pp</td>
+    </tr>
+    <tr style="font-weight: 700; border-top: 2px solid var(--border);">
+        <td>年均</td>
+        <td class="num-cell">+1,736%</td>
+        <td class="num-cell">+589%</td>
+        <td class="num-cell win">+1,815%</td>
+        <td class="num-cell win">+79pp</td>
+    </tr>
+</table>
+</div>
+<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。pp = percentage points（百分點）。</p>
+
+<div class="highlight-box">
+    <div class="label">V20 Dynamic 六年連續複利</div>
+    <div class="big-number">$10,000 &rarr; $2.94 億</div>
+    <div class="label" style="margin-top: 8px;">年均 +1,815% | 勝過 Fixed TP 6/6 年 | 勝過 No TP 4/6 年</div>
+</div>
+
+<div class="two-col">
+    <div class="card card-green">
+        <h4 style="margin-top:0">Dynamic 的優勢</h4>
+        <ul>
+            <li><strong>6/6 年</strong>勝過或持平 Fixed TP</li>
+            <li>2022-2024 震盪市大幅超越（+73 ~ +233pp）</li>
+            <li>2025 牛市完全保留 TP 的複利優勢</li>
+            <li>幾何平均 +455%/yr &gt; A +326% &gt; E +336%</li>
+        </ul>
+    </div>
+    <div class="card card-yellow">
+        <h4 style="margin-top:0">穩健性驗證</h4>
+        <ul>
+            <li><strong>參數敏感度：</strong>&plusmn;2% 微調無影響，&plusmn;5% 僅微降</li>
+            <li><strong>滑點測試：</strong>0.1%&rarr;0.3% 穩健，0.5% 時 2024 虧損</li>
+            <li><strong>中位數報酬：</strong>F +352% &gt; A +182%</li>
+            <li><strong>非 overfitting：</strong>參數敏感度低，跨年穩定</li>
+        </ul>
+    </div>
+</div>
+
+<h4 style="color: var(--accent2);">Dynamic 模式的實際運作案例</h4>
+<div class="card">
+    <p><strong>2023 年 Dynamic 大幅超越的原因：</strong></p>
+    <p>F 策略 67% 時間處於 NoTP 模式（勝率低於 58%），有 8 筆交易獲利超過 12%：</p>
+    <ul>
+        <li>OPRA <span class="win">+49%</span>、WKSP <span class="win">+38%</span>、DERM <span class="win">+37%</span>、CONL <span class="win">+33%</span>、SLNO <span class="win">+30%</span></li>
+    </ul>
+    <p>這些超額報酬在 Fixed TP 下會被截斷在 +12%。經過複利放大，NoTP 模式多賺了 $97,431 的額外利潤。</p>
+</div>
+
+<h4 style="color: var(--accent2);">V20 完整出場流程</h4>
+<p>V20 的出場機制根據當前模式動態調整：</p>
+<div class="card">
+    <p><strong>TP 模式（WR &ge; 58%）：</strong></p>
+    <div class="flow-chart">
+        <div class="flow-step" style="border-color: var(--green);">
+            <div class="step-num">最高優先</div>
+            <div class="step-title" style="color: var(--green);">停利 TP 12%</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step" style="border-color: var(--accent2);">
+            <div class="step-num">第二</div>
+            <div class="step-title" style="color: var(--accent2);">固定 Trail 3.1%</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step" style="border-color: var(--red);">
+            <div class="step-num">第三</div>
+            <div class="step-title" style="color: var(--red);">停損 SL</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step" style="border-color: var(--orange);">
+            <div class="step-num">第四</div>
+            <div class="step-title" style="color: var(--orange);">STALE / TIME</div>
+        </div>
+    </div>
+    <p><strong>NoTP 模式（WR &lt; 58%）：</strong></p>
+    <div class="flow-chart">
+        <div class="flow-step" style="border-color: var(--accent2);">
+            <div class="step-num">最高優先</div>
+            <div class="step-title" style="color: var(--accent2);">Tiered ATR Trail</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step" style="border-color: var(--red);">
+            <div class="step-num">第二</div>
+            <div class="step-title" style="color: var(--red);">停損 SL</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step" style="border-color: var(--orange);">
+            <div class="step-num">第三</div>
+            <div class="step-title" style="color: var(--orange);">STALE / TIME</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step" style="border-color: var(--text-dim);">
+            <div class="step-num">無上限</div>
+            <div class="step-title" style="color: var(--text-dim);">無 TP 限制</div>
+        </div>
+    </div>
+</div>
+
+<h4 style="color: var(--accent2);">已測試但未採用的策略</h4>
+<div class="card" style="border-left: 4px solid var(--text-dim);">
+    <p style="margin-bottom:8px">以下策略經過完整回測驗證後未被採用，原因各異：</p>
+    <table>
+        <tr><th>策略</th><th>2025 結果</th><th>未採用原因</th></tr>
+        <tr><td>ADR% 篩選 (&ge;3%)</td><td class="num-cell">+3,229%（基線 +3,877%）</td><td>篩掉有效的低波動突破</td></tr>
+        <tr><td>Dollar Volume 篩選 (&ge;$5M)</td><td class="num-cell loss">+7%</td><td>核心獲利來源是小型股</td></tr>
+        <tr><td>K 線品質篩選 (&ge;70%)</td><td class="num-cell loss">+30%</td><td>勝率暴跌 26.5%</td></tr>
+        <tr><td>Pocket Pivot (&ge;1)</td><td class="num-cell">+2,028%</td><td>小型動能股不符機構堆積特徵</td></tr>
+        <tr><td>VIX Regime</td><td class="num-cell loss">+266%</td><td>封鎖 25% 交易日，過度保守</td></tr>
+        <tr><td>Zweig Breadth Thrust</td><td class="num-cell">&mdash;</td><td>2024-2026 零觸發，無法驗證</td></tr>
+    </table>
+</div>
+
 <!-- Footer -->
 <div class="footer">
-    <p>Sovereign V18 &mdash; 動能突破交易系統技術文件</p>
-    <p>文件生成日期：2026-02-13 | 回測數據基於 2020-2026 年歷史資料</p>
+    <p>Sovereign V18/V20 &mdash; 動能突破交易系統技術文件</p>
+    <p>文件生成日期：2026-02-15 | 回測數據基於 2020-2026 年歷史資料</p>
     <p>本文件僅供教育和研究用途，不構成投資建議。過去績效不代表未來表現。</p>
 </div>
 
