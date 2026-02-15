@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sovereign V20 - 每日選股報告</title>
+<style>
+:root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #222633;
+    --border: #2d3148;
+    --text: #e1e4ed;
+    --text-dim: #8b90a5;
+    --accent: #6c8cff;
+    --accent2: #4ecdc4;
+    --green: #4ecb71;
+    --red: #ff6b6b;
+    --yellow: #ffd93d;
+    --orange: #ff9f43;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+}
+.container { max-width: 1080px; margin: 0 auto; padding: 24px; }
+
+/* ── Top Nav ── */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+}
+.top-nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9em;
+}
+.top-nav a:hover { text-decoration: underline; }
+.top-nav .brand {
+    font-weight: 700;
+    color: var(--text-dim);
+    font-size: 0.9em;
+}
+
+/* ── Title ── */
+h1 {
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Date Navigation ── */
+.date-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+.date-nav button {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.date-nav button:hover:not(:disabled) { background: var(--surface2); }
+.date-nav button:disabled { opacity: 0.3; cursor: default; }
+.date-label {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--text);
+    min-width: 160px;
+    text-align: center;
+}
+
+/* ── Dashboard ── */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+}
+.stat-label {
+    font-size: 0.8em;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+}
+.stat-value {
+    font-size: 1.35em;
+    font-weight: 700;
+}
+
+/* ── Trade History ── */
+.section-title {
+    font-size: 0.85em;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.history {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    min-height: 36px;
+    align-items: center;
+}
+.dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65em;
+    font-weight: 700;
+    color: var(--bg);
+}
+.dot-w { background: var(--green); }
+.dot-l { background: var(--red); }
+
+/* ── Section Headers ── */
+h2 {
+    font-size: 1.2em;
+    color: var(--accent);
+    margin: 28px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+}
+h2 .dim { color: var(--text-dim); font-size: 0.85em; font-weight: 400; }
+
+/* ── Open Trades Grid ── */
+.trades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+}
+.trade-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+}
+.trade-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.trade-symbol {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+.trade-days {
+    font-size: 0.85em;
+    color: var(--text-dim);
+}
+.trade-mode {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 0.75em;
+    font-weight: 600;
+}
+.mode-tp { background: rgba(78,203,113,0.2); color: var(--green); }
+.mode-notp { background: rgba(255,159,67,0.2); color: var(--orange); }
+.trade-prices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    font-size: 0.9em;
+    margin-top: 8px;
+}
+.trade-prices .lbl { color: var(--text-dim); }
+.trade-prices .val { text-align: right; font-variant-numeric: tabular-nums; }
+.trade-status {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+    font-size: 0.8em;
+    color: var(--text-dim);
+}
+.trade-status .on { color: var(--green); }
+.trade-status .off { color: var(--text-dim); }
+
+/* ── Exit Cards ── */
+.exit-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+.exit-symbol { font-weight: 700; font-size: 1.1em; min-width: 60px; }
+.exit-reason {
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+.exit-return { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* ── Signal Card ── */
+.signal-card {
+    background: var(--surface);
+    border: 2px solid var(--accent);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+}
+.signal-card::before {
+    content: '#1 SIGNAL';
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 0.7em;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+    opacity: 0.5;
+}
+.signal-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 6px;
+}
+.signal-symbol {
+    font-size: 2em;
+    font-weight: 800;
+}
+.signal-grade {
+    padding: 4px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95em;
+}
+.signal-sector {
+    color: var(--text-dim);
+    font-size: 0.9em;
+    margin-bottom: 16px;
+}
+.signal-prices {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 14px;
+}
+.price-box {
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 10px 12px;
+    text-align: center;
+}
+.price-box .p-label {
+    font-size: 0.75em;
+    color: var(--text-dim);
+    margin-bottom: 2px;
+}
+.price-box .p-value {
+    font-size: 1.15em;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+.signal-risk {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.9em;
+    margin-bottom: 16px;
+}
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+.metric {
+    background: var(--surface2);
+    border-radius: 6px;
+    padding: 8px;
+    text-align: center;
+}
+.metric .m-label {
+    font-size: 0.7em;
+    color: var(--text-dim);
+    margin-bottom: 2px;
+}
+.metric .m-value {
+    font-size: 0.95em;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── Picks Table ── */
+.table-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88em;
+    white-space: nowrap;
+}
+th {
+    background: var(--surface2);
+    color: var(--accent);
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+}
+td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+}
+tr:hover td { background: rgba(108,140,255,0.05); }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+.grade-badge {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.85em;
+}
+tr:first-child td { background: rgba(108,140,255,0.08); }
+
+/* ── Empty / Loading State ── */
+.state-msg {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-dim);
+}
+.state-msg .icon { font-size: 2.5em; margin-bottom: 12px; }
+.state-msg p { font-size: 1.05em; }
+
+/* ── Footer ── */
+.footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85em;
+}
+.footer a {
+    color: var(--accent);
+    text-decoration: none;
+}
+.footer a:hover { text-decoration: underline; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .dashboard { grid-template-columns: repeat(3, 1fr); }
+    .signal-prices { grid-template-columns: repeat(2, 1fr); }
+    .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+    .trades-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+    .container { padding: 16px; }
+    .dashboard { grid-template-columns: repeat(2, 1fr); }
+    .signal-prices { grid-template-columns: repeat(2, 1fr); }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    h1 { font-size: 1.4em; }
+    .date-label { font-size: 1.1em; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Top Nav -->
+<div class="top-nav">
+    <a href="index.html">&larr; 系統文件</a>
+    <span class="brand">Sovereign V20</span>
+</div>
+
+<h1>每日選股報告</h1>
+
+<!-- Date Navigation -->
+<div class="date-nav">
+    <button id="btn-prev" onclick="navigate(-1)">&lsaquo;</button>
+    <span class="date-label" id="current-date">載入中...</span>
+    <button id="btn-next" onclick="navigate(1)">&rsaquo;</button>
+</div>
+
+<!-- Dashboard -->
+<div class="dashboard" id="dashboard">
+    <div class="stat-card">
+        <div class="stat-label">V20 模式</div>
+        <div class="stat-value" id="s-mode">--</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">滾動勝率</div>
+        <div class="stat-value" id="s-rwr">--</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">累計勝率</div>
+        <div class="stat-value" id="s-wr">--</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">總交易</div>
+        <div class="stat-value" id="s-total">--</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">持倉中</div>
+        <div class="stat-value" id="s-open">--</div>
+    </div>
+</div>
+
+<!-- Trade History -->
+<div class="section-title">交易歷史</div>
+<div class="history" id="history"></div>
+
+<!-- Recent Exits -->
+<div id="exits-section" style="display:none">
+    <h2>今日結束 <span class="dim" id="exit-count"></span></h2>
+    <div id="exits"></div>
+</div>
+
+<!-- Open Trades -->
+<h2>持倉中 <span class="dim" id="open-label"></span></h2>
+<div class="trades-grid" id="open-trades"></div>
+
+<!-- Signal -->
+<h2>今日訊號</h2>
+<div id="signal"></div>
+
+<!-- All Picks -->
+<h2>全部候選股 <span class="dim" id="pick-count"></span></h2>
+<div class="table-wrap" id="picks-table"></div>
+
+<!-- Footer -->
+<div class="footer">
+    <a href="index.html">&larr; 返回系統文件</a>
+    <p style="margin-top:8px">Sovereign V20 &mdash; 動能突破交易系統</p>
+</div>
+
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   Sovereign V20 Daily Picks — Client-side Renderer
+   ═══════════════════════════════════════════════════ */
+
+let dateIndex = [];
+let currentIdx = 0;
+
+// ── Helpers ──────────────────────────────────────
+function gradeColor(g) {
+    return { A:'#4ecb71', B:'#8be9a0', C:'#ffd93d', D:'#ff9f43', F:'#ff6b6b' }[g] || '#8b90a5';
+}
+
+function fmt(n, d) {
+    if (n == null || isNaN(n)) return '--';
+    return Number(n).toFixed(d === undefined ? 2 : d);
+}
+
+function pct(n, d) {
+    if (n == null || isNaN(n)) return '--';
+    return Number(n).toFixed(d === undefined ? 1 : d) + '%';
+}
+
+async function fetchJSON(url) {
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    return resp.json();
+}
+
+function $(id) { return document.getElementById(id); }
+
+// ── Init ─────────────────────────────────────────
+async function init() {
+    try {
+        dateIndex = await fetchJSON('data/index.json');
+    } catch (e) {
+        showState('data/index.json 不存在', '請先執行 push_picks.py 生成資料');
+        return;
+    }
+    if (!dateIndex || dateIndex.length === 0) {
+        showState('尚無選股資料', '請先執行 push_picks.py 生成資料');
+        return;
+    }
+    // Check URL hash
+    const hash = window.location.hash.slice(1);
+    currentIdx = hash ? Math.max(dateIndex.indexOf(hash), 0) : 0;
+    await loadDate();
+}
+
+async function loadDate() {
+    const date = dateIndex[currentIdx];
+    $('current-date').textContent = date;
+    window.location.hash = date;
+
+    // Nav buttons
+    $('btn-prev').disabled = currentIdx >= dateIndex.length - 1;
+    $('btn-next').disabled = currentIdx <= 0;
+
+    try {
+        const data = await fetchJSON(`data/${date}.json`);
+        renderAll(data);
+    } catch (e) {
+        showState('資料載入失敗', `無法讀取 data/${date}.json`);
+    }
+}
+
+function navigate(dir) {
+    // dir: -1 = newer (next), +1 = older (prev) — index is sorted descending
+    const newIdx = currentIdx - dir;
+    if (newIdx < 0 || newIdx >= dateIndex.length) return;
+    currentIdx = newIdx;
+    loadDate();
+}
+
+// ── Render All ───────────────────────────────────
+function renderAll(data) {
+    renderDashboard(data);
+    renderHistory(data.performance ? data.performance.trade_history : []);
+    renderExits(data.recent_exits || []);
+    renderOpenTrades(data.open_trades || []);
+    const picks = data.picks || [];
+    renderSignal(picks[0]);
+    renderPicks(picks);
+}
+
+// ── Dashboard ────────────────────────────────────
+function renderDashboard(data) {
+    const v = data.v20;
+    const p = data.performance;
+
+    const modeEl = $('s-mode');
+    modeEl.textContent = v.label;
+    if (v.mode === 'TP') {
+        modeEl.style.color = 'var(--green)';
+    } else {
+        modeEl.style.color = 'var(--orange)';
+    }
+
+    $('s-rwr').textContent = v.rolling_wr != null ? pct(v.rolling_wr) : '--';
+    $('s-rwr').style.color = v.rolling_wr != null ? (v.rolling_wr >= 58 ? 'var(--green)' : 'var(--orange)') : '';
+
+    $('s-wr').textContent = pct(p.win_rate);
+    $('s-wr').style.color = p.win_rate >= 60 ? 'var(--green)' : p.win_rate >= 50 ? 'var(--yellow)' : 'var(--red)';
+
+    $('s-total').textContent = `${p.total_trades}`;
+    $('s-total').style.color = 'var(--text)';
+
+    $('s-open').textContent = `${(data.open_trades || []).length}`;
+    $('s-open').style.color = 'var(--accent2)';
+}
+
+// ── Trade History ────────────────────────────────
+function renderHistory(history) {
+    const el = $('history');
+    if (!history || history.length === 0) {
+        el.innerHTML = '<span style="color:var(--text-dim);font-size:0.9em">尚無交易紀錄</span>';
+        return;
+    }
+    el.innerHTML = history.map((r, i) =>
+        `<div class="dot dot-${r.toLowerCase()}" title="第 ${i+1} 筆: ${r === 'W' ? '獲利' : '虧損'}">${r}</div>`
+    ).join('');
+}
+
+// ── Recent Exits ─────────────────────────────────
+function renderExits(exits) {
+    const section = $('exits-section');
+    if (!exits || exits.length === 0) {
+        section.style.display = 'none';
+        return;
+    }
+    section.style.display = 'block';
+    $('exit-count').textContent = `(${exits.length} 筆)`;
+
+    $('exits').innerHTML = exits.map(e => {
+        const isWin = e.return_pct >= 0;
+        const color = isWin ? 'var(--green)' : 'var(--red)';
+        const reasonHex = { TP:'#4ecb71', TRAIL:'#4ecdc4', SL:'#ff6b6b', TIME:'#ffd93d', STALE:'#ff9f43' };
+        const rc = reasonHex[e.exit_reason] || '#8b90a5';
+        return `<div class="exit-card">
+            <span class="exit-symbol">${e.symbol}</span>
+            <span class="exit-reason" style="background:${rc}22;color:${rc}">${e.exit_reason}</span>
+            <span class="exit-return" style="color:${color}">${isWin ? '+' : ''}${fmt(e.return_pct)}%</span>
+            <span style="color:var(--text-dim);font-size:0.85em">$${fmt(e.entry_price)} &rarr; $${fmt(e.exit_price)}</span>
+        </div>`;
+    }).join('');
+}
+
+// ── Open Trades ──────────────────────────────────
+function renderOpenTrades(trades) {
+    $('open-label').textContent = trades.length > 0 ? `(${trades.length} 筆)` : '';
+
+    if (trades.length === 0) {
+        $('open-trades').innerHTML = '<div style="color:var(--text-dim);padding:16px">目前無持倉</div>';
+        return;
+    }
+
+    $('open-trades').innerHTML = trades.map(t => {
+        const modeClass = t.use_tp ? 'mode-tp' : 'mode-notp';
+        const modeLabel = t.use_tp ? 'TP' : 'NoTP';
+        return `<div class="trade-card">
+            <div class="trade-header">
+                <span class="trade-symbol">${t.symbol}</span>
+                <span class="trade-mode ${modeClass}">${modeLabel}</span>
+            </div>
+            <div class="trade-days">Day ${t.days} | 進場 ${t.entry_date}</div>
+            <div class="trade-prices">
+                <span class="lbl">進場</span><span class="val">$${fmt(t.entry_price)}</span>
+                <span class="lbl" style="color:var(--green)">停利</span><span class="val">$${fmt(t.tp)}</span>
+                <span class="lbl" style="color:var(--red)">停損</span><span class="val">$${fmt(t.sl)}</span>
+                <span class="lbl">最高</span><span class="val">$${fmt(t.highest)}</span>
+            </div>
+            <div class="trade-status">
+                <span>BE: <span class="${t.be_set ? 'on' : 'off'}">${t.be_set ? 'ON' : 'OFF'}</span></span>
+                <span>Trail: <span class="${t.trail_on ? 'on' : 'off'}">${t.trail_on ? 'ON' : 'OFF'}</span></span>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+// ── Signal Card ──────────────────────────────────
+function renderSignal(pick) {
+    if (!pick) {
+        $('signal').innerHTML = '<div style="color:var(--text-dim);padding:16px">今日無候選股</div>';
+        return;
+    }
+    const gc = gradeColor(pick.quality_grade);
+    $('signal').innerHTML = `
+    <div class="signal-card">
+        <div class="signal-top">
+            <span class="signal-symbol">${pick.symbol}</span>
+            <span class="signal-grade" style="background:${gc}22;color:${gc}">
+                ${pick.quality_grade} ${pick.quality_score.toFixed(0)}分
+            </span>
+        </div>
+        <div class="signal-sector">${pick.sector} &mdash; 板塊排名 #${pick.sector_rank}</div>
+        <div class="signal-prices">
+            <div class="price-box">
+                <div class="p-label">收盤</div>
+                <div class="p-value">$${fmt(pick.close)}</div>
+            </div>
+            <div class="price-box">
+                <div class="p-label">進場</div>
+                <div class="p-value">$${fmt(pick.entry_price)}</div>
+            </div>
+            <div class="price-box" style="border:1px solid var(--green)">
+                <div class="p-label" style="color:var(--green)">停利</div>
+                <div class="p-value" style="color:var(--green)">$${fmt(pick.tp_price)}</div>
+            </div>
+            <div class="price-box" style="border:1px solid var(--red)">
+                <div class="p-label" style="color:var(--red)">停損</div>
+                <div class="p-value" style="color:var(--red)">$${fmt(pick.sl_price)}</div>
+            </div>
+        </div>
+        <div class="signal-risk">
+            風險 <span style="color:var(--red)">${fmt(pick.risk_pct)}%</span>
+            &nbsp;|&nbsp;
+            報酬 <span style="color:var(--green)">${fmt(pick.reward_pct)}%</span>
+            &nbsp;|&nbsp;
+            股數 <span style="color:var(--accent)">${pick.shares}</span>
+        </div>
+        <div class="metrics-grid">
+            ${mk('RS 排名', '#' + pick.rs_rank)}
+            ${mk('量比', fmt(pick.vol_ratio) + 'x')}
+            ${mk('緊度', fmt(pick.tightness))}
+            ${mk('RSI', fmt(pick.rsi_14, 1))}
+            ${mk('20日動能', pct(pick.mom_20, 1))}
+            ${mk('均線斜率', fmt(pick.sma20_slope, 4))}
+            ${mk('52W接近度', pct(pick.pct_from_52wk, 1))}
+            ${mk('量能Z', fmt(pick.vol_zscore))}
+            ${mk('K線品質', pct(pick.close_position, 1))}
+            ${mk('ATR', fmt(pick.atr))}
+        </div>
+    </div>`;
+}
+
+function mk(label, value) {
+    return `<div class="metric"><div class="m-label">${label}</div><div class="m-value">${value}</div></div>`;
+}
+
+// ── Picks Table ──────────────────────────────────
+function renderPicks(picks) {
+    $('pick-count').textContent = `(${picks.length} 檔)`;
+
+    if (!picks || picks.length === 0) {
+        $('picks-table').innerHTML = '<div style="color:var(--text-dim);padding:16px">今日無候選股</div>';
+        return;
+    }
+
+    const rows = picks.map(p => {
+        const gc = gradeColor(p.quality_grade);
+        return `<tr>
+            <td class="num">${p.rank}</td>
+            <td><strong>${p.symbol}</strong></td>
+            <td><span class="grade-badge" style="background:${gc}22;color:${gc}">${p.quality_grade}</span></td>
+            <td class="num">${p.quality_score.toFixed(0)}</td>
+            <td>${p.sector}</td>
+            <td class="num">$${fmt(p.close)}</td>
+            <td class="num">$${fmt(p.entry_price)}</td>
+            <td class="num" style="color:var(--green)">$${fmt(p.tp_price)}</td>
+            <td class="num" style="color:var(--red)">$${fmt(p.sl_price)}</td>
+            <td class="num">${fmt(p.risk_pct)}%</td>
+            <td class="num">${p.rs_rank}</td>
+            <td class="num">${fmt(p.vol_ratio)}</td>
+            <td class="num">${fmt(p.tightness)}</td>
+            <td class="num">${fmt(p.rsi_14, 1)}</td>
+            <td class="num">${pct(p.mom_20, 1)}</td>
+            <td class="num">${pct(p.pct_from_52wk, 1)}</td>
+        </tr>`;
+    }).join('');
+
+    $('picks-table').innerHTML = `<table>
+        <thead><tr>
+            <th class="num">#</th>
+            <th>代碼</th>
+            <th>評級</th>
+            <th class="num">分數</th>
+            <th>板塊</th>
+            <th class="num">收盤</th>
+            <th class="num">進場</th>
+            <th class="num">停利</th>
+            <th class="num">停損</th>
+            <th class="num">風險%</th>
+            <th class="num">RS</th>
+            <th class="num">量比</th>
+            <th class="num">緊度</th>
+            <th class="num">RSI</th>
+            <th class="num">動能</th>
+            <th class="num">52W%</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+    </table>`;
+}
+
+// ── State Messages ───────────────────────────────
+function showState(title, desc) {
+    $('signal').innerHTML = `<div class="state-msg">
+        <div class="icon">&#x1F4CA;</div>
+        <p><strong>${title}</strong></p>
+        <p style="margin-top:8px;font-size:0.9em">${desc}</p>
+    </div>`;
+}
+
+// ── Bootstrap ────────────────────────────────────
+init();
+window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.slice(1);
+    const idx = dateIndex.indexOf(hash);
+    if (idx >= 0 && idx !== currentIdx) {
+        currentIdx = idx;
+        loadDate();
+    }
+});
+</script>
+
+</body>
+</html>
