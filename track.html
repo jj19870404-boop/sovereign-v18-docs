@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sovereign V20 - 選股歷史追蹤</title>
+<meta name="description" content="Sovereign V20 選股歷史追蹤 — 每日 #1 選股後續表現、勝率統計、100 個交易日追蹤">
 <style>
 :root {
     --bg: #0f1117;
@@ -20,6 +21,7 @@
     --orange: #ff9f43;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
     background: var(--bg);
@@ -51,7 +53,9 @@ body {
     color: var(--text-dim);
     font-size: 0.9em;
 }
-.nav-links { display: flex; gap: 16px; }
+.top-nav .brand:hover { color: var(--text); text-decoration: none; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
+.nav-links a.active { color: var(--text); font-weight: 600; }
 
 /* ── Title ── */
 h1 {
@@ -169,6 +173,17 @@ h1 {
     border-top: 1px solid var(--border);
 }
 
+/* ── Table Wrap ── */
+.table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+.table-wrap .track-table {
+    min-width: 500px;
+}
+
 /* ── Loading ── */
 .loading {
     text-align: center;
@@ -176,12 +191,46 @@ h1 {
     color: var(--text-dim);
 }
 
+/* ── Scroll to Top ── */
+.scroll-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    font-size: 1.3em;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.scroll-top.show { opacity: 1; visibility: visible; }
+.scroll-top:hover { transform: scale(1.1); }
+
 /* ── Responsive ── */
+@media (max-width: 768px) {
+    .container { padding: 16px; }
+    .summary-card .value { font-size: 1.3em; }
+    .track-table { font-size: 0.85em; }
+    .track-table th, .track-table td { padding: 8px 6px; }
+}
 @media (max-width: 600px) {
     .summary { grid-template-columns: repeat(2, 1fr); }
-    .track-table { font-size: 0.8em; }
-    .track-table th, .track-table td { padding: 8px 4px; }
+    h1 { font-size: 1.4em; }
+    .track-table { font-size: 0.78em; }
+    .track-table th, .track-table td { padding: 6px 3px; }
     .hide-mobile { display: none; }
+    .scroll-top { bottom: 16px; right: 16px; }
+    .badge { padding: 2px 6px; font-size: 0.7em; }
 }
 </style>
 </head>
@@ -193,6 +242,7 @@ h1 {
     <a href="index.html" class="brand">Sovereign V20</a>
     <div class="nav-links">
         <a href="picks.html">每日選股</a>
+        <a href="track.html" class="active">選股追蹤</a>
         <a href="news.html">整點快報</a>
     </div>
 </div>
@@ -214,7 +264,10 @@ h1 {
 </div>
 
 <div class="footer">
-    <p>Sovereign V20 — 每日 #1 選股後續追蹤</p>
+    <a href="index.html" style="color:var(--accent);text-decoration:none">&larr; 系統文件</a> &nbsp;|&nbsp;
+    <a href="picks.html" style="color:var(--accent);text-decoration:none">每日選股</a> &nbsp;|&nbsp;
+    <a href="news.html" style="color:var(--accent);text-decoration:none">整點快報 &rarr;</a>
+    <p style="margin-top:8px">Sovereign V20 — 每日 #1 選股後續追蹤</p>
     <p style="margin-top:4px">資料每日自動更新 | 進場價為訊號日次日開盤模擬進場</p>
 </div>
 
@@ -263,7 +316,7 @@ function renderSummary(s) {
 }
 
 function renderTable(tracks) {
-    let html = `<table class="track-table">
+    let html = `<div class="table-wrap"><table class="track-table">
     <thead><tr>
         <th>#</th>
         <th>日期</th>
@@ -311,11 +364,19 @@ function renderTable(tracks) {
         </tr>`;
     });
 
-    html += '</tbody></table>';
+    html += '</tbody></table></div>';
     document.getElementById('table-container').innerHTML = html;
 }
 
 loadTrack();
+</script>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">&uarr;</button>
+<script>
+const scrollBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('show', window.scrollY > 300);
+});
 </script>
 </body>
 </html>

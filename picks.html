@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sovereign V20 - 每日選股報告</title>
+<meta name="description" content="Sovereign V20 動能突破交易系統每日選股報告 — 全自動美股掃描、品質評級、操作計畫">
 <style>
 :root {
     --bg: #0f1117;
@@ -37,6 +38,8 @@ body {
     padding: 12px 0;
     border-bottom: 1px solid var(--border);
     margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 .top-nav a {
     color: var(--accent);
@@ -49,6 +52,9 @@ body {
     color: var(--text-dim);
     font-size: 0.9em;
 }
+.top-nav .brand:hover { color: var(--text); text-decoration: none; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
+.nav-links a.active { color: var(--text); font-weight: 600; }
 
 /* ── Title ── */
 h1 {
@@ -617,20 +623,32 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
+    .container { padding: 16px; }
     .dashboard { grid-template-columns: repeat(3, 1fr); }
+    .stat-desc { font-size: 0.65em; }
     .signal-prices { grid-template-columns: repeat(2, 1fr); }
     .metrics-grid { grid-template-columns: repeat(3, 1fr); }
     .trades-grid { grid-template-columns: 1fr; }
     .pick-detail-prices { margin-left: 0; margin-top: 6px; }
     .detail-2col { grid-template-columns: 1fr 1fr; }
+    .exit-card { flex-wrap: wrap; gap: 8px; }
+    .signal-risk { font-size: 0.8em; }
 }
 @media (max-width: 480px) {
-    .container { padding: 16px; }
+    .container { padding: 12px; }
     .dashboard { grid-template-columns: repeat(2, 1fr); }
+    .dashboard .stat-card:last-child {
+        grid-column: 1 / -1;
+    }
+    .stat-value { font-size: 1.15em; }
     .signal-prices { grid-template-columns: repeat(2, 1fr); }
     .metrics-grid { grid-template-columns: repeat(2, 1fr); }
     h1 { font-size: 1.4em; }
     .date-label { font-size: 1.1em; }
+    .signal-symbol { font-size: 1.5em; }
+    .signal-risk { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+    .quick-ref-row { flex-direction: column; gap: 4px; }
+    .quick-ref-row .qr-label { min-width: auto; }
 }
 </style>
 </head>
@@ -640,7 +658,8 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 <!-- Top Nav -->
 <div class="top-nav">
     <a href="index.html" class="brand">Sovereign V20</a>
-    <div class="nav-links" style="display:flex;gap:16px">
+    <div class="nav-links">
+        <a href="picks.html" class="active">每日選股</a>
         <a href="track.html">選股追蹤</a>
         <a href="news.html">整點快報</a>
     </div>
@@ -711,7 +730,9 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 
 <!-- Footer -->
 <div class="footer">
-    <a href="index.html">&larr; 系統文件</a> &nbsp;|&nbsp; <a href="news.html">整點快報 &rarr;</a>
+    <a href="index.html">&larr; 系統文件</a> &nbsp;|&nbsp;
+    <a href="track.html">選股追蹤</a> &nbsp;|&nbsp;
+    <a href="news.html">整點快報 &rarr;</a>
     <p style="margin-top:8px">Sovereign V20 &mdash; 動能突破交易系統</p>
 </div>
 
@@ -1324,7 +1345,6 @@ function renderPicks(picks) {
 
 // ── State Messages ───────────────────────────────
 function showState(title, desc) {
-    $('history').innerHTML = '';
     $('exits-section').style.display = 'none';
     $('open-trades').innerHTML = '';
     $('open-label').textContent = '';

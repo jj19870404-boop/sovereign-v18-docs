@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sovereign V20 - 美股整點快報</title>
+<meta name="description" content="Sovereign V20 美股整點財經快報 — 每小時自動更新、AI 分析摘要、市場重點新聞">
 <style>
 :root {
     --bg: #0f1117;
@@ -51,7 +52,9 @@ body {
     color: var(--text-dim);
     font-size: 0.9em;
 }
-.nav-links { display: flex; gap: 16px; }
+.top-nav .brand:hover { color: var(--text); text-decoration: none; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
+.nav-links a.active { color: var(--text); font-weight: 600; }
 
 /* ── Title ── */
 h1 {
@@ -199,12 +202,19 @@ h1 {
 }
 
 /* ── Responsive ── */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .container { padding: 16px; }
+}
+@media (max-width: 600px) {
+    .container { padding: 12px; }
     h1 { font-size: 1.4em; }
     .date-label { font-size: 1.1em; min-width: 130px; }
-    .summary-bar { gap: 12px; }
+    .summary-bar { gap: 8px; }
+    .summary-item { font-size: 0.82em; }
     .news-card { padding: 12px 14px; }
+    .news-headline { font-size: 0.9em; }
+    .news-impact { font-size: 0.8em; }
+    .hour-time { font-size: 1em; }
 }
 </style>
 </head>
@@ -217,6 +227,7 @@ h1 {
     <div class="nav-links">
         <a href="picks.html">每日選股</a>
         <a href="track.html">選股追蹤</a>
+        <a href="news.html" class="active">整點快報</a>
     </div>
 </div>
 
@@ -250,8 +261,11 @@ h1 {
 
 <!-- Footer -->
 <div class="footer">
-    Sovereign V20 News &mdash; 資料來源: CNBC, Reuters, MarketWatch, Yahoo Finance, Bloomberg 等<br>
-    由 Gemini AI 分析摘要 | 每小時整點自動更新
+    <a href="index.html" style="color:var(--accent);text-decoration:none">&larr; 系統文件</a> &nbsp;|&nbsp;
+    <a href="picks.html" style="color:var(--accent);text-decoration:none">每日選股</a> &nbsp;|&nbsp;
+    <a href="track.html" style="color:var(--accent);text-decoration:none">選股追蹤</a>
+    <p style="margin-top:8px">Sovereign V20 News &mdash; 資料來源: CNBC, Reuters, MarketWatch, Yahoo Finance, Bloomberg 等</p>
+    <p style="margin-top:4px">由 Gemini AI 分析摘要 | 每小時整點自動更新</p>
 </div>
 
 </div>

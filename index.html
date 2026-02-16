@@ -20,6 +20,7 @@
     --orange: #ff9f43;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
     background: var(--bg);
@@ -28,6 +29,59 @@ body {
     font-size: 16px;
 }
 .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+
+/* ── Top Nav ── */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.top-nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9em;
+    padding: 4px 0;
+}
+.top-nav a:hover { text-decoration: underline; }
+.top-nav .brand {
+    font-weight: 700;
+    color: var(--text-dim);
+    font-size: 0.9em;
+}
+.top-nav .brand:hover { color: var(--text); text-decoration: none; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
+.nav-links a.active { color: var(--text); font-weight: 600; }
+
+/* ── Scroll to Top ── */
+.scroll-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    font-size: 1.3em;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.scroll-top.show { opacity: 1; visibility: visible; }
+.scroll-top:hover { transform: scale(1.1); }
+
 h1 {
     font-size: 2.2em;
     text-align: center;
@@ -232,6 +286,17 @@ li { margin: 4px 0; }
     .two-col { grid-template-columns: 1fr; }
     .flow-chart { flex-direction: column; }
     .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 24px 16px; }
+    h1 { font-size: 1.6em; }
+    h2 { font-size: 1.25em; margin-top: 36px; }
+    .highlight-box { padding: 20px 16px; }
+    .highlight-box .big-number { font-size: 1.8em; }
+    .card { padding: 18px 16px; }
+    .toc { padding: 18px 20px; }
+    table { font-size: 0.85em; }
+    th, td { padding: 8px 6px; }
+    .nav-links { gap: 12px; }
+    .scroll-top { bottom: 16px; right: 16px; }
 }
 
 .footer {
@@ -247,10 +312,13 @@ li { margin: 4px 0; }
 <body>
 <div class="container">
 
-<div style="text-align:right;margin-bottom:-8px;display:flex;justify-content:flex-end;gap:16px">
-    <a href="track.html" style="color:var(--accent);text-decoration:none;font-size:0.95em">選股追蹤</a>
-    <a href="news.html" style="color:var(--accent);text-decoration:none;font-size:0.95em">整點快報</a>
-    <a href="picks.html" style="color:var(--accent);text-decoration:none;font-size:0.95em">每日選股</a>
+<div class="top-nav">
+    <a href="index.html" class="brand active">Sovereign V20</a>
+    <div class="nav-links">
+        <a href="picks.html">每日選股</a>
+        <a href="track.html">選股追蹤</a>
+        <a href="news.html">整點快報</a>
+    </div>
 </div>
 
 <h1>Sovereign V18</h1>
@@ -1813,5 +1881,13 @@ li { margin: 4px 0; }
 </div>
 
 </div>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0})" aria-label="回到頂部">&uarr;</button>
+<script>
+const btn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+    btn.classList.toggle('show', window.scrollY > 300);
+});
+</script>
 </body>
 </html>
