@@ -35,11 +35,19 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 0;
+    padding: 12px 24px;
     border-bottom: 1px solid var(--border);
     margin-bottom: 24px;
     flex-wrap: wrap;
     gap: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15, 17, 23, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    margin-left: -24px;
+    margin-right: -24px;
 }
 .top-nav a {
     color: var(--accent);
@@ -185,6 +193,12 @@ td {
     border-bottom: 1px solid var(--border);
 }
 tr:hover td { background: rgba(108,140,255,0.05); }
+.table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+    margin: 16px 0;
+}
 .num-cell { text-align: right; font-variant-numeric: tabular-nums; }
 .win { color: var(--green); }
 .loss { color: var(--red); }
@@ -295,6 +309,7 @@ li { margin: 4px 0; }
     .toc { padding: 18px 20px; }
     table { font-size: 0.85em; }
     th, td { padding: 8px 6px; }
+    .top-nav { padding: 10px 16px; margin-left: -16px; margin-right: -16px; }
     .nav-links { gap: 12px; }
     .scroll-top { bottom: 16px; right: 16px; }
 }
@@ -1898,9 +1913,19 @@ li { margin: 4px 0; }
 
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0})" aria-label="回到頂部">&uarr;</button>
 <script>
+// Scroll-to-top
 const btn = document.getElementById('scrollTop');
 window.addEventListener('scroll', () => {
     btn.classList.toggle('show', window.scrollY > 300);
+});
+// Auto-wrap tables for mobile overflow
+document.querySelectorAll('.container table').forEach(t => {
+    if (!t.parentElement.classList.contains('table-wrap')) {
+        const wrap = document.createElement('div');
+        wrap.className = 'table-wrap';
+        t.parentNode.insertBefore(wrap, t);
+        wrap.appendChild(t);
+    }
 });
 </script>
 </body>
