@@ -122,31 +122,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-.history {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-    margin-bottom: 28px;
-    padding: 12px 16px;
-    background: var(--surface);
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    min-height: 36px;
-    align-items: center;
-}
-.dot {
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.65em;
-    font-weight: 700;
-    color: var(--bg);
-}
-.dot-w { background: var(--green); }
-.dot-l { background: var(--red); }
+
 
 /* ── Section Headers ── */
 h2 {
@@ -696,10 +672,6 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
     </div>
 </div>
 
-<!-- Trade History -->
-<div class="section-title">交易歷史</div>
-<div class="history" id="history"></div>
-
 <!-- Recent Exits -->
 <div id="exits-section" style="display:none">
     <h2>今日結束 <span class="dim" id="exit-count"></span></h2>
@@ -936,7 +908,6 @@ function navigate(dir) {
 // ── Render All ───────────────────────────────────
 function renderAll(data) {
     renderDashboard(data);
-    renderHistory(data.performance ? data.performance.trade_history : []);
     renderExits(data.recent_exits || []);
     renderOpenTrades(data.open_trades || []);
     const picks = data.picks || [];
@@ -966,20 +937,6 @@ function renderDashboard(data) {
 
     $('s-open').textContent = `${(data.open_trades || []).length}`;
     $('s-open').style.color = 'var(--accent2)';
-}
-
-// ── Trade History ────────────────────────────────
-function renderHistory(history) {
-    const el = $('history');
-    if (!history || history.length === 0) {
-        el.innerHTML = '<span style="color:var(--text-dim);font-size:0.9em">尚無交易紀錄</span>';
-        return;
-    }
-    const recent = history.slice(-20);
-    const offset = history.length - recent.length;
-    el.innerHTML = recent.map((r, i) =>
-        `<div class="dot dot-${r.toLowerCase()}" title="第 ${offset+i+1} 筆: ${r === 'W' ? '獲利' : '虧損'}">${r}</div>`
-    ).join('');
 }
 
 // ── Recent Exits ─────────────────────────────────
