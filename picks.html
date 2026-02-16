@@ -113,6 +113,13 @@ h1 {
     font-size: 1.35em;
     font-weight: 700;
 }
+.stat-desc {
+    font-size: 0.7em;
+    color: var(--text-dim);
+    margin-top: 6px;
+    line-height: 1.4;
+    opacity: 0.8;
+}
 
 /* ── Trade History ── */
 .section-title {
@@ -653,18 +660,22 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
     <div class="stat-card">
         <div class="stat-label">V20 模式</div>
         <div class="stat-value" id="s-mode">--</div>
+        <div class="stat-desc">TP=固定停利 12%<br>NoTP=無停利，ATR 追蹤</div>
     </div>
     <div class="stat-card">
         <div class="stat-label">滾動勝率</div>
         <div class="stat-value" id="s-rwr">--</div>
+        <div class="stat-desc">近 20 筆交易勝率<br>&ge;58% 切 TP，&lt;58% 切 NoTP</div>
     </div>
     <div class="stat-card">
         <div class="stat-label">累計勝率</div>
         <div class="stat-value" id="s-wr">--</div>
+        <div class="stat-desc">所有歷史交易<br>的總勝率</div>
     </div>
     <div class="stat-card">
         <div class="stat-label">持倉中</div>
         <div class="stat-value" id="s-open">--</div>
+        <div class="stat-desc">目前未結束<br>的交易數量</div>
     </div>
 </div>
 
