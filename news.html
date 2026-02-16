@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sovereign V20 - 美股整點快報</title>
+<style>
+:root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #222633;
+    --border: #2d3148;
+    --text: #e1e4ed;
+    --text-dim: #8b90a5;
+    --accent: #6c8cff;
+    --accent2: #4ecdc4;
+    --green: #4ecb71;
+    --red: #ff6b6b;
+    --yellow: #ffd93d;
+    --orange: #ff9f43;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+}
+.container { max-width: 860px; margin: 0 auto; padding: 24px; }
+
+/* ── Top Nav ── */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.top-nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9em;
+}
+.top-nav a:hover { text-decoration: underline; }
+.top-nav .brand {
+    font-weight: 700;
+    color: var(--text-dim);
+    font-size: 0.9em;
+}
+.nav-links { display: flex; gap: 16px; }
+
+/* ── Title ── */
+h1 {
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Date Navigation ── */
+.date-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+.date-nav button {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.date-nav button:hover:not(:disabled) { background: var(--surface2); }
+.date-nav button:disabled { opacity: 0.3; cursor: default; }
+.date-label {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--text);
+    min-width: 160px;
+    text-align: center;
+}
+
+/* ── Summary Bar ── */
+.summary-bar {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9em;
+    color: var(--text-dim);
+}
+.summary-value {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1.1em;
+}
+
+/* ── News Card ── */
+.hour-group {
+    margin-bottom: 24px;
+}
+.hour-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+}
+.hour-time {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 52px;
+}
+.hour-tag {
+    font-size: 0.75em;
+    color: var(--text-dim);
+    background: var(--surface2);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.news-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    transition: border-color 0.2s;
+}
+.news-card:hover {
+    border-color: var(--accent);
+}
+.news-headline {
+    font-size: 0.95em;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+.news-impact {
+    font-size: 0.85em;
+    line-height: 1.6;
+    color: var(--accent2);
+    padding-left: 12px;
+    border-left: 2px solid var(--accent2);
+}
+.news-idx {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: var(--surface2);
+    color: var(--text-dim);
+    font-size: 0.7em;
+    font-weight: 700;
+    margin-right: 8px;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+/* ── State Message ── */
+.state-msg {
+    text-align: center;
+    padding: 48px 16px;
+    color: var(--text-dim);
+}
+.state-msg .icon { font-size: 2.4em; margin-bottom: 12px; }
+
+/* ── Footer ── */
+.footer {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.8em;
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .container { padding: 16px; }
+    h1 { font-size: 1.4em; }
+    .date-label { font-size: 1.1em; min-width: 130px; }
+    .summary-bar { gap: 12px; }
+    .news-card { padding: 12px 14px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Top Nav -->
+<div class="top-nav">
+    <span class="brand">Sovereign V20</span>
+    <div class="nav-links">
+        <a href="index.html">&larr; 文件</a>
+        <a href="picks.html">每日選股</a>
+    </div>
+</div>
+
+<h1>美股整點財經快報</h1>
+
+<!-- Date Navigation -->
+<div class="date-nav">
+    <button id="btn-prev" onclick="nav(-1)">&larr;</button>
+    <span class="date-label" id="date-label">--</span>
+    <button id="btn-next" onclick="nav(1)">&rarr;</button>
+</div>
+
+<!-- Summary -->
+<div class="summary-bar" id="summary">
+    <div class="summary-item">
+        <span>更新次數</span>
+        <span class="summary-value" id="s-total">--</span>
+    </div>
+    <div class="summary-item">
+        <span>新聞重點</span>
+        <span class="summary-value" id="s-items">--</span>
+    </div>
+    <div class="summary-item">
+        <span>時間範圍</span>
+        <span class="summary-value" id="s-range">--</span>
+    </div>
+</div>
+
+<!-- News Container -->
+<div id="news-container"></div>
+
+<!-- Footer -->
+<div class="footer">
+    Sovereign V20 News &mdash; 資料來源: CNBC, Reuters, MarketWatch, Yahoo Finance, Bloomberg 等<br>
+    由 Gemini AI 分析摘要 | 每小時整點自動更新
+</div>
+
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const BASE = 'data/';
+
+let dateIndex = [];
+let currentIdx = 0;
+
+// ── Init ────────────────────────────────────────
+async function init() {
+    showState('載入中...', '正在讀取新聞索引');
+    try {
+        const res = await fetch(BASE + 'news-index.json');
+        if (!res.ok) throw new Error('Index not found');
+        dateIndex = await res.json();
+        if (dateIndex.length === 0) {
+            showState('尚無新聞資料', '新聞資料尚未生成');
+            return;
+        }
+        // Check hash
+        const hash = window.location.hash.slice(1);
+        const idx = dateIndex.indexOf(hash);
+        currentIdx = idx >= 0 ? idx : 0;
+        loadDate();
+    } catch(e) {
+        showState('無法載入', '請確認 data/news-index.json 是否存在');
+    }
+}
+
+// ── Navigation ──────────────────────────────────
+function nav(dir) {
+    const next = currentIdx + dir;
+    if (next < 0 || next >= dateIndex.length) return;
+    currentIdx = next;
+    loadDate();
+}
+
+function updateNav() {
+    $('btn-prev').disabled = currentIdx <= 0;
+    $('btn-next').disabled = currentIdx >= dateIndex.length - 1;
+}
+
+// ── Load Date ───────────────────────────────────
+async function loadDate() {
+    const date = dateIndex[currentIdx];
+    $('date-label').textContent = date;
+    window.location.hash = date;
+    updateNav();
+
+    try {
+        const res = await fetch(BASE + `news-${date}.json`);
+        if (!res.ok) throw new Error('Not found');
+        const data = await res.json();
+        renderAll(data);
+    } catch(e) {
+        showState('無法載入', `找不到 ${date} 的新聞資料`);
+    }
+}
+
+// ── Render ───────────────────────────────────────
+function renderAll(data) {
+    const posts = data.posts || [];
+
+    // Summary
+    const totalPosts = posts.length;
+    const totalItems = posts.reduce((s, p) => s + (p.items ? p.items.length : 0), 0);
+    $('s-total').textContent = totalPosts;
+    $('s-items').textContent = totalItems;
+
+    if (posts.length > 0) {
+        const first = posts[posts.length - 1].time || '--';
+        const last = posts[0].time || '--';
+        $('s-range').textContent = `${first} ~ ${last}`;
+    } else {
+        $('s-range').textContent = '--';
+    }
+
+    // News cards
+    const container = $('news-container');
+    if (posts.length === 0) {
+        container.innerHTML = '<div class="state-msg"><div class="icon">&#x1F4F0;</div><p>今日尚無新聞</p></div>';
+        return;
+    }
+
+    container.innerHTML = posts.map(post => {
+        const time = post.time || '--:--';
+        const items = post.items || [];
+
+        const cards = items.map((item, i) => {
+            const headline = item.headline || '';
+            const impact = item.impact || '';
+            return `<div class="news-card">
+                <div class="news-headline"><span class="news-idx">${i + 1}</span>${escHtml(headline)}</div>
+                ${impact ? `<div class="news-impact">${escHtml(impact)}</div>` : ''}
+            </div>`;
+        }).join('');
+
+        return `<div class="hour-group">
+            <div class="hour-header">
+                <span class="hour-time">${time}</span>
+                <span class="hour-tag">${items.length} 則重點</span>
+            </div>
+            ${cards}
+        </div>`;
+    }).join('');
+}
+
+function escHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+// ── State Message ───────────────────────────────
+function showState(title, desc) {
+    $('s-total').textContent = '--';
+    $('s-items').textContent = '--';
+    $('s-range').textContent = '--';
+    $('news-container').innerHTML = `<div class="state-msg">
+        <div class="icon">&#x1F4F0;</div>
+        <p><strong>${title}</strong></p>
+        <p style="margin-top:8px;font-size:0.9em">${desc}</p>
+    </div>`;
+}
+
+// ── Bootstrap ───────────────────────────────────
+init();
+window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.slice(1);
+    const idx = dateIndex.indexOf(hash);
+    if (idx >= 0 && idx !== currentIdx) {
+        currentIdx = idx;
+        loadDate();
+    }
+});
+</script>
+
+</body>
+</html>
