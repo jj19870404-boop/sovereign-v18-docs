@@ -268,6 +268,11 @@ h2 .dim { color: var(--text-dim); font-size: 0.85em; font-weight: 400; }
     font-weight: 700;
     font-size: 0.95em;
 }
+.signal-desc {
+    font-size: 0.85em;
+    color: var(--text-dim);
+    margin-left: 4px;
+}
 .signal-sector {
     color: var(--text-dim);
     font-size: 0.9em;
@@ -322,6 +327,249 @@ h2 .dim { color: var(--text-dim); font-size: 0.85em; font-weight: 400; }
     font-weight: 600;
     font-variant-numeric: tabular-nums;
 }
+
+/* ── Operation Plan ── */
+.plan-section {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+}
+.plan-title {
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+.plan-steps {
+    list-style: none;
+    padding: 0;
+}
+.plan-steps li {
+    padding: 6px 0;
+    font-size: 0.9em;
+    display: flex;
+    gap: 8px;
+}
+.plan-steps .step-num {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--surface2);
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    font-weight: 700;
+}
+.plan-steps .step-text {
+    flex: 1;
+}
+.plan-warn {
+    color: var(--red);
+    font-size: 0.85em;
+    padding-left: 30px;
+    margin-top: -2px;
+    margin-bottom: 4px;
+}
+
+/* ── Quality Analysis Table ── */
+.qa-section {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+}
+.qa-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88em;
+    margin-top: 8px;
+}
+.qa-table th {
+    background: var(--surface2);
+    color: var(--accent);
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border);
+}
+.qa-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+}
+.qa-table .qa-score {
+    font-weight: 700;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+.qa-table .qa-reason {
+    color: var(--text-dim);
+    font-size: 0.92em;
+}
+
+/* ── Red Flags ── */
+.red-flags {
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: rgba(255,107,107,0.08);
+    border: 1px solid rgba(255,107,107,0.25);
+    border-radius: 8px;
+}
+.red-flags-title {
+    font-weight: 700;
+    color: var(--red);
+    font-size: 0.9em;
+    margin-bottom: 6px;
+}
+.red-flags ul {
+    list-style: none;
+    padding: 0;
+}
+.red-flags li {
+    font-size: 0.85em;
+    color: var(--red);
+    padding: 2px 0;
+}
+.red-flags li::before {
+    content: '\27A4 ';
+}
+.no-flags {
+    margin-top: 14px;
+    padding: 10px 16px;
+    background: rgba(78,203,113,0.08);
+    border: 1px solid rgba(78,203,113,0.25);
+    border-radius: 8px;
+    font-size: 0.85em;
+    color: var(--green);
+}
+
+/* ── Advanced Indicators ── */
+.adv-section {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+}
+.adv-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 0.9em;
+}
+.adv-label {
+    min-width: 90px;
+    color: var(--text-dim);
+    font-weight: 600;
+}
+.adv-value {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    min-width: 60px;
+}
+.adv-note {
+    color: var(--text-dim);
+    font-size: 0.92em;
+}
+
+/* ── Quick Reference ── */
+.quick-ref {
+    margin-top: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+}
+.quick-ref-title {
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+.quick-ref-row {
+    display: flex;
+    gap: 8px;
+    font-size: 0.88em;
+    padding: 4px 0;
+    align-items: baseline;
+}
+.quick-ref-row .qr-label {
+    font-weight: 700;
+    min-width: 80px;
+    flex-shrink: 0;
+}
+.quick-ref-row .qr-items {
+    color: var(--text-dim);
+}
+
+/* ── Pick Detail Card (expandable) ── */
+.pick-detail-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+.pick-detail-card:hover {
+    border-color: var(--accent);
+}
+.pick-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.pick-detail-rank {
+    font-size: 0.8em;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--surface2);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.pick-detail-sym {
+    font-size: 1.2em;
+    font-weight: 800;
+}
+.pick-detail-prices {
+    display: flex;
+    gap: 16px;
+    margin-left: auto;
+    font-size: 0.88em;
+    font-variant-numeric: tabular-nums;
+}
+.pick-detail-body {
+    display: none;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+}
+.pick-detail-card.open .pick-detail-body {
+    display: block;
+}
+.pick-detail-card.open {
+    border-color: var(--accent);
+}
+.pick-detail-toggle {
+    font-size: 0.8em;
+    color: var(--text-dim);
+    margin-left: 8px;
+}
+.detail-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    font-size: 0.88em;
+    margin-bottom: 12px;
+}
+.detail-2col .d-lbl { color: var(--text-dim); }
+.detail-2col .d-val { text-align: right; font-variant-numeric: tabular-nums; }
 
 /* ── Picks Table ── */
 .table-wrap {
@@ -390,6 +638,8 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
     .signal-prices { grid-template-columns: repeat(2, 1fr); }
     .metrics-grid { grid-template-columns: repeat(3, 1fr); }
     .trades-grid { grid-template-columns: 1fr; }
+    .pick-detail-prices { margin-left: 0; margin-top: 6px; }
+    .detail-2col { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 480px) {
     .container { padding: 16px; }
@@ -459,11 +709,18 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 <div class="trades-grid" id="open-trades"></div>
 
 <!-- Signal -->
-<h2>今日訊號</h2>
+<h2>今日首選訊號</h2>
 <div id="signal"></div>
 
-<!-- All Picks -->
-<h2>全部候選股 <span class="dim" id="pick-count"></span></h2>
+<!-- All Picks Detail -->
+<h2>全部候選股詳細報告 <span class="dim" id="pick-count"></span></h2>
+<div id="picks-detail"></div>
+
+<!-- Quick Ref -->
+<div id="quick-ref"></div>
+
+<!-- All Picks Table -->
+<h2>快速總覽表</h2>
 <div class="table-wrap" id="picks-table"></div>
 
 <!-- Footer -->
@@ -476,8 +733,23 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 
 <script>
 /* ═══════════════════════════════════════════════════
-   Sovereign V20 Daily Picks — Client-side Renderer
+   Sovereign V20 Daily Picks — Full Scanner Report
    ═══════════════════════════════════════════════════ */
+
+// ── Strategy Parameters (constants) ─────────────
+const PARAMS = {
+    breakeven_trigger: 0.005,
+    trail_activation: 0.018,
+    trail_distance: 0.031,
+    gap_reject_pct: 0.03,
+    tp_target: 0.12,
+    stale_days: 9,
+    stale_threshold: -0.05,
+    time_stop: 14,
+    max_loss: -0.20,
+    atr_sl: 2.4,
+    slippage: 0.001,
+};
 
 let dateIndex = [];
 let currentIdx = 0;
@@ -485,6 +757,10 @@ let currentIdx = 0;
 // ── Helpers ──────────────────────────────────────
 function gradeColor(g) {
     return { A:'#4ecb71', B:'#8be9a0', C:'#ffd93d', D:'#ff9f43', F:'#ff6b6b' }[g] || '#8b90a5';
+}
+
+function gradeDesc(g) {
+    return { A:'強勢突破訊號', B:'品質良好', C:'普通 - 謹慎操作', D:'品質偏低', F:'不建議操作' }[g] || '';
 }
 
 function fmt(n, d) {
@@ -505,6 +781,117 @@ async function fetchJSON(url) {
 
 function $(id) { return document.getElementById(id); }
 
+// ── Quality Assessment (mirrors scanner logic) ──
+function assessQuality(p) {
+    const vol = p.vol_ratio || 0;
+    const pct52 = p.pct_from_52wk || 0;
+    const mom20 = p.mom_20 || 0;
+    const rs = p.rs_rank || 0;
+    const atr = p.atr || 0;
+    const close = p.close || 1;
+    const atr_pct = (atr / close) * 100;
+
+    let score = 0;
+    const signals = [];
+    const red_flags = [];
+
+    // 1. Volume Ratio (20pts)
+    if (vol >= 1.7 && vol < 2.0) {
+        score += 20; signals.push(['量比', fmt(vol,1)+'x', 20, 20, '1.7-2.0 最佳區間 (勝率83%)']);
+    } else if (vol >= 1.5 && vol < 1.7) {
+        score += 12; signals.push(['量比', fmt(vol,1)+'x', 12, 20, '溫和放量']);
+    } else if (vol >= 2.0 && vol < 2.5) {
+        score += 8; signals.push(['量比', fmt(vol,1)+'x', 8, 20, '偏高']);
+    } else if (vol >= 2.5 && vol < 3.0) {
+        score += 0; signals.push(['量比', fmt(vol,1)+'x', 0, 20, '危險: 2.5-3.0x 勝率僅36%']);
+        red_flags.push('量比 2.5-3.0x (勝率36%)');
+    } else if (vol >= 3.0 && vol < 5.0) {
+        score += 5; signals.push(['量比', fmt(vol,1)+'x', 5, 20, '偏高但不確定']);
+    } else {
+        score += 10; signals.push(['量比', fmt(vol,1)+'x', 10, 20, '極端放量']);
+    }
+
+    // 2. 52-week proximity (20pts)
+    if (pct52 >= 95 && pct52 < 100) {
+        score += 20; signals.push(['52周接近度', fmt(pct52,0)+'%', 20, 20, '95-100% 最佳 (勝率84.6%)']);
+    } else if (pct52 >= 100) {
+        score += 10; signals.push(['52周接近度', fmt(pct52,0)+'%', 10, 20, '已在52周高點 (勝率65%)']);
+    } else if (pct52 >= 85 && pct52 < 95) {
+        score += 5; signals.push(['52周接近度', fmt(pct52,0)+'%', 5, 20, '85-95% 勝率約52%']);
+    } else if (pct52 >= 80 && pct52 < 85) {
+        score += 2; signals.push(['52周接近度', fmt(pct52,0)+'%', 2, 20, '危險: 80-85% 勝率僅47%']);
+        red_flags.push('52周 ' + fmt(pct52,0) + '% (勝率47%)');
+    } else {
+        score += 8; signals.push(['52周接近度', fmt(pct52,0)+'%', 8, 20, '70-80% 區間']);
+    }
+
+    // 3. 20-day momentum (15pts)
+    if (mom20 >= 10 && mom20 < 20) {
+        score += 15; signals.push(['20日動能', (mom20>=0?'+':'')+fmt(mom20,1)+'%', 15, 15, '10-20% 最佳 (勝率78.6%)']);
+    } else if (mom20 >= 5 && mom20 < 10) {
+        score += 10; signals.push(['20日動能', (mom20>=0?'+':'')+fmt(mom20,1)+'%', 10, 15, '溫和動能']);
+    } else if (mom20 >= 20 && mom20 < 30) {
+        score += 8; signals.push(['20日動能', '+'+fmt(mom20,1)+'%', 8, 15, '偏強']);
+    } else if (mom20 >= 30 && mom20 < 50) {
+        score += 5; signals.push(['20日動能', '+'+fmt(mom20,1)+'%', 5, 15, '過熱中']);
+    } else if (mom20 >= 50) {
+        score += 2; signals.push(['20日動能', '+'+fmt(mom20,1)+'%', 2, 15, '嚴重過熱 >50%']);
+        red_flags.push('20日動能 ' + fmt(mom20,0) + '% 嚴重過熱');
+    } else {
+        score += 6; signals.push(['20日動能', (mom20>=0?'+':'')+fmt(mom20,1)+'%', 6, 15, '0-5% 區間']);
+    }
+
+    // 4. RS Rank (15pts)
+    if (rs >= 25 && rs <= 50) {
+        score += 15; signals.push(['RS排名', '#'+rs, 15, 15, '25-50 最佳區間 (勝率80.3%)']);
+    } else if (rs >= 11 && rs < 25) {
+        score += 10; signals.push(['RS排名', '#'+rs, 10, 15, '強勢']);
+    } else if (rs > 50 && rs <= 100) {
+        score += 7; signals.push(['RS排名', '#'+rs, 7, 15, '中等']);
+    } else if (rs >= 1 && rs < 11) {
+        score += 5; signals.push(['RS排名', '#'+rs, 5, 15, '前10名 勝率59%']);
+    } else {
+        score += 3; signals.push(['RS排名', '#'+rs, 3, 15, 'RS偏弱']);
+    }
+
+    // 5. Volatility ATR/Price (10pts)
+    if (atr_pct < 5) {
+        score += 10; signals.push(['波動率', fmt(atr_pct,1)+'%', 10, 10, '<5% 低波動 (勝率72%)']);
+    } else if (atr_pct < 7) {
+        score += 6; signals.push(['波動率', fmt(atr_pct,1)+'%', 6, 10, '中等波動']);
+    } else {
+        score += 3; signals.push(['波動率', fmt(atr_pct,1)+'%', 3, 10, '高波動']);
+    }
+
+    // Extra red flag
+    if (rs < 11 && pct52 < 95) {
+        red_flags.push('RS ' + rs + ' 過熱但未接近高點');
+    }
+
+    return { score, signals, red_flags };
+}
+
+// ── Advanced Indicator Analysis ─────────────────
+function rsiAnalysis(rsi) {
+    if (rsi >= 55 && rsi <= 80) return { color: 'var(--green)', note: '最佳區間 (55-80)' };
+    if (rsi > 80) return { color: 'var(--red)', note: '過熱風險' };
+    if (rsi < 50) return { color: 'var(--red)', note: '動能不足' };
+    return { color: 'var(--yellow)', note: '可接受' };
+}
+
+function cpAnalysis(cp) {
+    if (cp > 70) return { color: 'var(--green)', note: '收在高點區 (強勢)' };
+    if (cp > 50) return { color: 'var(--yellow)', note: '收在中間區' };
+    return { color: 'var(--red)', note: '收在低點區 (弱勢)' };
+}
+
+function vzAnalysis(vz) {
+    if (vz >= 3) return { color: 'var(--green)', note: '機構級量能 (Z>=3)' };
+    if (vz >= 2) return { color: 'var(--green)', note: '強量能信號 (Z>=2)' };
+    if (vz >= 1.5) return { color: 'var(--yellow)', note: '溫和放量' };
+    return { color: 'var(--text)', note: '一般' };
+}
+
 // ── Init ─────────────────────────────────────────
 async function init() {
     try {
@@ -517,7 +904,6 @@ async function init() {
         showState('尚無選股資料', '請先執行 push_picks.py 生成資料');
         return;
     }
-    // Check URL hash
     const hash = window.location.hash.slice(1);
     currentIdx = hash ? Math.max(dateIndex.indexOf(hash), 0) : 0;
     await loadDate();
@@ -527,8 +913,6 @@ async function loadDate() {
     const date = dateIndex[currentIdx];
     $('current-date').textContent = date;
     window.location.hash = date;
-
-    // Nav buttons
     $('btn-prev').disabled = currentIdx >= dateIndex.length - 1;
     $('btn-next').disabled = currentIdx <= 0;
 
@@ -541,7 +925,6 @@ async function loadDate() {
 }
 
 function navigate(dir) {
-    // dir: -1 = newer (next), +1 = older (prev) — index is sorted descending
     const newIdx = currentIdx - dir;
     if (newIdx < 0 || newIdx >= dateIndex.length) return;
     currentIdx = newIdx;
@@ -555,8 +938,10 @@ function renderAll(data) {
     renderExits(data.recent_exits || []);
     renderOpenTrades(data.open_trades || []);
     const picks = data.picks || [];
-    renderSignal(picks[0]);
+    renderSignal(picks[0], data.v20);
+    renderPicksDetail(picks, data.v20);
     renderPicks(picks);
+    renderQuickRef();
 }
 
 // ── Dashboard ────────────────────────────────────
@@ -566,11 +951,7 @@ function renderDashboard(data) {
 
     const modeEl = $('s-mode');
     modeEl.textContent = v.label || '--';
-    if (v.mode === 'TP') {
-        modeEl.style.color = 'var(--green)';
-    } else {
-        modeEl.style.color = 'var(--orange)';
-    }
+    modeEl.style.color = v.mode === 'TP' ? 'var(--green)' : 'var(--orange)';
 
     $('s-rwr').textContent = v.rolling_wr != null ? pct(v.rolling_wr) : '--';
     $('s-rwr').style.color = v.rolling_wr != null ? (v.rolling_wr >= 58 ? 'var(--green)' : 'var(--orange)') : '';
@@ -653,13 +1034,114 @@ function renderOpenTrades(trades) {
     }).join('');
 }
 
-// ── Signal Card ──────────────────────────────────
-function renderSignal(pick) {
+// ── Build Operation Plan HTML ────────────────────
+function buildPlanHTML(p) {
+    const entry = p.entry_price;
+    const close = p.close;
+    const gap_threshold = close * (1 - PARAMS.gap_reject_pct);
+    const be_price = entry * (1 + PARAMS.breakeven_trigger);
+    const trail_price = entry * (1 + PARAMS.trail_activation);
+
+    return `
+    <div class="plan-section">
+        <div class="plan-title">操作計畫</div>
+        <ol class="plan-steps">
+            <li><span class="step-num">1</span><span class="step-text">明日開盤檢查: 開盤價 &ge; $${fmt(gap_threshold)} 才進場</span></li>
+        </ol>
+        <div class="plan-warn">&raquo; 若開盤 &lt; $${fmt(gap_threshold)} (跳空 &gt;3%)，放棄本次訊號</div>
+        <ol class="plan-steps" start="2">
+            <li><span class="step-num">2</span><span class="step-text">進場買進 @ ~$${fmt(entry)}</span></li>
+            <li><span class="step-num">3</span><span class="step-text">設定停損 @ <span style="color:var(--red)">$${fmt(p.sl_price)}</span></span></li>
+            <li><span class="step-num">4</span><span class="step-text">漲 +${(PARAMS.breakeven_trigger*100).toFixed(1)}% (<span style="color:var(--accent2)">$${fmt(be_price)}</span>) &rarr; 停損移至成本價 (保本)</span></li>
+            <li><span class="step-num">5</span><span class="step-text">漲 +${(PARAMS.trail_activation*100).toFixed(1)}% (<span style="color:var(--accent2)">$${fmt(trail_price)}</span>) &rarr; 啟動 ${(PARAMS.trail_distance*100).toFixed(1)}% 追蹤停損</span></li>
+            <li><span class="step-num">6</span><span class="step-text">停利 @ <span style="color:var(--green)">$${fmt(p.tp_price)}</span> (+${(PARAMS.tp_target*100).toFixed(0)}%)</span></li>
+            <li><span class="step-num">7</span><span class="step-text">持倉 ${PARAMS.stale_days} 天若仍虧損 &gt;${Math.abs(PARAMS.stale_threshold*100).toFixed(0)}%，收盤出場 (停滯出場)</span></li>
+            <li><span class="step-num">8</span><span class="step-text">最長持有 ${PARAMS.time_stop} 個交易日，到期收盤出場</span></li>
+        </ol>
+    </div>`;
+}
+
+// ── Build Quality Analysis HTML ──────────────────
+function buildQualityHTML(p) {
+    const qa = assessQuality(p);
+
+    const rows = qa.signals.map(([name, val, pts, max, reason]) => {
+        const c = pts >= max * 0.7 ? 'var(--green)' : pts >= max * 0.4 ? 'var(--yellow)' : 'var(--red)';
+        return `<tr>
+            <td>${name}</td>
+            <td class="num">${val}</td>
+            <td class="qa-score" style="color:${c}">${pts}/${max}</td>
+            <td class="qa-reason">${reason}</td>
+        </tr>`;
+    }).join('');
+
+    let flagsHTML = '';
+    if (qa.red_flags.length > 0) {
+        flagsHTML = `<div class="red-flags">
+            <div class="red-flags-title">紅旗警告</div>
+            <ul>${qa.red_flags.map(f => `<li>${f}</li>`).join('')}</ul>
+        </div>`;
+    } else if (p.quality_score >= 65) {
+        flagsHTML = '<div class="no-flags">無紅旗警告，品質訊號良好。</div>';
+    }
+
+    return `
+    <div class="qa-section">
+        <div class="plan-title">突破品質分析</div>
+        <table class="qa-table">
+            <thead><tr>
+                <th>訊號</th>
+                <th class="num">數值</th>
+                <th class="num">得分</th>
+                <th>分析</th>
+            </tr></thead>
+            <tbody>${rows}</tbody>
+        </table>
+        ${flagsHTML}
+    </div>`;
+}
+
+// ── Build Advanced Indicators HTML ───────────────
+function buildAdvancedHTML(p) {
+    const rsi = p.rsi_14 || 0;
+    const cp = p.close_position || 0;
+    const vz = p.vol_zscore || 0;
+
+    const ra = rsiAnalysis(rsi);
+    const ca = cpAnalysis(cp);
+    const va = vzAnalysis(vz);
+
+    return `
+    <div class="adv-section">
+        <div class="plan-title">進階指標</div>
+        <div class="adv-row">
+            <span class="adv-label">RSI(14)</span>
+            <span class="adv-value" style="color:${ra.color}">${fmt(rsi, 1)}</span>
+            <span class="adv-note">${ra.note}</span>
+        </div>
+        <div class="adv-row">
+            <span class="adv-label">K線品質</span>
+            <span class="adv-value" style="color:${ca.color}">${fmt(cp, 0)}%</span>
+            <span class="adv-note">${ca.note}</span>
+        </div>
+        <div class="adv-row">
+            <span class="adv-label">量能Z分</span>
+            <span class="adv-value" style="color:${va.color}">${fmt(vz, 1)}\u03c3</span>
+            <span class="adv-note">${va.note}</span>
+        </div>
+    </div>`;
+}
+
+// ── Signal Card (#1 Pick - Full Report) ──────────
+function renderSignal(pick, v20) {
     if (!pick) {
         $('signal').innerHTML = '<div style="color:var(--text-dim);padding:16px">今日無候選股</div>';
         return;
     }
     const gc = gradeColor(pick.quality_grade);
+    const rr = pick.risk_pct > 0 ? (pick.reward_pct / pick.risk_pct).toFixed(2) : '--';
+    const position_val = (pick.shares * pick.entry_price).toFixed(0);
+
     $('signal').innerHTML = `
     <div class="signal-card">
         <div class="signal-top">
@@ -667,8 +1149,10 @@ function renderSignal(pick) {
             <span class="signal-grade" style="background:${gc}22;color:${gc}">
                 ${pick.quality_grade} ${pick.quality_score.toFixed(0)}分
             </span>
+            <span class="signal-desc">${gradeDesc(pick.quality_grade)}</span>
         </div>
         <div class="signal-sector">${pick.sector} &mdash; 板塊排名 #${pick.sector_rank}</div>
+
         <div class="signal-prices">
             <div class="price-box">
                 <div class="p-label">收盤</div>
@@ -687,25 +1171,35 @@ function renderSignal(pick) {
                 <div class="p-value" style="color:var(--red)">$${fmt(pick.sl_price)}</div>
             </div>
         </div>
+
         <div class="signal-risk">
             風險 <span style="color:var(--red)">${fmt(pick.risk_pct)}%</span>
             &nbsp;|&nbsp;
             報酬 <span style="color:var(--green)">${fmt(pick.reward_pct)}%</span>
             &nbsp;|&nbsp;
+            盈虧比 <span style="color:var(--accent)">${rr}</span>
+            &nbsp;|&nbsp;
             股數 <span style="color:var(--accent)">${pick.shares}</span>
+            &nbsp;|&nbsp;
+            部位 <span style="color:var(--accent)">$${Number(position_val).toLocaleString()}</span>
         </div>
+
         <div class="metrics-grid">
             ${mk('RS 排名', '#' + pick.rs_rank)}
             ${mk('量比', fmt(pick.vol_ratio) + 'x')}
-            ${mk('緊度', fmt(pick.tightness))}
+            ${mk('盤整度', fmt(pick.tightness))}
             ${mk('RSI', fmt(pick.rsi_14, 1))}
             ${mk('20日動能', pct(pick.mom_20, 1))}
             ${mk('均線斜率', fmt(pick.sma20_slope, 4))}
             ${mk('52W接近度', pct(pick.pct_from_52wk, 1))}
             ${mk('量能Z', fmt(pick.vol_zscore))}
             ${mk('K線品質', pct(pick.close_position, 1))}
-            ${mk('ATR', fmt(pick.atr))}
+            ${mk('ATR', '$' + fmt(pick.atr))}
         </div>
+
+        ${buildPlanHTML(pick)}
+        ${buildQualityHTML(pick)}
+        ${buildAdvancedHTML(pick)}
     </div>`;
 }
 
@@ -713,10 +1207,90 @@ function mk(label, value) {
     return `<div class="metric"><div class="m-label">${label}</div><div class="m-value">${value}</div></div>`;
 }
 
-// ── Picks Table ──────────────────────────────────
-function renderPicks(picks) {
+// ── All Picks Detail Cards ──────────────────────
+function renderPicksDetail(picks, v20) {
     $('pick-count').textContent = `(${picks.length} 檔)`;
 
+    if (!picks || picks.length === 0) {
+        $('picks-detail').innerHTML = '<div style="color:var(--text-dim);padding:16px">今日無候選股</div>';
+        return;
+    }
+
+    // Skip #1 (already shown in signal card) - show #2 onwards
+    const rest = picks.slice(1);
+    if (rest.length === 0) {
+        $('picks-detail').innerHTML = '<div style="color:var(--text-dim);padding:16px;font-size:0.9em">今日僅一檔候選股 (已顯示於上方)</div>';
+        return;
+    }
+
+    $('picks-detail').innerHTML = rest.map(p => {
+        const gc = gradeColor(p.quality_grade);
+        const rr = p.risk_pct > 0 ? (p.reward_pct / p.risk_pct).toFixed(2) : '--';
+        const gap_threshold = p.close * (1 - PARAMS.gap_reject_pct);
+        const be_price = p.entry_price * (1 + PARAMS.breakeven_trigger);
+        const trail_price = p.entry_price * (1 + PARAMS.trail_activation);
+        const position_val = (p.shares * p.entry_price).toFixed(0);
+
+        return `<div class="pick-detail-card" onclick="this.classList.toggle('open')">
+            <div class="pick-detail-header">
+                <span class="pick-detail-rank">${p.rank}</span>
+                <span class="pick-detail-sym">${p.symbol}</span>
+                <span class="grade-badge" style="background:${gc}22;color:${gc}">${p.quality_grade} ${p.quality_score.toFixed(0)}分</span>
+                <span style="color:var(--text-dim);font-size:0.85em">${p.sector} #${p.sector_rank}</span>
+                <span class="pick-detail-toggle">[點擊展開]</span>
+                <span class="pick-detail-prices">
+                    <span>$${fmt(p.close)}</span>
+                    <span style="color:var(--green)">TP $${fmt(p.tp_price)}</span>
+                    <span style="color:var(--red)">SL $${fmt(p.sl_price)}</span>
+                </span>
+            </div>
+            <div class="pick-detail-body">
+                <div class="detail-2col">
+                    <span class="d-lbl">股價</span><span class="d-val">$${fmt(p.close)}</span>
+                    <span class="d-lbl">進場價</span><span class="d-val">$${fmt(p.entry_price)}</span>
+                    <span class="d-lbl">RS排名</span><span class="d-val">${p.rs_rank}</span>
+                    <span class="d-lbl" style="color:var(--green)">停利</span><span class="d-val" style="color:var(--green)">$${fmt(p.tp_price)} (+${fmt(p.reward_pct)}%)</span>
+                    <span class="d-lbl">量比</span><span class="d-val">${fmt(p.vol_ratio)}x</span>
+                    <span class="d-lbl" style="color:var(--red)">停損</span><span class="d-val" style="color:var(--red)">$${fmt(p.sl_price)} (-${fmt(p.risk_pct)}%)</span>
+                    <span class="d-lbl">52周</span><span class="d-val">${pct(p.pct_from_52wk, 1)}</span>
+                    <span class="d-lbl">盈虧比</span><span class="d-val">${rr}</span>
+                    <span class="d-lbl">20日動能</span><span class="d-val">${pct(p.mom_20, 1)}</span>
+                    <span class="d-lbl">股數</span><span class="d-val">${p.shares}</span>
+                    <span class="d-lbl">盤整度</span><span class="d-val">${fmt(p.tightness)}</span>
+                    <span class="d-lbl">部位</span><span class="d-val">$${Number(position_val).toLocaleString()}</span>
+                    <span class="d-lbl">SMA20斜率</span><span class="d-val">${fmt(p.sma20_slope, 4)}</span>
+                    <span class="d-lbl">ATR</span><span class="d-val">$${fmt(p.atr)}</span>
+                </div>
+                ${buildPlanHTML(p)}
+                ${buildQualityHTML(p)}
+                ${buildAdvancedHTML(p)}
+            </div>
+        </div>`;
+    }).join('');
+}
+
+// ── Quick Reference ─────────────────────────────
+function renderQuickRef() {
+    $('quick-ref').innerHTML = `
+    <div class="quick-ref">
+        <div class="quick-ref-title">快速參考</div>
+        <div class="quick-ref-row">
+            <span class="qr-label" style="color:var(--green)">最佳訊號:</span>
+            <span class="qr-items">量比 1.7-2.0x (83%) | 52周 95-100% (85%) | 20日動能 10-20% (79%) | RS 25-50名 (80%)</span>
+        </div>
+        <div class="quick-ref-row">
+            <span class="qr-label" style="color:var(--red)">紅旗警告:</span>
+            <span class="qr-items">量比 2.5-3.0x (36%) | 5日動能 &lt;-5% (40%) | 52周 80-85% (47%) | 跳空 &gt;10% (33%)</span>
+        </div>
+        <div class="quick-ref-row">
+            <span class="qr-label" style="color:var(--accent)">操作參數:</span>
+            <span class="qr-items">保本 +0.5% | 追蹤 +1.8% (3.1%) | 停利 +12% | 停滯 9天&gt;5% | 時間停 14天 | 跳空拒絕 3%</span>
+        </div>
+    </div>`;
+}
+
+// ── Picks Table (Quick Overview) ─────────────────
+function renderPicks(picks) {
     if (!picks || picks.length === 0) {
         $('picks-table').innerHTML = '<div style="color:var(--text-dim);padding:16px">今日無候選股</div>';
         return;
@@ -724,6 +1298,7 @@ function renderPicks(picks) {
 
     const rows = picks.map(p => {
         const gc = gradeColor(p.quality_grade);
+        const rr = p.risk_pct > 0 ? (p.reward_pct / p.risk_pct).toFixed(1) : '--';
         return `<tr>
             <td class="num">${p.rank}</td>
             <td><strong>${p.symbol}</strong></td>
@@ -735,9 +1310,9 @@ function renderPicks(picks) {
             <td class="num" style="color:var(--green)">$${fmt(p.tp_price)}</td>
             <td class="num" style="color:var(--red)">$${fmt(p.sl_price)}</td>
             <td class="num">${fmt(p.risk_pct)}%</td>
+            <td class="num">${rr}</td>
             <td class="num">${p.rs_rank}</td>
             <td class="num">${fmt(p.vol_ratio)}</td>
-            <td class="num">${fmt(p.tightness)}</td>
             <td class="num">${fmt(p.rsi_14, 1)}</td>
             <td class="num">${pct(p.mom_20, 1)}</td>
             <td class="num">${pct(p.pct_from_52wk, 1)}</td>
@@ -756,9 +1331,9 @@ function renderPicks(picks) {
             <th class="num">停利</th>
             <th class="num">停損</th>
             <th class="num">風險%</th>
+            <th class="num">R:R</th>
             <th class="num">RS</th>
             <th class="num">量比</th>
-            <th class="num">緊度</th>
             <th class="num">RSI</th>
             <th class="num">動能</th>
             <th class="num">52W%</th>
@@ -769,13 +1344,14 @@ function renderPicks(picks) {
 
 // ── State Messages ───────────────────────────────
 function showState(title, desc) {
-    // Clear all dynamic sections
     $('history').innerHTML = '';
     $('exits-section').style.display = 'none';
     $('open-trades').innerHTML = '';
     $('open-label').textContent = '';
     $('picks-table').innerHTML = '';
+    $('picks-detail').innerHTML = '';
     $('pick-count').textContent = '';
+    $('quick-ref').innerHTML = '';
     ['s-mode','s-rwr','s-wr','s-total','s-open'].forEach(id => { $(id).textContent = '--'; $(id).style.color = ''; });
     $('signal').innerHTML = `<div class="state-msg">
         <div class="icon">&#x1F4CA;</div>
