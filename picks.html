@@ -663,10 +663,6 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
         <div class="stat-value" id="s-wr">--</div>
     </div>
     <div class="stat-card">
-        <div class="stat-label">總交易</div>
-        <div class="stat-value" id="s-total">--</div>
-    </div>
-    <div class="stat-card">
         <div class="stat-label">持倉中</div>
         <div class="stat-value" id="s-open">--</div>
     </div>
@@ -932,8 +928,6 @@ function renderDashboard(data) {
     $('s-wr').textContent = p.win_rate != null ? pct(p.win_rate) : '--';
     $('s-wr').style.color = p.win_rate >= 60 ? 'var(--green)' : p.win_rate >= 50 ? 'var(--yellow)' : 'var(--red)';
 
-    $('s-total').textContent = p.total_trades != null ? `${p.total_trades}` : '--';
-    $('s-total').style.color = 'var(--text)';
 
     $('s-open').textContent = `${(data.open_trades || []).length}`;
     $('s-open').style.color = 'var(--accent2)';
@@ -1313,7 +1307,7 @@ function showState(title, desc) {
     $('picks-detail').innerHTML = '';
     $('pick-count').textContent = '';
     $('quick-ref').innerHTML = '';
-    ['s-mode','s-rwr','s-wr','s-total','s-open'].forEach(id => { $(id).textContent = '--'; $(id).style.color = ''; });
+    ['s-mode','s-rwr','s-wr','s-open'].forEach(id => { $(id).textContent = '--'; $(id).style.color = ''; });
     $('signal').innerHTML = `<div class="state-msg">
         <div class="icon">&#x1F4CA;</div>
         <p><strong>${title}</strong></p>
