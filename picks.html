@@ -973,8 +973,10 @@ function renderHistory(history) {
         el.innerHTML = '<span style="color:var(--text-dim);font-size:0.9em">尚無交易紀錄</span>';
         return;
     }
-    el.innerHTML = history.map((r, i) =>
-        `<div class="dot dot-${r.toLowerCase()}" title="第 ${i+1} 筆: ${r === 'W' ? '獲利' : '虧損'}">${r}</div>`
+    const recent = history.slice(-20);
+    const offset = history.length - recent.length;
+    el.innerHTML = recent.map((r, i) =>
+        `<div class="dot dot-${r.toLowerCase()}" title="第 ${offset+i+1} 筆: ${r === 'W' ? '獲利' : '虧損'}">${r}</div>`
     ).join('');
 }
 
