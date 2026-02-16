@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sovereign V20 - 選股歷史追蹤</title>
+<style>
+:root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #222633;
+    --border: #2d3148;
+    --text: #e1e4ed;
+    --text-dim: #8b90a5;
+    --accent: #6c8cff;
+    --accent2: #4ecdc4;
+    --green: #4ecb71;
+    --red: #ff6b6b;
+    --yellow: #ffd93d;
+    --orange: #ff9f43;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+}
+.container { max-width: 960px; margin: 0 auto; padding: 24px; }
+
+/* ── Top Nav ── */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.top-nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9em;
+}
+.top-nav a:hover { text-decoration: underline; }
+.top-nav .brand {
+    font-weight: 700;
+    color: var(--text-dim);
+    font-size: 0.9em;
+}
+.nav-links { display: flex; gap: 16px; }
+
+/* ── Title ── */
+h1 {
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.subtitle {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.9em;
+    margin-bottom: 24px;
+}
+
+/* ── Summary Cards ── */
+.summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+}
+.summary-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+.summary-card .label {
+    font-size: 0.75em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+.summary-card .value {
+    font-size: 1.6em;
+    font-weight: 700;
+}
+.summary-card .value.green { color: var(--green); }
+.summary-card .value.red { color: var(--red); }
+.summary-card .value.accent { color: var(--accent); }
+
+/* ── Table ── */
+.track-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+.track-table th {
+    background: var(--surface);
+    color: var(--text-dim);
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 8px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.track-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+.track-table tr:hover { background: var(--surface); }
+.track-table .sym {
+    font-weight: 700;
+    color: var(--accent);
+}
+.track-table .mono {
+    font-family: 'SF Mono', 'Consolas', monospace;
+    font-size: 0.9em;
+}
+
+/* ── Status Badges ── */
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+.badge-win {
+    background: rgba(78, 203, 113, 0.15);
+    color: var(--green);
+}
+.badge-loss {
+    background: rgba(255, 107, 107, 0.15);
+    color: var(--red);
+}
+.badge-open {
+    background: rgba(255, 217, 61, 0.15);
+    color: var(--yellow);
+}
+
+/* ── Return Color ── */
+.ret-pos { color: var(--green); font-weight: 600; }
+.ret-neg { color: var(--red); font-weight: 600; }
+.ret-zero { color: var(--text-dim); }
+
+/* ── Footer ── */
+.footer {
+    text-align: center;
+    margin-top: 32px;
+    padding: 16px;
+    color: var(--text-dim);
+    font-size: 0.8em;
+    border-top: 1px solid var(--border);
+}
+
+/* ── Loading ── */
+.loading {
+    text-align: center;
+    padding: 60px;
+    color: var(--text-dim);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .summary { grid-template-columns: repeat(2, 1fr); }
+    .track-table { font-size: 0.8em; }
+    .track-table th, .track-table td { padding: 8px 4px; }
+    .hide-mobile { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Top Nav -->
+<div class="top-nav">
+    <a href="index.html" class="brand">Sovereign V20</a>
+    <div class="nav-links">
+        <a href="picks.html">每日選股</a>
+        <a href="news.html">整點快報</a>
+    </div>
+</div>
+
+<h1>選股歷史追蹤</h1>
+<p class="subtitle" id="subtitle">載入中...</p>
+
+<!-- Summary -->
+<div class="summary" id="summary">
+    <div class="summary-card"><div class="label">勝率</div><div class="value" id="s-wr">--</div></div>
+    <div class="summary-card"><div class="label">勝 / 敗</div><div class="value" id="s-wl">--</div></div>
+    <div class="summary-card"><div class="label">平均報酬</div><div class="value" id="s-avg">--</div></div>
+    <div class="summary-card"><div class="label">持倉中</div><div class="value" id="s-open">--</div></div>
+</div>
+
+<!-- Table -->
+<div id="table-container">
+    <p class="loading">載入資料中...</p>
+</div>
+
+<div class="footer">
+    <p>Sovereign V20 — 每日 #1 選股後續追蹤</p>
+    <p style="margin-top:4px">資料每日自動更新 | 進場價為訊號日次日開盤模擬進場</p>
+</div>
+
+</div>
+
+<script>
+const DATA_URL = 'data/track.json';
+
+async function loadTrack() {
+    try {
+        const resp = await fetch(DATA_URL + '?t=' + Date.now());
+        if (!resp.ok) throw new Error('Failed to load');
+        const data = await resp.json();
+        renderSummary(data.summary);
+        renderTable(data.tracks);
+        renderSubtitle(data);
+    } catch (e) {
+        document.getElementById('table-container').innerHTML =
+            '<p class="loading">無法載入資料</p>';
+    }
+}
+
+function renderSubtitle(data) {
+    const updated = new Date(data.updated);
+    const dateStr = updated.toLocaleDateString('zh-TW', {year:'numeric',month:'2-digit',day:'2-digit'});
+    const timeStr = updated.toLocaleTimeString('zh-TW', {hour:'2-digit',minute:'2-digit'});
+    document.getElementById('subtitle').textContent =
+        `最近 ${data.tracks.length} 個交易日 | 更新: ${dateStr} ${timeStr}`;
+}
+
+function renderSummary(s) {
+    const wrEl = document.getElementById('s-wr');
+    wrEl.textContent = s.win_rate + '%';
+    wrEl.className = 'value ' + (s.win_rate >= 50 ? 'green' : 'red');
+
+    document.getElementById('s-wl').innerHTML =
+        `<span style="color:var(--green)">${s.wins}</span> / <span style="color:var(--red)">${s.losses}</span>`;
+
+    const avgEl = document.getElementById('s-avg');
+    avgEl.textContent = (s.avg_return >= 0 ? '+' : '') + s.avg_return + '%';
+    avgEl.className = 'value ' + (s.avg_return >= 0 ? 'green' : 'red');
+
+    const openEl = document.getElementById('s-open');
+    openEl.textContent = s.open;
+    openEl.className = 'value accent';
+}
+
+function renderTable(tracks) {
+    let html = `<table class="track-table">
+    <thead><tr>
+        <th>#</th>
+        <th>日期</th>
+        <th>代碼</th>
+        <th>進場</th>
+        <th class="hide-mobile">停利</th>
+        <th class="hide-mobile">停損</th>
+        <th>出場/現價</th>
+        <th>報酬</th>
+        <th>狀態</th>
+        <th class="hide-mobile">天數</th>
+    </tr></thead><tbody>`;
+
+    tracks.forEach((t, i) => {
+        const ret = t.return_pct;
+        const retClass = ret > 0 ? 'ret-pos' : ret < 0 ? 'ret-neg' : 'ret-zero';
+        const retStr = (ret >= 0 ? '+' : '') + ret.toFixed(2) + '%';
+
+        let statusBadge, exitPrice;
+        if (t.status === 'WIN') {
+            statusBadge = '<span class="badge badge-win">WIN</span>';
+            exitPrice = '$' + t.exit_price.toFixed(2);
+        } else if (t.status === 'LOSS') {
+            statusBadge = '<span class="badge badge-loss">LOSS</span>';
+            exitPrice = '$' + t.exit_price.toFixed(2);
+        } else if (t.status === 'OPEN') {
+            statusBadge = '<span class="badge badge-open">OPEN</span>';
+            exitPrice = '$' + (t.current || t.entry).toFixed(2);
+        } else {
+            statusBadge = '<span class="badge">' + t.status + '</span>';
+            exitPrice = '--';
+        }
+
+        html += `<tr>
+            <td style="color:var(--text-dim)">${i + 1}</td>
+            <td class="mono">${t.date.slice(5)}</td>
+            <td class="sym">${t.symbol}</td>
+            <td class="mono">$${t.entry.toFixed(2)}</td>
+            <td class="mono hide-mobile">$${t.tp.toFixed(2)}</td>
+            <td class="mono hide-mobile">$${t.sl.toFixed(2)}</td>
+            <td class="mono">${exitPrice}</td>
+            <td class="${retClass}">${retStr}</td>
+            <td>${statusBadge}</td>
+            <td class="hide-mobile">${t.days}d</td>
+        </tr>`;
+    });
+
+    html += '</tbody></table>';
+    document.getElementById('table-container').innerHTML = html;
+}
+
+loadTrack();
+</script>
+</body>
+</html>
