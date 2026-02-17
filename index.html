@@ -379,9 +379,12 @@ li { margin: 4px 0; }
     </li>
     <li><a href="#v21-research">V21 優化研究</a>
         <ol style="list-style-type: lower-alpha;">
-            <li>7 輪系統性回測總結</li>
+            <li>11 輪系統性回測總結</li>
             <li>Walk-Forward 驗證 + Monte Carlo</li>
             <li>倉位管理分析</li>
+            <li>多候選 + 排名方法測試</li>
+            <li>穩健性壓力測試</li>
+            <li>出場機制優化</li>
             <li>風險警示與實際預期</li>
         </ol>
     </li>
@@ -1913,16 +1916,16 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- V21 優化研究 -->
 <!-- ================================================================ -->
-<h2 id="v21-research"><span class="num">★★</span>V21 優化研究 &mdash; 7 輪系統性驗證</h2>
+<h2 id="v21-research"><span class="num">★★</span>V21 優化研究 &mdash; 11 輪系統性驗證</h2>
 
 <div class="highlight-box">
     <div class="label">V21 研究結論</div>
     <div class="big-number">V20 = 最優配置</div>
-    <div class="label" style="margin-top: 8px;">7 輪回測 | 40+ 策略變體 | 12M+ 資料列 | 330+ 交易 — 無任何修改能穩定超越基線</div>
+    <div class="label" style="margin-top: 8px;">11 輪回測 | 65+ 策略變體 | 12M+ 資料列 | 330+ 交易 — 無任何修改能穩定超越基線</div>
 </div>
 
 <h3>研究概覽</h3>
-<p>V21 研究針對 V20 系統進行全方位優化測試，涵蓋信號篩選、交易管理、進階分析、統計驗證和倉位管理。以下是 7 輪測試的核心發現：</p>
+<p>V21 研究針對 V20 系統進行全方位優化測試，涵蓋信號篩選、交易管理、進階分析、統計驗證、倉位管理、多候選策略、排名方法、穩健性壓測和出場優化。以下是 11 輪測試的核心發現：</p>
 
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
@@ -1973,6 +1976,30 @@ li { margin: 4px 0; }
         <td>倉位管理</td>
         <td class="num-cell">7</td>
         <td>Sharpe 比率不變 (5.30)，倉位縮減僅等比例縮放</td>
+    </tr>
+    <tr>
+        <td><strong>Round 8</strong></td>
+        <td>多候選 + 權益曲線</td>
+        <td class="num-cell">7</td>
+        <td>所有多候選策略均劣於 Top-1；品質排名 2025 崩潰 (+5% vs +9,696%)</td>
+    </tr>
+    <tr>
+        <td><strong>Round 9</strong></td>
+        <td>替代排名方法</td>
+        <td class="num-cell">7</td>
+        <td>RS Rank 確認為最強排名信號，所有替代均失敗</td>
+    </tr>
+    <tr>
+        <td><strong>Round 10</strong></td>
+        <td>穩健性壓力測試</td>
+        <td class="num-cell">9</td>
+        <td>0.3% 滑點仍 +394% 幾何均值；佣金 $10 零影響</td>
+    </tr>
+    <tr>
+        <td><strong>Round 11</strong></td>
+        <td>出場機制優化</td>
+        <td class="num-cell">7</td>
+        <td>Time-Decay Trail 最接近基線 (-2.3pp)，但仍無法超越</td>
     </tr>
 </table>
 </div>
@@ -2212,6 +2239,300 @@ li { margin: 4px 0; }
     </div>
 </div>
 
+<h3 id="v21-multi">多候選 + 排名方法測試 (Rounds 8-9)</h3>
+
+<div class="card card-accent">
+    <p><strong>核心問題：</strong>當天有多檔候選股時，選第 2、第 3 名是否能分散風險？不同的排名方法能否找到更好的候選？</p>
+</div>
+
+<h4 style="color: var(--accent2);">Round 8：多候選策略結果</h4>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>策略</th>
+        <th class="num-cell">幾何均值</th>
+        <th class="num-cell">vs 基線</th>
+        <th>說明</th>
+    </tr>
+    <tr style="font-weight: 700;">
+        <td><span class="tag tag-green">基線</span> Top-1 RS Rank</td>
+        <td class="num-cell win">+456%</td>
+        <td class="num-cell">&mdash;</td>
+        <td>V20 現行策略</td>
+    </tr>
+    <tr>
+        <td>Top-2 候補</td>
+        <td class="num-cell loss">+236%</td>
+        <td class="num-cell loss">-220pp</td>
+        <td>第 2 名品質明顯較差</td>
+    </tr>
+    <tr>
+        <td>Top-3 候補</td>
+        <td class="num-cell loss">+137%</td>
+        <td class="num-cell loss">-319pp</td>
+        <td>繼續惡化</td>
+    </tr>
+    <tr>
+        <td>Top-5 候補</td>
+        <td class="num-cell loss">+129%</td>
+        <td class="num-cell loss">-327pp</td>
+        <td>邊際遞減嚴重</td>
+    </tr>
+    <tr>
+        <td>權益曲線濾網</td>
+        <td class="num-cell loss">+162%</td>
+        <td class="num-cell loss">-294pp</td>
+        <td>交易數減少 38%，報酬更差</td>
+    </tr>
+    <tr>
+        <td>連虧暫停 (3 連虧)</td>
+        <td class="num-cell loss">+393%</td>
+        <td class="num-cell loss">-63pp</td>
+        <td>錯過反彈入場</td>
+    </tr>
+    <tr>
+        <td>品質排名 Top-5</td>
+        <td class="num-cell loss">+23%</td>
+        <td class="num-cell loss">-433pp</td>
+        <td>3/6 年贏，但 2025 崩潰 (+4.8% vs +9,696%)</td>
+    </tr>
+</table>
+</div>
+
+<h4 style="color: var(--accent2);">Round 9：替代排名方法</h4>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>排名方法</th>
+        <th class="num-cell">幾何均值</th>
+        <th class="num-cell">vs 基線</th>
+        <th>說明</th>
+    </tr>
+    <tr style="font-weight: 700;">
+        <td><span class="tag tag-green">基線</span> RS Rank</td>
+        <td class="num-cell win">+456%</td>
+        <td class="num-cell">&mdash;</td>
+        <td>相對強度排名</td>
+    </tr>
+    <tr>
+        <td>WR 自適應切換</td>
+        <td class="num-cell loss">+419%</td>
+        <td class="num-cell loss">-37pp</td>
+        <td>WR 高→品質排名，低→RS</td>
+    </tr>
+    <tr>
+        <td>反向 WR 切換</td>
+        <td class="num-cell loss">+414%</td>
+        <td class="num-cell loss">-42pp</td>
+        <td>邏輯反轉，仍劣於基線</td>
+    </tr>
+    <tr>
+        <td>波動加權 RS</td>
+        <td class="num-cell loss">+299%</td>
+        <td class="num-cell loss">-157pp</td>
+        <td>最佳替代，仍差距顯著</td>
+    </tr>
+    <tr>
+        <td>緊密度優先</td>
+        <td class="num-cell loss">+9%</td>
+        <td class="num-cell loss">-447pp</td>
+        <td>災難性失敗 (50.4% 勝率)</td>
+    </tr>
+    <tr>
+        <td>複合評分</td>
+        <td class="num-cell loss">+288%</td>
+        <td class="num-cell loss">-168pp</td>
+        <td>多因子加權反而稀釋信號</td>
+    </tr>
+    <tr>
+        <td>動能加權 RS</td>
+        <td class="num-cell loss">+399%</td>
+        <td class="num-cell loss">-57pp</td>
+        <td>短期動能疊加無效</td>
+    </tr>
+</table>
+</div>
+
+<div class="analogy">
+    這就像一場考試：你已經找到了最好的答題策略 (RS Rank + Top-1)。嘗試「兩手準備」選多個答案反而分散精力，嘗試換不同的解題思路也不如原來的直覺準確。有時候，最簡單的方法就是最好的。
+</div>
+
+<h3 id="v21-stress">穩健性壓力測試 (Round 10)</h3>
+
+<div class="card card-accent">
+    <p><strong>核心問題：</strong>V20 在更惡劣的交易條件下是否仍然獲利？滑點、佣金、不同資本量的影響？</p>
+    <p><strong>方法：</strong>9 種壓力情境：滑點 0.1%-0.5%、資本 $1K-$100K、佣金 $0-$10、最壞組合</p>
+</div>
+
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>壓力情境</th>
+        <th class="num-cell">幾何均值</th>
+        <th class="num-cell">vs 基線</th>
+        <th class="num-cell">2024 報酬</th>
+        <th>判定</th>
+    </tr>
+    <tr style="font-weight: 700;">
+        <td><span class="tag tag-green">基線</span> 0.1% 滑點, $10K</td>
+        <td class="num-cell win">+456%</td>
+        <td class="num-cell">&mdash;</td>
+        <td class="num-cell win">+92.5%</td>
+        <td>V20 標準</td>
+    </tr>
+    <tr>
+        <td>0.2% 滑點</td>
+        <td class="num-cell win">+453%</td>
+        <td class="num-cell">-3pp</td>
+        <td class="num-cell win">+121%</td>
+        <td><span class="tag tag-green">穩健</span></td>
+    </tr>
+    <tr>
+        <td>0.3% 滑點</td>
+        <td class="num-cell win">+394%</td>
+        <td class="num-cell loss">-62pp</td>
+        <td class="num-cell win">+93.1%</td>
+        <td><span class="tag tag-green">可接受</span></td>
+    </tr>
+    <tr>
+        <td>0.5% 滑點</td>
+        <td class="num-cell loss">+237%</td>
+        <td class="num-cell loss">-219pp</td>
+        <td class="num-cell loss">-29.8%</td>
+        <td><span class="tag tag-red">危險</span> 2024 虧損</td>
+    </tr>
+    <tr>
+        <td>$100K 資本</td>
+        <td class="num-cell win">+456%</td>
+        <td class="num-cell">0pp</td>
+        <td class="num-cell win">+92.5%</td>
+        <td><span class="tag tag-green">完全一致</span></td>
+    </tr>
+    <tr>
+        <td>$1K 資本</td>
+        <td class="num-cell win">+410%</td>
+        <td class="num-cell loss">-47pp</td>
+        <td class="num-cell win">+75.9%</td>
+        <td>股數取整損失</td>
+    </tr>
+    <tr>
+        <td>$5 佣金/筆</td>
+        <td class="num-cell win">+456%</td>
+        <td class="num-cell">0pp</td>
+        <td class="num-cell win">+92.5%</td>
+        <td><span class="tag tag-green">零影響</span></td>
+    </tr>
+    <tr>
+        <td>$10 佣金/筆</td>
+        <td class="num-cell win">+456%</td>
+        <td class="num-cell">0pp</td>
+        <td class="num-cell win">+92.5%</td>
+        <td><span class="tag tag-green">零影響</span></td>
+    </tr>
+    <tr>
+        <td>最壞組合 (0.3% + $5)</td>
+        <td class="num-cell win">+394%</td>
+        <td class="num-cell loss">-62pp</td>
+        <td class="num-cell win">+93.1%</td>
+        <td><span class="tag tag-green">仍然獲利</span></td>
+    </tr>
+</table>
+</div>
+
+<div class="two-col">
+    <div class="card card-green">
+        <h4 style="margin-top:0">穩健性結論</h4>
+        <ul>
+            <li><strong>滑點容忍上限：0.3%</strong>（模型假設的 3 倍仍 +394%）</li>
+            <li><strong>佣金完全無影響</strong>（$10K 資本下 $10 佣金可忽略）</li>
+            <li><strong>$100K = $10K</strong>（策略完美可擴展至更大資本）</li>
+            <li><strong>$1K 仍可行</strong>（損失 -47pp 來自股數取整）</li>
+        </ul>
+    </div>
+    <div class="card card-yellow">
+        <h4 style="margin-top:0">實戰意義</h4>
+        <ul>
+            <li>使用限價單可將滑點控制在 0.1-0.2%</li>
+            <li>多數券商零佣金（已驗證零影響）</li>
+            <li>0.5% 滑點 = 市場劇烈波動或低流動性標的</li>
+            <li><strong>建議資本 ≥ $5K</strong> 以減少取整損失</li>
+        </ul>
+    </div>
+</div>
+
+<h3 id="v21-exit">出場機制優化 (Round 11)</h3>
+
+<div class="card card-accent">
+    <p><strong>核心問題：</strong>基於學術研究（QuantEvolve 2025、Triple Barrier、LuxAlgo）的出場機制能否改善 V20？</p>
+    <p><strong>方法：</strong>7 種出場變體：加寬 ATR 層級、時間衰減追蹤停損、漂移出場、提早 Stale Exit</p>
+</div>
+
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>出場策略</th>
+        <th class="num-cell">幾何均值</th>
+        <th class="num-cell">vs 基線</th>
+        <th>核心機制</th>
+    </tr>
+    <tr style="font-weight: 700;">
+        <td><span class="tag tag-green">基線</span> V20 標準出場</td>
+        <td class="num-cell win">+456%</td>
+        <td class="num-cell">&mdash;</td>
+        <td>TP 12% + Trail 3.1% + SL 2.4x ATR</td>
+    </tr>
+    <tr>
+        <td>加寬 NoTP 層級 (2.5x)</td>
+        <td class="num-cell loss">+402%</td>
+        <td class="num-cell loss">-54pp</td>
+        <td>Tiered ATR 初始乘數 2.5 倍</td>
+    </tr>
+    <tr>
+        <td>Time-Decay Trail</td>
+        <td class="num-cell win">+454%</td>
+        <td class="num-cell">-2.3pp</td>
+        <td>Day 3+ 每天收緊 7%，最低 50%</td>
+    </tr>
+    <tr>
+        <td>5-Day Drift Exit</td>
+        <td class="num-cell loss">+254%</td>
+        <td class="num-cell loss">-202pp</td>
+        <td>5 天無新高且 &lt; 入場價 → 出場</td>
+    </tr>
+    <tr>
+        <td>7-Day Stale (-3%)</td>
+        <td class="num-cell loss">+298%</td>
+        <td class="num-cell loss">-159pp</td>
+        <td>7 天無進展且虧損 3% → 出場</td>
+    </tr>
+    <tr>
+        <td>加寬 + Time-Decay</td>
+        <td class="num-cell win">+454%</td>
+        <td class="num-cell">-2.3pp</td>
+        <td>Time-Decay 主導，加寬無額外效果</td>
+    </tr>
+    <tr>
+        <td>Drift + Early Stale</td>
+        <td class="num-cell loss">+254%</td>
+        <td class="num-cell loss">-202pp</td>
+        <td>Drift 主導，Stale 無額外貢獻</td>
+    </tr>
+</table>
+</div>
+
+<div class="card card-green">
+    <h4 style="margin-top:0">Time-Decay Trail：最接近基線的出場變體</h4>
+    <p><strong>機制：</strong>持倉超過 3 天後，追蹤停損距離每天衰減 7%（最低 50%）。反映學術發現：動能突破的邊際效益隨時間遞減。</p>
+    <div class="formula">
+        td = max(0.5, 1.0 - 0.07 &times; (持倉天數 - 3))
+    </div>
+    <p>結果：幾何均值 +454% vs 基線 +456%，差距僅 <strong>2.3 個百分點</strong>——這是 11 輪研究中最接近基線的變體。但由於差距為負，不建議採用。</p>
+</div>
+
+<div class="analogy">
+    出場優化就像試圖改善一把已經很鋒利的刀。你可以嘗試不同的磨刀石（Time-Decay）、改變角度（加寬層級），但最終差別微乎其微。過度打磨反而可能磨損刀刃（Drift Exit 就是例子）。V20 的出場機制已在效率前沿。
+</div>
+
 <h3 id="v21-risk">風險警示與實際預期</h3>
 
 <div class="card card-red">
@@ -2251,7 +2572,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="analogy">
-    V21 研究就像對 V20 做了一次完整的「健康檢查」。結果顯示：心臟（信號品質）強健、骨骼（參數）穩固、肌肉（風險管理）協調。但醫生也提醒：再健康的身體也需要注意外部環境（市場風險），不要過度自信。
+    V21 研究歷經 11 輪、65+ 策略變體的完整「健康檢查」。結果顯示：心臟（信號品質）強健、骨骼（參數）穩固、肌肉（風險管理）協調、免疫力（穩健性）經得起考驗。但醫生也提醒：再健康的身體也需要注意外部環境（市場風險），不要過度自信。
 </div>
 
 <!-- Footer -->
