@@ -379,7 +379,7 @@ li { margin: 4px 0; }
     </li>
     <li><a href="#v21-research">V21 優化研究</a>
         <ol style="list-style-type: lower-alpha;">
-            <li>13 輪系統性回測總結</li>
+            <li>16 輪系統性回測總結</li>
             <li>Walk-Forward 驗證 + Monte Carlo</li>
             <li>倉位管理分析</li>
             <li>多候選 + 排名方法測試</li>
@@ -387,6 +387,7 @@ li { margin: 4px 0; }
             <li>出場機制優化</li>
             <li>ML 機器學習預測</li>
             <li>進場時機優化</li>
+            <li>體制自適應 + Re-Entry</li>
             <li>風險警示與實際預期</li>
         </ol>
     </li>
@@ -1918,16 +1919,16 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- V21 優化研究 -->
 <!-- ================================================================ -->
-<h2 id="v21-research"><span class="num">★★</span>V21 優化研究 &mdash; 13 輪系統性驗證</h2>
+<h2 id="v21-research"><span class="num">★★</span>V21 優化研究 &mdash; 16 輪系統性驗證</h2>
 
 <div class="highlight-box">
     <div class="label">V21 研究結論</div>
     <div class="big-number">V20 = 最優配置</div>
-    <div class="label" style="margin-top: 8px;">13 輪回測 | 79+ 策略變體 | 12M+ 資料列 | 330+ 交易 — 含 ML 預測均無法超越基線</div>
+    <div class="label" style="margin-top: 8px;">16 輪回測 | 95+ 策略變體 | 12M+ 資料列 | 330+ 交易 — 含 ML、體制自適應、Re-Entry 均無法穩健超越基線</div>
 </div>
 
 <h3>研究概覽</h3>
-<p>V21 研究針對 V20 系統進行全方位優化測試，涵蓋信號篩選、交易管理、進階分析、統計驗證、倉位管理、多候選策略、排名方法、穩健性壓測、出場優化、ML 機器學習預測和進場時機。以下是 13 輪測試的核心發現：</p>
+<p>V21 研究針對 V20 系統進行全方位優化測試，涵蓋信號篩選、交易管理、進階分析、統計驗證、倉位管理、多候選策略、排名方法、穩健性壓測、出場優化、ML 預測、進場時機、體制自適應、部分止盈和 Re-Entry 策略。以下是 16 輪測試的核心發現：</p>
 
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
@@ -2014,6 +2015,24 @@ li { margin: 4px 0; }
         <td>進場時機優化</td>
         <td class="num-cell">7</td>
         <td>隔日開盤最優；限價單 -289pp，2 日確認 -357pp</td>
+    </tr>
+    <tr>
+        <td><strong>Round 14</strong></td>
+        <td>體制自適應參數</td>
+        <td class="num-cell">7</td>
+        <td>靜態參數最優；Breadth-Adaptive -1.1pp，SPY 動量 -249pp</td>
+    </tr>
+    <tr>
+        <td><strong>Round 15</strong></td>
+        <td>部分止盈 + 持倉</td>
+        <td class="num-cell">7</td>
+        <td>Re-Entry +110pp（首次超越基線！）；部分 TP -62pp</td>
+    </tr>
+    <tr>
+        <td><strong>Round 16</strong></td>
+        <td>Re-Entry 深度驗證</td>
+        <td class="num-cell">9</td>
+        <td>0.3% 滑點壓測 -129pp — 不夠穩健，不建議採用</td>
     </tr>
 </table>
 </div>
@@ -2686,6 +2705,82 @@ li { margin: 4px 0; }
     進場時機就像搭火車：V20 總是在火車出站（開盤）時立刻上車。嘗試等下一站（收盤進場）或確認方向（2 日確認），火車早已離站。嘗試殺價（限價單），結果連車都搭不上。開盤進場捕捉了突破的第一波動量 — 這正是利潤的來源。
 </div>
 
+<h3 id="v21-regime">體制自適應 + Re-Entry 探索 (Rounds 14-16)</h3>
+
+<div class="card card-accent">
+    <p><strong>核心問題：</strong>根據市場環境動態調整參數，或是重新進入剛獲利的同一支股票，能否超越靜態 V20？</p>
+</div>
+
+<h4 style="color: var(--accent2);">Round 14：體制自適應參數</h4>
+<p>使用 SPY 數據偵測四種市場體制（牛市 47%、中性 38%、熊市 12%、高波動 3%），動態調整 SL/TP/Trail/Time Stop。</p>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>策略</th>
+        <th class="num-cell">幾何均值</th>
+        <th class="num-cell">vs 基線</th>
+    </tr>
+    <tr style="font-weight: 700;">
+        <td><span class="tag tag-green">基線</span> 靜態參數</td>
+        <td class="num-cell win">+456%</td>
+        <td class="num-cell">&mdash;</td>
+    </tr>
+    <tr>
+        <td>Breadth-Adaptive Trail</td>
+        <td class="num-cell">+455%</td>
+        <td class="num-cell">-1.1pp</td>
+    </tr>
+    <tr>
+        <td>Full Regime Switch</td>
+        <td class="num-cell loss">+446%</td>
+        <td class="num-cell loss">-10pp</td>
+    </tr>
+    <tr>
+        <td>Conservative Bear</td>
+        <td class="num-cell loss">+338%</td>
+        <td class="num-cell loss">-118pp</td>
+    </tr>
+    <tr>
+        <td>SPY Mom Filter</td>
+        <td class="num-cell loss">+207%</td>
+        <td class="num-cell loss">-249pp</td>
+    </tr>
+</table>
+</div>
+
+<h4 style="color: var(--accent2);">Rounds 15-16：Re-Entry 策略 — 唯一曾超越基線的策略</h4>
+<div class="two-col">
+    <div class="card card-green">
+        <h4 style="margin-top:0">Re-Entry 發現 (Round 15)</h4>
+        <p>獲利出場後，若同一支股票仍為有效候選，優先再次進場。</p>
+        <ul>
+            <li>幾何均值 +566% (<strong>+110pp</strong> vs 基線)</li>
+            <li>5/6 年勝出，WR 提升至 67-72%</li>
+            <li>MDD 降低（2021: 36% vs 42%）</li>
+            <li>50 次 Re-Entry 觸發（6 年總計）</li>
+        </ul>
+    </div>
+    <div class="card card-red">
+        <h4 style="margin-top:0">壓測失敗 (Round 16)</h4>
+        <p>Re-Entry 在 0.3% 滑點下完全崩潰：</p>
+        <ul>
+            <li>0.3% 滑點：<strong>-129pp</strong>（從 +110 變 -129）</li>
+            <li>If Top RS: +0pp（增益全來自覆蓋 RS Rank）</li>
+            <li>After Loss: -68pp（虧損後再入場有害）</li>
+            <li>2025 年輸基線 1,600pp</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card card-yellow">
+    <h4 style="margin-top:0">Re-Entry 結論</h4>
+    <p>Re-Entry 是 16 輪研究中<strong>唯一曾超越基線的策略</strong>（+110pp），但 0.3% 滑點壓測失敗 (-129pp) 表明其增益來自邊際交易，在實際執行成本下會被抹消。<strong>不建議用於生產環境。</strong></p>
+</div>
+
+<div class="analogy">
+    這就像找到一個「作弊碼」：Re-Entry 在理想條件下確實更好（+110pp），但只要環境稍微不完美（0.3% 滑點），這個「作弊碼」就失效了（-129pp）。V20 的核心哲學是穩健性 — 寧可放棄脆弱的額外收益，也要確保在任何條件下都能獲利。16 輪、95+ 策略變體的窮盡搜索證明：V20 不是「還不夠好」，而是「已經最好」。
+</div>
+
 <h3 id="v21-risk">風險警示與實際預期</h3>
 
 <div class="card card-red">
@@ -2725,7 +2820,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="analogy">
-    V21 研究歷經 13 輪、79+ 策略變體的完整「健康檢查」——甚至嘗試了 AI 輔助（ML 預測，AUC 0.517 = 和猜硬幣差不多）。結果顯示：心臟（信號品質）強健、骨骼（參數）穩固、肌肉（風險管理）協調、免疫力（穩健性）經得起考驗、大腦（ML）也無法做得更好。但醫生也提醒：再健康的身體也需要注意外部環境（市場風險），不要過度自信。
+    V21 研究歷經 16 輪、95+ 策略變體的窮盡式「壓力測試」——從信號到出場、從 ML 到體制自適應、從部分止盈到 Re-Entry——唯一曾超越基線的 Re-Entry (+110pp) 也在 0.3% 滑點壓測下崩潰 (-129pp)。這證明 V20 不是「還不夠好」，而是已經站在效能的理論上限。但再完美的系統也無法預測未來——永遠只投入可承受損失的資金。
 </div>
 
 <!-- Footer -->
