@@ -379,12 +379,14 @@ li { margin: 4px 0; }
     </li>
     <li><a href="#v21-research">V21 優化研究</a>
         <ol style="list-style-type: lower-alpha;">
-            <li>11 輪系統性回測總結</li>
+            <li>13 輪系統性回測總結</li>
             <li>Walk-Forward 驗證 + Monte Carlo</li>
             <li>倉位管理分析</li>
             <li>多候選 + 排名方法測試</li>
             <li>穩健性壓力測試</li>
             <li>出場機制優化</li>
+            <li>ML 機器學習預測</li>
+            <li>進場時機優化</li>
             <li>風險警示與實際預期</li>
         </ol>
     </li>
@@ -1916,16 +1918,16 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- V21 優化研究 -->
 <!-- ================================================================ -->
-<h2 id="v21-research"><span class="num">★★</span>V21 優化研究 &mdash; 11 輪系統性驗證</h2>
+<h2 id="v21-research"><span class="num">★★</span>V21 優化研究 &mdash; 13 輪系統性驗證</h2>
 
 <div class="highlight-box">
     <div class="label">V21 研究結論</div>
     <div class="big-number">V20 = 最優配置</div>
-    <div class="label" style="margin-top: 8px;">11 輪回測 | 65+ 策略變體 | 12M+ 資料列 | 330+ 交易 — 無任何修改能穩定超越基線</div>
+    <div class="label" style="margin-top: 8px;">13 輪回測 | 79+ 策略變體 | 12M+ 資料列 | 330+ 交易 — 含 ML 預測均無法超越基線</div>
 </div>
 
 <h3>研究概覽</h3>
-<p>V21 研究針對 V20 系統進行全方位優化測試，涵蓋信號篩選、交易管理、進階分析、統計驗證、倉位管理、多候選策略、排名方法、穩健性壓測和出場優化。以下是 11 輪測試的核心發現：</p>
+<p>V21 研究針對 V20 系統進行全方位優化測試，涵蓋信號篩選、交易管理、進階分析、統計驗證、倉位管理、多候選策略、排名方法、穩健性壓測、出場優化、ML 機器學習預測和進場時機。以下是 13 輪測試的核心發現：</p>
 
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
@@ -2000,6 +2002,18 @@ li { margin: 4px 0; }
         <td>出場機制優化</td>
         <td class="num-cell">7</td>
         <td>Time-Decay Trail 最接近基線 (-2.3pp)，但仍無法超越</td>
+    </tr>
+    <tr>
+        <td><strong>Round 12</strong></td>
+        <td>ML 機器學習預測</td>
+        <td class="num-cell">7</td>
+        <td>AUC 0.517 (近似隨機)；OOS 基線全勝，ML Rank -401pp</td>
+    </tr>
+    <tr>
+        <td><strong>Round 13</strong></td>
+        <td>進場時機優化</td>
+        <td class="num-cell">7</td>
+        <td>隔日開盤最優；限價單 -289pp，2 日確認 -357pp</td>
     </tr>
 </table>
 </div>
@@ -2533,6 +2547,145 @@ li { margin: 4px 0; }
     出場優化就像試圖改善一把已經很鋒利的刀。你可以嘗試不同的磨刀石（Time-Decay）、改變角度（加寬層級），但最終差別微乎其微。過度打磨反而可能磨損刀刃（Drift Exit 就是例子）。V20 的出場機制已在效率前沿。
 </div>
 
+<h3 id="v21-ml">ML 機器學習預測 (Round 12)</h3>
+
+<div class="card card-accent">
+    <p><strong>核心問題：</strong>機器學習 (LightGBM) 能否預測哪些突破候選會成為贏家，從而改善候選選擇？</p>
+    <p><strong>方法：</strong>18 特徵 &times; 1,920 訓練樣本 (2021-2023) | 驗證: 2024 | 測試: 2025-2026</p>
+</div>
+
+<div class="two-col">
+    <div class="card card-red">
+        <h4 style="margin-top:0">ML 模型表現</h4>
+        <ul>
+            <li><strong>驗證 AUC: 0.5170</strong>（幾乎等同隨機猜測）</li>
+            <li>驗證準確率: 57.5%（基礎勝率 61.9%）</li>
+            <li>1,920 訓練樣本，18 特徵</li>
+            <li><strong>結論: ML 無法預測突破贏家</strong></li>
+        </ul>
+    </div>
+    <div class="card">
+        <h4 style="margin-top:0">Top 5 特徵重要性</h4>
+        <ol>
+            <li>RS_Rank (1,336)</li>
+            <li>Vol_ZScore (1,302)</li>
+            <li>ATR_Pct (1,298)</li>
+            <li>Vol_Trend (1,265)</li>
+            <li>Close_Position (1,258)</li>
+        </ol>
+    </div>
+</div>
+
+<h4 style="color: var(--accent2);">OOS (樣本外) 比較 — 基線全勝</h4>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>策略</th>
+        <th class="num-cell">2024 (OOS)</th>
+        <th class="num-cell">2025 (OOS)</th>
+        <th class="num-cell">2026 (OOS)</th>
+        <th class="num-cell">幾何均值</th>
+    </tr>
+    <tr style="font-weight: 700;">
+        <td><span class="tag tag-green">基線</span> V20 RS Rank</td>
+        <td class="num-cell win">+92.5%</td>
+        <td class="num-cell win">+9,696%</td>
+        <td class="num-cell win">+78.3%</td>
+        <td class="num-cell win">+456%</td>
+    </tr>
+    <tr>
+        <td>ML Filter (p&ge;0.5)</td>
+        <td class="num-cell loss">+30.2%</td>
+        <td class="num-cell loss">+5,067%</td>
+        <td class="num-cell loss">+15.9%</td>
+        <td class="num-cell">+617%*</td>
+    </tr>
+    <tr>
+        <td>ML Rank (替代 RS)</td>
+        <td class="num-cell loss">-28.9%</td>
+        <td class="num-cell loss">+96.5%</td>
+        <td class="num-cell loss">+16.4%</td>
+        <td class="num-cell loss">+55%</td>
+    </tr>
+    <tr>
+        <td>Walk-Forward ML</td>
+        <td class="num-cell loss">+30.2%</td>
+        <td class="num-cell loss">+1,025%</td>
+        <td class="num-cell loss">+0.9%</td>
+        <td class="num-cell loss">+444%</td>
+    </tr>
+</table>
+</div>
+<p style="color: var(--text-dim); font-size: 0.85em;">*ML Filter 幾何均值被訓練期 (2021-2023) 的樣本內過擬合膨脹，OOS 每年均遜於基線。</p>
+
+<div class="card card-green">
+    <h4 style="margin-top:0">核心發現</h4>
+    <p><strong>AUC 0.517 證明：ML 無法預測突破贏家。</strong>V20 的邊際是<strong>系統性的</strong>（永遠選擇最高 RS Rank 候選），而非<strong>預測性的</strong>（判斷哪筆具體交易會贏）。RS Rank 單獨就比 ML 模型強 401 個百分點。</p>
+</div>
+
+<h3 id="v21-entry">進場時機優化 (Round 13)</h3>
+
+<div class="card card-accent">
+    <p><strong>核心問題：</strong>不同的進場執行方式（限價單、收盤進場、跳空過濾、2日確認）能否改善結果？</p>
+</div>
+
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>進場策略</th>
+        <th class="num-cell">幾何均值</th>
+        <th class="num-cell">vs 基線</th>
+        <th>說明</th>
+    </tr>
+    <tr style="font-weight: 700;">
+        <td><span class="tag tag-green">基線</span> 隔日開盤進場</td>
+        <td class="num-cell win">+456%</td>
+        <td class="num-cell">&mdash;</td>
+        <td>V20 標準（開盤 + 0.1% 滑點）</td>
+    </tr>
+    <tr>
+        <td>限價單 (昨收價)</td>
+        <td class="num-cell loss">+167%</td>
+        <td class="num-cell loss">-289pp</td>
+        <td>許多限價未成交；2022 +0.3%</td>
+    </tr>
+    <tr>
+        <td>僅 Gap &lt; 1%</td>
+        <td class="num-cell loss">+295%</td>
+        <td class="num-cell loss">-162pp</td>
+        <td>過濾太多好機會</td>
+    </tr>
+    <tr>
+        <td>無跳空過濾</td>
+        <td class="num-cell loss">+317%</td>
+        <td class="num-cell loss">-139pp</td>
+        <td>2021 崩至 +64%（跳空下進場）</td>
+    </tr>
+    <tr>
+        <td>收盤進場</td>
+        <td class="num-cell loss">+144%</td>
+        <td class="num-cell loss">-312pp</td>
+        <td>錯失盤中動量</td>
+    </tr>
+    <tr>
+        <td>跳空加權倉位</td>
+        <td class="num-cell">+456%</td>
+        <td class="num-cell">+0pp</td>
+        <td>大部分進場無跳空，無效果</td>
+    </tr>
+    <tr>
+        <td>2 日確認</td>
+        <td class="num-cell loss">+99%</td>
+        <td class="num-cell loss">-357pp</td>
+        <td>交易減半至 206，錯過最佳進場</td>
+    </tr>
+</table>
+</div>
+
+<div class="analogy">
+    進場時機就像搭火車：V20 總是在火車出站（開盤）時立刻上車。嘗試等下一站（收盤進場）或確認方向（2 日確認），火車早已離站。嘗試殺價（限價單），結果連車都搭不上。開盤進場捕捉了突破的第一波動量 — 這正是利潤的來源。
+</div>
+
 <h3 id="v21-risk">風險警示與實際預期</h3>
 
 <div class="card card-red">
@@ -2572,7 +2725,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="analogy">
-    V21 研究歷經 11 輪、65+ 策略變體的完整「健康檢查」。結果顯示：心臟（信號品質）強健、骨骼（參數）穩固、肌肉（風險管理）協調、免疫力（穩健性）經得起考驗。但醫生也提醒：再健康的身體也需要注意外部環境（市場風險），不要過度自信。
+    V21 研究歷經 13 輪、79+ 策略變體的完整「健康檢查」——甚至嘗試了 AI 輔助（ML 預測，AUC 0.517 = 和猜硬幣差不多）。結果顯示：心臟（信號品質）強健、骨骼（參數）穩固、肌肉（風險管理）協調、免疫力（穩健性）經得起考驗、大腦（ML）也無法做得更好。但醫生也提醒：再健康的身體也需要注意外部環境（市場風險），不要過度自信。
 </div>
 
 <!-- Footer -->
