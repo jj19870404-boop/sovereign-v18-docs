@@ -1093,8 +1093,8 @@ async function loadDate() {
     const date = dateIndex[currentIdx];
     $('current-date').textContent = date;
     window.location.hash = date;
-    $('btn-prev').disabled = currentIdx >= dateIndex.length - 1;
-    $('btn-next').disabled = currentIdx <= 0;
+    $('btn-prev').disabled = currentIdx <= 0;
+    $('btn-next').disabled = currentIdx >= dateIndex.length - 1;
 
     try {
         const data = await fetchJSON(`data/${date}.json`);
@@ -1105,7 +1105,7 @@ async function loadDate() {
 }
 
 function navigate(dir) {
-    const newIdx = currentIdx - dir;
+    const newIdx = currentIdx + dir;
     if (newIdx < 0 || newIdx >= dateIndex.length) return;
     currentIdx = newIdx;
     loadDate();
