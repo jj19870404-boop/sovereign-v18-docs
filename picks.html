@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sovereign V20 - 每日選股報告</title>
-<meta name="description" content="Sovereign V20 動能突破交易系統每日選股報告 — 全自動美股掃描、品質評級、操作計畫">
+<title>Sovereign - 每日選股報告</title>
+<meta name="description" content="Sovereign 動能突破交易系統每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫">
 <style>
 :root {
     --bg: #0f1117;
@@ -461,6 +461,94 @@ h2 .dim { color: var(--text-dim); font-size: 0.85em; font-weight: 400; }
     font-size: 0.92em;
 }
 
+/* ── Mode Comparison Table ── */
+.mode-compare {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+}
+.mode-compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+}
+.mode-box {
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    border: 2px solid transparent;
+}
+.mode-box.active {
+    border-color: var(--accent);
+}
+.mode-box-title {
+    font-weight: 700;
+    font-size: 0.95em;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.mode-box-title .mode-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.mode-box ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.85em;
+    color: var(--text-dim);
+}
+.mode-box ul li {
+    padding: 3px 0;
+}
+.mode-box ul li::before {
+    content: '\2022 ';
+    color: var(--accent);
+}
+.mode-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.85em;
+    font-weight: 700;
+    margin: 8px 0;
+}
+.mode-indicator.tp-mode {
+    background: rgba(78,203,113,0.15);
+    color: var(--green);
+    border: 1px solid rgba(78,203,113,0.3);
+}
+.mode-indicator.notp-mode {
+    background: rgba(255,159,67,0.15);
+    color: var(--orange);
+    border: 1px solid rgba(255,159,67,0.3);
+}
+.tiered-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82em;
+    margin-top: 8px;
+}
+.tiered-table th {
+    background: var(--surface);
+    color: var(--accent);
+    padding: 5px 8px;
+    font-weight: 600;
+    font-size: 0.9em;
+    border-bottom: 1px solid var(--border);
+}
+.tiered-table td {
+    padding: 4px 8px;
+    border-bottom: 1px solid rgba(45,49,72,0.5);
+    color: var(--text-dim);
+}
+
 /* ── Quick Reference ── */
 .quick-ref {
     margin-top: 28px;
@@ -690,9 +778,9 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 <!-- Dashboard -->
 <div class="dashboard" id="dashboard">
     <div class="stat-card">
-        <div class="stat-label">V20 模式</div>
+        <div class="stat-label">動態模式</div>
         <div class="stat-value" id="s-mode">--</div>
-        <div class="stat-desc">TP=固定停利 12%<br>NoTP=無停利，ATR 追蹤</div>
+        <div class="stat-desc">TP=固定停利，追蹤停損<br>NoTP=無停利，Tiered ATR 追蹤</div>
     </div>
     <div class="stat-card">
         <div class="stat-label">滾動勝率</div>
@@ -746,7 +834,7 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
     <a href="index.html">&larr; 系統文件</a> &nbsp;|&nbsp;
     <a href="track.html">選股追蹤</a> &nbsp;|&nbsp;
     <a href="news.html">整點快報 &rarr;</a>
-    <p style="margin-top:8px">Sovereign V20 &mdash; 動能突破交易系統</p>
+    <p style="margin-top:8px">Sovereign &mdash; 動能突破交易系統 (V20 動態切換)</p>
 </div>
 
 </div>
@@ -1049,29 +1137,109 @@ function renderOpenTrades(trades) {
 }
 
 // ── Build Operation Plan HTML ────────────────────
-function buildPlanHTML(p) {
+function buildPlanHTML(p, v20) {
     const entry = p.entry_price;
     const close = p.close;
     const gap_threshold = close * (1 - PARAMS.gap_reject_pct);
     const be_price = entry * (1 + PARAMS.breakeven_trigger);
     const trail_price = entry * (1 + PARAMS.trail_activation);
+    const atr = p.atr || 0;
 
-    return `
-    <div class="plan-section">
-        <div class="plan-title">操作計畫</div>
+    // Determine current mode from v20 data
+    const isTP = !v20 || v20.mode !== 'NoTP';
+    const modeLabel = isTP ? 'TP 模式' : 'NoTP 模式';
+    const modeClass = isTP ? 'tp-mode' : 'notp-mode';
+    const rollingWR = v20 ? v20.rolling_wr : null;
+
+    // Tiered ATR trail levels (NoTP mode)
+    const t1 = entry * 1.03, t2 = entry * 1.06, t3 = entry * 1.10;
+    const atr20 = atr * 2.0, atr15 = atr * 1.5, atr12 = atr * 1.2, atr10 = atr * 1.0;
+
+    // TP mode steps
+    const tpSteps = `
         <ol class="plan-steps">
             <li><span class="step-num">1</span><span class="step-text">明日開盤檢查: 開盤價 &ge; $${fmt(gap_threshold)} 才進場</span></li>
         </ol>
         <div class="plan-warn">&raquo; 若開盤 &lt; $${fmt(gap_threshold)} (跳空 &gt;3%)，放棄本次訊號</div>
         <ol class="plan-steps" start="2">
-            <li><span class="step-num">2</span><span class="step-text">進場買進 @ ~$${fmt(entry)}</span></li>
-            <li><span class="step-num">3</span><span class="step-text">設定停損 @ <span style="color:var(--red)">$${fmt(p.sl_price)}</span></span></li>
+            <li><span class="step-num">2</span><span class="step-text">進場買進 @ ~$${fmt(entry)} (ALL-IN)</span></li>
+            <li><span class="step-num">3</span><span class="step-text">設定停損 @ <span style="color:var(--red)">$${fmt(p.sl_price)}</span> (ATR &times; ${PARAMS.atr_sl})</span></li>
             <li><span class="step-num">4</span><span class="step-text">漲 +${(PARAMS.breakeven_trigger*100).toFixed(1)}% (<span style="color:var(--accent2)">$${fmt(be_price)}</span>) &rarr; 停損移至成本價 (保本)</span></li>
             <li><span class="step-num">5</span><span class="step-text">漲 +${(PARAMS.trail_activation*100).toFixed(1)}% (<span style="color:var(--accent2)">$${fmt(trail_price)}</span>) &rarr; 啟動 ${(PARAMS.trail_distance*100).toFixed(1)}% 追蹤停損</span></li>
             <li><span class="step-num">6</span><span class="step-text">停利 @ <span style="color:var(--green)">$${fmt(p.tp_price)}</span> (+${(PARAMS.tp_target*100).toFixed(0)}%)</span></li>
             <li><span class="step-num">7</span><span class="step-text">持倉 ${PARAMS.stale_days} 天若仍虧損 &gt;${Math.abs(PARAMS.stale_threshold*100).toFixed(0)}%，收盤出場 (停滯出場)</span></li>
             <li><span class="step-num">8</span><span class="step-text">最長持有 ${PARAMS.time_stop} 個交易日，到期收盤出場</span></li>
+        </ol>`;
+
+    // NoTP mode steps (Tiered ATR Trail)
+    const notpSteps = `
+        <ol class="plan-steps">
+            <li><span class="step-num">1</span><span class="step-text">明日開盤檢查: 開盤價 &ge; $${fmt(gap_threshold)} 才進場</span></li>
         </ol>
+        <div class="plan-warn">&raquo; 若開盤 &lt; $${fmt(gap_threshold)} (跳空 &gt;3%)，放棄本次訊號</div>
+        <ol class="plan-steps" start="2">
+            <li><span class="step-num">2</span><span class="step-text">進場買進 @ ~$${fmt(entry)} (ALL-IN)</span></li>
+            <li><span class="step-num">3</span><span class="step-text">設定停損 @ <span style="color:var(--red)">$${fmt(p.sl_price)}</span> (ATR &times; ${PARAMS.atr_sl})</span></li>
+            <li><span class="step-num">4</span><span class="step-text">漲 +0.8% (<span style="color:var(--accent2)">$${fmt(entry * 1.008)}</span>) &rarr; 停損移至成本價 (保本)</span></li>
+            <li><span class="step-num">5</span><span class="step-text"><strong>Tiered ATR 追蹤停損</strong> (無固定停利，讓贏家持續奔跑):</span></li>
+        </ol>
+        <table class="tiered-table">
+            <thead><tr><th>漲幅</th><th>價位</th><th>追蹤距離</th><th>ATR值</th></tr></thead>
+            <tbody>
+                <tr><td>0-3%</td><td>&lt; $${fmt(t1)}</td><td>2.0 &times; ATR</td><td>$${fmt(atr20)}</td></tr>
+                <tr><td>3-6%</td><td>$${fmt(t1)} - $${fmt(t2)}</td><td>1.5 &times; ATR</td><td>$${fmt(atr15)}</td></tr>
+                <tr><td>6-10%</td><td>$${fmt(t2)} - $${fmt(t3)}</td><td>1.2 &times; ATR</td><td>$${fmt(atr12)}</td></tr>
+                <tr><td>&gt;10%</td><td>&gt; $${fmt(t3)}</td><td>1.0 &times; ATR</td><td>$${fmt(atr10)}</td></tr>
+            </tbody>
+        </table>
+        <ol class="plan-steps" start="6">
+            <li><span class="step-num">6</span><span class="step-text">漲 +2% 後啟動 Tiered ATR 追蹤 (漲越多，追蹤越緊)</span></li>
+            <li><span class="step-num">7</span><span class="step-text">持倉 ${PARAMS.stale_days} 天若仍虧損 &gt;${Math.abs(PARAMS.stale_threshold*100).toFixed(0)}%，收盤出場 (停滯出場)</span></li>
+            <li><span class="step-num">8</span><span class="step-text">最長持有 ${PARAMS.time_stop} 個交易日，到期收盤出場</span></li>
+        </ol>`;
+
+    // Mode comparison section
+    const modeCompare = `
+    <div class="mode-compare">
+        <div class="plan-title">TP vs NoTP 模式對照</div>
+        <div class="mode-indicator ${modeClass}">
+            &#x25CF; 目前模式：${modeLabel}${rollingWR != null ? ` (Rolling WR: ${fmt(rollingWR, 1)}%)` : ''}
+        </div>
+        <div class="mode-compare-grid">
+            <div class="mode-box${isTP ? ' active' : ''}">
+                <div class="mode-box-title">
+                    <span class="mode-dot" style="background:var(--green)"></span>
+                    TP 模式 <span style="font-size:0.8em;color:var(--text-dim)">(WR &ge; 58%)</span>
+                </div>
+                <ul>
+                    <li>固定停利 +${(PARAMS.tp_target*100).toFixed(0)}%</li>
+                    <li>保本觸發 +0.5%</li>
+                    <li>追蹤停損 ${(PARAMS.trail_distance*100).toFixed(1)}%</li>
+                    <li>市場強勢時快速兌現</li>
+                    <li>資金輪轉更快</li>
+                </ul>
+            </div>
+            <div class="mode-box${!isTP ? ' active' : ''}">
+                <div class="mode-box-title">
+                    <span class="mode-dot" style="background:var(--orange)"></span>
+                    NoTP 模式 <span style="font-size:0.8em;color:var(--text-dim)">(WR &lt; 58%)</span>
+                </div>
+                <ul>
+                    <li>無固定停利上限</li>
+                    <li>保本觸發 +0.8%</li>
+                    <li>Tiered ATR 追蹤 (2.0x&rarr;1.0x)</li>
+                    <li>市場一般時讓贏家跑更遠</li>
+                    <li>單筆贏家潛力更大</li>
+                </ul>
+            </div>
+        </div>
+    </div>`;
+
+    return `
+    <div class="plan-section">
+        <div class="plan-title">操作計畫 <span class="mode-indicator ${modeClass}" style="margin:0;vertical-align:middle">&#x25CF; ${modeLabel}</span></div>
+        ${isTP ? tpSteps : notpSteps}
+        ${modeCompare}
     </div>`;
 }
 
@@ -1211,7 +1379,7 @@ function renderSignal(pick, v20) {
             ${mk('ATR', '$' + fmt(pick.atr))}
         </div>
 
-        ${buildPlanHTML(pick)}
+        ${buildPlanHTML(pick, v20)}
         ${buildQualityHTML(pick)}
         ${buildAdvancedHTML(pick)}
     </div>`;
@@ -1275,7 +1443,7 @@ function renderPicksDetail(picks, v20) {
                     <span class="d-lbl">SMA20斜率</span><span class="d-val">${fmt(p.sma20_slope, 4)}</span>
                     <span class="d-lbl">ATR</span><span class="d-val">$${fmt(p.atr)}</span>
                 </div>
-                ${buildPlanHTML(p)}
+                ${buildPlanHTML(p, v20)}
                 ${buildQualityHTML(p)}
                 ${buildAdvancedHTML(p)}
             </div>
@@ -1297,8 +1465,16 @@ function renderQuickRef() {
             <span class="qr-items">量比 2.5-3.0x (36%) | 5日動能 &lt;-5% (40%) | 52周 80-85% (47%) | 跳空 &gt;10% (33%)</span>
         </div>
         <div class="quick-ref-row">
-            <span class="qr-label" style="color:var(--accent)">操作參數:</span>
-            <span class="qr-items">保本 +0.5% | 追蹤 +1.8% (3.1%) | 停利 +12% | 停滯 9天&gt;5% | 時間停 14天 | 跳空拒絕 3%</span>
+            <span class="qr-label" style="color:var(--accent)">TP 模式:</span>
+            <span class="qr-items">SL=ATR&times;2.4 | 保本 +0.5% | 追蹤 +1.8% (3.1%) | 停利 +12% | 停滯 9天&gt;5% | 時間停 14天</span>
+        </div>
+        <div class="quick-ref-row">
+            <span class="qr-label" style="color:var(--orange)">NoTP 模式:</span>
+            <span class="qr-items">SL=ATR&times;2.4 | 保本 +0.8% | Tiered ATR 追蹤 (2.0x&rarr;1.0x) | 無停利上限 | 停滯 9天&gt;5% | 時間停 14天</span>
+        </div>
+        <div class="quick-ref-row">
+            <span class="qr-label" style="color:var(--text-dim)">模式切換:</span>
+            <span class="qr-items">Rolling 20-trade WR &ge; 58% &rarr; TP 模式 | WR &lt; 58% &rarr; NoTP 模式 | 前 20 筆 = TP 模式 (暖機)</span>
         </div>
     </div>`;
 }

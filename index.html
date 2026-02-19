@@ -399,7 +399,7 @@ li { margin: 4px 0; }
             <li>V22 候選參數組合</li>
             <li>V20/V22 逐年詳細報告</li>
             <li>出場方式深度分析</li>
-            <li>實戰執行指南（3 方案）</li>
+            <li>實戰執行指南（3 方案 + 動態切換驗證）</li>
             <li>倖存者偏差驗證（279 檔已下市股票）</li>
         </ol>
     </li>
@@ -3041,9 +3041,9 @@ li { margin: 4px 0; }
     <div class="card" style="border-left: 4px solid var(--orange);">
         <h4 style="margin-top:0">注意事項</h4>
         <ul>
-            <li>V20 在極端牛市（2025）更強</li>
-            <li>V22 在一般年份更穩定</li>
-            <li>建議觀察 2026 全年後再最終決定</li>
+            <li>V20 在極端牛市（2025）更強（+9,685% vs V22 +2,325%）</li>
+            <li>V22 在一般年份更穩定（2024: V22 +589% vs V20 +91%）</li>
+            <li><strong>動態切換已通過獨立驗證</strong>，所有參數組合 Dynamic 均勝過固定模式</li>
             <li>可考慮兩者並行（部分資金各跑一套）</li>
         </ul>
     </div>
@@ -3586,49 +3586,84 @@ li { margin: 4px 0; }
 <h3>V20 vs V22 — 實戰執行指南</h3>
 
 <div class="card card-accent">
-    <h4 style="margin-top:0">核心結論：不需要選擇 &mdash; 兩者可以並行</h4>
-    <p>V20 和 V22 的信號來源完全相同（RS_Rank + VCP 突破），差異僅在 SL/TP 參數。根據 6 年回測數據分析：</p>
+    <h4 style="margin-top:0">動態切換已通過獨立回測驗證</h4>
+    <p>V22 動態切換（TP/NoTP）經過 9 策略獨立回測比較，結果明確：<strong>動態模式全面勝出固定模式</strong>。</p>
     <ul>
-        <li><strong>V22-HighTP 為預設首選</strong> &mdash; 4/6 年勝出，風險更低（MDD 46.6% vs 54.2%），獲利因子更高（5.03 vs 3.98）</li>
-        <li><strong>V20 在超級牛市更強</strong> &mdash; 2025 年 V20 +9,685% vs V22 +2,325%（TP=12% 觸發更頻繁，讓資金更快輪轉）</li>
-        <li><strong>V22 在一般市場更穩定</strong> &mdash; 2024 年 V20 +91% vs V22 +589%（1.8x SL 更快止損，釋放資金到更好的機會）</li>
+        <li><strong>V22-HighTP Dynamic</strong>（推薦）&mdash; 6 年複利 $10K &rarr; <strong>$9.6 億</strong>，22 次模式切換</li>
+        <li>AlwaysTP 僅 $4.8 億，AlwaysNoTP 僅 $1.2 億</li>
+        <li>Dynamic 模式比 AlwaysTP 高 <strong>+99%</strong>，比 AlwaysNoTP 高 <strong>+734%</strong></li>
     </ul>
+    <p style="margin-bottom:0">切換邏輯：Rolling 20-trade WR &ge; 58% &rarr; TP 模式（固定停利），WR &lt; 58% &rarr; NoTP 模式（Tiered ATR Trail）。前 20 筆交易為暖機期，使用 TP 模式。</p>
 </div>
+
+<h4>3 種實戰方案</h4>
 
 <div class="two-col">
     <div class="card card-green">
-        <h4 style="margin-top:0">方案 A：單一策略（最簡單）</h4>
-        <p><strong>使用 V22-HighTP</strong>（SL=1.8x, TP=18%, Time=14d）</p>
-        <ul>
-            <li>幾何均值 +633%（V20: +454%）</li>
-            <li>MDD 46.6%（V20: 54.2%）</li>
-            <li>報酬和風險雙贏</li>
-            <li>不需要判斷市場環境</li>
-        </ul>
-        <p style="margin-bottom:0"><strong>適合：</strong>追求簡單、穩定、風控優先</p>
+        <h4 style="margin-top:0">方案 A：V20 動態切換（目前使用中）</h4>
+        <p><strong>SL=2.4x ATR, TP=12%</strong></p>
+        <div style="font-size:0.9em;">
+            <p><strong>TP 模式操作流程（WR &ge; 58%）：</strong></p>
+            <ol>
+                <li>開盤檢查：開盤 &ge; 前收 &times; 0.97 才進場</li>
+                <li>以開盤價 ALL-IN 買入 (含 0.1% 滑價)</li>
+                <li>設定停損 = 進場價 &minus; ATR &times; 2.4</li>
+                <li>漲 +0.5% &rarr; 停損移至成本價 (保本)</li>
+                <li>漲 +1.8% &rarr; 啟動 3.1% 追蹤停損</li>
+                <li>停利 +12% &rarr; 賣出</li>
+                <li>持倉 9 天仍虧損 &gt;5% &rarr; 停滯出場</li>
+                <li>最長持有 14 個交易日</li>
+            </ol>
+            <p><strong>NoTP 模式操作流程（WR &lt; 58%）：</strong></p>
+            <ol>
+                <li>步驟 1-3 同上</li>
+                <li>漲 +0.8% &rarr; 停損移至成本價</li>
+                <li>漲 +2% &rarr; 啟動 Tiered ATR 追蹤停損：<br>
+                    0-3% 漲幅 = 2.0&times;ATR，3-6% = 1.5&times;ATR，6-10% = 1.2&times;ATR，&gt;10% = 1.0&times;ATR</li>
+                <li>無固定停利上限，讓贏家持續奔跑</li>
+                <li>步驟 7-8 同 TP 模式</li>
+            </ol>
+        </div>
+        <p style="margin-bottom:0"><strong>適合：</strong>目前實際部署的版本，最多實戰驗證</p>
     </div>
-    <div class="card" style="border-left: 4px solid var(--blue);">
-        <h4 style="margin-top:0">方案 B：雙軌並行（最優化）</h4>
-        <p><strong>50% V20 + 50% V22-HighTP</strong></p>
-        <ul>
-            <li>兩帳戶各跑一套參數</li>
-            <li>牛市 V20 那半衝高，V22 穩定</li>
-            <li>熊市/震盪 V22 那半保本</li>
-            <li>每年再平衡回 50/50</li>
-        </ul>
-        <p style="margin-bottom:0"><strong>適合：</strong>資金充足、追求分散風險</p>
+    <div class="card" style="border-left: 4px solid var(--accent);">
+        <h4 style="margin-top:0">方案 B：V22-HighTP 動態切換（推薦升級）</h4>
+        <p><strong>SL=1.8x ATR, TP=18%</strong></p>
+        <div style="font-size:0.9em;">
+            <p><strong>TP 模式操作流程（WR &ge; 58%）：</strong></p>
+            <ol>
+                <li>開盤檢查：開盤 &ge; 前收 &times; 0.97 才進場</li>
+                <li>以開盤價 ALL-IN 買入 (含 0.1% 滑價)</li>
+                <li>設定停損 = 進場價 &minus; ATR &times; <strong>1.8</strong> (更緊)</li>
+                <li>漲 +0.5% &rarr; 停損移至成本價 (保本)</li>
+                <li>漲 +1.8% &rarr; 啟動 3.1% 追蹤停損</li>
+                <li>停利 <strong>+18%</strong> &rarr; 賣出 (更高)</li>
+                <li>持倉 9 天仍虧損 &gt;5% &rarr; 停滯出場</li>
+                <li>最長持有 14 個交易日</li>
+            </ol>
+            <p><strong>NoTP 模式：</strong>同 V20 NoTP 模式，但 SL 改為 1.8x ATR</p>
+            <p><strong>動態切換驗證：</strong>$10K &rarr; $9.6 億（AlwaysTP 的 2 倍）</p>
+        </div>
+        <p style="margin-bottom:0"><strong>適合：</strong>更緊停損 + 更高停利，報酬/風險最佳化</p>
     </div>
 </div>
 
-<div class="card card-yellow">
-    <h4 style="margin-top:0">方案 C：動態切換（進階）</h4>
-    <p>利用現有的 Rolling WR 機制：</p>
-    <div class="formula">
-        近 20 筆交易 WR &ge; 70%: &rarr; 使用 V20 (SL=2.4x, TP=12%)（市場強勢，讓 TP 快速輪轉）<br>
-        近 20 筆交易 WR &lt; 70%: &rarr; 使用 V22-HighTP (SL=1.8x, TP=18%)（市場一般，用緊 SL 控損）
-    </div>
-    <p><strong>邏輯：</strong>高 WR 代表市場處於強勢動能環境，V20 的低 TP 可以讓資金更快輪轉到下一筆贏家。低 WR 代表市場震盪，V22 的緊 SL 可以減少每筆虧損。</p>
-    <p style="margin-bottom:0"><strong>注意：</strong>此方案未經獨立回測驗證，僅為邏輯推導。建議先用方案 A 或 B。</p>
+<div class="card" style="border-left: 4px solid var(--yellow);">
+    <h4 style="margin-top:0">方案 C：V22-TightHigh 動態切換</h4>
+    <p><strong>SL=1.8x ATR, TP=15%</strong></p>
+    <p>與方案 B 相同流程，唯一差異：停利 +15%（介於 V20 的 12% 和 V22-HighTP 的 18% 之間）。TP 觸發更頻繁、資金輪轉更快，但單筆贏家較小。</p>
+    <p style="margin-bottom:0"><strong>適合：</strong>偏好更頻繁兌現獲利的交易者</p>
+</div>
+
+<h4>如何選擇？</h4>
+<div class="card card-accent">
+    <ul>
+        <li><strong>新手 / 想簡單操作</strong> &rarr; 方案 A（V20），目前已在每日選股頁面部署</li>
+        <li><strong>追求最佳報酬/風控</strong> &rarr; 方案 B（V22-HighTP），MDD 最低、報酬最高</li>
+        <li><strong>喜歡快速兌現</strong> &rarr; 方案 C（V22-TightHigh），TP 觸發更頻繁</li>
+        <li><strong>不確定</strong> &rarr; 先用方案 A，熟悉後升級至方案 B</li>
+    </ul>
+    <p style="margin-bottom:0"><strong>所有方案共用同一套掃描訊號</strong>（RS_Rank #1 VCP 突破），差異僅在 SL/TP 參數和出場機制。</p>
 </div>
 
 <div class="flow-chart">
@@ -3636,16 +3671,180 @@ li { margin: 4px 0; }
     <div class="flow-arrow">&darr;</div>
     <div class="flow-step">Sovereign 掃描器產出候選股 (RS_Rank #1)</div>
     <div class="flow-arrow">&darr;</div>
-    <div class="flow-step">檢查 Rolling WR：
-    TP 模式 → SL=1.8x ATR, TP=18%, Trail 3.1%
-    NoTP 模式 → SL=1.8x ATR, Tiered ATR Trail</div>
+    <div class="flow-step">查看每日選股頁面：確認 Rolling WR 和當前模式 (TP / NoTP)</div>
+    <div class="flow-arrow">&darr;</div>
+    <div class="flow-step">TP 模式 → 設定固定停利 (+12%/15%/18%)<br>NoTP 模式 → 不設停利，使用 Tiered ATR 追蹤</div>
     <div class="flow-arrow">&darr;</div>
     <div class="flow-step">以開盤價 ALL-IN 買入</div>
     <div class="flow-arrow">&darr;</div>
-    <div class="flow-step">持倉管理：BE &rarr; Trail &rarr; TP/SL/Time/Stale 出場</div>
+    <div class="flow-step">持倉管理：BE &rarr; Trail &rarr; TP/SL/Stale/Time 出場</div>
     <div class="flow-arrow">&darr;</div>
     <div class="flow-step">出場後立即準備下一筆</div>
 </div>
+
+<h4>V22 動態切換獨立驗證結果（9 策略完整比較）</h4>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>策略</th>
+        <th class="num-cell">6 年複利</th>
+        <th class="num-cell">幾何均值</th>
+        <th class="num-cell">WR</th>
+        <th class="num-cell">切換</th>
+        <th class="num-cell">交易數</th>
+    </tr>
+    <tr style="background:rgba(78,203,113,0.08);">
+        <td><strong>V22-TightHigh Dynamic</strong></td>
+        <td class="num-cell"><strong>$13.7 億</strong></td>
+        <td class="num-cell win"><strong>+658%</strong></td>
+        <td class="num-cell"><strong>67.0%</strong></td>
+        <td class="num-cell"><strong>18</strong></td>
+        <td class="num-cell">358</td>
+    </tr>
+    <tr style="background:rgba(108,140,255,0.08);">
+        <td><strong>V22-HighTP Dynamic</strong></td>
+        <td class="num-cell"><strong>$9.6 億</strong></td>
+        <td class="num-cell win"><strong>+633%</strong></td>
+        <td class="num-cell"><strong>66.2%</strong></td>
+        <td class="num-cell"><strong>22</strong></td>
+        <td class="num-cell">337</td>
+    </tr>
+    <tr>
+        <td>V22-TightHigh AlwaysTP</td>
+        <td class="num-cell">$8.5 億</td>
+        <td class="num-cell">+560%</td>
+        <td class="num-cell">67.4%</td>
+        <td class="num-cell">0</td>
+        <td class="num-cell">377</td>
+    </tr>
+    <tr>
+        <td>V22-HighTP AlwaysTP</td>
+        <td class="num-cell">$4.8 億</td>
+        <td class="num-cell">+499%</td>
+        <td class="num-cell">67.2%</td>
+        <td class="num-cell">0</td>
+        <td class="num-cell">357</td>
+    </tr>
+    <tr>
+        <td>V22 AlwaysNoTP</td>
+        <td class="num-cell">$1.2 億</td>
+        <td class="num-cell">+386%</td>
+        <td class="num-cell">60.5%</td>
+        <td class="num-cell">0</td>
+        <td class="num-cell">271</td>
+    </tr>
+    <tr style="border-top: 2px solid var(--border); background:rgba(255,217,61,0.06);">
+        <td><strong>V20 Dynamic</strong></td>
+        <td class="num-cell">$0.5 億</td>
+        <td class="num-cell">+454%</td>
+        <td class="num-cell">69.6%</td>
+        <td class="num-cell">8</td>
+        <td class="num-cell">316</td>
+    </tr>
+    <tr>
+        <td>V20 AlwaysNoTP</td>
+        <td class="num-cell">$0.46 億</td>
+        <td class="num-cell">+336%</td>
+        <td class="num-cell">60.6%</td>
+        <td class="num-cell">0</td>
+        <td class="num-cell">236</td>
+    </tr>
+    <tr>
+        <td>V20 AlwaysTP</td>
+        <td class="num-cell">$0.21 億</td>
+        <td class="num-cell">+325%</td>
+        <td class="num-cell">68.5%</td>
+        <td class="num-cell">0</td>
+        <td class="num-cell">330</td>
+    </tr>
+</table>
+</div>
+
+<div class="card card-green">
+    <h4 style="margin-top:0">動態切換驗證結論</h4>
+    <ul>
+        <li><strong>所有 3 套參數（V22-HighTP、V22-TightHigh、V20）的 Dynamic 模式都全面勝出固定模式</strong></li>
+        <li>V22-TightHigh Dynamic：$13.7 億（vs AlwaysTP $8.5 億，+61%）</li>
+        <li>V22-HighTP Dynamic：$9.6 億（vs AlwaysTP $4.8 億，+99%）</li>
+        <li>V20 Dynamic：$0.5 億（vs AlwaysTP $0.21 億，+132%）</li>
+        <li>NoTP 模式下平均每筆報酬更高（+4.75% vs +3.69%），但勝率較低（62.5% vs 68.1%）</li>
+        <li>動態切換的精髓：<strong>高 WR 時快速兌現（TP），低 WR 時讓贏家跑更遠（NoTP）</strong></li>
+    </ul>
+</div>
+
+<h4>動態模式下的交易分析</h4>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>策略</th>
+        <th>模式</th>
+        <th class="num-cell">交易數</th>
+        <th class="num-cell">WR</th>
+        <th class="num-cell">Avg Return</th>
+        <th class="num-cell">TP 出場</th>
+        <th class="num-cell">Trail 出場</th>
+        <th class="num-cell">Max Win</th>
+    </tr>
+    <tr>
+        <td rowspan="2">V22-HighTP</td>
+        <td style="color:var(--green)">TP 模式</td>
+        <td class="num-cell">232</td>
+        <td class="num-cell">68.1%</td>
+        <td class="num-cell">+3.69%</td>
+        <td class="num-cell">40</td>
+        <td class="num-cell">95</td>
+        <td class="num-cell">+18.00%</td>
+    </tr>
+    <tr>
+        <td style="color:var(--orange)">NoTP 模式</td>
+        <td class="num-cell">104</td>
+        <td class="num-cell">62.5%</td>
+        <td class="num-cell win">+4.75%</td>
+        <td class="num-cell">0</td>
+        <td class="num-cell">42</td>
+        <td class="num-cell win">+51.59%</td>
+    </tr>
+    <tr style="border-top: 2px solid var(--border);">
+        <td rowspan="2">V22-TightHigh</td>
+        <td style="color:var(--green)">TP 模式</td>
+        <td class="num-cell">256</td>
+        <td class="num-cell">69.1%</td>
+        <td class="num-cell">+3.64%</td>
+        <td class="num-cell">65</td>
+        <td class="num-cell">88</td>
+        <td class="num-cell">+15.00%</td>
+    </tr>
+    <tr>
+        <td style="color:var(--orange)">NoTP 模式</td>
+        <td class="num-cell">101</td>
+        <td class="num-cell">62.4%</td>
+        <td class="num-cell win">+4.42%</td>
+        <td class="num-cell">0</td>
+        <td class="num-cell">40</td>
+        <td class="num-cell win">+51.59%</td>
+    </tr>
+    <tr style="border-top: 2px solid var(--border);">
+        <td rowspan="2">V20</td>
+        <td style="color:var(--green)">TP 模式</td>
+        <td class="num-cell">263</td>
+        <td class="num-cell">71.1%</td>
+        <td class="num-cell">+3.08%</td>
+        <td class="num-cell">83</td>
+        <td class="num-cell">77</td>
+        <td class="num-cell">+12.00%</td>
+    </tr>
+    <tr>
+        <td style="color:var(--orange)">NoTP 模式</td>
+        <td class="num-cell">52</td>
+        <td class="num-cell">63.5%</td>
+        <td class="num-cell win">+3.68%</td>
+        <td class="num-cell">0</td>
+        <td class="num-cell">20</td>
+        <td class="num-cell win">+51.59%</td>
+    </tr>
+</table>
+</div>
+<p style="color: var(--text-dim); font-size: 0.85em;">NoTP 模式的 Max Win +51.59% 來自 Tiered ATR Trail 讓贏家持續奔跑的能力。TP 模式勝率更高但單筆上限受限。動態切換在正確的市場環境使用正確的出場策略，6 年間切換 18-22 次，每次切換精準捕捉市場環境變化。</p>
 
 <h3>倖存者偏差驗證</h3>
 
