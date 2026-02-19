@@ -1,10 +1,10 @@
 {
-  "updated": "2026-02-19T22:21:39.680362",
+  "updated": "2026-02-19T22:22:04.453657",
   "summary": {
     "total": 100,
     "wins": 50,
     "losses": 45,
-    "open": 4,
+    "open": 5,
     "win_rate": 52.6,
     "avg_return": 1.72
   },
@@ -15,9 +15,10 @@
       "entry": 10.25,
       "tp": 11.48,
       "sl": 8.22,
-      "status": "ERROR",
-      "return_pct": 0.0,
-      "days": 0
+      "status": "OPEN",
+      "return_pct": -0.1,
+      "days": 1,
+      "current": 10.24
     },
     {
       "date": "2026-02-13",
