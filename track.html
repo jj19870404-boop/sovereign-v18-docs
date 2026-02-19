@@ -57,6 +57,33 @@ body {
 .nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
 .nav-links a.active { color: var(--text); font-weight: 600; }
 
+/* ── Stale Banner ── */
+.stale-banner {
+    background: linear-gradient(135deg, #ff9f43, #ee5a24);
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    position: relative;
+    display: none;
+}
+.stale-banner .close-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.8);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+.stale-banner .close-btn:hover { color: #fff; }
+
 /* ── Title ── */
 h1 {
     font-size: 1.8em;
@@ -352,6 +379,11 @@ h1 {
     </div>
 </div>
 
+<div class="stale-banner" id="stale-banner">
+    <span id="stale-msg"></span>
+    <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+</div>
+
 <h1>選股歷史追蹤</h1>
 <p class="subtitle" id="subtitle">載入中...</p>
 
@@ -452,11 +484,27 @@ const GRADE_META = {
     D: { range: 'SL% > 18%', note: '高風險 — 停損很寬，波動大' },
 };
 
+function checkTrackFreshness(updated) {
+    if (!updated) return;
+    const ts = new Date(updated);
+    const now = new Date();
+    const ageH = (now - ts) / 3600000;
+    if (ageH > 24) {
+        const dateStr = ts.toLocaleDateString('zh-TW', {year:'numeric',month:'2-digit',day:'2-digit'});
+        const timeStr = ts.toLocaleTimeString('zh-TW', {hour:'2-digit',minute:'2-digit'});
+        const banner = document.getElementById('stale-banner');
+        const msg = document.getElementById('stale-msg');
+        msg.textContent = `追蹤資料已超過 24 小時未更新（最後更新: ${dateStr} ${timeStr}）`;
+        banner.style.display = 'block';
+    }
+}
+
 async function loadTrack() {
     try {
         const resp = await fetch(DATA_URL + '?t=' + Date.now());
         if (!resp.ok) throw new Error('Failed to load');
         const data = await resp.json();
+        checkTrackFreshness(data.updated);
         renderSummary(data.summary);
         renderTable(data.tracks);
         renderSubtitle(data);

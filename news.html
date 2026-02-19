@@ -56,6 +56,33 @@ body {
 .nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
 .nav-links a.active { color: var(--text); font-weight: 600; }
 
+/* ── Stale Banner ── */
+.stale-banner {
+    background: linear-gradient(135deg, #ff9f43, #ee5a24);
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    position: relative;
+    display: none;
+}
+.stale-banner .close-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.8);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+.stale-banner .close-btn:hover { color: #fff; }
+
 /* ── Title ── */
 h1 {
     font-size: 1.8em;
@@ -244,6 +271,11 @@ h1 {
     </div>
 </div>
 
+<div class="stale-banner" id="stale-banner">
+    <span id="stale-msg"></span>
+    <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+</div>
+
 <h1>美股整點財經快報</h1>
 
 <!-- Date Navigation -->
@@ -290,6 +322,32 @@ const BASE = 'data/';
 let dateIndex = [];
 let currentIdx = 0;
 
+// ── Freshness Check ──────────────────────────────
+function checkNewsFreshness(latestDate) {
+    const now = new Date();
+    const todayStr = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+    if (latestDate < todayStr) {
+        const banner = $('stale-banner');
+        const msg = $('stale-msg');
+        msg.textContent = `快報尚未更新至今天（最新: ${latestDate}，今天: ${todayStr}）`;
+        banner.style.display = 'block';
+    }
+}
+function checkNewsPostFreshness(posts) {
+    if (!posts || posts.length === 0) return;
+    const latest = posts[0].timestamp;
+    if (!latest) return;
+    const ts = new Date(latest);
+    const ageH = (Date.now() - ts.getTime()) / 3600000;
+    if (ageH > 2) {
+        const banner = $('stale-banner');
+        const msg = $('stale-msg');
+        const timeStr = ts.toLocaleTimeString('zh-TW', {hour:'2-digit',minute:'2-digit'});
+        msg.textContent = `快報已超過 2 小時未更新（最後更新: ${timeStr}，${ageH.toFixed(0)} 小時前）`;
+        banner.style.display = 'block';
+    }
+}
+
 // ── Init ────────────────────────────────────────
 async function init() {
     showState('載入中...', '正在讀取新聞索引');
@@ -301,6 +359,7 @@ async function init() {
             showState('尚無新聞資料', '新聞資料尚未生成');
             return;
         }
+        checkNewsFreshness(dateIndex[0]);
         // Check hash
         const hash = window.location.hash.slice(1);
         const idx = dateIndex.indexOf(hash);
@@ -344,6 +403,8 @@ async function loadDate() {
 // ── Render ───────────────────────────────────────
 function renderAll(data) {
     const posts = data.posts || [];
+    // Check post freshness only when viewing latest date
+    if (currentIdx === 0) checkNewsPostFreshness(posts);
 
     // Summary
     const totalPosts = posts.length;
