@@ -1,24 +1,33 @@
 {
-  "updated": "2026-02-19T11:10:09.586466",
+  "updated": "2026-02-19T22:18:04.144654",
   "summary": {
     "total": 100,
     "wins": 50,
-    "losses": 46,
-    "open": 4,
-    "win_rate": 52.1,
-    "avg_return": 1.7
+    "losses": 45,
+    "open": 0,
+    "win_rate": 52.6,
+    "avg_return": 1.72
   },
   "tracks": [
+    {
+      "date": "2026-02-18",
+      "symbol": "KLRS",
+      "entry": 10.25,
+      "tp": 11.48,
+      "sl": 8.22,
+      "status": "ERROR",
+      "return_pct": 0.0,
+      "days": 0
+    },
     {
       "date": "2026-02-13",
       "symbol": "RAPT",
       "entry": 57.88,
       "tp": 64.82,
       "sl": 57.59,
-      "status": "OPEN",
-      "return_pct": -0.24,
-      "days": 2,
-      "current": 57.74
+      "status": "ERROR",
+      "return_pct": 0.0,
+      "days": 0
     },
     {
       "date": "2026-02-12",
@@ -26,10 +35,9 @@
       "entry": 13.96,
       "tp": 15.64,
       "sl": 13.87,
-      "status": "OPEN",
-      "return_pct": -0.03,
-      "days": 3,
-      "current": 13.96
+      "status": "ERROR",
+      "return_pct": 0.0,
+      "days": 0
     },
     {
       "date": "2026-02-11",
@@ -37,10 +45,9 @@
       "entry": 16.92,
       "tp": 18.95,
       "sl": 15.26,
-      "status": "OPEN",
-      "return_pct": -0.3,
-      "days": 4,
-      "current": 16.87
+      "status": "ERROR",
+      "return_pct": 0.0,
+      "days": 0
     },
     {
       "date": "2026-02-10",
@@ -72,10 +79,9 @@
       "entry": 27.06,
       "tp": 30.31,
       "sl": 25.68,
-      "status": "OPEN",
-      "return_pct": -2.53,
-      "days": 7,
-      "current": 26.38
+      "status": "ERROR",
+      "return_pct": 0.0,
+      "days": 0
     },
     {
       "date": "2026-02-05",
@@ -1192,18 +1198,6 @@
       "days": 2,
       "exit_price": 1.45,
       "exit_type": "TRAIL"
-    },
-    {
-      "date": "2025-09-19",
-      "symbol": "TII",
-      "entry": 1.68,
-      "tp": 1.88,
-      "sl": 1.48,
-      "status": "LOSS",
-      "return_pct": -0.1,
-      "days": 1,
-      "exit_price": 1.68,
-      "exit_type": "SL"
     }
   ]
 }
