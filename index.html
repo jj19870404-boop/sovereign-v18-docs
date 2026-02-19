@@ -3171,6 +3171,479 @@ li { margin: 4px 0; }
     V22 的核心邏輯：用更緊的停損（1.8x vs 2.4x）更快認賠，換取更多交易機會；用更高的停利（15-18% vs 12%）讓贏家跑得更遠。單看任一方向都是負效果，但組合後形成「快虧慢贏」的完美節奏。V22-WFOptimal 的 6 年複利最高（$16.5 億），但 V22-HighTP 風險調整最佳（MDD 46.6%），實戰推薦後者。
 </div>
 
+<h3>回測驗證條件</h3>
+<div class="card card-green">
+    <p>以下所有數據均在<strong>嚴格的無前瞻偏差條件</strong>下產生：</p>
+    <ul>
+        <li><strong>去除上帝視角：</strong>信號日 T 選股 &rarr; 隔日 T+1 才下單執行</li>
+        <li><strong>開盤前下單：</strong>以 T+1 Open &times; (1 + 0.1% slippage) 計算進場價</li>
+        <li><strong>ALL-IN：</strong>全部可用資金買入單一股票，無分散</li>
+        <li><strong>候選股排名：</strong>僅使用信號日 T 收盤時的 RS_Rank、Tightness、Vol_Ratio 等指標</li>
+        <li><strong>數據範圍：</strong>11,227 檔美股 &times; 11,998,827 筆日線數據</li>
+    </ul>
+</div>
+
+<h3>V20 逐年詳細報告</h3>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">報酬</th>
+        <th class="num-cell">交易</th>
+        <th class="num-cell">WR</th>
+        <th class="num-cell">PF</th>
+        <th class="num-cell">MDD</th>
+        <th class="num-cell">均贏</th>
+        <th class="num-cell">均虧</th>
+        <th class="num-cell">最大贏</th>
+        <th class="num-cell">最大虧</th>
+        <th class="num-cell">連勝</th>
+        <th class="num-cell">連虧</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell win">+299.0%</td>
+        <td class="num-cell">68</td>
+        <td class="num-cell">70.6%</td>
+        <td class="num-cell">1.82</td>
+        <td class="num-cell">42.2%</td>
+        <td class="num-cell">+7.02%</td>
+        <td class="num-cell">-8.52%</td>
+        <td class="num-cell">+12.00%</td>
+        <td class="num-cell">-19.65%</td>
+        <td class="num-cell">6</td>
+        <td class="num-cell">3</td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell win">+351.5%</td>
+        <td class="num-cell">59</td>
+        <td class="num-cell">66.1%</td>
+        <td class="num-cell">2.05</td>
+        <td class="num-cell">40.7%</td>
+        <td class="num-cell">+8.33%</td>
+        <td class="num-cell">-7.52%</td>
+        <td class="num-cell">+23.24%</td>
+        <td class="num-cell">-13.21%</td>
+        <td class="num-cell">8</td>
+        <td class="num-cell">5</td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell win">+388.2%</td>
+        <td class="num-cell">61</td>
+        <td class="num-cell">65.6%</td>
+        <td class="num-cell">2.02</td>
+        <td class="num-cell">53.1%</td>
+        <td class="num-cell">+9.01%</td>
+        <td class="num-cell">-7.93%</td>
+        <td class="num-cell">+37.12%</td>
+        <td class="num-cell">-14.39%</td>
+        <td class="num-cell">6</td>
+        <td class="num-cell">7</td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell win">+90.6%</td>
+        <td class="num-cell">58</td>
+        <td class="num-cell">60.3%</td>
+        <td class="num-cell">1.46</td>
+        <td class="num-cell">58.8%</td>
+        <td class="num-cell">+8.99%</td>
+        <td class="num-cell">-8.87%</td>
+        <td class="num-cell">+58.90%</td>
+        <td class="num-cell">-20.00%</td>
+        <td class="num-cell">9</td>
+        <td class="num-cell">4</td>
+    </tr>
+    <tr style="background: rgba(0,255,127,0.08);">
+        <td><strong>2025</strong></td>
+        <td class="num-cell win"><strong>+9,685%</strong></td>
+        <td class="num-cell">76</td>
+        <td class="num-cell">86.8%</td>
+        <td class="num-cell">3.30</td>
+        <td class="num-cell">30.4%</td>
+        <td class="num-cell">+8.59%</td>
+        <td class="num-cell">-7.32%</td>
+        <td class="num-cell">+12.00%</td>
+        <td class="num-cell">-20.00%</td>
+        <td class="num-cell">18</td>
+        <td class="num-cell">1</td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell win">+76.9%</td>
+        <td class="num-cell">8</td>
+        <td class="num-cell">75.0%</td>
+        <td class="num-cell">24.35</td>
+        <td class="num-cell">-</td>
+        <td class="num-cell">+10.44%</td>
+        <td class="num-cell">-1.08%</td>
+        <td class="num-cell">+12.00%</td>
+        <td class="num-cell">-1.43%</td>
+        <td class="num-cell">3</td>
+        <td class="num-cell">1</td>
+    </tr>
+    <tr style="font-weight: 700; border-top: 2px solid var(--border);">
+        <td>6 年複利</td>
+        <td class="num-cell win">$4,963 萬</td>
+        <td class="num-cell">316</td>
+        <td class="num-cell">69.6%</td>
+        <td class="num-cell">3.98</td>
+        <td class="num-cell">-</td>
+        <td class="num-cell">+8.02%</td>
+        <td class="num-cell">-7.94%</td>
+        <td class="num-cell">+51.59%</td>
+        <td class="num-cell">-20.00%</td>
+        <td class="num-cell">18</td>
+        <td class="num-cell">7</td>
+    </tr>
+</table>
+</div>
+
+<h3>V22-HighTP 逐年詳細報告（推薦方案）</h3>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">報酬</th>
+        <th class="num-cell">交易</th>
+        <th class="num-cell">WR</th>
+        <th class="num-cell">PF</th>
+        <th class="num-cell">MDD</th>
+        <th class="num-cell">均贏</th>
+        <th class="num-cell">均虧</th>
+        <th class="num-cell">最大贏</th>
+        <th class="num-cell">最大虧</th>
+        <th class="num-cell">連勝</th>
+        <th class="num-cell">連虧</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell win">+1,575.6%</td>
+        <td class="num-cell">67</td>
+        <td class="num-cell">70.2%</td>
+        <td class="num-cell">3.11</td>
+        <td class="num-cell">27.9%</td>
+        <td class="num-cell">+9.71%</td>
+        <td class="num-cell">-6.64%</td>
+        <td class="num-cell">+38.39%</td>
+        <td class="num-cell">-20.00%</td>
+        <td class="num-cell">8</td>
+        <td class="num-cell">3</td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell win">+93.5%</td>
+        <td class="num-cell">65</td>
+        <td class="num-cell">53.9%</td>
+        <td class="num-cell">1.43</td>
+        <td class="num-cell">34.6%</td>
+        <td class="num-cell">+7.84%</td>
+        <td class="num-cell">-6.20%</td>
+        <td class="num-cell">+22.91%</td>
+        <td class="num-cell">-13.19%</td>
+        <td class="num-cell">5</td>
+        <td class="num-cell">4</td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell win">+835.6%</td>
+        <td class="num-cell">65</td>
+        <td class="num-cell">66.2%</td>
+        <td class="num-cell">2.56</td>
+        <td class="num-cell">48.1%</td>
+        <td class="num-cell">+9.53%</td>
+        <td class="num-cell">-6.72%</td>
+        <td class="num-cell">+37.12%</td>
+        <td class="num-cell">-11.91%</td>
+        <td class="num-cell">7</td>
+        <td class="num-cell">7</td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell win">+589.3%</td>
+        <td class="num-cell">59</td>
+        <td class="num-cell">64.4%</td>
+        <td class="num-cell">2.22</td>
+        <td class="num-cell">40.0%</td>
+        <td class="num-cell">+11.04%</td>
+        <td class="num-cell">-8.09%</td>
+        <td class="num-cell">+58.90%</td>
+        <td class="num-cell">-16.87%</td>
+        <td class="num-cell">9</td>
+        <td class="num-cell">4</td>
+    </tr>
+    <tr style="background: rgba(0,255,127,0.08);">
+        <td><strong>2025</strong></td>
+        <td class="num-cell win"><strong>+2,325%</strong></td>
+        <td class="num-cell">75</td>
+        <td class="num-cell">76.0%</td>
+        <td class="num-cell">2.31</td>
+        <td class="num-cell">29.1%</td>
+        <td class="num-cell">+9.24%</td>
+        <td class="num-cell">-9.14%</td>
+        <td class="num-cell">+18.00%</td>
+        <td class="num-cell">-15.51%</td>
+        <td class="num-cell">12</td>
+        <td class="num-cell">3</td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell win">+205.8%</td>
+        <td class="num-cell">10</td>
+        <td class="num-cell">90.0%</td>
+        <td class="num-cell">93.56</td>
+        <td class="num-cell">-</td>
+        <td class="num-cell">+13.51%</td>
+        <td class="num-cell">-0.72%</td>
+        <td class="num-cell">+18.00%</td>
+        <td class="num-cell">-0.72%</td>
+        <td class="num-cell">9</td>
+        <td class="num-cell">1</td>
+    </tr>
+    <tr style="font-weight: 700; border-top: 2px solid var(--border);">
+        <td>6 年複利</td>
+        <td class="num-cell win">$9.6 億</td>
+        <td class="num-cell">337</td>
+        <td class="num-cell">66.2%</td>
+        <td class="num-cell">5.03</td>
+        <td class="num-cell">-</td>
+        <td class="num-cell">+9.65%</td>
+        <td class="num-cell">-7.03%</td>
+        <td class="num-cell">+51.59%</td>
+        <td class="num-cell">-20.00%</td>
+        <td class="num-cell">14</td>
+        <td class="num-cell">7</td>
+    </tr>
+</table>
+</div>
+
+<h3>V22-TightHigh 逐年詳細報告</h3>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">報酬</th>
+        <th class="num-cell">交易</th>
+        <th class="num-cell">WR</th>
+        <th class="num-cell">PF</th>
+        <th class="num-cell">MDD</th>
+        <th class="num-cell">均贏</th>
+        <th class="num-cell">均虧</th>
+        <th class="num-cell">最大贏</th>
+        <th class="num-cell">最大虧</th>
+        <th class="num-cell">連勝</th>
+        <th class="num-cell">連虧</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell win">+769.4%</td>
+        <td class="num-cell">72</td>
+        <td class="num-cell">70.8%</td>
+        <td class="num-cell">2.39</td>
+        <td class="num-cell">29.7%</td>
+        <td class="num-cell">+7.75%</td>
+        <td class="num-cell">-7.02%</td>
+        <td class="num-cell">+26.63%</td>
+        <td class="num-cell">-20.00%</td>
+        <td class="num-cell">8</td>
+        <td class="num-cell">2</td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell win">+88.4%</td>
+        <td class="num-cell">65</td>
+        <td class="num-cell">53.9%</td>
+        <td class="num-cell">1.42</td>
+        <td class="num-cell">34.6%</td>
+        <td class="num-cell">+7.76%</td>
+        <td class="num-cell">-6.20%</td>
+        <td class="num-cell">+22.91%</td>
+        <td class="num-cell">-13.19%</td>
+        <td class="num-cell">5</td>
+        <td class="num-cell">4</td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell win">+1,018.9%</td>
+        <td class="num-cell">69</td>
+        <td class="num-cell">66.7%</td>
+        <td class="num-cell">2.56</td>
+        <td class="num-cell">49.5%</td>
+        <td class="num-cell">+9.64%</td>
+        <td class="num-cell">-7.02%</td>
+        <td class="num-cell">+37.12%</td>
+        <td class="num-cell">-14.43%</td>
+        <td class="num-cell">7</td>
+        <td class="num-cell">7</td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell win">+695.6%</td>
+        <td class="num-cell">62</td>
+        <td class="num-cell">62.9%</td>
+        <td class="num-cell">3.30</td>
+        <td class="num-cell">41.7%</td>
+        <td class="num-cell">+11.17%</td>
+        <td class="num-cell">-7.41%</td>
+        <td class="num-cell">+58.90%</td>
+        <td class="num-cell">-16.87%</td>
+        <td class="num-cell">10</td>
+        <td class="num-cell">4</td>
+    </tr>
+    <tr style="background: rgba(0,255,127,0.08);">
+        <td><strong>2025</strong></td>
+        <td class="num-cell win"><strong>+4,860%</strong></td>
+        <td class="num-cell">86</td>
+        <td class="num-cell">76.7%</td>
+        <td class="num-cell">2.61</td>
+        <td class="num-cell">-</td>
+        <td class="num-cell">+9.12%</td>
+        <td class="num-cell">-8.32%</td>
+        <td class="num-cell">+15.00%</td>
+        <td class="num-cell">-15.51%</td>
+        <td class="num-cell">16</td>
+        <td class="num-cell">3</td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell win">+161.9%</td>
+        <td class="num-cell">10</td>
+        <td class="num-cell">90.0%</td>
+        <td class="num-cell">86.02</td>
+        <td class="num-cell">-</td>
+        <td class="num-cell">+11.51%</td>
+        <td class="num-cell">-0.72%</td>
+        <td class="num-cell">+15.00%</td>
+        <td class="num-cell">-0.72%</td>
+        <td class="num-cell">9</td>
+        <td class="num-cell">1</td>
+    </tr>
+    <tr style="font-weight: 700; border-top: 2px solid var(--border);">
+        <td>6 年複利</td>
+        <td class="num-cell win">$13.7 億</td>
+        <td class="num-cell">358</td>
+        <td class="num-cell">67.0%</td>
+        <td class="num-cell">5.24</td>
+        <td class="num-cell">-</td>
+        <td class="num-cell">+9.16%</td>
+        <td class="num-cell">-6.96%</td>
+        <td class="num-cell">+51.59%</td>
+        <td class="num-cell">-20.00%</td>
+        <td class="num-cell">14</td>
+        <td class="num-cell">7</td>
+    </tr>
+</table>
+</div>
+
+<h3>出場方式深度分析（6 年複利）</h3>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>出場方式</th>
+        <th class="num-cell" colspan="3">V20</th>
+        <th class="num-cell" colspan="3">V22-HighTP</th>
+        <th class="num-cell" colspan="3">V22-TightHigh</th>
+    </tr>
+    <tr>
+        <th></th>
+        <th class="num-cell">筆數</th><th class="num-cell">WR</th><th class="num-cell">平均</th>
+        <th class="num-cell">筆數</th><th class="num-cell">WR</th><th class="num-cell">平均</th>
+        <th class="num-cell">筆數</th><th class="num-cell">WR</th><th class="num-cell">平均</th>
+    </tr>
+    <tr>
+        <td>SL 停損</td>
+        <td class="num-cell">110</td><td class="num-cell">38%</td><td class="num-cell loss">-4.40%</td>
+        <td class="num-cell">150</td><td class="num-cell">32%</td><td class="num-cell loss">-4.14%</td>
+        <td class="num-cell">154</td><td class="num-cell">33%</td><td class="num-cell loss">-4.15%</td>
+    </tr>
+    <tr>
+        <td>TRAIL 追蹤停利</td>
+        <td class="num-cell">97</td><td class="num-cell">95%</td><td class="num-cell win">+6.30%</td>
+        <td class="num-cell">137</td><td class="num-cell">97%</td><td class="num-cell win">+9.09%</td>
+        <td class="num-cell">128</td><td class="num-cell">95%</td><td class="num-cell win">+8.03%</td>
+    </tr>
+    <tr>
+        <td>TP 固定停利</td>
+        <td class="num-cell">83</td><td class="num-cell">100%</td><td class="num-cell win">+12.00%</td>
+        <td class="num-cell">40</td><td class="num-cell">100%</td><td class="num-cell win">+18.00%</td>
+        <td class="num-cell">65</td><td class="num-cell">100%</td><td class="num-cell win">+15.00%</td>
+    </tr>
+    <tr>
+        <td>STALE 滯留</td>
+        <td class="num-cell">21</td><td class="num-cell">0%</td><td class="num-cell loss">-8.55%</td>
+        <td class="num-cell">7</td><td class="num-cell">0%</td><td class="num-cell loss">-7.40%</td>
+        <td class="num-cell">7</td><td class="num-cell">0%</td><td class="num-cell loss">-7.30%</td>
+    </tr>
+</table>
+</div>
+<p style="color: var(--text-dim); font-size: 0.85em;">V22-HighTP 的 TRAIL 平均贏幅 +9.09%（V20: +6.30%），TP 平均贏幅 +18.00%（V20: +12.00%），虧損端幾乎相同。贏家明顯更大，輸家不變。</p>
+
+<h3>V20 vs V22 — 實戰執行指南</h3>
+
+<div class="card card-accent">
+    <h4 style="margin-top:0">核心結論：不需要選擇 &mdash; 兩者可以並行</h4>
+    <p>V20 和 V22 的信號來源完全相同（RS_Rank + VCP 突破），差異僅在 SL/TP 參數。根據 6 年回測數據分析：</p>
+    <ul>
+        <li><strong>V22-HighTP 為預設首選</strong> &mdash; 4/6 年勝出，風險更低（MDD 46.6% vs 54.2%），獲利因子更高（5.03 vs 3.98）</li>
+        <li><strong>V20 在超級牛市更強</strong> &mdash; 2025 年 V20 +9,685% vs V22 +2,325%（TP=12% 觸發更頻繁，讓資金更快輪轉）</li>
+        <li><strong>V22 在一般市場更穩定</strong> &mdash; 2024 年 V20 +91% vs V22 +589%（1.8x SL 更快止損，釋放資金到更好的機會）</li>
+    </ul>
+</div>
+
+<div class="two-col">
+    <div class="card card-green">
+        <h4 style="margin-top:0">方案 A：單一策略（最簡單）</h4>
+        <p><strong>使用 V22-HighTP</strong>（SL=1.8x, TP=18%, Time=14d）</p>
+        <ul>
+            <li>幾何均值 +633%（V20: +454%）</li>
+            <li>MDD 46.6%（V20: 54.2%）</li>
+            <li>報酬和風險雙贏</li>
+            <li>不需要判斷市場環境</li>
+        </ul>
+        <p style="margin-bottom:0"><strong>適合：</strong>追求簡單、穩定、風控優先</p>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--blue);">
+        <h4 style="margin-top:0">方案 B：雙軌並行（最優化）</h4>
+        <p><strong>50% V20 + 50% V22-HighTP</strong></p>
+        <ul>
+            <li>兩帳戶各跑一套參數</li>
+            <li>牛市 V20 那半衝高，V22 穩定</li>
+            <li>熊市/震盪 V22 那半保本</li>
+            <li>每年再平衡回 50/50</li>
+        </ul>
+        <p style="margin-bottom:0"><strong>適合：</strong>資金充足、追求分散風險</p>
+    </div>
+</div>
+
+<div class="card card-yellow">
+    <h4 style="margin-top:0">方案 C：動態切換（進階）</h4>
+    <p>利用現有的 Rolling WR 機制：</p>
+    <div class="formula">
+        近 20 筆交易 WR &ge; 70%: &rarr; 使用 V20 (SL=2.4x, TP=12%)（市場強勢，讓 TP 快速輪轉）<br>
+        近 20 筆交易 WR &lt; 70%: &rarr; 使用 V22-HighTP (SL=1.8x, TP=18%)（市場一般，用緊 SL 控損）
+    </div>
+    <p><strong>邏輯：</strong>高 WR 代表市場處於強勢動能環境，V20 的低 TP 可以讓資金更快輪轉到下一筆贏家。低 WR 代表市場震盪，V22 的緊 SL 可以減少每筆虧損。</p>
+    <p style="margin-bottom:0"><strong>注意：</strong>此方案未經獨立回測驗證，僅為邏輯推導。建議先用方案 A 或 B。</p>
+</div>
+
+<div class="flow-chart">
+    <div class="flow-step">每日開盤前</div>
+    <div class="flow-arrow">&darr;</div>
+    <div class="flow-step">Sovereign 掃描器產出候選股 (RS_Rank #1)</div>
+    <div class="flow-arrow">&darr;</div>
+    <div class="flow-step">檢查 Rolling WR：
+    TP 模式 → SL=1.8x ATR, TP=18%, Trail 3.1%
+    NoTP 模式 → SL=1.8x ATR, Tiered ATR Trail</div>
+    <div class="flow-arrow">&darr;</div>
+    <div class="flow-step">以開盤價 ALL-IN 買入</div>
+    <div class="flow-arrow">&darr;</div>
+    <div class="flow-step">持倉管理：BE &rarr; Trail &rarr; TP/SL/Time/Stale 出場</div>
+    <div class="flow-arrow">&darr;</div>
+    <div class="flow-step">出場後立即準備下一筆</div>
+</div>
+
 <!-- Footer -->
 <div class="footer">
     <p>Sovereign V22 &mdash; 動能突破交易系統技術文件</p>
