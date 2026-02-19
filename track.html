@@ -163,6 +163,80 @@ h1 {
 .ret-neg { color: var(--red); font-weight: 600; }
 .ret-zero { color: var(--text-dim); }
 
+/* ── Grade Badges ── */
+.grade {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.8em;
+    font-weight: 700;
+    min-width: 28px;
+    text-align: center;
+}
+.grade-S {
+    background: linear-gradient(135deg, #ffd700, #ffaa00);
+    color: #1a1a00;
+}
+.grade-A {
+    background: rgba(78, 203, 113, 0.2);
+    color: var(--green);
+    border: 1px solid rgba(78, 203, 113, 0.3);
+}
+.grade-B {
+    background: rgba(108, 140, 255, 0.15);
+    color: var(--accent);
+    border: 1px solid rgba(108, 140, 255, 0.25);
+}
+.grade-C {
+    background: rgba(255, 159, 67, 0.15);
+    color: var(--orange);
+    border: 1px solid rgba(255, 159, 67, 0.25);
+}
+.grade-D {
+    background: rgba(255, 107, 107, 0.15);
+    color: var(--red);
+    border: 1px solid rgba(255, 107, 107, 0.25);
+}
+
+/* ── Grade Stats Section ── */
+.grade-stats {
+    margin-bottom: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+}
+.grade-stats h3 {
+    font-size: 1em;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+.grade-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+}
+.grade-stats-table th {
+    background: var(--surface2);
+    color: var(--text-dim);
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 6px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+.grade-stats-table td {
+    padding: 8px 6px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+.grade-stats-note {
+    color: var(--text-dim);
+    font-size: 0.78em;
+    margin-top: 10px;
+}
+
 /* ── Footer ── */
 .footer {
     text-align: center;
@@ -181,9 +255,9 @@ h1 {
     border: 1px solid var(--border);
 }
 .table-wrap .track-table {
-    min-width: 500px;
+    min-width: 600px;
 }
-/* Sticky symbol column on horizontal scroll */
+/* Sticky symbol + grade columns on horizontal scroll */
 .track-table td:nth-child(3),
 .track-table th:nth-child(3) {
     position: sticky;
@@ -193,6 +267,10 @@ h1 {
 }
 .track-table tr:hover td:nth-child(3) {
     background: var(--surface);
+}
+.track-table td:nth-child(4),
+.track-table th:nth-child(4) {
+    text-align: center;
 }
 
 /* ── Loading ── */
@@ -285,6 +363,35 @@ h1 {
     <div class="summary-card"><div class="label">持倉中</div><div class="value" id="s-open">--</div></div>
 </div>
 
+<!-- Grade Stats -->
+<div class="grade-stats" id="grade-stats" style="display:none;">
+    <h3>評級勝率參考 — 2021-2026 回測統計 (V20, 全美股 7,600+, 316 筆交易)</h3>
+    <div style="overflow-x:auto">
+    <table class="grade-stats-table" id="grade-stats-table">
+        <thead><tr>
+            <th>評級</th><th>SL% 條件</th><th>交易數</th><th>勝率</th><th>停利率</th><th>平均報酬</th><th>說明</th>
+        </tr></thead>
+        <tbody id="grade-stats-body"></tbody>
+    </table>
+    </div>
+
+    <h3 style="margin-top:20px">各年度評級勝率</h3>
+    <div style="overflow-x:auto">
+    <table class="grade-stats-table" id="yearly-grade-table">
+        <thead><tr>
+            <th>年度</th><th>S</th><th>A</th><th>B</th><th>C</th><th>D</th><th>總計</th>
+        </tr></thead>
+        <tbody id="yearly-grade-body"></tbody>
+    </table>
+    </div>
+
+    <p class="grade-stats-note">
+        SL% = (進場價 - 停損價) / 進場價。SL% 越低代表停損越緊、單筆風險越低。<br>
+        評級基於進場時的停損距離計算，反映該筆交易的風險程度。數據來源：V20 全美股回測 (2021-2026)。<br>
+        注意：S/A 級樣本較少，統計參考價值有限；C/D 級為主力分佈，統計較穩定。
+    </p>
+</div>
+
 <!-- Table -->
 <div id="table-container">
     <p class="loading">載入資料中...</p>
@@ -303,6 +410,48 @@ h1 {
 <script>
 const DATA_URL = 'data/track.json';
 
+// ── Grade System ──────────────────────────────
+// SL% = (Entry - SL) / Entry × 100
+// S: SL% <= 5% | A: SL% <= 8% | B: SL% <= 12% | C: SL% <= 18% | D: SL% > 18%
+function calcGrade(entry, tp, sl) {
+    const slPct = (entry - sl) / entry * 100;
+    let grade;
+    if (slPct <= 5)       grade = 'S';
+    else if (slPct <= 8)  grade = 'A';
+    else if (slPct <= 12) grade = 'B';
+    else if (slPct <= 18) grade = 'C';
+    else                  grade = 'D';
+    return { slPct: Math.round(slPct * 10) / 10, grade };
+}
+
+// ── Historical Grade Stats (from 2021-2026 V20 全美股回測, 316 trades) ──
+const HIST = {
+    overall: {
+        S: { count: 3, wins: 2, wr: 66.7, avg_ret: 0.96, tp_rate: 0 },
+        A: { count: 3, wins: 2, wr: 66.7, avg_ret: 3.10, tp_rate: 33 },
+        B: { count: 51, wins: 31, wr: 60.8, avg_ret: 2.52, tp_rate: 20 },
+        C: { count: 129, wins: 90, wr: 69.8, avg_ret: 3.40, tp_rate: 23 },
+        D: { count: 130, wins: 95, wr: 73.1, avg_ret: 3.25, tp_rate: 32 },
+    },
+    yearly: {
+        '2021': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:10,wr:90.0}, C:{n:32,wr:65.6}, D:{n:26,wr:65.4}, total:{n:68,wr:69.1} },
+        '2022': { S:{n:0,wr:0}, A:{n:1,wr:0.0}, B:{n:14,wr:50.0}, C:{n:24,wr:62.5}, D:{n:11,wr:45.5}, total:{n:50,wr:54.0} },
+        '2023': { S:{n:1,wr:100}, A:{n:2,wr:100}, B:{n:7,wr:57.1}, C:{n:21,wr:61.9}, D:{n:27,wr:66.7}, total:{n:58,wr:65.5} },
+        '2024': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:6,wr:16.7}, C:{n:23,wr:60.9}, D:{n:31,wr:80.6}, total:{n:60,wr:66.7} },
+        '2025': { S:{n:1,wr:100}, A:{n:0,wr:0}, B:{n:13,wr:76.9}, C:{n:28,wr:92.9}, D:{n:32,wr:84.4}, total:{n:74,wr:86.5} },
+        '2026': { S:{n:1,wr:0}, A:{n:0,wr:0}, B:{n:1,wr:0}, C:{n:1,wr:100}, D:{n:3,wr:100}, total:{n:6,wr:66.7} },
+    },
+    total_trades: 316
+};
+
+const GRADE_META = {
+    S: { range: 'SL% <= 5%', note: '極低風險 — 停損極緊，波動度低' },
+    A: { range: 'SL% 5-8%', note: '低風險 — 停損緊密' },
+    B: { range: 'SL% 8-12%', note: '中等風險 — 標準設定' },
+    C: { range: 'SL% 12-18%', note: '偏高風險 — 停損較寬' },
+    D: { range: 'SL% > 18%', note: '高風險 — 停損很寬，波動大' },
+};
+
 async function loadTrack() {
     try {
         const resp = await fetch(DATA_URL + '?t=' + Date.now());
@@ -311,6 +460,7 @@ async function loadTrack() {
         renderSummary(data.summary);
         renderTable(data.tracks);
         renderSubtitle(data);
+        renderGradeStats(data.tracks);
     } catch (e) {
         document.getElementById('table-container').innerHTML =
             '<p class="loading">無法載入資料</p>';
@@ -348,6 +498,7 @@ function renderTable(tracks) {
         <th>#</th>
         <th>日期</th>
         <th>代碼</th>
+        <th>評級</th>
         <th>進場</th>
         <th class="hide-mobile">停利</th>
         <th class="hide-mobile">停損</th>
@@ -361,6 +512,9 @@ function renderTable(tracks) {
         const ret = t.return_pct;
         const retClass = ret > 0 ? 'ret-pos' : ret < 0 ? 'ret-neg' : 'ret-zero';
         const retStr = (ret >= 0 ? '+' : '') + ret.toFixed(2) + '%';
+
+        const { slPct, grade } = calcGrade(t.entry, t.tp, t.sl);
+        const gradeHtml = `<span class="grade grade-${grade}" title="SL%: ${slPct}%">${grade}</span>`;
 
         let statusBadge, exitPrice;
         if (t.status === 'WIN') {
@@ -381,6 +535,7 @@ function renderTable(tracks) {
             <td style="color:var(--text-dim)">${i + 1}</td>
             <td class="mono">${t.date.slice(5)}</td>
             <td class="sym">${t.symbol}</td>
+            <td>${gradeHtml}</td>
             <td class="mono">$${t.entry.toFixed(2)}</td>
             <td class="mono hide-mobile">$${t.tp.toFixed(2)}</td>
             <td class="mono hide-mobile">$${t.sl.toFixed(2)}</td>
@@ -393,6 +548,69 @@ function renderTable(tracks) {
 
     html += '</tbody></table></div>';
     document.getElementById('table-container').innerHTML = html;
+}
+
+function renderGradeStats(tracks) {
+    const container = document.getElementById('grade-stats');
+    const tbody = document.getElementById('grade-stats-body');
+    const grades = ['S', 'A', 'B', 'C', 'D'];
+    let html = '';
+
+    // ── Overall stats from historical backtest ──
+    grades.forEach(g => {
+        const h = HIST.overall[g];
+        const wrClass = h.count > 0 ? (h.wr >= 65 ? 'ret-pos' : h.wr < 55 ? 'ret-neg' : '') : '';
+        const avgClass = h.count > 0 ? (h.avg_ret > 0 ? 'ret-pos' : h.avg_ret < 0 ? 'ret-neg' : '') : '';
+        const countNote = h.count < 10 ? ' *' : '';
+        html += `<tr>
+            <td><span class="grade grade-${g}">${g}</span></td>
+            <td style="font-size:0.8em;color:var(--text-dim)">${GRADE_META[g].range}</td>
+            <td>${h.count}${countNote}</td>
+            <td class="${wrClass}" style="font-weight:600">${h.wr.toFixed(1)}%</td>
+            <td>${h.tp_rate}%</td>
+            <td class="${avgClass}">${h.avg_ret >= 0 ? '+' : ''}${h.avg_ret.toFixed(2)}%</td>
+            <td style="font-size:0.78em;color:var(--text-dim);text-align:left">${GRADE_META[g].note}</td>
+        </tr>`;
+    });
+
+    // Total row
+    html += `<tr style="font-weight:700;border-top:2px solid var(--border)">
+        <td>ALL</td>
+        <td></td>
+        <td>${HIST.total_trades}</td>
+        <td>68.0%</td>
+        <td>26%</td>
+        <td>+3.09%</td>
+        <td style="font-size:0.78em;color:var(--text-dim);text-align:left">2021-2026 全部交易 (* 樣本 < 10)</td>
+    </tr>`;
+
+    tbody.innerHTML = html;
+
+    // ── Yearly breakdown ──
+    const yearlyBody = document.getElementById('yearly-grade-body');
+    let yearHtml = '';
+    const years = ['2021', '2022', '2023', '2024', '2025', '2026'];
+
+    years.forEach(yr => {
+        const yd = HIST.yearly[yr];
+        yearHtml += `<tr><td style="font-weight:600">${yr}</td>`;
+        grades.forEach(g => {
+            const gd = yd[g];
+            if (gd.n === 0) {
+                yearHtml += `<td style="color:var(--text-dim)">--</td>`;
+            } else {
+                const cls = gd.wr >= 65 ? 'ret-pos' : gd.wr < 50 ? 'ret-neg' : '';
+                yearHtml += `<td class="${cls}">${gd.wr.toFixed(0)}% <span style="color:var(--text-dim);font-size:0.8em">(${gd.n})</span></td>`;
+            }
+        });
+        const t = yd.total;
+        const tCls = t.wr >= 65 ? 'ret-pos' : t.wr < 50 ? 'ret-neg' : '';
+        yearHtml += `<td class="${tCls}" style="font-weight:600">${t.wr.toFixed(1)}% <span style="color:var(--text-dim);font-size:0.8em">(${t.n})</span></td>`;
+        yearHtml += `</tr>`;
+    });
+
+    yearlyBody.innerHTML = yearHtml;
+    container.style.display = 'block';
 }
 
 loadTrack();
