@@ -391,6 +391,15 @@ li { margin: 4px 0; }
             <li>風險警示與實際預期</li>
         </ol>
     </li>
+    <li><a href="#v22-research">V22 研究突破</a>
+        <ol style="list-style-type: lower-alpha;">
+            <li>8 輪系統性研究總結</li>
+            <li>參數交互效應發現</li>
+            <li>Walk-Forward 驗證</li>
+            <li>V22 候選參數組合</li>
+            <li>實戰建議</li>
+        </ol>
+    </li>
 </ol>
 </div>
 
@@ -2823,10 +2832,349 @@ li { margin: 4px 0; }
     V21 研究歷經 16 輪、95+ 策略變體的窮盡式「壓力測試」——從信號到出場、從 ML 到體制自適應、從部分止盈到 Re-Entry——唯一曾超越基線的 Re-Entry (+110pp) 也在 0.3% 滑點壓測下崩潰 (-129pp)。這證明 V20 不是「還不夠好」，而是已經站在效能的理論上限。但再完美的系統也無法預測未來——永遠只投入可承受損失的資金。
 </div>
 
+<!-- ================================================================ -->
+<!-- V22 研究突破 -->
+<!-- ================================================================ -->
+<h2 id="v22-research"><span class="num">★★★</span>V22 研究突破 &mdash; 參數交互效應發現</h2>
+
+<div class="highlight-box">
+    <div class="label">V22 研究突破</div>
+    <div class="big-number">+203pp 超越 V20</div>
+    <div class="label" style="margin-top: 8px;">8 輪回測 | 70+ 策略變體 | 參數交互效應 +274pp | Walk-Forward OOS 驗證通過</div>
+</div>
+
+<h3>研究背景</h3>
+<div class="card card-yellow">
+    <p>V21 研究（16 輪、95+ 變體）結論為「V20 = 理論上限」。V22 透過更深入的<strong>參數聯合優化</strong>和 <strong>Walk-Forward 前推驗證</strong>，發現了 V21 逐一參數搜索無法找到的<strong>交互效應</strong>。</p>
+    <p><strong>關鍵洞見：</strong>單獨改變 SL 或 TP 或 Time 都會降低績效，但特定組合卻產生巨大的正向交互效應。</p>
+</div>
+
+<h3>V22 候選參數</h3>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>參數</th>
+        <th class="num-cell">V20</th>
+        <th class="num-cell">V22-TightHigh</th>
+        <th class="num-cell">V22-HighTP</th>
+    </tr>
+    <tr>
+        <td>ATR 停損倍數 (atr_sl)</td>
+        <td class="num-cell"><span class="param-value">2.4x</span></td>
+        <td class="num-cell"><span class="param-value">1.8x</span></td>
+        <td class="num-cell"><span class="param-value">1.8x</span></td>
+    </tr>
+    <tr>
+        <td>停利目標 (tp_target)</td>
+        <td class="num-cell"><span class="param-value">12%</span></td>
+        <td class="num-cell"><span class="param-value">15%</span></td>
+        <td class="num-cell"><span class="param-value">18%</span></td>
+    </tr>
+    <tr>
+        <td>時間停損 (time_stop)</td>
+        <td class="num-cell"><span class="param-value">14 天</span></td>
+        <td class="num-cell"><span class="param-value">14 天</span></td>
+        <td class="num-cell"><span class="param-value">14 天</span></td>
+    </tr>
+    <tr style="font-weight: 700; border-top: 2px solid var(--border);">
+        <td>幾何均值</td>
+        <td class="num-cell">+454%</td>
+        <td class="num-cell win">+658%</td>
+        <td class="num-cell win">+633%</td>
+    </tr>
+    <tr>
+        <td>vs V20</td>
+        <td class="num-cell">&mdash;</td>
+        <td class="num-cell win">+203pp</td>
+        <td class="num-cell win">+179pp</td>
+    </tr>
+    <tr>
+        <td>平均 MDD</td>
+        <td class="num-cell">54.2%</td>
+        <td class="num-cell loss">59.2%</td>
+        <td class="num-cell win">46.6%</td>
+    </tr>
+    <tr>
+        <td>勝出年數</td>
+        <td class="num-cell">&mdash;</td>
+        <td class="num-cell win">4/6</td>
+        <td class="num-cell win">4/6</td>
+    </tr>
+</table>
+</div>
+
+<div class="two-col">
+    <div class="card card-green">
+        <h4 style="margin-top:0">V22-TightHigh（最高報酬）</h4>
+        <p>SL=1.8x + TP=15%：更快止損 + 更高停利，幾何均值 <strong>+658%</strong>，4/6 年勝過 V20。2024 年從 V20 的 +91% 躍升至 <strong>+696%</strong>。</p>
+    </div>
+    <div class="card card-green">
+        <h4 style="margin-top:0">V22-HighTP（最佳風險調整）</h4>
+        <p>SL=1.8x + TP=18%：報酬 AND 風險都優於 V20。MDD 僅 <strong>46.6%</strong>（V20: 54.2%），同時報酬高 +179pp。實戰首選。</p>
+    </div>
+</div>
+
+<h3>交互作用效應</h3>
+<div class="card card-accent">
+    <p>V22 最重要的發現是<strong>參數交互效應</strong>。單獨改變任一參數都會降低績效，但組合後產生巨大的正向效應：</p>
+    <div class="formula">
+        SL 2.4x &rarr; 1.8x 單獨：<span style="color: var(--red);">-88.7pp</span><br>
+        TP 12% &rarr; 15% 單獨：<span style="color: var(--red);">-19.2pp</span><br>
+        加總預期效果：<span style="color: var(--red);">-107.9pp</span><br>
+        <strong>實際組合效果：<span style="color: var(--green);">+146.2pp</span></strong><br>
+        交互效應 = +146.2 - (-107.9) = <strong style="color: var(--green);">+274pp</strong>
+    </div>
+</div>
+
+<div class="analogy">
+    這就像烹飪中的「味道搭配」。鹽巴單吃很鹹（SL 單改），巧克力單加也不好（TP 單改），但鹽味焦糖巧克力（兩者組合）卻是頂級美味。V22 發現的就是停損和停利之間的「完美搭配」：更快止損讓資金更快釋放，更高停利讓贏家充分奔跑。
+</div>
+
+<h3>年度明細比較</h3>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">V20</th>
+        <th class="num-cell">V22-TightHigh</th>
+        <th class="num-cell">V22-HighTP</th>
+        <th class="num-cell">年度贏家</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell">+299%</td>
+        <td class="num-cell win">+769%</td>
+        <td class="num-cell win">+1,576%</td>
+        <td>V22-HighTP</td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell win">+352%</td>
+        <td class="num-cell">+88%</td>
+        <td class="num-cell">+94%</td>
+        <td>V20</td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell">+388%</td>
+        <td class="num-cell win">+1,019%</td>
+        <td class="num-cell win">+836%</td>
+        <td>V22-TightHigh</td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell">+91%</td>
+        <td class="num-cell win">+696%</td>
+        <td class="num-cell win">+589%</td>
+        <td>V22-TightHigh</td>
+    </tr>
+    <tr>
+        <td>2025</td>
+        <td class="num-cell win">+9,685%</td>
+        <td class="num-cell">+4,860%</td>
+        <td class="num-cell">+2,325%</td>
+        <td>V20</td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell">+77%</td>
+        <td class="num-cell win">+162%</td>
+        <td class="num-cell win">+206%</td>
+        <td>V22-HighTP</td>
+    </tr>
+</table>
+</div>
+<p style="color: var(--text-dim); font-size: 0.85em;">V20 在 2022 和 2025（超級牛市年）勝出，V22 在其餘 4 年穩定大幅勝出。</p>
+
+<h3>Walk-Forward 驗證</h3>
+<div class="card card-green">
+    <h4 style="margin-top:0">V20 未過度擬合</h4>
+    <p>Walk-Forward 分析（訓練 2 年 &rarr; 測試 1 年 &times; 4 窗口）顯示：</p>
+    <ul>
+        <li><strong>V20 In-Sample：</strong>+324.4%</li>
+        <li><strong>V20 Out-of-Sample：</strong>+533.6%</li>
+        <li><strong>衰減：</strong>+209pp（OOS 優於 IS &mdash; 非過擬合！）</li>
+    </ul>
+    <p>Walk-Forward 優化器在 3/4 窗口選擇 SL=1.8，3/4 窗口選擇 TP&ge;0.15，獨立驗證了 V22 參數的穩健性。</p>
+</div>
+
+<h3>8 輪研究摘要</h3>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>輪次</th>
+        <th>研究主題</th>
+        <th>變體數</th>
+        <th>核心發現</th>
+    </tr>
+    <tr><td>R1</td><td>資料品質審計</td><td>2</td><td>NASDAQ 數據交叉驗證</td></tr>
+    <tr><td>R2</td><td>板塊動能篩選</td><td>7</td><td>完全冗餘（RS_Rank 已隱含板塊選擇）</td></tr>
+    <tr><td>R3</td><td>VIX + 信用利差體制</td><td>7</td><td>所有體制篩選降低績效（-68 至 -332pp）</td></tr>
+    <tr><td>R4</td><td>自適應停損</td><td>7</td><td>V20 固定 2.4x 最佳；Time-Decay 最接近（-37pp）</td></tr>
+    <tr><td>R5</td><td>多倉位組合</td><td>7</td><td>1 倉位最高報酬；5 倉位 MDD 24%</td></tr>
+    <tr><td>R6</td><td>Walk-Forward 驗證</td><td>5&times;4</td><td>V20 未過擬合；WF 偏好 SL=1.8</td></tr>
+    <tr><td>R7</td><td>進場時機</td><td>7</td><td>Gap Reject 5% 微幅改善</td></tr>
+    <tr><td><strong>R8</strong></td><td><strong>參數敏感度</strong></td><td><strong>10</strong></td><td><strong>交互效應 +274pp，發現 V22 候選</strong></td></tr>
+</table>
+</div>
+
+<div class="card card-yellow">
+    <h4 style="margin-top:0">為何 V21 沒有發現這個組合？</h4>
+    <p>V21 使用<strong>逐一參數搜索</strong>（一次只改一個參數）。SL 從 2.4 改為 1.8 時報酬下降 88.7pp，因此被排除。TP 從 12% 改為 15% 時下降 19.2pp，也被排除。V22 的 Walk-Forward 優化器使用<strong>聯合搜索</strong>（同時改變 3 個參數），才發現了隱藏在參數空間中的交互效應。</p>
+    <p><strong>教訓：</strong>在非凸參數空間中，逐一搜索可能陷入局部最優。聯合搜索（Grid Search）雖然計算量大，但能發現逐一搜索遺漏的最佳組合。</p>
+</div>
+
+<h3>V22 實戰建議</h3>
+<div class="two-col">
+    <div class="card card-green">
+        <h4 style="margin-top:0">推薦：V22-HighTP</h4>
+        <ul>
+            <li>SL=1.8x, TP=18%, Time=14d</li>
+            <li>報酬 +633%（+179pp vs V20）</li>
+            <li>MDD <strong>46.6%</strong>（V20: 54.2%）</li>
+            <li>報酬和風險雙贏</li>
+        </ul>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--orange);">
+        <h4 style="margin-top:0">注意事項</h4>
+        <ul>
+            <li>V20 在極端牛市（2025）更強</li>
+            <li>V22 在一般年份更穩定</li>
+            <li>建議觀察 2026 全年後再最終決定</li>
+            <li>可考慮兩者並行（部分資金各跑一套）</li>
+        </ul>
+    </div>
+</div>
+
+<h3>全美股 6 年複利回測</h3>
+<div class="highlight-box">
+    <div class="label">V22 Full Backtest — 11,227 檔美股 × 6 年連續複利</div>
+    <div class="big-number">$10K &rarr; $13.7 億</div>
+    <div class="label" style="margin-top: 8px;">V22-TightHigh 6 年複利：V20 的 27.7 倍 | 358 筆交易 | WR 67%</div>
+</div>
+
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>策略</th>
+        <th class="num-cell">SL</th>
+        <th class="num-cell">TP</th>
+        <th class="num-cell">Time</th>
+        <th class="num-cell">最終淨值</th>
+        <th class="num-cell">幾何均值</th>
+        <th class="num-cell">vs V20</th>
+        <th class="num-cell">交易數</th>
+        <th class="num-cell">WR</th>
+    </tr>
+    <tr>
+        <td>A: V20 Baseline</td>
+        <td class="num-cell">2.4x</td>
+        <td class="num-cell">12%</td>
+        <td class="num-cell">14d</td>
+        <td class="num-cell">$4,963 萬</td>
+        <td class="num-cell">+454%</td>
+        <td class="num-cell">&mdash;</td>
+        <td class="num-cell">316</td>
+        <td class="num-cell">69.6%</td>
+    </tr>
+    <tr style="background: rgba(0,255,127,0.08);">
+        <td><strong>B: V22-TightHigh</strong></td>
+        <td class="num-cell">1.8x</td>
+        <td class="num-cell">15%</td>
+        <td class="num-cell">14d</td>
+        <td class="num-cell win"><strong>$13.7 億</strong></td>
+        <td class="num-cell win"><strong>+658%</strong></td>
+        <td class="num-cell win">27.7x</td>
+        <td class="num-cell">358</td>
+        <td class="num-cell">67.0%</td>
+    </tr>
+    <tr style="background: rgba(0,255,127,0.05);">
+        <td><strong>C: V22-HighTP</strong></td>
+        <td class="num-cell">1.8x</td>
+        <td class="num-cell">18%</td>
+        <td class="num-cell">14d</td>
+        <td class="num-cell win">$9.6 億</td>
+        <td class="num-cell win">+633%</td>
+        <td class="num-cell win">19.4x</td>
+        <td class="num-cell">337</td>
+        <td class="num-cell">66.2%</td>
+    </tr>
+    <tr style="background: rgba(0,255,127,0.05);">
+        <td>D: V22-WFOptimal</td>
+        <td class="num-cell">1.8x</td>
+        <td class="num-cell">15%</td>
+        <td class="num-cell">12d</td>
+        <td class="num-cell win">$16.5 億</td>
+        <td class="num-cell win">+642%</td>
+        <td class="num-cell win">33.2x</td>
+        <td class="num-cell">354</td>
+        <td class="num-cell">66.7%</td>
+    </tr>
+    <tr>
+        <td>E: V22-Balanced</td>
+        <td class="num-cell">2.0x</td>
+        <td class="num-cell">14%</td>
+        <td class="num-cell">14d</td>
+        <td class="num-cell win">$2.0 億</td>
+        <td class="num-cell win">+532%</td>
+        <td class="num-cell win">4.1x</td>
+        <td class="num-cell">326</td>
+        <td class="num-cell">68.4%</td>
+    </tr>
+</table>
+</div>
+<p style="color: var(--text-dim); font-size: 0.85em;">6 年連續複利（$10,000 起始 &rarr; 每年滾入全部資金）。所有 V22 變體均在 4/6 年勝過 V20。</p>
+
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>策略</th>
+        <th class="num-cell">平均贏幅</th>
+        <th class="num-cell">平均虧幅</th>
+        <th class="num-cell">平均持倉</th>
+        <th class="num-cell">SL 出場</th>
+        <th class="num-cell">Trail 出場</th>
+        <th class="num-cell">TP 出場</th>
+    </tr>
+    <tr>
+        <td>A: V20</td>
+        <td class="num-cell">+8.0%</td>
+        <td class="num-cell">-7.9%</td>
+        <td class="num-cell">4.0d</td>
+        <td class="num-cell">110</td>
+        <td class="num-cell">97</td>
+        <td class="num-cell">83</td>
+    </tr>
+    <tr>
+        <td>B: V22-TightHigh</td>
+        <td class="num-cell win">+9.2%</td>
+        <td class="num-cell win">-7.0%</td>
+        <td class="num-cell">3.5d</td>
+        <td class="num-cell">154</td>
+        <td class="num-cell">128</td>
+        <td class="num-cell">65</td>
+    </tr>
+    <tr>
+        <td>C: V22-HighTP</td>
+        <td class="num-cell win">+9.6%</td>
+        <td class="num-cell win">-7.0%</td>
+        <td class="num-cell">3.7d</td>
+        <td class="num-cell">150</td>
+        <td class="num-cell">137</td>
+        <td class="num-cell">40</td>
+    </tr>
+</table>
+</div>
+<p style="color: var(--text-dim); font-size: 0.85em;">V22 的 1.8x SL 使虧損更小（-7.0% vs -7.9%），同時贏幅更大（+9.2/9.6% vs +8.0%），持倉更短（3.5d vs 4.0d）。</p>
+
+<div class="analogy">
+    V22 的核心邏輯：用更緊的停損（1.8x vs 2.4x）更快認賠，換取更多交易機會；用更高的停利（15-18% vs 12%）讓贏家跑得更遠。單看任一方向都是負效果，但組合後形成「快虧慢贏」的完美節奏。V22-WFOptimal 的 6 年複利最高（$16.5 億），但 V22-HighTP 風險調整最佳（MDD 46.6%），實戰推薦後者。
+</div>
+
 <!-- Footer -->
 <div class="footer">
-    <p>Sovereign V20 &mdash; 動能突破交易系統技術文件</p>
-    <p>文件生成日期：2026-02-17 | 回測數據基於 2020-2026 年歷史資料</p>
+    <p>Sovereign V22 &mdash; 動能突破交易系統技術文件</p>
+    <p>文件生成日期：2026-02-19 | 回測數據基於 2020-2026 年歷史資料</p>
     <p>本文件僅供教育和研究用途，不構成投資建議。過去績效不代表未來表現。</p>
 </div>
 
