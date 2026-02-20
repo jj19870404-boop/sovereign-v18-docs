@@ -995,12 +995,19 @@ let dateIndex = [];
 let currentIdx = 0;
 
 // ── Helpers ──────────────────────────────────────
+function escHtml(str) {
+    if (str == null) return '';
+    const div = document.createElement('div');
+    div.textContent = String(str);
+    return div.innerHTML;
+}
+
 function gradeColor(g) {
-    return { A:'#4ecb71', B:'#8be9a0', C:'#ffd93d', D:'#ff9f43', F:'#ff6b6b' }[g] || '#8b90a5';
+    return { S:'#ffd700', A:'#4ecb71', B:'#8be9a0', C:'#ffd93d', D:'#ff9f43', F:'#ff6b6b' }[g] || '#8b90a5';
 }
 
 function gradeDesc(g) {
-    return { A:'強勢突破訊號', B:'品質良好', C:'普通 - 謹慎操作', D:'品質偏低', F:'不建議操作' }[g] || '';
+    return { S:'頂級突破訊號', A:'強勢突破訊號', B:'品質良好', C:'普通 - 謹慎操作', D:'品質偏低', F:'不建議操作' }[g] || '';
 }
 
 function fmt(n, d) {
@@ -1268,13 +1275,14 @@ function renderExits(exits) {
     $('exit-count').textContent = `(${exits.length} 筆)`;
 
     $('exits').innerHTML = exits.map(e => {
-        const isWin = e.return_pct >= 0;
-        const color = isWin ? 'var(--green)' : 'var(--red)';
+        const isWin = e.return_pct > 0;
+        const isBE = e.return_pct === 0;
+        const color = isWin ? 'var(--green)' : isBE ? 'var(--text-dim)' : 'var(--red)';
         const reasonHex = { TP:'#4ecb71', TRAIL:'#4ecdc4', SL:'#ff6b6b', TIME:'#ffd93d', STALE:'#ff9f43' };
         const rc = reasonHex[e.exit_reason] || '#8b90a5';
         return `<div class="exit-card">
-            <span class="exit-symbol">${e.symbol}</span>
-            <span class="exit-reason" style="background:${rc}22;color:${rc}">${e.exit_reason}</span>
+            <span class="exit-symbol">${escHtml(e.symbol)}</span>
+            <span class="exit-reason" style="background:${rc}22;color:${rc}">${escHtml(e.exit_reason)}</span>
             <span class="exit-return" style="color:${color}">${isWin ? '+' : ''}${fmt(e.return_pct)}%</span>
             <span style="color:var(--text-dim);font-size:0.85em">$${fmt(e.entry_price)} &rarr; $${fmt(e.exit_price)}</span>
         </div>`;
@@ -1385,7 +1393,7 @@ function renderOpenTrades(trades) {
 
         return `<div class="trade-card">
             <div class="trade-header">
-                <span class="trade-symbol">${t.symbol}</span>
+                <span class="trade-symbol">${escHtml(t.symbol)}</span>
                 <span class="trade-mode ${modeClass}">${modeLabel}</span>
             </div>
             <div class="trade-days">Day ${t.days} | 進場 ${t.entry_date}</div>
@@ -1618,18 +1626,21 @@ function renderSignal(pick, v20) {
     }
     const gc = gradeColor(pick.quality_grade);
     const rr = pick.risk_pct > 0 ? (pick.reward_pct / pick.risk_pct).toFixed(2) : '--';
-    const position_val = (pick.shares * pick.entry_price).toFixed(0);
+    const position_val = (pick.shares && pick.entry_price) ? (pick.shares * pick.entry_price).toFixed(0) : '0';
+    const sectorHTML = pick.sector
+        ? `${escHtml(pick.sector)} &mdash; 板塊排名 #${pick.sector_rank}`
+        : '<span style="color:var(--text-dim)">板塊資訊不可用</span>';
 
     $('signal').innerHTML = `
     <div class="signal-card">
         <div class="signal-top">
-            <span class="signal-symbol">${pick.symbol}</span>
+            <span class="signal-symbol">${escHtml(pick.symbol)}</span>
             <span class="signal-grade" style="background:${gc}22;color:${gc}">
-                ${pick.quality_grade} ${pick.quality_score.toFixed(0)}分
+                ${escHtml(pick.quality_grade)} ${fmt(pick.quality_score, 0)}分
             </span>
             <span class="signal-desc">${gradeDesc(pick.quality_grade)}</span>
         </div>
-        <div class="signal-sector">${pick.sector} &mdash; 板塊排名 #${pick.sector_rank}</div>
+        <div class="signal-sector">${sectorHTML}</div>
 
         <div class="signal-prices">
             <div class="price-box">
@@ -1707,14 +1718,15 @@ function renderPicksDetail(picks, v20) {
         const gap_threshold = p.close * (1 - PARAMS.gap_reject_pct);
         const be_price = p.entry_price * (1 + PARAMS.breakeven_trigger);
         const trail_price = p.entry_price * (1 + PARAMS.trail_activation);
-        const position_val = (p.shares * p.entry_price).toFixed(0);
+        const position_val = (p.shares && p.entry_price) ? (p.shares * p.entry_price).toFixed(0) : '0';
+        const secStr = p.sector ? `${escHtml(p.sector)} #${p.sector_rank}` : '';
 
         return `<div class="pick-detail-card" onclick="this.classList.toggle('open')">
             <div class="pick-detail-header">
                 <span class="pick-detail-rank">${p.rank}</span>
-                <span class="pick-detail-sym">${p.symbol}</span>
-                <span class="grade-badge" style="background:${gc}22;color:${gc}">${p.quality_grade} ${p.quality_score.toFixed(0)}分</span>
-                <span style="color:var(--text-dim);font-size:0.85em">${p.sector} #${p.sector_rank}</span>
+                <span class="pick-detail-sym">${escHtml(p.symbol)}</span>
+                <span class="grade-badge" style="background:${gc}22;color:${gc}">${escHtml(p.quality_grade)} ${fmt(p.quality_score, 0)}分</span>
+                <span style="color:var(--text-dim);font-size:0.85em">${secStr}</span>
                 <span class="pick-detail-toggle">[點擊展開]</span>
                 <span class="pick-detail-prices">
                     <span>$${fmt(p.close)}</span>
@@ -1787,10 +1799,10 @@ function renderPicks(picks) {
         const rr = p.risk_pct > 0 ? (p.reward_pct / p.risk_pct).toFixed(1) : '--';
         return `<tr>
             <td class="num">${p.rank}</td>
-            <td><strong>${p.symbol}</strong></td>
-            <td><span class="grade-badge" style="background:${gc}22;color:${gc}">${p.quality_grade}</span></td>
-            <td class="num">${p.quality_score.toFixed(0)}</td>
-            <td>${p.sector}</td>
+            <td><strong>${escHtml(p.symbol)}</strong></td>
+            <td><span class="grade-badge" style="background:${gc}22;color:${gc}">${escHtml(p.quality_grade)}</span></td>
+            <td class="num">${fmt(p.quality_score, 0)}</td>
+            <td>${escHtml(p.sector || '')}</td>
             <td class="num">$${fmt(p.close)}</td>
             <td class="num">$${fmt(p.entry_price)}</td>
             <td class="num" style="color:var(--green)">$${fmt(p.tp_price)}</td>

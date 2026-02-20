@@ -447,11 +447,23 @@ h1 {
 <script>
 const DATA_URL = 'data/track.json';
 
+function escHtml(str) {
+    if (str == null) return '';
+    const div = document.createElement('div');
+    div.textContent = String(str);
+    return div.innerHTML;
+}
+
+function safeFmt(n) {
+    return (n != null && !isNaN(n)) ? n.toFixed(2) : '--';
+}
+
 // ── Grade System ──────────────────────────────
 // SL% = (Entry - SL) / Entry × 100
 // S: SL% <= 5% | A: SL% <= 8% | B: SL% <= 12% | C: SL% <= 18% | D: SL% > 18%
 function calcGrade(entry, tp, sl) {
-    const slPct = (entry - sl) / entry * 100;
+    if (!entry || entry <= 0 || !sl || sl <= 0) return { slPct: 0, grade: '?' };
+    const slPct = Math.max(0, (entry - sl) / entry * 100);
     let grade;
     if (slPct <= 5)       grade = 'S';
     else if (slPct <= 8)  grade = 'A';
@@ -529,6 +541,7 @@ function renderSubtitle(data) {
 }
 
 function renderSummary(s) {
+    if (!s || s.win_rate == null) return;
     const wrEl = document.getElementById('s-wr');
     wrEl.textContent = s.win_rate + '%';
     wrEl.className = 'value ' + (s.win_rate >= 50 ? 'green' : 'red');
@@ -563,43 +576,43 @@ function renderTable(tracks) {
     </tr></thead><tbody>`;
 
     tracks.forEach((t, i) => {
-        const ret = t.return_pct;
+        const ret = (t.return_pct != null && !isNaN(t.return_pct)) ? t.return_pct : 0;
         const retClass = ret > 0 ? 'ret-pos' : ret < 0 ? 'ret-neg' : 'ret-zero';
         const retStr = (ret >= 0 ? '+' : '') + ret.toFixed(2) + '%';
 
         const { slPct, grade } = calcGrade(t.entry, t.tp, t.sl);
-        const gradeHtml = `<span class="grade grade-${grade}" title="SL%: ${slPct}%">${grade}</span>`;
+        const gradeHtml = `<span class="grade grade-${escHtml(grade)}" title="SL%: ${slPct}%">${escHtml(grade)}</span>`;
 
         let statusBadge, exitPrice;
         if (t.status === 'WIN') {
             statusBadge = '<span class="badge badge-win">WIN</span>';
-            exitPrice = '$' + t.exit_price.toFixed(2);
+            exitPrice = '$' + safeFmt(t.exit_price);
         } else if (t.status === 'LOSS') {
             statusBadge = '<span class="badge badge-loss">LOSS</span>';
-            exitPrice = '$' + t.exit_price.toFixed(2);
+            exitPrice = '$' + safeFmt(t.exit_price);
         } else if (t.status === 'BE') {
             statusBadge = '<span class="badge badge-be">BE</span>';
-            exitPrice = '$' + t.exit_price.toFixed(2);
+            exitPrice = '$' + safeFmt(t.exit_price);
         } else if (t.status === 'OPEN') {
             statusBadge = '<span class="badge badge-open">OPEN</span>';
-            exitPrice = '$' + (t.current || t.entry).toFixed(2);
+            exitPrice = '$' + safeFmt(t.current || t.entry);
         } else {
-            statusBadge = '<span class="badge">' + t.status + '</span>';
+            statusBadge = '<span class="badge">' + escHtml(t.status) + '</span>';
             exitPrice = '--';
         }
 
         html += `<tr>
             <td style="color:var(--text-dim)">${i + 1}</td>
-            <td class="mono">${t.date.slice(5)}</td>
-            <td class="sym">${t.symbol}</td>
+            <td class="mono">${escHtml((t.date || '').slice(5))}</td>
+            <td class="sym">${escHtml(t.symbol)}</td>
             <td>${gradeHtml}</td>
-            <td class="mono">$${t.entry.toFixed(2)}</td>
-            <td class="mono hide-mobile">$${t.tp.toFixed(2)}</td>
-            <td class="mono hide-mobile">$${t.sl.toFixed(2)}</td>
+            <td class="mono">$${safeFmt(t.entry)}</td>
+            <td class="mono hide-mobile">$${safeFmt(t.tp)}</td>
+            <td class="mono hide-mobile">$${safeFmt(t.sl)}</td>
             <td class="mono">${exitPrice}</td>
             <td class="${retClass}">${retStr}</td>
             <td>${statusBadge}</td>
-            <td class="hide-mobile">${t.days}d</td>
+            <td class="hide-mobile">${t.days || 0}d</td>
         </tr>`;
     });
 
