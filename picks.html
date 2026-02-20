@@ -818,7 +818,7 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
     <div class="stat-card">
         <div class="stat-label">滾動勝率</div>
         <div class="stat-value" id="s-rwr">--</div>
-        <div class="stat-desc">近 20 筆交易勝率<br>&ge;58% 切 TP，&lt;58% 切 NoTP</div>
+        <div class="stat-desc">近 20 筆交易勝率<br>&ge;55% 切 TP，&lt;55% 切 NoTP</div>
     </div>
     <div class="stat-card">
         <div class="stat-label">首選評級</div>
@@ -883,12 +883,12 @@ const PARAMS = {
     trail_activation: 0.018,
     trail_distance: 0.031,
     gap_reject_pct: 0.03,
-    tp_target: 0.12,
+    tp_target: 0.15,
     stale_days: 9,
     stale_threshold: -0.05,
-    time_stop: 14,
+    time_stop: 10,
     max_loss: -0.20,
-    atr_sl: 2.4,
+    atr_sl: 1.3,
     slippage: 0.001,
 };
 
@@ -1287,7 +1287,7 @@ function buildPlanHTML(p, v20) {
             <div class="mode-box${isTP ? ' active' : ''}">
                 <div class="mode-box-title">
                     <span class="mode-dot" style="background:var(--green)"></span>
-                    TP 模式 <span style="font-size:0.8em;color:var(--text-dim)">(WR &ge; 58%)</span>
+                    TP 模式 <span style="font-size:0.8em;color:var(--text-dim)">(WR &ge; 55%)</span>
                 </div>
                 <ul>
                     <li>固定停利 +${(PARAMS.tp_target*100).toFixed(0)}%</li>
@@ -1300,7 +1300,7 @@ function buildPlanHTML(p, v20) {
             <div class="mode-box${!isTP ? ' active' : ''}">
                 <div class="mode-box-title">
                     <span class="mode-dot" style="background:var(--orange)"></span>
-                    NoTP 模式 <span style="font-size:0.8em;color:var(--text-dim)">(WR &lt; 58%)</span>
+                    NoTP 模式 <span style="font-size:0.8em;color:var(--text-dim)">(WR &lt; 55%)</span>
                 </div>
                 <ul>
                     <li>無固定停利上限</li>
@@ -1558,15 +1558,15 @@ function renderQuickRef() {
         </div>
         <div class="quick-ref-row">
             <span class="qr-label" style="color:var(--accent)">TP 模式:</span>
-            <span class="qr-items">SL=ATR&times;2.4 | 保本 +0.5% | 追蹤 +1.8% (3.1%) | 停利 +12% | 停滯 9天&gt;5% | 時間停 14天</span>
+            <span class="qr-items">SL=ATR&times;1.3 | 保本 +0.5% | 追蹤 +1.8% (3.1%) | 停利 +15% | 停滯 9天&gt;5% | 時間停 10天</span>
         </div>
         <div class="quick-ref-row">
             <span class="qr-label" style="color:var(--orange)">NoTP 模式:</span>
-            <span class="qr-items">SL=ATR&times;2.4 | 保本 +0.8% | Tiered ATR 追蹤 (2.0x&rarr;1.0x) | 無停利上限 | 停滯 9天&gt;5% | 時間停 14天</span>
+            <span class="qr-items">SL=ATR&times;1.3 | 保本 +0.8% | Tiered ATR 追蹤 (2.0x&rarr;1.0x) | 無停利上限 | 停滯 9天&gt;5% | 時間停 10天</span>
         </div>
         <div class="quick-ref-row">
             <span class="qr-label" style="color:var(--text-dim)">模式切換:</span>
-            <span class="qr-items">Rolling 20-trade WR &ge; 58% &rarr; TP 模式 | WR &lt; 58% &rarr; NoTP 模式 | 前 20 筆 = TP 模式 (暖機)</span>
+            <span class="qr-items">Rolling 20-trade WR &ge; 55% &rarr; TP 模式 | WR &lt; 55% &rarr; NoTP 模式 | 前 20 筆 = TP 模式 (暖機)</span>
         </div>
     </div>`;
 }
