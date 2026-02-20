@@ -1,14 +1,24 @@
 {
-  "updated": "2026-02-20T06:00:26.803774",
+  "updated": "2026-02-20T11:10:03.465515",
   "summary": {
     "total": 100,
-    "wins": 51,
+    "wins": 50,
     "losses": 44,
     "open": 5,
-    "win_rate": 53.7,
-    "avg_return": 1.9
+    "win_rate": 53.2,
+    "avg_return": 1.81
   },
   "tracks": [
+    {
+      "date": "2026-02-19",
+      "symbol": "FET",
+      "entry": 53.08,
+      "tp": 61.05,
+      "sl": 49.85,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0
+    },
     {
       "date": "2026-02-18",
       "symbol": "KLRS",
@@ -1189,18 +1199,6 @@
       "status": "LOSS",
       "return_pct": -0.1,
       "days": 1,
-      "exit_price": 9.59,
-      "exit_type": "SL"
-    },
-    {
-      "date": "2025-09-23",
-      "symbol": "IMRX",
-      "entry": 8.65,
-      "tp": 9.69,
-      "sl": 6.92,
-      "status": "WIN",
-      "return_pct": 10.88,
-      "days": 2,
       "exit_price": 9.59,
       "exit_type": "SL"
     }
