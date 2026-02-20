@@ -398,7 +398,7 @@ h1 {
 
 <!-- Grade Stats -->
 <div class="grade-stats" id="grade-stats" style="display:none;">
-    <h3>評級勝率參考 — 2021-2026 回測統計 (V22, 全美股 7,600+, 449 筆交易)</h3>
+    <h3>評級勝率參考 — 2021-2026 回測統計 (V22, 全美股 7,600+, 316 筆交易)</h3>
     <div style="overflow-x:auto">
     <table class="grade-stats-table" id="grade-stats-table">
         <thead><tr>
@@ -457,7 +457,7 @@ function calcGrade(entry, tp, sl) {
     return { slPct: Math.round(slPct * 10) / 10, grade };
 }
 
-// ── Historical Grade Stats (from 2021-2026 V22 全美股回測, 449 trades) ──
+// ── Historical Grade Stats (from 2021-2026 V22 全美股回測, 316 trades) ──
 const HIST = {
     overall: {
         S: { count: 3, wins: 2, wr: 66.7, avg_ret: 0.96, tp_rate: 0 },
@@ -627,7 +627,7 @@ function renderGradeStats(tracks) {
         <td>ALL</td>
         <td></td>
         <td>${HIST.total_trades}</td>
-        <td>68.0%</td>
+        <td>69.6%</td>
         <td>26%</td>
         <td>+3.09%</td>
         <td style="font-size:0.78em;color:var(--text-dim);text-align:left">2021-2026 全部交易 (* 樣本 < 10)</td>

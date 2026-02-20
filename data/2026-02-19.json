@@ -76,12 +76,13 @@
       "W",
       "W",
       "W",
+      "L",
       "L"
     ],
-    "total_trades": 70,
+    "total_trades": 71,
     "wins": 54,
-    "losses": 16,
-    "win_rate": 77.1
+    "losses": 17,
+    "win_rate": 76.1
   },
   "open_trades": [
     {
@@ -91,7 +92,7 @@
       "entry_price": 27.0644,
       "tp": 30.3122,
       "sl": 25.6769,
-      "days": 0,
+      "days": 1,
       "highest": 27.064436691284175,
       "be_set": false,
       "trail_on": false,
@@ -105,7 +106,7 @@
       "entry_price": 24.1141,
       "tp": 27.0078,
       "sl": 23.36,
-      "days": 3,
+      "days": 4,
       "highest": 24.114090152740477,
       "be_set": false,
       "trail_on": false,
@@ -119,7 +120,7 @@
       "entry_price": 24.1676,
       "tp": 27.0678,
       "sl": 23.405,
-      "days": 3,
+      "days": 4,
       "highest": 24.167642873764034,
       "be_set": false,
       "trail_on": false,
@@ -139,23 +140,19 @@
       "trail_on": false,
       "use_tp": true,
       "trail_mode": "fixed"
-    },
-    {
-      "symbol": "RAPT",
-      "signal_date": "2026-02-13",
-      "entry_date": "2026-02-13",
-      "entry_price": 57.8778,
-      "tp": 64.8232,
-      "sl": 57.5898,
-      "days": 11,
-      "highest": 57.87781969451903,
-      "be_set": false,
-      "trail_on": false,
-      "use_tp": true,
-      "trail_mode": "fixed"
     }
   ],
-  "recent_exits": [],
+  "recent_exits": [
+    {
+      "symbol": "RAPT",
+      "entry_price": 57.8778,
+      "exit_price": 57.8,
+      "exit_date": "2026-02-19",
+      "exit_reason": "TIME",
+      "return_pct": -0.13,
+      "result": "LOSS"
+    }
+  ],
   "picks": [
     {
       "rank": 1,
@@ -179,8 +176,8 @@
       "vol_zscore": 1.34,
       "quality_grade": "D",
       "quality_score": 49.0,
-      "sector": "",
-      "sector_rank": 0
+      "sector": "Energy",
+      "sector_rank": 1
     },
     {
       "rank": 2,
@@ -204,8 +201,8 @@
       "vol_zscore": 2.09,
       "quality_grade": "D",
       "quality_score": 44.0,
-      "sector": "",
-      "sector_rank": 0
+      "sector": "Healthcare",
+      "sector_rank": 8
     },
     {
       "rank": 3,
@@ -229,8 +226,8 @@
       "vol_zscore": 3.66,
       "quality_grade": "D",
       "quality_score": 43.0,
-      "sector": "",
-      "sector_rank": 0
+      "sector": "Consumer Defensive",
+      "sector_rank": 3
     },
     {
       "rank": 4,
@@ -254,8 +251,8 @@
       "vol_zscore": 3.74,
       "quality_grade": "C",
       "quality_score": 51.0,
-      "sector": "",
-      "sector_rank": 0
+      "sector": "Communication Services",
+      "sector_rank": 6
     },
     {
       "rank": 5,
@@ -304,8 +301,8 @@
       "vol_zscore": 1.67,
       "quality_grade": "B",
       "quality_score": 76.0,
-      "sector": "",
-      "sector_rank": 0
+      "sector": "Industrials",
+      "sector_rank": 4
     },
     {
       "rank": 7,
@@ -329,8 +326,8 @@
       "vol_zscore": 1.55,
       "quality_grade": "D",
       "quality_score": 40.0,
-      "sector": "",
-      "sector_rank": 0
+      "sector": "Healthcare",
+      "sector_rank": 8
     },
     {
       "rank": 8,
@@ -354,8 +351,8 @@
       "vol_zscore": 1.93,
       "quality_grade": "C",
       "quality_score": 60.0,
-      "sector": "",
-      "sector_rank": 0
+      "sector": "Industrials",
+      "sector_rank": 4
     },
     {
       "rank": 9,
@@ -379,33 +376,33 @@
       "vol_zscore": 3.36,
       "quality_grade": "F",
       "quality_score": 34.0,
-      "sector": "",
-      "sector_rank": 0
+      "sector": "Healthcare",
+      "sector_rank": 8
     },
     {
       "rank": 10,
-      "symbol": "XES",
-      "close": 111.94,
-      "entry_price": 112.05,
-      "tp_price": 128.86,
-      "sl_price": 107.15,
-      "shares": 89,
-      "risk_pct": 4.38,
+      "symbol": "ANDE",
+      "close": 64.86,
+      "entry_price": 64.92,
+      "tp_price": 74.66,
+      "sl_price": 62.17,
+      "shares": 154,
+      "risk_pct": 4.24,
       "reward_pct": 15.0,
-      "rs_rank": 409,
-      "pct_from_52wk": 100.0,
-      "tightness": 3.16,
-      "vol_ratio": 2.33,
-      "mom_20": 22.13,
-      "sma20_slope": 1.0505,
-      "atr": 3.77,
-      "rsi_14": 76.2,
-      "close_position": 85.2,
-      "vol_zscore": 2.45,
-      "quality_grade": "C",
-      "quality_score": 52.0,
-      "sector": "",
-      "sector_rank": 0
+      "rs_rank": 411,
+      "pct_from_52wk": 94.6,
+      "tightness": 3.11,
+      "vol_ratio": 1.73,
+      "mom_20": 17.37,
+      "sma20_slope": 1.0566,
+      "atr": 2.12,
+      "rsi_14": 68.5,
+      "close_position": 72.9,
+      "vol_zscore": 1.67,
+      "quality_grade": "B",
+      "quality_score": 65.0,
+      "sector": "Consumer Defensive",
+      "sector_rank": 3
     }
   ],
   "no_picks": false

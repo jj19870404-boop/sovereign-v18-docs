@@ -1291,7 +1291,7 @@ function buildPlanHTML(p, v20) {
                 </div>
                 <ul>
                     <li>固定停利 +${(PARAMS.tp_target*100).toFixed(0)}%</li>
-                    <li>保本觸發 +0.5%</li>
+                    <li>保本觸發 +0.8%</li>
                     <li>追蹤停損 ${(PARAMS.trail_distance*100).toFixed(1)}%</li>
                     <li>市場強勢時快速兌現</li>
                     <li>資金輪轉更快</li>
@@ -1402,8 +1402,8 @@ function renderNoPicks(date) {
         </p>
     </div>`;
     $('signal').innerHTML = html;
-    $('detail').innerHTML = '';
-    $('picks').innerHTML = '';
+    $('picks-detail').innerHTML = '';
+    $('picks-table').innerHTML = '';
 }
 
 // ── Signal Card (#1 Pick - Full Report) ──────────
@@ -1558,7 +1558,7 @@ function renderQuickRef() {
         </div>
         <div class="quick-ref-row">
             <span class="qr-label" style="color:var(--accent)">TP 模式:</span>
-            <span class="qr-items">SL=ATR&times;1.3 | 保本 +0.5% | 追蹤 +1.8% (3.1%) | 停利 +15% | 停滯 9天&gt;5% | 時間停 10天</span>
+            <span class="qr-items">SL=ATR&times;1.3 | 保本 +0.8% | 追蹤 +1.8% (3.1%) | 停利 +15% | 停滯 9天&gt;5% | 時間停 10天</span>
         </div>
         <div class="quick-ref-row">
             <span class="qr-label" style="color:var(--orange)">NoTP 模式:</span>
