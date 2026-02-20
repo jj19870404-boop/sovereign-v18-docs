@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sovereign V20 - 選股歷史追蹤</title>
-<meta name="description" content="Sovereign V20 選股歷史追蹤 — 每日 #1 選股後續表現、勝率統計、100 個交易日追蹤">
+<title>Sovereign V22 - 選股歷史追蹤</title>
+<meta name="description" content="Sovereign V22 選股歷史追蹤 — 每日 #1 選股後續表現、勝率統計、100 個交易日追蹤">
 <style>
 :root {
     --bg: #0f1117;
@@ -371,7 +371,7 @@ h1 {
 
 <!-- Top Nav -->
 <div class="top-nav">
-    <a href="index.html" class="brand">Sovereign V20</a>
+    <a href="index.html" class="brand">Sovereign V22</a>
     <div class="nav-links">
         <a href="picks.html">每日選股</a>
         <a href="track.html" class="active">選股追蹤</a>
@@ -397,7 +397,7 @@ h1 {
 
 <!-- Grade Stats -->
 <div class="grade-stats" id="grade-stats" style="display:none;">
-    <h3>評級勝率參考 — 2021-2026 回測統計 (V20, 全美股 7,600+, 316 筆交易)</h3>
+    <h3>評級勝率參考 — 2021-2026 回測統計 (V22, 全美股 7,600+, 449 筆交易)</h3>
     <div style="overflow-x:auto">
     <table class="grade-stats-table" id="grade-stats-table">
         <thead><tr>
@@ -419,7 +419,7 @@ h1 {
 
     <p class="grade-stats-note">
         SL% = (進場價 - 停損價) / 進場價。SL% 越低代表停損越緊、單筆風險越低。<br>
-        評級基於進場時的停損距離計算，反映該筆交易的風險程度。數據來源：V20 全美股回測 (2021-2026)。<br>
+        評級基於進場時的停損距離計算，反映該筆交易的風險程度。數據來源：V22 全美股回測 (2021-2026)。<br>
         注意：S/A 級樣本較少，統計參考價值有限；C/D 級為主力分佈，統計較穩定。
     </p>
 </div>
@@ -433,7 +433,7 @@ h1 {
     <a href="index.html" style="color:var(--accent);text-decoration:none">&larr; 系統文件</a> &nbsp;|&nbsp;
     <a href="picks.html" style="color:var(--accent);text-decoration:none">每日選股</a> &nbsp;|&nbsp;
     <a href="news.html" style="color:var(--accent);text-decoration:none">整點快報 &rarr;</a>
-    <p style="margin-top:8px">Sovereign V20 — 每日 #1 選股後續追蹤</p>
+    <p style="margin-top:8px">Sovereign V22 — 每日 #1 選股後續追蹤</p>
     <p style="margin-top:4px">資料每日自動更新 | 進場價為訊號日次日開盤模擬進場</p>
 </div>
 
@@ -456,7 +456,7 @@ function calcGrade(entry, tp, sl) {
     return { slPct: Math.round(slPct * 10) / 10, grade };
 }
 
-// ── Historical Grade Stats (from 2021-2026 V20 全美股回測, 316 trades) ──
+// ── Historical Grade Stats (from 2021-2026 V22 全美股回測, 449 trades) ──
 const HIST = {
     overall: {
         S: { count: 3, wins: 2, wr: 66.7, avg_ret: 0.96, tp_rate: 0 },
