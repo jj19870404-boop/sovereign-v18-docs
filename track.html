@@ -184,6 +184,10 @@ h1 {
     background: rgba(255, 217, 61, 0.15);
     color: var(--yellow);
 }
+.badge-be {
+    background: rgba(139, 144, 165, 0.15);
+    color: var(--text-dim);
+}
 
 /* ── Return Color ── */
 .ret-pos { color: var(--green); font-weight: 600; }
@@ -529,8 +533,9 @@ function renderSummary(s) {
     wrEl.textContent = s.win_rate + '%';
     wrEl.className = 'value ' + (s.win_rate >= 50 ? 'green' : 'red');
 
+    const beStr = s.be ? ` / <span style="color:var(--text-dim)">${s.be}BE</span>` : '';
     document.getElementById('s-wl').innerHTML =
-        `<span style="color:var(--green)">${s.wins}</span> / <span style="color:var(--red)">${s.losses}</span>`;
+        `<span style="color:var(--green)">${s.wins}</span> / <span style="color:var(--red)">${s.losses}</span>${beStr}`;
 
     const avgEl = document.getElementById('s-avg');
     avgEl.textContent = (s.avg_return >= 0 ? '+' : '') + s.avg_return + '%';
@@ -571,6 +576,9 @@ function renderTable(tracks) {
             exitPrice = '$' + t.exit_price.toFixed(2);
         } else if (t.status === 'LOSS') {
             statusBadge = '<span class="badge badge-loss">LOSS</span>';
+            exitPrice = '$' + t.exit_price.toFixed(2);
+        } else if (t.status === 'BE') {
+            statusBadge = '<span class="badge badge-be">BE</span>';
             exitPrice = '$' + t.exit_price.toFixed(2);
         } else if (t.status === 'OPEN') {
             statusBadge = '<span class="badge badge-open">OPEN</span>';
