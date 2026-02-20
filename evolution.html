@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sovereign V18-V22 演化歷史 — 完整版本進化紀錄</title>
+<meta name="description" content="Sovereign 動能突破交易系統 V18 到 V22 Ultimate 的完整演化歷史，包含所有回測數據、參數變化、每日選股勝率分析">
+<style>
+:root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #222633;
+    --border: #2d3148;
+    --text: #e1e4ed;
+    --text-dim: #8b90a5;
+    --accent: #6c8cff;
+    --accent2: #4ecdc4;
+    --green: #4ecb71;
+    --red: #ff6b6b;
+    --yellow: #ffd93d;
+    --orange: #ff9f43;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+.container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+.top-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 24px; border-bottom: 1px solid var(--border);
+    margin-bottom: 24px; flex-wrap: wrap; gap: 8px;
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15, 17, 23, 0.92);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    margin-left: -24px; margin-right: -24px;
+}
+.top-nav a { color: var(--accent); text-decoration: none; font-size: 0.9em; padding: 4px 0; }
+.top-nav a:hover { text-decoration: underline; }
+.top-nav .brand { font-weight: 700; color: var(--text-dim); font-size: 0.9em; }
+.top-nav .brand:hover { color: var(--text); text-decoration: none; }
+.nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
+.nav-links a.active { color: var(--text); font-weight: 600; }
+.scroll-top {
+    position: fixed; bottom: 28px; right: 28px; width: 44px; height: 44px;
+    border-radius: 50%; background: var(--accent); color: var(--bg); border: none;
+    font-size: 1.3em; cursor: pointer; opacity: 0; visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.2s; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;
+}
+.scroll-top.show { opacity: 1; visibility: visible; }
+.scroll-top:hover { transform: scale(1.1); }
+h1 {
+    font-size: 2.2em; text-align: center; margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.subtitle { text-align: center; color: var(--text-dim); font-size: 1.1em; margin-bottom: 48px; }
+h2 {
+    font-size: 1.5em; color: var(--accent); margin: 48px 0 20px;
+    padding-bottom: 10px; border-bottom: 2px solid var(--border);
+}
+h2 .num {
+    display: inline-block; background: var(--accent); color: var(--bg);
+    width: 32px; height: 32px; border-radius: 50%; text-align: center;
+    line-height: 32px; font-size: 0.7em; margin-right: 10px; vertical-align: middle;
+}
+h3 { font-size: 1.15em; color: var(--accent2); margin: 28px 0 12px; }
+p { margin-bottom: 14px; }
+.card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px; margin: 16px 0;
+}
+.card-accent { border-left: 4px solid var(--accent); }
+.card-green { border-left: 4px solid var(--green); }
+.card-red { border-left: 4px solid var(--red); }
+.card-yellow { border-left: 4px solid var(--yellow); }
+.highlight-box {
+    background: linear-gradient(135deg, rgba(108,140,255,0.1), rgba(78,205,196,0.1));
+    border: 1px solid rgba(108,140,255,0.3); border-radius: 12px;
+    padding: 28px; margin: 24px 0; text-align: center;
+}
+.highlight-box .big-number {
+    font-size: 2.5em; font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.highlight-box .label { color: var(--text-dim); font-size: 0.95em; }
+.formula {
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 18px; margin: 10px 0; font-family: 'Courier New', monospace;
+    font-size: 0.95em; color: var(--accent2); overflow-x: auto;
+}
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.95em; }
+th {
+    background: var(--surface2); color: var(--accent); padding: 12px 14px;
+    text-align: left; font-weight: 600; border-bottom: 2px solid var(--border);
+}
+td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+tr:hover td { background: rgba(108,140,255,0.05); }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; margin: 16px 0; }
+.num-cell { text-align: right; font-variant-numeric: tabular-nums; }
+.win { color: var(--green); }
+.loss { color: var(--red); }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.85em; font-weight: 600; }
+.tag-green { background: rgba(78,203,113,0.2); color: var(--green); }
+.tag-red { background: rgba(255,107,107,0.2); color: var(--red); }
+.tag-yellow { background: rgba(255,217,61,0.2); color: var(--yellow); }
+.tag-blue { background: rgba(108,140,255,0.2); color: var(--accent); }
+.flow-chart { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; margin: 20px 0; }
+.flow-step {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 18px; text-align: center; min-width: 120px;
+}
+.flow-step .step-num { font-size: 0.75em; color: var(--text-dim); margin-bottom: 4px; }
+.flow-step .step-title { font-weight: 600; font-size: 0.95em; }
+.flow-arrow { color: var(--text-dim); font-size: 1.5em; }
+.param-value { color: var(--accent2); font-weight: 600; }
+ul, ol { margin: 8px 0 14px 24px; }
+li { margin: 4px 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.toc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 32px; margin: 32px 0; }
+.toc h3 { margin-top: 0; color: var(--text); }
+.toc ol { padding-left: 20px; }
+.toc li { margin: 6px 0; }
+.toc a { color: var(--accent); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.analogy {
+    background: rgba(255,217,61,0.08); border-left: 3px solid var(--yellow);
+    padding: 14px 18px; margin: 12px 0; border-radius: 0 8px 8px 0;
+    font-style: italic; color: var(--text-dim);
+}
+.timeline { position: relative; padding: 20px 0; margin: 30px 0; }
+.timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+    width: 3px; background: var(--border); transform: translateX(-50%);
+}
+.timeline-item {
+    position: relative; margin: 24px 0; padding: 0 24px;
+    display: flex; align-items: center; justify-content: center;
+}
+.timeline-dot {
+    width: 16px; height: 16px; border-radius: 50%; background: var(--accent);
+    border: 3px solid var(--bg); z-index: 2; flex-shrink: 0;
+}
+.timeline-dot.active { background: var(--green); width: 20px; height: 20px; }
+.timeline-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 20px; margin: 0 16px; max-width: 380px; width: 100%;
+}
+.timeline-card h4 { margin: 0 0 4px; color: var(--accent); font-size: 1em; }
+.timeline-card .meta { color: var(--text-dim); font-size: 0.85em; }
+.timeline-card .result { font-weight: 700; color: var(--green); font-size: 1.1em; margin-top: 4px; }
+.footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85em; text-align: center; }
+@media (max-width: 700px) {
+    .two-col { grid-template-columns: 1fr; }
+    .flow-chart { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .container { padding: 24px 16px; }
+    h1 { font-size: 1.6em; }
+    h2 { font-size: 1.25em; margin-top: 36px; }
+    .highlight-box { padding: 20px 16px; }
+    .highlight-box .big-number { font-size: 1.8em; }
+    .card { padding: 18px 16px; }
+    .toc { padding: 18px 20px; }
+    table { font-size: 0.85em; }
+    th, td { padding: 8px 6px; }
+    .top-nav { padding: 10px 16px; margin-left: -16px; margin-right: -16px; }
+    .nav-links { gap: 12px; }
+    .scroll-top { bottom: 16px; right: 16px; }
+    .timeline::before { left: 20px; }
+    .timeline-item { justify-content: flex-start; }
+}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+:focus:not(:focus-visible) { outline: none; }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0.01ms !important; }
+    html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="top-nav">
+    <a href="index.html" class="brand">Sovereign V22</a>
+    <div class="nav-links">
+        <a href="picks.html">每日選股</a>
+        <a href="track.html">選股追蹤</a>
+        <a href="news.html">整點快報</a>
+        <a href="evolution.html" class="active">版本演化</a>
+    </div>
+</div>
+
+<h1>Sovereign V18 &rarr; V22 Ultimate</h1>
+<p class="subtitle">完整版本演化歷史 &mdash; 從 $14.7M 到 $30.7B 的進化之路</p>
+
+<!-- Hero -->
+<div class="highlight-box">
+    <div class="label">5 個版本 &bull; 32 輪研究 &bull; 250+ 實驗 &bull; 12M+ 數據列</div>
+    <div class="big-number">$10K &rarr; $30.7B</div>
+    <div class="label" style="margin-top: 8px;">V18 基礎版 $14.7M &rarr; V20 五大升級 $49.6M &rarr; V22 Ultimate $30.7B</div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+<h3>目錄</h3>
+<ol>
+    <li><a href="#what">什麼是 Sovereign？</a></li>
+    <li><a href="#timeline">版本演化時間軸</a></li>
+    <li><a href="#params">全版本參數對照表</a></li>
+    <li><a href="#perf">全版本績效對照表</a></li>
+    <li><a href="#v18">V18 — 基礎版</a></li>
+    <li><a href="#v19">V19 — 保守過渡版</a></li>
+    <li><a href="#v20">V20 — 五大升級版</a></li>
+    <li><a href="#v21">V21 — 16 輪系統性研究</a></li>
+    <li><a href="#v22">V22 Ultimate — 最終突破</a></li>
+    <li><a href="#scan">每日掃描勝率演化</a></li>
+    <li><a href="#conclusion">結論</a></li>
+</ol>
+</div>
+
+<!-- ================================================================ -->
+<!-- 1. 什麼是 Sovereign -->
+<!-- ================================================================ -->
+<h2 id="what"><span class="num">1</span>什麼是 Sovereign？</h2>
+
+<div class="card card-accent">
+    <h3 style="margin-top:0">一句話說明</h3>
+    <p style="margin-bottom:0">Sovereign 是一套<strong>全自動美股選股系統</strong>，每天掃描全美 11,000+ 檔股票，找出最可能在短期內大漲的「動能突破」候選股。</p>
+</div>
+
+<p>想像你走進一間有 11,000 家攤位的夜市，每個攤位代表一檔美股。你不可能逐一試吃，但如果你有一台掃描器，能瞬間偵測哪個攤位正在「出餐最快、排隊最長、評價最高」——那就是 Sovereign 在做的事。</p>
+
+<h3>核心原理：VCP 動能突破</h3>
+<p>Sovereign 的選股邏輯基於<strong>量價收縮型態 (Volatility Contraction Pattern, VCP)</strong>——由傳奇交易員 Mark Minervini 發揚的技術：</p>
+<ul>
+    <li><strong>股價接近 52 週新高</strong>（強勢股，不撈底）</li>
+    <li><strong>波動率收縮</strong>（蓄勢待發，像彈簧壓縮）</li>
+    <li><strong>成交量突然放大</strong>（大資金進場的訊號）</li>
+    <li><strong>相對強度排名最高</strong>（全市場最強的那一檔）</li>
+</ul>
+
+<div class="analogy">
+    比喻：就像觀察一匹賽馬。牠在過去一年都跑在前段班（52 週高點），最近休息調整（波動收縮），然後突然起步加速（量能放大）——這時候下注勝率最高。
+</div>
+
+<h3>系統如何運作？</h3>
+<div class="flow-chart">
+    <div class="flow-step">
+        <div class="step-num">STEP 1</div>
+        <div class="step-title">每日掃描 11,000+ 股</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">
+        <div class="step-num">STEP 2</div>
+        <div class="step-title">篩選 VCP 突破候選</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">
+        <div class="step-num">STEP 3</div>
+        <div class="step-title">RS Rank 排序選最強</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--green);">
+        <div class="step-num">STEP 4</div>
+        <div class="step-title">自動管理進出場</div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 2. 版本演化時間軸 -->
+<!-- ================================================================ -->
+<h2 id="timeline"><span class="num">2</span>版本演化時間軸</h2>
+
+<div class="flow-chart" style="flex-direction: column; align-items: stretch; max-width: 600px; margin: 30px auto;">
+    <div class="flow-step" style="text-align: left;">
+        <div class="step-num">2025 年初</div>
+        <div class="step-title" style="color: var(--accent);">V18 — 基礎版</div>
+        <div style="font-size:0.85em; color: var(--text-dim); margin-top:4px;">首個完整回測版本 | $10K &rarr; $14.7M | 316 筆交易</div>
+    </div>
+    <div class="flow-arrow" style="align-self: center;">&darr;</div>
+    <div class="flow-step" style="text-align: left;">
+        <div class="step-num">2025 年中</div>
+        <div class="step-title" style="color: var(--text-dim);">V19 — 保守過渡版</div>
+        <div style="font-size:0.85em; color: var(--text-dim); margin-top:4px;">保守參數實驗（TP 10%, SL 1.5x）| 過渡性版本</div>
+    </div>
+    <div class="flow-arrow" style="align-self: center;">&darr;</div>
+    <div class="flow-step" style="text-align: left;">
+        <div class="step-num">2025 年底</div>
+        <div class="step-title" style="color: var(--accent);">V20 — 五大升級版</div>
+        <div style="font-size:0.85em; color: var(--text-dim); margin-top:4px;">Stale/Gap + 板塊 + 動態切換 | $10K &rarr; $49.6M | 316 筆交易</div>
+    </div>
+    <div class="flow-arrow" style="align-self: center;">&darr;</div>
+    <div class="flow-step" style="text-align: left;">
+        <div class="step-num">2026 年 1-2 月</div>
+        <div class="step-title" style="color: var(--yellow);">V21 — 16 輪系統性研究</div>
+        <div style="font-size:0.85em; color: var(--text-dim); margin-top:4px;">95+ 變體窮盡測試 | 結論：V20 = 理論上限</div>
+    </div>
+    <div class="flow-arrow" style="align-self: center;">&darr;</div>
+    <div class="flow-step" style="text-align: left; border-color: var(--green); background: rgba(0,255,127,0.05);">
+        <div class="step-num">2026 年 2 月</div>
+        <div class="step-title" style="color: var(--green);">V22 Ultimate — 最終突破</div>
+        <div style="font-size:0.85em; color: var(--text-dim); margin-top:4px;">4 階段 150+ 實驗 | $10K &rarr; $30.7B | <strong style="color:var(--green);">619x V20</strong></div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 3. 全版本參數對照表 -->
+<!-- ================================================================ -->
+<h2 id="params"><span class="num">3</span>全版本參數對照表</h2>
+
+<p>以下表格列出每個版本的<strong>所有核心參數</strong>差異。這是理解版本演化最重要的參考。</p>
+
+<h3>進場篩選參數</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>參數</th>
+        <th class="num-cell">V18</th>
+        <th class="num-cell">V19</th>
+        <th class="num-cell">V20</th>
+        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V22 Ultimate</th>
+    </tr>
+    <tr>
+        <td>RS Rank 限制</td>
+        <td class="num-cell"><span class="param-value">5,000</span></td>
+        <td class="num-cell"><span class="param-value">30</span></td>
+        <td class="num-cell"><span class="param-value">5,000</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">5,000</span></td>
+    </tr>
+    <tr>
+        <td>Vol Force 門檻</td>
+        <td class="num-cell"><span class="param-value">1.5x</span></td>
+        <td class="num-cell"><span class="param-value">1.5x</span></td>
+        <td class="num-cell"><span class="param-value">1.5x</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">1.5x</span></td>
+    </tr>
+    <tr>
+        <td>Vol Z-Score 門檻 <span class="tag tag-green">NEW</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value"><strong>&ge; 1.0&sigma;</strong></span></td>
+    </tr>
+    <tr>
+        <td>52 週高點門檻 (min_pct_52wk)</td>
+        <td class="num-cell"><span class="param-value">70%</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">70%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value"><strong>80%</strong></span></td>
+    </tr>
+    <tr>
+        <td>最低價格</td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">$5</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">&mdash;</span></td>
+    </tr>
+    <tr>
+        <td>最低成交量</td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">100K</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">&mdash;</span></td>
+    </tr>
+    <tr>
+        <td>動量篩選 (mom_filter)</td>
+        <td class="num-cell"><span class="param-value">-6.5%</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">-6.5%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">-6.5%</span></td>
+    </tr>
+    <tr>
+        <td>20 日動量篩選</td>
+        <td class="num-cell"><span class="param-value">&ge; 0%</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">&ge; 0%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">&ge; 0%</span></td>
+    </tr>
+    <tr>
+        <td>SMA 斜率篩選</td>
+        <td class="num-cell"><span class="param-value">&ge; 1.005</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">&ge; 1.005</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">&ge; 1.005</span></td>
+    </tr>
+    <tr>
+        <td>Gap-Down 拒絕</td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">-3%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">-3%</span></td>
+    </tr>
+    <tr>
+        <td>板塊動能篩選</td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">排除後 3 名</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">排除後 3 名</span></td>
+    </tr>
+    <tr>
+        <td>滑點 (slippage)</td>
+        <td class="num-cell"><span class="param-value">0.1%</span></td>
+        <td class="num-cell"><span class="param-value">0.3%</span></td>
+        <td class="num-cell"><span class="param-value">0.1%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">0.1%</span></td>
+    </tr>
+</table>
+</div>
+
+<h3>出場管理參數</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>參數</th>
+        <th class="num-cell">V18</th>
+        <th class="num-cell">V19</th>
+        <th class="num-cell">V20</th>
+        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V22 Ultimate</th>
+    </tr>
+    <tr>
+        <td>ATR 停損倍數 (atr_sl)</td>
+        <td class="num-cell"><span class="param-value">2.4x</span></td>
+        <td class="num-cell"><span class="param-value">1.5x</span></td>
+        <td class="num-cell"><span class="param-value">2.4x</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value"><strong>1.3x</strong></span></td>
+    </tr>
+    <tr>
+        <td>最大虧損限制 (max_loss)</td>
+        <td class="num-cell"><span class="param-value">-20%</span></td>
+        <td class="num-cell"><span class="param-value">-8%</span></td>
+        <td class="num-cell"><span class="param-value">-20%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">-20%</span></td>
+    </tr>
+    <tr>
+        <td>停利目標 (tp_target)</td>
+        <td class="num-cell"><span class="param-value">12%</span></td>
+        <td class="num-cell"><span class="param-value">10%</span></td>
+        <td class="num-cell"><span class="param-value">12%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value"><strong>15%</strong></span></td>
+    </tr>
+    <tr>
+        <td>追蹤停損距離 (trail)</td>
+        <td class="num-cell"><span class="param-value">3.1%</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">3.1%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">3.1%</span></td>
+    </tr>
+    <tr>
+        <td>追蹤啟動門檻 (trail_activation)</td>
+        <td class="num-cell"><span class="param-value">1.8%</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">1.8%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">1.8%</span></td>
+    </tr>
+    <tr>
+        <td>保本觸發 (breakeven)</td>
+        <td class="num-cell"><span class="param-value">0.5%</span></td>
+        <td class="num-cell"><span class="param-value">5.0%</span></td>
+        <td class="num-cell"><span class="param-value">0.5%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">0.5%</span></td>
+    </tr>
+    <tr>
+        <td>時間停損 (time_stop)</td>
+        <td class="num-cell"><span class="param-value">14 天</span></td>
+        <td class="num-cell"><span class="param-value">30 天</span></td>
+        <td class="num-cell"><span class="param-value">14 天</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value"><strong>10 天</strong></span></td>
+    </tr>
+    <tr>
+        <td>Stale 出場（天數 / 門檻）</td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">9 天 / -5%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">9 天 / -5%</span></td>
+    </tr>
+    <tr>
+        <td>Tightness 上限</td>
+        <td class="num-cell"><span class="param-value">8%</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">8%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">8%</span></td>
+    </tr>
+</table>
+</div>
+
+<h3>動態切換參數</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>參數</th>
+        <th class="num-cell">V18</th>
+        <th class="num-cell">V19</th>
+        <th class="num-cell">V20</th>
+        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V22 Ultimate</th>
+    </tr>
+    <tr>
+        <td>動態切換機制</td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">有</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">有</span></td>
+    </tr>
+    <tr>
+        <td>WR 門檻 (wr_threshold)</td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">58%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value"><strong>55%</strong></span></td>
+    </tr>
+    <tr>
+        <td>滾動窗口</td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">20 筆</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">20 筆</span></td>
+    </tr>
+    <tr>
+        <td>TP 模式停利</td>
+        <td class="num-cell"><span class="param-value">12%（固定）</span></td>
+        <td class="num-cell"><span class="param-value">10%（固定）</span></td>
+        <td class="num-cell"><span class="param-value">12%（固定）</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value"><strong>15%（固定）</strong></span></td>
+    </tr>
+    <tr>
+        <td>NoTP 模式追蹤</td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell"><span class="param-value">Tiered ATR</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">Tiered ATR</span></td>
+    </tr>
+    <tr>
+        <td>最大倉位數</td>
+        <td class="num-cell"><span class="param-value">1</span></td>
+        <td class="num-cell"><span class="param-value">1</span></td>
+        <td class="num-cell"><span class="param-value">1</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">1</span></td>
+    </tr>
+</table>
+</div>
+
+<div class="analogy">
+    參數演化的核心邏輯：V18/V20 用寬鬆停損（2.4x ATR）給交易較多「呼吸空間」，V22 Ultimate 反其道而行——用極緊停損（1.3x ATR）快速認賠 + 更高停利（15%）+ 更短時限（10 天），配合 Vol Z-Score 和 80% 52 週高點門檻過濾掉低品質訊號，實現「少但精」的交易策略。
+</div>
+
+<!-- ================================================================ -->
+<!-- 4. 全版本績效對照表 -->
+<!-- ================================================================ -->
+<h2 id="perf"><span class="num">4</span>全版本績效對照表</h2>
+
+<h3>6 年複利總績效</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>指標</th>
+        <th class="num-cell">V18</th>
+        <th class="num-cell">V20</th>
+        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V22 Ultimate</th>
+    </tr>
+    <tr>
+        <td>6 年複利最終淨值</td>
+        <td class="num-cell"><span class="param-value">$14,708,617</span></td>
+        <td class="num-cell"><span class="param-value">$49,600,000</span></td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>$30,700,000,000</strong></td>
+    </tr>
+    <tr>
+        <td>6 年複利報酬率</td>
+        <td class="num-cell"><span class="param-value">+146,986%</span></td>
+        <td class="num-cell"><span class="param-value">+495,900%</span></td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>+307,000,000%</strong></td>
+    </tr>
+    <tr>
+        <td>vs V20 倍數</td>
+        <td class="num-cell"><span class="param-value">0.30x</span></td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>619x</strong></td>
+    </tr>
+    <tr>
+        <td>總交易數</td>
+        <td class="num-cell">316</td>
+        <td class="num-cell">316</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);">449</td>
+    </tr>
+    <tr>
+        <td>勝率 (WR)</td>
+        <td class="num-cell">69.6%</td>
+        <td class="num-cell">69.6%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);">63.0%</td>
+    </tr>
+    <tr>
+        <td>盈虧比 (PF)</td>
+        <td class="num-cell">1.73</td>
+        <td class="num-cell">3.98</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>2.94</strong></td>
+    </tr>
+    <tr>
+        <td>最大回撤 (MDD)</td>
+        <td class="num-cell loss">54.97%</td>
+        <td class="num-cell loss">54.2%</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>40.57%</strong></td>
+    </tr>
+    <tr>
+        <td>Calmar Ratio</td>
+        <td class="num-cell">&mdash;</td>
+        <td class="num-cell">&mdash;</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>27.25</strong></td>
+    </tr>
+    <tr>
+        <td>Walk-Forward 一致性</td>
+        <td class="num-cell">&mdash;</td>
+        <td class="num-cell">&mdash;</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>1.01</strong></td>
+    </tr>
+</table>
+</div>
+
+<h3>逐年報酬率比較</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">V18</th>
+        <th class="num-cell">V20</th>
+        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V22 Ultimate</th>
+        <th class="num-cell">V22 vs V20</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell win">+77.12%</td>
+        <td class="num-cell win">+299.0%</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>+1,835%</strong></td>
+        <td class="num-cell win">6.1x</td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell win">+329.58%</td>
+        <td class="num-cell win">+351.5%</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>+335%</strong></td>
+        <td class="num-cell">0.95x</td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell win">+144.53%</td>
+        <td class="num-cell win">+388.2%</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>+1,226%</strong></td>
+        <td class="num-cell win">3.2x</td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell win">+12.34%</td>
+        <td class="num-cell win">+90.6%</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>+3,245%</strong></td>
+        <td class="num-cell win">35.7x</td>
+    </tr>
+    <tr style="background: rgba(0,255,127,0.05);">
+        <td><strong>2025</strong></td>
+        <td class="num-cell win">+3,877%</td>
+        <td class="num-cell win">+9,685%</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>+3,813%</strong></td>
+        <td class="num-cell">0.39x</td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell win">+76.94%</td>
+        <td class="num-cell win">+76.9%</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>+125%</strong></td>
+        <td class="num-cell win">1.6x</td>
+    </tr>
+</table>
+</div>
+<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。V22 Ultimate 在 4/6 年勝出；V20 僅在 2022（持平）和 2025（超級牛市）略勝。</p>
+
+<!-- ================================================================ -->
+<!-- 5. V18 基礎版 -->
+<!-- ================================================================ -->
+<h2 id="v18"><span class="num">5</span>V18 &mdash; 基礎版</h2>
+
+<div class="card card-accent">
+    <h3 style="margin-top:0">版本定位</h3>
+    <p>V18 是 Sovereign 的<strong>第一個完整回測版本</strong>，建立了整個系統的核心框架：VCP 突破選股 + RS Rank 排序 + ATR 動態停損 + 固定 TP 停利。</p>
+    <p style="margin-bottom:0;">所有後續版本都建立在 V18 的基礎架構之上。</p>
+</div>
+
+<div class="highlight-box">
+    <div class="label">V18 基礎版 &mdash; 6 年複利</div>
+    <div class="big-number">$10K &rarr; $14,708,617</div>
+    <div class="label" style="margin-top: 8px;">+146,986% | 316 筆交易 | 平均持倉 3.9 天</div>
+</div>
+
+<h3>V18 核心參數</h3>
+<div class="two-col">
+    <div class="card">
+        <h4 style="margin-top:0">進場</h4>
+        <ul style="margin-bottom:0;">
+            <li>ATR SL：<span class="param-value">2.4x</span></li>
+            <li>TP 停利：<span class="param-value">12%</span>（固定）</li>
+            <li>追蹤停損：<span class="param-value">3.1%</span></li>
+            <li>追蹤啟動：<span class="param-value">1.8%</span></li>
+            <li>保本觸發：<span class="param-value">0.5%</span></li>
+        </ul>
+    </div>
+    <div class="card">
+        <h4 style="margin-top:0">篩選</h4>
+        <ul style="margin-bottom:0;">
+            <li>52 週高點：<span class="param-value">&ge; 70%</span></li>
+            <li>Vol Force：<span class="param-value">&ge; 1.5x</span></li>
+            <li>時間停損：<span class="param-value">14 天</span></li>
+            <li>最大虧損：<span class="param-value">-20%</span></li>
+            <li>滑點：<span class="param-value">0.1%</span></li>
+        </ul>
+    </div>
+</div>
+
+<h3>V18 逐年績效</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">報酬</th>
+        <th class="num-cell">交易</th>
+        <th class="num-cell">WR</th>
+        <th class="num-cell">PF</th>
+        <th class="num-cell">MDD</th>
+        <th class="num-cell">均贏</th>
+        <th class="num-cell">均虧</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell win">+77.12%</td>
+        <td class="num-cell">67</td>
+        <td class="num-cell">68.66%</td>
+        <td class="num-cell">1.29</td>
+        <td class="num-cell loss">54.97%</td>
+        <td class="num-cell win">+6.34%</td>
+        <td class="num-cell loss">-10.82%</td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell win">+329.58%</td>
+        <td class="num-cell">55</td>
+        <td class="num-cell">72.73%</td>
+        <td class="num-cell">2.40</td>
+        <td class="num-cell loss">36.06%</td>
+        <td class="num-cell win">+7.56%</td>
+        <td class="num-cell loss">-10.07%</td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell win">+144.53%</td>
+        <td class="num-cell">57</td>
+        <td class="num-cell">64.91%</td>
+        <td class="num-cell">1.46</td>
+        <td class="num-cell loss">44.54%</td>
+        <td class="num-cell win">+7.49%</td>
+        <td class="num-cell loss">-9.14%</td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell win">+12.34%</td>
+        <td class="num-cell">58</td>
+        <td class="num-cell">56.90%</td>
+        <td class="num-cell">1.06</td>
+        <td class="num-cell loss">54.35%</td>
+        <td class="num-cell win">+8.24%</td>
+        <td class="num-cell loss">-9.63%</td>
+    </tr>
+    <tr style="background: rgba(0,255,127,0.05);">
+        <td><strong>2025</strong></td>
+        <td class="num-cell win"><strong>+3,877%</strong></td>
+        <td class="num-cell">71</td>
+        <td class="num-cell win">84.51%</td>
+        <td class="num-cell">2.77</td>
+        <td class="num-cell">20.70%</td>
+        <td class="num-cell win">+8.69%</td>
+        <td class="num-cell loss">-13.03%</td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell win">+76.94%</td>
+        <td class="num-cell">8</td>
+        <td class="num-cell">75.00%</td>
+        <td class="num-cell">24.35</td>
+        <td class="num-cell">1.43%</td>
+        <td class="num-cell win">+10.44%</td>
+        <td class="num-cell loss">-1.07%</td>
+    </tr>
+</table>
+</div>
+
+<h3>V18 出場原因分佈</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>出場方式</th>
+        <th class="num-cell">2021</th>
+        <th class="num-cell">2022</th>
+        <th class="num-cell">2023</th>
+        <th class="num-cell">2024</th>
+        <th class="num-cell">2025</th>
+        <th class="num-cell">2026*</th>
+    </tr>
+    <tr>
+        <td><span class="tag tag-green">TP</span></td>
+        <td class="num-cell">14 (100%)</td>
+        <td class="num-cell">15 (100%)</td>
+        <td class="num-cell">13 (100%)</td>
+        <td class="num-cell">17 (100%)</td>
+        <td class="num-cell">36 (100%)</td>
+        <td class="num-cell">5 (100%)</td>
+    </tr>
+    <tr>
+        <td><span class="tag tag-blue">TRAIL</span></td>
+        <td class="num-cell">23 (95.7%)</td>
+        <td class="num-cell">23 (95.7%)</td>
+        <td class="num-cell">20 (100%)</td>
+        <td class="num-cell">11 (90.9%)</td>
+        <td class="num-cell">17 (100%)</td>
+        <td class="num-cell">1 (100%)</td>
+    </tr>
+    <tr>
+        <td><span class="tag tag-red">SL</span></td>
+        <td class="num-cell">27 (33.3%)</td>
+        <td class="num-cell">13 (7.7%)</td>
+        <td class="num-cell">18 (22.2%)</td>
+        <td class="num-cell">25 (24.0%)</td>
+        <td class="num-cell">16 (31.2%)</td>
+        <td class="num-cell">1 (0%)</td>
+    </tr>
+    <tr>
+        <td><span class="tag tag-yellow">TIME</span></td>
+        <td class="num-cell">2 (0%)</td>
+        <td class="num-cell">3 (33.3%)</td>
+        <td class="num-cell">5 (0%)</td>
+        <td class="num-cell">4 (0%)</td>
+        <td class="num-cell">1 (100%)</td>
+        <td class="num-cell">&mdash;</td>
+    </tr>
+</table>
+</div>
+<p style="color: var(--text-dim); font-size: 0.85em;">括號內為該出場方式的勝率。TP 和 TRAIL 是主要獲利來源。</p>
+
+<div class="card card-yellow">
+    <h3 style="margin-top:0">V18 的問題</h3>
+    <ul style="margin-bottom:0;">
+        <li><strong>2024 年僅 +12.34%</strong>——勝率跌至 56.9%，MDD 高達 54.35%，盈虧比僅 1.06</li>
+        <li><strong>MDD 過高</strong>——2021 和 2024 的 MDD 都超過 54%，代表帳戶可能腰斬</li>
+        <li><strong>缺乏異常交易處理</strong>——沒有 Stale Exit 和 Gap-Down 拒絕機制</li>
+        <li><strong>固定模式</strong>——無法根據市場狀態動態調整策略</li>
+    </ul>
+</div>
+
+<!-- ================================================================ -->
+<!-- 6. V19 保守過渡版 -->
+<!-- ================================================================ -->
+<h2 id="v19"><span class="num">6</span>V19 &mdash; 保守過渡版</h2>
+
+<div class="card card-accent">
+    <h3 style="margin-top:0">版本定位</h3>
+    <p>V19 是一個<strong>短暫的過渡版本</strong>，嘗試用更保守的參數降低風險。最終因為過度限制而未被採用，但提供了重要的教訓。</p>
+</div>
+
+<h3>V19 vs V18 參數變化</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>參數</th>
+        <th class="num-cell">V18</th>
+        <th class="num-cell">V19</th>
+        <th class="num-cell">變化方向</th>
+    </tr>
+    <tr>
+        <td>ATR 停損倍數</td>
+        <td class="num-cell"><span class="param-value">2.4x</span></td>
+        <td class="num-cell"><span class="param-value">1.5x</span></td>
+        <td class="num-cell"><span class="tag tag-yellow">收緊 37.5%</span></td>
+    </tr>
+    <tr>
+        <td>停利目標</td>
+        <td class="num-cell"><span class="param-value">12%</span></td>
+        <td class="num-cell"><span class="param-value">10%</span></td>
+        <td class="num-cell"><span class="tag tag-red">降低 16.7%</span></td>
+    </tr>
+    <tr>
+        <td>最大虧損</td>
+        <td class="num-cell"><span class="param-value">-20%</span></td>
+        <td class="num-cell"><span class="param-value">-8%</span></td>
+        <td class="num-cell"><span class="tag tag-yellow">收緊 60%</span></td>
+    </tr>
+    <tr>
+        <td>時間停損</td>
+        <td class="num-cell"><span class="param-value">14 天</span></td>
+        <td class="num-cell"><span class="param-value">30 天</span></td>
+        <td class="num-cell"><span class="tag tag-red">放寬 114%</span></td>
+    </tr>
+    <tr>
+        <td>保本觸發</td>
+        <td class="num-cell"><span class="param-value">0.5%</span></td>
+        <td class="num-cell"><span class="param-value">5.0%</span></td>
+        <td class="num-cell"><span class="tag tag-red">放寬 900%</span></td>
+    </tr>
+    <tr>
+        <td>RS Rank 限制</td>
+        <td class="num-cell"><span class="param-value">5,000</span></td>
+        <td class="num-cell"><span class="param-value">30</span></td>
+        <td class="num-cell"><span class="tag tag-red">收緊 99.4%</span></td>
+    </tr>
+    <tr>
+        <td>滑點</td>
+        <td class="num-cell"><span class="param-value">0.1%</span></td>
+        <td class="num-cell"><span class="param-value">0.3%</span></td>
+        <td class="num-cell"><span class="tag tag-yellow">更保守</span></td>
+    </tr>
+</table>
+</div>
+
+<div class="card card-red">
+    <h3 style="margin-top:0">V19 的教訓</h3>
+    <p>V19 的核心問題是<strong>過度保守</strong>：</p>
+    <ul>
+        <li><strong>RS Rank 限制 30</strong>：嚴重限制候選池，錯過許多好機會</li>
+        <li><strong>TP 僅 10%</strong>：過早停利，截斷贏家交易的上漲空間</li>
+        <li><strong>保本觸發 5%</strong>：獲利 5% 才移動停損到保本，錯過早期保護</li>
+        <li><strong>Time Stop 30 天</strong>：允許停滯交易佔用資金太久</li>
+    </ul>
+    <p style="margin-bottom:0;"><strong>教訓：</strong>降低風險不是讓所有參數都變保守。正確的方法是在<em>對的維度</em>收緊（如 V22 的 SL 和 Time），同時在其他維度放寬（如 TP 從 12% 提高到 15%）。</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- 7. V20 五大升級版 -->
+<!-- ================================================================ -->
+<h2 id="v20"><span class="num">7</span>V20 &mdash; 五大升級版</h2>
+
+<div class="card card-green">
+    <h3 style="margin-top:0">版本定位</h3>
+    <p style="margin-bottom:0;">V20 在 V18 基礎上引入<strong>5 項重大升級</strong>，將系統從「被動持有」進化為「智慧管理」。V20 長期作為 Sovereign 的生產版本使用。</p>
+</div>
+
+<div class="highlight-box">
+    <div class="label">V20 五大升級版 &mdash; 6 年複利</div>
+    <div class="big-number">$10K &rarr; $49,600,000</div>
+    <div class="label" style="margin-top: 8px;">316 筆交易 | WR 69.6% | PF 3.98 | 3.4x V18</div>
+</div>
+
+<h3>五大升級</h3>
+
+<div class="card card-accent" style="margin-top:20px;">
+    <h4 style="margin-top:0">升級 1：Stale Exit + Gap-Down Rejection</h4>
+    <p>新增兩個防禦機制，處理 V18 無法應對的異常情況：</p>
+    <ul>
+        <li><strong>Stale Exit：</strong>持倉 &ge; 9 天且報酬 &lt; -5% &rarr; 強制出場。避免「死魚股」持續消耗資金。</li>
+        <li><strong>Gap-Down Rejection：</strong>開盤跳空 &gt; -3% &rarr; 拒絕進場。避免在恐慌開盤時買入。</li>
+    </ul>
+</div>
+
+<div class="card card-accent">
+    <h4 style="margin-top:0">升級 2：板塊動能篩選 + ETF 排除</h4>
+    <ul>
+        <li><strong>板塊動能排序：</strong>使用 63 天 ETF 動量對 11 個板塊排名，排除後 3 名（最弱板塊）</li>
+        <li><strong>ETF 排除：</strong>移除 68 個非個股標的（ETF、ETN 等）</li>
+    </ul>
+</div>
+
+<div class="card card-accent">
+    <h4 style="margin-top:0">升級 3：市場環境偵測</h4>
+    <ul>
+        <li>SPY vs SMA(50) 判斷大盤趨勢</li>
+        <li>廣度指標（股票 &gt; SMA20 百分比）</li>
+        <li>資訊性指標（不做硬篩選），輔助判斷</li>
+    </ul>
+</div>
+
+<div class="card card-accent">
+    <h4 style="margin-top:0">升級 4：進階技術指標</h4>
+    <ul>
+        <li><strong>RSI(14)：</strong>理想區間 55-70</li>
+        <li><strong>Close Position：</strong>(Close-Low)/(High-Low) &times; 100%</li>
+        <li><strong>Vol Z-Score：</strong>(Vol_today - MA20) / StdDev20（輔助排名）</li>
+    </ul>
+</div>
+
+<div class="card card-green">
+    <h4 style="margin-top:0">升級 5：動態 TP/NoTP 切換（核心升級）</h4>
+    <p>V20 最重要的創新——根據近期勝率<strong>自動切換</strong>兩種出場策略：</p>
+    <div class="formula">
+        滾動 20 筆交易勝率 &ge; 58% &rarr; <strong>TP 模式</strong>（固定 12% 停利）<br>
+        滾動 20 筆交易勝率 &lt; 58% &rarr; <strong>NoTP 模式</strong>（無上限，Tiered ATR Trail）
+    </div>
+    <p><strong>TP 模式：</strong>市場正常時快速兌現獲利（12% 停利 + 3.1% Trail）</p>
+    <p><strong>NoTP 模式：</strong>市場異常（連續虧損）時讓贏家奔跑（無停利上限 + 分層 ATR Trail）</p>
+    <p style="margin-bottom:0">這確保系統在不同市場環境都能適應，而不是用固定策略應對所有情況。</p>
+</div>
+
+<h3>V20 逐年績效</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">報酬</th>
+        <th class="num-cell">交易</th>
+        <th class="num-cell">WR</th>
+        <th class="num-cell">PF</th>
+        <th class="num-cell">MDD</th>
+        <th class="num-cell">均贏</th>
+        <th class="num-cell">均虧</th>
+        <th class="num-cell">連勝</th>
+        <th class="num-cell">連虧</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell win">+299.0%</td>
+        <td class="num-cell">68</td>
+        <td class="num-cell">70.6%</td>
+        <td class="num-cell">1.82</td>
+        <td class="num-cell">42.2%</td>
+        <td class="num-cell">+7.02%</td>
+        <td class="num-cell">-8.52%</td>
+        <td class="num-cell">6</td>
+        <td class="num-cell">3</td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell win">+351.5%</td>
+        <td class="num-cell">59</td>
+        <td class="num-cell">66.1%</td>
+        <td class="num-cell">2.05</td>
+        <td class="num-cell">40.7%</td>
+        <td class="num-cell">+8.33%</td>
+        <td class="num-cell">-7.52%</td>
+        <td class="num-cell">8</td>
+        <td class="num-cell">5</td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell win">+388.2%</td>
+        <td class="num-cell">61</td>
+        <td class="num-cell">65.6%</td>
+        <td class="num-cell">2.02</td>
+        <td class="num-cell loss">53.1%</td>
+        <td class="num-cell">+9.01%</td>
+        <td class="num-cell">-7.93%</td>
+        <td class="num-cell">6</td>
+        <td class="num-cell">7</td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell win">+90.6%</td>
+        <td class="num-cell">58</td>
+        <td class="num-cell">60.3%</td>
+        <td class="num-cell">1.46</td>
+        <td class="num-cell loss">58.8%</td>
+        <td class="num-cell">+8.99%</td>
+        <td class="num-cell">-8.87%</td>
+        <td class="num-cell">9</td>
+        <td class="num-cell">4</td>
+    </tr>
+    <tr style="background: rgba(0,255,127,0.05);">
+        <td><strong>2025</strong></td>
+        <td class="num-cell win"><strong>+9,685%</strong></td>
+        <td class="num-cell">76</td>
+        <td class="num-cell win">86.8%</td>
+        <td class="num-cell">3.30</td>
+        <td class="num-cell">30.4%</td>
+        <td class="num-cell">+8.59%</td>
+        <td class="num-cell">-7.32%</td>
+        <td class="num-cell">18</td>
+        <td class="num-cell">1</td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell win">+76.9%</td>
+        <td class="num-cell">8</td>
+        <td class="num-cell">75.0%</td>
+        <td class="num-cell">24.35</td>
+        <td class="num-cell">&mdash;</td>
+        <td class="num-cell">+10.44%</td>
+        <td class="num-cell">-1.08%</td>
+        <td class="num-cell">3</td>
+        <td class="num-cell">1</td>
+    </tr>
+</table>
+</div>
+
+<h3>V20 動態切換效果</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">固定 TP 12%</th>
+        <th class="num-cell">固定 NoTP</th>
+        <th class="num-cell">動態切換</th>
+        <th class="num-cell">動態 vs TP</th>
+    </tr>
+    <tr><td>2021</td><td class="num-cell">+299%</td><td class="num-cell">+555%</td><td class="num-cell win">+299%</td><td class="num-cell">+0pp</td></tr>
+    <tr><td>2022</td><td class="num-cell">+182%</td><td class="num-cell">+63%</td><td class="num-cell win">+352%</td><td class="num-cell win">+170pp</td></tr>
+    <tr><td>2023</td><td class="num-cell">+155%</td><td class="num-cell">+286%</td><td class="num-cell win">+388%</td><td class="num-cell win">+233pp</td></tr>
+    <tr><td>2024</td><td class="num-cell">+18%</td><td class="num-cell">+507%</td><td class="num-cell win">+91%</td><td class="num-cell win">+73pp</td></tr>
+    <tr><td>2025</td><td class="num-cell">+9,685%</td><td class="num-cell">+2,058%</td><td class="num-cell win">+9,685%</td><td class="num-cell">+0pp</td></tr>
+    <tr><td>2026*</td><td class="num-cell">+78%</td><td class="num-cell">+61%</td><td class="num-cell win">+78%</td><td class="num-cell">+0pp</td></tr>
+    <tr style="font-weight: 700; border-top: 2px solid var(--border);">
+        <td>年均</td>
+        <td class="num-cell">+1,736%</td>
+        <td class="num-cell">+589%</td>
+        <td class="num-cell win">+1,815%</td>
+        <td class="num-cell win">+79pp</td>
+    </tr>
+</table>
+</div>
+
+<div class="analogy">
+    動態切換的精髓：不是在「好策略」和「壞策略」之間切換，而是在「適合當前市場的策略」和「不適合的策略」之間切換。TP 模式適合高勝率環境（快速收割），NoTP 模式適合低勝率環境（讓少數贏家跑遠一點）。
+</div>
+
+<!-- ================================================================ -->
+<!-- 8. V21 系統性研究 -->
+<!-- ================================================================ -->
+<h2 id="v21"><span class="num">8</span>V21 &mdash; 16 輪系統性研究</h2>
+
+<div class="card card-yellow">
+    <h3 style="margin-top:0">版本定位</h3>
+    <p>V21 不是一個「新版本」，而是一場<strong>史上最大規模的策略壓力測試</strong>。目標：找出 V20 是否還有改進空間。</p>
+    <p style="margin-bottom:0;"><strong>結論：V20 已經站在效能的理論上限。</strong></p>
+</div>
+
+<div class="highlight-box">
+    <div class="label">V21 研究規模</div>
+    <div class="big-number">16 輪 &bull; 95+ 變體 &bull; 12M+ 數據列</div>
+    <div class="label" style="margin-top: 8px;">從信號篩選到 ML 預測，從進場時機到倉位管理，窮盡所有改進方向</div>
+</div>
+
+<h3>16 輪研究完整摘要</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>輪次</th>
+        <th>研究主題</th>
+        <th class="num-cell">變體</th>
+        <th>核心發現</th>
+    </tr>
+    <tr><td>R1</td><td>信號篩選</td><td class="num-cell">7</td><td>所有篩選器都降低報酬（訊號減少 &rarr; 複利崩潰）</td></tr>
+    <tr><td>R2</td><td>交易管理</td><td class="num-cell">8</td><td>SL 2.4x ATR、Trail 3.1% 均為最佳值</td></tr>
+    <tr><td>R3</td><td>TP 甜蜜點</td><td class="num-cell">9</td><td>TP 12% 幾何均值最高 (+456%)，TP 13% 最安全替代</td></tr>
+    <tr><td>R4</td><td>Walk-Forward + MC</td><td class="num-cell">N/A</td><td>所有 OOS 期間均獲利，破產率 0.38%</td></tr>
+    <tr><td>R5</td><td>進階分析</td><td class="num-cell">6</td><td>Gap-down -3%~-1% 最高 WR (79.4%)，第 8 天後 WR 崩潰</td></tr>
+    <tr><td>R6</td><td>Gap-Up 拒絕 + 體制</td><td class="num-cell">7</td><td>所有修改都比基線差，V20 確認為最佳</td></tr>
+    <tr><td>R7</td><td>倉位管理</td><td class="num-cell">7</td><td>Sharpe 不變 (5.30)，倉位管理 = 等比縮放</td></tr>
+    <tr><td>R8</td><td>多候選 + 曲線</td><td class="num-cell">7</td><td>Top-1 最佳；Top-5 排名崩潰 2025 (+5% vs +9,696%)</td></tr>
+    <tr><td>R9</td><td>替代排名</td><td class="num-cell">7</td><td>RS Rank 確認最強，所有替代方案失敗</td></tr>
+    <tr><td>R10</td><td>壓力測試</td><td class="num-cell">9</td><td>0.3% 滑點仍 +394% 幾何均值；$10 佣金零影響</td></tr>
+    <tr><td>R11</td><td>出場優化</td><td class="num-cell">7</td><td>Time-Decay Trail 最接近 (-2.3pp) 但仍不如基線</td></tr>
+    <tr><td>R12</td><td>ML 預測</td><td class="num-cell">7</td><td>AUC 0.517（= 隨機）；OOS 基線全勝，ML Rank -401pp</td></tr>
+    <tr><td>R13</td><td>進場時機</td><td class="num-cell">7</td><td>隔日開盤最佳；Limit 單 -289pp，2 日確認 -357pp</td></tr>
+    <tr><td>R14</td><td>體制自適應</td><td class="num-cell">7</td><td>靜態參數最佳；Breadth-Adaptive -1.1pp，SPY Momentum -249pp</td></tr>
+    <tr style="background: rgba(78,203,113,0.08);">
+        <td><strong>R15</strong></td><td><strong>部分 TP + Re-Entry</strong></td><td class="num-cell"><strong>7</strong></td><td><strong>Re-Entry +110pp（唯一超越基線！）；部分 TP -62pp</strong></td></tr>
+    <tr>
+        <td>R16</td><td>Re-Entry 深度測試</td><td class="num-cell">9</td><td>0.3% 滑點壓測：-129pp（穩健性不足 &rarr; 放棄）</td></tr>
+</table>
+</div>
+
+<div class="card card-green">
+    <h3 style="margin-top:0">Walk-Forward 驗證結果</h3>
+    <table>
+        <tr>
+            <th>訓練期</th>
+            <th>測試年份</th>
+            <th class="num-cell">IS 報酬</th>
+            <th class="num-cell">OOS 報酬</th>
+            <th class="num-cell">穩健比</th>
+        </tr>
+        <tr><td>2021</td><td>2022</td><td class="num-cell">+299%</td><td class="num-cell win">+352%</td><td class="num-cell win">1.18</td></tr>
+        <tr><td>2021-2022</td><td>2023</td><td class="num-cell">+343%</td><td class="num-cell win">+276%</td><td class="num-cell">1.61</td></tr>
+        <tr><td>2021-2023</td><td>2024</td><td class="num-cell">+1,619%</td><td class="num-cell win">+200%</td><td class="num-cell">0.37</td></tr>
+        <tr><td>2021-2024</td><td>2025</td><td class="num-cell">+4,435%</td><td class="num-cell win">+9,685%</td><td class="num-cell win">8.73</td></tr>
+    </table>
+    <p style="margin-bottom:0; margin-top:12px;">所有 OOS 期間均為正報酬，2025 年 OOS 甚至大幅超越 IS（8.73x）。</p>
+</div>
+
+<div class="card card-accent">
+    <h3 style="margin-top:0">Monte Carlo 模擬（5,000 次迭代）</h3>
+    <div class="two-col">
+        <div>
+            <ul style="margin-bottom:0;">
+                <li>破產風險：<span class="param-value">0.38%</span></li>
+                <li>年度虧損機率：<span class="param-value">0.0%-19.7%</span></li>
+                <li>中位數最大連虧：<span class="param-value">4 筆</span></li>
+            </ul>
+        </div>
+        <div>
+            <ul style="margin-bottom:0;">
+                <li>P50 MDD：<span class="param-value">43.8%</span></li>
+                <li>P95 MDD：<span class="param-value">60.7%</span></li>
+                <li>交易統計：<span class="param-value">324 筆, 71.3% WR, PF 2.62</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="analogy">
+    V21 的價值不在於找到更好的策略，而在於<strong>證明 V20 已經是最佳解</strong>。16 輪 95+ 變體的窮盡測試——從信號到出場、從 ML 到體制自適應——唯一曾超越基線的 Re-Entry (+110pp) 也在滑點壓測下崩潰。這給了我們使用 V20 的最大信心。
+</div>
+
+<!-- ================================================================ -->
+<!-- 9. V22 Ultimate -->
+<!-- ================================================================ -->
+<h2 id="v22"><span class="num">9</span>V22 Ultimate &mdash; 最終突破</h2>
+
+<div class="card card-green">
+    <h3 style="margin-top:0">版本定位</h3>
+    <p>V21 研究結論是「V20 = 理論上限」，但那是在<strong>逐一搜索</strong>的前提下。V22 改用<strong>多維聯合搜索</strong>，發現了隱藏的參數交互效應，突破了理論上限。</p>
+    <p style="margin-bottom:0;"><strong>核心洞見：</strong>單獨改變 SL 或 TP 或 Time 都會降低績效，但特定組合卻產生 619 倍的正向交互效應。</p>
+</div>
+
+<div class="highlight-box">
+    <div class="label">V22 Ultimate &mdash; 4 階段 150+ 實驗的最終成果</div>
+    <div class="big-number">$10K &rarr; $30.7B（619x V20）</div>
+    <div class="label" style="margin-top: 8px;">449 筆交易 | WR 63.0% | PF 2.94 | MDD 40.57% | Calmar 27.25 | Walk-Forward 1.01</div>
+</div>
+
+<h3>V22 Ultimate vs V20 參數變化</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>參數</th>
+        <th class="num-cell">V20</th>
+        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V22 Ultimate</th>
+        <th class="num-cell">改變</th>
+        <th>為什麼？</th>
+    </tr>
+    <tr>
+        <td>ATR 停損</td>
+        <td class="num-cell"><span class="param-value">2.4x</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value"><strong>1.3x</strong></span></td>
+        <td class="num-cell"><span class="tag tag-green">-46%</span></td>
+        <td>更緊停損 = 更快認賠，減少單筆虧損</td>
+    </tr>
+    <tr>
+        <td>停利目標</td>
+        <td class="num-cell"><span class="param-value">12%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value"><strong>15%</strong></span></td>
+        <td class="num-cell"><span class="tag tag-green">+25%</span></td>
+        <td>更高停利 = 每筆贏家賺更多</td>
+    </tr>
+    <tr>
+        <td>時間停損</td>
+        <td class="num-cell"><span class="param-value">14 天</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value"><strong>10 天</strong></span></td>
+        <td class="num-cell"><span class="tag tag-green">-29%</span></td>
+        <td>更快釋放資金，加速週轉</td>
+    </tr>
+    <tr>
+        <td>Vol Z-Score</td>
+        <td class="num-cell"><span class="param-value">&mdash;</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value"><strong>&ge; 1.0&sigma;</strong></span></td>
+        <td class="num-cell"><span class="tag tag-green">NEW</span></td>
+        <td>過濾假突破，只進場量能爆發的</td>
+    </tr>
+    <tr>
+        <td>52 週高點</td>
+        <td class="num-cell"><span class="param-value">70%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value"><strong>80%</strong></span></td>
+        <td class="num-cell"><span class="tag tag-green">+14%</span></td>
+        <td>只交易真正接近新高的強勢股</td>
+    </tr>
+    <tr>
+        <td>WR 門檻</td>
+        <td class="num-cell"><span class="param-value">58%</span></td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value"><strong>55%</strong></span></td>
+        <td class="num-cell"><span class="tag tag-yellow">-3pp</span></td>
+        <td>更多機會使用 NoTP 模式</td>
+    </tr>
+</table>
+</div>
+
+<h3>4 階段優化方法論</h3>
+<div class="flow-chart">
+    <div class="flow-step"><div class="step-num">Phase 1</div><div class="step-title">個別掃描（72 實驗）</div></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step"><div class="step-num">Phase 2</div><div class="step-title">組合堆疊</div></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step"><div class="step-num">Phase 3</div><div class="step-title">深度 + WF（33 實驗）</div></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--green);"><div class="step-num">Phase 4</div><div class="step-title">冠軍微調（42 實驗）</div></div>
+</div>
+
+<div class="two-col">
+    <div class="card card-accent">
+        <h4 style="margin-top:0">Phase 1 — 個別參數掃描</h4>
+        <p>72 個實驗，逐一測試每個參數的獨立效果：</p>
+        <ul style="margin-bottom:0;">
+            <li><strong>Vol Z-Score</strong>：<span class="tag tag-green">10x</span></li>
+            <li><strong>52wk 80%</strong>：<span class="tag tag-green">5.9x</span></li>
+            <li><strong>Gap Filter</strong>：<span class="tag tag-green">3.5x</span></li>
+            <li>RSI / Trail / 板塊：<span class="tag tag-red">負效果</span></li>
+        </ul>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--accent);">
+        <h4 style="margin-top:0">Phase 2 — 組合堆疊</h4>
+        <p>將正效果參數組合：</p>
+        <p>VolZ + 52wk + Gap &rarr; <strong>$1.68B</strong>（34x V20）</p>
+        <p style="margin-bottom:0;">組合效果超過個別改善的加總。</p>
+    </div>
+</div>
+<div class="two-col" style="margin-top: 0;">
+    <div class="card" style="border-left: 4px solid var(--accent);">
+        <h4 style="margin-top:0">Phase 3 — 深度組合 + WF</h4>
+        <p>33 實驗，加入 SL/TP/Time 多維聯合搜索：</p>
+        <p>SL=1.5x + TP=15% + Time=12d &rarr; <strong>$19.83B</strong></p>
+        <p style="margin-bottom:0;">Walk-Forward 一致性 &ge; 0.95</p>
+    </div>
+    <div class="card card-green">
+        <h4 style="margin-top:0">Phase 4 — 冠軍微調</h4>
+        <p>42 實驗精細微調：</p>
+        <ul style="margin-bottom:0;">
+            <li>SL 1.5x &rarr; 1.3x：<span class="tag tag-green">+43%</span></li>
+            <li>Time 12d &rarr; 10d：<span class="tag tag-green">+29%</span></li>
+            <li>最終：<strong>$32.80B</strong>（619x V20）</li>
+        </ul>
+    </div>
+</div>
+
+<h3>交互作用效應</h3>
+<div class="card card-accent">
+    <p>V22 最重要的發現 &mdash; <strong>多維參數交互效應</strong>：</p>
+    <div class="formula">
+        Phase 1 個別最佳改善的加總預期：約 <span style="color: var(--green);">20x</span><br>
+        Phase 2 組合實際效果：<span style="color: var(--green);">34x</span>（已超過加總預期）<br>
+        Phase 3 + SL/TP/Time 聯合優化：<span style="color: var(--green);">400x</span><br>
+        Phase 4 微調最終效果：<strong style="color: var(--green);">619x V20</strong>
+    </div>
+    <p style="margin-bottom:0;">參數空間是<strong>非凸</strong>的——逐一搜索（V21 方法）陷入局部最優，只有多維聯合搜索才能發現隱藏的全域最佳。</p>
+</div>
+
+<h3>V22 Ultimate 逐年績效</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">V22 Ultimate</th>
+        <th class="num-cell">V20</th>
+        <th class="num-cell">V18</th>
+        <th class="num-cell">V22 vs V20</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell win"><strong>+1,835%</strong></td>
+        <td class="num-cell">+299%</td>
+        <td class="num-cell">+77%</td>
+        <td class="num-cell win">6.1x</td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell win"><strong>+335%</strong></td>
+        <td class="num-cell win">+352%</td>
+        <td class="num-cell">+330%</td>
+        <td class="num-cell">0.95x</td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell win"><strong>+1,226%</strong></td>
+        <td class="num-cell">+388%</td>
+        <td class="num-cell">+145%</td>
+        <td class="num-cell win">3.2x</td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell win"><strong>+3,245%</strong></td>
+        <td class="num-cell">+91%</td>
+        <td class="num-cell">+12%</td>
+        <td class="num-cell win">35.7x</td>
+    </tr>
+    <tr style="background: rgba(0,255,127,0.05);">
+        <td><strong>2025</strong></td>
+        <td class="num-cell win"><strong>+3,813%</strong></td>
+        <td class="num-cell win">+9,685%</td>
+        <td class="num-cell">+3,877%</td>
+        <td class="num-cell">0.39x</td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell win"><strong>+125%</strong></td>
+        <td class="num-cell">+77%</td>
+        <td class="num-cell">+77%</td>
+        <td class="num-cell win">1.6x</td>
+    </tr>
+    <tr style="font-weight: 700; border-top: 2px solid var(--border);">
+        <td>6 年複利</td>
+        <td class="num-cell win"><strong>$30.7B</strong></td>
+        <td class="num-cell">$49.6M</td>
+        <td class="num-cell">$14.7M</td>
+        <td class="num-cell win"><strong>619x</strong></td>
+    </tr>
+</table>
+</div>
+
+<h3>出場原因分析（449 筆交易）</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>出場原因</th>
+        <th class="num-cell">筆數</th>
+        <th class="num-cell">佔比</th>
+        <th>說明</th>
+    </tr>
+    <tr>
+        <td><span class="tag tag-red">SL</span> 停損</td>
+        <td class="num-cell">217</td>
+        <td class="num-cell">48.3%</td>
+        <td>1.3x ATR 緊停損，快速認賠</td>
+    </tr>
+    <tr>
+        <td><span class="tag tag-blue">TRAIL</span> 追蹤停利</td>
+        <td class="num-cell">140</td>
+        <td class="num-cell">31.2%</td>
+        <td>漲幅回撤觸發，保護獲利</td>
+    </tr>
+    <tr>
+        <td><span class="tag tag-green">TP</span> 固定停利</td>
+        <td class="num-cell">83</td>
+        <td class="num-cell">18.5%</td>
+        <td>達到 +15% 停利目標</td>
+    </tr>
+    <tr>
+        <td><span class="tag tag-yellow">TIME</span> 時間停損</td>
+        <td class="num-cell">5</td>
+        <td class="num-cell">1.1%</td>
+        <td>持倉超過 10 天</td>
+    </tr>
+    <tr>
+        <td><span class="tag tag-yellow">STALE</span> 滯留</td>
+        <td class="num-cell">1</td>
+        <td class="num-cell">0.2%</td>
+        <td>持倉 9 天仍虧損 &gt;5%</td>
+    </tr>
+</table>
+</div>
+
+<h3>動態模式分析</h3>
+<div class="two-col">
+    <div class="card card-green">
+        <h4 style="margin-top:0">TP 模式（WR &ge; 55%）</h4>
+        <p><strong>330 筆交易</strong> | WR <strong>66.4%</strong></p>
+        <p style="margin-bottom:0;">固定 15% 停利，快速兌現獲利。</p>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--orange);">
+        <h4 style="margin-top:0">NoTP 模式（WR &lt; 55%）</h4>
+        <p><strong>116 筆交易</strong> | WR <strong>55.2%</strong></p>
+        <p style="margin-bottom:0;">無上限，Tiered ATR Trail 讓贏家奔跑。</p>
+    </div>
+</div>
+
+<h3>滑點敏感度分析</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>滑點</th>
+        <th class="num-cell">最終淨值</th>
+        <th class="num-cell">vs V20</th>
+        <th>說明</th>
+    </tr>
+    <tr style="background: rgba(0,255,127,0.08);">
+        <td><strong>0.1%（預設）</strong></td>
+        <td class="num-cell win"><strong>$32.80B</strong></td>
+        <td class="num-cell win">661x</td>
+        <td>V22 Ultimate 預設</td>
+    </tr>
+    <tr>
+        <td>0.2%</td>
+        <td class="num-cell win">$10.18B</td>
+        <td class="num-cell win">205x</td>
+        <td>滑點加倍仍大幅勝出</td>
+    </tr>
+    <tr>
+        <td>0.3%</td>
+        <td class="num-cell win">$1.62B</td>
+        <td class="num-cell win">33x</td>
+        <td>V22-TightHigh 同等水準</td>
+    </tr>
+    <tr>
+        <td>0.5%</td>
+        <td class="num-cell win">$630M</td>
+        <td class="num-cell win">12.7x</td>
+        <td>仍遠超 V20</td>
+    </tr>
+    <tr>
+        <td>1.0%</td>
+        <td class="num-cell">$66M</td>
+        <td class="num-cell win">1.33x</td>
+        <td>極端情況仍勝 V20</td>
+    </tr>
+</table>
+</div>
+
+<h3>Walk-Forward 驗證</h3>
+<div class="card card-green">
+    <p><strong>Walk-Forward 一致性：</strong><span style="font-size:1.3em; font-weight:700; color:var(--green);">1.01</span></p>
+    <p>OOS（樣本外）績效 &asymp; IS（樣本內）績效，幾乎無衰減。一致性 &ge; 0.5 即視為穩健，1.01 是最強的非過擬合證據。</p>
+    <p style="margin-bottom:0;">V22 Ultimate 未過度擬合——參數在未見過的數據上表現一致。</p>
+</div>
+
+<h3>數據品質修正</h3>
+<div class="card card-yellow">
+    <p>V22 Ultimate 使用經過嚴格清洗的數據集：<strong>2,927 筆</strong>異常價格記錄被移除（隔日跳空 &gt;50%、單日振幅 &gt;100%）。</p>
+    <p style="margin-bottom:0;">清洗後 MDD 從虛假的 ~100% 修正為 <strong>40.57%</strong>，這才是策略在正常市場條件下的真實風險。</p>
+</div>
+
+<!-- ================================================================ -->
+<!-- 10. 每日掃描勝率 -->
+<!-- ================================================================ -->
+<h2 id="scan"><span class="num">10</span>每日掃描勝率演化</h2>
+
+<div class="card card-accent">
+    <h3 style="margin-top:0">什麼是「每日掃描」？</h3>
+    <p>回測每天只選 1 檔（受資金限制），但<strong>掃描分析</strong>模擬每天<strong>所有候選股</strong>的交易結果，衡量選股訊號本身的品質。</p>
+    <p style="margin-bottom:0;">如果掃描勝率穩定 &gt;60%，代表選股邏輯具備統計優勢，不依賴運氣選到特定股票。</p>
+</div>
+
+<div class="highlight-box">
+    <div class="label">2021-2026 全美股每日掃描回測</div>
+    <div class="big-number">287,180 筆模擬交易</div>
+    <div class="label" style="margin-top: 8px;">整體勝率 62.6% &mdash; 首選勝率 64.9%-73.3%</div>
+</div>
+
+<h3>各年度掃描績效總覽</h3>
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>年份</th>
+        <th class="num-cell">交易日</th>
+        <th class="num-cell">日均候選</th>
+        <th class="num-cell">總候選</th>
+        <th class="num-cell">整體 WR</th>
+        <th class="num-cell">日均 WR</th>
+        <th class="num-cell">首選 WR</th>
+        <th class="num-cell">均報酬</th>
+        <th class="num-cell">PF</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell">251</td>
+        <td class="num-cell">223.6</td>
+        <td class="num-cell">56,118</td>
+        <td class="num-cell win">64.7%</td>
+        <td class="num-cell win">64.3%</td>
+        <td class="num-cell win">73.3%</td>
+        <td class="num-cell win">+1.22%</td>
+        <td class="num-cell">2.21</td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell">250</td>
+        <td class="num-cell">170.5</td>
+        <td class="num-cell">42,634</td>
+        <td class="num-cell win">58.9%</td>
+        <td class="num-cell win">62.0%</td>
+        <td class="num-cell win">71.2%</td>
+        <td class="num-cell win">+0.67%</td>
+        <td class="num-cell">1.59</td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell">249</td>
+        <td class="num-cell">231.4</td>
+        <td class="num-cell">57,620</td>
+        <td class="num-cell win">62.6%</td>
+        <td class="num-cell win">61.9%</td>
+        <td class="num-cell win">65.9%</td>
+        <td class="num-cell win">+1.04%</td>
+        <td class="num-cell">2.22</td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell">251</td>
+        <td class="num-cell">255.2</td>
+        <td class="num-cell">64,058</td>
+        <td class="num-cell win">60.7%</td>
+        <td class="num-cell win">62.4%</td>
+        <td class="num-cell win">64.9%</td>
+        <td class="num-cell win">+0.94%</td>
+        <td class="num-cell">2.00</td>
+    </tr>
+    <tr>
+        <td>2025</td>
+        <td class="num-cell">249</td>
+        <td class="num-cell">235.9</td>
+        <td class="num-cell">58,751</td>
+        <td class="num-cell win">64.5%</td>
+        <td class="num-cell win">62.8%</td>
+        <td class="num-cell win">70.3%</td>
+        <td class="num-cell win">+1.09%</td>
+        <td class="num-cell">2.23</td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell">29</td>
+        <td class="num-cell">275.8</td>
+        <td class="num-cell">7,999</td>
+        <td class="num-cell win">67.2%</td>
+        <td class="num-cell win">60.8%</td>
+        <td class="num-cell win">70.4%</td>
+        <td class="num-cell win">+2.05%</td>
+        <td class="num-cell">4.07</td>
+    </tr>
+</table>
+</div>
+
+<h3>首選勝率 (Rank#1) — 系統實際選擇的股票</h3>
+<div class="card card-green">
+    <p style="margin-bottom:8px">每天候選名單中 RS Rank 排名第一的股票 = 系統實際會交易的那檔。</p>
+    <table>
+        <tr>
+            <th>年份</th>
+            <th class="num-cell">交易數</th>
+            <th class="num-cell">勝場</th>
+            <th class="num-cell">敗場</th>
+            <th class="num-cell">勝率</th>
+            <th class="num-cell">均報酬</th>
+        </tr>
+        <tr><td>2021</td><td class="num-cell">251</td><td class="num-cell win">184</td><td class="num-cell loss">67</td><td class="num-cell win">73.3%</td><td class="num-cell win">+3.03%</td></tr>
+        <tr><td>2022</td><td class="num-cell">250</td><td class="num-cell win">178</td><td class="num-cell loss">72</td><td class="num-cell win">71.2%</td><td class="num-cell win">+2.55%</td></tr>
+        <tr><td>2023</td><td class="num-cell">249</td><td class="num-cell win">164</td><td class="num-cell loss">85</td><td class="num-cell win">65.9%</td><td class="num-cell win">+1.76%</td></tr>
+        <tr><td>2024</td><td class="num-cell">251</td><td class="num-cell win">163</td><td class="num-cell loss">88</td><td class="num-cell win">64.9%</td><td class="num-cell win">+1.40%</td></tr>
+        <tr><td>2025</td><td class="num-cell">249</td><td class="num-cell win">175</td><td class="num-cell loss">74</td><td class="num-cell win">70.3%</td><td class="num-cell win">+3.11%</td></tr>
+        <tr><td>2026*</td><td class="num-cell">27</td><td class="num-cell win">19</td><td class="num-cell loss">8</td><td class="num-cell win">70.4%</td><td class="num-cell win">+4.93%</td></tr>
+    </table>
+    <p style="margin-bottom:0; margin-top:12px; color: var(--text-dim); font-size:0.9em">首選勝率一致高於整體勝率 2-9 個百分點，驗證 RS Rank 排序機制有效。</p>
+</div>
+
+<div class="two-col">
+    <div class="card card-green">
+        <h3 style="margin-top:0">訊號品質穩定</h3>
+        <p style="margin-bottom:0">6 年間每日平均勝率維持在 <strong>60.8%-64.3%</strong>，即使 2022 年熊市也有 62.0%。</p>
+    </div>
+    <div class="card card-green">
+        <h3 style="margin-top:0">RS Rank 排序有效</h3>
+        <p style="margin-bottom:0">首選勝率 <strong>64.9%-73.3%</strong>，持續優於整體平均。排名機制成功篩選最強候選。</p>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 11. 結論 -->
+<!-- ================================================================ -->
+<h2 id="conclusion"><span class="num">11</span>結論</h2>
+
+<div class="card card-green">
+    <h3 style="margin-top:0">Sovereign 的價值</h3>
+    <p>Sovereign 不是一個「預測股價」的系統，而是一個<strong>機率優勢引擎</strong>：</p>
+    <ul>
+        <li><strong>287,180 筆模擬交易</strong>驗證的選股邏輯（不是 10 筆、100 筆，是 28 萬筆）</li>
+        <li><strong>6 年跨越牛熊市</strong>的穩定表現（2022 熊市仍獲利 +335%）</li>
+        <li><strong>32 輪 250+ 實驗</strong>的參數優化（不是拍腦袋設定，每個數字都有統計根據）</li>
+        <li><strong>Walk-Forward 1.01</strong> 驗證未過擬合（樣本外表現 = 樣本內）</li>
+        <li><strong>Monte Carlo 0.38% 破產率</strong>的風險控制</li>
+    </ul>
+</div>
+
+<div class="highlight-box">
+    <div class="label">從 V18 到 V22 Ultimate 的演化之路</div>
+    <div class="big-number">$14.7M &rarr; $30.7B</div>
+    <div class="label" style="margin-top: 8px;">2,088 倍績效提升 &bull; 5 個版本 &bull; 250+ 實驗 &bull; 每一步都有數據支撐</div>
+</div>
+
+<div class="analogy">
+    Sovereign 的演化就像火箭發射：V18 建造了火箭本體，V19 嘗試減重但剪錯了零件，V20 加裝了智慧導航系統，V21 對每個螺絲進行極限測試確認安全，V22 Ultimate 找到了燃料的最佳配比——同樣的火箭，619 倍的推力。
+</div>
+
+<p style="color: var(--text-dim); text-align: center; margin-top: 32px;">
+    <strong>免責聲明：</strong>所有數據均基於歷史回測，過去績效不保證未來報酬。回測使用 11,000+ 檔美股 &times; 12M+ 筆日線數據，包含 0.1% 滑點假設。投資有風險，請只投入可承受損失的資金。
+</p>
+
+<div class="footer">
+    <p>Sovereign V22 Ultimate &mdash; 版本演化歷史文件 | 32 輪研究 &bull; 250+ 實驗 | 更新日期 2026-02-20</p>
+</div>
+
+</div><!-- .container -->
+
+<button class="scroll-top" id="scrollTop" aria-label="回到頂部">&uarr;</button>
+
+<script>
+const btn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+    btn.classList.toggle('show', window.scrollY > 400);
+});
+btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>
