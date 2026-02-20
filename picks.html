@@ -228,6 +228,105 @@ h2 .dim { color: var(--text-dim); font-size: 0.85em; font-weight: 400; }
 .trade-status .on { color: var(--green); }
 .trade-status .off { color: var(--text-dim); }
 
+/* ── NoTP Dashboard ── */
+.notp-dashboard {
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(255,159,67,0.06);
+    border: 1px solid rgba(255,159,67,0.2);
+    border-radius: 8px;
+}
+.notp-dashboard .dash-title {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: var(--orange);
+    margin-bottom: 8px;
+}
+.notp-profit-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.notp-profit-pct {
+    font-size: 1.3em;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+.notp-profit-pct.positive { color: var(--green); }
+.notp-profit-pct.negative { color: var(--red); }
+.notp-profit-pct.neutral  { color: var(--text-dim); }
+.notp-trail-val {
+    font-size: 0.85em;
+    color: var(--text-dim);
+}
+.notp-trail-val strong { color: var(--orange); }
+.notp-tier-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8em;
+    margin-top: 6px;
+}
+.notp-tier-table th {
+    background: rgba(255,159,67,0.1);
+    color: var(--orange);
+    padding: 4px 6px;
+    font-weight: 600;
+    font-size: 0.9em;
+    border-bottom: 1px solid rgba(255,159,67,0.2);
+    text-align: left;
+}
+.notp-tier-table td {
+    padding: 4px 6px;
+    border-bottom: 1px solid rgba(45,49,72,0.4);
+    color: var(--text-dim);
+}
+.notp-tier-table tr.tier-active {
+    background: rgba(255,159,67,0.12);
+}
+.notp-tier-table tr.tier-active td {
+    color: var(--orange);
+    font-weight: 600;
+}
+.notp-tier-table .tier-arrow {
+    color: var(--orange);
+    font-weight: 700;
+    margin-right: 4px;
+}
+.notp-progress {
+    display: flex;
+    gap: 4px;
+    margin-top: 10px;
+    font-size: 0.75em;
+    color: var(--text-dim);
+    align-items: center;
+}
+.notp-progress .step {
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+.notp-progress .step.done {
+    background: rgba(78,203,113,0.15);
+    border-color: var(--green);
+    color: var(--green);
+}
+.notp-progress .step.current {
+    background: rgba(255,159,67,0.15);
+    border-color: var(--orange);
+    color: var(--orange);
+}
+.notp-progress .arrow { color: var(--border); }
+.tp-profit-row {
+    margin-top: 8px;
+    font-size: 0.85em;
+    color: var(--text-dim);
+}
+.tp-profit-row .pct { font-weight: 600; font-variant-numeric: tabular-nums; }
+.tp-profit-row .pct.positive { color: var(--green); }
+.tp-profit-row .pct.negative { color: var(--red); }
+
 /* ── Exit Cards ── */
 .exit-card {
     background: var(--surface);
@@ -1183,6 +1282,81 @@ function renderExits(exits) {
 }
 
 // ── Open Trades ──────────────────────────────────
+function computeTierInfo(t) {
+    const entry = t.entry_price || 0;
+    const highest = t.highest || 0;
+    const atr = t.atr || 0;
+    if (!entry || entry <= 0) return null;
+    const pft = (highest - entry) / entry;
+    const tiers = [
+        { id: 'T1', label: '0-3%',  min: 0,    max: 0.03, mult: 2.0 },
+        { id: 'T2', label: '3-6%',  min: 0.03, max: 0.06, mult: 1.5 },
+        { id: 'T3', label: '6-10%', min: 0.06, max: 0.10, mult: 1.2 },
+        { id: 'T4', label: '>10%',  min: 0.10, max: 999,  mult: 1.0 },
+    ];
+    let current = tiers[0];
+    for (const tier of tiers) {
+        if (pft >= tier.min) current = tier;
+    }
+    return { pft, current, tiers, atr, entry, highest };
+}
+
+function renderNoTPDashboard(t) {
+    const info = computeTierInfo(t);
+    if (!info) return '';
+    const { pft, current, tiers, atr, entry, highest } = info;
+    const pftPct = (pft * 100).toFixed(2);
+    const pftClass = pft > 0 ? 'positive' : pft < 0 ? 'negative' : 'neutral';
+    const trailVal = t.trail && t.trail > 0 ? `$${fmt(t.trail)}` : '--';
+    const trailLabel = t.trail_on ? `<strong>${trailVal}</strong>` : trailVal;
+
+    // Tier table rows
+    const tierRows = tiers.map(tier => {
+        const isActive = tier.id === current.id;
+        const arrow = isActive ? '<span class="tier-arrow">&#9654;</span>' : '';
+        const trailPrice = atr > 0 ? `$${fmt(highest - atr * tier.mult)}` : '--';
+        const priceRange = tier.max < 999
+            ? `$${fmt(entry * (1 + tier.min))} - $${fmt(entry * (1 + tier.max))}`
+            : `> $${fmt(entry * (1 + tier.min))}`;
+        return `<tr class="${isActive ? 'tier-active' : ''}">
+            <td>${arrow}${tier.id}</td>
+            <td>${tier.label}</td>
+            <td>${tier.mult}x ATR</td>
+            <td>${trailPrice}</td>
+        </tr>`;
+    }).join('');
+
+    // Progress steps
+    const beTriggered = t.be_set;
+    const trailTriggered = t.trail_on;
+    const steps = [
+        { label: '進場', done: true },
+        { label: 'BE', done: beTriggered },
+        { label: 'Trail', done: trailTriggered },
+        { label: current.id, done: trailTriggered },
+    ];
+    const progressHTML = steps.map((s, i) => {
+        const cls = s.done ? 'step done' : (i > 0 && steps[i-1].done && !s.done ? 'step current' : 'step');
+        return `<span class="${cls}">${s.label}</span>`;
+    }).join('<span class="arrow">&#8594;</span>');
+
+    return `<div class="notp-dashboard">
+        <div class="dash-title">NoTP Tiered ATR 追蹤儀表板</div>
+        <div class="notp-profit-row">
+            <div>
+                <span class="notp-profit-pct ${pftClass}">${pft >= 0 ? '+' : ''}${pftPct}%</span>
+                <span style="font-size:0.8em;color:var(--text-dim);margin-left:6px">最高浮盈</span>
+            </div>
+            <div class="notp-trail-val">追蹤停損: ${trailLabel}</div>
+        </div>
+        <table class="notp-tier-table">
+            <thead><tr><th>級距</th><th>漲幅</th><th>距離</th><th>觸發出場價</th></tr></thead>
+            <tbody>${tierRows}</tbody>
+        </table>
+        <div class="notp-progress">${progressHTML}</div>
+    </div>`;
+}
+
 function renderOpenTrades(trades) {
     $('open-label').textContent = trades.length > 0 ? `(${trades.length} 筆)` : '';
 
@@ -1194,6 +1368,21 @@ function renderOpenTrades(trades) {
     $('open-trades').innerHTML = trades.map(t => {
         const modeClass = t.use_tp ? 'mode-tp' : 'mode-notp';
         const modeLabel = t.use_tp ? 'TP' : 'NoTP';
+        const pft = t.entry_price > 0 ? ((t.highest - t.entry_price) / t.entry_price * 100) : 0;
+        const pftStr = `${pft >= 0 ? '+' : ''}${pft.toFixed(2)}%`;
+        const pftClass = pft > 0 ? 'positive' : pft < 0 ? 'negative' : '';
+
+        // TP mode: show TP target price; NoTP mode: no fixed TP
+        const tpRow = t.use_tp
+            ? `<span class="lbl" style="color:var(--green)">停利</span><span class="val">$${fmt(t.tp)}</span>`
+            : `<span class="lbl" style="color:var(--orange)">模式</span><span class="val" style="color:var(--orange)">無上限</span>`;
+
+        const dashboard = !t.use_tp ? renderNoTPDashboard(t) : '';
+
+        const profitRow = t.use_tp
+            ? `<div class="tp-profit-row">最高浮盈: <span class="pct ${pftClass}">${pftStr}</span></div>`
+            : '';
+
         return `<div class="trade-card">
             <div class="trade-header">
                 <span class="trade-symbol">${t.symbol}</span>
@@ -1202,7 +1391,7 @@ function renderOpenTrades(trades) {
             <div class="trade-days">Day ${t.days} | 進場 ${t.entry_date}</div>
             <div class="trade-prices">
                 <span class="lbl">進場</span><span class="val">$${fmt(t.entry_price)}</span>
-                <span class="lbl" style="color:var(--green)">停利</span><span class="val">$${fmt(t.tp)}</span>
+                ${tpRow}
                 <span class="lbl" style="color:var(--red)">停損</span><span class="val">$${fmt(t.sl)}</span>
                 <span class="lbl">最高</span><span class="val">$${fmt(t.highest)}</span>
             </div>
@@ -1210,6 +1399,8 @@ function renderOpenTrades(trades) {
                 <span>BE: <span class="${t.be_set ? 'on' : 'off'}">${t.be_set ? 'ON' : 'OFF'}</span></span>
                 <span>Trail: <span class="${t.trail_on ? 'on' : 'off'}">${t.trail_on ? 'ON' : 'OFF'}</span></span>
             </div>
+            ${profitRow}
+            ${dashboard}
         </div>`;
     }).join('');
 }
@@ -1249,7 +1440,15 @@ function buildPlanHTML(p, v20) {
             <li><span class="step-num">8</span><span class="step-text">最長持有 ${PARAMS.time_stop} 個交易日，到期收盤出場</span></li>
         </ol>`;
 
-    // NoTP mode steps (Tiered ATR Trail)
+    // NoTP mode steps (Tiered ATR Trail) — with concrete trigger prices
+    const notp_be = entry * 1.008;
+    const notp_trail_start = entry * 1.02;
+    // Trail stop examples: if price reaches tier boundary, what's the exit trigger?
+    const trail_at_t1 = t1 - atr20;  // trail stop if highest = t1
+    const trail_at_t2 = t2 - atr15;  // trail stop if highest = t2
+    const trail_at_t3 = t3 - atr12;  // trail stop if highest = t3
+    const trail_at_t4 = entry * 1.15 - atr10; // example at +15%
+
     const notpSteps = `
         <ol class="plan-steps">
             <li><span class="step-num">1</span><span class="step-text">明日開盤檢查: 開盤價 &ge; $${fmt(gap_threshold)} 才進場</span></li>
@@ -1258,22 +1457,27 @@ function buildPlanHTML(p, v20) {
         <ol class="plan-steps" start="2">
             <li><span class="step-num">2</span><span class="step-text">進場買進 @ ~$${fmt(entry)} (ALL-IN)</span></li>
             <li><span class="step-num">3</span><span class="step-text">設定停損 @ <span style="color:var(--red)">$${fmt(p.sl_price)}</span> (ATR &times; ${PARAMS.atr_sl})</span></li>
-            <li><span class="step-num">4</span><span class="step-text">漲 +0.8% (<span style="color:var(--accent2)">$${fmt(entry * 1.008)}</span>) &rarr; 停損移至成本價 (保本)</span></li>
-            <li><span class="step-num">5</span><span class="step-text"><strong>Tiered ATR 追蹤停損</strong> (無固定停利，讓贏家持續奔跑):</span></li>
+            <li><span class="step-num">4</span><span class="step-text">漲 +0.8% 達 <span style="color:var(--accent2)">$${fmt(notp_be)}</span> &rarr; 停損移至成本價 $${fmt(entry)} (保本)</span></li>
+            <li><span class="step-num">5</span><span class="step-text">漲 +2.0% 達 <span style="color:var(--accent2)">$${fmt(notp_trail_start)}</span> &rarr; 啟動 Tiered ATR 追蹤停損</span></li>
         </ol>
+        <div style="margin:8px 0 4px;font-size:0.85em;color:var(--orange);font-weight:600">&#9733; Tiered ATR 追蹤停損 — 無固定停利上限，讓贏家持續奔跑</div>
         <table class="tiered-table">
-            <thead><tr><th>漲幅</th><th>價位</th><th>追蹤距離</th><th>ATR值</th></tr></thead>
+            <thead><tr><th>級距</th><th>漲幅範圍</th><th>追蹤距離</th><th>ATR 停損距</th><th>範例出場價</th></tr></thead>
             <tbody>
-                <tr><td>0-3%</td><td>&lt; $${fmt(t1)}</td><td>2.0 &times; ATR</td><td>$${fmt(atr20)}</td></tr>
-                <tr><td>3-6%</td><td>$${fmt(t1)} - $${fmt(t2)}</td><td>1.5 &times; ATR</td><td>$${fmt(atr15)}</td></tr>
-                <tr><td>6-10%</td><td>$${fmt(t2)} - $${fmt(t3)}</td><td>1.2 &times; ATR</td><td>$${fmt(atr12)}</td></tr>
-                <tr><td>&gt;10%</td><td>&gt; $${fmt(t3)}</td><td>1.0 &times; ATR</td><td>$${fmt(atr10)}</td></tr>
+                <tr><td>T1</td><td>0-3% (&lt; $${fmt(t1)})</td><td>2.0 &times; ATR</td><td>$${fmt(atr20)}</td><td style="color:var(--red)">$${fmt(trail_at_t1)}</td></tr>
+                <tr><td>T2</td><td>3-6% ($${fmt(t1)}-$${fmt(t2)})</td><td>1.5 &times; ATR</td><td>$${fmt(atr15)}</td><td style="color:var(--red)">$${fmt(trail_at_t2)}</td></tr>
+                <tr><td>T3</td><td>6-10% ($${fmt(t2)}-$${fmt(t3)})</td><td>1.2 &times; ATR</td><td>$${fmt(atr12)}</td><td style="color:var(--red)">$${fmt(trail_at_t3)}</td></tr>
+                <tr><td>T4</td><td>&gt;10% (&gt; $${fmt(t3)})</td><td>1.0 &times; ATR</td><td>$${fmt(atr10)}</td><td style="color:var(--red)">$${fmt(trail_at_t4)}</td></tr>
             </tbody>
         </table>
+        <div style="margin:6px 0;padding:8px 12px;background:rgba(255,159,67,0.08);border-radius:6px;font-size:0.82em;color:var(--text-dim)">
+            <strong style="color:var(--orange)">操作要點：</strong>
+            股價越漲，追蹤停損越緊。例如漲到 T2 ($${fmt(t1)}+) 後，若回調 $${fmt(atr15)} (1.5&times;ATR) 即觸發出場。
+            漲超過 10% 進入 T4 後，僅容忍 $${fmt(atr10)} (1.0&times;ATR) 回調。
+        </div>
         <ol class="plan-steps" start="6">
-            <li><span class="step-num">6</span><span class="step-text">漲 +2% 後啟動 Tiered ATR 追蹤 (漲越多，追蹤越緊)</span></li>
-            <li><span class="step-num">7</span><span class="step-text">持倉 ${PARAMS.stale_days} 天若仍虧損 &gt;${Math.abs(PARAMS.stale_threshold*100).toFixed(0)}%，收盤出場 (停滯出場)</span></li>
-            <li><span class="step-num">8</span><span class="step-text">最長持有 ${PARAMS.time_stop} 個交易日，到期收盤出場</span></li>
+            <li><span class="step-num">6</span><span class="step-text">持倉 ${PARAMS.stale_days} 天若仍虧損 &gt;${Math.abs(PARAMS.stale_threshold*100).toFixed(0)}%，收盤出場 (停滯出場)</span></li>
+            <li><span class="step-num">7</span><span class="step-text">最長持有 ${PARAMS.time_stop} 個交易日，到期收盤出場</span></li>
         </ol>`;
 
     // Mode comparison section

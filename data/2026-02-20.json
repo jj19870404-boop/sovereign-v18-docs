@@ -92,12 +92,15 @@
       "entry_price": 27.0644,
       "tp": 30.3122,
       "sl": 25.6769,
-      "days": 2,
+      "days": 3,
       "highest": 27.064436691284175,
       "be_set": false,
       "trail_on": false,
       "use_tp": true,
-      "trail_mode": "fixed"
+      "trail_mode": "fixed",
+      "atr": 0.5781,
+      "trail": 0,
+      "trail_tier": null
     },
     {
       "symbol": "CLSM",
@@ -106,12 +109,15 @@
       "entry_price": 24.1141,
       "tp": 27.0078,
       "sl": 23.36,
-      "days": 5,
+      "days": 6,
       "highest": 24.114090152740477,
       "be_set": false,
       "trail_on": false,
       "use_tp": true,
-      "trail_mode": "fixed"
+      "trail_mode": "fixed",
+      "atr": 0.3142,
+      "trail": 0,
+      "trail_tier": null
     },
     {
       "symbol": "CLSM",
@@ -120,12 +126,15 @@
       "entry_price": 24.1676,
       "tp": 27.0678,
       "sl": 23.405,
-      "days": 5,
+      "days": 6,
       "highest": 24.167642873764034,
       "be_set": false,
       "trail_on": false,
       "use_tp": true,
-      "trail_mode": "fixed"
+      "trail_mode": "fixed",
+      "atr": 0.3178,
+      "trail": 0,
+      "trail_tier": null
     },
     {
       "symbol": "VTYX",
@@ -139,7 +148,10 @@
       "be_set": false,
       "trail_on": false,
       "use_tp": true,
-      "trail_mode": "fixed"
+      "trail_mode": "fixed",
+      "atr": 0.04,
+      "trail": 0,
+      "trail_tier": null
     }
   ],
   "recent_exits": [],
