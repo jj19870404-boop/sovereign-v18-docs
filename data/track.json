@@ -1,15 +1,25 @@
 {
-  "updated": "2026-02-22T09:22:52.640251",
+  "updated": "2026-02-22T11:10:05.900940",
   "summary": {
     "total": 100,
-    "wins": 62,
+    "wins": 61,
     "losses": 31,
     "be": 5,
     "open": 2,
-    "win_rate": 66.7,
-    "avg_return": 6.38
+    "win_rate": 66.3,
+    "avg_return": 6.43
   },
   "tracks": [
+    {
+      "date": "2026-02-22",
+      "symbol": "USAS",
+      "entry": 7.82,
+      "tp": 8.99,
+      "sl": 6.79,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0
+    },
     {
       "date": "2026-02-20",
       "symbol": "USAS",
@@ -1194,18 +1204,6 @@
       "return_pct": -4.68,
       "days": 1,
       "exit_price": 7.53,
-      "exit_type": "SL"
-    },
-    {
-      "date": "2025-09-17",
-      "symbol": "AMSC",
-      "entry": 63.12,
-      "tp": 72.59,
-      "sl": 59.19,
-      "status": "WIN",
-      "return_pct": 1.63,
-      "days": 3,
-      "exit_price": 64.15,
       "exit_type": "SL"
     }
   ]
