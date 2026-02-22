@@ -188,6 +188,10 @@ h1 {
     background: rgba(139, 144, 165, 0.15);
     color: var(--text-dim);
 }
+.badge-pending {
+    background: rgba(108, 140, 255, 0.15);
+    color: var(--accent);
+}
 
 /* ── Return Color ── */
 .ret-pos { color: var(--green); font-weight: 600; }
@@ -503,7 +507,10 @@ const GRADE_META = {
 
 function checkTrackFreshness(updated) {
     if (!updated) return;
-    const ts = new Date(updated);
+    // If no timezone info, treat as local time explicitly (Python isoformat() has no tz)
+    const raw = String(updated);
+    const hasZ = raw.endsWith('Z') || /[+-]\d{2}:\d{2}$/.test(raw);
+    const ts = hasZ ? new Date(raw) : new Date(raw + '+08:00');
     const now = new Date();
     const ageH = (now - ts) / 3600000;
     if (ageH > 24) {
@@ -533,6 +540,10 @@ async function loadTrack() {
 }
 
 function renderSubtitle(data) {
+    if (!data || !data.updated || !data.tracks) {
+        document.getElementById('subtitle').textContent = '無資料';
+        return;
+    }
     const updated = new Date(data.updated);
     const dateStr = updated.toLocaleDateString('zh-TW', {year:'numeric',month:'2-digit',day:'2-digit'});
     const timeStr = updated.toLocaleTimeString('zh-TW', {hour:'2-digit',minute:'2-digit'});
@@ -584,18 +595,22 @@ function renderTable(tracks) {
         const gradeHtml = `<span class="grade grade-${escHtml(grade)}" title="SL%: ${slPct}%">${escHtml(grade)}</span>`;
 
         let statusBadge, exitPrice;
+        const exitTypeTag = t.exit_type ? ' <span style="font-size:0.7em;color:var(--text-dim)">' + escHtml(t.exit_type) + '</span>' : '';
         if (t.status === 'WIN') {
-            statusBadge = '<span class="badge badge-win">WIN</span>';
+            statusBadge = '<span class="badge badge-win">WIN</span>' + exitTypeTag;
             exitPrice = '$' + safeFmt(t.exit_price);
         } else if (t.status === 'LOSS') {
-            statusBadge = '<span class="badge badge-loss">LOSS</span>';
+            statusBadge = '<span class="badge badge-loss">LOSS</span>' + exitTypeTag;
             exitPrice = '$' + safeFmt(t.exit_price);
         } else if (t.status === 'BE') {
-            statusBadge = '<span class="badge badge-be">BE</span>';
+            statusBadge = '<span class="badge badge-be">BE</span>' + exitTypeTag;
             exitPrice = '$' + safeFmt(t.exit_price);
         } else if (t.status === 'OPEN') {
             statusBadge = '<span class="badge badge-open">OPEN</span>';
             exitPrice = '$' + safeFmt(t.current || t.entry);
+        } else if (t.status === 'PENDING') {
+            statusBadge = '<span class="badge badge-pending">PENDING</span>';
+            exitPrice = '--';
         } else {
             statusBadge = '<span class="badge">' + escHtml(t.status) + '</span>';
             exitPrice = '--';

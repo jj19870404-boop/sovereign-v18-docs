@@ -354,7 +354,7 @@ function checkNewsPostFreshness(posts) {
 async function init() {
     showState('載入中...', '正在讀取新聞索引');
     try {
-        const res = await fetch(BASE + 'news-index.json');
+        const res = await fetch(BASE + 'news-index.json?t=' + Date.now());
         if (!res.ok) throw new Error('Index not found');
         dateIndex = await res.json();
         if (dateIndex.length === 0) {
@@ -393,7 +393,7 @@ async function loadDate() {
     updateNav();
 
     try {
-        const res = await fetch(BASE + `news-${date}.json`);
+        const res = await fetch(BASE + `news-${date}.json?t=${Date.now()}`);
         if (!res.ok) throw new Error('Not found');
         const data = await res.json();
         renderAll(data);
@@ -453,8 +453,9 @@ function renderAll(data) {
 }
 
 function escHtml(str) {
+    if (str == null) return '';
     const div = document.createElement('div');
-    div.textContent = str;
+    div.textContent = String(str);
     return div.innerHTML;
 }
 
@@ -465,8 +466,8 @@ function showState(title, desc) {
     $('s-range').textContent = '--';
     $('news-container').innerHTML = `<div class="state-msg">
         <div class="icon">&#x1F4F0;</div>
-        <p><strong>${title}</strong></p>
-        <p style="margin-top:8px;font-size:0.9em">${desc}</p>
+        <p><strong>${escHtml(title)}</strong></p>
+        <p style="margin-top:8px;font-size:0.9em">${escHtml(desc)}</p>
     </div>`;
 }
 
