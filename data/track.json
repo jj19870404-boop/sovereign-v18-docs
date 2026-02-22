@@ -1,15 +1,26 @@
 {
-  "updated": "2026-02-22T19:27:35.593483",
+  "updated": "2026-02-23T06:00:22.318239",
   "summary": {
     "total": 100,
     "wins": 61,
-    "losses": 31,
+    "losses": 30,
     "be": 5,
-    "open": 3,
-    "win_rate": 66.3,
-    "avg_return": 6.43
+    "open": 4,
+    "win_rate": 67.0,
+    "avg_return": 6.54
   },
   "tracks": [
+    {
+      "date": "2026-02-23",
+      "symbol": "USAS",
+      "entry": 7.82,
+      "tp": 8.99,
+      "sl": 6.79,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 7.82
+    },
     {
       "date": "2026-02-22",
       "symbol": "USAS",
@@ -1193,18 +1204,6 @@
       "return_pct": 0.0,
       "days": 3,
       "exit_price": 7.54,
-      "exit_type": "SL"
-    },
-    {
-      "date": "2025-09-18",
-      "symbol": "TNGX",
-      "entry": 7.9,
-      "tp": 9.08,
-      "sl": 7.3,
-      "status": "LOSS",
-      "return_pct": -4.68,
-      "days": 1,
-      "exit_price": 7.53,
       "exit_type": "SL"
     }
   ]
