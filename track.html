@@ -385,6 +385,7 @@ h1 {
         <a href="track.html" class="active">選股追蹤</a>
         <a href="news.html">整點快報</a>
         <a href="evolution.html">版本演化</a>
+        <a href="backtest.html">回測報告</a>
     </div>
 </div>
 
@@ -406,7 +407,7 @@ h1 {
 
 <!-- Grade Stats -->
 <div class="grade-stats" id="grade-stats" style="display:none;">
-    <h3>評級勝率參考 — V22 回測統計 (全美股 11,000+, 448 筆交易, 評級基於 2025-2026 共 97 筆)</h3>
+    <h3>評級勝率參考 — V22 回測統計 (全美股 11,000+, 433 筆交易, 評級基於 2025-2026 共 97 筆)</h3>
     <div style="overflow-x:auto">
     <table class="grade-stats-table" id="grade-stats-table">
         <thead><tr>
@@ -428,7 +429,7 @@ h1 {
 
     <p class="grade-stats-note">
         SL% = (進場價 - 停損價) / 進場價。SL% 越低代表停損越緊、單筆風險越低。<br>
-        評級基於進場時的停損距離計算，反映該筆交易的風險程度。評級統計來源：2025-2026 共 97 筆具完整 SL 數據的交易；年度總計來源：V22 全美股回測 2021-2026 共 448 筆。<br>
+        評級基於進場時的停損距離計算，反映該筆交易的風險程度。評級統計來源：2025-2026 共 97 筆具完整 SL 數據的交易；年度總計來源：V22 全美股回測 2021-2026 共 433 筆。<br>
         注意：S 級樣本極少 (1 筆)，統計參考價值有限；A/B/C 級為主力分佈，統計較穩定。V22 無 D 級交易。
     </p>
 </div>
@@ -477,9 +478,9 @@ function calcGrade(entry, tp, sl) {
     return { slPct: Math.round(slPct * 10) / 10, grade };
 }
 
-// ── Historical Grade Stats (V22 Ultimate 全美股回測, 448 closed trades) ──
+// ── Historical Grade Stats (V22 Ultimate 全美股回測, 433 closed trades) ──
 // Grade stats from 2025-2026 ground truth (97 trades with exact SL%)
-// Yearly totals from all 448 closed trades (2021-2026)
+// Yearly totals from all 433 closed trades (2021-2026)
 const HIST = {
     overall: {
         S: { count: 1, wins: 1, wr: 100.0, avg_ret: 15.00, tp_rate: 100 },
@@ -496,7 +497,7 @@ const HIST = {
         '2025': { S:{n:1,wr:100}, A:{n:29,wr:51.7}, B:{n:43,wr:67.4}, C:{n:17,wr:58.8}, D:{n:0,wr:0}, total:{n:91,wr:61.5} },
         '2026': { S:{n:0,wr:0}, A:{n:2,wr:100}, B:{n:3,wr:100}, C:{n:2,wr:100}, D:{n:0,wr:0}, total:{n:7,wr:100} },
     },
-    total_trades: 448
+    total_trades: 433
 };
 
 const GRADE_META = {
@@ -665,7 +666,7 @@ function renderGradeStats(tracks) {
         <td>ALL</td>
         <td></td>
         <td>${HIST.total_trades}</td>
-        <td>63.2%</td>
+        <td>63.0%</td>
         <td>19%</td>
         <td>+3.84%</td>
         <td style="font-size:0.78em;color:var(--text-dim);text-align:left">2021-2026 全部交易 (* 樣本 < 10)</td>
