@@ -406,7 +406,7 @@ h1 {
 
 <!-- Grade Stats -->
 <div class="grade-stats" id="grade-stats" style="display:none;">
-    <h3>評級勝率參考 — 2021-2026 回測統計 (V22, 全美股 7,600+, 316 筆交易)</h3>
+    <h3>評級勝率參考 — V22 回測統計 (全美股 11,000+, 448 筆交易, 評級基於 2025-2026 共 97 筆)</h3>
     <div style="overflow-x:auto">
     <table class="grade-stats-table" id="grade-stats-table">
         <thead><tr>
@@ -428,8 +428,8 @@ h1 {
 
     <p class="grade-stats-note">
         SL% = (進場價 - 停損價) / 進場價。SL% 越低代表停損越緊、單筆風險越低。<br>
-        評級基於進場時的停損距離計算，反映該筆交易的風險程度。數據來源：V22 全美股回測 (2021-2026)。<br>
-        注意：S/A 級樣本較少，統計參考價值有限；C/D 級為主力分佈，統計較穩定。
+        評級基於進場時的停損距離計算，反映該筆交易的風險程度。評級統計來源：2025-2026 共 97 筆具完整 SL 數據的交易；年度總計來源：V22 全美股回測 2021-2026 共 448 筆。<br>
+        注意：S 級樣本極少 (1 筆)，統計參考價值有限；A/B/C 級為主力分佈，統計較穩定。V22 無 D 級交易。
     </p>
 </div>
 
@@ -477,24 +477,26 @@ function calcGrade(entry, tp, sl) {
     return { slPct: Math.round(slPct * 10) / 10, grade };
 }
 
-// ── Historical Grade Stats (from 2021-2026 V22 全美股回測, 316 trades) ──
+// ── Historical Grade Stats (V22 Ultimate 全美股回測, 448 closed trades) ──
+// Grade stats from 2025-2026 ground truth (97 trades with exact SL%)
+// Yearly totals from all 448 closed trades (2021-2026)
 const HIST = {
     overall: {
-        S: { count: 3, wins: 2, wr: 66.7, avg_ret: 0.96, tp_rate: 0 },
-        A: { count: 3, wins: 2, wr: 66.7, avg_ret: 3.10, tp_rate: 33 },
-        B: { count: 51, wins: 31, wr: 60.8, avg_ret: 2.52, tp_rate: 20 },
-        C: { count: 129, wins: 90, wr: 69.8, avg_ret: 3.40, tp_rate: 23 },
-        D: { count: 130, wins: 95, wr: 73.1, avg_ret: 3.25, tp_rate: 32 },
+        S: { count: 1, wins: 1, wr: 100.0, avg_ret: 15.00, tp_rate: 100 },
+        A: { count: 31, wins: 17, wr: 54.8, avg_ret: 1.31, tp_rate: 10 },
+        B: { count: 46, wins: 32, wr: 69.6, avg_ret: 6.03, tp_rate: 26 },
+        C: { count: 19, wins: 12, wr: 63.2, avg_ret: 9.50, tp_rate: 37 },
+        D: { count: 0, wins: 0, wr: 0, avg_ret: 0, tp_rate: 0 },
     },
     yearly: {
-        '2021': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:10,wr:90.0}, C:{n:32,wr:65.6}, D:{n:26,wr:65.4}, total:{n:68,wr:69.1} },
-        '2022': { S:{n:0,wr:0}, A:{n:1,wr:0.0}, B:{n:14,wr:50.0}, C:{n:24,wr:62.5}, D:{n:11,wr:45.5}, total:{n:50,wr:54.0} },
-        '2023': { S:{n:1,wr:100}, A:{n:2,wr:100}, B:{n:7,wr:57.1}, C:{n:21,wr:61.9}, D:{n:27,wr:66.7}, total:{n:58,wr:65.5} },
-        '2024': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:6,wr:16.7}, C:{n:23,wr:60.9}, D:{n:31,wr:80.6}, total:{n:60,wr:66.7} },
-        '2025': { S:{n:1,wr:100}, A:{n:0,wr:0}, B:{n:13,wr:76.9}, C:{n:28,wr:92.9}, D:{n:32,wr:84.4}, total:{n:74,wr:86.5} },
-        '2026': { S:{n:1,wr:0}, A:{n:0,wr:0}, B:{n:1,wr:0}, C:{n:1,wr:100}, D:{n:3,wr:100}, total:{n:6,wr:66.7} },
+        '2021': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:0,wr:0}, C:{n:0,wr:0}, D:{n:0,wr:0}, total:{n:93,wr:67.7} },
+        '2022': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:0,wr:0}, C:{n:0,wr:0}, D:{n:0,wr:0}, total:{n:80,wr:52.5} },
+        '2023': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:0,wr:0}, C:{n:0,wr:0}, D:{n:0,wr:0}, total:{n:84,wr:61.9} },
+        '2024': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:0,wr:0}, C:{n:0,wr:0}, D:{n:0,wr:0}, total:{n:93,wr:67.7} },
+        '2025': { S:{n:1,wr:100}, A:{n:29,wr:51.7}, B:{n:43,wr:67.4}, C:{n:17,wr:58.8}, D:{n:0,wr:0}, total:{n:91,wr:61.5} },
+        '2026': { S:{n:0,wr:0}, A:{n:2,wr:100}, B:{n:3,wr:100}, C:{n:2,wr:100}, D:{n:0,wr:0}, total:{n:7,wr:100} },
     },
-    total_trades: 316
+    total_trades: 448
 };
 
 const GRADE_META = {
@@ -663,9 +665,9 @@ function renderGradeStats(tracks) {
         <td>ALL</td>
         <td></td>
         <td>${HIST.total_trades}</td>
-        <td>69.6%</td>
-        <td>26%</td>
-        <td>+3.09%</td>
+        <td>63.2%</td>
+        <td>19%</td>
+        <td>+3.84%</td>
         <td style="font-size:0.78em;color:var(--text-dim);text-align:left">2021-2026 全部交易 (* 樣本 < 10)</td>
     </tr>`;
 
