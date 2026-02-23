@@ -1291,7 +1291,7 @@ function renderDashboard(data) {
         regimeEl.style.display = 'block';
         regimeEl.style.background = 'rgba(255,107,107,0.15)';
         regimeEl.style.border = '1px solid var(--red)';
-        regimeEl.innerHTML = `<strong style="color:var(--red)">&#9760; Death Cross</strong> &mdash; SPY MA50 近期下穿 MA200，歷史勝率僅 40%。篩選門檻已自動提升至最高等級。`;
+        regimeEl.innerHTML = `<strong style="color:var(--red)">&#9760; 死亡交叉</strong> &mdash; SPY 50日均線近期下穿200日均線，歷史勝率僅 40%。篩選門檻已自動提升至最高等級。`;
     } else if (spyRsi > 0 && spyRsi < 30) {
         regimeEl.style.display = 'block';
         regimeEl.style.background = 'rgba(255,107,107,0.15)';
@@ -1301,12 +1301,12 @@ function renderDashboard(data) {
         regimeEl.style.display = 'block';
         regimeEl.style.background = 'rgba(255,107,107,0.1)';
         regimeEl.style.border = '1px solid rgba(255,107,107,0.3)';
-        regimeEl.innerHTML = `<strong style="color:var(--red)">&#9888; BEAR</strong> &mdash; 空頭環境，篩選門檻已提高。僅保留最強突破訊號。`;
+        regimeEl.innerHTML = `<strong style="color:var(--red)">&#9888; 空頭環境</strong> &mdash; 篩選門檻已提高，僅保留最強突破訊號。`;
     } else if (regime === 'NEUTRAL') {
         regimeEl.style.display = 'block';
         regimeEl.style.background = 'rgba(255,217,61,0.1)';
         regimeEl.style.border = '1px solid rgba(255,217,61,0.3)';
-        regimeEl.innerHTML = `<strong style="color:var(--yellow)">&#9888; NEUTRAL</strong> &mdash; 中性環境，篩選門檻適度提高。`;
+        regimeEl.innerHTML = `<strong style="color:var(--yellow)">&#9888; 中性環境</strong> &mdash; 篩選門檻適度提高。`;
     } else {
         regimeEl.style.display = 'none';
     }
