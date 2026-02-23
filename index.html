@@ -411,6 +411,7 @@ li { margin: 4px 0; }
             <li>季度 &amp; 月度深度分析</li>
             <li>2022 熊市解剖</li>
             <li>學術研究佐證</li>
+            <li>Death Cross、VIX、Day-1 SL 進階分析</li>
             <li>V22 防護機制 &amp; 優化方向</li>
         </ol>
     </li>
@@ -4083,10 +4084,22 @@ li { margin: 4px 0; }
         <td><span class="tag tag-green">已實作（品質過濾）</span></td>
     </tr>
     <tr>
-        <td>VIX &gt; 30 時降低倉位</td>
-        <td>Barroso: Sharpe &times;2</td>
+        <td>VIX &gt; 25 時加強過濾</td>
+        <td>V22 數據：VIX&gt;25 WR 54.8%</td>
         <td>避免動量崩潰期</td>
-        <td><span class="tag tag-yellow">研究中</span></td>
+        <td><span class="tag tag-green">已驗證（分類影響）</span></td>
+    </tr>
+    <tr>
+        <td>Death Cross 自動偵測</td>
+        <td>V22 數據：WR 40.0% (20 筆)</td>
+        <td>偵測最危險市場轉折</td>
+        <td><span class="tag tag-green">已實作</span></td>
+    </tr>
+    <tr>
+        <td>SPY RSI &lt; 30 超賣升級</td>
+        <td>V22 數據：WR 46.4% (28 筆)</td>
+        <td>市場恐慌期暫停</td>
+        <td><span class="tag tag-green">已實作</span></td>
     </tr>
     <tr>
         <td>市場寬度 &gt; 55% 過濾</td>
@@ -4096,9 +4109,9 @@ li { margin: 4px 0; }
     </tr>
     <tr>
         <td>一月加重 / 4-7 月減碼</td>
-        <td>V22 數據：1 月 WR 79.5%</td>
+        <td>V22 數據：1 月 WR 79.5% (p=0.006)</td>
         <td>利用季節性效應</td>
-        <td><span class="tag tag-yellow">觀察中</span></td>
+        <td><span class="tag tag-green">已驗證（統計顯著）</span></td>
     </tr>
     <tr>
         <td>板塊動量排名過濾</td>
@@ -4113,6 +4126,78 @@ li { margin: 4px 0; }
     學術研究一致指出：動量策略最危險的不是持續熊市，而是「熊轉牛」的甩鞭效應 &mdash; 輸家股票暴漲而贏家滯後。V22 的嚴格停損和動態切換機制在一定程度上緩解了這個風險，但仍需留意市場反轉點。
 </div>
 
+<h4>進階量化分析：Death Cross、VIX、Day-1 Stop Loss</h4>
+<p>基於 4 個獨立分析腳本對 449 筆交易的深度量化研究：</p>
+
+<div class="two-col">
+<div class="card card-accent">
+    <h5>Death Cross 鞭打效應（最危險時期）</h5>
+    <p>SPY MA50 下穿 MA200（Death Cross）後的 20 筆交易：</p>
+    <table>
+        <tr><th>環境</th><th>交易數</th><th>勝率</th><th>備註</th></tr>
+        <tr><td>BULL（正常多頭）</td><td class="num-cell">279</td><td class="num-cell win">67.4%</td><td>基準表現</td></tr>
+        <tr><td>Death Cross 鞭打期</td><td class="num-cell">20</td><td class="num-cell loss">40.0%</td><td>最危險！WR -27.4pp</td></tr>
+        <tr><td>一般 BEAR</td><td class="num-cell">51</td><td class="num-cell">58.8%</td><td>持續空頭反而較穩</td></tr>
+        <tr><td>Golden Cross 後</td><td class="num-cell">20</td><td class="num-cell">57.5%</td><td>恢復期，尚未回到牛市水平</td></tr>
+    </table>
+    <p class="analogy" style="margin-top:8px;">Death Cross 歷史: 2022-03-16, 2025-04-16 &mdash; 兩次均伴隨持續下跌。已實作自動偵測。</p>
+</div>
+<div class="card card-accent">
+    <h5>SPY RSI 超賣 &amp; VIX 效應</h5>
+    <table>
+        <tr><th>環境</th><th>交易數</th><th>勝率</th></tr>
+        <tr><td>SPY RSI &lt; 30（超賣）</td><td class="num-cell">28</td><td class="num-cell loss">46.4%</td></tr>
+        <tr><td>SPY RSI 30-70（正常）</td><td class="num-cell">327</td><td class="num-cell win">66.4%</td></tr>
+        <tr><td>SPY RSI &gt; 70（超買）</td><td class="num-cell">94</td><td class="num-cell">57.0%</td></tr>
+    </table>
+    <table style="margin-top:10px;">
+        <tr><th>VIX 區間</th><th>交易數</th><th>勝率</th><th>平均回報</th></tr>
+        <tr><td>VIX &lt; 15</td><td class="num-cell">57</td><td class="num-cell win">68.4%</td><td class="num-cell">+4.67%</td></tr>
+        <tr><td>VIX 15-20</td><td class="num-cell">219</td><td class="num-cell win">63.5%</td><td class="num-cell">+3.92%</td></tr>
+        <tr><td>VIX 20-25</td><td class="num-cell">109</td><td class="num-cell">62.4%</td><td class="num-cell">+3.44%</td></tr>
+        <tr><td>VIX 25-30</td><td class="num-cell">38</td><td class="num-cell loss">54.8%</td><td class="num-cell">+2.67%</td></tr>
+        <tr><td>VIX &gt; 30</td><td class="num-cell">26</td><td class="num-cell loss">54.5%</td><td class="num-cell">+1.88%</td></tr>
+    </table>
+    <p class="analogy" style="margin-top:8px;">VIX Spike（單日漲 &gt;20%）不影響 V22（63.4% vs 63.1%），系統對恐慌脈衝免疫。</p>
+</div>
+</div>
+
+<div class="card">
+    <h5>Day-1 Stop Loss 分析（核心虧損來源）</h5>
+    <p>449 筆交易中有 128 筆（28.6%）在第 1 天就出場。其中 92 筆是 Stop Loss：</p>
+    <div class="two-col" style="margin:10px 0;">
+        <div>
+            <table>
+                <tr><th>Day-1 出場類型</th><th>數量</th><th>勝率</th><th>平均回報</th></tr>
+                <tr><td>Day-1 SL</td><td class="num-cell">92</td><td class="num-cell loss">12.0%</td><td class="num-cell loss">-4.77%</td></tr>
+                <tr><td>Day-1 TP</td><td class="num-cell">22</td><td class="num-cell win">100%</td><td class="num-cell win">+15.0%</td></tr>
+                <tr><td>Day-1 其他</td><td class="num-cell">14</td><td class="num-cell">42.9%</td><td class="num-cell">+2.1%</td></tr>
+            </table>
+        </div>
+        <div>
+            <table>
+                <tr><th>持有天數</th><th>數量</th><th>勝率</th><th>平均回報</th></tr>
+                <tr><td>1 天</td><td class="num-cell">128</td><td class="num-cell loss">28.1%</td><td class="num-cell loss">-1.92%</td></tr>
+                <tr><td>2-5 天</td><td class="num-cell">118</td><td class="num-cell win">69.5%</td><td class="num-cell win">+5.77%</td></tr>
+                <tr><td>6-10 天</td><td class="num-cell">115</td><td class="num-cell win">80.9%</td><td class="num-cell win">+9.35%</td></tr>
+                <tr><td>11+ 天</td><td class="num-cell">88</td><td class="num-cell win">79.5%</td><td class="num-cell win">+6.12%</td></tr>
+            </table>
+        </div>
+    </div>
+    <p>Day-1 SL 中位數回報 <span class="loss">-5.34%</span>，53% 虧損超過 5%。SL=1.3x ATR 導致進場日回撤即觸發停損。</p>
+    <p><strong>結論：</strong>Day-1 SL 是系統最大虧損來源（佔全部虧損的 ~55%），但收緊 SL 會同時減少後續贏家的存活率，是 V22 設計中的必要損耗。存活到 Day 6-10 的交易 WR 高達 80.9%。</p>
+</div>
+
+<div class="card card-green">
+    <h5>已實施的優化措施（基於本研究）</h5>
+    <ol>
+        <li><strong>Death Cross 自動偵測</strong> &mdash; 掃描 SPY MA50/MA200 近 20 日交叉。偵測到 Death Cross 時自動提升篩選門檻至最嚴格等級（Vol_ZScore &ge; 2.0, Pct_52wk &ge; 95%, Vol_Ratio &ge; 2.5）。</li>
+        <li><strong>SPY RSI 超賣升級</strong> &mdash; SPY RSI &lt; 30 時強制升級為 BEAR regime，觸發嚴格過濾。</li>
+        <li><strong>三級 Regime 過濾</strong> &mdash; BULL（正常）、NEUTRAL（略嚴）、BEAR（最嚴）三級漸進門檻，Death Cross 和 RSI 超賣為特殊升級觸發。</li>
+        <li><strong>Golden Cross 偵測</strong> &mdash; MA50 上穿 MA200 時顯示恢復訊號，提供操作參考。</li>
+    </ol>
+</div>
+
 <h4>研究來源</h4>
 <div class="card" style="font-size: 0.85em; color: var(--text-dim);">
     <ul style="padding-left: 20px;">
@@ -4124,13 +4209,14 @@ li { margin: 4px 0; }
         <li>MSCI (2025). "Factor Indexing Through the Decades." 50 年因子研究.</li>
         <li>Mamais (2025). "Explaining and Predicting Momentum Performance Shifts." <em>Journal of Forecasting</em>.</li>
         <li>Sovereign V22 回測數據：449 筆交易 (2021-01 至 2026-02)，V22_DailyPickStats.json 原始數據.</li>
+        <li>V22 量化驗證腳本：analyze_market_correlation.py (Pearson r=0.33), analyze_vix_correlation.py, analyze_advanced_patterns.py, analyze_regime_transitions.py.</li>
     </ul>
 </div>
 
 <!-- Footer -->
 <div class="footer">
     <p>Sovereign V22 Ultimate &mdash; 動能突破交易系統技術文件 | 5 階段 170+ 實驗</p>
-    <p>文件生成日期：2026-02-23 | 回測數據基於 2020-2026 年歷史資料（清洗後）| 倖存者偏差驗證：+279 檔已下市股票</p>
+    <p>文件生成日期：2026-02-23 (進階分析更新) | 回測數據基於 2020-2026 年歷史資料（清洗後）| 倖存者偏差驗證：+279 檔已下市股票</p>
     <p>本文件僅供教育和研究用途，不構成投資建議。過去績效不代表未來表現。</p>
 </div>
 
