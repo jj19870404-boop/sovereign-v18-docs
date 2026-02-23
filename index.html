@@ -1017,6 +1017,7 @@ li { margin: 4px 0; }
     <tr><td><span class="tag tag-blue">TRAIL 追蹤</span></td><td class="num-cell">1</td><td class="num-cell">12.5%</td><td class="num-cell win">100.0%</td></tr>
     <tr><td><span class="tag tag-red">SL 停損</span></td><td class="num-cell">1</td><td class="num-cell">12.5%</td><td class="num-cell loss">0.0%</td></tr>
     <tr><td><span class="tag tag-yellow">TIME 時間</span></td><td class="num-cell">1</td><td class="num-cell">12.5%</td><td class="num-cell loss">0.0%</td></tr>
+    <tr><td>OPEN 未平倉</td><td class="num-cell">1</td><td class="num-cell">12.5%</td><td class="num-cell">--</td></tr>
 </table>
 
 <h3>六年連續複利結果</h3>
@@ -1051,7 +1052,7 @@ li { margin: 4px 0; }
         <strong>需注意的風險</strong>
         <ul>
             <li>最大年度回撤 -13.3%（固定倉位 MDD）</li>
-            <li>2022 年勝率降至 51.9%，為最弱年份</li>
+            <li>2022 年勝率降至 53.6%，為最弱年份</li>
             <li>SL 停損的勝率約 18-25%（觸發停損通常意味著虧損）</li>
             <li>全倉策略在連續虧損時回撤幅度大</li>
             <li>連續複利數字為理論值，實際操作受流動性限制</li>
@@ -3149,14 +3150,14 @@ li { margin: 4px 0; }
         <td>SL 停損</td>
         <td class="num-cell loss">196</td>
         <td class="num-cell">45.3%</td>
-        <td class="num-cell">26.9%</td>
+        <td class="num-cell">21.9%</td>
         <td>觸及 1.3x ATR 停損線（更緊 = 更快認賠）</td>
     </tr>
     <tr>
         <td>TRAIL 追蹤停利</td>
         <td class="num-cell win">145</td>
         <td class="num-cell">33.5%</td>
-        <td class="num-cell win">97.1%</td>
+        <td class="num-cell win">97.2%</td>
         <td>漲幅回撤觸發追蹤停損（保護獲利）</td>
     </tr>
     <tr>
@@ -3170,7 +3171,7 @@ li { margin: 4px 0; }
         <td>TIME 時間停損</td>
         <td class="num-cell">9</td>
         <td class="num-cell">2.1%</td>
-        <td class="num-cell win">100.0%</td>
+        <td class="num-cell">77.8%</td>
         <td>持倉超過 10 個交易日</td>
     </tr>
     <tr>
@@ -3180,9 +3181,16 @@ li { margin: 4px 0; }
         <td class="num-cell loss">0.0%</td>
         <td>持倉 9 天仍虧損 &gt;5%</td>
     </tr>
+    <tr>
+        <td>OPEN 未平倉</td>
+        <td class="num-cell">1</td>
+        <td class="num-cell">0.2%</td>
+        <td class="num-cell">--</td>
+        <td>回測截止日尚未出場</td>
+    </tr>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">SL 佔比 45.3% 看似高，但這正是 V22 Ultimate 的設計：用 1.3x ATR 緊停損快速認賠（平均虧損 -5.36%），讓 TRAIL + TP 的 52.2% 贏家交易帶來更大獲利（平均 +9.19%）。</p>
+<p style="color: var(--text-dim); font-size: 0.85em;">SL 佔比 45.3% 看似高，但這正是 V22 最新版的設計：用 1.3x ATR 緊停損快速認賠（平均虧損 -5.19%），讓 TRAIL + TP 的 52.2% 贏家交易帶來更大獲利（平均 +9.37%）。</p>
 
 <h3>滑點敏感度分析</h3>
 <div class="card" style="padding:0; overflow-x:auto;">

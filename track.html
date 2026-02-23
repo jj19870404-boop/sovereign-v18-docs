@@ -479,8 +479,8 @@ function calcGrade(entry, tp, sl) {
 }
 
 // ── Historical Grade Stats (V22 Ultimate 全美股回測, 433 closed trades) ──
-// Grade stats from 2025-2026 ground truth (97 trades with exact SL%)
-// Yearly totals from all 433 closed trades (2021-2026)
+// Grade stats from 2025-2026 ground truth (97 graded trades with exact SL%)
+// Yearly totals from V22 最新版 433 closed trades (2021-2026)
 const HIST = {
     overall: {
         S: { count: 1, wins: 1, wr: 100.0, avg_ret: 15.00, tp_rate: 100 },
@@ -490,12 +490,12 @@ const HIST = {
         D: { count: 0, wins: 0, wr: 0, avg_ret: 0, tp_rate: 0 },
     },
     yearly: {
-        '2021': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:0,wr:0}, C:{n:0,wr:0}, D:{n:0,wr:0}, total:{n:93,wr:67.7} },
-        '2022': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:0,wr:0}, C:{n:0,wr:0}, D:{n:0,wr:0}, total:{n:80,wr:52.5} },
-        '2023': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:0,wr:0}, C:{n:0,wr:0}, D:{n:0,wr:0}, total:{n:84,wr:61.9} },
-        '2024': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:0,wr:0}, C:{n:0,wr:0}, D:{n:0,wr:0}, total:{n:93,wr:67.7} },
-        '2025': { S:{n:1,wr:100}, A:{n:29,wr:51.7}, B:{n:43,wr:67.4}, C:{n:17,wr:58.8}, D:{n:0,wr:0}, total:{n:91,wr:61.5} },
-        '2026': { S:{n:0,wr:0}, A:{n:2,wr:100}, B:{n:3,wr:100}, C:{n:2,wr:100}, D:{n:0,wr:0}, total:{n:7,wr:100} },
+        '2021': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:0,wr:0}, C:{n:0,wr:0}, D:{n:0,wr:0}, total:{n:91,wr:63.7} },
+        '2022': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:0,wr:0}, C:{n:0,wr:0}, D:{n:0,wr:0}, total:{n:81,wr:51.9} },
+        '2023': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:0,wr:0}, C:{n:0,wr:0}, D:{n:0,wr:0}, total:{n:80,wr:66.2} },
+        '2024': { S:{n:0,wr:0}, A:{n:0,wr:0}, B:{n:0,wr:0}, C:{n:0,wr:0}, D:{n:0,wr:0}, total:{n:89,wr:68.5} },
+        '2025': { S:{n:1,wr:100}, A:{n:29,wr:51.7}, B:{n:43,wr:67.4}, C:{n:17,wr:58.8}, D:{n:0,wr:0}, total:{n:84,wr:63.1} },
+        '2026': { S:{n:0,wr:0}, A:{n:2,wr:100}, B:{n:3,wr:100}, C:{n:2,wr:100}, D:{n:0,wr:0}, total:{n:8,wr:75.0} },
     },
     total_trades: 433
 };
