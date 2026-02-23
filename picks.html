@@ -1154,7 +1154,7 @@ function isUSHoliday(d) {
         '2025-06-19','2025-07-04','2025-09-01','2025-11-27','2025-12-25',
         '2026-01-01','2026-01-19','2026-02-16','2026-04-03','2026-05-25',
         '2026-06-19','2026-07-03','2026-09-07','2026-11-26','2026-12-25',
-        '2027-01-01','2027-01-18','2027-02-15','2027-04-02','2027-05-31',
+        '2027-01-01','2027-01-18','2027-02-15','2027-03-26','2027-05-31',
         '2027-06-18','2027-07-05','2027-09-06','2027-11-25','2027-12-24',
     ];
     const s = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
@@ -1193,6 +1193,15 @@ async function init() {
     }
     if (!dateIndex || dateIndex.length === 0) {
         showState('尚無選股資料', '請先執行 push_picks.py 生成資料');
+        return;
+    }
+    // 過濾非交易日（週末、美股休市日）
+    dateIndex = dateIndex.filter(d => {
+        const dt = new Date(d + 'T12:00:00');
+        return isTradingDay(dt);
+    });
+    if (dateIndex.length === 0) {
+        showState('尚無交易日資料', '目前資料中無有效交易日');
         return;
     }
     checkFreshness(dateIndex[0]);
