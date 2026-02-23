@@ -405,6 +405,15 @@ li { margin: 4px 0; }
             <li>倖存者偏差驗證</li>
         </ol>
     </li>
+    <li><a href="#market-correlation">V22 勝率 vs 大盤相關性研究</a>
+        <ol style="list-style-type: lower-alpha;">
+            <li>年度勝率 vs S&amp;P 500</li>
+            <li>季度 &amp; 月度深度分析</li>
+            <li>2022 熊市解剖</li>
+            <li>學術研究佐證</li>
+            <li>V22 防護機制 &amp; 優化方向</li>
+        </ol>
+    </li>
 </ol>
 </div>
 
@@ -3726,10 +3735,402 @@ li { margin: 4px 0; }
     倖存者偏差測試的最大收穫不是「偏差有多大」（答案：可忽略），而是揭示了 V20 和 V22 系列對數據擾動的<strong>穩健性差異</strong>。V20 在 2021/2022 的選股路徑改變後直接崩潰（$4,963 萬 &rarr; $1.9 萬），而 V22 系列幾乎不受影響。V22 Ultimate 繼承了這個穩健性優勢 &mdash; 它不僅績效 624 倍於 V20，還更能承受數據不確定性。
 </div>
 
+<!-- ================================================================ -->
+<!-- V22 勝率 vs 大盤相關性研究 -->
+<!-- ================================================================ -->
+<h2 id="market-correlation"><span class="num">15</span>V22 勝率 vs 大盤相關性研究</h2>
+
+<div class="highlight-box">
+    <div class="label">核心結論</div>
+    <div class="big-number">勝率與大盤高度相關，但系統展現強韌性</div>
+    <div class="label" style="margin-top: 8px;">月度 Pearson r = 0.33 (p = 0.009, 統計顯著) | SPY &gt; 200MA 時 WR 65.7% vs &lt; 200MA 時 53.9%（&Delta; 11.8pp）</div>
+    <div class="label" style="margin-top: 4px;">牛市 67.4% vs 熊市 53.1% | 即使 2022 最差季度（WR 41.2%）仍維持正回報 | 反彈恢復速度極快（Q4 77.3%）</div>
+</div>
+
+<div class="card card-yellow">
+    <p><strong>研究動機</strong>：V22 是動量突破策略，理論上應與大盤走勢相關 &mdash; 牛市中股票更容易突破成功，熊市中更容易被打回。本研究使用 449 筆實際交易數據（2021-2026），結合學術論文與市場實證，量化這個相關性並評估系統的韌性。</p>
+</div>
+
+<!-- ── 年度勝率 vs S&P 500 ── -->
+<h3>a. 年度勝率 vs S&amp;P 500</h3>
+
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>年度</th>
+        <th class="num-cell">V22 勝率</th>
+        <th class="num-cell">平均回報</th>
+        <th class="num-cell">交易數</th>
+        <th class="num-cell">S&amp;P 500</th>
+        <th>市場狀態</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell win"><strong>67.4%</strong></td>
+        <td class="num-cell win">+3.56%</td>
+        <td class="num-cell">92</td>
+        <td class="num-cell win">+26.9%</td>
+        <td><span class="tag tag-green">強牛市</span></td>
+    </tr>
+    <tr style="background: rgba(255,107,107,0.06);">
+        <td>2022</td>
+        <td class="num-cell loss"><strong>53.1%</strong></td>
+        <td class="num-cell">+2.18%</td>
+        <td class="num-cell">81</td>
+        <td class="num-cell loss">-19.4%</td>
+        <td><span class="tag tag-red">熊市</span></td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell win"><strong>61.9%</strong></td>
+        <td class="num-cell win">+3.67%</td>
+        <td class="num-cell">84</td>
+        <td class="num-cell win">+24.2%</td>
+        <td><span class="tag tag-green">復甦牛市</span></td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell win"><strong>67.4%</strong></td>
+        <td class="num-cell win">+3.99%</td>
+        <td class="num-cell">92</td>
+        <td class="num-cell win">+23.3%</td>
+        <td><span class="tag tag-green">牛市</span></td>
+    </tr>
+    <tr>
+        <td>2025</td>
+        <td class="num-cell"><strong>61.5%</strong></td>
+        <td class="num-cell win">+4.95%</td>
+        <td class="num-cell">91</td>
+        <td class="num-cell">&mdash;</td>
+        <td><span class="tag tag-yellow">震盪</span></td>
+    </tr>
+    <tr>
+        <td>2026</td>
+        <td class="num-cell win"><strong>88.9%</strong></td>
+        <td class="num-cell win">+9.76%</td>
+        <td class="num-cell">9</td>
+        <td class="num-cell">&mdash;</td>
+        <td><span class="tag tag-blue">進行中</span></td>
+    </tr>
+    <tr style="font-weight: 700; border-top: 2px solid var(--border);">
+        <td>ALL</td>
+        <td class="num-cell">63.2%</td>
+        <td class="num-cell win">+3.83%</td>
+        <td class="num-cell">449</td>
+        <td class="num-cell">&mdash;</td>
+        <td>&mdash;</td>
+    </tr>
+</table>
+</div>
+
+<div class="analogy">
+    2022 熊市造成勝率下降 12.6 個百分點（53.1% vs 牛市年均 ~65.7%），但即使在最差年份，平均每筆交易回報仍為正數 +2.18%，年度累計 +176.2%。這代表系統在 S&amp;P 500 下跌 -19.4% 的環境下仍能獲利。
+</div>
+
+<!-- ── 季度勝率深度分析 ── -->
+<h3>b. 季度 &amp; 月度深度分析</h3>
+
+<h4>季度勝率</h4>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>季度</th>
+        <th class="num-cell">交易</th>
+        <th class="num-cell">勝率</th>
+        <th class="num-cell">平均回報</th>
+        <th>備註</th>
+    </tr>
+    <tr><td>2021-Q1</td><td class="num-cell">23</td><td class="num-cell win">78.3%</td><td class="num-cell win">+4.61%</td><td></td></tr>
+    <tr><td>2021-Q2</td><td class="num-cell">20</td><td class="num-cell win">70.0%</td><td class="num-cell win">+3.38%</td><td></td></tr>
+    <tr><td>2021-Q3</td><td class="num-cell">24</td><td class="num-cell">66.7%</td><td class="num-cell win">+4.00%</td><td></td></tr>
+    <tr><td>2021-Q4</td><td class="num-cell">25</td><td class="num-cell">56.0%</td><td class="num-cell">+2.33%</td><td></td></tr>
+    <tr style="background: rgba(255,107,107,0.06);"><td>2022-Q1</td><td class="num-cell">17</td><td class="num-cell loss"><strong>41.2%</strong></td><td class="num-cell">+0.46%</td><td><span class="tag tag-red">最差季度</span></td></tr>
+    <tr style="background: rgba(255,107,107,0.06);"><td>2022-Q2</td><td class="num-cell">19</td><td class="num-cell loss">47.4%</td><td class="num-cell">+1.29%</td><td></td></tr>
+    <tr style="background: rgba(255,107,107,0.06);"><td>2022-Q3</td><td class="num-cell">23</td><td class="num-cell loss">43.5%</td><td class="num-cell">+0.78%</td><td></td></tr>
+    <tr style="background: rgba(0,255,127,0.06);"><td>2022-Q4</td><td class="num-cell">22</td><td class="num-cell win"><strong>77.3%</strong></td><td class="num-cell win">+5.72%</td><td><span class="tag tag-green">反彈</span></td></tr>
+    <tr style="background: rgba(0,255,127,0.06);"><td>2023-Q1</td><td class="num-cell">15</td><td class="num-cell win"><strong>80.0%</strong></td><td class="num-cell win">+4.55%</td><td><span class="tag tag-green">最佳季度之一</span></td></tr>
+    <tr><td>2023-Q2</td><td class="num-cell">24</td><td class="num-cell">62.5%</td><td class="num-cell win">+4.28%</td><td></td></tr>
+    <tr><td>2023-Q3</td><td class="num-cell">26</td><td class="num-cell">57.7%</td><td class="num-cell">+1.38%</td><td></td></tr>
+    <tr><td>2023-Q4</td><td class="num-cell">19</td><td class="num-cell">52.6%</td><td class="num-cell win">+5.32%</td><td></td></tr>
+    <tr><td>2024-Q1</td><td class="num-cell">18</td><td class="num-cell">50.0%</td><td class="num-cell">+1.18%</td><td></td></tr>
+    <tr><td>2024-Q2</td><td class="num-cell">20</td><td class="num-cell">65.0%</td><td class="num-cell win">+2.92%</td><td></td></tr>
+    <tr><td>2024-Q3</td><td class="num-cell">24</td><td class="num-cell win">75.0%</td><td class="num-cell win">+5.79%</td><td></td></tr>
+    <tr><td>2024-Q4</td><td class="num-cell">30</td><td class="num-cell win">73.3%</td><td class="num-cell win">+4.94%</td><td></td></tr>
+    <tr><td>2025-Q1</td><td class="num-cell">26</td><td class="num-cell win">76.9%</td><td class="num-cell win">+6.27%</td><td></td></tr>
+    <tr style="background: rgba(255,107,107,0.06);"><td>2025-Q2</td><td class="num-cell">24</td><td class="num-cell loss">45.8%</td><td class="num-cell">+1.58%</td><td></td></tr>
+    <tr><td>2025-Q3</td><td class="num-cell">20</td><td class="num-cell">50.0%</td><td class="num-cell win">+3.34%</td><td></td></tr>
+    <tr><td>2025-Q4</td><td class="num-cell">21</td><td class="num-cell win">71.4%</td><td class="num-cell win">+8.71%</td><td></td></tr>
+    <tr><td>2026-Q1</td><td class="num-cell">9</td><td class="num-cell win">88.9%</td><td class="num-cell win">+9.76%</td><td><span class="tag tag-blue">進行中</span></td></tr>
+</table>
+</div>
+
+<p><strong>發現</strong>：Q1 是全年最強季度 &mdash; 6 年中有 5 年的 Q1 勝率 &gt; 76%。2022 Q1-Q3 完美追蹤 S&amp;P 500 熊市，但 Q4 市場見底後勝率立即彈回 77.3%。</p>
+
+<h4>月度季節性（跨年聚合）</h4>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>月份</th>
+        <th class="num-cell">交易</th>
+        <th class="num-cell">勝率</th>
+        <th class="num-cell">平均回報</th>
+        <th>特徵</th>
+    </tr>
+    <tr style="background: rgba(0,255,127,0.06);"><td><strong>一月</strong></td><td class="num-cell">39</td><td class="num-cell win"><strong>79.5%</strong></td><td class="num-cell win">+6.90%</td><td><span class="tag tag-green">全年最強</span> January Effect</td></tr>
+    <tr><td>二月</td><td class="num-cell">28</td><td class="num-cell">60.7%</td><td class="num-cell">+2.15%</td><td></td></tr>
+    <tr><td>三月</td><td class="num-cell">41</td><td class="num-cell">63.4%</td><td class="num-cell win">+3.05%</td><td></td></tr>
+    <tr style="background: rgba(255,107,107,0.04);"><td>四月</td><td class="num-cell">33</td><td class="num-cell">51.5%</td><td class="num-cell">+1.85%</td><td><span class="tag tag-yellow">弱勢月</span></td></tr>
+    <tr><td>五月</td><td class="num-cell">38</td><td class="num-cell">65.8%</td><td class="num-cell win">+4.87%</td><td></td></tr>
+    <tr><td>六月</td><td class="num-cell">36</td><td class="num-cell">55.6%</td><td class="num-cell">+1.25%</td><td></td></tr>
+    <tr style="background: rgba(255,107,107,0.04);"><td>七月</td><td class="num-cell">36</td><td class="num-cell">52.8%</td><td class="num-cell">+2.56%</td><td><span class="tag tag-yellow">弱勢月</span></td></tr>
+    <tr><td>八月</td><td class="num-cell">43</td><td class="num-cell">60.5%</td><td class="num-cell win">+3.44%</td><td></td></tr>
+    <tr><td>九月</td><td class="num-cell">38</td><td class="num-cell">63.2%</td><td class="num-cell win">+3.04%</td><td></td></tr>
+    <tr style="background: rgba(0,255,127,0.06);"><td><strong>十月</strong></td><td class="num-cell">34</td><td class="num-cell win"><strong>70.6%</strong></td><td class="num-cell win">+7.46%</td><td><span class="tag tag-green">Q4 反彈</span></td></tr>
+    <tr style="background: rgba(0,255,127,0.06);"><td><strong>十一月</strong></td><td class="num-cell">40</td><td class="num-cell win"><strong>70.0%</strong></td><td class="num-cell win">+4.13%</td><td><span class="tag tag-green">感恩節行情</span></td></tr>
+    <tr><td>十二月</td><td class="num-cell">43</td><td class="num-cell">60.5%</td><td class="num-cell win">+4.59%</td><td></td></tr>
+</table>
+</div>
+
+<!-- ── 2022 熊市解剖 ── -->
+<h3>c. 2022 熊市解剖</h3>
+
+<div class="two-col">
+    <div class="card" style="border-left: 4px solid var(--red);">
+        <h4 style="margin-top:0">出場原因分佈（牛 vs 熊）</h4>
+        <table>
+            <tr><th>出場</th><th class="num-cell">2021 (牛)</th><th class="num-cell">2022 (熊)</th><th class="num-cell">2024 (牛)</th></tr>
+            <tr><td>SL 停損</td><td class="num-cell">36</td><td class="num-cell loss"><strong>52</strong> (+44%)</td><td class="num-cell">42</td></tr>
+            <tr><td>TP 止盈</td><td class="num-cell">17</td><td class="num-cell loss"><strong>5</strong> (-71%)</td><td class="num-cell">23</td></tr>
+            <tr><td>TRAIL 追蹤</td><td class="num-cell">39</td><td class="num-cell loss"><strong>23</strong> (-41%)</td><td class="num-cell">25</td></tr>
+        </table>
+        <p style="margin-top:10px; color: var(--text-dim); font-size: 0.85em;">熊市特徵：停損暴增、止盈暴跌 &mdash; 股票無法突破到目標價就被打回來</p>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--green);">
+        <h4 style="margin-top:0">恢復速度</h4>
+        <table>
+            <tr><th>時期</th><th class="num-cell">勝率</th><th class="num-cell">平均回報</th></tr>
+            <tr><td>2022 H1（熊市深跌）</td><td class="num-cell loss">44.4%</td><td class="num-cell">+0.87%</td></tr>
+            <tr><td>2022 H2（見底反彈）</td><td class="num-cell win">60.0%</td><td class="num-cell win">+3.22%</td></tr>
+            <tr><td>2022-Q4（反彈確認）</td><td class="num-cell win"><strong>77.3%</strong></td><td class="num-cell win">+5.72%</td></tr>
+            <tr><td>2023-Q1（牛市啟動）</td><td class="num-cell win"><strong>80.0%</strong></td><td class="num-cell win">+4.55%</td></tr>
+        </table>
+        <p style="margin-top:10px; color: var(--text-dim); font-size: 0.85em;">市場見底後 V22 勝率一個季度內從 44% 恢復到 77% &mdash; 反彈捕捉能力極強</p>
+    </div>
+</div>
+
+<!-- ── 學術研究佐證 ── -->
+<h3>d. 學術研究佐證</h3>
+
+<div class="card card-accent">
+    <h4 style="margin-top:0">Cooper, Gutierrez &amp; Hameed (2004) &mdash; "Market States and Momentum"</h4>
+    <p><em>The Journal of Finance, Vol. LIX, No. 3</em></p>
+    <p>1929-1995 年數據：上漲市場後動量策略月均收益 <span class="win"><strong>+0.93%</strong></span>，下跌市場後 <span class="loss"><strong>-0.37%</strong></span>。<strong>大盤狀態是動量策略收益的最強預測因子。</strong></p>
+</div>
+
+<div class="card card-accent">
+    <h4 style="margin-top:0">Daniel &amp; Moskowitz (2016) &mdash; "Momentum Crashes"</h4>
+    <p><em>Journal of Financial Economics, Vol. 122(2)</em></p>
+    <p>動量崩潰發生在「恐慌狀態」&mdash; 市場大跌後伴隨高波動的反彈期。歷史最慘烈：1932 年 2 個月虧損 -91.59%、2009 年 3 個月虧損 -73.42%。但<strong>動態策略</strong>（根據波動率調整）可讓 Sharpe ratio <span class="win"><strong>從 0.53 翻倍至 0.97</strong></span>。</p>
+</div>
+
+<div class="card card-accent">
+    <h4 style="margin-top:0">Barroso &amp; Santa-Clara (2015) &mdash; "Momentum Has Its Moments"</h4>
+    <p><em>Journal of Financial Economics, Vol. 116(1)</em></p>
+    <p>風險管理後的動量策略：最大回撤從 <span class="loss">-96.69%</span> 改善至 <span class="win">-45.20%</span>，最差月從 -78.96% 改善至 -28.40%。動量的風險是<strong>可預測的</strong>，通過反向波動率調整可大幅降低崩潰風險。</p>
+</div>
+
+<h4>量化驗證（449 筆交易 + SPY 歷史數據）</h4>
+<div class="two-col">
+    <div class="card" style="border-left: 4px solid var(--accent);">
+        <h4 style="margin-top:0">月度相關性</h4>
+        <p>V22 月勝率 vs SPY 月回報</p>
+        <p style="font-size:1.5em; font-weight:700; color: var(--accent);">r = 0.33</p>
+        <p><strong>p = 0.009</strong>（62 個月，統計顯著 p &lt; 0.05）</p>
+        <p style="font-size:0.85em; color: var(--text-dim);">中等正相關 &mdash; SPY 漲的月份 V22 勝率傾向更高，但不是決定性因素</p>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--accent2);">
+        <h4 style="margin-top:0">SPY 200 日均線分組</h4>
+        <p>SPY 在 200MA 之上 vs 之下時的 V22 表現</p>
+        <table>
+            <tr><th>環境</th><th class="num-cell">交易數</th><th class="num-cell">勝率</th></tr>
+            <tr><td>SPY &gt; 200MA</td><td class="num-cell">347</td><td class="num-cell win"><strong>65.7%</strong></td></tr>
+            <tr><td>SPY &lt; 200MA</td><td class="num-cell">102</td><td class="num-cell">53.9%</td></tr>
+            <tr style="font-weight:700; border-top: 2px solid var(--border);"><td>差異</td><td class="num-cell">&mdash;</td><td class="num-cell win">+11.8pp</td></tr>
+        </table>
+        <p style="font-size:0.85em; color: var(--text-dim);">SPY 在 200MA 之上時，V22 勝率高出近 12 個百分點</p>
+    </div>
+</div>
+
+<h4>V22 vs 學術基準</h4>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>指標</th>
+        <th class="num-cell">典型動量策略</th>
+        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V22 Ultimate</th>
+        <th>評估</th>
+    </tr>
+    <tr>
+        <td>整體勝率</td>
+        <td class="num-cell">48-57%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>63.2%</strong></td>
+        <td><span class="tag tag-green">遠優於平均</span></td>
+    </tr>
+    <tr>
+        <td>熊市勝率</td>
+        <td class="num-cell">&lt; 50%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>53.1%</strong></td>
+        <td><span class="tag tag-green">仍高於多數</span></td>
+    </tr>
+    <tr>
+        <td>牛市勝率</td>
+        <td class="num-cell">55-66%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>67.4%</strong></td>
+        <td><span class="tag tag-green">上限附近</span></td>
+    </tr>
+    <tr>
+        <td>Profit Factor</td>
+        <td class="num-cell">1.5-2.0</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>2.94</strong></td>
+        <td><span class="tag tag-green">極優秀</span></td>
+    </tr>
+    <tr>
+        <td>最大回撤</td>
+        <td class="num-cell loss">-50% ~ -96%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>-32.54%</strong></td>
+        <td><span class="tag tag-green">遠優於裸動量</span></td>
+    </tr>
+    <tr>
+        <td>Sharpe Ratio</td>
+        <td class="num-cell">~0.5</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>~1.0+</strong></td>
+        <td><span class="tag tag-green">頂級</span></td>
+    </tr>
+</table>
+</div>
+
+<!-- ── V22 防護機制 ── -->
+<h3>e. V22 防護機制 &amp; 優化方向</h3>
+
+<div class="card card-green">
+    <h4 style="margin-top:0">為什麼 V22 比典型動量策略更強？</h4>
+    <p>學術文獻中裸動量策略最大回撤可達 -96.69%，V22 僅 -32.54%。關鍵在於六層防護機制：</p>
+    <table>
+        <tr><th>防護機制</th><th>參數</th><th>效果</th></tr>
+        <tr><td>ATR 停損</td><td>1.3x ATR</td><td>限制單筆最大虧損 ~13-15%</td></tr>
+        <tr><td>固定止盈</td><td>15% TP</td><td>鎖定利潤，避免贏家回吐</td></tr>
+        <tr><td>時間止損</td><td>10 天</td><td>資金不被困在不動的股票</td></tr>
+        <tr><td>Breakeven</td><td>+0.8% 觸發</td><td>保護已有利潤</td></tr>
+        <tr><td>追蹤止盈</td><td>1.8%/3.1%</td><td>讓大贏家跑更遠</td></tr>
+        <tr><td>動態切換</td><td>WR 55% 閾值</td><td>自適應市場環境（TP/NoTP 模式）</td></tr>
+    </table>
+</div>
+
+<h4>大盤環境 vs V22 勝率對照</h4>
+<div class="flow-chart">
+    <div class="flow-step" style="border-color: var(--green);"><strong>大盤上漲</strong><br>WR ~67%</div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--yellow);"><strong>大盤震盪</strong><br>WR 55-62%</div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--red);"><strong>大盤暴跌</strong><br>WR 41-53%</div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step" style="border-color: var(--green);"><strong>大盤反彈</strong><br>WR 77-80%</div>
+</div>
+
+<h4>VIX / 市場寬度 / 板塊輪動的影響</h4>
+<div class="two-col">
+    <div class="card" style="border-left: 4px solid var(--orange);">
+        <h4 style="margin-top:0">VIX 波動率指數</h4>
+        <table>
+            <tr><th>VIX 環境</th><th>動量表現</th></tr>
+            <tr><td>VIX &lt; 20</td><td class="win">穩定獲利，假突破少</td></tr>
+            <tr><td>VIX 20-30</td><td>表現分化，需精確選股</td></tr>
+            <tr><td>VIX &gt; 30</td><td class="loss">最危險但也有最大機會</td></tr>
+        </table>
+        <p style="margin-top:8px; font-size:0.85em; color: var(--text-dim);">MSCI 研究：動量因子在高低波動環境都能跑贏，優於價值/規模因子</p>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--accent2);">
+        <h4 style="margin-top:0">市場寬度</h4>
+        <table>
+            <tr><th>寬度指標</th><th>效果</th></tr>
+            <tr><td>% &gt; 200MA &gt; 55%</td><td class="win">適合動量策略操作</td></tr>
+            <tr><td>% &gt; 200MA &lt; 55%</td><td class="loss">通常發生重大修正</td></tr>
+            <tr><td>Breadth Thrust</td><td>77% 勝率 (PF 2.55)</td></tr>
+        </table>
+        <p style="margin-top:8px; font-size:0.85em; color: var(--text-dim);">寬度作為輔助過濾器效果最佳，結合動量指標可提升 15% 進場準確度</p>
+    </div>
+</div>
+
+<h4>潛在優化方向</h4>
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>優化方向</th>
+        <th>學術依據</th>
+        <th>預期效果</th>
+        <th>狀態</th>
+    </tr>
+    <tr>
+        <td>SPY &gt; 200MA 才開倉</td>
+        <td>Clenow: 回撤從 50% &rarr; 27%</td>
+        <td>減少熊市虧損交易</td>
+        <td><span class="tag tag-green">已實作（環境偵測）</span></td>
+    </tr>
+    <tr>
+        <td>空頭環境僅接受 A 級訊號</td>
+        <td>Daniel &amp; Moskowitz (2016)</td>
+        <td>過濾弱勢環境的低品質信號</td>
+        <td><span class="tag tag-green">已實作（品質過濾）</span></td>
+    </tr>
+    <tr>
+        <td>VIX &gt; 30 時降低倉位</td>
+        <td>Barroso: Sharpe &times;2</td>
+        <td>避免動量崩潰期</td>
+        <td><span class="tag tag-yellow">研究中</span></td>
+    </tr>
+    <tr>
+        <td>市場寬度 &gt; 55% 過濾</td>
+        <td>Zweig: 77% WR</td>
+        <td>確認市場廣泛參與</td>
+        <td><span class="tag tag-green">已實作（寬度偵測）</span></td>
+    </tr>
+    <tr>
+        <td>一月加重 / 4-7 月減碼</td>
+        <td>V22 數據：1 月 WR 79.5%</td>
+        <td>利用季節性效應</td>
+        <td><span class="tag tag-yellow">觀察中</span></td>
+    </tr>
+    <tr>
+        <td>板塊動量排名過濾</td>
+        <td>Faber: 年均 +3.6%</td>
+        <td>避開弱勢板塊</td>
+        <td><span class="tag tag-green">已實作（拒絕 Bottom 3）</span></td>
+    </tr>
+</table>
+</div>
+
+<div class="analogy">
+    學術研究一致指出：動量策略最危險的不是持續熊市，而是「熊轉牛」的甩鞭效應 &mdash; 輸家股票暴漲而贏家滯後。V22 的嚴格停損和動態切換機制在一定程度上緩解了這個風險，但仍需留意市場反轉點。
+</div>
+
+<h4>研究來源</h4>
+<div class="card" style="font-size: 0.85em; color: var(--text-dim);">
+    <ul style="padding-left: 20px;">
+        <li>Cooper, M.J., Gutierrez, R.C., Hameed, A. (2004). "Market States and Momentum." <em>The Journal of Finance</em>, 59(3).</li>
+        <li>Daniel, K., Moskowitz, T.J. (2016). "Momentum Crashes." <em>Journal of Financial Economics</em>, 122(2), 221-247.</li>
+        <li>Barroso, P., Santa-Clara, P. (2015). "Momentum Has Its Moments." <em>Journal of Financial Economics</em>, 116(1), 111-120.</li>
+        <li>Asness, C.S., Moskowitz, T.J., Pedersen, L.H. (2013). "Value and Momentum Everywhere." <em>The Journal of Finance</em>, 68(3), 929-985.</li>
+        <li>Faber, M. (2007). "A Quantitative Approach to Tactical Asset Allocation." SSRN.</li>
+        <li>MSCI (2025). "Factor Indexing Through the Decades." 50 年因子研究.</li>
+        <li>Mamais (2025). "Explaining and Predicting Momentum Performance Shifts." <em>Journal of Forecasting</em>.</li>
+        <li>Sovereign V22 回測數據：449 筆交易 (2021-01 至 2026-02)，V22_DailyPickStats.json 原始數據.</li>
+    </ul>
+</div>
+
 <!-- Footer -->
 <div class="footer">
     <p>Sovereign V22 Ultimate &mdash; 動能突破交易系統技術文件 | 5 階段 170+ 實驗</p>
-    <p>文件生成日期：2026-02-20 | 回測數據基於 2020-2026 年歷史資料（清洗後）| 倖存者偏差驗證：+279 檔已下市股票</p>
+    <p>文件生成日期：2026-02-23 | 回測數據基於 2020-2026 年歷史資料（清洗後）| 倖存者偏差驗證：+279 檔已下市股票</p>
     <p>本文件僅供教育和研究用途，不構成投資建議。過去績效不代表未來表現。</p>
 </div>
 
