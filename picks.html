@@ -936,6 +936,10 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
     </div>
 </div>
 
+<!-- Regime Warning Banner -->
+<div id="regime-warning" style="display:none; margin: 16px 0; padding: 12px 16px; border-radius: 8px; font-size: 0.95em; line-height: 1.5;">
+</div>
+
 <!-- Recent Exits -->
 <div id="exits-section" style="display:none">
     <h2>今日結束 <span class="dim" id="exit-count"></span></h2>
@@ -1276,6 +1280,36 @@ function renderDashboard(data) {
 
     $('s-open').textContent = `${(data.open_trades || []).length}`;
     $('s-open').style.color = 'var(--accent2)';
+
+    // Regime warning banner
+    const regimeEl = $('regime-warning');
+    const regime = data.market_regime || '';
+    const deathCross = data.death_cross || false;
+    const spyRsi = data.spy_rsi || 0;
+
+    if (deathCross) {
+        regimeEl.style.display = 'block';
+        regimeEl.style.background = 'rgba(255,107,107,0.15)';
+        regimeEl.style.border = '1px solid var(--red)';
+        regimeEl.innerHTML = `<strong style="color:var(--red)">&#9760; Death Cross</strong> &mdash; SPY MA50 近期下穿 MA200，歷史勝率僅 40%。篩選門檻已自動提升至最高等級。`;
+    } else if (spyRsi > 0 && spyRsi < 30) {
+        regimeEl.style.display = 'block';
+        regimeEl.style.background = 'rgba(255,107,107,0.15)';
+        regimeEl.style.border = '1px solid var(--red)';
+        regimeEl.innerHTML = `<strong style="color:var(--red)">&#9888; SPY RSI ${spyRsi.toFixed(0)}</strong> &mdash; 市場超賣 (RSI &lt; 30)，歷史勝率僅 46.4%。建議謹慎操作。`;
+    } else if (regime === 'BEAR') {
+        regimeEl.style.display = 'block';
+        regimeEl.style.background = 'rgba(255,107,107,0.1)';
+        regimeEl.style.border = '1px solid rgba(255,107,107,0.3)';
+        regimeEl.innerHTML = `<strong style="color:var(--red)">&#9888; BEAR</strong> &mdash; 空頭環境，篩選門檻已提高。僅保留最強突破訊號。`;
+    } else if (regime === 'NEUTRAL') {
+        regimeEl.style.display = 'block';
+        regimeEl.style.background = 'rgba(255,217,61,0.1)';
+        regimeEl.style.border = '1px solid rgba(255,217,61,0.3)';
+        regimeEl.innerHTML = `<strong style="color:var(--yellow)">&#9888; NEUTRAL</strong> &mdash; 中性環境，篩選門檻適度提高。`;
+    } else {
+        regimeEl.style.display = 'none';
+    }
 }
 
 // ── Recent Exits ─────────────────────────────────
@@ -1864,6 +1898,7 @@ function showState(title, desc) {
     $('pick-count').textContent = '';
     $('quick-ref').innerHTML = '';
     ['s-mode','s-rwr','s-grade','s-count','s-open'].forEach(id => { $(id).textContent = '--'; $(id).style.color = ''; });
+    $('regime-warning').style.display = 'none';
     $('signal').innerHTML = `<div class="state-msg">
         <div class="icon">&#x1F4CA;</div>
         <p><strong>${escHtml(title)}</strong></p>
