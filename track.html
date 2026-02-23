@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sovereign V22 - 選股歷史追蹤</title>
-<meta name="description" content="Sovereign V22 選股歷史追蹤 — 每日 #1 選股後續表現、勝率統計、100 個交易日追蹤">
+<title>Sovereign V23 - 選股歷史追蹤</title>
+<meta name="description" content="Sovereign V23 選股歷史追蹤 — 每日 #1 選股後續表現、勝率統計、100 個交易日追蹤">
 <style>
 :root {
     --bg: #0f1117;
@@ -379,7 +379,7 @@ h1 {
 
 <!-- Top Nav -->
 <div class="top-nav">
-    <a href="index.html" class="brand">Sovereign V22</a>
+    <a href="index.html" class="brand">Sovereign V23</a>
     <div class="nav-links">
         <a href="picks.html">每日選股</a>
         <a href="track.html" class="active">選股追蹤</a>
@@ -407,7 +407,7 @@ h1 {
 
 <!-- Grade Stats -->
 <div class="grade-stats" id="grade-stats" style="display:none;">
-    <h3>評級勝率參考 — V22 回測統計 (全美股 11,000+, 433 筆交易, 評級基於 2025-2026 共 97 筆)</h3>
+    <h3>評級勝率參考 — V23 回測統計 (全美股 11,000+, 433 筆交易, 評級基於 2025-2026 共 97 筆)</h3>
     <div style="overflow-x:auto">
     <table class="grade-stats-table" id="grade-stats-table">
         <thead><tr>
@@ -429,8 +429,8 @@ h1 {
 
     <p class="grade-stats-note">
         SL% = (進場價 - 停損價) / 進場價。SL% 越低代表停損越緊、單筆風險越低。<br>
-        評級基於進場時的停損距離計算，反映該筆交易的風險程度。評級統計來源：2025-2026 共 97 筆具完整 SL 數據的交易；年度總計來源：V22 全美股回測 2021-2026 共 433 筆。<br>
-        注意：S 級樣本極少 (1 筆)，統計參考價值有限；A/B/C 級為主力分佈，統計較穩定。V22 無 D 級交易。
+        評級基於進場時的停損距離計算，反映該筆交易的風險程度。評級統計來源：2025-2026 共 97 筆具完整 SL 數據的交易；年度總計來源：V23 全美股回測 2021-2026 共 433 筆。<br>
+        注意：S 級樣本極少 (1 筆)，統計參考價值有限；A/B/C 級為主力分佈，統計較穩定。V23 無 D 級交易。
     </p>
 </div>
 
@@ -443,7 +443,7 @@ h1 {
     <a href="index.html" style="color:var(--accent);text-decoration:none">&larr; 系統文件</a> &nbsp;|&nbsp;
     <a href="picks.html" style="color:var(--accent);text-decoration:none">每日選股</a> &nbsp;|&nbsp;
     <a href="news.html" style="color:var(--accent);text-decoration:none">整點快報 &rarr;</a>
-    <p style="margin-top:8px">Sovereign V22 — 每日 #1 選股後續追蹤</p>
+    <p style="margin-top:8px">Sovereign V23 — 每日 #1 選股後續追蹤</p>
     <p style="margin-top:4px">資料每日自動更新 | 進場價為訊號日次日開盤模擬進場</p>
 </div>
 
@@ -478,9 +478,9 @@ function calcGrade(entry, tp, sl) {
     return { slPct: Math.round(slPct * 10) / 10, grade };
 }
 
-// ── Historical Grade Stats (V22 Ultimate 全美股回測, 433 closed trades) ──
+// ── Historical Grade Stats (V23 全美股回測, 433 closed trades) ──
 // Grade stats from 2025-2026 ground truth (97 graded trades with exact SL%)
-// Yearly totals from V22 最新版 433 closed trades (2021-2026)
+// Yearly totals from V23 433 closed trades (2021-2026)
 const HIST = {
     overall: {
         S: { count: 1, wins: 1, wr: 100.0, avg_ret: 15.00, tp_rate: 100 },
