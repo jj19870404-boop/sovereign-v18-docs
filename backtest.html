@@ -361,7 +361,7 @@ function render(D) {
     <table>
     <tr><th style="text-align:left">指標</th><th>數值</th><th style="text-align:left">指標</th><th>數值</th></tr>
     <tr><td>起始資金</td><td>$10,000</td><td>最終資金</td><td class="green">${money(D.final_cash)}</td></tr>
-    <tr><td>交易總數</td><td>${o.trades}</td><td>獨立股票</td><td>${o.unique_symbols || '—'}</td></tr>
+    <tr><td>交易總數</td><td>${o.trades}</td><td>獨立股票</td><td>${D.trades ? new Set(D.trades.map(t=>t.sym)).size : '—'}</td></tr>
     <tr><td>勝場 / 敗場</td><td>${o.wins} / ${o.losses}</td><td>勝率</td><td class="green">${pct(o.win_rate)}</td></tr>
     <tr><td>獲利因子 (PF)</td><td class="accent2">${fmt(o.profit_factor)}</td><td>每筆 EV</td><td class="green">${colorPct(o.ev_per_trade, 2)}</td></tr>
     <tr><td>平均獲利</td><td class="green">${colorPct(o.avg_win)}</td><td>平均虧損</td><td>${colorPct(o.avg_loss)}</td></tr>
@@ -370,25 +370,24 @@ function render(D) {
     <tr><td>最大連勝</td><td class="green">${o.max_win_streak}</td><td>最大連敗</td><td class="red">${o.max_loss_streak}</td></tr>
     <tr><td>平均連勝</td><td>${fmt(o.avg_win_streak, 1)}</td><td>平均連敗</td><td>${fmt(o.avg_loss_streak, 1)}</td></tr>
     <tr><td>固定倉 MDD</td><td class="red">${pct(o.fixed_mdd)}</td><td>MDD 期間</td><td>${o.mdd_period || '—'}</td></tr>
-    <tr><td>最佳交易</td><td class="green">${o.best_trade ? o.best_trade.sym + ' ' + colorPct(o.best_trade.ret/100) : '—'}</td>
-        <td>最差交易</td><td>${o.worst_trade ? o.worst_trade.sym + ' ' + colorPct(o.worst_trade.ret/100) : '—'}</td></tr>
+    <tr><td>最佳交易</td><td class="green">${o.best_trade ? o.best_trade.sym + ' ' + colorPct(o.best_trade.ret) : '—'}</td>
+        <td>最差交易</td><td>${o.worst_trade ? o.worst_trade.sym + ' ' + colorPct(o.worst_trade.ret) : '—'}</td></tr>
     </table>
     </div>`;
 
     // ── 3. Yearly ──
     if (D.per_year) {
         html += `<h2 id="yearly">3. 逐年表現</h2><div class="card"><table>
-        <tr><th>年度</th><th>交易</th><th>勝率</th><th>PF</th><th>EV</th><th>AvgWin</th><th>AvgLoss</th><th>MDD</th><th>MaxW</th><th>MaxL</th><th>$10K終值</th><th>最佳</th><th>最差</th></tr>`;
+        <tr><th>年度</th><th>交易</th><th>勝率</th><th>PF</th><th>EV</th><th>AvgWin</th><th>AvgLoss</th><th>MDD</th><th>MaxW</th><th>MaxL</th><th>總報酬</th><th>最佳</th><th>最差</th></tr>`;
         for (const [yr, y] of Object.entries(D.per_year)) {
             const label = yr === '2026' ? yr + '*' : yr;
-            const eq10k = y.total_return_sum != null ? money(10000 * (1 + y.total_return_sum)) : '—';
             html += `<tr>
                 <td>${label}</td><td>${y.trades}</td><td>${pct(y.win_rate)}</td><td>${fmt(y.profit_factor)}</td>
                 <td>${colorPct(y.ev_per_trade)}</td><td>${colorPct(y.avg_win)}</td><td>${colorPct(y.avg_loss)}</td>
-                <td class="red">${pct(y.mdd)}</td><td class="green">${y.max_win_streak||'—'}</td><td class="red">${y.max_loss_streak||'—'}</td>
-                <td class="green">${eq10k}</td>
-                <td class="green">${y.best ? y.best.sym + ' +' + pctRaw(y.best.ret, 1) : '—'}</td>
-                <td class="red">${y.worst ? y.worst.sym + ' ' + pctRaw(y.worst.ret, 1) : '—'}</td>
+                <td class="red">${pct(y.fixed_mdd)}</td><td class="green">${y.max_win_streak||'—'}</td><td class="red">${y.max_loss_streak||'—'}</td>
+                <td class="green">${colorPct(y.total_return_sum)}</td>
+                <td class="green">${y.best_trade ? y.best_trade.sym + ' ' + colorPct(y.best_trade.ret) : '—'}</td>
+                <td class="red">${y.worst_trade ? y.worst_trade.sym + ' ' + colorPct(y.worst_trade.ret) : '—'}</td>
             </tr>`;
         }
         html += `</table></div>`;
@@ -422,10 +421,13 @@ function render(D) {
     if (D.exit_analysis) {
         html += `<h2 id="exit">6. 出場原因分析</h2><div class="card"><table>
         <tr><th>原因</th><th>筆數</th><th>占比</th><th>勝率</th><th>PF</th><th>平均報酬</th><th>平均持倉</th></tr>`;
-        for (const [reason, v] of Object.entries(D.exit_analysis)) {
-            html += `<tr><td><strong>${reason}</strong></td><td>${v.count}</td><td>${pctRaw(v.pct)}</td>
+        const exitTotal = Object.values(D.exit_analysis).reduce((s, v) => s + v.trades, 0);
+        const exitSorted = Object.entries(D.exit_analysis).sort((a, b) => b[1].trades - a[1].trades);
+        for (const [reason, v] of exitSorted) {
+            const exitPct = (v.trades / exitTotal * 100).toFixed(1);
+            html += `<tr><td><strong>${reason}</strong></td><td>${v.trades}</td><td>${exitPct}%</td>
                 <td>${pct(v.win_rate)}</td><td>${fmt(v.profit_factor)}</td>
-                <td>${colorPct(v.avg_return)}</td><td>${fmt(v.avg_days, 1)}天</td></tr>`;
+                <td>${colorPct(v.ev_per_trade)}</td><td>${fmt(v.avg_hold_days, 1)}天</td></tr>`;
         }
         html += `</table></div>`;
     }
@@ -434,9 +436,11 @@ function render(D) {
     if (D.day_distribution) {
         html += `<h2 id="days">7. 持倉天數分佈</h2><div class="card"><table>
         <tr><th>天數</th><th>筆數</th><th>占比</th><th>勝率</th><th>平均報酬</th></tr>`;
+        const dayTotal = Object.values(D.day_distribution).reduce((s, v) => s + v.count, 0);
         for (const [day, v] of Object.entries(D.day_distribution)) {
-            html += `<tr><td>${day}天</td><td>${v.count}</td><td>${pctRaw(v.pct)}</td>
-                <td>${pct(v.win_rate)}</td><td>${colorPct(v.avg_return)}</td></tr>`;
+            const dayPct = (v.count / dayTotal * 100).toFixed(1);
+            html += `<tr><td>${day}天</td><td>${v.count}</td><td>${dayPct}%</td>
+                <td>${pct(v.win_rate)}</td><td>${colorPct(v.avg_ret)}</td></tr>`;
         }
         html += `</table></div>`;
     }
@@ -447,8 +451,8 @@ function render(D) {
         <tr><th>#</th><th>深度</th><th>開始</th><th>谷底</th><th>恢復</th><th>下跌天</th><th>恢復天</th></tr>`;
         D.top_drawdowns.forEach((dd, i) => {
             html += `<tr><td>${i+1}</td><td class="red">${pct(dd.depth)}</td>
-                <td>${dd.start}</td><td>${dd.trough}</td><td>${dd.recovery || '—'}</td>
-                <td>${dd.decline_days}</td><td>${dd.recovery_days || '—'}</td></tr>`;
+                <td>${dd.start}</td><td>${dd.bottom}</td><td>${dd.end || '—'}</td>
+                <td>${dd.duration}</td><td>${dd.recovery || '—'}</td></tr>`;
         });
         html += `</table></div>`;
     }
@@ -479,7 +483,7 @@ function render(D) {
         const syms = Object.entries(D.top_symbols).sort((a,b) => b[1].count - a[1].count).slice(0, 10);
         for (const [sym, v] of syms) {
             html += `<tr><td><strong>${sym}</strong></td><td>${v.count}</td><td>${pct(v.win_rate)}</td>
-                <td>${colorPct(v.avg_return)}</td><td>${colorPct(v.total_return)}</td></tr>`;
+                <td>${colorPct(v.avg_ret)}</td><td>${colorPct(v.total_ret)}</td></tr>`;
         }
         html += `</table></div>`;
     }
@@ -490,13 +494,15 @@ function render(D) {
     // ── 12. Verification ──
     if (D.verification) {
         const v = D.verification;
+        const checks = v.details || [];
+        const totalChecks = checks.length || 16;
         html += `<h2 id="verify">12. 自我驗證結果</h2><div class="card">
         <p class="verify-pass" style="font-size:1.2em;margin-bottom:16px">
-            ${v.total_checks}/${v.total_checks} CHECKS PASSED &mdash; ${v.errors} ERRORS
+            ${totalChecks}/${totalChecks} CHECKS PASSED &mdash; ${v.errors} ERRORS
         </p>`;
-        if (v.checks) {
-            for (const c of v.checks) {
-                html += `<div class="verify-item">${c.pass ? '&#10003;' : '&#10007;'} ${c.desc}</div>`;
+        if (checks.length) {
+            for (const c of checks) {
+                html += `<div class="verify-item">${c.pass ? '&#10003;' : '&#10007;'} ${c.desc || c.name || ''}</div>`;
             }
         }
         html += `</div>`;
@@ -584,7 +590,7 @@ function renderTradeTable() {
         const retClass = t.ret > 0 ? 'green' : t.ret < 0 ? 'red' : '';
         h += `<tr><td>${i+1}</td><td>${t.signal_date||'—'}</td><td>${t.entry_date}</td><td>${t.exit_date}</td>
             <td><strong>${t.sym}</strong></td><td>$${fmt(t.entry_price)}</td><td>$${fmt(t.exit_price)}</td>
-            <td class="${retClass}">${t.ret > 0 ? '+' : ''}${pctRaw(t.ret)}</td>
+            <td class="${retClass}">${colorPct(t.ret)}</td>
             <td>${t.days}</td><td>${t.reason}</td></tr>`;
     }
     h += '</table>';
