@@ -314,6 +314,7 @@ h1 {
     <a href="evolution.html" style="color:var(--accent);text-decoration:none">版本演化</a>
     <p style="margin-top:8px">Sovereign V23 News &mdash; 資料來源: CNBC, Reuters, MarketWatch, Yahoo Finance, Bloomberg 等</p>
     <p style="margin-top:4px">由 Gemini AI 分析摘要 | 每小時整點自動更新</p>
+    <p id="site-updated" style="margin-top:6px;font-size:0.8em;color:var(--text-dim)"></p>
 </div>
 
 </div>
@@ -482,6 +483,13 @@ window.addEventListener('hashchange', () => {
         loadDate();
     }
 });
+
+// ── Site Info: 更新時間戳 + Nav Brand ──
+fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
+    const b=document.querySelector('.brand');if(b)b.textContent=info.label;
+    const ts=info.updated&&info.updated.news;
+    if(ts){const d=new Date(ts);document.getElementById('site-updated').textContent='最後更新：'+d.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});}
+}).catch(()=>{});
 </script>
 
 </body>

@@ -513,6 +513,7 @@ function render(D) {
         <p>Sovereign V23 &mdash; 完整回測報告</p>
         <p>數據範圍: ${m.data_range} &bull; ${m.symbols} 檔股票 &bull; ${(m.rows/1e6).toFixed(1)}M 筆資料</p>
         <p>報告日期: ${m.report_date} &bull; 回測耗時: ${fmt(m.backtest_time_seconds, 1)}s</p>
+        <p id="site-updated" style="margin-top:6px;font-size:0.8em;color:var(--text-dim)"></p>
     </div>`;
 
     $('#app').innerHTML = html;
@@ -617,6 +618,13 @@ window.addEventListener('scroll', () => {
 loadData().then(data => {
     if (data) render(data);
 });
+
+// ── Site Info: 更新時間戳 + Nav Brand ──
+fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
+    const b=document.querySelector('.brand');if(b)b.textContent=info.label;
+    const ts=info.updated&&info.updated.backtest;
+    if(ts){const el=document.getElementById('site-updated');if(el){const d=new Date(ts);el.textContent='最後更新：'+d.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});}}
+}).catch(()=>{});
 </script>
 </body>
 </html>

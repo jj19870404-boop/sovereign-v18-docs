@@ -4230,6 +4230,7 @@ li { margin: 4px 0; }
     <p>Sovereign V23 &mdash; 動能突破交易系統技術文件 | 5 階段 170+ 實驗</p>
     <p>文件生成日期：2026-02-23 (進階分析更新) | 回測數據基於 2020-2026 年歷史資料（清洗後）| 倖存者偏差驗證：+279 檔已下市股票</p>
     <p>本文件僅供教育和研究用途，不構成投資建議。過去績效不代表未來表現。</p>
+    <p id="site-updated" style="margin-top:6px;font-size:0.8em;color:var(--text-dim)"></p>
 </div>
 
 </div>
@@ -4250,6 +4251,13 @@ document.querySelectorAll('.container table').forEach(t => {
         wrap.appendChild(t);
     }
 });
+
+// ── Site Info: 更新時間戳 + Nav Brand ──
+fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
+    const b=document.querySelector('.brand');if(b)b.textContent=info.label;
+    const ts=info.updated&&info.updated.index;
+    if(ts){const d=new Date(ts);document.getElementById('site-updated').textContent='最後更新：'+d.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});}
+}).catch(()=>{});
 </script>
 </body>
 </html>

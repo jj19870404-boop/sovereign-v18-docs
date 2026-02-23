@@ -972,6 +972,7 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
     <a href="track.html">選股追蹤</a> &nbsp;|&nbsp;
     <a href="news.html">整點快報 &rarr;</a>
     <p style="margin-top:8px">Sovereign &mdash; 動能突破交易系統 (V23 動態切換)</p>
+    <p id="site-updated" style="margin-top:6px;font-size:0.8em;color:var(--text-dim)"></p>
 </div>
 
 </div>
@@ -1917,6 +1918,13 @@ window.addEventListener('hashchange', () => {
         loadDate();
     }
 });
+
+// ── Site Info: 更新時間戳 + Nav Brand ──
+fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
+    const b=document.querySelector('.brand');if(b)b.textContent=info.label;
+    const ts=info.updated&&info.updated.picks;
+    if(ts){const d=new Date(ts);document.getElementById('site-updated').textContent='最後更新：'+d.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});}
+}).catch(()=>{});
 </script>
 
 </body>

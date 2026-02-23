@@ -1702,7 +1702,8 @@ li { margin: 4px 0; }
 </p>
 
 <div class="footer">
-    <p>Sovereign V23 &mdash; 版本演化歷史文件 | 33 輪研究 &bull; 270+ 實驗 | 更新日期 2026-02-23</p>
+    <p>Sovereign V23 &mdash; 版本演化歷史文件 | 33 輪研究 &bull; 270+ 實驗</p>
+    <p id="site-updated" style="margin-top:6px;font-size:0.8em;color:var(--text-dim)"></p>
 </div>
 
 </div><!-- .container -->
@@ -1715,6 +1716,13 @@ window.addEventListener('scroll', () => {
     btn.classList.toggle('show', window.scrollY > 400);
 });
 btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ── Site Info: 更新時間戳 + Nav Brand ──
+fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
+    const b=document.querySelector('.brand');if(b)b.textContent=info.label;
+    const ts=info.updated&&info.updated.evolution;
+    if(ts){const d=new Date(ts);document.getElementById('site-updated').textContent='最後更新：'+d.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});}
+}).catch(()=>{});
 </script>
 </body>
 </html>
