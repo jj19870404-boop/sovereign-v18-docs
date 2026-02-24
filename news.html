@@ -296,6 +296,13 @@ h1 {
         transition-duration: 0.01ms !important;
     }
 }
+@media print {
+    .top-nav, .scroll-top, .skip-nav, .stale-banner { display: none !important; }
+    body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+    .container { max-width: 100%; padding: 0; }
+    h1, h2, h3 { color: #000 !important; page-break-after: avoid; }
+    a { color: #000 !important; }
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V24 - 美股整點快報","description":"Sovereign V24 美股整點財經快報 — 每小時自動更新、AI 分析摘要、市場重點新聞","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/news.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V24","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}

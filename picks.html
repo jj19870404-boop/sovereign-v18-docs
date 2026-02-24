@@ -919,6 +919,14 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
         transition-duration: 0.01ms !important;
     }
 }
+@media print {
+    .top-nav, .scroll-top, .skip-nav, .stale-banner { display: none !important; }
+    body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+    .container { max-width: 100%; padding: 0; }
+    h1, h2, h3 { color: #000 !important; page-break-after: avoid; }
+    table { page-break-inside: avoid; }
+    a { color: #000 !important; }
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V24 - 每日選股報告","description":"Sovereign V24 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V24","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}

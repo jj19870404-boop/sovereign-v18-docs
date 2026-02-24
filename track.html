@@ -401,6 +401,14 @@ h1 {
     }
     html { scroll-behavior: auto; }
 }
+@media print {
+    .top-nav, .scroll-top, .skip-nav, .stale-banner { display: none !important; }
+    body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+    .container { max-width: 100%; padding: 0; }
+    h1, h2, h3 { color: #000 !important; page-break-after: avoid; }
+    table { page-break-inside: avoid; }
+    a { color: #000 !important; }
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V24 - 選股歷史追蹤","description":"Sovereign V24 選股歷史追蹤 — 每日 #1 選股後續表現、勝率統計、100 個交易日追蹤","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/track.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V24","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}

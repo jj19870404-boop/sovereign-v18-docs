@@ -201,6 +201,15 @@ li { margin: 4px 0; }
     *, *::before, *::after { transition-duration: 0.01ms !important; }
     html { scroll-behavior: auto; }
 }
+@media print {
+    .top-nav, .scroll-top, .skip-nav { display: none !important; }
+    body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+    .container { max-width: 100%; padding: 0; }
+    h1, h2, h3 { color: #000 !important; page-break-after: avoid; }
+    table { page-break-inside: avoid; }
+    .table-wrap { overflow: visible; }
+    a { color: #000 !important; }
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V18-V24 演化歷史","description":"Sovereign 動能突破交易系統 V18 到 V24 的完整演化歷史，包含所有回測數據、參數變化、每日選股勝率分析","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V24","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
