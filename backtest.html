@@ -19,6 +19,8 @@
 <meta name="twitter:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
 <link rel="canonical" href="https://jj19870404-boop.github.io/sovereign-v18-docs/backtest.html">
 <link rel="icon" type="image/png" href="images/sovereign_v18_20260211.png">
+<link rel="apple-touch-icon" href="images/sovereign_v18_20260211.png">
+<meta name="theme-color" content="#0f1117">
 <link rel="preload" href="data/backtest.json" as="fetch" crossorigin>
 <style>
 :root {
@@ -258,6 +260,7 @@ tr:hover td { background: var(--surface2); }
 </div>
 
 <main id="main-content" role="main">
+<noscript><div style="padding:20px;text-align:center;color:#8b90a5;background:#1a1d27;border-radius:8px;margin:20px 0;">本頁面需要 JavaScript 才能顯示回測數據。請啟用 JavaScript 後重新整理。</div></noscript>
 <h1>V24 完整回測報告</h1>
 <p class="subtitle">全美股回測 2021-2026 &mdash; ALL IN 模式 &bull; T+1 Open 進場 &bull; 16/16 驗證通過</p>
 
@@ -317,7 +320,7 @@ function render(D) {
     let html = '';
 
     // ── TOC ──
-    html += `<div class="toc"><h3>目錄</h3>
+    html += `<div class="toc"><h2 style="font-size:1.1em;margin:0 0 8px">目錄</h2>
         <a href="#params">1. 完整參數</a>
         <a href="#overview">2. 整體績效總覽</a>
         <a href="#yearly">3. 逐年表現</a>
@@ -345,7 +348,7 @@ function render(D) {
     // ── 1. Params ──
     html += `<h2 id="params">1. 完整參數</h2>
     <div class="params-grid">
-        <div class="param-group"><h4>進場篩選</h4>
+        <div class="param-group"><h3 style="font-size:1em;margin:0 0 8px">進場篩選</h3>
             ${paramRow('RS Rank 上限', p.rs_limit)}
             ${paramRow('收縮上限', p.tightness_max)}
             ${paramRow('量比下限', p.vol_min + 'x')}
@@ -355,7 +358,7 @@ function render(D) {
             ${paramRow('MA20 斜率', p.use_sma_slope ? '啟用 (≥' + p.sma_slope_min + ')' : '關閉')}
             ${paramRow('動能底線', pct(p.mom_filter, 1))}
         </div>
-        <div class="param-group"><h4>出場機制</h4>
+        <div class="param-group"><h3 style="font-size:1em;margin:0 0 8px">出場機制</h3>
             ${paramRow('ATR 止損', p.atr_sl + 'x')}
             ${paramRow('止盈目標', pct(p.tp_target, 0))}
             ${paramRow('時間停損', p.time_stop + ' 天')}
@@ -366,7 +369,7 @@ function render(D) {
             ${paramRow('滯留出場', p.stale_days + '天 / ' + pct(p.stale_threshold, 0))}
             ${paramRow('Gap 拒絕', pct(p.gap_reject_pct, 0))}
         </div>
-        <div class="param-group"><h4>倉位 & 動態切換</h4>
+        <div class="param-group"><h3 style="font-size:1em;margin:0 0 8px">倉位 & 動態切換</h3>
             ${paramRow('最大持倉', p.max_positions + ' (ALL IN)')}
             ${paramRow('滑價', pct(p.slippage, 1))}
             ${paramRow('滾動窗口', sw.window + ' 筆')}
