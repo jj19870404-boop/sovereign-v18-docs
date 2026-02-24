@@ -199,6 +199,14 @@ table {
     margin: 16px 0;
     font-size: 0.95em;
 }
+caption {
+    caption-side: top;
+    text-align: left;
+    color: var(--text-dim);
+    font-size: 0.85em;
+    padding: 0 0 6px;
+    font-style: italic;
+}
 th {
     background: var(--surface2);
     color: var(--accent);
@@ -592,7 +600,7 @@ li { margin: 4px 0; }
     想像你在觀察一壺即將沸騰的水。水溫慢慢升高（趨勢向上），蒸氣被鍋蓋壓住越來越緊（盤整收斂），然後突然一瞬間，蓋子被頂開、蒸氣噴出（放量突破）。我們要做的，就是在蓋子被頂開的那一刻介入。
 </div>
 
-<h3>為什麼這個策略有效？</h3>
+<h3 id="phil-why">為什麼這個策略有效？</h3>
 <div class="two-col">
     <div class="card card-green">
         <strong>盤整後的突破最具爆發力</strong><br>
@@ -604,7 +612,7 @@ li { margin: 4px 0; }
     </div>
 </div>
 
-<h3>策略的三大支柱</h3>
+<h3 id="phil-pillars">策略的三大支柱</h3>
 <ol>
     <li><strong>嚴格篩選</strong> &mdash; 六道濾網同時通過才出訊號，寧可錯過也不亂入場</li>
     <li><strong>快進快出</strong> &mdash; 平均持有 3-5 天，不戀戰，達到目標就走</li>
@@ -617,8 +625,9 @@ li { margin: 4px 0; }
 <h2 id="data"><span class="num">3</span>數據來源</h2>
 
 <div class="card">
-    <h3>使用的資料</h3>
+    <h3 id="data-sources">使用的資料</h3>
     <table>
+        <caption>回測使用的資料來源與涵蓋範圍</caption>
         <tr><th>項目</th><th>說明</th></tr>
         <tr><td>資料檔案</td><td><code>Full_Market_Data_2020_2026.parquet</code></td></tr>
         <tr><td>涵蓋範圍</td><td>全美股市場，約 8,000+ 檔股票</td></tr>
@@ -643,7 +652,7 @@ li { margin: 4px 0; }
 <p>以下每個指標都是從 OHLCV 原始資料計算而來。系統用這些指標來回答一個核心問題：<strong>「這檔股票是否正在經歷高品質的突破？」</strong></p>
 
 <!-- ATR -->
-<h3>4.1 ATR（平均真實波幅, Average True Range）</h3>
+<h3 id="ind-atr">4.1 ATR（平均真實波幅, Average True Range）</h3>
 <div class="card card-accent">
     <p><strong>用途：</strong>衡量一檔股票每天的波動幅度有多大，用來計算停損位置。</p>
     <div class="formula">
@@ -655,7 +664,7 @@ li { margin: 4px 0; }
 </div>
 
 <!-- RS_Line -->
-<h3>4.2 RS_Line（相對強度線, Relative Strength Line）</h3>
+<h3 id="ind-rsline">4.2 RS_Line（相對強度線, Relative Strength Line）</h3>
 <div class="card card-accent">
     <p><strong>用途：</strong>衡量一檔股票相對於自身過去半年的表現強度。</p>
     <div class="formula">
@@ -666,7 +675,7 @@ li { margin: 4px 0; }
 </div>
 
 <!-- RS_Rank -->
-<h3>4.3 RS_Rank（相對強度排名）</h3>
+<h3 id="ind-rsrank">4.3 RS_Rank（相對強度排名）</h3>
 <div class="card card-accent">
     <p><strong>用途：</strong>將所有股票按 RS_Line 排名，找出全市場最強的那些。</p>
     <div class="formula">
@@ -677,7 +686,7 @@ li { margin: 4px 0; }
 </div>
 
 <!-- Tightness -->
-<h3>4.4 Tightness（盤整度 / 收斂度）</h3>
+<h3 id="ind-tightness">4.4 Tightness（盤整度 / 收斂度）</h3>
 <div class="card card-accent">
     <p><strong>用途：</strong>衡量股價是否處於盤整收斂狀態，波動很小代表能量正在蓄積。</p>
     <div class="formula">
@@ -688,7 +697,7 @@ li { margin: 4px 0; }
 </div>
 
 <!-- Vol_Ratio -->
-<h3>4.5 Vol_Ratio（量比 / 成交量倍數）</h3>
+<h3 id="ind-volratio">4.5 Vol_Ratio（量比 / 成交量倍數）</h3>
 <div class="card card-accent">
     <p><strong>用途：</strong>衡量今天的成交量是平時的幾倍，是突破訊號的核心指標。</p>
     <div class="formula">
@@ -699,7 +708,7 @@ li { margin: 4px 0; }
 </div>
 
 <!-- Mom_5 / Mom_20 -->
-<h3>4.6 Mom_5 / Mom_20（5日動能 / 20日動能）</h3>
+<h3 id="ind-momentum">4.6 Mom_5 / Mom_20（5日動能 / 20日動能）</h3>
 <div class="card card-accent">
     <p><strong>用途：</strong>衡量短期和中期的價格趨勢方向與力道。</p>
     <div class="formula">
@@ -711,7 +720,7 @@ li { margin: 4px 0; }
 </div>
 
 <!-- SMA20_Slope -->
-<h3>4.7 SMA20_Slope（20日均線斜率）</h3>
+<h3 id="ind-sma20slope">4.7 SMA20_Slope（20日均線斜率）</h3>
 <div class="card card-accent">
     <p><strong>用途：</strong>衡量中期趨勢是否向上。</p>
     <div class="formula">
@@ -723,7 +732,7 @@ li { margin: 4px 0; }
 </div>
 
 <!-- Pct_From_52wk -->
-<h3>4.8 Pct_From_52wk（52週高點接近度）</h3>
+<h3 id="ind-pct52wk">4.8 Pct_From_52wk（52週高點接近度）</h3>
 <div class="card card-accent">
     <p><strong>用途：</strong>衡量目前股價離過去一年最高點有多近。</p>
     <div class="formula">
@@ -742,6 +751,7 @@ li { margin: 4px 0; }
 <p>系統每天收盤後掃描全市場，一檔股票必須<strong>同時通過以下六道濾網</strong>才會產生進場訊號。隔天開盤價加上 0.1% 滑價 (slippage) 為實際進場價。</p>
 
 <table>
+    <caption>六道進場濾網條件一覽</caption>
     <tr><th>#</th><th>濾網</th><th>條件</th><th>為什麼重要？</th></tr>
     <tr>
         <td>1</td>
@@ -785,7 +795,7 @@ li { margin: 4px 0; }
     這六道濾網就像是面試的六個關卡。每天有 8,000+ 檔股票「來面試」，但可能只有 0-3 檔能全部通過。寧缺毋濫 — 沒有通過的日子就空手等待，絕不降低標準。
 </div>
 
-<h3>候選股排序</h3>
+<h3 id="entry-ranking">候選股排序</h3>
 <p>當同一天有多檔股票通過篩選時，系統按 <strong>RS_Rank 排名從小到大</strong>（最強的排最前）排序，取排名最靠前的那檔進場。</p>
 
 <!-- ================================================================ -->
@@ -795,7 +805,7 @@ li { margin: 4px 0; }
 
 <p>Sovereign V24 有一套<strong>多層出場機制</strong>，按優先順序檢查。每天的流程是：取得當天的開高低收資料後，依序檢查是否觸發以下任一出場條件。</p>
 
-<h3>出場優先順序</h3>
+<h3 id="exit-priority">出場優先順序</h3>
 <div class="flow-chart">
     <div class="flow-step" style="border-color: var(--green);">
         <div class="step-num">最高優先</div>
@@ -819,7 +829,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-green">
-    <h3 style="margin-top:0">停利 (TP - Take Profit)</h3>
+    <h3 id="exit-tp" style="margin-top:0">停利 (TP - Take Profit)</h3>
     <div class="formula">
         停利價 = 進場價 &times; (1 + 0.15) = 進場價 &times; 1.15
     </div>
@@ -828,7 +838,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card" style="border-left: 4px solid var(--accent2);">
-    <h3 style="margin-top:0">追蹤停損 (TRAIL - Trailing Stop)</h3>
+    <h3 id="exit-trail" style="margin-top:0">追蹤停損 (TRAIL - Trailing Stop)</h3>
     <p>追蹤停損不是一開始就啟動的，它有兩個前置條件：</p>
     <ol>
         <li><strong>保本觸發：</strong>股價從進場價上漲 <span class="param-value">+0.8%</span> 後，停損移至進場價（保本）</li>
@@ -843,7 +853,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-red">
-    <h3 style="margin-top:0">停損 (SL - Stop Loss)</h3>
+    <h3 id="exit-sl" style="margin-top:0">停損 (SL - Stop Loss)</h3>
     <div class="formula">
         初始停損 = 進場價 - (ATR &times; 1.3)<br>
         最大虧損限制：停損不低於 進場價 &times; (1 - 0.20) = 進場價 &times; 0.80
@@ -853,14 +863,14 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-yellow">
-    <h3 style="margin-top:0">時間停損 (TIME - Time Stop)</h3>
+    <h3 id="exit-time" style="margin-top:0">時間停損 (TIME - Time Stop)</h3>
     <div class="formula">
         持有天數 &ge; 10 個交易日 → 以收盤價強制出場
     </div>
     <p>如果持倉超過 <span class="param-value">10 天</span>還沒有碰到停利或停損，代表這筆交易的動能可能已經衰竭，以當天收盤價出場。</p>
 </div>
 
-<h3>出場邏輯的核心思想</h3>
+<h3 id="exit-philosophy">出場邏輯的核心思想</h3>
 <div class="analogy">
     整個出場機制就像一個「安全氣囊系統」：<br>
     - 停損是<strong>安全帶</strong>（最基本的保護，限制最大虧損）<br>
@@ -876,7 +886,7 @@ li { margin: 4px 0; }
 <h2 id="position"><span class="num">7</span>倉位管理</h2>
 
 <div class="card card-accent">
-    <h3 style="margin-top:0">全倉進出 (ALL-IN)</h3>
+    <h3 id="pos-allin" style="margin-top:0">全倉進出 (ALL-IN)</h3>
     <p>Sovereign V24 採用<strong>單一持倉</strong>策略 — 同一時間只持有一檔股票，並將全部資金投入。</p>
     <div class="formula">
         最大持倉數 = 1<br>
@@ -886,7 +896,7 @@ li { margin: 4px 0; }
     </div>
 </div>
 
-<h3>為什麼全倉？</h3>
+<h3 id="pos-why">為什麼全倉？</h3>
 <div class="two-col">
     <div class="card">
         <strong>優點</strong>
@@ -906,9 +916,10 @@ li { margin: 4px 0; }
     </div>
 </div>
 
-<h3>資金流轉示例</h3>
+<h3 id="pos-example">資金流轉示例</h3>
 <div class="card">
     <table>
+        <caption>全倉 ALL-IN 資金流轉示例</caption>
         <tr><th>步驟</th><th>動作</th><th>帳戶餘額</th></tr>
         <tr><td>起始</td><td>-</td><td class="num-cell">$10,000.00</td></tr>
         <tr><td>第 1 筆</td><td>全倉買入 → 停利 +15% 出場</td><td class="num-cell"><span class="win">$11,500.00</span></td></tr>
@@ -926,8 +937,9 @@ li { margin: 4px 0; }
 
 <p>通過六道濾網的股票不代表品質都一樣。系統會額外對每個候選股進行<strong>7 項品質評分</strong>，滿分 100 分，幫助判斷突破的可靠度。</p>
 
-<h3>7 項評分指標</h3>
+<h3 id="quality-scoring">7 項評分指標</h3>
 <table>
+    <caption>突破品質 7 項評分指標與最佳區間</caption>
     <tr><th>指標</th><th>滿分</th><th>最佳區間</th><th>最佳區間勝率</th></tr>
     <tr><td>量比 (Vol_Ratio)</td><td class="num-cell">20</td><td>1.7 - 2.0x</td><td class="num-cell win">83%</td></tr>
     <tr><td>52 週接近度</td><td class="num-cell">20</td><td>95 - 100%</td><td class="num-cell win">84.6%</td></tr>
@@ -940,8 +952,9 @@ li { margin: 4px 0; }
 
 <p style="color: var(--text-dim);">勝率數據來源：2021-2024 年共 237 筆實戰交易的統計分析。</p>
 
-<h3>品質評級</h3>
+<h3 id="quality-rating">品質評級</h3>
 <table class="grade-table">
+    <caption>品質評級 A-F 對照表</caption>
     <tr><th>評級</th><th>分數</th><th>意義</th><th>建議</th></tr>
     <tr><td class="grade-A">A</td><td class="num-cell">&ge; 80 分</td><td>強勢突破訊號</td><td><span class="tag tag-green">積極進場</span></td></tr>
     <tr><td class="grade-B">B</td><td class="num-cell">65 - 79 分</td><td>品質良好</td><td><span class="tag tag-green">正常進場</span></td></tr>
@@ -950,7 +963,7 @@ li { margin: 4px 0; }
     <tr><td class="grade-F">F</td><td class="num-cell">&lt; 35 分</td><td>假突破風險高</td><td><span class="tag tag-red">不建議進場</span></td></tr>
 </table>
 
-<h3>紅旗警告機制</h3>
+<h3 id="quality-redflags">紅旗警告機制</h3>
 <p>除了分數外，以下特定情況會觸發紅旗警告：</p>
 <ul>
     <li><span class="loss">量比 2.5 - 3.0x</span> &mdash; 勝率僅 36%，過度放量可能是假突破</li>
@@ -969,6 +982,7 @@ li { margin: 4px 0; }
 
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
+    <caption>2021-2026 各年度回測績效總覽</caption>
     <tr>
         <th>年份</th>
         <th class="num-cell">交易次數</th>
@@ -1036,9 +1050,10 @@ li { margin: 4px 0; }
 </div>
 <p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中），交易筆數較少。</p>
 
-<h3>單筆交易統計</h3>
+<h3 id="bt-trades">單筆交易統計</h3>
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
+    <caption>各年度單筆交易獲利與虧損統計</caption>
     <tr>
         <th>年份</th>
         <th class="num-cell">平均獲利</th>
@@ -1098,7 +1113,7 @@ li { margin: 4px 0; }
 </table>
 </div>
 
-<h3>出場方式分佈</h3>
+<h3 id="bt-exits">出場方式分佈</h3>
 
 <!-- 2021 -->
 <h4 style="color: var(--text-dim); margin-top: 20px;">2021 年（91 筆交易）</h4>
@@ -1162,7 +1177,7 @@ li { margin: 4px 0; }
     <tr><td>OPEN 未平倉</td><td class="num-cell">1</td><td class="num-cell">12.5%</td><td class="num-cell">--</td></tr>
 </table>
 
-<h3>六年連續複利結果</h3>
+<h3 id="bt-compound">六年連續複利結果</h3>
 <div class="highlight-box">
     <div class="label">2021-2026 連續複利</div>
     <div class="big-number">$10,000 &rarr; $44,201,654,798</div>
@@ -1178,7 +1193,7 @@ li { margin: 4px 0; }
     <p style="color: var(--text-dim);">注意：此為回測理論值，實際交易會受到滑價、流動性、情緒等因素影響。連續複利結果受各年度報酬率波動影響極大，ALL-IN 全倉策略下連續複利的數字極端放大，實際操作不可能達到此理論值。</p>
 </div>
 
-<h3>關鍵觀察</h3>
+<h3 id="bt-observations">關鍵觀察</h3>
 <div class="two-col">
     <div class="card card-green">
         <strong>穩定的核心特徵</strong>
@@ -1279,7 +1294,7 @@ li { margin: 4px 0; }
 <p>本分析模擬 2021-2026 年間<strong>每一個交易日</strong>的所有候選股票，不受資金限制、不受倉位限制，每個候選股獨立模擬進場到出場的完整流程。目的是衡量<strong>選股訊號本身的品質</strong>，而非資金管理後的實際績效。</p>
 
 <div class="card card-accent">
-    <h3 style="margin-top:0">與回測的差異</h3>
+    <h3 id="scan-diff" style="margin-top:0">與回測的差異</h3>
     <ul>
         <li><strong>回測 (Backtest)：</strong>每天只能持有 1 檔（資金全押），受到倉位限制</li>
         <li><strong>掃描分析 (Daily Scan)：</strong>每天所有候選股都模擬交易，衡量訊號整體品質</li>
@@ -1287,9 +1302,10 @@ li { margin: 4px 0; }
     <p style="margin-bottom:0">如果掃描勝率穩定 &gt;60%，代表選股邏輯本身具備統計優勢，不依賴運氣選到特定股票。</p>
 </div>
 
-<h3>各年度掃描績效總覽</h3>
+<h3 id="scan-yearly">各年度掃描績效總覽</h3>
 <div class="table-wrap">
 <table>
+<caption>2021-2026 每日掃描全候選績效總覽</caption>
 <tr>
     <th>年份</th>
     <th>交易日</th>
@@ -1371,10 +1387,11 @@ li { margin: 4px 0; }
 </div>
 <p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。首選 = 每天 RS Rank 最高的候選股。盈虧比 = Profit Factor（總獲利 / 總虧損）。</p>
 
-<h3>首選勝率 (Rank#1)</h3>
+<h3 id="scan-rank1">首選勝率 (Rank#1)</h3>
 <div class="card card-green">
     <p style="margin-bottom:8px"><strong>首選勝率</strong>是指每天候選名單中 RS Rank 排名第一的股票的勝率 — 也就是系統實際會選擇交易的那檔。</p>
     <table>
+    <caption>RS Rank#1 首選股各年度勝率</caption>
     <tr>
         <th>年份</th>
         <th>交易數</th>
@@ -1435,9 +1452,10 @@ li { margin: 4px 0; }
     <p style="margin-bottom:0; margin-top:12px; color: var(--text-dim); font-size:0.9em">首選勝率一致高於整體勝率 2-9 個百分點，驗證 RS Rank 排序機制有效將最強候選股排在最前。</p>
 </div>
 
-<h3>出場原因勝率</h3>
+<h3 id="scan-exitwr">出場原因勝率</h3>
 <p>不同出場方式的勝率揭示了系統各層機制的角色：</p>
 <table>
+<caption>287,180 筆模擬交易出場方式勝率分佈</caption>
 <tr>
     <th>出場方式</th>
     <th>交易數</th>
@@ -1487,7 +1505,7 @@ li { margin: 4px 0; }
     SL 佔最大宗（56%）是因為全部候選股都測試 — 實際交易時 RS Rank#1 的 SL 比率遠低於此。
 </div>
 
-<h3>關鍵發現</h3>
+<h3 id="scan-findings">關鍵發現</h3>
 <div class="two-col">
     <div class="card card-green">
         <h3 style="margin-top:0">訊號品質穩定</h3>
