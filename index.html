@@ -291,6 +291,16 @@ tr:hover td { background: rgba(108,140,255,0.05); }
     text-decoration: none;
 }
 .toc a:hover { text-decoration: underline; }
+.toc-group {
+    font-weight: 700;
+    font-size: 0.95em;
+    color: var(--text-dim);
+    margin: 16px 0 6px;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+}
+.toc-group:first-of-type { margin-top: 0; }
 
 .analogy {
     background: rgba(255,217,61,0.08);
@@ -471,6 +481,7 @@ li { margin: 4px 0; }
 <!-- TOC -->
 <div class="toc">
 <h3>目錄</h3>
+<div class="toc-group">一、策略基礎</div>
 <ol>
     <li><a href="#overview">概述</a></li>
     <li><a href="#philosophy">核心理念</a></li>
@@ -480,62 +491,68 @@ li { margin: 4px 0; }
     <li><a href="#exit">出場機制</a></li>
     <li><a href="#position">倉位管理</a></li>
     <li><a href="#quality">突破品質評估</a></li>
+</ol>
+<div class="toc-group">二、績效驗證</div>
+<ol start="9">
     <li><a href="#backtest">回測結果</a></li>
     <li><a href="#faq">常見問題 FAQ</a></li>
     <li><a href="#scan-winrate">每日掃描勝率分析</a></li>
-    <li><a href="#v20">V20 更新</a>
+</ol>
+<div class="toc-group">三、版本演化</div>
+<ol start="12">
+    <li><a href="#v20">V20 更新 &mdash; 五大升級</a>
         <ol style="list-style-type: lower-alpha;">
-            <li>Stale Exit + Gap-Down Rejection</li>
-            <li>板塊動能篩選 + ETF 排除</li>
-            <li>市場環境偵測</li>
-            <li>進階指標 (RSI、K 線品質、量能 Z-Score)</li>
-            <li>動態 TP/NoTP 切換</li>
+            <li><a href="#v20-stale-gap">Stale Exit + Gap-Down Rejection</a></li>
+            <li><a href="#v20-sector">板塊動能篩選 + ETF 排除</a></li>
+            <li><a href="#v20-market">市場環境偵測</a></li>
+            <li><a href="#v20-indicators">進階指標 (RSI、K 線品質、量能 Z-Score)</a></li>
+            <li><a href="#v20-dynamic">動態 TP/NoTP 切換</a></li>
         </ol>
     </li>
-    <li><a href="#v21-research">V21 優化研究</a>
+    <li><a href="#v21-research">V21 優化研究 &mdash; 16 輪驗證</a>
         <ol style="list-style-type: lower-alpha;">
-            <li>16 輪系統性回測總結</li>
-            <li>Walk-Forward 驗證 + Monte Carlo</li>
-            <li>倉位管理分析</li>
-            <li>多候選 + 排名方法測試</li>
-            <li>穩健性壓力測試</li>
-            <li>出場機制優化</li>
-            <li>ML 機器學習預測</li>
-            <li>進場時機優化</li>
-            <li>體制自適應 + Re-Entry</li>
-            <li>風險警示與實際預期</li>
+            <li><a href="#v21-overview">16 輪系統性回測總結</a></li>
+            <li><a href="#v21-walkforward">Walk-Forward 驗證 + Monte Carlo</a></li>
+            <li><a href="#v21-sizing">倉位管理分析</a></li>
+            <li><a href="#v21-multi">多候選 + 排名方法測試</a></li>
+            <li><a href="#v21-stress">穩健性壓力測試</a></li>
+            <li><a href="#v21-exit">出場機制優化</a></li>
+            <li><a href="#v21-ml">ML 機器學習預測</a></li>
+            <li><a href="#v21-entry">進場時機優化</a></li>
+            <li><a href="#v21-regime">體制自適應 + Re-Entry</a></li>
+            <li><a href="#v21-risk">風險警示與實際預期</a></li>
         </ol>
     </li>
     <li><a href="#v23-research">V23 &mdash; 最終優化突破</a>
         <ol style="list-style-type: lower-alpha;">
-            <li>研究歷程（V20 &rarr; V23）</li>
-            <li>V23 參數對照</li>
-            <li>5 階段優化方法論（170+ 實驗）</li>
-            <li>逐年績效 &amp; 動態模式分析</li>
-            <li>出場原因 &amp; 滑點敏感度</li>
-            <li>Walk-Forward 驗證（一致性 1.02）</li>
-            <li>歷史候選方案（V23-TightHigh / HighTP）</li>
-            <li>實戰執行指南</li>
-            <li>倖存者偏差驗證</li>
+            <li><a href="#v23-history">研究歷程（V20 &rarr; V23）</a></li>
+            <li><a href="#v23-params">V23 參數對照</a></li>
+            <li><a href="#v23-methodology">5 階段優化方法論（170+ 實驗）</a></li>
+            <li><a href="#v23-yearly">逐年績效 &amp; 動態模式分析</a></li>
+            <li><a href="#v23-exit">出場原因 &amp; 滑點敏感度</a></li>
+            <li><a href="#v23-walkforward">Walk-Forward 驗證（一致性 1.02）</a></li>
+            <li><a href="#v23-candidates">歷史候選方案（V23-TightHigh / HighTP）</a></li>
+            <li><a href="#v23-guide">實戰執行指南</a></li>
+            <li><a href="#v23-survivorship">倖存者偏差驗證</a></li>
         </ol>
     </li>
     <li><a href="#v24-research">V24 &mdash; 精準微調三項改進</a>
         <ol style="list-style-type: lower-alpha;">
-            <li>V24 三項改進解析</li>
-            <li>V24 vs V23 關鍵對比</li>
-            <li>逐年勝率 &amp; Walk-Forward 驗證</li>
-            <li>出場原因分布變化</li>
-            <li>6/6 成功標準驗證</li>
+            <li><a href="#v24-improvements">三項改進解析</a></li>
+            <li><a href="#v24-comparison">V24 vs V23 關鍵對比</a></li>
+            <li><a href="#v24-yearly">V24 逐年勝率</a></li>
+            <li><a href="#v24-walkforward">Walk-Forward 驗證</a></li>
+            <li><a href="#v24-exit">出場原因分布</a></li>
+            <li><a href="#v24-criteria">6/6 成功標準驗證</a></li>
         </ol>
     </li>
     <li><a href="#market-correlation">V23 勝率 vs 大盤相關性研究</a>
         <ol style="list-style-type: lower-alpha;">
-            <li>年度勝率 vs S&amp;P 500</li>
-            <li>季度 &amp; 月度深度分析</li>
-            <li>2022 熊市解剖</li>
-            <li>學術研究佐證</li>
-            <li>死亡交叉、恐慌指數、首日停損進階分析</li>
-            <li>V23 防護機制 &amp; 優化方向</li>
+            <li><a href="#mc-yearly">年度勝率 vs S&amp;P 500</a></li>
+            <li><a href="#mc-quarterly">季度 &amp; 月度深度分析</a></li>
+            <li><a href="#mc-bear">2022 熊市解剖</a></li>
+            <li><a href="#mc-academic">學術研究佐證</a></li>
+            <li><a href="#mc-defense">V23 防護機制 &amp; 優化方向</a></li>
         </ol>
     </li>
 </ol>
@@ -1490,7 +1507,7 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- V20 更新 -->
 <!-- ================================================================ -->
-<h2 id="v20"><span class="num">★</span>V20 更新 &mdash; 五大升級</h2>
+<h2 id="v20"><span class="num">12</span>V20 更新 &mdash; 五大升級</h2>
 
 <div class="highlight-box">
     <div class="label">版本升級 — 五大核心改進</div>
@@ -1500,7 +1517,7 @@ li { margin: 4px 0; }
     </p>
 </div>
 
-<h3>升級一：Stale Exit + Gap-Down Rejection</h3>
+<h3 id="v20-stale-gap">升級一：Stale Exit + Gap-Down Rejection</h3>
 
 <h3>更新動機</h3>
 <div class="card card-yellow">
@@ -1625,7 +1642,7 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- V20 升級二：板塊動能篩選 + ETF 排除 -->
 <!-- ================================================================ -->
-<h3>升級二：板塊動能篩選 + ETF/ETN 排除</h3>
+<h3 id="v20-sector">升級二：板塊動能篩選 + ETF/ETN 排除</h3>
 
 <div class="card card-accent">
     <p><strong>核心概念：</strong>研究顯示 60-73% 的動能獲利來自<strong>板塊層面因素</strong>。底部板塊的 VCP 型態勝率僅 51.3%（接近隨機），而頂部板塊顯著更高。V20 新增板塊篩選，拒絕弱勢板塊中的候選股。</p>
@@ -1667,7 +1684,7 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- V20 升級三：市場環境偵測 -->
 <!-- ================================================================ -->
-<h3>升級三：市場環境偵測</h3>
+<h3 id="v20-market">升級三：市場環境偵測</h3>
 
 <div class="card card-accent">
     <p><strong>核心概念：</strong>即使選股品質再好，如果整體市場環境惡劣（例如系統性下跌），突破成功率也會大幅下降。V20 新增市場環境偵測，提供情境建議。</p>
@@ -1716,7 +1733,7 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- V20 升級四：進階指標 -->
 <!-- ================================================================ -->
-<h3>升級四：進階指標</h3>
+<h3 id="v20-indicators">升級四：進階指標</h3>
 
 <p>V20 新增三項技術指標，提供更完整的突破品質評估。這些指標<strong>不作為進場濾網</strong>，而是作為參考資訊顯示在掃描結果中。</p>
 
@@ -2021,7 +2038,7 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- V21 優化研究 -->
 <!-- ================================================================ -->
-<h2 id="v21-research"><span class="num">★★</span>V21 優化研究 &mdash; 16 輪系統性驗證</h2>
+<h2 id="v21-research"><span class="num">13</span>V21 優化研究 &mdash; 16 輪系統性驗證</h2>
 
 <div class="highlight-box">
     <div class="label">V21 研究結論</div>
@@ -2029,7 +2046,7 @@ li { margin: 4px 0; }
     <div class="label" style="margin-top: 8px;">16 輪回測 | 95+ 策略變體 | 12M+ 資料列 | 330+ 交易 — 含 ML、體制自適應、Re-Entry 均無法穩健超越基線</div>
 </div>
 
-<h3>研究概覽</h3>
+<h3 id="v21-overview">研究概覽</h3>
 <p>V21 研究針對 V20 系統進行全方位優化測試，涵蓋信號篩選、交易管理、進階分析、統計驗證、倉位管理、多候選策略、排名方法、穩健性壓測、出場優化、ML 預測、進場時機、體制自適應、部分止盈和 Re-Entry 策略。以下是 16 輪測試的核心發現：</p>
 
 <div class="card" style="padding:0; overflow-x:auto;">
@@ -2928,7 +2945,7 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- V23 — 最終優化突破 -->
 <!-- ================================================================ -->
-<h2 id="v23-research"><span class="num">★★★</span>V23 &mdash; 最終優化突破</h2>
+<h2 id="v23-research"><span class="num">14</span>V23 &mdash; 最終優化突破</h2>
 
 <div class="highlight-box">
     <div class="label">V23 &mdash; 5 階段 170+ 實驗的最終成果</div>
@@ -2936,7 +2953,7 @@ li { margin: 4px 0; }
     <div class="label" style="margin-top: 8px;">433 筆交易 | WR 63.0% | PF 3.08 | MDD 13.3% | Calmar 79.6 | Walk-Forward 一致性 1.02</div>
 </div>
 
-<h3>研究歷程：從 V20 到 V23</h3>
+<h3 id="v23-history">研究歷程：從 V20 到 V23</h3>
 <div class="card card-yellow">
     <p><strong>V21 研究</strong>（16 輪、95+ 變體）結論為「V20 = 理論上限」。</p>
     <p><strong>V23 初期</strong>透過參數聯合優化發現<strong>交互效應</strong>（+274pp），產出 V23-TightHigh 和 V23-HighTP 兩個候選。</p>
@@ -2945,7 +2962,7 @@ li { margin: 4px 0; }
     <p><strong>關鍵洞見：</strong>單獨改變 SL 或 TP 或 Time 都會降低績效，但特定組合卻產生巨大的正向交互效應。</p>
 </div>
 
-<h3>V23 參數對照表</h3>
+<h3 id="v23-params">V23 參數對照表</h3>
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
     <tr>
@@ -3064,7 +3081,7 @@ li { margin: 4px 0; }
     <p>清洗後：MDD 從虛假的 ~100% 修正為 <strong>13.3%</strong>（固定倉位 MDD），這才是策略在正常市場條件下的真實風險。所有 V23 數字均基於清洗後的高品質數據。</p>
 </div>
 
-<h3>5 階段優化方法論</h3>
+<h3 id="v23-methodology">5 階段優化方法論</h3>
 <div class="flow-chart">
     <div class="flow-step">Phase 1：個別參數掃描（72 實驗）</div>
     <div class="flow-arrow">&darr;</div>
@@ -3147,7 +3164,7 @@ li { margin: 4px 0; }
     V23的核心邏輯：用更緊的停損（1.3x vs 2.4x）更快認賠，用更短的時間停損（10d vs 14d）更快釋放資金，加上 Vol Z-Score 和 80% 52wk 門檻過濾掉低品質訊號 &mdash; 最終用更多但更精準的交易（433 筆 vs 318 筆 V20），實現 891 倍的績效差距。
 </div>
 
-<h3>V23逐年績效</h3>
+<h3 id="v23-yearly">V23逐年績效</h3>
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
     <tr>
@@ -3216,7 +3233,7 @@ li { margin: 4px 0; }
     </div>
 </div>
 
-<h3>出場原因分析（433 筆交易）</h3>
+<h3 id="v23-exit">出場原因分析（433 筆交易）</h3>
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
     <tr>
@@ -3318,7 +3335,7 @@ li { margin: 4px 0; }
     滑點敏感度測試揭示了 V23 的另一個優勢：即使在最悲觀的 1% 滑點假設下（實際交易中幾乎不可能），績效仍然勝過使用 0.1% 滑點的 V20。這代表 V23 的優勢不是建立在滑點假設上，而是來自更好的進出場參數組合。
 </div>
 
-<h3>Walk-Forward 驗證</h3>
+<h3 id="v23-walkforward">Walk-Forward 驗證</h3>
 <div class="card card-green">
     <h4 style="margin-top:0">V23 通過 Walk-Forward 驗證</h4>
     <p>Walk-Forward 分析（訓練窗口 &rarr; 測試窗口 &times; 多窗口）顯示：</p>
@@ -3356,7 +3373,7 @@ li { margin: 4px 0; }
     <p><strong>教訓：</strong>在非凸參數空間中，逐一搜索（V21 方法）會陷入局部最優。V23 的多維聯合搜索 + 新篩選器（VolZ, 52wk）才發現了真正的全域最佳組合。</p>
 </div>
 
-<h3>歷史候選方案（V23-TightHigh &amp; V23-HighTP）</h3>
+<h3 id="v23-candidates">歷史候選方案（V23-TightHigh &amp; V23-HighTP）</h3>
 <p style="color: var(--text-dim); font-size: 0.9em;">以下是 V23 研究初期（R8 交互效應發現）產出的兩個候選方案。V23 在這些基礎上進一步優化。</p>
 <div class="two-col">
     <div class="card">
@@ -3503,7 +3520,7 @@ li { margin: 4px 0; }
 </table>
 </div>
 
-<h3>V24 實戰執行指南</h3>
+<h3 id="v23-guide">V24 實戰執行指南</h3>
 
 <div class="two-col">
     <div class="card card-green">
@@ -3585,7 +3602,7 @@ li { margin: 4px 0; }
     <p style="margin-bottom:0;">所有測試過的參數組合（V20、V23-TH、V23-HP、V23）中，<strong>動態模式都全面勝出固定模式</strong>。</p>
 </div>
 
-<h3>倖存者偏差驗證</h3>
+<h3 id="v23-survivorship">倖存者偏差驗證</h3>
 
 <div class="highlight-box">
     <div class="label">Survivorship Bias Test</div>
@@ -3831,7 +3848,7 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- V24 — 精準微調三項改進 -->
 <!-- ================================================================ -->
-<h2 id="v24-research"><span class="num">★★★★</span>V24 &mdash; 精準微調三項改進</h2>
+<h2 id="v24-research"><span class="num">15</span>V24 &mdash; 精準微調三項改進</h2>
 
 <div class="highlight-box">
     <div class="label">V24 &mdash; 基於 V23 的三項精準微調</div>
@@ -3841,7 +3858,7 @@ li { margin: 4px 0; }
 
 <p>V23 透過 5 階段 170+ 實驗找到了最佳參數組合。V24 不改變核心參數，而是針對<strong>首日交易行為</strong>和<strong>市場恐慌過濾</strong>進行三項精準微調，使績效翻倍、MDD 減半。</p>
 
-<h3>三項改進解析</h3>
+<h3 id="v24-improvements">三項改進解析</h3>
 
 <div class="two-col">
     <div class="card card-green">
@@ -3862,7 +3879,7 @@ li { margin: 4px 0; }
     <p style="margin-bottom:0;"><strong>效果：</strong>過濾掉市場恐慌時的弱訊號，避免在系統性下跌中進場。</p>
 </div>
 
-<h3>V24 vs V23 關鍵對比</h3>
+<h3 id="v24-comparison">V24 vs V23 關鍵對比</h3>
 
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
@@ -3935,7 +3952,7 @@ li { margin: 4px 0; }
 </table>
 </div>
 
-<h3>V24 逐年勝率</h3>
+<h3 id="v24-yearly">V24 逐年勝率</h3>
 
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
@@ -3986,7 +4003,7 @@ li { margin: 4px 0; }
 
 <p>V24 在 6 年中的 5 年勝率提升或持平，2024 年微降 3.6pp 但仍保持 65.9% 高勝率。</p>
 
-<h3>Walk-Forward 驗證</h3>
+<h3 id="v24-walkforward">Walk-Forward 驗證</h3>
 
 <div class="card card-green">
     <h4 style="margin-top:0">訓練期 2021-2024, 測試期 2025-2026</h4>
@@ -4017,7 +4034,7 @@ li { margin: 4px 0; }
     <p style="margin-top:12px; margin-bottom:0;">V24 在未見數據上表現<strong>更好</strong>（OOS WR 69.5% &gt; IS WR 64.3%），確認無過擬合跡象。+5.2pp 的正差距表明 V24 的三項微調具有真正的泛化能力。</p>
 </div>
 
-<h3>V24 出場原因分布</h3>
+<h3 id="v24-exit">V24 出場原因分布</h3>
 
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
@@ -4064,7 +4081,7 @@ li { margin: 4px 0; }
     V24 的出場分布清晰反映三項改進的效果：Day 1 Force TP 使止盈 +16 筆，Day 1 寬鬆止損使止損 &minus;15 筆。更多交易以獲利方式結束，更少交易在首日被震出 — 這正是 V24 MDD 減半的根本原因。
 </div>
 
-<h3>V24 成功標準：6/6 全部通過</h3>
+<h3 id="v24-criteria">V24 成功標準：6/6 全部通過</h3>
 
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
@@ -4120,7 +4137,7 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- V23 勝率 vs 大盤相關性研究 -->
 <!-- ================================================================ -->
-<h2 id="market-correlation"><span class="num">15</span>V23 勝率 vs 大盤相關性研究</h2>
+<h2 id="market-correlation"><span class="num">16</span>V23 勝率 vs 大盤相關性研究</h2>
 
 <div class="highlight-box">
     <div class="label">核心結論</div>
@@ -4134,7 +4151,7 @@ li { margin: 4px 0; }
 </div>
 
 <!-- ── 年度勝率 vs S&P 500 ── -->
-<h3>a. 年度勝率 vs S&amp;P 500</h3>
+<h3 id="mc-yearly">a. 年度勝率 vs S&amp;P 500</h3>
 
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
@@ -4210,7 +4227,7 @@ li { margin: 4px 0; }
 </div>
 
 <!-- ── 季度勝率深度分析 ── -->
-<h3>b. 季度 &amp; 月度深度分析</h3>
+<h3 id="mc-quarterly">b. 季度 &amp; 月度深度分析</h3>
 
 <h4>季度勝率</h4>
 <div class="card" style="padding:0; overflow-x:auto;">
@@ -4274,7 +4291,7 @@ li { margin: 4px 0; }
 </div>
 
 <!-- ── 2022 熊市解剖 ── -->
-<h3>c. 2022 熊市解剖</h3>
+<h3 id="mc-bear">c. 2022 熊市解剖</h3>
 
 <div class="two-col">
     <div class="card" style="border-left: 4px solid var(--red);">
@@ -4301,7 +4318,7 @@ li { margin: 4px 0; }
 </div>
 
 <!-- ── 學術研究佐證 ── -->
-<h3>d. 學術研究佐證</h3>
+<h3 id="mc-academic">d. 學術研究佐證</h3>
 
 <div class="card card-accent">
     <h4 style="margin-top:0">Cooper, Gutierrez &amp; Hameed (2004) &mdash; "Market States and Momentum"</h4>
@@ -4392,7 +4409,7 @@ li { margin: 4px 0; }
 </div>
 
 <!-- ── V23 防護機制 ── -->
-<h3>e. V23 防護機制 &amp; 優化方向</h3>
+<h3 id="mc-defense">e. V23 防護機制 &amp; 優化方向</h3>
 
 <div class="card card-green">
     <h4 style="margin-top:0">為什麼 V23 比典型動量策略更強？</h4>
