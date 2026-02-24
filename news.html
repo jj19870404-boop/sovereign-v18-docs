@@ -273,6 +273,17 @@ h1 {
     .hour-time { font-size: 1em; }
 }
 
+/* ── Scroll to Top ── */
+.scroll-top {
+    position: fixed; bottom: 28px; right: 28px; width: 44px; height: 44px;
+    border-radius: 50%; background: var(--accent); color: var(--bg); border: none;
+    font-size: 1.3em; cursor: pointer; opacity: 0; visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.2s; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;
+}
+.scroll-top.show { opacity: 1; visibility: visible; }
+.scroll-top:hover { transform: scale(1.1); }
+
 /* ── Accessibility ── */
 :focus-visible {
     outline: 2px solid var(--accent);
@@ -535,6 +546,10 @@ fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
 }).catch(()=>{});
 </script>
 </main>
-
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">&uarr;</button>
+<script>
+const scrollBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => { scrollBtn.classList.toggle('show', window.scrollY > 300); });
+</script>
 </body>
 </html>
