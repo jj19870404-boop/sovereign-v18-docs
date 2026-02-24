@@ -52,11 +52,19 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 0;
+    padding: 12px 24px;
     border-bottom: 1px solid var(--border);
     margin-bottom: 24px;
     flex-wrap: wrap;
     gap: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15, 17, 23, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    margin-left: -24px;
+    margin-right: -24px;
 }
 .top-nav a {
     color: var(--accent);
@@ -72,6 +80,7 @@ body {
 .top-nav .brand:hover { color: var(--text); text-decoration: none; }
 .nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
 .nav-links a.active { color: var(--text); font-weight: 600; }
+.menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5em; cursor: pointer; padding: 4px 8px; }
 
 /* ── Stale Banner ── */
 .stale-banner {
@@ -248,6 +257,9 @@ h1 {
 /* ── Responsive ── */
 @media (max-width: 768px) {
     .container { padding: 16px; }
+    .menu-toggle { display: block; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 8px; padding-top: 8px; }
+    .nav-links.open { display: flex; }
 }
 @media (max-width: 600px) {
     .container { padding: 12px; }
@@ -285,6 +297,7 @@ h1 {
 <!-- Top Nav -->
 <div class="top-nav" role="navigation" aria-label="主要導航">
     <a href="index.html" class="brand">Sovereign V24</a>
+    <button class="menu-toggle" aria-label="開啟選單" aria-expanded="false">&#9776;</button>
     <div class="nav-links">
         <a href="picks.html">每日選股</a>
         <a href="track.html">選股追蹤</a>
@@ -508,6 +521,13 @@ window.addEventListener('hashchange', () => {
 });
 
 // ── Site Info: 更新時間戳 + Nav Brand ──
+// Mobile hamburger menu toggle
+document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+    const nav = document.querySelector('.nav-links');
+    const open = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', open);
+    this.innerHTML = open ? '&times;' : '&#9776;';
+});
 fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
     const b=document.querySelector('.brand');if(b)b.textContent=info.label;
     const ts=info.updated&&info.updated.news;

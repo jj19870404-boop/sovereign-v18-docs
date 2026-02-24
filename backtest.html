@@ -82,6 +82,7 @@ body {
 .top-nav .brand:hover { color: var(--text); text-decoration: none; }
 .nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
 .nav-links a.active { color: var(--text); font-weight: 600; }
+.menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5em; cursor: pointer; padding: 4px 8px; }
 
 /* ── Scroll to Top ── */
 .scroll-top {
@@ -235,7 +236,9 @@ tr:hover td { background: var(--surface2); }
     .hero-grid { grid-template-columns: repeat(2, 1fr); }
     table { font-size: 0.8em; }
     th, td { padding: 6px 8px; }
-    .nav-links { gap: 10px; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 8px; padding-top: 8px; }
+    .nav-links.open { display: flex; }
+    .menu-toggle { display: block; }
     h1 { font-size: 1.5em; }
     .params-grid { grid-template-columns: 1fr; }
 }
@@ -250,6 +253,10 @@ tr:hover td { background: var(--surface2); }
     .hero-grid, .params-grid { display: block !important; }
     .hero-stat, .param-group { border: 1px solid #ccc !important; background: #fff !important; margin-bottom: 8px; }
 }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V24 - 完整回測報告","description":"Sovereign V24 完整回測報告 — 2021-2026 六年回測數據、逐月逐季分析、出場策略統計、權益曲線","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/backtest.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V24","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
@@ -261,6 +268,7 @@ tr:hover td { background: var(--surface2); }
 
 <div class="top-nav" role="navigation" aria-label="主要導航">
     <a href="index.html" class="brand">Sovereign V24</a>
+    <button class="menu-toggle" aria-label="開啟選單" aria-expanded="false">&#9776;</button>
     <div class="nav-links">
         <a href="picks.html">每日選股</a>
         <a href="track.html">選股追蹤</a>
@@ -656,6 +664,13 @@ loadData().then(data => {
 });
 
 // ── Site Info: 更新時間戳 + Nav Brand ──
+// Mobile hamburger menu toggle
+document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+    const nav = document.querySelector('.nav-links');
+    const open = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', open);
+    this.innerHTML = open ? '&times;' : '&#9776;';
+});
 fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
     const b=document.querySelector('.brand');if(b)b.textContent=info.label;
     const ts=info.updated&&info.updated.backtest;
