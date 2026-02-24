@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sovereign V18-V23 演化歷史 — 完整版本進化紀錄</title>
-<meta name="description" content="Sovereign 動能突破交易系統 V18 到 V23 的完整演化歷史，包含所有回測數據、參數變化、每日選股勝率分析">
+<title>Sovereign V18-V24 演化歷史 — 完整版本進化紀錄</title>
+<meta name="description" content="Sovereign 動能突破交易系統 V18 到 V24 的完整演化歷史，包含所有回測數據、參數變化、每日選股勝率分析">
 <style>
 :root {
     --bg: #0f1117;
@@ -187,7 +187,7 @@ li { margin: 4px 0; }
 <div class="container">
 
 <div class="top-nav">
-    <a href="index.html" class="brand">Sovereign V23</a>
+    <a href="index.html" class="brand">Sovereign V24</a>
     <div class="nav-links">
         <a href="picks.html">每日選股</a>
         <a href="track.html">選股追蹤</a>
@@ -197,14 +197,14 @@ li { margin: 4px 0; }
     </div>
 </div>
 
-<h1>Sovereign V18 &rarr; V23</h1>
-<p class="subtitle">完整版本演化歷史 &mdash; 從 $14.7M 到 $44.2B 的進化之路</p>
+<h1>Sovereign V18 &rarr; V24</h1>
+<p class="subtitle">完整版本演化歷史 &mdash; 從 $14.7M 到 $92.2B 的進化之路</p>
 
 <!-- Hero -->
 <div class="highlight-box">
-    <div class="label">5 個版本 &bull; 33 輪研究 &bull; 270+ 實驗 &bull; 12M+ 數據列</div>
-    <div class="big-number">$10K &rarr; $44.2B</div>
-    <div class="label" style="margin-top: 8px;">V18 基礎版 $14.7M &rarr; V20 五大升級 $49.6M &rarr; V23 $44.2B</div>
+    <div class="label">6 個版本 &bull; 37 輪研究 &bull; 310+ 實驗 &bull; 12M+ 數據列</div>
+    <div class="big-number">$10K &rarr; $92.2B</div>
+    <div class="label" style="margin-top: 8px;">V18 $14.7M &rarr; V20 $49.6M &rarr; V23 $44.2B &rarr; V24 $92.2B</div>
 </div>
 
 <!-- TOC -->
@@ -220,6 +220,7 @@ li { margin: 4px 0; }
     <li><a href="#v20">V20 — 五大升級版</a></li>
     <li><a href="#v21">V21 — 16 輪系統性研究</a></li>
     <li><a href="#v23">V23 — 最終突破</a></li>
+    <li><a href="#v24">V24 — Day 1 優化</a></li>
     <li><a href="#scan">每日掃描勝率演化</a></li>
     <li><a href="#conclusion">結論</a></li>
 </ol>
@@ -561,61 +562,71 @@ li { margin: 4px 0; }
         <th>指標</th>
         <th class="num-cell">V18</th>
         <th class="num-cell">V20</th>
-        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V23</th>
+        <th class="num-cell">V23</th>
+        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V24</th>
     </tr>
     <tr>
         <td>6 年複利最終淨值</td>
         <td class="num-cell"><span class="param-value">$14,708,617</span></td>
         <td class="num-cell"><span class="param-value">$49,600,000</span></td>
-        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>$44,201,654,798</strong></td>
+        <td class="num-cell"><span class="param-value">$44,201,654,798</span></td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>$92,197,639,578</strong></td>
     </tr>
     <tr>
         <td>6 年複利報酬率</td>
         <td class="num-cell"><span class="param-value">+146,986%</span></td>
         <td class="num-cell"><span class="param-value">+495,900%</span></td>
-        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>+442,016,448%</strong></td>
+        <td class="num-cell"><span class="param-value">+442,016,448%</span></td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>+921,976,296%</strong></td>
     </tr>
     <tr>
         <td>vs V20 倍數</td>
         <td class="num-cell"><span class="param-value">0.30x</span></td>
         <td class="num-cell"><span class="param-value">&mdash;</span></td>
-        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>891x</strong></td>
+        <td class="num-cell"><span class="param-value">891x</span></td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>1,859x</strong></td>
     </tr>
     <tr>
         <td>總交易數</td>
         <td class="num-cell">316</td>
         <td class="num-cell">316</td>
-        <td class="num-cell" style="background:rgba(0,255,127,0.08);">433</td>
+        <td class="num-cell">433</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);">434</td>
     </tr>
     <tr>
         <td>勝率 (WR)</td>
         <td class="num-cell">69.6%</td>
         <td class="num-cell">69.6%</td>
-        <td class="num-cell" style="background:rgba(0,255,127,0.08);">63.0%</td>
+        <td class="num-cell">63.0%</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>65.4%</strong></td>
     </tr>
     <tr>
         <td>盈虧比 (PF)</td>
         <td class="num-cell">1.73</td>
         <td class="num-cell">3.98</td>
-        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>3.08</strong></td>
+        <td class="num-cell">3.08</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>3.26</strong></td>
     </tr>
     <tr>
         <td>最大回撤 (MDD)</td>
         <td class="num-cell loss">54.97%</td>
         <td class="num-cell loss">54.2%</td>
-        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>13.3%</strong></td>
+        <td class="num-cell">13.3%</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>6.37%</strong></td>
     </tr>
     <tr>
         <td>Calmar Ratio</td>
         <td class="num-cell">&mdash;</td>
         <td class="num-cell">&mdash;</td>
-        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>79.6</strong></td>
+        <td class="num-cell">79.6</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>166.3</strong></td>
     </tr>
     <tr>
         <td>Walk-Forward 一致性</td>
         <td class="num-cell">&mdash;</td>
         <td class="num-cell">&mdash;</td>
-        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>1.02</strong></td>
+        <td class="num-cell">1.02</td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>1.08</strong></td>
     </tr>
 </table>
 </div>
@@ -674,7 +685,7 @@ li { margin: 4px 0; }
     </tr>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。V23在 4/6 年勝出；V20 在 2025（超級牛市）大幅領先。</p>
+<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。V23在 4/6 年勝出；V20 在 2025（超級牛市）大幅領先。V24 進一步將 V23 績效翻倍（$92.2B vs $44.2B），詳見 <a href="#v24" style="color:var(--accent)">V24 章節</a>。</p>
 
 <!-- ================================================================ -->
 <!-- 5. V18 基礎版 -->
@@ -1538,6 +1549,96 @@ li { margin: 4px 0; }
 </div>
 
 <!-- ================================================================ -->
+<!-- V24 — Day 1 優化 -->
+<!-- ================================================================ -->
+<h2 id="v24"><span class="num">9</span>V24 &mdash; Day 1 優化</h2>
+
+<div class="card card-green">
+    <h3 style="margin-top:0">V24 核心改進</h3>
+    <p>V24 針對 V23 的最大弱點 — <strong>Day 1 止損過多</strong> — 進行了 3 項精準手術，將 Day 1 SL 從 84 筆降至 62 筆，同時提升勝率和獲利因子。</p>
+    <p style="margin-bottom:0;">研究方法：4 輪回測驗證、40+ 變體測試、Walk-Forward 樣本外驗證。7 項提案中僅 3 項通過（33% 轉化率）— 嚴格篩選確保無過擬合。</p>
+</div>
+
+<h3>三項改進</h3>
+<table>
+    <thead>
+    <tr><th>#</th><th>改進</th><th>原理</th><th>效果</th></tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td><strong>Day 1 強制止盈模式</strong></td>
+        <td>Day 1 不論動態切換結果，一律使用 TP 模式（+15% 止盈）</td>
+        <td>TP 出場 81&rarr;97 (+16 筆)</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><strong>Day 1 寬鬆止損 1.5x ATR</strong></td>
+        <td>Day 1 使用 1.5x ATR 止損（vs 標準 1.3x），Day 2 收緊回 1.3x</td>
+        <td>Day 1 SL 84&rarr;62 (-22 筆)，MDD 減半</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td><strong>SPY RSI &lt; 30 進場過濾</strong></td>
+        <td>市場恐慌（SPY RSI &lt; 30）時，只允許 VZ &ge; 2.0 且 Pct52wk &ge; 0.90 進場</td>
+        <td>過濾恐慌時弱訊號</td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>V24 vs V23 關鍵對比</h3>
+<table>
+    <thead>
+    <tr><th>指標</th><th>V23</th><th>V24</th><th>變化</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>勝率</td><td>63.05%</td><td style="color:var(--green)"><strong>65.44%</strong></td><td style="color:var(--green)">+2.4pp</td></tr>
+    <tr><td>獲利因子</td><td>3.08</td><td style="color:var(--green)"><strong>3.26</strong></td><td style="color:var(--green)">+0.18</td></tr>
+    <tr><td>最終資金</td><td>$44.2B</td><td style="color:var(--green)"><strong>$92.2B</strong></td><td style="color:var(--green)">2.09x</td></tr>
+    <tr><td>固定倉 MDD</td><td>13.33%</td><td style="color:var(--green)"><strong>6.37%</strong></td><td style="color:var(--green)">減半!</td></tr>
+    <tr><td>Day 1 SL</td><td>84 筆</td><td style="color:var(--green)"><strong>62 筆</strong></td><td style="color:var(--green)">-22</td></tr>
+    <tr><td>TP 出場</td><td>81 筆</td><td style="color:var(--green)"><strong>97 筆</strong></td><td style="color:var(--green)">+16</td></tr>
+    </tbody>
+</table>
+
+<h3>Walk-Forward 驗證</h3>
+<div class="card card-green">
+    <p><strong>訓練集</strong>（2021-2024）：WR 64.3% &nbsp;|&nbsp; <strong>測試集</strong>（2025-2026）：WR <strong>69.5%</strong></p>
+    <p style="margin-bottom:0;">OOS WR 優於 IS (+5.2pp) — <strong>無過擬合跡象</strong>，V24 在未見數據上表現更好。</p>
+</div>
+
+<h3>V24 逐年勝率</h3>
+<table>
+    <thead>
+    <tr><th>年度</th><th>V23</th><th>V24</th><th>變化</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>2021</td><td>63.7%</td><td style="color:var(--green)"><strong>66.7%</strong></td><td style="color:var(--green)">+3.0pp</td></tr>
+    <tr><td>2022</td><td>53.6%</td><td style="color:var(--green)"><strong>55.6%</strong></td><td style="color:var(--green)">+2.0pp</td></tr>
+    <tr><td>2023</td><td>66.2%</td><td style="color:var(--green)"><strong>70.5%</strong></td><td style="color:var(--green)">+4.3pp</td></tr>
+    <tr><td>2024</td><td>69.5%</td><td>65.9%</td><td style="color:var(--orange)">-3.6pp</td></tr>
+    <tr><td>2025</td><td>61.6%</td><td style="color:var(--green)"><strong>67.4%</strong></td><td style="color:var(--green)">+5.8pp</td></tr>
+    <tr><td>2026*</td><td>77.8%</td><td>77.8%</td><td>—</td></tr>
+    </tbody>
+</table>
+<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 數據截至 2 月。V24 在 5/6 年勝出，僅 2024 年略低 (-3.6pp)。2023 年改善最大 (+4.3pp)。</p>
+
+<h3>成功標準：6/6 全通過</h3>
+<table>
+    <thead>
+    <tr><th>#</th><th>標準</th><th>V24 值</th><th>結果</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>1</td><td>WR &ge; 65%</td><td><strong>65.44%</strong></td><td style="color:var(--green)"><strong>PASS</strong></td></tr>
+    <tr><td>2</td><td>Return &ge; V23 $44.2B</td><td><strong>$92.2B</strong> (2.09x)</td><td style="color:var(--green)"><strong>PASS</strong></td></tr>
+    <tr><td>3</td><td>PF &ge; 3.0</td><td><strong>3.26</strong></td><td style="color:var(--green)"><strong>PASS</strong></td></tr>
+    <tr><td>4</td><td>Fixed MDD &le; 15%</td><td><strong>6.37%</strong></td><td style="color:var(--green)"><strong>PASS</strong></td></tr>
+    <tr><td>5</td><td>Trades &ge; 350</td><td><strong>434</strong></td><td style="color:var(--green)"><strong>PASS</strong></td></tr>
+    <tr><td>6</td><td>Walk-Forward WR &ge; 62%</td><td><strong>69.5%</strong></td><td style="color:var(--green)"><strong>PASS</strong></td></tr>
+    </tbody>
+</table>
+
+<!-- ================================================================ -->
 <!-- 10. 每日掃描勝率 -->
 <!-- ================================================================ -->
 <h2 id="scan"><span class="num">10</span>每日掃描勝率演化</h2>
@@ -1688,13 +1789,13 @@ li { margin: 4px 0; }
 </div>
 
 <div class="highlight-box">
-    <div class="label">從 V18 到 V23的演化之路</div>
-    <div class="big-number">$14.7M &rarr; $44.2B</div>
-    <div class="label" style="margin-top: 8px;">3,005 倍績效提升 &bull; 5 個版本 &bull; 270+ 實驗 &bull; 每一步都有數據支撐</div>
+    <div class="label">從 V18 到 V24 的演化之路</div>
+    <div class="big-number">$14.7M &rarr; $92.2B</div>
+    <div class="label" style="margin-top: 8px;">6,270 倍績效提升 &bull; 6 個版本 &bull; 310+ 實驗 &bull; 每一步都有數據支撐</div>
 </div>
 
 <div class="analogy">
-    Sovereign 的演化就像火箭發射：V18 建造了火箭本體，V19 嘗試減重但剪錯了零件，V20 加裝了智慧導航系統，V21 對每個螺絲進行極限測試確認安全，V23 找到了燃料的最佳配比——同樣的火箭，891 倍的推力。
+    Sovereign 的演化就像火箭發射：V18 建造了火箭本體，V19 嘗試減重但剪錯了零件，V20 加裝了智慧導航系統，V21 對每個螺絲進行極限測試確認安全，V23 找到了燃料的最佳配比，V24 精準微調了點火時序——同樣的火箭，1,859 倍的推力。
 </div>
 
 <p style="color: var(--text-dim); text-align: center; margin-top: 32px;">
@@ -1702,7 +1803,7 @@ li { margin: 4px 0; }
 </p>
 
 <div class="footer">
-    <p>Sovereign V23 &mdash; 版本演化歷史文件 | 33 輪研究 &bull; 270+ 實驗</p>
+    <p>Sovereign V24 &mdash; 版本演化歷史文件 | 37 輪研究 &bull; 310+ 實驗</p>
     <p id="site-updated" style="margin-top:6px;font-size:0.8em;color:var(--text-dim)"></p>
 </div>
 
