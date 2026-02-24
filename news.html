@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sovereign V24 - 美股整點快報</title>
 <meta name="description" content="Sovereign V24 美股整點財經快報 — 每小時自動更新、AI 分析摘要、市場重點新聞">
+<meta property="og:title" content="Sovereign V24 - 美股整點快報">
+<meta property="og:description" content="Sovereign V24 美股整點財經快報 — 每小時自動更新、AI 分析摘要、市場重點新聞">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jj19870404-boop.github.io/sovereign-v18-docs/news.html">
+<meta property="og:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sovereign V24 - 美股整點快報">
+<meta name="twitter:description" content="Sovereign V24 美股整點財經快報 — 每小時自動更新、AI 分析摘要、市場重點新聞">
+<meta name="twitter:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
+<link rel="canonical" href="https://jj19870404-boop.github.io/sovereign-v18-docs/news.html">
+<link rel="icon" type="image/png" href="images/sovereign_v18_20260211.png">
+<link rel="preload" href="data/news-index.json" as="fetch" crossorigin>
 <style>
 :root {
     --bg: #0f1117;
@@ -259,10 +271,11 @@ h1 {
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-nav" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:999;padding:0.5rem 1rem;background:var(--accent);color:#fff;text-decoration:none;border-radius:4px;" onfocus="this.style.cssText='position:fixed;left:1rem;top:1rem;z-index:999;padding:0.5rem 1rem;background:var(--accent);color:#fff;text-decoration:none;border-radius:4px;'" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;'">跳至主要內容</a>
 <div class="container">
 
 <!-- Top Nav -->
-<div class="top-nav">
+<div class="top-nav" role="navigation" aria-label="主要導航">
     <a href="index.html" class="brand">Sovereign V24</a>
     <div class="nav-links">
         <a href="picks.html">每日選股</a>
@@ -273,6 +286,7 @@ h1 {
     </div>
 </div>
 
+<main id="main-content" role="main">
 <div class="stale-banner" id="stale-banner">
     <span id="stale-msg"></span>
     <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
@@ -491,6 +505,7 @@ fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
     if(ts){const d=new Date(ts);document.getElementById('site-updated').textContent='最後更新：'+d.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});}
 }).catch(()=>{});
 </script>
+</main>
 
 </body>
 </html>
