@@ -80,6 +80,7 @@ body {
     font-size: 0.9em;
 }
 .top-nav .brand:hover { color: var(--text); text-decoration: none; }
+.top-nav .brand.active { color: var(--text); }
 .nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
 .nav-links a.active { color: var(--text); font-weight: 600; }
 
@@ -354,6 +355,16 @@ li { margin: 4px 0; }
     font-size: 0.85em;
     text-align: center;
 }
+@media print {
+    .top-nav, .scroll-top, .skip-nav, .toc { display: none !important; }
+    body { background: #fff !important; color: #000 !important; font-size: 12pt; }
+    .container { max-width: 100%; padding: 0; }
+    h1, h2, h3 { color: #000 !important; page-break-after: avoid; }
+    table { page-break-inside: avoid; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc !important; padding: 4px 8px; color: #000 !important; }
+    a { color: #000 !important; text-decoration: underline; }
+    .card, .highlight-box, .exit-grid > div { border: 1px solid #ccc !important; background: #fff !important; color: #000 !important; }
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V24 - 動能突破交易系統完整介紹","description":"Sovereign V24 動能突破交易系統 — 434 筆交易、65.44% 勝率、PF 3.26，全美股全自動掃描選股系統完整介紹","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V24","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
@@ -375,6 +386,7 @@ li { margin: 4px 0; }
 </div>
 
 <main id="main-content" role="main">
+<noscript><div style="padding:20px;text-align:center;color:#8b90a5;background:#1a1d27;border-radius:8px;margin:20px 0;">部分功能需要 JavaScript 支援。請啟用 JavaScript 以獲得最佳體驗。</div></noscript>
 <h1>Sovereign V24</h1>
 <p class="subtitle">動能突破交易系統 &mdash; 完整技術文件</p>
 
