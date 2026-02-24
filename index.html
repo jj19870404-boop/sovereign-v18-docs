@@ -453,7 +453,7 @@ li { margin: 4px 0; }
 {"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V24 - 動能突破交易系統完整介紹","description":"Sovereign V24 動能突破交易系統 — 434 筆交易、65.44% 勝率、PF 3.26，全美股全自動掃描選股系統完整介紹","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V24","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"這套系統是全自動交易嗎？","acceptedAnswer":{"@type":"Answer","text":"不是。Sovereign V24 是一個掃描+建議系統。它每天自動掃描全市場並產生訊號，但最終的下單操作需要人工執行。"}},{"@type":"Question","name":"我需要盯盤嗎？","acceptedAnswer":{"@type":"Answer","text":"不太需要。出場條件都是預設價位，可以在券商設定好價格單後離開。每天只需在收盤後看一次掃描結果即可。"}},{"@type":"Question","name":"為什麼有些年份報酬差異這麼大？","acceptedAnswer":{"@type":"Answer","text":"因為系統採用全倉+複利。在連勝時資金快速膨脹，每筆交易金額跟著變大，導致獲利加速。這是全倉策略的固有特性。"}},{"@type":"Question","name":"回測結果等於實際結果嗎？","acceptedAnswer":{"@type":"Answer","text":"不完全等同。實際交易會有滑價、流動性、心理因素等差異。一般認為實際交易績效約為回測結果的50-70%。"}},{"@type":"Question","name":"Profit Factor 是什麼？","acceptedAnswer":{"@type":"Answer","text":"Profit Factor = 總獲利金額 / 總虧損金額。PF > 1 代表獲利大於虧損，PF = 2 代表每虧 $1 能賺 $2。一般認為 PF > 1.5 是不錯的策略。"}},{"@type":"Question","name":"需要多少資金才能使用？","acceptedAnswer":{"@type":"Answer","text":"理論上最低 $1,000 美元即可開始，但建議至少 $5,000-$10,000。系統的回測是以 $10,000 起始計算的。"}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"這套系統是全自動交易嗎？","acceptedAnswer":{"@type":"Answer","text":"不是。Sovereign V24 是一個掃描+建議系統。它每天自動掃描全市場並產生訊號，但最終的下單操作需要人工執行。"}},{"@type":"Question","name":"我需要盯盤嗎？","acceptedAnswer":{"@type":"Answer","text":"不太需要。出場條件都是預設價位，可以在券商設定好價格單後離開。每天只需在收盤後看一次掃描結果即可。"}},{"@type":"Question","name":"為什麼有些年份報酬差異這麼大？","acceptedAnswer":{"@type":"Answer","text":"因為系統採用全倉+複利。在連勝時資金快速膨脹，每筆交易金額跟著變大，導致獲利加速。這是全倉策略的固有特性。"}},{"@type":"Question","name":"回測結果等於實際結果嗎？","acceptedAnswer":{"@type":"Answer","text":"不完全等同。實際交易會有滑價、流動性、心理因素等差異。一般認為實際交易績效約為回測結果的50-70%。"}},{"@type":"Question","name":"Profit Factor 是什麼？","acceptedAnswer":{"@type":"Answer","text":"Profit Factor = 總獲利金額 / 總虧損金額。PF > 1 代表獲利大於虧損，PF = 2 代表每虧 $1 能賺 $2。一般認為 PF > 1.5 是不錯的策略。"}},{"@type":"Question","name":"最大回撤 33% 很恐怖，能承受嗎？","acceptedAnswer":{"@type":"Answer","text":"這是回測中從最高點到最低點的帳面回撤，不代表一定會經歷。全倉策略在連續虧損時會有較大帳面波動，可考慮降低倉位比例或只做 A/B 評級訊號。"}},{"@type":"Question","name":"為什麼最大單筆獲利都是 +15%？","acceptedAnswer":{"@type":"Answer","text":"因為系統設有固定停利 15%。一旦股價漲到停利價就自動出場，追求高頻率地拿到固定利潤，獲利來自勝率和交易次數的累積。"}},{"@type":"Question","name":"系統的參數是怎麼得到的？","acceptedAnswer":{"@type":"Answer","text":"所有參數經過多年份交叉驗證優化得出，確保參數在不同年份都能穩定表現而非只在特定年份表現好，有助於減少過度擬合的風險。"}},{"@type":"Question","name":"需要多少資金才能使用？","acceptedAnswer":{"@type":"Answer","text":"理論上最低 $1,000 美元即可開始，但建議至少 $5,000-$10,000。系統的回測是以 $10,000 起始計算的。"}}]}
 </script>
 </head>
 <body>
@@ -1540,7 +1540,7 @@ li { margin: 4px 0; }
 
 <h3 id="v20-stale-gap">升級一：Stale Exit + Gap-Down Rejection</h3>
 
-<h3>更新動機</h3>
+<h3 id="v20-motivation">更新動機</h3>
 <div class="card card-yellow">
     <p>V18 回測分析發現兩類交易造成不成比例的損失：</p>
     <ol>
@@ -1550,7 +1550,7 @@ li { margin: 4px 0; }
     <p>V20 新增兩個機制分別針對這兩類問題。</p>
 </div>
 
-<h3>新機制 1：Stale Exit（提前出場）</h3>
+<h3 id="v20-stale-mechanism">新機制 1：Stale Exit（提前出場）</h3>
 <div class="card card-accent">
     <div class="formula">
         持倉天數 &ge; 9 天 且 當前報酬 &lt; -5% &rarr; 以收盤價提前出場（STALE）
@@ -1563,7 +1563,7 @@ li { margin: 4px 0; }
     如果你等公車等了 9 分鐘（持倉 9 天），而且天氣越來越差（虧損 &gt; 5%），不如提前叫計程車走人（STALE 出場），而不是硬等到 14 分鐘時限到才被迫離開。
 </div>
 
-<h3>新機制 2：Gap-Down Rejection（跳空拒絕）</h3>
+<h3 id="v20-gap-rejection">新機制 2：Gap-Down Rejection（跳空拒絕）</h3>
 <div class="card card-accent">
     <div class="formula">
         進場日開盤價相對前日收盤跌幅 &gt; 3% &rarr; 放棄進場
@@ -1576,7 +1576,7 @@ li { margin: 4px 0; }
     你本來計畫去一家新餐廳吃飯（進場訊號），但到了門口發現門面破損、客人在逃跑（跳空下跌 &gt; 3%）。明智的做法是轉身離開（拒絕進場），而不是硬走進去。
 </div>
 
-<h3>V20 vs V18 回測比較</h3>
+<h3 id="v20-comparison">V20 vs V18 回測比較</h3>
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
     <tr>
@@ -1616,7 +1616,7 @@ li { margin: 4px 0; }
     <div class="label" style="margin-top: 8px;">V18 +2,595.64% &rarr; V20 +3,848.51%</div>
 </div>
 
-<h3>V20 出場流程</h3>
+<h3 id="v20-exit-flow">V20 出場流程</h3>
 <p>V20 在 V18 的四層出場機制基礎上，新增 <span class="tag tag-yellow">STALE</span> 出場，插入於 TIME 停損之後：</p>
 <div class="flow-chart">
     <div class="flow-step" style="border-color: var(--green);">
@@ -1646,7 +1646,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card" style="border-left: 4px solid var(--orange);">
-    <h3 style="margin-top:0">提前出場 (STALE - Stale Exit) <span class="tag tag-yellow">V20 新增</span></h3>
+    <h3 id="v20-stale-detail" style="margin-top:0">提前出場 (STALE - Stale Exit) <span class="tag tag-yellow">V20 新增</span></h3>
     <div class="formula">
         持倉天數 &ge; 9 天 且 (收盤價 / 進場價 - 1) &lt; -5% &rarr; 以收盤價出場
     </div>
@@ -3073,7 +3073,7 @@ li { margin: 4px 0; }
 </table>
 </div>
 
-<h3>核心指標儀表板</h3>
+<h3 id="v23-dashboard">核心指標儀表板</h3>
 <div class="two-col">
     <div class="highlight-box" style="margin:0;">
         <div class="big-number">$44.2B</div>
@@ -3095,7 +3095,7 @@ li { margin: 4px 0; }
     </div>
 </div>
 
-<h3>數據品質修正</h3>
+<h3 id="v23-data-quality">數據品質修正</h3>
 <div class="card card-yellow">
     <h4 style="margin-top:0">清洗 2,927 筆異常數據</h4>
     <p>V23 使用經過嚴格清洗的數據集。原始數據中存在 <strong>2,927 筆</strong>異常價格記錄（隔日跳空 &gt;50%、單日振幅 &gt;100% 等），這些數據導致 MDD 被虛假放大至接近 100%。</p>
@@ -3168,7 +3168,7 @@ li { margin: 4px 0; }
     </ul>
 </div>
 
-<h3>交互作用效應</h3>
+<h3 id="v23-interaction">交互作用效應</h3>
 <div class="card card-accent">
     <p>V23 系列最重要的發現是<strong>多維參數交互效應</strong>。單獨改變任一參數都可能降低績效，但特定組合卻產生巨大的正向效應：</p>
     <div class="formula">
@@ -3240,7 +3240,7 @@ li { margin: 4px 0; }
 </div>
 <p style="color: var(--text-dim); font-size: 0.85em;">V23在 5/6 年勝出（2021, 2022, 2023, 2024, 2026）。V20 僅在 2025（超級牛市年）大幅領先。2024 年差距最大：V23 +3,417% vs V20 +91%（37.7 倍）。</p>
 
-<h3>動態模式分析（TP / NoTP）</h3>
+<h3 id="v23-dynamic">動態模式分析（TP / NoTP）</h3>
 <div class="two-col">
     <div class="card card-green">
         <h4 style="margin-top:0">TP 模式（WR &ge; 55%）</h4>
@@ -3310,7 +3310,7 @@ li { margin: 4px 0; }
 </div>
 <p style="color: var(--text-dim); font-size: 0.85em;">SL 佔比 45.3% 看似高，但這正是 V23的設計：用 1.3x ATR 緊停損快速認賠（平均虧損 -5.19%），讓 TRAIL + TP 的 52.2% 贏家交易帶來更大獲利（平均 +9.37%）。</p>
 
-<h3>滑點敏感度分析</h3>
+<h3 id="v23-slippage">滑點敏感度分析</h3>
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
     <tr>
@@ -3368,7 +3368,7 @@ li { margin: 4px 0; }
     <p style="margin-bottom:0;">Walk-Forward 一致性 &ge; 0.5 即視為穩健，V23 的 1.02 表示 OOS 甚至略優於 IS &mdash; 這是最強的非過擬合證據。</p>
 </div>
 
-<h3>初期 8 輪研究摘要</h3>
+<h3 id="v23-early-rounds">初期 8 輪研究摘要</h3>
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
     <tr>
@@ -3411,7 +3411,7 @@ li { margin: 4px 0; }
     </div>
 </div>
 
-<h3>回測驗證條件</h3>
+<h3 id="v23-backtest-conditions">回測驗證條件</h3>
 <div class="card card-green">
     <p>以下所有數據均在<strong>嚴格的無前瞻偏差條件</strong>下產生：</p>
     <ul>
@@ -3423,7 +3423,7 @@ li { margin: 4px 0; }
     </ul>
 </div>
 
-<h3>V20 逐年詳細報告</h3>
+<h3 id="v23-v20-yearly">V20 逐年詳細報告</h3>
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
     <tr>
@@ -3611,7 +3611,7 @@ li { margin: 4px 0; }
     <div class="flow-step">出場後立即準備下一筆</div>
 </div>
 
-<h3>動態切換驗證</h3>
+<h3 id="v23-dynamic-verify">動態切換驗證</h3>
 <div class="card card-green">
     <h4 style="margin-top:0">V24 動態切換獨立驗證</h4>
     <p>動態切換（TP/NoTP）的精髓：<strong>高 WR 時快速兌現（TP），低 WR 時讓贏家跑更遠（NoTP）</strong>。</p>
