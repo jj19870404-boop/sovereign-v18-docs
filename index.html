@@ -315,6 +315,63 @@ li { margin: 4px 0; }
     grid-template-columns: 1fr 1fr;
     gap: 16px;
 }
+/* ── Hero Metrics ── */
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin: 24px 0 16px;
+}
+.hero-stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 12px;
+    text-align: center;
+}
+.hero-value {
+    display: block;
+    font-size: 1.8em;
+    font-weight: 800;
+    line-height: 1.2;
+}
+.hero-label {
+    display: block;
+    font-size: 0.8em;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+.cta-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 0 0 32px;
+}
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1em;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-secondary { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+.btn-primary:hover, .btn-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(108,140,255,0.3);
+    text-decoration: none;
+}
+/* ── Hamburger Menu ── */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 4px 8px;
+}
 @media (max-width: 700px) {
     .two-col { grid-template-columns: 1fr; }
     .flow-chart { flex-direction: column; }
@@ -329,7 +386,12 @@ li { margin: 4px 0; }
     table { font-size: 0.85em; }
     th, td { padding: 8px 6px; }
     .top-nav { padding: 10px 16px; margin-left: -16px; margin-right: -16px; }
-    .nav-links { gap: 12px; }
+    .nav-links { display: none; width: 100%; flex-direction: column; gap: 8px; padding-top: 8px; }
+    .nav-links.open { display: flex; }
+    .menu-toggle { display: block; }
+    .hero-grid { grid-template-columns: repeat(3, 1fr); }
+    .hero-value { font-size: 1.4em; }
+    .cta-row { flex-direction: column; align-items: center; }
     .scroll-top { bottom: 16px; right: 16px; }
 }
 
@@ -376,6 +438,7 @@ li { margin: 4px 0; }
 
 <div class="top-nav" role="navigation" aria-label="主要導航">
     <a href="index.html" class="brand active">Sovereign V24</a>
+    <button class="menu-toggle" aria-label="開啟選單" aria-expanded="false">&#9776;</button>
     <div class="nav-links">
         <a href="picks.html">每日選股</a>
         <a href="track.html">選股追蹤</a>
@@ -389,6 +452,18 @@ li { margin: 4px 0; }
 <noscript><div style="padding:20px;text-align:center;color:#8b90a5;background:#1a1d27;border-radius:8px;margin:20px 0;">部分功能需要 JavaScript 支援。請啟用 JavaScript 以獲得最佳體驗。</div></noscript>
 <h1>Sovereign V24</h1>
 <p class="subtitle">動能突破交易系統 &mdash; 完整技術文件</p>
+
+<div class="hero-grid">
+    <div class="hero-stat"><span class="hero-value accent">434</span><span class="hero-label">交易總數</span></div>
+    <div class="hero-stat"><span class="hero-value green">65.4%</span><span class="hero-label">勝率</span></div>
+    <div class="hero-stat"><span class="hero-value accent2">3.26</span><span class="hero-label">獲利因子 (PF)</span></div>
+    <div class="hero-stat"><span class="hero-value green">$92.2B</span><span class="hero-label">$10K &rarr; 最終</span></div>
+    <div class="hero-stat"><span class="hero-value">6.37%</span><span class="hero-label">固定倉 MDD</span></div>
+</div>
+<div class="cta-row">
+    <a href="backtest.html" class="btn-primary">查看完整回測報告</a>
+    <a href="picks.html" class="btn-secondary">查看今日選股</a>
+</div>
 
 <!-- TOC -->
 <div class="toc">
@@ -439,6 +514,15 @@ li { margin: 4px 0; }
             <li>歷史候選方案（V23-TightHigh / HighTP）</li>
             <li>實戰執行指南</li>
             <li>倖存者偏差驗證</li>
+        </ol>
+    </li>
+    <li><a href="#v24-research">V24 &mdash; 精準微調三項改進</a>
+        <ol style="list-style-type: lower-alpha;">
+            <li>V24 三項改進解析</li>
+            <li>V24 vs V23 關鍵對比</li>
+            <li>逐年勝率 &amp; Walk-Forward 驗證</li>
+            <li>出場原因分布變化</li>
+            <li>6/6 成功標準驗證</li>
         </ol>
     </li>
     <li><a href="#market-correlation">V23 勝率 vs 大盤相關性研究</a>
@@ -1910,53 +1994,11 @@ li { margin: 4px 0; }
     <p>這些超額報酬在 Fixed TP 下會被截斷在 +15%。經過複利放大，NoTP 模式多賺了 $97,431 的額外利潤。</p>
 </div>
 
-<h4 style="color: var(--accent2);">V20 完整出場流程</h4>
-<p>V20 的出場機制根據當前模式動態調整：</p>
+<h4 style="color: var(--accent2);">V20 出場流程（TP/NoTP 模式）</h4>
 <div class="card">
-    <p><strong>TP 模式（WR &ge; 55%）：</strong></p>
-    <div class="flow-chart">
-        <div class="flow-step" style="border-color: var(--green);">
-            <div class="step-num">最高優先</div>
-            <div class="step-title" style="color: var(--green);">停利 TP 15%</div>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-step" style="border-color: var(--accent2);">
-            <div class="step-num">第二</div>
-            <div class="step-title" style="color: var(--accent2);">固定 Trail 3.1%</div>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-step" style="border-color: var(--red);">
-            <div class="step-num">第三</div>
-            <div class="step-title" style="color: var(--red);">停損 SL</div>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-step" style="border-color: var(--orange);">
-            <div class="step-num">第四</div>
-            <div class="step-title" style="color: var(--orange);">STALE / TIME</div>
-        </div>
-    </div>
-    <p><strong>NoTP 模式（WR &lt; 55%）：</strong></p>
-    <div class="flow-chart">
-        <div class="flow-step" style="border-color: var(--accent2);">
-            <div class="step-num">最高優先</div>
-            <div class="step-title" style="color: var(--accent2);">Tiered ATR Trail</div>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-step" style="border-color: var(--red);">
-            <div class="step-num">第二</div>
-            <div class="step-title" style="color: var(--red);">停損 SL</div>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-step" style="border-color: var(--orange);">
-            <div class="step-num">第三</div>
-            <div class="step-title" style="color: var(--orange);">STALE / TIME</div>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-step" style="border-color: var(--text-dim);">
-            <div class="step-num">無上限</div>
-            <div class="step-title" style="color: var(--text-dim);">無 TP 限制</div>
-        </div>
-    </div>
+    <p><strong>TP 模式（WR &ge; 55%）：</strong>TP &rarr; 固定 Trail 3.1% &rarr; SL &rarr; STALE / TIME</p>
+    <p style="margin-bottom:0;"><strong>NoTP 模式（WR &lt; 55%）：</strong>Tiered ATR Trail &rarr; SL &rarr; STALE / TIME（無固定停利上限）</p>
+    <p style="margin-top:8px; margin-bottom:0; color: var(--text-dim); font-size:0.9em;">完整出場操作流程請參見 <a href="#v24-research">V24 實戰執行指南</a>（V24 繼承並優化了 V20 的動態切換機制）</p>
 </div>
 
 <h4 style="color: var(--accent2);">已測試但未採用的策略</h4>
@@ -3784,6 +3826,295 @@ li { margin: 4px 0; }
 </div>
 
 <!-- ================================================================ -->
+<!-- V24 — 精準微調三項改進 -->
+<!-- ================================================================ -->
+<h2 id="v24-research"><span class="num">★★★★</span>V24 &mdash; 精準微調三項改進</h2>
+
+<div class="highlight-box">
+    <div class="label">V24 &mdash; 基於 V23 的三項精準微調</div>
+    <div class="big-number">$10K &rarr; $92.2B（2.09x V23）</div>
+    <div class="label" style="margin-top: 8px;">434 筆交易 | WR 65.44% | PF 3.26 | 固定倉 MDD 6.37%（V23 的一半）</div>
+</div>
+
+<p>V23 透過 5 階段 170+ 實驗找到了最佳參數組合。V24 不改變核心參數，而是針對<strong>首日交易行為</strong>和<strong>市場恐慌過濾</strong>進行三項精準微調，使績效翻倍、MDD 減半。</p>
+
+<h3>三項改進解析</h3>
+
+<div class="two-col">
+    <div class="card card-green">
+        <h4 style="margin-top:0">改進 1：Day 1 強制止盈模式</h4>
+        <p>V23 在 NoTP 模式下，即使 Day 1 漲幅已達 +15%，也不會止盈。V24 <strong>強制在 Day 1 啟用 TP 模式</strong>，確保首日大漲的利潤立即兌現。</p>
+        <p><strong>效果：</strong>TP 出場從 81 增至 <strong>97 筆</strong>（+16 筆），首日就能捕捉 15% 獲利。</p>
+    </div>
+    <div class="card card-green">
+        <h4 style="margin-top:0">改進 2：Day 1 寬鬆止損 1.5x ATR</h4>
+        <p>V23 從首日就使用 1.3x ATR 的緊停損。V24 <strong>Day 1 放寬至 1.5x ATR</strong>，Day 2 起收緊回 1.3x。這給予首日更多呼吸空間，避免被正常波動震出。</p>
+        <p><strong>效果：</strong>Day 1 止損從 84 降至 <strong>62 筆</strong>（&minus;22 筆），Day 1 勝率 37.3% &rarr; <strong>48.6%</strong>（+11.3pp），固定倉 MDD 13.3% &rarr; <strong>6.37%</strong>（減半）。</p>
+    </div>
+</div>
+
+<div class="card card-green">
+    <h4 style="margin-top:0">改進 3：SPY RSI &lt; 30 進場過濾</h4>
+    <p>當 SPY RSI(14) 跌破 30（市場極度恐慌），一般突破訊號的品質會大幅下降。V24 在此環境下<strong>提高進場門檻</strong>：要求 Vol Z-Score &ge; 2.0&sigma; 且 52 週高點 &ge; 90%，只讓最強的突破訊號通過。</p>
+    <p style="margin-bottom:0;"><strong>效果：</strong>過濾掉市場恐慌時的弱訊號，避免在系統性下跌中進場。</p>
+</div>
+
+<h3>V24 vs V23 關鍵對比</h3>
+
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>指標</th>
+        <th class="num-cell">V23</th>
+        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V24</th>
+        <th class="num-cell">變化</th>
+    </tr>
+    <tr>
+        <td>勝率</td>
+        <td class="num-cell">63.05%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>65.44%</strong></td>
+        <td class="num-cell"><span class="green">+2.4pp</span></td>
+    </tr>
+    <tr>
+        <td>獲利因子 (PF)</td>
+        <td class="num-cell">3.08</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>3.26</strong></td>
+        <td class="num-cell"><span class="green">+0.18</span></td>
+    </tr>
+    <tr>
+        <td>最終資金</td>
+        <td class="num-cell">$44.2B</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>$92.2B</strong></td>
+        <td class="num-cell"><span class="green">2.09x</span></td>
+    </tr>
+    <tr>
+        <td>固定倉 MDD</td>
+        <td class="num-cell">13.33%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>6.37%</strong></td>
+        <td class="num-cell"><span class="green">減半</span></td>
+    </tr>
+    <tr>
+        <td>Day 1 勝率</td>
+        <td class="num-cell">37.3%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>48.6%</strong></td>
+        <td class="num-cell"><span class="green">+11.3pp</span></td>
+    </tr>
+    <tr>
+        <td>Day 1 SL 出場</td>
+        <td class="num-cell">84</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>62</strong></td>
+        <td class="num-cell"><span class="green">&minus;22</span></td>
+    </tr>
+    <tr>
+        <td>TP 出場</td>
+        <td class="num-cell">81</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>97</strong></td>
+        <td class="num-cell"><span class="green">+16</span></td>
+    </tr>
+    <tr>
+        <td>交易總數</td>
+        <td class="num-cell">433</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>434</strong></td>
+        <td class="num-cell">+1</td>
+    </tr>
+    <tr>
+        <td>每筆 EV</td>
+        <td class="num-cell">+3.85%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>+4.15%</strong></td>
+        <td class="num-cell"><span class="green">+0.30pp</span></td>
+    </tr>
+    <tr>
+        <td>平均持倉天數</td>
+        <td class="num-cell">2.9</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);">2.9</td>
+        <td class="num-cell">不變</td>
+    </tr>
+</table>
+</div>
+
+<h3>V24 逐年勝率</h3>
+
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>年度</th>
+        <th class="num-cell">V23</th>
+        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V24</th>
+        <th class="num-cell">變化</th>
+    </tr>
+    <tr>
+        <td>2021</td>
+        <td class="num-cell">63.7%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>66.7%</strong></td>
+        <td class="num-cell"><span class="green">+3.0pp</span></td>
+    </tr>
+    <tr>
+        <td>2022</td>
+        <td class="num-cell">53.6%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>55.6%</strong></td>
+        <td class="num-cell"><span class="green">+2.0pp</span></td>
+    </tr>
+    <tr>
+        <td>2023</td>
+        <td class="num-cell">66.2%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>70.5%</strong></td>
+        <td class="num-cell"><span class="green">+4.3pp</span></td>
+    </tr>
+    <tr>
+        <td>2024</td>
+        <td class="num-cell">69.5%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);">65.9%</td>
+        <td class="num-cell">&minus;3.6pp</td>
+    </tr>
+    <tr>
+        <td>2025</td>
+        <td class="num-cell">61.6%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>67.4%</strong></td>
+        <td class="num-cell"><span class="green">+5.8pp</span></td>
+    </tr>
+    <tr>
+        <td>2026*</td>
+        <td class="num-cell">77.8%</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);">77.8%</td>
+        <td class="num-cell">0.0pp</td>
+    </tr>
+</table>
+</div>
+
+<p>V24 在 6 年中的 5 年勝率提升或持平，2024 年微降 3.6pp 但仍保持 65.9% 高勝率。</p>
+
+<h3>Walk-Forward 驗證</h3>
+
+<div class="card card-green">
+    <h4 style="margin-top:0">訓練期 2021-2024, 測試期 2025-2026</h4>
+    <div class="card" style="padding:0; overflow-x:auto; margin-bottom:0;">
+    <table>
+        <tr>
+            <th></th>
+            <th class="num-cell">V23</th>
+            <th class="num-cell" style="background:rgba(0,255,127,0.12);">V24</th>
+        </tr>
+        <tr>
+            <td>In-Sample WR</td>
+            <td class="num-cell">62.8%</td>
+            <td class="num-cell" style="background:rgba(0,255,127,0.08);">64.3%</td>
+        </tr>
+        <tr>
+            <td><strong>Out-of-Sample WR</strong></td>
+            <td class="num-cell">64.1%</td>
+            <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>69.5%</strong></td>
+        </tr>
+        <tr>
+            <td>OOS vs IS</td>
+            <td class="num-cell">+1.4pp</td>
+            <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>+5.2pp</strong></td>
+        </tr>
+    </table>
+    </div>
+    <p style="margin-top:12px; margin-bottom:0;">V24 在未見數據上表現<strong>更好</strong>（OOS WR 69.5% &gt; IS WR 64.3%），確認無過擬合跡象。+5.2pp 的正差距表明 V24 的三項微調具有真正的泛化能力。</p>
+</div>
+
+<h3>V24 出場原因分布</h3>
+
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>出場原因</th>
+        <th class="num-cell">V23</th>
+        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V24</th>
+        <th class="num-cell">變化</th>
+    </tr>
+    <tr>
+        <td>SL（止損）</td>
+        <td class="num-cell">196</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>181</strong></td>
+        <td class="num-cell"><span class="green">&minus;15</span></td>
+    </tr>
+    <tr>
+        <td>TRAIL（追蹤停損）</td>
+        <td class="num-cell">145</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);">145</td>
+        <td class="num-cell">不變</td>
+    </tr>
+    <tr>
+        <td>TP（止盈）</td>
+        <td class="num-cell">81</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);"><strong>97</strong></td>
+        <td class="num-cell"><span class="green">+16</span></td>
+    </tr>
+    <tr>
+        <td>TIME（時間到期）</td>
+        <td class="num-cell">9</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);">8</td>
+        <td class="num-cell">&minus;1</td>
+    </tr>
+    <tr>
+        <td>STALE（滯留）</td>
+        <td class="num-cell">1</td>
+        <td class="num-cell" style="background:rgba(0,255,127,0.08);">2</td>
+        <td class="num-cell">+1</td>
+    </tr>
+</table>
+</div>
+
+<div class="analogy">
+    V24 的出場分布清晰反映三項改進的效果：Day 1 Force TP 使止盈 +16 筆，Day 1 寬鬆止損使止損 &minus;15 筆。更多交易以獲利方式結束，更少交易在首日被震出 — 這正是 V24 MDD 減半的根本原因。
+</div>
+
+<h3>V24 成功標準：6/6 全部通過</h3>
+
+<div class="card" style="padding:0; overflow-x:auto;">
+<table>
+    <tr>
+        <th>#</th>
+        <th>標準</th>
+        <th class="num-cell">V24 值</th>
+        <th class="num-cell">結果</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>WR &ge; 65%</td>
+        <td class="num-cell"><strong>65.44%</strong></td>
+        <td class="num-cell"><span class="green">PASS</span></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Return &ge; V23 $44.2B</td>
+        <td class="num-cell"><strong>$92.2B</strong>（2.09x）</td>
+        <td class="num-cell"><span class="green">PASS</span></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>PF &ge; 3.0</td>
+        <td class="num-cell"><strong>3.26</strong></td>
+        <td class="num-cell"><span class="green">PASS</span></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Fixed MDD &le; 15%</td>
+        <td class="num-cell"><strong>6.37%</strong></td>
+        <td class="num-cell"><span class="green">PASS</span></td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Trades &ge; 350</td>
+        <td class="num-cell"><strong>434</strong></td>
+        <td class="num-cell"><span class="green">PASS</span></td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Walk-Forward WR &ge; 62%</td>
+        <td class="num-cell"><strong>69.5%</strong></td>
+        <td class="num-cell"><span class="green">PASS</span></td>
+    </tr>
+</table>
+</div>
+
+<div class="analogy">
+    V24 是 Sovereign 系統的最終版本。它不追求激進的參數重構，而是以 V23 為堅實基礎，通過三項精準微調實現了「績效翻倍、風險減半」的理想目標。6/6 成功標準全數通過，Walk-Forward 驗證確認無過擬合，倖存者偏差測試證明穩健性 — V24 代表了從 V18 到 V24 七個版本演進的最終成果。
+</div>
+
+<!-- ================================================================ -->
 <!-- V23 勝率 vs 大盤相關性研究 -->
 <!-- ================================================================ -->
 <h2 id="market-correlation"><span class="num">15</span>V23 勝率 vs 大盤相關性研究</h2>
@@ -4277,6 +4608,13 @@ li { margin: 4px 0; }
 const btn = document.getElementById('scrollTop');
 window.addEventListener('scroll', () => {
     btn.classList.toggle('show', window.scrollY > 300);
+});
+// Mobile hamburger menu toggle
+document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+    const nav = document.querySelector('.nav-links');
+    const open = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', open);
+    this.innerHTML = open ? '&times;' : '&#9776;';
 });
 // Auto-wrap tables for mobile overflow
 document.querySelectorAll('.container table').forEach(t => {
