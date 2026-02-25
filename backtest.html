@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sovereign V24 - 完整回測報告</title>
-<meta name="description" content="Sovereign V24 完整回測報告 — 2021-2026 六年回測數據、逐月逐季分析、出場策略統計、權益曲線">
+<meta name="description" content="Sovereign V24 完整回測報告 — 2021-2026 六年 434 筆交易逐筆明細，含逐月、逐季、逐年績效分析，出場策略統計，權益曲線走勢圖，Walk-Forward 驗證結果。">
 <meta property="og:title" content="Sovereign V24 - 完整回測報告">
 <meta property="og:description" content="Sovereign V24 完整回測報告 — 2021-2026 六年回測、434 筆交易、65.44% 勝率、PF 3.26">
 <meta property="og:type" content="website">
@@ -656,8 +656,8 @@ function renderTradeTable() {
     const end = Math.min(start + PAGE_SIZE, filteredTrades.length);
     const totalPages = Math.ceil(filteredTrades.length / PAGE_SIZE);
 
-    let h = `<table><tr><th>#</th><th>信號日</th><th>進場日</th><th>出場日</th><th>股票</th>
-        <th>進場價</th><th>出場價</th><th>報酬</th><th>天數</th><th>出場</th></tr>`;
+    let h = `<table><thead><tr><th>#</th><th>信號日</th><th>進場日</th><th>出場日</th><th>股票</th>
+        <th>進場價</th><th>出場價</th><th>報酬</th><th>天數</th><th>出場</th></tr></thead><tbody>`;
     for (let i = start; i < end; i++) {
         const t = filteredTrades[i];
         const retClass = t.ret > 0 ? 'green' : t.ret < 0 ? 'red' : '';
@@ -666,7 +666,7 @@ function renderTradeTable() {
             <td class="${retClass}">${colorPct(t.ret)}</td>
             <td>${t.days}</td><td>${t.reason}</td></tr>`;
     }
-    h += '</table>';
+    h += '</tbody></table>';
     const el = $('#tradeTable');
     if (el) el.innerHTML = h;
 
