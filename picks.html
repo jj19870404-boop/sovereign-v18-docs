@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Sovereign V24 - 每日選股報告</title>
 <meta name="description" content="Sovereign V24 動能突破交易系統每日選股報告 — 全自動美股掃描選股結果、A-F 品質評級、進場價與停損價、TP/NoTP 動態操作計畫、完整候選股清單。">
 <meta property="og:title" content="Sovereign V24 - 每日選股報告">
@@ -44,6 +45,8 @@ body {
     color: var(--text);
     line-height: 1.6;
     font-size: 15px;
+    -webkit-text-size-adjust: 100%;
+    overscroll-behavior: contain;
 }
 .container { max-width: 1080px; margin: 0 auto; padding: 24px; }
 
@@ -979,16 +982,16 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 <noscript><div style="padding:20px;text-align:center;color:#8b90a5;background:#1a1d27;border-radius:8px;margin:20px 0;">本頁面需要 JavaScript 才能顯示選股數據。請啟用 JavaScript 後重新整理。</div></noscript>
 <div class="stale-banner" id="stale-banner">
     <span id="stale-msg"></span>
-    <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+    <button class="close-btn" aria-label="關閉">&times;</button>
 </div>
 
 <h1>每日選股報告</h1>
 
 <!-- Date Navigation -->
 <div class="date-nav">
-    <button id="btn-prev" onclick="navigate(-1)">&lsaquo;</button>
+    <button id="btn-prev">&lsaquo;</button>
     <span class="date-label" id="current-date">載入中...</span>
-    <button id="btn-next" onclick="navigate(1)">&rsaquo;</button>
+    <button id="btn-next">&rsaquo;</button>
 </div>
 
 <!-- Dashboard -->
@@ -2015,12 +2018,15 @@ fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
     const ts=info.updated&&info.updated.picks;
     if(ts){const d=new Date(ts);document.getElementById('site-updated').textContent='最後更新：'+d.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});}
 }).catch(()=>{});
+document.querySelector('.close-btn')?.addEventListener('click',function(){this.parentElement.style.display='none';});
+document.getElementById('btn-prev')?.addEventListener('click',()=>navigate(-1));
+document.getElementById('btn-next')?.addEventListener('click',()=>navigate(1));
 </script>
 </main>
 <button class="scroll-top" id="scrollTop" aria-label="回到頂部">&uarr;</button>
 <script>
 const scrollBtn = document.getElementById('scrollTop');
-scrollBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+if(scrollBtn) scrollBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
 window.addEventListener('scroll', () => { scrollBtn.classList.toggle('show', window.scrollY > 300); });
 </script>
 </body>

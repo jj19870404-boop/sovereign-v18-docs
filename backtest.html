@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Sovereign V24 - 完整回測報告</title>
 <meta name="description" content="Sovereign V24 完整回測報告 — 2021-2026 六年 434 筆交易逐筆明細，含逐月、逐季、逐年績效分析，出場策略統計，權益曲線走勢圖，Walk-Forward 驗證結果。">
 <meta property="og:title" content="Sovereign V24 - 完整回測報告">
@@ -38,13 +39,14 @@
     --orange: #ff9f43;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overscroll-behavior: contain; }
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
     font-size: 16px;
+    -webkit-text-size-adjust: 100%;
 }
 .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
 
@@ -623,9 +625,9 @@ function renderTrades(trades) {
         </div>
         <div id="tradeTable"></div>
         <div style="display:flex;gap:8px;margin-top:12px;align-items:center">
-            <button class="page-btn" id="prevBtn" onclick="tradePage--;renderTradeTable()">上一頁</button>
+            <button class="page-btn" id="prevBtn">上一頁</button>
             <span class="page-info" id="pageNum"></span>
-            <button class="page-btn" id="nextBtn" onclick="tradePage++;renderTradeTable()">下一頁</button>
+            <button class="page-btn" id="nextBtn">下一頁</button>
         </div>
     </div>`;
 }
@@ -682,7 +684,7 @@ function renderTradeTable() {
 
 // ── Scroll to Top ──
 const btn = document.getElementById('scrollTop');
-btn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+if(btn) btn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
 window.addEventListener('scroll', () => {
     if (btn) btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
 });
@@ -705,6 +707,8 @@ fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
     const ts=info.updated&&info.updated.backtest;
     if(ts){const el=document.getElementById('site-updated');if(el){const d=new Date(ts);el.textContent='最後更新：'+d.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});}}
 }).catch(()=>{});
+document.getElementById('prevBtn')?.addEventListener('click',()=>{tradePage--;renderTradeTable();});
+document.getElementById('nextBtn')?.addEventListener('click',()=>{tradePage++;renderTradeTable();});
 </script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Sovereign V24 - 選股歷史追蹤</title>
 <meta name="description" content="Sovereign V24 選股歷史追蹤 — 每日 Rank#1 選股的後續表現追蹤、勝率統計分析、100 個交易日走勢記錄，驗證系統選股準確度與實戰可靠性。">
 <meta property="og:title" content="Sovereign V24 - 選股歷史追蹤">
@@ -38,13 +39,14 @@
     --orange: #ff9f43;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overscroll-behavior: contain; }
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
     font-size: 15px;
+    -webkit-text-size-adjust: 100%;
 }
 .container { max-width: 960px; margin: 0 auto; padding: 24px; }
 
@@ -461,7 +463,7 @@ h1 {
 <noscript><div style="padding:20px;text-align:center;color:#8b90a5;background:#1a1d27;border-radius:8px;margin:20px 0;">本頁面需要 JavaScript 才能顯示追蹤數據。請啟用 JavaScript 後重新整理。</div></noscript>
 <div class="stale-banner" id="stale-banner">
     <span id="stale-msg"></span>
-    <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+    <button class="close-btn" aria-label="關閉">&times;</button>
 </div>
 
 <h1>選股歷史追蹤</h1>
@@ -778,7 +780,7 @@ loadTrack();
 <button class="scroll-top" id="scrollTop" aria-label="回到頂部">&uarr;</button>
 <script>
 const scrollBtn = document.getElementById('scrollTop');
-scrollBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+if(scrollBtn) scrollBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
 window.addEventListener('scroll', () => {
     scrollBtn.classList.toggle('show', window.scrollY > 300);
 });
@@ -796,6 +798,7 @@ fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
     const ts=info.updated&&info.updated.track;
     if(ts){const d=new Date(ts);document.getElementById('site-updated').textContent='最後更新：'+d.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});}
 }).catch(()=>{});
+document.querySelector('.close-btn')?.addEventListener('click',function(){this.parentElement.style.display='none';});
 </script>
 </main>
 </body>
