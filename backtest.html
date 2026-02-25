@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Sovereign V24 - 完整回測報告</title>
-<meta name="description" content="Sovereign V24 完整回測報告 — 2021-2026 六年 434 筆交易逐筆明細，含逐月、逐季、逐年績效分析，出場策略統計，權益曲線走勢圖，Walk-Forward 驗證結果。">
-<meta property="og:title" content="Sovereign V24 - 完整回測報告">
-<meta property="og:description" content="Sovereign V24 完整回測報告 — 2021-2026 六年回測、434 筆交易、65.44% 勝率、PF 3.26">
+<title>Sovereign V25 - 完整回測報告</title>
+<meta name="description" content="Sovereign V25 完整回測報告 — 2021-2026 六年 452 筆交易逐筆明細，含逐月、逐季、逐年績效分析，出場策略統計，權益曲線走勢圖，Walk-Forward 驗證結果。">
+<meta property="og:title" content="Sovereign V25 - 完整回測報告">
+<meta property="og:description" content="Sovereign V25 完整回測報告 — 2021-2026 六年回測、452 筆交易、66.81% 勝率、PF 3.37">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jj19870404-boop.github.io/sovereign-v18-docs/backtest.html">
 <meta property="og:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
@@ -15,8 +15,8 @@
 <meta property="og:image:height" content="1350">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sovereign V24 - 完整回測報告">
-<meta name="twitter:description" content="Sovereign V24 完整回測報告 — 2021-2026 六年回測、434 筆交易、65.44% 勝率、PF 3.26">
+<meta name="twitter:title" content="Sovereign V25 - 完整回測報告">
+<meta name="twitter:description" content="Sovereign V25 完整回測報告 — 2021-2026 六年回測、452 筆交易、66.81% 勝率、PF 3.37">
 <meta name="twitter:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
 <link rel="canonical" href="https://jj19870404-boop.github.io/sovereign-v18-docs/backtest.html">
 <link rel="icon" type="image/png" href="images/sovereign_v18_20260211.png">
@@ -287,7 +287,7 @@ tr:hover td { background: var(--surface2); }
 }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V24 - 完整回測報告","description":"Sovereign V24 完整回測報告 — 2021-2026 六年回測數據、逐月逐季分析、出場策略統計、權益曲線","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/backtest.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V24","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
+{"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V25 - 完整回測報告","description":"Sovereign V25 完整回測報告 — 2021-2026 六年回測數據、逐月逐季分析、出場策略統計、權益曲線","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/backtest.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V25","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/"},{"@type":"ListItem","position":2,"name":"回測報告","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/backtest.html"}]}
@@ -298,7 +298,7 @@ tr:hover td { background: var(--surface2); }
 <div class="container">
 
 <div class="top-nav" role="navigation" aria-label="主要導航">
-    <a href="index.html" class="brand">Sovereign V24</a>
+    <a href="index.html" class="brand">Sovereign V25</a>
     <button class="menu-toggle" aria-label="開啟選單" aria-expanded="false">&#9776;</button>
     <div class="nav-links">
         <a href="index.html">首頁</a>
@@ -312,7 +312,7 @@ tr:hover td { background: var(--surface2); }
 
 <main id="main-content" role="main">
 <noscript><div style="padding:20px;text-align:center;color:#8b90a5;background:#1a1d27;border-radius:8px;margin:20px 0;">本頁面需要 JavaScript 才能顯示回測數據。請啟用 JavaScript 後重新整理。</div></noscript>
-<h1>V24 完整回測報告</h1>
+<h1>V25 完整回測報告</h1>
 <p class="subtitle">全美股回測 2021-2026 &mdash; ALL IN 模式 &bull; T+1 Open 進場 &bull; 16/16 驗證通過</p>
 
 <div id="app">
@@ -586,7 +586,7 @@ function render(D) {
 
     // ── Footer ──
     html += `<div class="footer">
-        <p>Sovereign V24 &mdash; 完整回測報告</p>
+        <p>Sovereign V25 &mdash; 完整回測報告</p>
         <p>數據範圍: ${m.data_range} &bull; ${m.symbols} 檔股票 &bull; ${(m.rows/1e6).toFixed(1)}M 筆資料</p>
         <p>報告日期: ${m.report_date} &bull; 回測耗時: ${fmt(m.backtest_time_seconds, 1)}s</p>
         <p id="site-updated" style="margin-top:6px;font-size:0.8em;color:var(--text-dim)"></p>
