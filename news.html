@@ -319,11 +319,12 @@ h1 {
     }
 }
 @media print {
-    .top-nav, .scroll-top, .skip-nav, .stale-banner { display: none !important; }
-    body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+    body { background: #fff !important; color: #000 !important; }
+    .top-nav, .scroll-top, .skip-nav, .menu-toggle { display: none !important; }
     .container { max-width: 100%; padding: 0; }
-    h1, h2, h3 { color: #000 !important; page-break-after: avoid; }
+    .card { border: 1px solid #ccc; break-inside: avoid; }
     a { color: #000 !important; }
+    table { font-size: 0.85em; }
 }
 </style>
 <script type="application/ld+json">
@@ -384,7 +385,7 @@ h1 {
 </div>
 
 <!-- News Container -->
-<div id="news-container"></div>
+<div id="news-container" role="region" aria-live="polite" aria-label="最新快報"></div>
 
 <!-- Footer -->
 <div class="footer">

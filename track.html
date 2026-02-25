@@ -424,12 +424,12 @@ h1 {
     html { scroll-behavior: auto; }
 }
 @media print {
-    .top-nav, .scroll-top, .skip-nav, .stale-banner { display: none !important; }
-    body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+    body { background: #fff !important; color: #000 !important; }
+    .top-nav, .scroll-top, .skip-nav, .menu-toggle { display: none !important; }
     .container { max-width: 100%; padding: 0; }
-    h1, h2, h3 { color: #000 !important; page-break-after: avoid; }
-    table { page-break-inside: avoid; }
+    .card { border: 1px solid #ccc; break-inside: avoid; }
     a { color: #000 !important; }
+    table { font-size: 0.85em; }
 }
 </style>
 <script type="application/ld+json">
@@ -476,7 +476,7 @@ h1 {
 </div>
 
 <!-- Grade Stats -->
-<div class="grade-stats" id="grade-stats" style="display:none;">
+<div class="grade-stats" id="grade-stats" role="region" aria-live="polite" aria-label="等級統計" style="display:none;">
     <h3>評級勝率參考 — V24 回測統計 (全美股 11,000+, 434 筆交易, 評級基於 2025-2026 共 97 筆)</h3>
     <div style="overflow-x:auto">
     <table class="grade-stats-table" id="grade-stats-table">
@@ -505,7 +505,7 @@ h1 {
 </div>
 
 <!-- Table -->
-<div id="table-container">
+<div id="table-container" role="region" aria-live="polite" aria-label="追蹤資料">
     <p class="loading">載入資料中...</p>
 </div>
 

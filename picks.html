@@ -942,12 +942,12 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
     }
 }
 @media print {
-    .top-nav, .scroll-top, .skip-nav, .stale-banner { display: none !important; }
-    body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+    body { background: #fff !important; color: #000 !important; }
+    .top-nav, .scroll-top, .skip-nav, .menu-toggle { display: none !important; }
     .container { max-width: 100%; padding: 0; }
-    h1, h2, h3 { color: #000 !important; page-break-after: avoid; }
-    table { page-break-inside: avoid; }
+    .card { border: 1px solid #ccc; break-inside: avoid; }
     a { color: #000 !important; }
+    table { font-size: 0.85em; }
 }
 </style>
 <script type="application/ld+json">
@@ -1040,7 +1040,7 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 
 <!-- All Picks Detail -->
 <h2>全部候選股詳細報告 <span class="dim" id="pick-count"></span></h2>
-<div id="picks-detail"></div>
+<div id="picks-detail" role="region" aria-live="polite" aria-label="選股結果"></div>
 
 <!-- Quick Ref -->
 <div id="quick-ref"></div>
