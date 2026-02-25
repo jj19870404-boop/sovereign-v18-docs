@@ -128,6 +128,8 @@ body {
     overflow: visible;
 }
 
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0; }
+
 /* ── Sections ── */
 h1 { font-size: 2em; margin-bottom: 8px; }
 .subtitle { color: var(--text-dim); font-size: 1.1em; margin-bottom: 32px; }
@@ -608,14 +610,17 @@ function renderTrades(trades) {
     return `<h2 id="trades">11. 全部交易明細 (${trades.length}筆)</h2>
     <div class="card">
         <div class="trade-controls">
-            <input type="text" id="tradeSearch" placeholder="搜尋股票代碼..." oninput="filterTrades()">
-            <select id="tradeYear" onchange="filterTrades()">
+            <label for="tradeSearch" class="sr-only">搜尋股票代碼</label>
+            <input type="text" id="tradeSearch" placeholder="搜尋股票代碼...">
+            <label for="tradeYear" class="sr-only">篩選年份</label>
+            <select id="tradeYear">
                 <option value="">全部年份</option>
                 <option value="2021">2021</option><option value="2022">2022</option>
                 <option value="2023">2023</option><option value="2024">2024</option>
                 <option value="2025">2025</option><option value="2026">2026</option>
             </select>
-            <select id="tradeExit" onchange="filterTrades()">
+            <label for="tradeExit" class="sr-only">篩選出場方式</label>
+            <select id="tradeExit">
                 <option value="">全部出場</option>
                 <option value="TP">TP</option><option value="SL">SL</option>
                 <option value="TRAIL">TRAIL</option><option value="TIME">TIME</option>
@@ -637,6 +642,12 @@ function initTrades(trades) {
     filteredTrades = trades;
     tradePage = 0;
     renderTradeTable();
+    // Bind filter/pagination handlers after DOM elements exist
+    document.getElementById('tradeSearch')?.addEventListener('input', filterTrades);
+    document.getElementById('tradeYear')?.addEventListener('change', filterTrades);
+    document.getElementById('tradeExit')?.addEventListener('change', filterTrades);
+    document.getElementById('prevBtn')?.addEventListener('click',()=>{tradePage--;renderTradeTable();});
+    document.getElementById('nextBtn')?.addEventListener('click',()=>{tradePage++;renderTradeTable();});
 }
 
 function filterTrades() {
@@ -707,8 +718,6 @@ fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
     const ts=info.updated&&info.updated.backtest;
     if(ts){const el=document.getElementById('site-updated');if(el){const d=new Date(ts);el.textContent='最後更新：'+d.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});}}
 }).catch(()=>{});
-document.getElementById('prevBtn')?.addEventListener('click',()=>{tradePage--;renderTradeTable();});
-document.getElementById('nextBtn')?.addEventListener('click',()=>{tradePage++;renderTradeTable();});
 </script>
 </body>
 </html>

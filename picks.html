@@ -1857,7 +1857,7 @@ function renderPicksDetail(picks, v20) {
         const position_val = (p.shares && p.entry_price) ? (p.shares * p.entry_price).toFixed(0) : '0';
         const secStr = p.sector ? `${escHtml(p.sector)} #${p.sector_rank}` : '';
 
-        return `<div class="pick-detail-card" onclick="this.classList.toggle('open')">
+        return `<div class="pick-detail-card">
             <div class="pick-detail-header">
                 <span class="pick-detail-rank">${p.rank}</span>
                 <span class="pick-detail-sym">${escHtml(p.symbol)}</span>
@@ -2021,6 +2021,11 @@ fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
 document.querySelector('.close-btn')?.addEventListener('click',function(){this.parentElement.style.display='none';});
 document.getElementById('btn-prev')?.addEventListener('click',()=>navigate(-1));
 document.getElementById('btn-next')?.addEventListener('click',()=>navigate(1));
+// Event delegation for dynamically generated pick-detail-card toggle
+document.getElementById('picks-detail')?.addEventListener('click',function(e){
+    const card=e.target.closest('.pick-detail-card');
+    if(card) card.classList.toggle('open');
+});
 </script>
 </main>
 <button class="scroll-top" id="scrollTop" aria-label="回到頂部">&uarr;</button>
