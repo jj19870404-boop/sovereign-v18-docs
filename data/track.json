@@ -1,15 +1,26 @@
 {
-  "updated": "2026-02-25T06:00:39.407907",
+  "updated": "2026-02-25T11:10:13.333802",
   "summary": {
     "total": 100,
     "wins": 63,
     "losses": 30,
-    "be": 5,
-    "open": 2,
+    "be": 4,
+    "open": 3,
     "win_rate": 67.7,
-    "avg_return": 6.56
+    "avg_return": 6.63
   },
   "tracks": [
+    {
+      "date": "2026-02-25",
+      "symbol": "ARMP",
+      "entry": 9.55,
+      "tp": 10.98,
+      "sl": 8.9,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 9.55
+    },
     {
       "date": "2026-02-24",
       "symbol": "ARMP",
@@ -1195,18 +1206,6 @@
       "days": 10,
       "exit_price": 2.85,
       "exit_type": "TIME"
-    },
-    {
-      "date": "2025-09-19",
-      "symbol": "TNGX",
-      "entry": 7.54,
-      "tp": 8.67,
-      "sl": 6.92,
-      "status": "BE",
-      "return_pct": 0.0,
-      "days": 3,
-      "exit_price": 7.54,
-      "exit_type": "SL"
     }
   ]
 }
