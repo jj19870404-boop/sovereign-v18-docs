@@ -315,7 +315,7 @@ tr:hover td { background: var(--surface2); }
     <div class="loading">載入回測數據中...</div>
 </div>
 
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">&uarr;</button>
+<button class="scroll-top" id="scrollTop" aria-label="回到頂部">&uarr;</button>
 
 </main>
 </div>
@@ -681,8 +681,9 @@ function renderTradeTable() {
 }
 
 // ── Scroll to Top ──
+const btn = document.getElementById('scrollTop');
+btn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
 window.addEventListener('scroll', () => {
-    const btn = $('#scrollTop');
     if (btn) btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
 });
 

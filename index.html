@@ -658,13 +658,17 @@ li { margin: 4px 0; }
     <h3 id="data-sources">使用的資料</h3>
     <table>
         <caption>回測使用的資料來源與涵蓋範圍</caption>
+        <thead>
         <tr><th>項目</th><th>說明</th></tr>
+        </thead>
+        <tbody>
         <tr><td>資料檔案</td><td><code>Full_Market_Data_2020_2026.parquet</code></td></tr>
         <tr><td>涵蓋範圍</td><td>全美股市場，約 8,000+ 檔股票</td></tr>
         <tr><td>時間範圍</td><td>2020 年至 2026 年（2020 年用於指標暖機）</td></tr>
         <tr><td>資料頻率</td><td>每日 (Daily)</td></tr>
         <tr><td>欄位</td><td>日期 (Date)、代碼 (Symbol)、開盤 (Open)、最高 (High)、最低 (Low)、收盤 (Close)、成交量 (Volume)</td></tr>
         <tr><td>資料格式</td><td>Apache Parquet（高效壓縮格式）</td></tr>
+        </tbody>
     </table>
 
     <p>每根 K 棒包含一天的交易資訊，簡稱 <strong>OHLCV</strong>（Open-High-Low-Close-Volume）。這些是計算所有技術指標的基礎原料。</p>
@@ -782,7 +786,10 @@ li { margin: 4px 0; }
 
 <table>
     <caption>六道進場濾網條件一覽</caption>
+    <thead>
     <tr><th>#</th><th>濾網</th><th>條件</th><th>為什麼重要？</th></tr>
+    </thead>
+    <tbody>
     <tr>
         <td>1</td>
         <td>RS 排名</td>
@@ -819,6 +826,7 @@ li { margin: 4px 0; }
         <td>SMA20_Slope &ge; <span class="param-value">1.005</span></td>
         <td>確認均線方向向上，趨勢結構健康</td>
     </tr>
+    </tbody>
 </table>
 
 <div class="analogy">
@@ -950,12 +958,16 @@ li { margin: 4px 0; }
 <div class="card">
     <table>
         <caption>全倉 ALL-IN 資金流轉示例</caption>
+        <thead>
         <tr><th>步驟</th><th>動作</th><th>帳戶餘額</th></tr>
+        </thead>
+        <tbody>
         <tr><td>起始</td><td>-</td><td class="num-cell">$10,000.00</td></tr>
         <tr><td>第 1 筆</td><td>全倉買入 → 停利 +15% 出場</td><td class="num-cell"><span class="win">$11,500.00</span></td></tr>
         <tr><td>第 2 筆</td><td>全倉買入 → 追蹤停損 +8% 出場</td><td class="num-cell"><span class="win">$12,096.00</span></td></tr>
         <tr><td>第 3 筆</td><td>全倉買入 → 停損 -10% 出場</td><td class="num-cell"><span class="loss">$10,886.40</span></td></tr>
         <tr><td>第 4 筆</td><td>全倉買入 → 停利 +15% 出場</td><td class="num-cell"><span class="win">$12,519.36</span></td></tr>
+        </tbody>
     </table>
     <p class="note">每次都用全部餘額買入，虧損後金額變小，風險自然降低（反馬丁格爾效應）。</p>
 </div>
@@ -970,7 +982,10 @@ li { margin: 4px 0; }
 <h3 id="quality-scoring">7 項評分指標</h3>
 <table>
     <caption>突破品質 7 項評分指標與最佳區間</caption>
+    <thead>
     <tr><th>指標</th><th>滿分</th><th>最佳區間</th><th>最佳區間勝率</th></tr>
+    </thead>
+    <tbody>
     <tr><td>量比 (Vol_Ratio)</td><td class="num-cell">20</td><td>1.7 - 2.0x</td><td class="num-cell win">83%</td></tr>
     <tr><td>52 週接近度</td><td class="num-cell">20</td><td>95 - 100%</td><td class="num-cell win">84.6%</td></tr>
     <tr><td>20 日動能</td><td class="num-cell">15</td><td>+10% ~ +20%</td><td class="num-cell win">78.6%</td></tr>
@@ -978,6 +993,7 @@ li { margin: 4px 0; }
     <tr><td>RS 排名</td><td class="num-cell">15</td><td>25 - 50 名</td><td class="num-cell win">80.3%</td></tr>
     <tr><td>波動率 (ATR/股價)</td><td class="num-cell">10</td><td>&lt; 5%</td><td class="num-cell win">72%</td></tr>
     <tr><td>前日成交量</td><td class="num-cell">5</td><td>0.5 - 1.0x</td><td class="num-cell win">74%</td></tr>
+    </tbody>
 </table>
 
 <p style="color: var(--text-dim);">勝率數據來源：2021-2024 年共 237 筆實戰交易的統計分析。</p>
@@ -985,12 +1001,16 @@ li { margin: 4px 0; }
 <h3 id="quality-rating">品質評級</h3>
 <table class="grade-table">
     <caption>品質評級 A-F 對照表</caption>
+    <thead>
     <tr><th>評級</th><th>分數</th><th>意義</th><th>建議</th></tr>
+    </thead>
+    <tbody>
     <tr><td class="grade-A">A</td><td class="num-cell">&ge; 80 分</td><td>強勢突破訊號</td><td><span class="tag tag-green">積極進場</span></td></tr>
     <tr><td class="grade-B">B</td><td class="num-cell">65 - 79 分</td><td>品質良好</td><td><span class="tag tag-green">正常進場</span></td></tr>
     <tr><td class="grade-C">C</td><td class="num-cell">50 - 64 分</td><td>普通訊號</td><td><span class="tag tag-yellow">謹慎操作</span></td></tr>
     <tr><td class="grade-D">D</td><td class="num-cell">35 - 49 分</td><td>偏弱訊號</td><td><span class="tag tag-red">建議觀望</span></td></tr>
     <tr><td class="grade-F">F</td><td class="num-cell">&lt; 35 分</td><td>假突破風險高</td><td><span class="tag tag-red">不建議進場</span></td></tr>
+    </tbody>
 </table>
 
 <h3 id="quality-redflags">紅旗警告機制</h3>
@@ -1013,6 +1033,7 @@ li { margin: 4px 0; }
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
     <caption>2021-2026 各年度回測績效總覽</caption>
+    <thead>
     <tr>
         <th>年份</th>
         <th class="num-cell">交易次數</th>
@@ -1022,6 +1043,8 @@ li { margin: 4px 0; }
         <th class="num-cell">Profit Factor</th>
         <th class="num-cell">最大回撤</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>2021</td>
         <td class="num-cell">91</td>
@@ -1076,6 +1099,7 @@ li { margin: 4px 0; }
         <td class="num-cell">8.80</td>
         <td class="num-cell loss">-5.35%</td>
     </tr>
+    </tbody>
 </table>
 </div>
 <p class="footnote">* 2026 年數據截至回測日期（進行中），交易筆數較少。</p>
@@ -1084,6 +1108,7 @@ li { margin: 4px 0; }
 <div class="card" style="padding:0; overflow-x:auto;">
 <table>
     <caption>各年度單筆交易獲利與虧損統計</caption>
+    <thead>
     <tr>
         <th>年份</th>
         <th class="num-cell">平均獲利</th>
@@ -1092,6 +1117,8 @@ li { margin: 4px 0; }
         <th class="num-cell">最大單筆虧損</th>
         <th class="num-cell">平均持有天數</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>2021</td>
         <td class="num-cell win">+7.86%</td>
@@ -1140,6 +1167,7 @@ li { margin: 4px 0; }
         <td class="num-cell loss">-5.02%</td>
         <td class="num-cell">3.2</td>
     </tr>
+    </tbody>
 </table>
 </div>
 
@@ -1336,6 +1364,7 @@ li { margin: 4px 0; }
 <div class="table-wrap">
 <table>
 <caption>2021-2026 每日掃描全候選績效總覽</caption>
+<thead>
 <tr>
     <th>年份</th>
     <th>交易日</th>
@@ -1347,6 +1376,8 @@ li { margin: 4px 0; }
     <th>平均報酬</th>
     <th>盈虧比</th>
 </tr>
+</thead>
+<tbody>
 <tr>
     <td>2021</td>
     <td class="num-cell">251</td>
@@ -1413,6 +1444,7 @@ li { margin: 4px 0; }
     <td class="num-cell win">+2.05%</td>
     <td class="num-cell">4.07</td>
 </tr>
+</tbody>
 </table>
 </div>
 <p class="footnote">* 2026 年數據截至回測日期（進行中）。首選 = 每天 RS Rank 最高的候選股。盈虧比 = Profit Factor（總獲利 / 總虧損）。</p>
@@ -1422,6 +1454,7 @@ li { margin: 4px 0; }
     <p style="margin-bottom:8px"><strong>首選勝率</strong>是指每天候選名單中 RS Rank 排名第一的股票的勝率 — 也就是系統實際會選擇交易的那檔。</p>
     <table>
     <caption>RS Rank#1 首選股各年度勝率</caption>
+    <thead>
     <tr>
         <th>年份</th>
         <th>交易數</th>
@@ -1430,6 +1463,8 @@ li { margin: 4px 0; }
         <th>勝率</th>
         <th>平均報酬</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>2021</td>
         <td class="num-cell">251</td>
@@ -1478,6 +1513,7 @@ li { margin: 4px 0; }
         <td class="num-cell win">70.4%</td>
         <td class="num-cell win">+4.93%</td>
     </tr>
+    </tbody>
     </table>
     <p style="margin-bottom:0; margin-top:12px; color: var(--text-dim); font-size:0.9em">首選勝率一致高於整體勝率 2-9 個百分點，驗證 RS Rank 排序機制有效將最強候選股排在最前。</p>
 </div>
@@ -1486,6 +1522,7 @@ li { margin: 4px 0; }
 <p>不同出場方式的勝率揭示了系統各層機制的角色：</p>
 <table>
 <caption>287,180 筆模擬交易出場方式勝率分佈</caption>
+<thead>
 <tr>
     <th>出場方式</th>
     <th>交易數</th>
@@ -1493,6 +1530,8 @@ li { margin: 4px 0; }
     <th>勝率</th>
     <th>說明</th>
 </tr>
+</thead>
+<tbody>
 <tr>
     <td><span class="tag tag-green">TP</span> 停利</td>
     <td class="num-cell">15,364</td>
@@ -1528,6 +1567,7 @@ li { margin: 4px 0; }
     <td class="num-cell loss">0.0%</td>
     <td>持倉 9 天仍虧 &gt;5%，果斷離場</td>
 </tr>
+</tbody>
 </table>
 
 <div class="analogy">
@@ -4673,10 +4713,11 @@ li { margin: 4px 0; }
 </main>
 </div>
 
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">&uarr;</button>
+<button class="scroll-top" id="scrollTop" aria-label="回到頂部">&uarr;</button>
 <script>
 // Scroll-to-top
 const btn = document.getElementById('scrollTop');
+btn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
 window.addEventListener('scroll', () => {
     btn.classList.toggle('show', window.scrollY > 300);
 });
