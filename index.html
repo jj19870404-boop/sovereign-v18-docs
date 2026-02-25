@@ -109,6 +109,30 @@ body {
 .scroll-top.show { opacity: 1; visibility: visible; }
 .scroll-top:hover { transform: scale(1.1); }
 
+/* ── Skip Nav ── */
+.skip-nav {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 999;
+    padding: 0.5rem 1rem;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.skip-nav:focus {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    overflow: visible;
+}
+
 h1 {
     font-size: 2.2em;
     text-align: center;
@@ -156,6 +180,12 @@ p { margin-bottom: 14px; }
     padding: 24px;
     margin: 16px 0;
 }
+.card > h3:first-child,
+.card > h4:first-child { margin-top: 0; }
+.footnote { color: var(--text-dim); font-size: 0.85em; }
+.note { color: var(--text-dim); font-size: 0.9em; }
+.year-label { color: var(--text-dim); margin-top: 20px; }
+.list-alpha { list-style-type: lower-alpha; }
 .card-accent {
     border-left: 4px solid var(--accent);
 }
@@ -457,7 +487,7 @@ li { margin: 4px 0; }
 </script>
 </head>
 <body>
-<a href="#main-content" class="skip-nav" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:999;padding:0.5rem 1rem;background:var(--accent);color:#fff;text-decoration:none;border-radius:4px;" onfocus="this.style.cssText='position:fixed;left:1rem;top:1rem;z-index:999;padding:0.5rem 1rem;background:var(--accent);color:#fff;text-decoration:none;border-radius:4px;'" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;'">跳至主要內容</a>
+<a href="#main-content" class="skip-nav">跳至主要內容</a>
 <div class="container">
 
 <div class="top-nav" role="navigation" aria-label="主要導航">
@@ -512,7 +542,7 @@ li { margin: 4px 0; }
 <div class="toc-group">三、版本演化</div>
 <ol start="12">
     <li><a href="#v20">V20 更新 &mdash; 五大升級</a>
-        <ol style="list-style-type: lower-alpha;">
+        <ol class="list-alpha">
             <li><a href="#v20-stale-gap">Stale Exit + Gap-Down Rejection</a></li>
             <li><a href="#v20-sector">板塊動能篩選 + ETF 排除</a></li>
             <li><a href="#v20-market">市場環境偵測</a></li>
@@ -521,7 +551,7 @@ li { margin: 4px 0; }
         </ol>
     </li>
     <li><a href="#v21-research">V21 優化研究 &mdash; 16 輪驗證</a>
-        <ol style="list-style-type: lower-alpha;">
+        <ol class="list-alpha">
             <li><a href="#v21-overview">16 輪系統性回測總結</a></li>
             <li><a href="#v21-walkforward">Walk-Forward 驗證 + Monte Carlo</a></li>
             <li><a href="#v21-sizing">倉位管理分析</a></li>
@@ -535,7 +565,7 @@ li { margin: 4px 0; }
         </ol>
     </li>
     <li><a href="#v23-research">V23 &mdash; 最終優化突破</a>
-        <ol style="list-style-type: lower-alpha;">
+        <ol class="list-alpha">
             <li><a href="#v23-history">研究歷程（V20 &rarr; V23）</a></li>
             <li><a href="#v23-params">V23 參數對照</a></li>
             <li><a href="#v23-methodology">5 階段優化方法論（170+ 實驗）</a></li>
@@ -548,7 +578,7 @@ li { margin: 4px 0; }
         </ol>
     </li>
     <li><a href="#v24-research">V24 &mdash; 精準微調三項改進</a>
-        <ol style="list-style-type: lower-alpha;">
+        <ol class="list-alpha">
             <li><a href="#v24-improvements">三項改進解析</a></li>
             <li><a href="#v24-comparison">V24 vs V23 關鍵對比</a></li>
             <li><a href="#v24-yearly">V24 逐年勝率</a></li>
@@ -558,7 +588,7 @@ li { margin: 4px 0; }
         </ol>
     </li>
     <li><a href="#market-correlation">V23 勝率 vs 大盤相關性研究</a>
-        <ol style="list-style-type: lower-alpha;">
+        <ol class="list-alpha">
             <li><a href="#mc-yearly">年度勝率 vs S&amp;P 500</a></li>
             <li><a href="#mc-quarterly">季度 &amp; 月度深度分析</a></li>
             <li><a href="#mc-bear">2022 熊市解剖</a></li>
@@ -829,7 +859,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-green">
-    <h3 id="exit-tp" style="margin-top:0">停利 (TP - Take Profit)</h3>
+    <h3 id="exit-tp">停利 (TP - Take Profit)</h3>
     <div class="formula">
         停利價 = 進場價 &times; (1 + 0.15) = 進場價 &times; 1.15
     </div>
@@ -838,7 +868,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card" style="border-left: 4px solid var(--accent2);">
-    <h3 id="exit-trail" style="margin-top:0">追蹤停損 (TRAIL - Trailing Stop)</h3>
+    <h3 id="exit-trail">追蹤停損 (TRAIL - Trailing Stop)</h3>
     <p>追蹤停損不是一開始就啟動的，它有兩個前置條件：</p>
     <ol>
         <li><strong>保本觸發：</strong>股價從進場價上漲 <span class="param-value">+0.8%</span> 後，停損移至進場價（保本）</li>
@@ -853,7 +883,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-red">
-    <h3 id="exit-sl" style="margin-top:0">停損 (SL - Stop Loss)</h3>
+    <h3 id="exit-sl">停損 (SL - Stop Loss)</h3>
     <div class="formula">
         初始停損 = 進場價 - (ATR &times; 1.3)<br>
         最大虧損限制：停損不低於 進場價 &times; (1 - 0.20) = 進場價 &times; 0.80
@@ -863,7 +893,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-yellow">
-    <h3 id="exit-time" style="margin-top:0">時間停損 (TIME - Time Stop)</h3>
+    <h3 id="exit-time">時間停損 (TIME - Time Stop)</h3>
     <div class="formula">
         持有天數 &ge; 10 個交易日 → 以收盤價強制出場
     </div>
@@ -886,7 +916,7 @@ li { margin: 4px 0; }
 <h2 id="position"><span class="num">7</span>倉位管理</h2>
 
 <div class="card card-accent">
-    <h3 id="pos-allin" style="margin-top:0">全倉進出 (ALL-IN)</h3>
+    <h3 id="pos-allin">全倉進出 (ALL-IN)</h3>
     <p>Sovereign V24 採用<strong>單一持倉</strong>策略 — 同一時間只持有一檔股票，並將全部資金投入。</p>
     <div class="formula">
         最大持倉數 = 1<br>
@@ -927,7 +957,7 @@ li { margin: 4px 0; }
         <tr><td>第 3 筆</td><td>全倉買入 → 停損 -10% 出場</td><td class="num-cell"><span class="loss">$10,886.40</span></td></tr>
         <tr><td>第 4 筆</td><td>全倉買入 → 停利 +15% 出場</td><td class="num-cell"><span class="win">$12,519.36</span></td></tr>
     </table>
-    <p style="color: var(--text-dim); font-size: 0.9em;">每次都用全部餘額買入，虧損後金額變小，風險自然降低（反馬丁格爾效應）。</p>
+    <p class="note">每次都用全部餘額買入，虧損後金額變小，風險自然降低（反馬丁格爾效應）。</p>
 </div>
 
 <!-- ================================================================ -->
@@ -1048,7 +1078,7 @@ li { margin: 4px 0; }
     </tr>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中），交易筆數較少。</p>
+<p class="footnote">* 2026 年數據截至回測日期（進行中），交易筆數較少。</p>
 
 <h3 id="bt-trades">單筆交易統計</h3>
 <div class="card" style="padding:0; overflow-x:auto;">
@@ -1116,7 +1146,7 @@ li { margin: 4px 0; }
 <h3 id="bt-exits">出場方式分佈</h3>
 
 <!-- 2021 -->
-<h4 style="color: var(--text-dim); margin-top: 20px;">2021 年（91 筆交易）</h4>
+<h4 class="year-label">2021 年（91 筆交易）</h4>
 <table>
     <tr><th>出場方式</th><th class="num-cell">筆數</th><th class="num-cell">佔比</th><th class="num-cell">勝率</th></tr>
     <tr><td><span class="tag tag-green">TP 停利</span></td><td class="num-cell">16</td><td class="num-cell">17.6%</td><td class="num-cell win">100.0%</td></tr>
@@ -1126,7 +1156,7 @@ li { margin: 4px 0; }
 </table>
 
 <!-- 2022 -->
-<h4 style="color: var(--text-dim); margin-top: 20px;">2022 年（81 筆交易）</h4>
+<h4 class="year-label">2022 年（81 筆交易）</h4>
 <table>
     <tr><th>出場方式</th><th class="num-cell">筆數</th><th class="num-cell">佔比</th><th class="num-cell">勝率</th></tr>
     <tr><td><span class="tag tag-green">TP 停利</span></td><td class="num-cell">5</td><td class="num-cell">6.2%</td><td class="num-cell win">100.0%</td></tr>
@@ -1136,7 +1166,7 @@ li { margin: 4px 0; }
 </table>
 
 <!-- 2023 -->
-<h4 style="color: var(--text-dim); margin-top: 20px;">2023 年（80 筆交易）</h4>
+<h4 class="year-label">2023 年（80 筆交易）</h4>
 <table>
     <tr><th>出場方式</th><th class="num-cell">筆數</th><th class="num-cell">佔比</th><th class="num-cell">勝率</th></tr>
     <tr><td><span class="tag tag-green">TP 停利</span></td><td class="num-cell">18</td><td class="num-cell">22.5%</td><td class="num-cell win">100.0%</td></tr>
@@ -1146,7 +1176,7 @@ li { margin: 4px 0; }
 </table>
 
 <!-- 2024 -->
-<h4 style="color: var(--text-dim); margin-top: 20px;">2024 年（89 筆交易）</h4>
+<h4 class="year-label">2024 年（89 筆交易）</h4>
 <table>
     <tr><th>出場方式</th><th class="num-cell">筆數</th><th class="num-cell">佔比</th><th class="num-cell">勝率</th></tr>
     <tr><td><span class="tag tag-green">TP 停利</span></td><td class="num-cell">21</td><td class="num-cell">23.6%</td><td class="num-cell win">100.0%</td></tr>
@@ -1157,7 +1187,7 @@ li { margin: 4px 0; }
 </table>
 
 <!-- 2025 -->
-<h4 style="color: var(--text-dim); margin-top: 20px;">2025 年（84 筆交易）</h4>
+<h4 class="year-label">2025 年（84 筆交易）</h4>
 <table>
     <tr><th>出場方式</th><th class="num-cell">筆數</th><th class="num-cell">佔比</th><th class="num-cell">勝率</th></tr>
     <tr><td><span class="tag tag-green">TP 停利</span></td><td class="num-cell">17</td><td class="num-cell">20.2%</td><td class="num-cell win">100.0%</td></tr>
@@ -1167,7 +1197,7 @@ li { margin: 4px 0; }
 </table>
 
 <!-- 2026 -->
-<h4 style="color: var(--text-dim); margin-top: 20px;">2026 年（8 筆交易，進行中）</h4>
+<h4 class="year-label">2026 年（8 筆交易，進行中）</h4>
 <table>
     <tr><th>出場方式</th><th class="num-cell">筆數</th><th class="num-cell">佔比</th><th class="num-cell">勝率</th></tr>
     <tr><td><span class="tag tag-green">TP 停利</span></td><td class="num-cell">4</td><td class="num-cell">50.0%</td><td class="num-cell win">100.0%</td></tr>
@@ -1223,22 +1253,22 @@ li { margin: 4px 0; }
 <h2 id="faq"><span class="num">10</span>常見問題 FAQ</h2>
 
 <div class="card">
-    <h3 style="margin-top:0;">Q: 這套系統是全自動交易嗎？</h3>
+    <h3>Q: 這套系統是全自動交易嗎？</h3>
     <p>不是。Sovereign V24 是一個<strong>掃描 + 建議系統</strong>。它每天自動掃描全市場並產生訊號，但最終的下單操作需要人工執行。系統會告訴你「買什麼、什麼價位進場、停損設在哪、停利設在哪」，你只需要照做。</p>
 </div>
 
 <div class="card">
-    <h3 style="margin-top:0;">Q: 我需要盯盤嗎？</h3>
+    <h3>Q: 我需要盯盤嗎？</h3>
     <p>不太需要。因為出場條件（停利、停損）都是預設價位，你可以在券商設定好價格單 (Limit Order / Stop Order) 後離開。每天只需在收盤後看一次掃描結果，確認隔天是否有新訊號即可。</p>
 </div>
 
 <div class="card">
-    <h3 style="margin-top:0;">Q: 為什麼有些年份報酬差異這麼大？</h3>
+    <h3>Q: 為什麼有些年份報酬差異這麼大？</h3>
     <p>因為系統採用<strong>全倉 + 複利</strong>。在連勝時，資金快速膨脹，每筆交易的金額也跟著變大，導致獲利加速。反之在連敗時也會快速縮水。每年 80-95 筆 ALL-IN 交易累積下來，複利效應非常驚人。這是全倉策略的固有特性。</p>
 </div>
 
 <div class="card">
-    <h3 style="margin-top:0;">Q: 最大回撤 33% 很恐怖，能承受嗎？</h3>
+    <h3>Q: 最大回撤 33% 很恐怖，能承受嗎？</h3>
     <p>這是回測中<strong>從最高點到最低點的帳面回撤</strong>，不代表你一定會經歷。但確實需要有心理準備：全倉策略在連續虧損時會有較大的帳面波動。如果無法承受這種波動，可以考慮：</p>
     <ul>
         <li>降低每筆交易的倉位比例（例如只用 50% 資金）</li>
@@ -1248,7 +1278,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card">
-    <h3 style="margin-top:0;">Q: 回測結果 = 實際結果嗎？</h3>
+    <h3>Q: 回測結果 = 實際結果嗎？</h3>
     <p>不完全等同。回測結果是在理想條件下的模擬，實際交易會有以下差異：</p>
     <ul>
         <li><strong>滑價：</strong>系統已加入 0.1% 滑價模擬，但實際滑價可能更大（尤其是小型股）</li>
@@ -1260,23 +1290,23 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card">
-    <h3 style="margin-top:0;">Q: Profit Factor 是什麼？</h3>
+    <h3>Q: Profit Factor 是什麼？</h3>
     <p><strong>Profit Factor = 總獲利金額 / 總虧損金額</strong></p>
     <p>PF &gt; 1 代表獲利大於虧損（能賺錢），PF = 2 代表每虧 $1 能賺 $2。一般認為 PF &gt; 1.5 是不錯的策略。</p>
 </div>
 
 <div class="card">
-    <h3 style="margin-top:0;">Q: 為什麼最大單筆獲利都是 +15%？</h3>
+    <h3>Q: 為什麼最大單筆獲利都是 +15%？</h3>
     <p>因為系統設有<strong>固定停利 15%</strong>。一旦股價漲到停利價就自動出場。這意味著系統不追求「一筆賺到翻」，而是追求「高頻率地拿到固定利潤」。獲利來自勝率和交易次數的累積。</p>
 </div>
 
 <div class="card">
-    <h3 style="margin-top:0;">Q: 需要多少資金才能使用？</h3>
+    <h3>Q: 需要多少資金才能使用？</h3>
     <p>理論上最低 $1,000 美元即可開始，但建議至少 <strong>$5,000 - $10,000</strong>。資金太少會因為股數取整和手續費而影響績效。系統的回測是以 $10,000 起始計算的。</p>
 </div>
 
 <div class="card">
-    <h3 style="margin-top:0;">Q: 系統的參數是怎麼得到的？</h3>
+    <h3>Q: 系統的參數是怎麼得到的？</h3>
     <p>所有參數經過<strong>多年份交叉驗證優化</strong>得出。優化過程會在歷史數據上搜索最佳的參數組合，同時確保參數在不同年份都能穩定表現，而非只在特定年份表現好。這有助於減少「過度擬合」的風險。</p>
 </div>
 
@@ -1294,7 +1324,7 @@ li { margin: 4px 0; }
 <p>本分析模擬 2021-2026 年間<strong>每一個交易日</strong>的所有候選股票，不受資金限制、不受倉位限制，每個候選股獨立模擬進場到出場的完整流程。目的是衡量<strong>選股訊號本身的品質</strong>，而非資金管理後的實際績效。</p>
 
 <div class="card card-accent">
-    <h3 id="scan-diff" style="margin-top:0">與回測的差異</h3>
+    <h3 id="scan-diff">與回測的差異</h3>
     <ul>
         <li><strong>回測 (Backtest)：</strong>每天只能持有 1 檔（資金全押），受到倉位限制</li>
         <li><strong>掃描分析 (Daily Scan)：</strong>每天所有候選股都模擬交易，衡量訊號整體品質</li>
@@ -1385,7 +1415,7 @@ li { margin: 4px 0; }
 </tr>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。首選 = 每天 RS Rank 最高的候選股。盈虧比 = Profit Factor（總獲利 / 總虧損）。</p>
+<p class="footnote">* 2026 年數據截至回測日期（進行中）。首選 = 每天 RS Rank 最高的候選股。盈虧比 = Profit Factor（總獲利 / 總虧損）。</p>
 
 <h3 id="scan-rank1">首選勝率 (Rank#1)</h3>
 <div class="card card-green">
@@ -1508,19 +1538,19 @@ li { margin: 4px 0; }
 <h3 id="scan-findings">關鍵發現</h3>
 <div class="two-col">
     <div class="card card-green">
-        <h3 style="margin-top:0">訊號品質穩定</h3>
+        <h3>訊號品質穩定</h3>
         <p style="margin-bottom:0">6 年間每日平均勝率維持在 <strong>60.8%-64.3%</strong>，即使 2022 年熊市也有 62.0%。選股邏輯具備跨市場週期的穩健性。</p>
     </div>
     <div class="card card-green">
-        <h3 style="margin-top:0">RS Rank 排序有效</h3>
+        <h3>RS Rank 排序有效</h3>
         <p style="margin-bottom:0">首選（Rank#1）勝率 <strong>64.9%-73.3%</strong>，持續優於整體平均。RS 相對強度排名機制成功篩選出最強候選。</p>
     </div>
     <div class="card card-green">
-        <h3 style="margin-top:0">盈虧比全年為正</h3>
+        <h3>盈虧比全年為正</h3>
         <p style="margin-bottom:0">Profit Factor 最低為 2022 年的 <strong>1.59</strong>，最高為 2026 年的 <strong>4.07</strong>。所有年份的總獲利均大於總虧損。</p>
     </div>
     <div class="card card-green">
-        <h3 style="margin-top:0">候選數量充足</h3>
+        <h3>候選數量充足</h3>
         <p style="margin-bottom:0">日均候選 <strong>170-276 檔</strong>，即使在訊號最少的 2022 年也有充足的交易機會可供選擇。</p>
     </div>
 </div>
@@ -1608,7 +1638,7 @@ li { margin: 4px 0; }
     </tr>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。pp = percentage points（百分點）。</p>
+<p class="footnote">* 2026 年數據截至回測日期（進行中）。pp = percentage points（百分點）。</p>
 
 <div class="highlight-box">
     <div class="label">2025 年報酬提升</div>
@@ -1646,7 +1676,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card" style="border-left: 4px solid var(--orange);">
-    <h3 id="v20-stale-detail" style="margin-top:0">提前出場 (STALE - Stale Exit) <span class="tag tag-yellow">V20 新增</span></h3>
+    <h3 id="v20-stale-detail">提前出場 (STALE - Stale Exit) <span class="tag tag-yellow">V20 新增</span></h3>
     <div class="formula">
         持倉天數 &ge; 9 天 且 (收盤價 / 進場價 - 1) &lt; -5% &rarr; 以收盤價出場
     </div>
@@ -1712,7 +1742,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card">
-    <h4 style="margin-top:0; color: var(--accent2);">偵測指標</h4>
+    <h4 style="color: var(--accent2);">偵測指標</h4>
     <table>
         <tr><th>指標</th><th>計算方式</th><th>用途</th></tr>
         <tr>
@@ -1759,7 +1789,7 @@ li { margin: 4px 0; }
 <p>V20 新增三項技術指標，提供更完整的突破品質評估。這些指標<strong>不作為進場濾網</strong>，而是作為參考資訊顯示在掃描結果中。</p>
 
 <div class="card card-accent">
-    <h4 style="margin-top:0;">RSI(14)（相對強弱指標, Relative Strength Index）</h4>
+    <h4>RSI(14)（相對強弱指標, Relative Strength Index）</h4>
     <div class="formula">
         RSI = 100 - 100 / (1 + RS)<br>
         RS = 14 日平均漲幅 / 14 日平均跌幅
@@ -1768,7 +1798,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-accent">
-    <h4 style="margin-top:0;">Close Position（K 線品質 / 收盤位置）</h4>
+    <h4>Close Position（K 線品質 / 收盤位置）</h4>
     <div class="formula">
         Close_Position = (Close - Low) / (High - Low) &times; 100%
     </div>
@@ -1776,7 +1806,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-accent">
-    <h4 style="margin-top:0;">Volume Z-Score（量能 Z 分數）</h4>
+    <h4>Volume Z-Score（量能 Z 分數）</h4>
     <div class="formula">
         Vol_ZScore = (今日成交量 - 20 日平均量) / 20 日成交量標準差
     </div>
@@ -1816,7 +1846,7 @@ li { margin: 4px 0; }
 
 <div class="two-col">
     <div class="card card-green">
-        <h4 style="margin-top:0;">TP 模式（勝率 &ge; 55%）</h4>
+        <h4>TP 模式（勝率 &ge; 55%）</h4>
         <p style="margin-bottom:8px"><span class="tag tag-green">牛市高勝率</span> 快進快出，複利最大化</p>
         <table>
             <tr><td>停利</td><td class="num-cell"><span class="param-value">+15%</span> 固定</td></tr>
@@ -1826,7 +1856,7 @@ li { margin: 4px 0; }
         </table>
     </div>
     <div class="card" style="border-left: 4px solid var(--orange);">
-        <h4 style="margin-top:0;">NoTP 模式（勝率 &lt; 55%）</h4>
+        <h4>NoTP 模式（勝率 &lt; 55%）</h4>
         <p style="margin-bottom:8px"><span class="tag tag-yellow">震盪市</span> 讓贏家充分奔跑</p>
         <table>
             <tr><td>停利</td><td class="num-cell"><span class="param-value">無</span>（不設上限）</td></tr>
@@ -1996,7 +2026,7 @@ li { margin: 4px 0; }
     </tr>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。pp = percentage points（百分點）。</p>
+<p class="footnote">* 2026 年數據截至回測日期（進行中）。pp = percentage points（百分點）。</p>
 
 <div class="highlight-box">
     <div class="label">V20 Dynamic 六年連續複利</div>
@@ -2006,7 +2036,7 @@ li { margin: 4px 0; }
 
 <div class="two-col">
     <div class="card card-green">
-        <h4 style="margin-top:0">Dynamic 的優勢</h4>
+        <h4>Dynamic 的優勢</h4>
         <ul>
             <li><strong>6/6 年</strong>勝過或持平 Fixed TP</li>
             <li>2022-2024 震盪市大幅超越（+73 ~ +233pp）</li>
@@ -2015,7 +2045,7 @@ li { margin: 4px 0; }
         </ul>
     </div>
     <div class="card card-yellow">
-        <h4 style="margin-top:0">穩健性驗證</h4>
+        <h4>穩健性驗證</h4>
         <ul>
             <li><strong>參數敏感度：</strong>&plusmn;2% 微調無影響，&plusmn;5% 僅微降</li>
             <li><strong>滑點測試：</strong>0.1%&rarr;0.3% 穩健，0.5% 時 2024 虧損</li>
@@ -2231,12 +2261,12 @@ li { margin: 4px 0; }
     </tr>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">穩健比 (Robustness Ratio) &gt; 0.5 為良好。<strong>所有 5 個 OOS 期間均獲利</strong>，平均穩健比 2.38。2026 比值低是因 OOS 僅為部分年度 vs 巨大 IS 累積。</p>
+<p class="footnote">穩健比 (Robustness Ratio) &gt; 0.5 為良好。<strong>所有 5 個 OOS 期間均獲利</strong>，平均穩健比 2.38。2026 比值低是因 OOS 僅為部分年度 vs 巨大 IS 累積。</p>
 
 <h4 style="color: var(--accent2);">Monte Carlo 模擬 (5,000 次)</h4>
 <div class="two-col">
     <div class="card card-green">
-        <h4 style="margin-top:0">統計信心</h4>
+        <h4>統計信心</h4>
         <ul>
             <li><strong>風險破產率：</strong>0.38%（權益 &lt; 50%）</li>
             <li><strong>年度虧損機率：</strong>0.0%-19.7%</li>
@@ -2245,7 +2275,7 @@ li { margin: 4px 0; }
         </ul>
     </div>
     <div class="card card-green">
-        <h4 style="margin-top:0">交易統計 (324 筆)</h4>
+        <h4>交易統計 (324 筆)</h4>
         <ul>
             <li><strong>勝率：</strong>71.3%</li>
             <li><strong>平均贏家：</strong>+8.49%</li>
@@ -2389,11 +2419,11 @@ li { margin: 4px 0; }
     </tr>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">連續複利 $10,000 → 5.5 年 (2021-2026)。Sharpe = 年化風險調整報酬。Calmar = CAGR / Max DD。</p>
+<p class="footnote">連續複利 $10,000 → 5.5 年 (2021-2026)。Sharpe = 年化風險調整報酬。Calmar = CAGR / Max DD。</p>
 
 <div class="two-col">
     <div class="card card-green">
-        <h4 style="margin-top:0">核心發現</h4>
+        <h4>核心發現</h4>
         <ul>
             <li><strong>Sharpe 比率完全相同 (5.30)</strong> — 倉位縮減只是等比例縮放報酬和回撤</li>
             <li>100% All-In 在 V20 邊際下確實最大化絕對報酬</li>
@@ -2402,7 +2432,7 @@ li { margin: 4px 0; }
         </ul>
     </div>
     <div class="card card-yellow">
-        <h4 style="margin-top:0">實戰建議</h4>
+        <h4>實戰建議</h4>
         <ul>
             <li><strong>最大化報酬：</strong>100% All-In（可承受 53% 回撤）</li>
             <li><strong>平衡選擇：</strong>Fixed 50%（CAGR +132%, MDD 31%）</li>
@@ -2614,7 +2644,7 @@ li { margin: 4px 0; }
 
 <div class="two-col">
     <div class="card card-green">
-        <h4 style="margin-top:0">穩健性結論</h4>
+        <h4>穩健性結論</h4>
         <ul>
             <li><strong>滑點容忍上限：0.3%</strong>（模型假設的 3 倍仍 +394%）</li>
             <li><strong>佣金完全無影響</strong>（$10K 資本下 $10 佣金可忽略）</li>
@@ -2623,7 +2653,7 @@ li { margin: 4px 0; }
         </ul>
     </div>
     <div class="card card-yellow">
-        <h4 style="margin-top:0">實戰意義</h4>
+        <h4>實戰意義</h4>
         <ul>
             <li>使用限價單可將滑點控制在 0.1-0.2%</li>
             <li>多數券商零佣金（已驗證零影響）</li>
@@ -2694,7 +2724,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-green">
-    <h4 style="margin-top:0">Time-Decay Trail：最接近基線的出場變體</h4>
+    <h4>Time-Decay Trail：最接近基線的出場變體</h4>
     <p><strong>機制：</strong>持倉超過 3 天後，追蹤停損距離每天衰減 7%（最低 50%）。反映學術發現：動能突破的邊際效益隨時間遞減。</p>
     <div class="formula">
         td = max(0.5, 1.0 - 0.07 &times; (持倉天數 - 3))
@@ -2715,7 +2745,7 @@ li { margin: 4px 0; }
 
 <div class="two-col">
     <div class="card card-red">
-        <h4 style="margin-top:0">ML 模型表現</h4>
+        <h4>ML 模型表現</h4>
         <ul>
             <li><strong>驗證 AUC: 0.5170</strong>（幾乎等同隨機猜測）</li>
             <li>驗證準確率: 57.5%（基礎勝率 61.9%）</li>
@@ -2724,7 +2754,7 @@ li { margin: 4px 0; }
         </ul>
     </div>
     <div class="card">
-        <h4 style="margin-top:0">Top 5 特徵重要性</h4>
+        <h4>Top 5 特徵重要性</h4>
         <ol>
             <li>RS_Rank (1,336)</li>
             <li>Vol_ZScore (1,302)</li>
@@ -2775,10 +2805,10 @@ li { margin: 4px 0; }
     </tr>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">*ML Filter 幾何均值被訓練期 (2021-2023) 的樣本內過擬合膨脹，OOS 每年均遜於基線。</p>
+<p class="footnote">*ML Filter 幾何均值被訓練期 (2021-2023) 的樣本內過擬合膨脹，OOS 每年均遜於基線。</p>
 
 <div class="card card-green">
-    <h4 style="margin-top:0">核心發現</h4>
+    <h4>核心發現</h4>
     <p><strong>AUC 0.517 證明：ML 無法預測突破贏家。</strong>V20 的邊際是<strong>系統性的</strong>（永遠選擇最高 RS Rank 候選），而非<strong>預測性的</strong>（判斷哪筆具體交易會贏）。RS Rank 單獨就比 ML 模型強 401 個百分點。</p>
 </div>
 
@@ -2891,7 +2921,7 @@ li { margin: 4px 0; }
 <h4 style="color: var(--accent2);">Rounds 15-16：Re-Entry 策略 — 唯一曾超越基線的策略</h4>
 <div class="two-col">
     <div class="card card-green">
-        <h4 style="margin-top:0">Re-Entry 發現 (Round 15)</h4>
+        <h4>Re-Entry 發現 (Round 15)</h4>
         <p>獲利出場後，若同一支股票仍為有效候選，優先再次進場。</p>
         <ul>
             <li>幾何均值 +566% (<strong>+110pp</strong> vs 基線)</li>
@@ -2901,7 +2931,7 @@ li { margin: 4px 0; }
         </ul>
     </div>
     <div class="card card-red">
-        <h4 style="margin-top:0">壓測失敗 (Round 16)</h4>
+        <h4>壓測失敗 (Round 16)</h4>
         <p>Re-Entry 在 0.3% 滑點下完全崩潰：</p>
         <ul>
             <li>0.3% 滑點：<strong>-129pp</strong>（從 +110 變 -129）</li>
@@ -2913,7 +2943,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-yellow">
-    <h4 style="margin-top:0">Re-Entry 結論</h4>
+    <h4>Re-Entry 結論</h4>
     <p>Re-Entry 是 16 輪研究中<strong>唯一曾超越基線的策略</strong>（+110pp），但 0.3% 滑點壓測失敗 (-129pp) 表明其增益來自邊際交易，在實際執行成本下會被抹消。<strong>不建議用於生產環境。</strong></p>
 </div>
 
@@ -2924,24 +2954,24 @@ li { margin: 4px 0; }
 <h3 id="v21-risk">風險警示與實際預期</h3>
 
 <div class="card card-red">
-    <h4 style="margin-top:0">存活者偏差</h4>
+    <h4>存活者偏差</h4>
     <p>資料集使用 yfinance 下載約 11,000 檔股票建構，部分緩解存活者偏差。但 2020 年前已下市的股票未包含在內。學術研究估計小型股動能策略的存活者偏差通膨約為年化 1-3%。V20 的 71% 勝率可能真實，但絕對報酬幅度可能被高估 10-20%。</p>
 </div>
 
 <div class="card card-red">
-    <h4 style="margin-top:0">動能崩潰風險</h4>
+    <h4>動能崩潰風險</h4>
     <p>動能策略歷史上曾經歷突發性崩潰（如 2009 年 3 月反轉）。2021-2026 年包含牛市和熊市，但 6 年仍是較短的樣本期間。<strong>+455% 幾何平均是例外成績，不應期望永續。</strong></p>
     <p>考慮滑點、部分成交、心理執行誤差、市場微結構變化後的實際前瞻預期：回測報酬的 30-50%（年化 +100-200%）。</p>
 </div>
 
 <div class="card card-red">
-    <h4 style="margin-top:0">集中風險</h4>
+    <h4>集中風險</h4>
     <p>單一持倉策略具有最大的個股風險。單一災難性事件（停牌、詐欺、隔夜崩盤）可能造成完全損失。Monte Carlo 顯示 0.38% 破產風險，但假設了正常的交易分佈。<strong>永遠只投入可承受損失的資金。</strong></p>
 </div>
 
 <div class="two-col">
     <div class="card card-green">
-        <h4 style="margin-top:0">本研究證明了什麼</h4>
+        <h4>本研究證明了什麼</h4>
         <ol>
             <li>V20 參數在測試數據中經過良好優化（非過度擬合）</li>
             <li>策略在多個市場環境下有正期望值</li>
@@ -2950,7 +2980,7 @@ li { margin: 4px 0; }
         </ol>
     </div>
     <div class="card card-yellow">
-        <h4 style="margin-top:0">本研究無法證明的</h4>
+        <h4>本研究無法證明的</h4>
         <ol>
             <li>未來表現將與過去一致</li>
             <li>策略能承受前所未有的市場條件</li>
@@ -3097,7 +3127,7 @@ li { margin: 4px 0; }
 
 <h3 id="v23-data-quality">數據品質修正</h3>
 <div class="card card-yellow">
-    <h4 style="margin-top:0">清洗 2,927 筆異常數據</h4>
+    <h4>清洗 2,927 筆異常數據</h4>
     <p>V23 使用經過嚴格清洗的數據集。原始數據中存在 <strong>2,927 筆</strong>異常價格記錄（隔日跳空 &gt;50%、單日振幅 &gt;100% 等），這些數據導致 MDD 被虛假放大至接近 100%。</p>
     <p>清洗後：MDD 從虛假的 ~100% 修正為 <strong>13.3%</strong>（固定倉位 MDD），這才是策略在正常市場條件下的真實風險。所有 V23 數字均基於清洗後的高品質數據。</p>
 </div>
@@ -3116,7 +3146,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-accent">
-    <h4 style="margin-top:0">Phase 1 — 個別參數掃描（72 實驗）</h4>
+    <h4>Phase 1 — 個別參數掃描（72 實驗）</h4>
     <p>逐一測試每個參數的獨立效果，找出最大改善方向：</p>
     <ul>
         <li><strong>Vol Z-Score 篩選</strong>（NEW）：<span class="tag tag-green">10x 提升</span> &mdash; 要求量能 Z 分 &ge; 1.0&sigma;，過濾掉假突破</li>
@@ -3127,19 +3157,19 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card" style="border-left: 4px solid var(--accent);">
-    <h4 style="margin-top:0">Phase 2 — 組合堆疊</h4>
+    <h4>Phase 2 — 組合堆疊</h4>
     <p>將 Phase 1 發現的正效果參數堆疊組合，測試交互效應。</p>
     <p>結果：VolZ + 52wk + Gap 三者組合 &rarr; 最終淨值達 <strong>$1.68B</strong>（vs V20 $49.6M，34x 提升）。</p>
 </div>
 
 <div class="card" style="border-left: 4px solid var(--blue);">
-    <h4 style="margin-top:0">Phase 3 — 深度組合 + Walk-Forward（33 實驗）</h4>
+    <h4>Phase 3 — 深度組合 + Walk-Forward（33 實驗）</h4>
     <p>在 Phase 2 基礎上，加入 SL/TP/Time 的多維聯合搜索，並通過 Walk-Forward 驗證穩健性。</p>
     <p>結果：找到 SL=1.5x + TP=15% + Time=12d 組合 &rarr; <strong>$19.83B</strong>，Walk-Forward 一致性 &ge; 0.95。</p>
 </div>
 
 <div class="card" style="border-left: 4px solid var(--green);">
-    <h4 style="margin-top:0">Phase 4 — 冠軍微調（42 實驗）</h4>
+    <h4>Phase 4 — 冠軍微調（42 實驗）</h4>
     <p>在 Phase 3 冠軍基礎上進行精細微調：</p>
     <ul>
         <li><strong>SL 1.5x &rarr; 1.3x</strong>：<span class="tag tag-green">+43% 提升</span> &mdash; 更緊停損 = 更快認賠，資金輪轉更快</li>
@@ -3148,7 +3178,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-green">
-    <h4 style="margin-top:0">Phase 5 — 穩健性微調（20 實驗）&rarr; V23</h4>
+    <h4>Phase 5 — 穩健性微調（20 實驗）&rarr; V23</h4>
     <p>在 Phase 4 基礎上進行最終穩健性驗證和微調：</p>
     <ul>
         <li><strong>SL 精細掃描</strong>：14 個值，確認 SL=1.3x 已是全域最優</li>
@@ -3159,7 +3189,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-red">
-    <h4 style="margin-top:0">什麼方向會「傷害」績效？</h4>
+    <h4>什麼方向會「傷害」績效？</h4>
     <ul>
         <li><strong>RSI 篩選</strong>：<span class="tag tag-red">-93% ~ -99%</span> &mdash; 幾乎所有 RSI 門檻都嚴重損害績效</li>
         <li><strong>更緊追蹤停損</strong>（Trail &lt; 3.1%）：<span class="tag tag-red">-86%</span> &mdash; 過早被震出贏家交易</li>
@@ -3238,17 +3268,17 @@ li { margin: 4px 0; }
     </tr>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">V23在 5/6 年勝出（2021, 2022, 2023, 2024, 2026）。V20 僅在 2025（超級牛市年）大幅領先。2024 年差距最大：V23 +3,417% vs V20 +91%（37.7 倍）。</p>
+<p class="footnote">V23在 5/6 年勝出（2021, 2022, 2023, 2024, 2026）。V20 僅在 2025（超級牛市年）大幅領先。2024 年差距最大：V23 +3,417% vs V20 +91%（37.7 倍）。</p>
 
 <h3 id="v23-dynamic">動態模式分析（TP / NoTP）</h3>
 <div class="two-col">
     <div class="card card-green">
-        <h4 style="margin-top:0">TP 模式（WR &ge; 55%）</h4>
+        <h4>TP 模式（WR &ge; 55%）</h4>
         <p><strong>320 筆交易</strong> | WR <strong>66.9%</strong> | PF <strong>3.30</strong></p>
         <p>固定 15% 停利，快速兌現獲利。勝率高、單筆上限受限。</p>
     </div>
     <div class="card" style="border-left: 4px solid var(--orange);">
-        <h4 style="margin-top:0">NoTP 模式（WR &lt; 55%）</h4>
+        <h4>NoTP 模式（WR &lt; 55%）</h4>
         <p><strong>113 筆交易</strong> | WR <strong>52.2%</strong> | PF <strong>2.62</strong></p>
         <p>無固定停利，使用 Tiered ATR Trail 讓贏家奔跑。勝率較低但單筆潛力更大。</p>
     </div>
@@ -3308,7 +3338,7 @@ li { margin: 4px 0; }
     </tr>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">SL 佔比 45.3% 看似高，但這正是 V23的設計：用 1.3x ATR 緊停損快速認賠（平均虧損 -5.19%），讓 TRAIL + TP 的 52.2% 贏家交易帶來更大獲利（平均 +9.37%）。</p>
+<p class="footnote">SL 佔比 45.3% 看似高，但這正是 V23的設計：用 1.3x ATR 緊停損快速認賠（平均虧損 -5.19%），讓 TRAIL + TP 的 52.2% 贏家交易帶來更大獲利（平均 +9.37%）。</p>
 
 <h3 id="v23-slippage">滑點敏感度分析</h3>
 <div class="card" style="padding:0; overflow-x:auto;">
@@ -3358,7 +3388,7 @@ li { margin: 4px 0; }
 
 <h3 id="v23-walkforward">Walk-Forward 驗證</h3>
 <div class="card card-green">
-    <h4 style="margin-top:0">V23 通過 Walk-Forward 驗證</h4>
+    <h4>V23 通過 Walk-Forward 驗證</h4>
     <p>Walk-Forward 分析（訓練窗口 &rarr; 測試窗口 &times; 多窗口）顯示：</p>
     <ul>
         <li><strong>Walk-Forward 一致性：</strong><span style="font-size:1.2em; font-weight:700; color:var(--green);">1.02</span></li>
@@ -3389,22 +3419,22 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-yellow">
-    <h4 style="margin-top:0">從 R8 到 V23 的橋接</h4>
+    <h4>從 R8 到 V23 的橋接</h4>
     <p>R8 發現的 +274pp 交互效應（V23-TightHigh, V23-HighTP）是 V23 5 階段優化的<strong>起點</strong>。R8 證明了聯合搜索能發現逐一搜索遺漏的組合，這個方法論被擴展為 170+ 實驗的系統性優化，最終從 +203pp 推進到 <strong>891x V20</strong>。</p>
     <p><strong>教訓：</strong>在非凸參數空間中，逐一搜索（V21 方法）會陷入局部最優。V23 的多維聯合搜索 + 新篩選器（VolZ, 52wk）才發現了真正的全域最佳組合。</p>
 </div>
 
 <h3 id="v23-candidates">歷史候選方案（V23-TightHigh &amp; V23-HighTP）</h3>
-<p style="color: var(--text-dim); font-size: 0.9em;">以下是 V23 研究初期（R8 交互效應發現）產出的兩個候選方案。V23 在這些基礎上進一步優化。</p>
+<p class="note">以下是 V23 研究初期（R8 交互效應發現）產出的兩個候選方案。V23 在這些基礎上進一步優化。</p>
 <div class="two-col">
     <div class="card">
-        <h4 style="margin-top:0">V23-TightHigh</h4>
+        <h4>V23-TightHigh</h4>
         <p>SL=1.8x, TP=15%, Time=14d</p>
         <p>$10K &rarr; $13.7 億（27.7x V20）| 358 筆 | WR 67.0%</p>
         <p style="color: var(--text-dim); font-size:0.85em; margin-bottom:0;">已被 V23（891x V20）全面超越</p>
     </div>
     <div class="card">
-        <h4 style="margin-top:0">V23-HighTP</h4>
+        <h4>V23-HighTP</h4>
         <p>SL=1.8x, TP=18%, Time=14d</p>
         <p>$10K &rarr; $9.6 億（19.4x V20）| 337 筆 | WR 66.2% | MDD 46.6%</p>
         <p style="color: var(--text-dim); font-size:0.85em; margin-bottom:0;">曾為風險調整最佳方案，現由 V23 取代</p>
@@ -3545,7 +3575,7 @@ li { margin: 4px 0; }
 
 <div class="two-col">
     <div class="card card-green">
-        <h4 style="margin-top:0">推薦：V24 動態切換</h4>
+        <h4>推薦：V24 動態切換</h4>
         <p><strong>SL=1.3x ATR, TP=15%, Time=10d</strong></p>
         <div style="font-size:0.9em;">
             <p><strong>篩選條件（新增）：</strong></p>
@@ -3578,7 +3608,7 @@ li { margin: 4px 0; }
         <p style="margin-bottom:0"><strong>績效：</strong>$10K &rarr; $92.2B | 434 筆 | WR 65.4% | MDD 6.4%</p>
     </div>
     <div class="card" style="border-left: 4px solid var(--yellow);">
-        <h4 style="margin-top:0">備選：V20 舊版（保守方案）</h4>
+        <h4>備選：V20 舊版（保守方案）</h4>
         <p><strong>SL=2.4x ATR, TP=12%, Time=14d</strong></p>
         <div style="font-size:0.9em;">
             <p>與 V24 相同的操作流程，差異在：</p>
@@ -3613,7 +3643,7 @@ li { margin: 4px 0; }
 
 <h3 id="v23-dynamic-verify">動態切換驗證</h3>
 <div class="card card-green">
-    <h4 style="margin-top:0">V24 動態切換獨立驗證</h4>
+    <h4>V24 動態切換獨立驗證</h4>
     <p>動態切換（TP/NoTP）的精髓：<strong>高 WR 時快速兌現（TP），低 WR 時讓贏家跑更遠（NoTP）</strong>。</p>
     <ul>
         <li><strong>TP 模式：</strong>331 筆交易，WR 65.9%，單筆上限 +15%</li>
@@ -3632,7 +3662,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="card card-yellow">
-    <h4 style="margin-top:0">什麼是倖存者偏差？</h4>
+    <h4>什麼是倖存者偏差？</h4>
     <p>回測數據通常只包含<strong>目前仍在上市</strong>的股票。那些在 2020-2026 期間<strong>已經下市</strong>（破產、被收購、私有化）的股票被排除在外。這可能導致回測高估收益，因為「輸家」被隱藏了。</p>
     <p>為驗證此偏差，我們透過 Alpha Vantage API 取得了 2,397 檔已下市股票清單，並透過 Tiingo API 下載了其中 279 檔的完整 OHLCV 歷史數據，合併成 <strong>12,168,079 筆</strong>的無偏差數據集。</p>
 </div>
@@ -3843,22 +3873,22 @@ li { margin: 4px 0; }
     </tr>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">已下市股票被交易的次數極少（4-10 筆 / 總 316-358 筆），且平均報酬為正。偏差主因是 RS_Rank 重排序導致不同選股路徑。</p>
+<p class="footnote">已下市股票被交易的次數極少（4-10 筆 / 總 316-358 筆），且平均報酬為正。偏差主因是 RS_Rank 重排序導致不同選股路徑。</p>
 
 <h4>三個關鍵發現</h4>
 <div class="two-col">
     <div class="card card-green">
-        <h4 style="margin-top:0">1. 偏差來源不是「已下市股票虧損」</h4>
+        <h4>1. 偏差來源不是「已下市股票虧損」</h4>
         <p>新增 279 檔股票後，<strong>RS_Rank 排名重新計算</strong>，導致每日 #1 候選股不同。這個「蝴蝶效應」在 ALL-IN 策略中會逐日放大。已下市股票本身的交易反而是<strong>盈利的</strong>（平均 +4.3%~+4.9%）。</p>
     </div>
     <div class="card card-green">
-        <h4 style="margin-top:0">2. V23 比 V20 更耐數據擾動</h4>
+        <h4>2. V23 比 V20 更耐數據擾動</h4>
         <p>V20 複利從 $4,963 萬崩至 $1.9 萬（&times;0.000）&mdash; 2021/2022 選股路徑改變後，資金基數縮小，連鎖影響後續所有年份。V23-HighTP 僅從 $9.6 億降至 $8.0 億（&times;0.833）。V23-TightHigh 反而<strong>上升</strong>至 $30.5 億（&times;2.223）。</p>
     </div>
 </div>
 
 <div class="card" style="border-left: 4px solid var(--blue);">
-    <h4 style="margin-top:0">3. 2024-2026 完全相同，偏差僅存在於 2021-2023</h4>
+    <h4>3. 2024-2026 完全相同，偏差僅存在於 2021-2023</h4>
     <p>近年數據已包含絕大部分活躍股票，倖存者偏差只影響較早年份的選股路徑。<strong>2024 以後三個策略的原始 vs 無偏差結果完全一致</strong>，這代表現在使用策略的人不會受到倖存者偏差的影響。</p>
 </div>
 
@@ -3883,19 +3913,19 @@ li { margin: 4px 0; }
 
 <div class="two-col">
     <div class="card card-green">
-        <h4 style="margin-top:0">改進 1：Day 1 強制止盈模式</h4>
+        <h4>改進 1：Day 1 強制止盈模式</h4>
         <p>V23 在 NoTP 模式下，即使 Day 1 漲幅已達 +15%，也不會止盈。V24 <strong>強制在 Day 1 啟用 TP 模式</strong>，確保首日大漲的利潤立即兌現。</p>
         <p><strong>效果：</strong>TP 出場從 81 增至 <strong>97 筆</strong>（+16 筆），首日就能捕捉 15% 獲利。</p>
     </div>
     <div class="card card-green">
-        <h4 style="margin-top:0">改進 2：Day 1 寬鬆止損 1.5x ATR</h4>
+        <h4>改進 2：Day 1 寬鬆止損 1.5x ATR</h4>
         <p>V23 從首日就使用 1.3x ATR 的緊停損。V24 <strong>Day 1 放寬至 1.5x ATR</strong>，Day 2 起收緊回 1.3x。這給予首日更多呼吸空間，避免被正常波動震出。</p>
         <p><strong>效果：</strong>Day 1 止損從 84 降至 <strong>62 筆</strong>（&minus;22 筆），Day 1 勝率 37.3% &rarr; <strong>48.6%</strong>（+11.3pp），固定倉 MDD 13.3% &rarr; <strong>6.37%</strong>（減半）。</p>
     </div>
 </div>
 
 <div class="card card-green">
-    <h4 style="margin-top:0">改進 3：SPY RSI &lt; 30 進場過濾</h4>
+    <h4>改進 3：SPY RSI &lt; 30 進場過濾</h4>
     <p>當 SPY RSI(14) 跌破 30（市場極度恐慌），一般突破訊號的品質會大幅下降。V24 在此環境下<strong>提高進場門檻</strong>：要求 Vol Z-Score &ge; 2.0&sigma; 且 52 週高點 &ge; 90%，只讓最強的突破訊號通過。</p>
     <p style="margin-bottom:0;"><strong>效果：</strong>過濾掉市場恐慌時的弱訊號，避免在系統性下跌中進場。</p>
 </div>
@@ -4027,7 +4057,7 @@ li { margin: 4px 0; }
 <h3 id="v24-walkforward">Walk-Forward 驗證</h3>
 
 <div class="card card-green">
-    <h4 style="margin-top:0">訓練期 2021-2024, 測試期 2025-2026</h4>
+    <h4>訓練期 2021-2024, 測試期 2025-2026</h4>
     <div class="card" style="padding:0; overflow-x:auto; margin-bottom:0;">
     <table>
         <tr>
@@ -4316,7 +4346,7 @@ li { margin: 4px 0; }
 
 <div class="two-col">
     <div class="card" style="border-left: 4px solid var(--red);">
-        <h4 style="margin-top:0">出場原因分佈（牛 vs 熊）</h4>
+        <h4>出場原因分佈（牛 vs 熊）</h4>
         <table>
             <tr><th>出場</th><th class="num-cell">2021 (牛)</th><th class="num-cell">2022 (熊)</th><th class="num-cell">2024 (牛)</th></tr>
             <tr><td>SL 停損</td><td class="num-cell">36</td><td class="num-cell loss"><strong>52</strong> (+44%)</td><td class="num-cell">42</td></tr>
@@ -4326,7 +4356,7 @@ li { margin: 4px 0; }
         <p style="margin-top:10px; color: var(--text-dim); font-size: 0.85em;">熊市特徵：停損暴增、止盈暴跌 &mdash; 股票無法突破到目標價就被打回來</p>
     </div>
     <div class="card" style="border-left: 4px solid var(--green);">
-        <h4 style="margin-top:0">恢復速度</h4>
+        <h4>恢復速度</h4>
         <table>
             <tr><th>時期</th><th class="num-cell">勝率</th><th class="num-cell">平均回報</th></tr>
             <tr><td>2022 H1（熊市深跌）</td><td class="num-cell loss">44.4%</td><td class="num-cell">+0.87%</td></tr>
@@ -4342,19 +4372,19 @@ li { margin: 4px 0; }
 <h3 id="mc-academic">d. 學術研究佐證</h3>
 
 <div class="card card-accent">
-    <h4 style="margin-top:0">Cooper, Gutierrez &amp; Hameed (2004) &mdash; "Market States and Momentum"</h4>
+    <h4>Cooper, Gutierrez &amp; Hameed (2004) &mdash; "Market States and Momentum"</h4>
     <p><em>The Journal of Finance, Vol. LIX, No. 3</em></p>
     <p>1929-1995 年數據：上漲市場後動量策略月均收益 <span class="win"><strong>+0.93%</strong></span>，下跌市場後 <span class="loss"><strong>-0.37%</strong></span>。<strong>大盤狀態是動量策略收益的最強預測因子。</strong></p>
 </div>
 
 <div class="card card-accent">
-    <h4 style="margin-top:0">Daniel &amp; Moskowitz (2016) &mdash; "Momentum Crashes"</h4>
+    <h4>Daniel &amp; Moskowitz (2016) &mdash; "Momentum Crashes"</h4>
     <p><em>Journal of Financial Economics, Vol. 122(2)</em></p>
     <p>動量崩潰發生在「恐慌狀態」&mdash; 市場大跌後伴隨高波動的反彈期。歷史最慘烈：1932 年 2 個月虧損 -91.59%、2009 年 3 個月虧損 -73.42%。但<strong>動態策略</strong>（根據波動率調整）可讓 Sharpe ratio <span class="win"><strong>從 0.53 翻倍至 0.97</strong></span>。</p>
 </div>
 
 <div class="card card-accent">
-    <h4 style="margin-top:0">Barroso &amp; Santa-Clara (2015) &mdash; "Momentum Has Its Moments"</h4>
+    <h4>Barroso &amp; Santa-Clara (2015) &mdash; "Momentum Has Its Moments"</h4>
     <p><em>Journal of Financial Economics, Vol. 116(1)</em></p>
     <p>風險管理後的動量策略：最大回撤從 <span class="loss">-96.69%</span> 改善至 <span class="win">-45.20%</span>，最差月從 -78.96% 改善至 -28.40%。動量的風險是<strong>可預測的</strong>，通過反向波動率調整可大幅降低崩潰風險。</p>
 </div>
@@ -4362,14 +4392,14 @@ li { margin: 4px 0; }
 <h4>量化驗證（449 筆交易 + SPY 歷史數據）</h4>
 <div class="two-col">
     <div class="card" style="border-left: 4px solid var(--accent);">
-        <h4 style="margin-top:0">月度相關性</h4>
+        <h4>月度相關性</h4>
         <p>V23 月勝率 vs SPY 月回報</p>
         <p style="font-size:1.5em; font-weight:700; color: var(--accent);">r = 0.33</p>
         <p><strong>p = 0.009</strong>（62 個月，統計顯著 p &lt; 0.05）</p>
         <p style="font-size:0.85em; color: var(--text-dim);">中等正相關 &mdash; SPY 漲的月份 V23 勝率傾向更高，但不是決定性因素</p>
     </div>
     <div class="card" style="border-left: 4px solid var(--accent2);">
-        <h4 style="margin-top:0">SPY 200 日均線分組</h4>
+        <h4>SPY 200 日均線分組</h4>
         <p>SPY 在 200MA 之上 vs 之下時的 V23 表現</p>
         <table>
             <tr><th>環境</th><th class="num-cell">交易數</th><th class="num-cell">勝率</th></tr>
@@ -4433,7 +4463,7 @@ li { margin: 4px 0; }
 <h3 id="mc-defense">e. V23 防護機制 &amp; 優化方向</h3>
 
 <div class="card card-green">
-    <h4 style="margin-top:0">為什麼 V23 比典型動量策略更強？</h4>
+    <h4>為什麼 V23 比典型動量策略更強？</h4>
     <p>學術文獻中裸動量策略最大回撤可達 -96.69%，V23 僅 -13.3%。關鍵在於六層防護機制：</p>
     <table>
         <tr><th>防護機制</th><th>參數</th><th>效果</th></tr>
@@ -4460,7 +4490,7 @@ li { margin: 4px 0; }
 <h4>VIX / 市場寬度 / 板塊輪動的影響</h4>
 <div class="two-col">
     <div class="card" style="border-left: 4px solid var(--orange);">
-        <h4 style="margin-top:0">VIX 波動率指數</h4>
+        <h4>VIX 波動率指數</h4>
         <table>
             <tr><th>VIX 環境</th><th>動量表現</th></tr>
             <tr><td>VIX &lt; 20</td><td class="win">穩定獲利，假突破少</td></tr>
@@ -4470,7 +4500,7 @@ li { margin: 4px 0; }
         <p style="margin-top:8px; font-size:0.85em; color: var(--text-dim);">MSCI 研究：動量因子在高低波動環境都能跑贏，優於價值/規模因子</p>
     </div>
     <div class="card" style="border-left: 4px solid var(--accent2);">
-        <h4 style="margin-top:0">市場寬度</h4>
+        <h4>市場寬度</h4>
         <table>
             <tr><th>寬度指標</th><th>效果</th></tr>
             <tr><td>% &gt; 200MA &gt; 55%</td><td class="win">適合動量策略操作</td></tr>

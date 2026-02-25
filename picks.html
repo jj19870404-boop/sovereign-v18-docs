@@ -906,6 +906,28 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 }
 .scroll-top.show { opacity: 1; visibility: visible; }
 .scroll-top:hover { transform: scale(1.1); }
+.skip-nav {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 999;
+    padding: 0.5rem 1rem;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.skip-nav:focus {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    overflow: visible;
+}
 
 /* ── Accessibility ── */
 :focus-visible {
@@ -936,7 +958,7 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 </script>
 </head>
 <body>
-<a href="#main-content" class="skip-nav" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:999;padding:0.5rem 1rem;background:var(--accent);color:#fff;text-decoration:none;border-radius:4px;" onfocus="this.style.cssText='position:fixed;left:1rem;top:1rem;z-index:999;padding:0.5rem 1rem;background:var(--accent);color:#fff;text-decoration:none;border-radius:4px;'" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;'">跳至主要內容</a>
+<a href="#main-content" class="skip-nav">跳至主要內容</a>
 <div class="container">
 
 <!-- Top Nav -->
