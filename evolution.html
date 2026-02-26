@@ -16,7 +16,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sovereign V18-V25 演化歷史 — 完整版本進化紀錄">
-<meta name="twitter:description" content="Sovereign 動能突破交易系統 V18 到 V25 的完整演化歷史，包含回測數據、參數變化、勝率分析">
+<meta name="twitter:description" content="Sovereign 動能突破交易系統 V18 到 V25 的完整演化歷史，包含所有回測數據、參數變化、每日選股勝率分析">
 <meta name="twitter:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
 <link rel="canonical" href="https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html">
 <link rel="icon" type="image/png" href="images/sovereign_v18_20260211.png">
@@ -398,6 +398,7 @@ li { margin: 4px 0; }
 <h3>進場篩選參數</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>參數</th>
         <th class="num-cell">V18</th>
@@ -407,6 +408,8 @@ li { margin: 4px 0; }
         <th class="num-cell">V24</th>
         <th class="num-cell" style="background:rgba(0,255,127,0.12);">V25</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>RS Rank 限制</td>
         <td class="num-cell"><span class="param-value">5,000</span></td>
@@ -524,12 +527,14 @@ li { margin: 4px 0; }
         <td class="num-cell"><span class="param-value">0.1%</span></td>
         <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">0.1%</span></td>
     </tr>
+    </tbody>
 </table>
 </div>
 
 <h3>出場管理參數</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>參數</th>
         <th class="num-cell">V18</th>
@@ -539,6 +544,8 @@ li { margin: 4px 0; }
         <th class="num-cell">V24</th>
         <th class="num-cell" style="background:rgba(0,255,127,0.12);">V25</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>ATR 停損倍數 (atr_sl)</td>
         <td class="num-cell"><span class="param-value">2.4x</span></td>
@@ -647,12 +654,14 @@ li { margin: 4px 0; }
         <td class="num-cell"><span class="param-value">8%</span></td>
         <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">8%</span></td>
     </tr>
+    </tbody>
 </table>
 </div>
 
 <h3>動態切換參數</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>參數</th>
         <th class="num-cell">V18</th>
@@ -662,6 +671,8 @@ li { margin: 4px 0; }
         <th class="num-cell">V24</th>
         <th class="num-cell" style="background:rgba(0,255,127,0.12);">V25</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>動態切換機制</td>
         <td class="num-cell"><span class="param-value">&mdash;</span></td>
@@ -716,6 +727,7 @@ li { margin: 4px 0; }
         <td class="num-cell"><span class="param-value">1</span></td>
         <td class="num-cell" style="background:rgba(0,255,127,0.08);"><span class="param-value">1</span></td>
     </tr>
+    </tbody>
 </table>
 </div>
 
@@ -731,6 +743,7 @@ li { margin: 4px 0; }
 <h3>6 年複利總績效</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>指標</th>
         <th class="num-cell">V18</th>
@@ -739,6 +752,8 @@ li { margin: 4px 0; }
         <th class="num-cell">V24</th>
         <th class="num-cell" style="background:rgba(0,255,127,0.12);">V25</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>6 年複利最終淨值</td>
         <td class="num-cell"><span class="param-value">$14,708,617</span></td>
@@ -811,12 +826,14 @@ li { margin: 4px 0; }
         <td class="num-cell">1.08</td>
         <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>1.13</strong></td>
     </tr>
+    </tbody>
 </table>
 </div>
 
 <h3>逐年報酬率比較</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>年份</th>
         <th class="num-cell">V18</th>
@@ -826,6 +843,8 @@ li { margin: 4px 0; }
         <th class="num-cell" style="background:rgba(0,255,127,0.12);">V25</th>
         <th class="num-cell">V25 vs V20</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>2021</td>
         <td class="num-cell win">+77%</td>
@@ -880,6 +899,7 @@ li { margin: 4px 0; }
         <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>+73%</strong></td>
         <td class="num-cell">0.95x</td>
     </tr>
+    </tbody>
 </table>
 </div>
 <p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。V25 在 V24 基礎上再翻倍（$185.2B vs $92.2B），詳見 <a href="#v25" style="color:var(--accent)">V25 章節</a>。</p>
@@ -928,6 +948,7 @@ li { margin: 4px 0; }
 <h3>V18 逐年績效</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>年份</th>
         <th class="num-cell">報酬</th>
@@ -938,6 +959,8 @@ li { margin: 4px 0; }
         <th class="num-cell">均贏</th>
         <th class="num-cell">均虧</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>2021</td>
         <td class="num-cell win">+77.12%</td>
@@ -998,12 +1021,14 @@ li { margin: 4px 0; }
         <td class="num-cell win">+10.44%</td>
         <td class="num-cell loss">-1.07%</td>
     </tr>
+    </tbody>
 </table>
 </div>
 
 <h3>V18 出場原因分佈</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>出場方式</th>
         <th class="num-cell">2021</th>
@@ -1013,6 +1038,8 @@ li { margin: 4px 0; }
         <th class="num-cell">2025</th>
         <th class="num-cell">2026*</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td><span class="tag tag-green">TP</span></td>
         <td class="num-cell">14 (100%)</td>
@@ -1049,6 +1076,7 @@ li { margin: 4px 0; }
         <td class="num-cell">1 (100%)</td>
         <td class="num-cell">&mdash;</td>
     </tr>
+    </tbody>
 </table>
 </div>
 <p style="color: var(--text-dim); font-size: 0.85em;">括號內為該出場方式的勝率。TP 和 TRAIL 是主要獲利來源。</p>
@@ -1076,12 +1104,15 @@ li { margin: 4px 0; }
 <h3>V19 vs V18 參數變化</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>參數</th>
         <th class="num-cell">V18</th>
         <th class="num-cell">V19</th>
         <th class="num-cell">變化方向</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>ATR 停損倍數</td>
         <td class="num-cell"><span class="param-value">2.4x</span></td>
@@ -1124,6 +1155,7 @@ li { margin: 4px 0; }
         <td class="num-cell"><span class="param-value">0.3%</span></td>
         <td class="num-cell"><span class="tag tag-yellow">更保守</span></td>
     </tr>
+    </tbody>
 </table>
 </div>
 
@@ -1207,6 +1239,7 @@ li { margin: 4px 0; }
 <h3>V20 逐年績效</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>年份</th>
         <th class="num-cell">報酬</th>
@@ -1219,6 +1252,8 @@ li { margin: 4px 0; }
         <th class="num-cell">連勝</th>
         <th class="num-cell">連虧</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>2021</td>
         <td class="num-cell win">+299.0%</td>
@@ -1291,12 +1326,14 @@ li { margin: 4px 0; }
         <td class="num-cell">3</td>
         <td class="num-cell">1</td>
     </tr>
+    </tbody>
 </table>
 </div>
 
 <h3>V20 動態切換效果</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>年份</th>
         <th class="num-cell">固定 TP 12%</th>
@@ -1304,6 +1341,8 @@ li { margin: 4px 0; }
         <th class="num-cell">動態切換</th>
         <th class="num-cell">動態 vs TP</th>
     </tr>
+    </thead>
+    <tbody>
     <tr><td>2021</td><td class="num-cell">+299%</td><td class="num-cell">+555%</td><td class="num-cell win">+299%</td><td class="num-cell">+0pp</td></tr>
     <tr><td>2022</td><td class="num-cell">+182%</td><td class="num-cell">+63%</td><td class="num-cell win">+352%</td><td class="num-cell win">+170pp</td></tr>
     <tr><td>2023</td><td class="num-cell">+155%</td><td class="num-cell">+286%</td><td class="num-cell win">+388%</td><td class="num-cell win">+233pp</td></tr>
@@ -1317,6 +1356,7 @@ li { margin: 4px 0; }
         <td class="num-cell win">+1,815%</td>
         <td class="num-cell win">+79pp</td>
     </tr>
+    </tbody>
 </table>
 </div>
 
@@ -1344,12 +1384,15 @@ li { margin: 4px 0; }
 <h3>16 輪研究完整摘要</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>輪次</th>
         <th>研究主題</th>
         <th class="num-cell">變體</th>
         <th>核心發現</th>
     </tr>
+    </thead>
+    <tbody>
     <tr><td>R1</td><td>信號篩選</td><td class="num-cell">7</td><td>所有篩選器都降低報酬（訊號減少 &rarr; 複利崩潰）</td></tr>
     <tr><td>R2</td><td>交易管理</td><td class="num-cell">8</td><td>SL 2.4x ATR、Trail 3.1% 均為最佳值</td></tr>
     <tr><td>R3</td><td>TP 甜蜜點</td><td class="num-cell">9</td><td>TP 12% 幾何均值最高 (+456%)，TP 13% 最安全替代</td></tr>
@@ -1368,12 +1411,14 @@ li { margin: 4px 0; }
         <td><strong>R15</strong></td><td><strong>部分 TP + Re-Entry</strong></td><td class="num-cell"><strong>7</strong></td><td><strong>Re-Entry +110pp（唯一超越基線！）；部分 TP -62pp</strong></td></tr>
     <tr>
         <td>R16</td><td>Re-Entry 深度測試</td><td class="num-cell">9</td><td>0.3% 滑點壓測：-129pp（穩健性不足 &rarr; 放棄）</td></tr>
+    </tbody>
 </table>
 </div>
 
 <div class="card card-green">
     <h3 style="margin-top:0">Walk-Forward 驗證結果</h3>
     <table>
+        <thead>
         <tr>
             <th>訓練期</th>
             <th>測試年份</th>
@@ -1381,10 +1426,13 @@ li { margin: 4px 0; }
             <th class="num-cell">OOS 報酬</th>
             <th class="num-cell">穩健比</th>
         </tr>
+        </thead>
+        <tbody>
         <tr><td>2021</td><td>2022</td><td class="num-cell">+299%</td><td class="num-cell win">+352%</td><td class="num-cell win">1.18</td></tr>
         <tr><td>2021-2022</td><td>2023</td><td class="num-cell">+343%</td><td class="num-cell win">+276%</td><td class="num-cell">1.61</td></tr>
         <tr><td>2021-2023</td><td>2024</td><td class="num-cell">+1,619%</td><td class="num-cell win">+200%</td><td class="num-cell">0.37</td></tr>
         <tr><td>2021-2024</td><td>2025</td><td class="num-cell">+4,435%</td><td class="num-cell win">+9,685%</td><td class="num-cell win">8.73</td></tr>
+        </tbody>
     </table>
     <p style="margin-bottom:0; margin-top:12px;">所有 OOS 期間均為正報酬，2025 年 OOS 甚至大幅超越 IS（8.73x）。</p>
 </div>
@@ -1433,6 +1481,7 @@ li { margin: 4px 0; }
 <h3>V23 vs V20 參數變化</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>參數</th>
         <th class="num-cell">V20</th>
@@ -1440,6 +1489,8 @@ li { margin: 4px 0; }
         <th class="num-cell">改變</th>
         <th>為什麼？</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>ATR 停損</td>
         <td class="num-cell"><span class="param-value">2.4x</span></td>
@@ -1489,6 +1540,7 @@ li { margin: 4px 0; }
         <td class="num-cell"><span class="tag tag-green">+60%</span></td>
         <td>Phase 5 微調：更穩健保本觸發，滑點抗性 +6%</td>
     </tr>
+    </tbody>
 </table>
 </div>
 
@@ -1569,6 +1621,7 @@ li { margin: 4px 0; }
 <h3>V23 逐年績效</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>年份</th>
         <th class="num-cell">V23</th>
@@ -1576,6 +1629,8 @@ li { margin: 4px 0; }
         <th class="num-cell">V18</th>
         <th class="num-cell">V23 vs V20</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>2021</td>
         <td class="num-cell win"><strong>+1,605%</strong></td>
@@ -1625,12 +1680,14 @@ li { margin: 4px 0; }
         <td class="num-cell">$14.7M</td>
         <td class="num-cell win"><strong>891x</strong></td>
     </tr>
+    </tbody>
 </table>
 </div>
 
 <h3>出場原因分析（433 筆交易）</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>出場原因</th>
         <th class="num-cell">筆數</th>
@@ -1638,6 +1695,8 @@ li { margin: 4px 0; }
         <th class="num-cell">勝率</th>
         <th>說明</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td><span class="tag tag-red">SL</span> 停損</td>
         <td class="num-cell">196</td>
@@ -1673,6 +1732,7 @@ li { margin: 4px 0; }
         <td class="num-cell loss">0.0%</td>
         <td>持倉 9 天仍虧損 &gt;5%</td>
     </tr>
+    </tbody>
 </table>
 </div>
 
@@ -1693,12 +1753,15 @@ li { margin: 4px 0; }
 <h3>滑點敏感度分析</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>滑點</th>
         <th class="num-cell">最終淨值</th>
         <th class="num-cell">vs V20</th>
         <th>說明</th>
     </tr>
+    </thead>
+    <tbody>
     <tr style="background: rgba(0,255,127,0.08);">
         <td><strong>0.1%（預設）</strong></td>
         <td class="num-cell win"><strong>$44.2B</strong></td>
@@ -1729,6 +1792,7 @@ li { margin: 4px 0; }
         <td class="num-cell win">1.21x</td>
         <td>極端情況仍勝 V20</td>
     </tr>
+    </tbody>
 </table>
 </div>
 
@@ -1946,6 +2010,7 @@ li { margin: 4px 0; }
 <h3>各年度掃描績效總覽</h3>
 <div class="table-wrap">
 <table>
+    <thead>
     <tr>
         <th>年份</th>
         <th class="num-cell">交易日</th>
@@ -1957,6 +2022,8 @@ li { margin: 4px 0; }
         <th class="num-cell">均報酬</th>
         <th class="num-cell">PF</th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>2021</td>
         <td class="num-cell">251</td>
@@ -2023,6 +2090,7 @@ li { margin: 4px 0; }
         <td class="num-cell win">+2.05%</td>
         <td class="num-cell">4.07</td>
     </tr>
+    </tbody>
 </table>
 </div>
 
@@ -2030,6 +2098,7 @@ li { margin: 4px 0; }
 <div class="card card-green">
     <p style="margin-bottom:8px">每天候選名單中 RS Rank 排名第一的股票 = 系統實際會交易的那檔。</p>
     <table>
+        <thead>
         <tr>
             <th>年份</th>
             <th class="num-cell">交易數</th>
@@ -2038,12 +2107,15 @@ li { margin: 4px 0; }
             <th class="num-cell">勝率</th>
             <th class="num-cell">均報酬</th>
         </tr>
+        </thead>
+        <tbody>
         <tr><td>2021</td><td class="num-cell">251</td><td class="num-cell win">184</td><td class="num-cell loss">67</td><td class="num-cell win">73.3%</td><td class="num-cell win">+3.03%</td></tr>
         <tr><td>2022</td><td class="num-cell">250</td><td class="num-cell win">178</td><td class="num-cell loss">72</td><td class="num-cell win">71.2%</td><td class="num-cell win">+2.55%</td></tr>
         <tr><td>2023</td><td class="num-cell">249</td><td class="num-cell win">164</td><td class="num-cell loss">85</td><td class="num-cell win">65.9%</td><td class="num-cell win">+1.76%</td></tr>
         <tr><td>2024</td><td class="num-cell">251</td><td class="num-cell win">163</td><td class="num-cell loss">88</td><td class="num-cell win">64.9%</td><td class="num-cell win">+1.40%</td></tr>
         <tr><td>2025</td><td class="num-cell">249</td><td class="num-cell win">175</td><td class="num-cell loss">74</td><td class="num-cell win">70.3%</td><td class="num-cell win">+3.11%</td></tr>
         <tr><td>2026*</td><td class="num-cell">27</td><td class="num-cell win">19</td><td class="num-cell loss">8</td><td class="num-cell win">70.4%</td><td class="num-cell win">+4.93%</td></tr>
+        </tbody>
     </table>
     <p style="margin-bottom:0; margin-top:12px; color: var(--text-dim); font-size:0.9em">首選勝率一致高於整體勝率 2-9 個百分點，驗證 RS Rank 排序機制有效。</p>
 </div>

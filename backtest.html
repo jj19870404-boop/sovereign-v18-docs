@@ -435,7 +435,8 @@ function render(D) {
     html += `<h2 id="overview">2. 整體績效總覽</h2>
     <div class="card">
     <table>
-    <tr><th style="text-align:left">指標</th><th>數值</th><th style="text-align:left">指標</th><th>數值</th></tr>
+    <thead><tr><th style="text-align:left">指標</th><th>數值</th><th style="text-align:left">指標</th><th>數值</th></tr></thead>
+    <tbody>
     <tr><td>起始資金</td><td>$10,000</td><td>最終資金</td><td class="green">${money(D.final_cash)}</td></tr>
     <tr><td>交易總數</td><td>${o.trades}</td><td>獨立股票</td><td>${D.trades ? new Set(D.trades.map(t=>t.sym)).size : '—'}</td></tr>
     <tr><td>勝場 / 敗場</td><td>${o.wins} / ${o.losses}</td><td>勝率</td><td class="green">${pct(o.win_rate)}</td></tr>
@@ -448,13 +449,13 @@ function render(D) {
     <tr><td>固定倉 MDD</td><td class="red">${pct(o.fixed_mdd)}</td><td>MDD 期間</td><td>${o.mdd_period || '—'}</td></tr>
     <tr><td>最佳交易</td><td class="green">${o.best_trade ? o.best_trade.sym + ' ' + colorPct(o.best_trade.ret) : '—'}</td>
         <td>最差交易</td><td>${o.worst_trade ? o.worst_trade.sym + ' ' + colorPct(o.worst_trade.ret) : '—'}</td></tr>
-    </table>
+    </tbody></table>
     </div>`;
 
     // ── 3. Yearly ──
     if (D.per_year) {
         html += `<h2 id="yearly">3. 逐年表現</h2><div class="card"><table>
-        <tr><th>年度</th><th>交易</th><th>勝率</th><th>PF</th><th>EV</th><th>AvgWin</th><th>AvgLoss</th><th>MDD</th><th>MaxW</th><th>MaxL</th><th>總報酬</th><th>最佳</th><th>最差</th></tr>`;
+        <thead><tr><th>年度</th><th>交易</th><th>勝率</th><th>PF</th><th>EV</th><th>AvgWin</th><th>AvgLoss</th><th>MDD</th><th>MaxW</th><th>MaxL</th><th>總報酬</th><th>最佳</th><th>最差</th></tr></thead><tbody>`;
         for (const [yr, y] of Object.entries(D.per_year)) {
             const label = yr === '2026' ? yr + '*' : yr;
             html += `<tr>
@@ -466,37 +467,37 @@ function render(D) {
                 <td class="red">${y.worst_trade ? y.worst_trade.sym + ' ' + colorPct(y.worst_trade.ret) : '—'}</td>
             </tr>`;
         }
-        html += `</table></div>`;
+        html += `</tbody></table></div>`;
     }
 
     // ── 4. Quarterly ──
     if (D.per_quarter) {
         html += `<h2 id="quarterly">4. 逐季表現</h2><div class="card"><table>
-        <tr><th>季度</th><th>交易</th><th>勝率</th><th>PF</th><th>EV</th><th>AvgWin</th><th>AvgLoss</th><th>MDD</th></tr>`;
+        <thead><tr><th>季度</th><th>交易</th><th>勝率</th><th>PF</th><th>EV</th><th>AvgWin</th><th>AvgLoss</th><th>MDD</th></tr></thead><tbody>`;
         for (const [q, v] of Object.entries(D.per_quarter)) {
             html += `<tr><td>${q}</td><td>${v.trades}</td><td>${pct(v.win_rate)}</td><td>${fmt(v.profit_factor)}</td>
                 <td>${colorPct(v.ev_per_trade)}</td><td>${colorPct(v.avg_win)}</td><td>${colorPct(v.avg_loss)}</td>
                 <td class="red">${pct(v.mdd)}</td></tr>`;
         }
-        html += `</table></div>`;
+        html += `</tbody></table></div>`;
     }
 
     // ── 5. Monthly ──
     if (D.per_month) {
         html += `<h2 id="monthly">5. 逐月表現</h2><div class="card"><table>
-        <tr><th>月份</th><th>交易</th><th>勝率</th><th>PF</th><th>EV</th><th>MDD</th></tr>`;
+        <thead><tr><th>月份</th><th>交易</th><th>勝率</th><th>PF</th><th>EV</th><th>MDD</th></tr></thead><tbody>`;
         const months = Object.entries(D.per_month).sort((a,b) => a[0].localeCompare(b[0]));
         for (const [m, v] of months) {
             html += `<tr><td>${m}</td><td>${v.trades}</td><td>${pct(v.win_rate)}</td><td>${fmt(v.profit_factor)}</td>
                 <td>${colorPct(v.ev_per_trade)}</td><td class="red">${pct(v.mdd)}</td></tr>`;
         }
-        html += `</table></div>`;
+        html += `</tbody></table></div>`;
     }
 
     // ── 6. Exit Analysis ──
     if (D.exit_analysis) {
         html += `<h2 id="exit">6. 出場原因分析</h2><div class="card"><table>
-        <tr><th>原因</th><th>筆數</th><th>占比</th><th>勝率</th><th>PF</th><th>平均報酬</th><th>平均持倉</th></tr>`;
+        <thead><tr><th>原因</th><th>筆數</th><th>占比</th><th>勝率</th><th>PF</th><th>平均報酬</th><th>平均持倉</th></tr></thead><tbody>`;
         const exitTotal = Object.values(D.exit_analysis).reduce((s, v) => s + v.trades, 0);
         const exitSorted = Object.entries(D.exit_analysis).sort((a, b) => b[1].trades - a[1].trades);
         for (const [reason, v] of exitSorted) {
@@ -505,32 +506,32 @@ function render(D) {
                 <td>${pct(v.win_rate)}</td><td>${fmt(v.profit_factor)}</td>
                 <td>${colorPct(v.ev_per_trade)}</td><td>${fmt(v.avg_hold_days, 1)}天</td></tr>`;
         }
-        html += `</table></div>`;
+        html += `</tbody></table></div>`;
     }
 
     // ── 7. Day Distribution ──
     if (D.day_distribution) {
         html += `<h2 id="days">7. 持倉天數分佈</h2><div class="card"><table>
-        <tr><th>天數</th><th>筆數</th><th>占比</th><th>勝率</th><th>平均報酬</th></tr>`;
+        <thead><tr><th>天數</th><th>筆數</th><th>占比</th><th>勝率</th><th>平均報酬</th></tr></thead><tbody>`;
         const dayTotal = Object.values(D.day_distribution).reduce((s, v) => s + v.count, 0);
         for (const [day, v] of Object.entries(D.day_distribution)) {
             const dayPct = (v.count / dayTotal * 100).toFixed(1);
             html += `<tr><td>${day}天</td><td>${v.count}</td><td>${dayPct}%</td>
                 <td>${pct(v.win_rate)}</td><td>${colorPct(v.avg_ret)}</td></tr>`;
         }
-        html += `</table></div>`;
+        html += `</tbody></table></div>`;
     }
 
     // ── 8. Drawdowns ──
     if (D.top_drawdowns) {
         html += `<h2 id="drawdown">8. 最大回撤分析</h2><div class="card"><table>
-        <tr><th>#</th><th>深度</th><th>開始</th><th>谷底</th><th>恢復</th><th>下跌天</th><th>恢復天</th></tr>`;
+        <thead><tr><th>#</th><th>深度</th><th>開始</th><th>谷底</th><th>恢復</th><th>下跌天</th><th>恢復天</th></tr></thead><tbody>`;
         D.top_drawdowns.forEach((dd, i) => {
             html += `<tr><td>${i+1}</td><td class="red">${pct(dd.depth)}</td>
                 <td>${dd.start}</td><td>${dd.bottom}</td><td>${dd.end || '—'}</td>
                 <td>${dd.duration}</td><td>${dd.recovery || '—'}</td></tr>`;
         });
-        html += `</table></div>`;
+        html += `</tbody></table></div>`;
     }
 
     // ── 9. Milestones ──
@@ -544,24 +545,24 @@ function render(D) {
             {label: '$100億', target: 10000000000},
         ];
         html += `<h2 id="milestones">9. 權益里程碑</h2><div class="card"><table>
-        <tr><th>金額</th><th>達成日期</th></tr>`;
+        <thead><tr><th>金額</th><th>達成日期</th></tr></thead><tbody>`;
         for (const ms of milestones) {
             const found = D.equity_curve.find(e => e.equity >= ms.target);
             html += `<tr><td>${ms.label}</td><td>${found ? found.date : '未達成'}</td></tr>`;
         }
-        html += `</table></div>`;
+        html += `</tbody></table></div>`;
     }
 
     // ── 10. Top Symbols ──
     if (D.top_symbols) {
         html += `<h2 id="symbols">10. 最常交易股票 Top 10</h2><div class="card"><table>
-        <tr><th>股票</th><th>次數</th><th>勝率</th><th>平均報酬</th><th>累計報酬</th></tr>`;
+        <thead><tr><th>股票</th><th>次數</th><th>勝率</th><th>平均報酬</th><th>累計報酬</th></tr></thead><tbody>`;
         const syms = Object.entries(D.top_symbols).sort((a,b) => b[1].count - a[1].count).slice(0, 10);
         for (const [sym, v] of syms) {
             html += `<tr><td><strong>${sym}</strong></td><td>${v.count}</td><td>${pct(v.win_rate)}</td>
                 <td>${colorPct(v.avg_ret)}</td><td>${colorPct(v.total_ret)}</td></tr>`;
         }
-        html += `</table></div>`;
+        html += `</tbody></table></div>`;
     }
 
     // ── 11. All Trades ──
