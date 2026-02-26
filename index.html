@@ -647,7 +647,7 @@ li { margin: 4px 0; }
 <h3 id="phil-pillars">策略的三大支柱</h3>
 <ol>
     <li><strong>嚴格篩選</strong> &mdash; 六道濾網同時通過才出訊號，寧可錯過也不亂入場</li>
-    <li><strong>快進快出</strong> &mdash; 平均持有 3-5 天，不戀戰，達到目標就走</li>
+    <li><strong>快進快出</strong> &mdash; 平均持有 2-3 天，不戀戰，達到目標就走</li>
     <li><strong>保本優先</strong> &mdash; 三層防護（停損 → 保本 → 追蹤停損），讓虧損受控、獲利奔跑</li>
 </ol>
 
@@ -894,7 +894,7 @@ li { margin: 4px 0; }
         &nbsp;&nbsp;= 最高價回落 3.1% 時觸發
     </div>
     <p>追蹤停損只會往上移，永遠不會往下調。當日最低價跌破追蹤停損價時出場（取追蹤停損價與開盤價的較大值）。</p>
-    <p><strong>Day 2 獲利鎖定：</strong>若 Day 2 收盤獲利達 <span class="param-value">+3.5%</span>，啟動 <span class="param-value">2.0%</span> 緊追蹤止損，鎖住隔夜大漲的利潤。</p>
+    <p><strong>Day 2 獲利鎖定：</strong>若 Day 2 開盤漲幅 &ge; <span class="param-value">+3.5%</span>，啟動 <span class="param-value">2.0%</span> 緊追蹤止損，鎖住隔夜大漲的利潤。</p>
     <p><strong>白話解釋：</strong>就像遛狗時繩子有固定長度 — 狗（股價）往前跑，你（停損）跟著走，但狗回頭跑超過繩子長度 (3.1%) 時，你就拉住它（出場）。</p>
 </div>
 
@@ -932,7 +932,8 @@ li { margin: 4px 0; }
     - 保本是<strong>安全門鎖</strong>（小賺就先鎖住成本）<br>
     - 追蹤停損是<strong>安全氣囊</strong>（讓獲利奔跑但不會全吐回去）<br>
     - 停利是<strong>目的地到了下車</strong>（達標就走，不貪心）<br>
-    - 時間停損是<strong>超時強制下車</strong>（開太久了，不管到哪都下車）
+    - 時間停損是<strong>超時強制下車</strong>（開太久了，不管到哪都下車）<br>
+    - 滯留出場是<strong>拋錨拖車</strong>（走太久又虧太多，直接拖走）
 </div>
 
 <!-- ================================================================ -->
@@ -966,7 +967,7 @@ li { margin: 4px 0; }
         <ul>
             <li>單筆最大虧損上限 -20%（max_loss 限制）</li>
             <li>ATR 動態停損限制實際虧損</li>
-            <li>快速進出（平均 3-5 天）減少曝險時間</li>
+            <li>快速進出（平均 2-3 天）減少曝險時間</li>
         </ul>
     </div>
 </div>
