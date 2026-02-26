@@ -2175,10 +2175,12 @@ li { margin: 4px 0; }
 
 <script>
 const btn = document.getElementById('scrollTop');
-window.addEventListener('scroll', () => {
-    btn.classList.toggle('show', window.scrollY > 400);
-});
-btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+if (btn) {
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('show', window.scrollY > 400);
+    });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
 
 // ── Site Info: 更新時間戳 + Nav Brand ──
 // Mobile hamburger menu toggle
