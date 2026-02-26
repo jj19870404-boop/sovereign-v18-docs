@@ -1,25 +1,36 @@
 {
-  "updated": "2026-02-26T12:10:06.370824",
+  "updated": "2026-02-26T23:19:39.171371",
   "summary": {
     "total": 100,
-    "wins": 71,
+    "wins": 70,
     "losses": 24,
-    "be": 2,
+    "be": 3,
     "open": 3,
-    "win_rate": 74.7,
-    "avg_return": 4.92
+    "win_rate": 74.5,
+    "avg_return": 4.91
   },
   "tracks": [
+    {
+      "date": "2026-02-26",
+      "symbol": "INVX",
+      "entry": 25.81,
+      "tp": 29.68,
+      "sl": 23.99,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 25.81
+    },
     {
       "date": "2026-02-25",
       "symbol": "ARMP",
       "entry": 9.55,
       "tp": 10.98,
       "sl": 8.9,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 9.55
+      "status": "OPEN",
+      "return_pct": 7.12,
+      "days": 1,
+      "current": 10.23
     },
     {
       "date": "2026-02-24",
@@ -112,9 +123,9 @@
       "tp": 2.23,
       "sl": 1.76,
       "status": "OPEN",
-      "return_pct": -1.03,
-      "days": 8,
-      "current": 1.92
+      "return_pct": -2.06,
+      "days": 9,
+      "current": 1.9
     },
     {
       "date": "2026-02-11",
@@ -122,10 +133,11 @@
       "entry": 16.92,
       "tp": 19.46,
       "sl": 16.02,
-      "status": "OPEN",
-      "return_pct": -0.12,
-      "days": 9,
-      "current": 16.9
+      "status": "BE",
+      "return_pct": 0.0,
+      "days": 10,
+      "exit_price": 16.92,
+      "exit_type": "TIME"
     },
     {
       "date": "2026-02-10",
@@ -1194,18 +1206,6 @@
       "days": 1,
       "exit_price": 8.25,
       "exit_type": "SL"
-    },
-    {
-      "date": "2025-02-11",
-      "symbol": "HSAI",
-      "entry": 18.82,
-      "tp": 21.64,
-      "sl": 18.82,
-      "status": "WIN",
-      "return_pct": 1.08,
-      "days": 7,
-      "exit_price": 19.02,
-      "exit_type": "TRAIL"
     }
   ]
 }
