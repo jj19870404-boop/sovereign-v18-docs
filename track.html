@@ -39,7 +39,7 @@
     --orange: #ff9f43;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overscroll-behavior: contain; }
+html { scroll-behavior: smooth; overscroll-behavior: contain; scroll-padding-top: 60px; }
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
     background: var(--bg);
@@ -173,9 +173,6 @@ h1 {
     padding: 10px 8px;
     text-align: left;
     border-bottom: 2px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 1;
 }
 .track-table td {
     padding: 10px 8px;
