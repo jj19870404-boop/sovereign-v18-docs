@@ -1135,7 +1135,9 @@ function assessQuality(p) {
     const red_flags = [];
 
     // 1. Volume Ratio (20pts)
-    if (vol >= 1.7 && vol < 2.0) {
+    if (vol < 1.0) {
+        score += 0; signals.push(['量比', fmt(vol,1)+'x', 0, 20, '資料不足']);
+    } else if (vol >= 1.7 && vol < 2.0) {
         score += 20; signals.push(['量比', fmt(vol,1)+'x', 20, 20, '1.7-2.0 最佳區間 (勝率83%)']);
     } else if (vol >= 1.5 && vol < 1.7) {
         score += 12; signals.push(['量比', fmt(vol,1)+'x', 12, 20, '溫和放量']);
@@ -1161,7 +1163,7 @@ function assessQuality(p) {
         score += 2; signals.push(['52周接近度', fmt(pct52,0)+'%', 2, 20, '危險: 80-85% 勝率僅47%']);
         red_flags.push('52周 ' + fmt(pct52,0) + '% (勝率47%)');
     } else {
-        score += 8; signals.push(['52周接近度', fmt(pct52,0)+'%', 8, 20, '70-80% 區間']);
+        score += 0; signals.push(['52周接近度', fmt(pct52,0)+'%', 0, 20, '低於 80% 門檻']);
     }
 
     // 3. 20-day momentum (15pts)
