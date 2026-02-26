@@ -1,12 +1,12 @@
 {
-  "updated": "2026-02-26T23:19:39.171371",
+  "updated": "2026-02-27T06:00:36.139726",
   "summary": {
     "total": 100,
     "wins": 70,
-    "losses": 24,
-    "be": 3,
+    "losses": 25,
+    "be": 2,
     "open": 3,
-    "win_rate": 74.5,
+    "win_rate": 73.7,
     "avg_return": 4.91
   },
   "tracks": [
@@ -28,9 +28,9 @@
       "tp": 10.98,
       "sl": 8.9,
       "status": "OPEN",
-      "return_pct": 7.12,
+      "return_pct": 13.4,
       "days": 1,
-      "current": 10.23
+      "current": 10.83
     },
     {
       "date": "2026-02-24",
@@ -123,9 +123,9 @@
       "tp": 2.23,
       "sl": 1.76,
       "status": "OPEN",
-      "return_pct": -2.06,
+      "return_pct": 3.09,
       "days": 9,
-      "current": 1.9
+      "current": 2.0
     },
     {
       "date": "2026-02-11",
@@ -133,10 +133,10 @@
       "entry": 16.92,
       "tp": 19.46,
       "sl": 16.02,
-      "status": "BE",
-      "return_pct": 0.0,
+      "status": "LOSS",
+      "return_pct": -0.06,
       "days": 10,
-      "exit_price": 16.92,
+      "exit_price": 16.91,
       "exit_type": "TIME"
     },
     {
