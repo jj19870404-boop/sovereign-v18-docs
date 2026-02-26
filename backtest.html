@@ -39,7 +39,7 @@
     --orange: #ff9f43;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overscroll-behavior: contain; }
+html { scroll-behavior: smooth; overscroll-behavior: contain; scroll-padding-top: 60px; }
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
     background: var(--bg);
@@ -193,8 +193,6 @@ th {
     background: var(--surface2);
     color: var(--text-dim);
     font-weight: 600;
-    position: sticky;
-    top: 50px;
 }
 td:first-child, th:first-child { text-align: left; }
 tr:hover td { background: var(--surface2); }
