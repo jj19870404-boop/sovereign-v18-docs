@@ -579,9 +579,9 @@ li { margin: 4px 0; }
             <li><a href="#v23-survivorship">倖存者偏差驗證</a></li>
         </ol>
     </li>
-    <li><a href="#v25-research">V25 &mdash; Day 2 利潤鎖定三項改進</a>
+    <li><a href="#v25-research">V25 &mdash; Day 2 利潤鎖定兩項改進</a>
         <ol class="list-alpha">
-            <li><a href="#v25-improvements">三項改進解析</a></li>
+            <li><a href="#v25-improvements">兩項改進解析</a></li>
             <li><a href="#v25-comparison">V25 vs V24 關鍵對比</a></li>
             <li><a href="#v25-yearly">V25 逐年勝率</a></li>
             <li><a href="#v25-walkforward">Walk-Forward 驗證</a></li>
@@ -4102,19 +4102,19 @@ li { margin: 4px 0; }
 </div>
 
 <!-- ================================================================ -->
-<!-- V25 — Day 2 利潤鎖定三項改進 -->
+<!-- V25 — Day 2 利潤鎖定兩項改進 -->
 <!-- ================================================================ -->
-<h2 id="v25-research"><span class="num">15</span>V25 &mdash; Day 2 利潤鎖定三項改進</h2>
+<h2 id="v25-research"><span class="num">15</span>V25 &mdash; Day 2 利潤鎖定兩項改進</h2>
 
 <div class="highlight-box">
-    <div class="label">V25 &mdash; 基於 V24 的三項精準微調</div>
+    <div class="label">V25 &mdash; 基於 V24 的兩項精準微調</div>
     <div class="big-number">$10K &rarr; $185.2B（2.01x V24）</div>
     <div class="label" style="margin-top: 8px;">452 筆交易 | WR 66.81% | PF 3.37 | 固定倉 MDD 6.43%</div>
 </div>
 
-<p>V24 透過三項精準微調實現績效翻倍。V25 進一步針對<strong>Day 2 利潤保護</strong>、<strong>更快保本</strong>和<strong>超買過濾</strong>進行三項微調，使績效再翻倍、勝率突破新高。</p>
+<p>V24 透過三項精準微調實現績效翻倍。V25 進一步針對<strong>Day 2 利潤保護</strong>和<strong>更快保本</strong>進行兩項微調，使績效再翻倍、勝率突破新高。</p>
 
-<h3 id="v25-improvements">三項改進解析</h3>
+<h3 id="v25-improvements">兩項改進解析</h3>
 
 <div class="two-col">
     <div class="card card-green">
@@ -4127,12 +4127,6 @@ li { margin: 4px 0; }
         <p>V24 的 TP 模式需要漲 +0.8% 才會將停損拉至成本價。V25 <strong>降低至 +0.6%</strong>（TP 模式），讓系統更快進入「零風險」狀態。</p>
         <p><strong>效果：</strong>更多交易在早期就鎖定保本，減少從小幅獲利回吐至虧損的情況，TIME 出場從 8 降至 <strong>4 筆</strong>。</p>
     </div>
-</div>
-
-<div class="card" style="border-left: 4px solid var(--accent2);">
-    <h4>改進 3：SPY RSI &gt; 70 超買過濾</h4>
-    <p>V24 只有 RSI &lt; 30 的超賣過濾。V25 新增<strong>超買過濾</strong>：當 SPY RSI(14) &gt; 70 時，要求 Vol_ZScore &ge; 1.3，避免在市場過熱時進場追高。</p>
-    <p><strong>效果：</strong>過濾市場亢奮期的弱訊號，與超賣過濾形成對稱防護，提升整體訊號品質。</p>
 </div>
 
 <h3 id="v25-comparison">V25 vs V24 關鍵對比</h3>
@@ -4296,7 +4290,7 @@ li { margin: 4px 0; }
         </tbody>
 </table>
     </div>
-    <p style="margin-top:12px; margin-bottom:0;">V25 在未見數據上表現<strong>更好</strong>（OOS WR 73.7% &gt; IS WR 65.2%），確認無過擬合跡象。+8.5pp 的正差距表明 V25 的三項微調具有真正的泛化能力，且 OOS 表現優於 V24。</p>
+    <p style="margin-top:12px; margin-bottom:0;">V25 在未見數據上表現<strong>更好</strong>（OOS WR 73.7% &gt; IS WR 65.2%），確認無過擬合跡象。+8.5pp 的正差距表明 V25 的兩項微調具有真正的泛化能力，且 OOS 表現優於 V24。</p>
 </div>
 
 <h3 id="v25-exit">V25 出場原因分布</h3>
@@ -4354,7 +4348,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="analogy">
-    V25 的出場分布清晰反映三項改進的效果：Day 2 Profit Lock 使 TRAIL 出場 +7 筆（利潤鎖定），更低保本門檻使 TIME 出場 &minus;4 筆（更快脫離風險），SPY RSI &gt; 70 超買過濾提升訊號品質。TP 出場增加 5 筆，更多交易以獲利方式結束 — 績效再翻倍的根本原因。
+    V25 的出場分布清晰反映兩項改進的效果：Day 2 Profit Lock 使 TRAIL 出場 +7 筆（利潤鎖定），更低保本門檻使 TIME 出場 &minus;4 筆（更快脫離風險）。TP 出場增加 5 筆，更多交易以獲利方式結束 — 績效再翻倍的根本原因。
 </div>
 
 <h3 id="v25-criteria">V25 成功標準：6/6 全部通過</h3>
@@ -4412,7 +4406,7 @@ li { margin: 4px 0; }
 </div>
 
 <div class="analogy">
-    V25 是 Sovereign 系統的最新版本。它以 V24 為堅實基礎，通過 Day 2 利潤鎖定、更低保本門檻和 SPY RSI &gt; 70 超買過濾三項精準微調實現了「績效再翻倍」的目標。6/6 成功標準全數通過，Walk-Forward OOS WR 73.7% 創歷史新高，確認無過擬合 — V25 代表了從 V18 到 V25 八個版本演進的最新成果。
+    V25 是 Sovereign 系統的最新版本。它以 V24 為堅實基礎，通過 Day 2 利潤鎖定和更低保本門檻兩項精準微調實現了「績效再翻倍」的目標。6/6 成功標準全數通過，Walk-Forward OOS WR 73.7% 創歷史新高，確認無過擬合 — V25 代表了從 V18 到 V25 八個版本演進的最新成果。
 </div>
 
 <!-- ================================================================ -->
