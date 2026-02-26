@@ -1330,7 +1330,7 @@ function renderAll(data) {
     renderExits(data.recent_exits || []);
     renderOpenTrades(data.open_trades || []);
     const picks = data.picks || [];
-    const vMode = data.v22 || data.v23 || data.v20;
+    const vMode = data.v25 || data.v22 || data.v23 || data.v20;
     if (picks.length === 0 || data.no_picks) {
         renderNoPicks(data.date);
     } else {
@@ -1343,7 +1343,7 @@ function renderAll(data) {
 
 // ── Dashboard ────────────────────────────────────
 function renderDashboard(data) {
-    const v = data.v22 || data.v23 || data.v20 || {};
+    const v = data.v25 || data.v22 || data.v23 || data.v20 || {};
     const p = data.performance || {};
 
     const modeEl = $('s-mode');
