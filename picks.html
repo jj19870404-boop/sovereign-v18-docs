@@ -1576,10 +1576,11 @@ function buildPlanHTML(p, v20) {
         <div class="plan-warn">&raquo; 若開盤 &lt; $${fmt(gap_threshold)} (跳空 &gt;3%)，放棄本次訊號</div>
         <ol class="plan-steps" start="2">
             <li><span class="step-num">2</span><span class="step-text">進場買進 @ ~$${fmt(entry)} (ALL-IN)</span></li>
-            <li><span class="step-num">3</span><span class="step-text">設定停損 @ <span style="color:var(--red)">$${fmt(p.sl_price)}</span> (ATR &times; ${PARAMS.atr_sl})</span></li>
+            <li><span class="step-num">3</span><span class="step-text">設定停損 @ <span style="color:var(--red)">$${fmt(p.sl_price)}</span> (Day 1: ATR &times; 1.5, Day 2 起收緊至 ATR &times; ${PARAMS.atr_sl})</span></li>
             <li><span class="step-num">4</span><span class="step-text">漲 +${(PARAMS.breakeven_trigger*100).toFixed(1)}% (<span style="color:var(--accent2)">$${fmt(be_price)}</span>) &rarr; 停損移至成本價 (保本)</span></li>
             <li><span class="step-num">5</span><span class="step-text">漲 +${(PARAMS.trail_activation*100).toFixed(1)}% (<span style="color:var(--accent2)">$${fmt(trail_price)}</span>) &rarr; 啟動 ${(PARAMS.trail_distance*100).toFixed(1)}% 追蹤停損</span></li>
             <li><span class="step-num">6</span><span class="step-text">停利 @ <span style="color:var(--green)">$${fmt(p.tp_price)}</span> (+${(PARAMS.tp_target*100).toFixed(0)}%)</span></li>
+            <li><span class="step-num">D2</span><span class="step-text"><strong>Day 2 利潤鎖定</strong>：若 Day 2 開盤漲幅 &ge; +3.5% &rarr; 啟動 2.0% 追蹤停損保護利潤</span></li>
             <li><span class="step-num">7</span><span class="step-text">持倉 ${PARAMS.stale_days} 天若仍虧損 &gt;${Math.abs(PARAMS.stale_threshold*100).toFixed(0)}%，收盤出場 (停滯出場)</span></li>
             <li><span class="step-num">8</span><span class="step-text">最長持有 ${PARAMS.time_stop} 個交易日，到期收盤出場</span></li>
         </ol>`;
@@ -1600,10 +1601,13 @@ function buildPlanHTML(p, v20) {
         <div class="plan-warn">&raquo; 若開盤 &lt; $${fmt(gap_threshold)} (跳空 &gt;3%)，放棄本次訊號</div>
         <ol class="plan-steps" start="2">
             <li><span class="step-num">2</span><span class="step-text">進場買進 @ ~$${fmt(entry)} (ALL-IN)</span></li>
-            <li><span class="step-num">3</span><span class="step-text">設定停損 @ <span style="color:var(--red)">$${fmt(p.sl_price)}</span> (ATR &times; ${PARAMS.atr_sl})</span></li>
+            <li><span class="step-num">3</span><span class="step-text">設定停損 @ <span style="color:var(--red)">$${fmt(p.sl_price)}</span> (Day 1: ATR &times; 1.5, Day 2 起收緊至 ATR &times; ${PARAMS.atr_sl})</span></li>
             <li><span class="step-num">4</span><span class="step-text">漲 +0.8% 達 <span style="color:var(--accent2)">$${fmt(notp_be)}</span> &rarr; 停損移至成本價 $${fmt(entry)} (保本)</span></li>
             <li><span class="step-num">5</span><span class="step-text">漲 +2.0% 達 <span style="color:var(--accent2)">$${fmt(notp_trail_start)}</span> &rarr; 啟動 Tiered ATR 追蹤停損</span></li>
         </ol>
+        <div style="margin:4px 0;padding:6px 10px;background:rgba(0,255,127,0.06);border-radius:6px;font-size:0.82em;color:var(--text-dim)">
+            <strong style="color:var(--green)">Day 2 利潤鎖定：</strong>若 Day 2 開盤漲幅 &ge; +3.5%，啟動 2.0% 追蹤停損保護隔夜利潤。
+        </div>
         <div style="margin:8px 0 4px;font-size:0.85em;color:var(--orange);font-weight:600">&#9733; Tiered ATR 追蹤停損 — 無固定停利上限，讓贏家持續奔跑</div>
         <table class="tiered-table">
             <thead><tr><th>級距</th><th>漲幅範圍</th><th>追蹤距離</th><th>ATR 停損距</th><th>範例出場價</th></tr></thead>
