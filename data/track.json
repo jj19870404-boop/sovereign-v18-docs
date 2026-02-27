@@ -1,15 +1,26 @@
 {
-  "updated": "2026-02-27T06:00:36.139726",
+  "updated": "2026-02-27T11:10:17.370214",
   "summary": {
     "total": 100,
-    "wins": 70,
+    "wins": 69,
     "losses": 25,
     "be": 2,
-    "open": 3,
-    "win_rate": 73.7,
-    "avg_return": 4.91
+    "open": 4,
+    "win_rate": 73.4,
+    "avg_return": 4.88
   },
   "tracks": [
+    {
+      "date": "2026-02-27",
+      "symbol": "INVX",
+      "entry": 25.81,
+      "tp": 29.68,
+      "sl": 23.99,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 25.81
+    },
     {
       "date": "2026-02-26",
       "symbol": "INVX",
@@ -1194,18 +1205,6 @@
       "days": 1,
       "exit_price": 8.8,
       "exit_type": "TP"
-    },
-    {
-      "date": "2025-02-21",
-      "symbol": "AZ",
-      "entry": 7.69,
-      "tp": 8.84,
-      "sl": 7.13,
-      "status": "WIN",
-      "return_pct": 7.31,
-      "days": 1,
-      "exit_price": 8.25,
-      "exit_type": "SL"
     }
   ]
 }
