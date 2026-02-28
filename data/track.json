@@ -1,49 +1,15 @@
 {
-  "updated": "2026-02-28T11:10:16.440273",
+  "updated": "2026-03-01T06:00:25+08:00",
   "summary": {
     "total": 100,
     "wins": 71,
-    "losses": 25,
-    "be": 2,
-    "open": 2,
-    "win_rate": 74.0,
-    "avg_return": 5.01
+    "losses": 26,
+    "be": 3,
+    "open": 0,
+    "win_rate": 73.2,
+    "avg_return": 4.57
   },
   "tracks": [
-    {
-      "date": "2026-02-27",
-      "symbol": "INVX",
-      "entry": 25.81,
-      "tp": 29.68,
-      "sl": 23.99,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 25.81
-    },
-    {
-      "date": "2026-02-26",
-      "symbol": "INVX",
-      "entry": 25.81,
-      "tp": 29.68,
-      "sl": 23.99,
-      "status": "OPEN",
-      "return_pct": 2.09,
-      "days": 1,
-      "current": 26.35
-    },
-    {
-      "date": "2026-02-25",
-      "symbol": "ARMP",
-      "entry": 9.55,
-      "tp": 10.98,
-      "sl": 8.9,
-      "status": "WIN",
-      "return_pct": 14.97,
-      "days": 2,
-      "exit_price": 10.98,
-      "exit_type": "TP"
-    },
     {
       "date": "2026-02-24",
       "symbol": "ARMP",
@@ -54,18 +20,6 @@
       "return_pct": 14.97,
       "days": 1,
       "exit_price": 10.98,
-      "exit_type": "TP"
-    },
-    {
-      "date": "2026-02-23",
-      "symbol": "USAS",
-      "entry": 7.82,
-      "tp": 8.99,
-      "sl": 6.79,
-      "status": "WIN",
-      "return_pct": 14.96,
-      "days": 2,
-      "exit_price": 8.99,
       "exit_type": "TP"
     },
     {
@@ -183,10 +137,10 @@
       "tp": 30.31,
       "sl": 25.68,
       "status": "LOSS",
-      "return_pct": -4.28,
+      "return_pct": -4.44,
       "days": 10,
-      "exit_price": 25.91,
-      "exit_type": "TIME"
+      "exit_price": 25.86,
+      "exit_type": "SL"
     },
     {
       "date": "2026-01-29",
@@ -909,18 +863,6 @@
       "exit_type": "TRAIL"
     },
     {
-      "date": "2025-06-11",
-      "symbol": "TMCWW",
-      "entry": 0.92,
-      "tp": 1.06,
-      "sl": 0.92,
-      "status": "WIN",
-      "return_pct": 15.0,
-      "days": 2,
-      "exit_price": 1.06,
-      "exit_type": "TP"
-    },
-    {
       "date": "2025-06-09",
       "symbol": "OST",
       "entry": 160.16,
@@ -1207,6 +1149,66 @@
       "days": 1,
       "exit_price": 8.8,
       "exit_type": "TP"
+    },
+    {
+      "date": "2025-02-21",
+      "symbol": "AZ",
+      "entry": 7.69,
+      "tp": 8.84,
+      "sl": 7.13,
+      "status": "WIN",
+      "return_pct": 7.31,
+      "days": 1,
+      "exit_price": 8.25,
+      "exit_type": "SL"
+    },
+    {
+      "date": "2025-02-11",
+      "symbol": "HSAI",
+      "entry": 18.82,
+      "tp": 21.64,
+      "sl": 18.82,
+      "status": "WIN",
+      "return_pct": 1.08,
+      "days": 7,
+      "exit_price": 19.02,
+      "exit_type": "TRAIL"
+    },
+    {
+      "date": "2025-02-07",
+      "symbol": "SMR",
+      "entry": 25.67,
+      "tp": 29.52,
+      "sl": 25.67,
+      "status": "BE",
+      "return_pct": 0.0,
+      "days": 2,
+      "exit_price": 25.67,
+      "exit_type": "SL"
+    },
+    {
+      "date": "2025-02-04",
+      "symbol": "BFLY",
+      "entry": 4.62,
+      "tp": 5.31,
+      "sl": 4.09,
+      "status": "LOSS",
+      "return_pct": -3.89,
+      "days": 3,
+      "exit_price": 4.44,
+      "exit_type": "SL"
+    },
+    {
+      "date": "2025-01-31",
+      "symbol": "CURI",
+      "entry": 2.37,
+      "tp": 2.73,
+      "sl": 2.37,
+      "status": "WIN",
+      "return_pct": 7.26,
+      "days": 2,
+      "exit_price": 2.55,
+      "exit_type": "TRAIL"
     }
   ]
 }
