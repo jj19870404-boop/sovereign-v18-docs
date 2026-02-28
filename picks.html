@@ -2048,7 +2048,7 @@ document.getElementById('picks-detail')?.addEventListener('click',function(e){
 <script>
 const scrollBtn = document.getElementById('scrollTop');
 if(scrollBtn) scrollBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
-window.addEventListener('scroll', () => { scrollBtn.classList.toggle('show', window.scrollY > 300); });
+if(scrollBtn) window.addEventListener('scroll', () => { scrollBtn.classList.toggle('show', window.scrollY > 300); });
 </script>
 </body>
 </html>

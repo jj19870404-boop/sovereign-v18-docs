@@ -778,7 +778,7 @@ loadTrack();
 <script>
 const scrollBtn = document.getElementById('scrollTop');
 if(scrollBtn) scrollBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
-window.addEventListener('scroll', () => {
+if(scrollBtn) window.addEventListener('scroll', () => {
     scrollBtn.classList.toggle('show', window.scrollY > 300);
 });
 
