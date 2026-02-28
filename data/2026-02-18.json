@@ -4,7 +4,7 @@
     {
       "rank": 1,
       "symbol": "KLRS",
-      "close": 10.239999771118164,
+      "close": 10.24,
       "entry_price": 10.25,
       "tp_price": 11.79,
       "sl_price": 9.14,
@@ -30,7 +30,7 @@
     {
       "rank": 2,
       "symbol": "MKSI",
-      "close": 250.36000061035156,
+      "close": 250.36,
       "entry_price": 250.61,
       "tp_price": 288.2,
       "sl_price": 232.23,
@@ -56,7 +56,7 @@
     {
       "rank": 3,
       "symbol": "NBR",
-      "close": 75.30000305175781,
+      "close": 75.3,
       "entry_price": 75.38,
       "tp_price": 86.69,
       "sl_price": 70.08,
@@ -82,7 +82,7 @@
     {
       "rank": 4,
       "symbol": "TWST",
-      "close": 54.91999816894531,
+      "close": 54.92,
       "entry_price": 54.97,
       "tp_price": 63.22,
       "sl_price": 50.84,
@@ -108,7 +108,7 @@
     {
       "rank": 5,
       "symbol": "TAYD",
-      "close": 87.26000213623047,
+      "close": 87.26,
       "entry_price": 87.35,
       "tp_price": 100.45,
       "sl_price": 81.89,
@@ -134,7 +134,7 @@
     {
       "rank": 6,
       "symbol": "PLX",
-      "close": 2.9800000190734863,
+      "close": 2.98,
       "entry_price": 2.98,
       "tp_price": 3.43,
       "sl_price": 2.77,
@@ -160,7 +160,7 @@
     {
       "rank": 7,
       "symbol": "DAN",
-      "close": 34.77000045776367,
+      "close": 34.77,
       "entry_price": 34.8,
       "tp_price": 40.02,
       "sl_price": 32.81,
@@ -186,7 +186,7 @@
     {
       "rank": 8,
       "symbol": "DHC",
-      "close": 6.650000095367432,
+      "close": 6.65,
       "entry_price": 6.66,
       "tp_price": 7.66,
       "sl_price": 6.3,
@@ -212,7 +212,7 @@
     {
       "rank": 9,
       "symbol": "FTI",
-      "close": 62.27000045776367,
+      "close": 62.27,
       "entry_price": 62.33,
       "tp_price": 71.68,
       "sl_price": 60.0,
@@ -238,7 +238,7 @@
     {
       "rank": 10,
       "symbol": "NOK",
-      "close": 7.429999828338623,
+      "close": 7.43,
       "entry_price": 7.44,
       "tp_price": 8.56,
       "sl_price": 7.11,
@@ -262,12 +262,12 @@
       "mom_5": 4.94
     }
   ],
-  "v23": {
+  "open_trades": [],
+  "recent_exits": [],
+  "performance": {},
+  "v25": {
     "mode": "TP",
     "label": "TP",
     "rolling_wr": 70.0
-  },
-  "open_trades": [],
-  "recent_exits": [],
-  "performance": {}
+  }
 }

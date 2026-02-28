@@ -4,7 +4,7 @@
     {
       "rank": 1,
       "symbol": "GLDD",
-      "close": 16.899999618530273,
+      "close": 16.9,
       "entry_price": 16.92,
       "tp_price": 19.46,
       "sl_price": 16.02,
@@ -30,7 +30,7 @@
     {
       "rank": 2,
       "symbol": "BBEM",
-      "close": 70.36000061035156,
+      "close": 70.36,
       "entry_price": 70.43,
       "tp_price": 80.99,
       "sl_price": 69.13,
@@ -54,12 +54,12 @@
       "mom_5": 3.64
     }
   ],
-  "v23": {
+  "open_trades": [],
+  "recent_exits": [],
+  "performance": {},
+  "v25": {
     "mode": "TP",
     "label": "TP",
     "rolling_wr": 70.0
-  },
-  "open_trades": [],
-  "recent_exits": [],
-  "performance": {}
+  }
 }

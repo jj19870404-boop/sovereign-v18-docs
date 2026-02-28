@@ -4,7 +4,7 @@
     {
       "rank": 1,
       "symbol": "BIOA",
-      "close": 19.56999969482422,
+      "close": 19.57,
       "entry_price": 19.59,
       "tp_price": 22.53,
       "sl_price": 17.46,
@@ -30,7 +30,7 @@
     {
       "rank": 2,
       "symbol": "NESR",
-      "close": 20.829999923706055,
+      "close": 20.83,
       "entry_price": 20.85,
       "tp_price": 23.98,
       "sl_price": 19.55,
@@ -56,7 +56,7 @@
     {
       "rank": 3,
       "symbol": "SYRE",
-      "close": 36.630001068115234,
+      "close": 36.63,
       "entry_price": 36.67,
       "tp_price": 42.17,
       "sl_price": 34.1,
@@ -82,7 +82,7 @@
     {
       "rank": 4,
       "symbol": "NBR",
-      "close": 68.0999984741211,
+      "close": 68.1,
       "entry_price": 68.17,
       "tp_price": 78.4,
       "sl_price": 62.89,
@@ -134,7 +134,7 @@
     {
       "rank": 6,
       "symbol": "ONTO",
-      "close": 217.22999572753906,
+      "close": 217.23,
       "entry_price": 217.45,
       "tp_price": 250.07,
       "sl_price": 201.72,
@@ -160,7 +160,7 @@
     {
       "rank": 7,
       "symbol": "CENX",
-      "close": 46.040000915527344,
+      "close": 46.04,
       "entry_price": 46.09,
       "tp_price": 53.0,
       "sl_price": 41.73,
@@ -186,7 +186,7 @@
     {
       "rank": 8,
       "symbol": "DHC",
-      "close": 6.550000190734863,
+      "close": 6.55,
       "entry_price": 6.56,
       "tp_price": 7.54,
       "sl_price": 6.24,
@@ -212,7 +212,7 @@
     {
       "rank": 9,
       "symbol": "BRZU",
-      "close": 112.30999755859375,
+      "close": 112.31,
       "entry_price": 112.42,
       "tp_price": 129.28,
       "sl_price": 105.11,
@@ -238,7 +238,7 @@
     {
       "rank": 10,
       "symbol": "NVRI",
-      "close": 18.920000076293945,
+      "close": 18.92,
       "entry_price": 18.94,
       "tp_price": 21.78,
       "sl_price": 18.38,
@@ -262,12 +262,12 @@
       "mom_5": -0.63
     }
   ],
-  "v23": {
+  "open_trades": [],
+  "recent_exits": [],
+  "performance": {},
+  "v25": {
     "mode": "TP",
     "label": "TP",
     "rolling_wr": 70.0
-  },
-  "open_trades": [],
-  "recent_exits": [],
-  "performance": {}
+  }
 }

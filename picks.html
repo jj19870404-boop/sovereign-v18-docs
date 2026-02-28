@@ -1562,7 +1562,7 @@ function renderOpenTrades(trades) {
 }
 
 // ── Build Operation Plan HTML ────────────────────
-function buildPlanHTML(p, v20) {
+function buildPlanHTML(p, vMode) {
     const entry = p.entry_price;
     const close = p.close;
     const gap_threshold = close * (1 - PARAMS.gap_reject_pct);
@@ -1570,11 +1570,11 @@ function buildPlanHTML(p, v20) {
     const trail_price = entry * (1 + PARAMS.trail_activation);
     const atr = p.atr || 0;
 
-    // Determine current mode from v20 data
-    const isTP = !v20 || v20.mode !== 'NoTP';
+    // Determine current mode from v25 data
+    const isTP = !vMode || vMode.mode !== 'NoTP';
     const modeLabel = isTP ? 'TP 模式' : 'NoTP 模式';
     const modeClass = isTP ? 'tp-mode' : 'notp-mode';
-    const rollingWR = v20 ? v20.rolling_wr : null;
+    const rollingWR = vMode ? vMode.rolling_wr : null;
 
     // Tiered ATR trail levels (NoTP mode)
     const t1 = entry * 1.03, t2 = entry * 1.06, t3 = entry * 1.10;
@@ -1771,7 +1771,7 @@ function renderNoPicks(date) {
 }
 
 // ── Signal Card (#1 Pick - Full Report) ──────────
-function renderSignal(pick, v20) {
+function renderSignal(pick, vMode) {
     if (!pick) {
         $('signal').innerHTML = '<div style="color:var(--text-dim);padding:16px">今日無候選股</div>';
         return;
@@ -1838,7 +1838,7 @@ function renderSignal(pick, v20) {
             ${mk('ATR', '$' + fmt(pick.atr))}
         </div>
 
-        ${buildPlanHTML(pick, v20)}
+        ${buildPlanHTML(pick, vMode)}
         ${buildQualityHTML(pick)}
         ${buildAdvancedHTML(pick)}
     </div>`;
@@ -1849,7 +1849,7 @@ function mk(label, value) {
 }
 
 // ── All Picks Detail Cards ──────────────────────
-function renderPicksDetail(picks, v20) {
+function renderPicksDetail(picks, vMode) {
     $('pick-count').textContent = `(${picks.length} 檔)`;
 
     if (!picks || picks.length === 0) {
@@ -1903,7 +1903,7 @@ function renderPicksDetail(picks, v20) {
                     <span class="d-lbl">SMA20斜率</span><span class="d-val">${fmt(p.sma20_slope, 4)}</span>
                     <span class="d-lbl">ATR</span><span class="d-val">$${fmt(p.atr)}</span>
                 </div>
-                ${buildPlanHTML(p, v20)}
+                ${buildPlanHTML(p, vMode)}
                 ${buildQualityHTML(p)}
                 ${buildAdvancedHTML(p)}
             </div>
