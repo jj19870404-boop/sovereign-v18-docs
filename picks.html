@@ -1091,6 +1091,8 @@ const PARAMS = {
     spy_rsi_overbought_vz: 1.3,
     day2_profit_lock: 0.035,
     day2_trail_distance: 0.020,
+    notp_breakeven_trigger: 0.008,
+    notp_trail_activation: 0.020,
 };
 
 let dateIndex = [];
@@ -1623,8 +1625,8 @@ function buildPlanHTML(p, vMode) {
         </ol>`;
 
     // NoTP mode steps (Tiered ATR Trail) — with concrete trigger prices
-    const notp_be = entry * 1.008;
-    const notp_trail_start = entry * 1.02;
+    const notp_be = entry * (1 + PARAMS.notp_breakeven_trigger);
+    const notp_trail_start = entry * (1 + PARAMS.notp_trail_activation);
     // Trail stop examples: if price reaches tier boundary, what's the exit trigger?
     const trail_at_t1 = t1 - atr20;  // trail stop if highest = t1
     const trail_at_t2 = t2 - atr15;  // trail stop if highest = t2
