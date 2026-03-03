@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-03T11:10:19+08:00",
+  "updated": "2026-03-04T06:00:43+08:00",
   "summary": {
     "total": 100,
     "wins": 67,
@@ -24,13 +24,13 @@
     {
       "date": "2026-03-02",
       "symbol": "INVX",
-      "entry": 25.81,
-      "tp": 29.68,
-      "sl": 23.99,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 25.81
+      "entry": 25.68,
+      "tp": 29.53,
+      "sl": 23.86,
+      "status": "OPEN",
+      "return_pct": 0.16,
+      "days": 1,
+      "current": 25.72
     },
     {
       "date": "2026-02-27",
@@ -39,9 +39,9 @@
       "tp": 30.34,
       "sl": 24.56,
       "status": "OPEN",
-      "return_pct": 0.57,
-      "days": 1,
-      "current": 26.53
+      "return_pct": -2.5,
+      "days": 2,
+      "current": 25.72
     },
     {
       "date": "2026-02-26",
@@ -50,9 +50,9 @@
       "tp": 30.45,
       "sl": 24.66,
       "status": "OPEN",
-      "return_pct": 0.19,
-      "days": 2,
-      "current": 26.53
+      "return_pct": -2.87,
+      "days": 3,
+      "current": 25.72
     },
     {
       "date": "2026-02-25",
