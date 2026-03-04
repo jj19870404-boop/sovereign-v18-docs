@@ -21,162 +21,44 @@
 <link rel="canonical" href="https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html">
 <link rel="icon" type="image/png" href="images/sovereign_v18_20260211.png">
 <link rel="apple-touch-icon" href="images/sovereign_v18_20260211.png">
-<meta name="theme-color" content="#0f1117">
+<meta name="theme-color" content="#0b0d13">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="data/index.json" as="fetch" crossorigin>
+<link rel="stylesheet" href="style.css">
 <style>
-:root {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --surface2: #222633;
-    --border: #2d3148;
-    --text: #e1e4ed;
-    --text-dim: #8b90a5;
-    --accent: #6c8cff;
-    --accent2: #4ecdc4;
-    --green: #4ecb71;
-    --red: #ff6b6b;
-    --yellow: #ffd93d;
-    --orange: #ff9f43;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 60px; }
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    font-size: 15px;
-    -webkit-text-size-adjust: 100%;
-    overscroll-behavior: contain;
-}
-.container { max-width: 1080px; margin: 0 auto; padding: 24px; }
-
-/* ── Top Nav ── */
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 24px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    gap: 8px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(15, 17, 23, 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    margin-left: -24px;
-    margin-right: -24px;
-}
-.top-nav a {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.9em;
-}
-.top-nav a:hover { text-decoration: underline; }
-.top-nav .brand {
-    font-weight: 700;
-    color: var(--text-dim);
-    font-size: 0.9em;
-}
-.top-nav .brand:hover { color: var(--text); text-decoration: none; }
-.nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
-.nav-links a.active { color: var(--text); font-weight: 600; }
-.menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5em; cursor: pointer; padding: 4px 8px; }
-
-/* ── Stale Banner ── */
-.stale-banner {
-    background: linear-gradient(135deg, #ff9f43, #ee5a24);
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 8px;
-    margin-bottom: 16px;
-    position: relative;
-    display: none;
-}
-.stale-banner .close-btn {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: rgba(255,255,255,0.8);
-    font-size: 18px;
-    cursor: pointer;
-    padding: 4px 8px;
-}
-.stale-banner .close-btn:hover { color: #fff; }
-
-/* ── Title ── */
-h1 {
-    font-size: 1.8em;
-    text-align: center;
-    margin-bottom: 24px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* ── Date Navigation ── */
-.date-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 28px;
-}
-.date-nav button {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--accent);
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    min-height: 44px;
-    border-radius: 8px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-.date-nav button:hover:not(:disabled) { background: var(--surface2); }
-.date-nav button:disabled { opacity: 0.3; cursor: default; }
-.date-label {
-    font-size: 1.3em;
-    font-weight: 700;
-    color: var(--text);
-    min-width: 160px;
-    text-align: center;
-}
+/* ── Picks-specific styles ── */
+.container { max-width: 1080px; }
+h1 { text-align: center; }
 
 /* ── Dashboard ── */
 .dashboard {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
+    gap: 14px;
     margin-bottom: 24px;
 }
 .stat-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px;
+    border-radius: var(--radius-lg);
+    padding: 16px;
     text-align: center;
+    transition: transform var(--duration-normal) var(--ease-out), border-color var(--duration-normal), box-shadow var(--duration-normal);
 }
+.stat-card:hover { transform: translateY(-2px); border-color: rgba(124,141,255,0.2); box-shadow: var(--shadow-glow); }
 .stat-label {
-    font-size: 0.8em;
+    font-size: var(--text-xs);
     color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
     margin-bottom: 4px;
 }
 .stat-value {
-    font-size: 1.35em;
+    font-size: var(--text-xl);
     font-weight: 700;
+    font-variant-numeric: tabular-nums;
 }
 .stat-desc {
     font-size: 0.7em;
@@ -383,7 +265,7 @@ h2 .dim { color: var(--text-dim); font-size: 0.85em; font-weight: 400; }
 .signal-card {
     background: var(--surface);
     border: 2px solid var(--accent);
-    border-radius: 14px;
+    border-radius: var(--radius-lg);
     padding: 24px;
     position: relative;
     overflow: hidden;
@@ -807,30 +689,9 @@ h2 .dim { color: var(--text-dim); font-size: 0.85em; font-weight: 400; }
 .detail-2col .d-val { text-align: right; font-variant-numeric: tabular-nums; }
 
 /* ── Picks Table ── */
-.table-wrap {
-    overflow-x: auto;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.88em;
-    white-space: nowrap;
-}
-th {
-    background: var(--surface2);
-    color: var(--accent);
-    padding: 10px 12px;
-    text-align: left;
-    font-weight: 600;
-    border-bottom: 2px solid var(--border);
-}
-td {
-    padding: 9px 12px;
-    border-bottom: 1px solid var(--border);
-}
-tr:hover td { background: rgba(108,140,255,0.05); }
+.table-wrap { border: 1px solid var(--border); }
+table { white-space: nowrap; }
+th { color: var(--accent); text-align: left; }
 .num { text-align: right; font-variant-numeric: tabular-nums; }
 .grade-badge {
     display: inline-block;
@@ -842,44 +703,18 @@ tr:hover td { background: rgba(108,140,255,0.05); }
 tr:first-child td { background: rgba(108,140,255,0.08); }
 
 /* ── Empty / Loading State ── */
-.state-msg {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--text-dim);
-}
-.state-msg .icon { font-size: 2.5em; margin-bottom: 12px; }
 .state-msg p { font-size: 1.05em; }
-
-/* ── Footer ── */
-.footer {
-    margin-top: 48px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-    text-align: center;
-    color: var(--text-dim);
-    font-size: 0.85em;
-}
-.footer a {
-    color: var(--accent);
-    text-decoration: none;
-}
-.footer a:hover { text-decoration: underline; }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-    .container { padding: 16px; }
     .dashboard { grid-template-columns: repeat(3, 1fr); }
     .stat-desc { font-size: 0.65em; }
     .signal-prices { grid-template-columns: repeat(2, 1fr); }
     .metrics-grid { grid-template-columns: repeat(3, 1fr); }
     .trades-grid { grid-template-columns: 1fr; }
     .pick-detail-prices { margin-left: 0; margin-top: 6px; }
-    .detail-2col { grid-template-columns: 1fr 1fr; }
     .exit-card { flex-wrap: wrap; gap: 8px; }
     .signal-risk { font-size: 0.8em; }
-    .menu-toggle { display: block; }
-    .nav-links { display: none; width: 100%; flex-direction: column; gap: 8px; padding-top: 8px; }
-    .nav-links.open { display: flex; }
 }
 @media (max-width: 480px) {
     .container { padding: 12px; }
@@ -898,58 +733,12 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
     .quick-ref-row .qr-label { min-width: auto; }
 }
 
-/* ── Scroll to Top ── */
-.scroll-top {
-    position: fixed; bottom: 28px; right: 28px; width: 44px; height: 44px;
-    border-radius: 50%; background: var(--accent); color: var(--bg); border: none;
-    font-size: 1.3em; cursor: pointer; opacity: 0; visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s, transform 0.2s; z-index: 100;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;
+/* ── Signal Card glow ── */
+.signal-card {
+    box-shadow: 0 0 30px rgba(124,141,255,0.08);
 }
-.scroll-top.show { opacity: 1; visibility: visible; }
-.scroll-top:hover { transform: scale(1.1); }
-.skip-nav {
-    position: absolute;
-    left: -9999px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    z-index: 999;
-    padding: 0.5rem 1rem;
-    background: var(--accent);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-}
-.skip-nav:focus {
-    position: fixed;
-    left: 1rem;
-    top: 1rem;
-    width: auto;
-    height: auto;
-    overflow: visible;
-}
-
-/* ── Accessibility ── */
-:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-    border-radius: 4px;
-}
-:focus:not(:focus-visible) { outline: none; }
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        transition-duration: 0.01ms !important;
-    }
-}
-@media print {
-    body { background: #fff !important; color: #000 !important; }
-    .top-nav, .scroll-top, .skip-nav, .menu-toggle { display: none !important; }
-    .container { max-width: 100%; padding: 0; }
-    .card { border: 1px solid #ccc; break-inside: avoid; }
-    a { color: #000 !important; }
-    table { font-size: 0.85em; }
+.signal-card:hover {
+    box-shadow: 0 0 40px rgba(124,141,255,0.15);
 }
 </style>
 <script type="application/ld+json">
@@ -959,7 +748,7 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/"},{"@type":"ListItem","position":2,"name":"每日選股","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html"}]}
 </script>
 </head>
-<body>
+<body data-page="picks">
 <a href="#main-content" class="skip-nav">跳至主要內容</a>
 <div class="container">
 
@@ -2048,19 +1837,6 @@ window.addEventListener('hashchange', () => {
     }
 });
 
-// ── Site Info: 更新時間戳 + Nav Brand ──
-// Mobile hamburger menu toggle
-document.querySelector('.menu-toggle')?.addEventListener('click', function() {
-    const nav = document.querySelector('.nav-links');
-    const open = nav.classList.toggle('open');
-    this.setAttribute('aria-expanded', open);
-    this.innerHTML = open ? '&times;' : '&#9776;';
-});
-fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
-    const b=document.querySelector('.brand');if(b)b.textContent=info.label;
-    const ts=info.updated&&info.updated.picks;
-    if(ts){const d=new Date(ts);document.getElementById('site-updated').textContent='最後更新：'+d.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});}
-}).catch(()=>{});
 document.querySelector('.close-btn')?.addEventListener('click',function(){this.parentElement.style.display='none';});
 document.getElementById('btn-prev')?.addEventListener('click',()=>navigate(-1));
 document.getElementById('btn-next')?.addEventListener('click',()=>navigate(1));
@@ -2072,10 +1848,6 @@ document.getElementById('picks-detail')?.addEventListener('click',function(e){
 </script>
 </main>
 <button class="scroll-top" id="scrollTop" aria-label="回到頂部">&uarr;</button>
-<script>
-const scrollBtn = document.getElementById('scrollTop');
-if(scrollBtn) scrollBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
-if(scrollBtn) window.addEventListener('scroll', () => { scrollBtn.classList.toggle('show', window.scrollY > 300); });
-</script>
+<script src="premium.js"></script>
 </body>
 </html>

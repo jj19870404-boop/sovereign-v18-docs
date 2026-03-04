@@ -21,267 +21,144 @@
 <link rel="canonical" href="https://jj19870404-boop.github.io/sovereign-v18-docs/track.html">
 <link rel="icon" type="image/png" href="images/sovereign_v18_20260211.png">
 <link rel="apple-touch-icon" href="images/sovereign_v18_20260211.png">
-<meta name="theme-color" content="#0f1117">
+<meta name="theme-color" content="#0b0d13">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="data/track.json" as="fetch" crossorigin>
+<link rel="stylesheet" href="style.css">
 <style>
-:root {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --surface2: #222633;
-    --border: #2d3148;
-    --text: #e1e4ed;
-    --text-dim: #8b90a5;
-    --accent: #6c8cff;
-    --accent2: #4ecdc4;
-    --green: #4ecb71;
-    --red: #ff6b6b;
-    --yellow: #ffd93d;
-    --orange: #ff9f43;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overscroll-behavior: contain; scroll-padding-top: 60px; }
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    font-size: 15px;
-    -webkit-text-size-adjust: 100%;
-}
-.container { max-width: 960px; margin: 0 auto; padding: 24px; }
-
-/* ── Top Nav ── */
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 24px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    gap: 8px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(15, 17, 23, 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    margin-left: -24px;
-    margin-right: -24px;
-}
-.top-nav a {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.9em;
-}
-.top-nav a:hover { text-decoration: underline; }
-.top-nav .brand {
-    font-weight: 700;
-    color: var(--text-dim);
-    font-size: 0.9em;
-}
-.top-nav .brand:hover { color: var(--text); text-decoration: none; }
-.nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
-.nav-links a.active { color: var(--text); font-weight: 600; }
-.menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5em; cursor: pointer; padding: 4px 8px; }
-
-/* ── Stale Banner ── */
-.stale-banner {
-    background: linear-gradient(135deg, #ff9f43, #ee5a24);
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 8px;
-    margin-bottom: 16px;
-    position: relative;
-    display: none;
-}
-.stale-banner .close-btn {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: rgba(255,255,255,0.8);
-    font-size: 18px;
-    cursor: pointer;
-    padding: 4px 8px;
-}
-.stale-banner .close-btn:hover { color: #fff; }
-
-/* ── Title ── */
-h1 {
-    font-size: 1.8em;
-    text-align: center;
-    margin-bottom: 8px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-.subtitle {
-    text-align: center;
-    color: var(--text-dim);
-    font-size: 0.9em;
-    margin-bottom: 24px;
-}
-
-/* ── Summary Cards ── */
+/* ── Track-specific styles ── */
 .summary {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 14px;
     margin-bottom: 28px;
 }
 .summary-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
+    border-radius: var(--radius-lg);
+    padding: 18px;
     text-align: center;
+    transition: transform var(--duration-normal) var(--ease-out),
+                border-color var(--duration-normal),
+                box-shadow var(--duration-normal);
+}
+.summary-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(124,141,255,0.2);
+    box-shadow: var(--shadow-glow);
 }
 .summary-card .label {
-    font-size: 0.75em;
+    font-size: var(--text-xs);
     color: var(--text-dim);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 4px;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    margin-bottom: 6px;
 }
 .summary-card .value {
-    font-size: 1.6em;
+    font-size: var(--text-2xl);
     font-weight: 700;
+    font-variant-numeric: tabular-nums;
 }
-.summary-card .value.green { color: var(--green); }
-.summary-card .value.red { color: var(--red); }
-.summary-card .value.accent { color: var(--accent); }
 
-/* ── Table ── */
+/* ── Track Table ── */
 .track-table {
     width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9em;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--text-sm);
 }
 .track-table th {
-    background: var(--surface);
+    background: var(--surface2);
     color: var(--text-dim);
-    font-size: 0.75em;
+    font-size: var(--text-xs);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.06em;
+    font-weight: 600;
     padding: 10px 8px;
     text-align: left;
     border-bottom: 2px solid var(--border);
+    white-space: nowrap;
 }
 .track-table td {
     padding: 10px 8px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-subtle);
     vertical-align: middle;
+    color: var(--text-secondary);
 }
+.track-table tr { transition: background var(--duration-fast); }
 .track-table tr:hover { background: var(--surface); }
-.track-table .sym {
-    font-weight: 700;
-    color: var(--accent);
+.track-table .sym { font-weight: 700; color: var(--accent); }
+.track-table .mono { font-family: var(--font-mono); font-size: 0.9em; }
+.table-wrap .track-table { min-width: 600px; }
+.track-table td:nth-child(3), .track-table th:nth-child(3) {
+    position: sticky; left: 0; z-index: 2; background: var(--bg);
 }
-.track-table .mono {
-    font-family: 'SF Mono', 'Consolas', monospace;
-    font-size: 0.9em;
-}
+.track-table tr:hover td:nth-child(3) { background: var(--surface); }
+.track-table td:nth-child(4), .track-table th:nth-child(4) { text-align: center; }
 
 /* ── Status Badges ── */
 .badge {
     display: inline-block;
     padding: 2px 10px;
-    border-radius: 12px;
-    font-size: 0.8em;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
     font-weight: 600;
 }
-.badge-win {
-    background: rgba(78, 203, 113, 0.15);
-    color: var(--green);
-}
-.badge-loss {
-    background: rgba(255, 107, 107, 0.15);
-    color: var(--red);
-}
-.badge-open {
-    background: rgba(255, 217, 61, 0.15);
-    color: var(--yellow);
-}
-.badge-be {
-    background: rgba(139, 144, 165, 0.15);
-    color: var(--text-dim);
-}
-.badge-pending {
-    background: rgba(108, 140, 255, 0.15);
-    color: var(--accent);
-}
+.badge-win { background: rgba(52,211,153,0.12); color: var(--green); box-shadow: inset 0 0 0 1px rgba(52,211,153,0.2); }
+.badge-loss { background: rgba(248,113,113,0.12); color: var(--red); box-shadow: inset 0 0 0 1px rgba(248,113,113,0.2); }
+.badge-open { background: rgba(251,191,36,0.12); color: var(--yellow); box-shadow: inset 0 0 0 1px rgba(251,191,36,0.2); }
+.badge-be { background: rgba(107,113,148,0.15); color: var(--text-dim); box-shadow: inset 0 0 0 1px rgba(107,113,148,0.2); }
+.badge-pending { background: var(--accent-dim); color: var(--accent); box-shadow: inset 0 0 0 1px rgba(124,141,255,0.2); }
 
-/* ── Return Color ── */
+/* ── Return Colors ── */
 .ret-pos { color: var(--green); font-weight: 600; }
 .ret-neg { color: var(--red); font-weight: 600; }
 .ret-zero { color: var(--text-dim); }
 
-/* ── Grade Badges ── */
+/* ── Grade Badges (Track page — override style.css) ── */
 .grade {
     display: inline-block;
     padding: 2px 8px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-size: 0.8em;
     font-weight: 700;
     min-width: 28px;
     text-align: center;
 }
 .grade-S {
-    background: linear-gradient(135deg, #ffd700, #ffaa00);
-    color: #1a1a00;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: #1a1510;
+    box-shadow: 0 0 8px rgba(212,168,67,0.3);
 }
-.grade-A {
-    background: rgba(78, 203, 113, 0.2);
-    color: var(--green);
-    border: 1px solid rgba(78, 203, 113, 0.3);
-}
-.grade-B {
-    background: rgba(108, 140, 255, 0.15);
-    color: var(--accent);
-    border: 1px solid rgba(108, 140, 255, 0.25);
-}
-.grade-C {
-    background: rgba(255, 159, 67, 0.15);
-    color: var(--orange);
-    border: 1px solid rgba(255, 159, 67, 0.25);
-}
-.grade-D {
-    background: rgba(255, 107, 107, 0.15);
-    color: var(--red);
-    border: 1px solid rgba(255, 107, 107, 0.25);
-}
+.grade-A { background: rgba(52,211,153,0.15); color: var(--green); border: 1px solid rgba(52,211,153,0.25); }
+.grade-B { background: var(--accent-dim); color: var(--accent-light); border: 1px solid rgba(124,141,255,0.2); }
+.grade-C { background: rgba(251,191,36,0.12); color: var(--yellow); border: 1px solid rgba(251,191,36,0.2); }
+.grade-D { background: rgba(248,113,113,0.15); color: var(--red); border: 1px solid rgba(248,113,113,0.2); }
 
 /* ── Grade Stats Section ── */
 .grade-stats {
     margin-bottom: 24px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: var(--radius-lg);
+    padding: 24px;
 }
-.grade-stats h3 {
-    font-size: 1em;
-    color: var(--text);
-    margin-bottom: 12px;
-}
+.grade-stats h3 { font-size: var(--text-base); color: var(--text); margin-bottom: 14px; }
 .grade-stats-table {
     width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85em;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--text-sm);
 }
 .grade-stats-table th {
     background: var(--surface2);
     color: var(--text-dim);
-    font-size: 0.75em;
+    font-size: var(--text-xs);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.06em;
     padding: 8px 6px;
     text-align: center;
     border-bottom: 1px solid var(--border);
@@ -289,146 +166,22 @@ h1 {
 .grade-stats-table td {
     padding: 8px 6px;
     text-align: center;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-subtle);
 }
-.grade-stats-note {
-    color: var(--text-dim);
-    font-size: 0.78em;
-    margin-top: 10px;
-}
+.grade-stats-note { color: var(--text-dim); font-size: var(--text-xs); margin-top: 12px; }
 
-/* ── Footer ── */
-.footer {
-    text-align: center;
-    margin-top: 32px;
-    padding: 16px;
-    color: var(--text-dim);
-    font-size: 0.8em;
-    border-top: 1px solid var(--border);
-}
-
-/* ── Table Wrap ── */
-.table-wrap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-}
-.table-wrap .track-table {
-    min-width: 600px;
-}
-/* Sticky symbol + grade columns on horizontal scroll */
-.track-table td:nth-child(3),
-.track-table th:nth-child(3) {
-    position: sticky;
-    left: 0;
-    z-index: 2;
-    background: var(--bg);
-}
-.track-table tr:hover td:nth-child(3) {
-    background: var(--surface);
-}
-.track-table td:nth-child(4),
-.track-table th:nth-child(4) {
-    text-align: center;
-}
-
-/* ── Loading ── */
-.loading {
-    text-align: center;
-    padding: 60px;
-    color: var(--text-dim);
-}
-
-/* ── Scroll to Top ── */
-.scroll-top {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    font-size: 1.3em;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
-    z-index: 100;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.scroll-top.show { opacity: 1; visibility: visible; }
-.scroll-top:hover { transform: scale(1.1); }
-.skip-nav {
-    position: absolute;
-    left: -9999px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    z-index: 999;
-    padding: 0.5rem 1rem;
-    background: var(--accent);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-}
-.skip-nav:focus {
-    position: fixed;
-    left: 1rem;
-    top: 1rem;
-    width: auto;
-    height: auto;
-    overflow: visible;
-}
-
-/* ── Responsive ── */
 @media (max-width: 768px) {
-    .container { padding: 16px; }
     .summary { gap: 8px; }
-    .summary-card .value { font-size: 1.3em; }
+    .summary-card .value { font-size: var(--text-xl); }
     .summary-card { padding: 12px; }
-    .track-table { font-size: 0.85em; }
+    .track-table { font-size: var(--text-xs); }
     .track-table th, .track-table td { padding: 8px 6px; }
-    .menu-toggle { display: block; }
-    .nav-links { display: none; width: 100%; flex-direction: column; gap: 8px; padding-top: 8px; }
-    .nav-links.open { display: flex; }
 }
 @media (max-width: 600px) {
     .summary { grid-template-columns: repeat(2, 1fr); }
-    h1 { font-size: 1.4em; }
-    .track-table { font-size: 0.78em; }
     .track-table th, .track-table td { padding: 6px 3px; }
     .hide-mobile { display: none; }
-    .scroll-top { bottom: 16px; right: 16px; }
-    .badge { padding: 2px 6px; font-size: 0.7em; }
-}
-
-/* ── Accessibility ── */
-:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-    border-radius: 4px;
-}
-:focus:not(:focus-visible) { outline: none; }
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        transition-duration: 0.01ms !important;
-    }
-    html { scroll-behavior: auto; }
-}
-@media print {
-    body { background: #fff !important; color: #000 !important; }
-    .top-nav, .scroll-top, .skip-nav, .menu-toggle { display: none !important; }
-    .container { max-width: 100%; padding: 0; }
-    .card { border: 1px solid #ccc; break-inside: avoid; }
-    a { color: #000 !important; }
-    table { font-size: 0.85em; }
+    .badge { padding: 2px 6px; }
 }
 </style>
 <script type="application/ld+json">
@@ -438,7 +191,7 @@ h1 {
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/"},{"@type":"ListItem","position":2,"name":"選股追蹤","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/track.html"}]}
 </script>
 </head>
-<body>
+<body data-page="track">
 <a href="#main-content" class="skip-nav">跳至主要內容</a>
 <div class="container">
 
@@ -457,17 +210,17 @@ h1 {
 </div>
 
 <main id="main-content" role="main">
-<noscript><div style="padding:20px;text-align:center;color:#8b90a5;background:#1a1d27;border-radius:8px;margin:20px 0;">本頁面需要 JavaScript 才能顯示追蹤數據。請啟用 JavaScript 後重新整理。</div></noscript>
+<noscript><div>本頁面需要 JavaScript 才能顯示追蹤數據。請啟用 JavaScript 後重新整理。</div></noscript>
 <div class="stale-banner" id="stale-banner">
     <span id="stale-msg"></span>
     <button class="close-btn" aria-label="關閉">&times;</button>
 </div>
 
-<h1>選股歷史追蹤</h1>
-<p class="subtitle" id="subtitle">載入中...</p>
+<h1 class="reveal">選股歷史追蹤</h1>
+<p class="subtitle reveal reveal-delay-1" id="subtitle" style="text-align:center">載入中...</p>
 
 <!-- Summary -->
-<div class="summary" id="summary">
+<div class="summary reveal reveal-delay-2" id="summary">
     <div class="summary-card"><div class="label">勝率</div><div class="value" id="s-wr">--</div></div>
     <div class="summary-card"><div class="label">勝 / 敗</div><div class="value" id="s-wl">--</div></div>
     <div class="summary-card"><div class="label">平均報酬</div><div class="value" id="s-avg">--</div></div>
@@ -475,9 +228,9 @@ h1 {
 </div>
 
 <!-- Grade Stats -->
-<div class="grade-stats" id="grade-stats" role="region" aria-live="polite" aria-label="等級統計" style="display:none;">
+<div class="grade-stats reveal" id="grade-stats" role="region" aria-live="polite" aria-label="等級統計" style="display:none;">
     <h3>評級勝率參考 — V25 回測統計 (全美股 11,000+, 452 筆交易, 原始 ATR 止損距離分級)</h3>
-    <div style="overflow-x:auto">
+    <div class="table-wrap">
     <table class="grade-stats-table" id="grade-stats-table">
         <thead><tr>
             <th>評級</th><th>SL% 條件</th><th>交易數</th><th>勝率</th><th>停利率</th><th>平均報酬</th><th>說明</th>
@@ -487,7 +240,7 @@ h1 {
     </div>
 
     <h3 style="margin-top:20px">各年度評級勝率</h3>
-    <div style="overflow-x:auto">
+    <div class="table-wrap">
     <table class="grade-stats-table" id="yearly-grade-table">
         <thead><tr>
             <th>年度</th><th>S</th><th>A</th><th>B</th><th>C</th><th>D</th><th>總計</th>
@@ -510,19 +263,22 @@ h1 {
 
 <!-- Table -->
 <div id="table-container" role="region" aria-live="polite" aria-label="追蹤資料">
-    <p class="loading">載入資料中...</p>
+    <div class="loading"><div class="spinner"></div>載入資料中...</div>
 </div>
 
 <div class="footer">
-    <a href="index.html" style="color:var(--accent);text-decoration:none">&larr; 系統文件</a> &nbsp;|&nbsp;
-    <a href="picks.html" style="color:var(--accent);text-decoration:none">每日選股</a> &nbsp;|&nbsp;
-    <a href="news.html" style="color:var(--accent);text-decoration:none">整點快報 &rarr;</a>
+    <a href="index.html">&larr; 系統文件</a> &nbsp;|&nbsp;
+    <a href="picks.html">每日選股</a> &nbsp;|&nbsp;
+    <a href="news.html">整點快報 &rarr;</a>
     <p style="margin-top:8px">Sovereign V25 — 每日 #1 選股後續追蹤</p>
     <p style="margin-top:4px">資料每日自動更新 | 進場價為訊號日次日開盤模擬進場</p>
-    <p id="site-updated" style="margin-top:6px;font-size:0.8em;color:var(--text-dim)"></p>
+    <p id="site-updated" style="margin-top:6px"></p>
 </div>
 
+</main>
 </div>
+
+<button class="scroll-top" id="scrollTop" aria-label="回到頂部">&uarr;</button>
 
 <script>
 const DATA_URL = 'data/track.json';
@@ -539,8 +295,6 @@ function safeFmt(n) {
 }
 
 // ── Grade System ──────────────────────────────
-// SL% = (Entry - SL) / Entry × 100
-// S: SL% <= 5% | A: SL% <= 8% | B: SL% <= 12% | C: SL% <= 18% | D: SL% > 18%
 function calcGrade(entry, tp, sl) {
     if (!entry || entry <= 0 || !sl || sl <= 0) return { slPct: 0, grade: '?' };
     const slPct = Math.max(0, (entry - sl) / entry * 100);
@@ -553,9 +307,7 @@ function calcGrade(entry, tp, sl) {
     return { slPct: Math.round(slPct * 10) / 10, grade };
 }
 
-// ── Historical Grade Stats (V25 全美股回測, 452 trades) ──
-// Grade = SL% from original ATR-based stop: SL = entry - 1.3×ATR (capped at -20%)
-// S(<=5%) | A(<=8%) | B(<=12%) | C(<=18%) | D(>18%)
+// ── Historical Grade Stats (V25, 452 trades) ──
 const HIST = {
     overall: {
         S: { count: 31, wins: 13, wr: 41.9, avg_ret: 0.73, tp_rate: 6 },
@@ -585,7 +337,6 @@ const GRADE_META = {
 
 function checkTrackFreshness(updated) {
     if (!updated) return;
-    // If no timezone info, treat as local time explicitly (Python isoformat() has no tz)
     const raw = String(updated);
     const hasZ = raw.endsWith('Z') || /[+-]\d{2}:\d{2}$/.test(raw);
     const ts = hasZ ? new Date(raw) : new Date(raw + '+08:00');
@@ -637,7 +388,7 @@ function renderSummary(s) {
 
     const beStr = s.be ? ` / <span style="color:var(--text-dim)">${s.be}BE</span>` : '';
     document.getElementById('s-wl').innerHTML =
-        `<span style="color:var(--green)">${s.wins}</span> / <span style="color:var(--red)">${s.losses}</span>${beStr}`;
+        `<span class="green">${s.wins}</span> / <span class="red">${s.losses}</span>${beStr}`;
 
     const avgEl = document.getElementById('s-avg');
     avgEl.textContent = (s.avg_return >= 0 ? '+' : '') + s.avg_return + '%';
@@ -719,7 +470,6 @@ function renderGradeStats(tracks) {
     const grades = ['S', 'A', 'B', 'C', 'D'];
     let html = '';
 
-    // ── Overall stats from historical backtest ──
     grades.forEach(g => {
         const h = HIST.overall[g];
         const wrClass = h.count > 0 ? (h.wr >= 65 ? 'ret-pos' : h.wr < 55 ? 'ret-neg' : '') : '';
@@ -736,25 +486,16 @@ function renderGradeStats(tracks) {
         </tr>`;
     });
 
-    // Total row
     html += `<tr style="font-weight:700;border-top:2px solid var(--border)">
-        <td>ALL</td>
-        <td></td>
-        <td>${HIST.total_trades}</td>
-        <td>66.8%</td>
-        <td>23%</td>
-        <td>+4.11%</td>
+        <td>ALL</td><td></td><td>${HIST.total_trades}</td>
+        <td>66.8%</td><td>23%</td><td>+4.11%</td>
         <td style="font-size:0.78em;color:var(--text-dim);text-align:left">2021-2026 全部交易 (* 樣本 < 10)</td>
     </tr>`;
-
     tbody.innerHTML = html;
 
-    // ── Yearly breakdown ──
     const yearlyBody = document.getElementById('yearly-grade-body');
     let yearHtml = '';
-    const years = ['2021', '2022', '2023', '2024', '2025', '2026'];
-
-    years.forEach(yr => {
+    ['2021','2022','2023','2024','2025','2026'].forEach(yr => {
         const yd = HIST.yearly[yr];
         yearHtml += `<tr><td style="font-weight:600">${yr}</td>`;
         grades.forEach(g => {
@@ -768,40 +509,15 @@ function renderGradeStats(tracks) {
         });
         const t = yd.total;
         const tCls = t.wr >= 65 ? 'ret-pos' : t.wr < 50 ? 'ret-neg' : '';
-        yearHtml += `<td class="${tCls}" style="font-weight:600">${t.wr.toFixed(1)}% <span style="color:var(--text-dim);font-size:0.8em">(${t.n})</span></td>`;
-        yearHtml += `</tr>`;
+        yearHtml += `<td class="${tCls}" style="font-weight:600">${t.wr.toFixed(1)}% <span style="color:var(--text-dim);font-size:0.8em">(${t.n})</span></td></tr>`;
     });
-
     yearlyBody.innerHTML = yearHtml;
     container.style.display = 'block';
 }
 
 loadTrack();
-</script>
-
-<button class="scroll-top" id="scrollTop" aria-label="回到頂部">&uarr;</button>
-<script>
-const scrollBtn = document.getElementById('scrollTop');
-if(scrollBtn) scrollBtn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
-if(scrollBtn) window.addEventListener('scroll', () => {
-    scrollBtn.classList.toggle('show', window.scrollY > 300);
-});
-
-// ── Site Info: 更新時間戳 + Nav Brand ──
-// Mobile hamburger menu toggle
-document.querySelector('.menu-toggle')?.addEventListener('click', function() {
-    const nav = document.querySelector('.nav-links');
-    const open = nav.classList.toggle('open');
-    this.setAttribute('aria-expanded', open);
-    this.innerHTML = open ? '&times;' : '&#9776;';
-});
-fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
-    const b=document.querySelector('.brand');if(b)b.textContent=info.label;
-    const ts=info.updated&&info.updated.track;
-    if(ts){const d=new Date(ts);document.getElementById('site-updated').textContent='最後更新：'+d.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});}
-}).catch(()=>{});
 document.querySelector('.close-btn')?.addEventListener('click',function(){this.parentElement.style.display='none';});
 </script>
-</main>
+<script src="premium.js"></script>
 </body>
 </html>

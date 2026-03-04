@@ -21,464 +21,123 @@
 <link rel="canonical" href="https://jj19870404-boop.github.io/sovereign-v18-docs/">
 <link rel="icon" type="image/png" href="images/sovereign_v18_20260211.png">
 <link rel="apple-touch-icon" href="images/sovereign_v18_20260211.png">
-<meta name="theme-color" content="#0f1117">
+<meta name="theme-color" content="#0b0d13">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="data/site-info.json" as="fetch" crossorigin>
+<link rel="stylesheet" href="style.css">
 <style>
-:root {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --surface2: #222633;
-    --border: #2d3148;
-    --text: #e1e4ed;
-    --text-dim: #8b90a5;
-    --accent: #6c8cff;
-    --accent2: #4ecdc4;
-    --green: #4ecb71;
-    --red: #ff6b6b;
-    --yellow: #ffd93d;
-    --orange: #ff9f43;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overscroll-behavior: contain; }
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans TC', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    font-size: 16px;
-    -webkit-text-size-adjust: 100%;
-}
-.container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
-
-/* ── Top Nav ── */
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 24px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    gap: 8px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(15, 17, 23, 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    margin-left: -24px;
-    margin-right: -24px;
-}
-.top-nav a {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.9em;
-    padding: 4px 0;
-}
-.top-nav a:hover { text-decoration: underline; }
-.top-nav .brand {
-    font-weight: 700;
-    color: var(--text-dim);
-    font-size: 0.9em;
-}
-.top-nav .brand:hover { color: var(--text); text-decoration: none; }
-.top-nav .brand.active { color: var(--text); }
-.nav-links { display: flex; gap: 16px; flex-wrap: wrap; }
-.nav-links a.active { color: var(--text); font-weight: 600; }
-
-/* ── Scroll to Top ── */
-.scroll-top {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    font-size: 1.3em;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
-    z-index: 100;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.scroll-top.show { opacity: 1; visibility: visible; }
-.scroll-top:hover { transform: scale(1.1); }
-
-/* ── Skip Nav ── */
-.skip-nav {
-    position: absolute;
-    left: -9999px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    z-index: 999;
-    padding: 0.5rem 1rem;
-    background: var(--accent);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-}
-.skip-nav:focus {
-    position: fixed;
-    left: 1rem;
-    top: 1rem;
-    width: auto;
-    height: auto;
-    overflow: visible;
-}
-
-h1 {
-    font-size: 2.2em;
-    text-align: center;
-    margin-bottom: 8px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+/* ── Index page-specific ── */
+h1 { text-align: center; }
 .subtitle {
     text-align: center;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: var(--text-lg);
     color: var(--text-dim);
-    font-size: 1.1em;
-    margin-bottom: 48px;
+    margin-bottom: 36px;
 }
-h2 {
-    font-size: 1.5em;
-    color: var(--accent);
-    margin: 48px 0 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--border);
-}
+h2 { margin-top: 48px; padding-bottom: 10px; border-bottom: 2px solid var(--gold); color: var(--accent); }
 h2 .num {
     display: inline-block;
-    background: var(--accent);
+    background: var(--gold);
     color: var(--bg);
     width: 32px; height: 32px;
     border-radius: 50%;
     text-align: center;
     line-height: 32px;
-    font-size: 0.7em;
+    font-size: 0.65em;
     margin-right: 10px;
     vertical-align: middle;
-}
-h3 {
-    font-size: 1.15em;
-    color: var(--accent2);
-    margin: 28px 0 12px;
-}
-p { margin-bottom: 14px; }
-.card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    margin: 16px 0;
-}
-.card > h3:first-child,
-.card > h4:first-child { margin-top: 0; }
-.footnote { color: var(--text-dim); font-size: 0.85em; }
-.note { color: var(--text-dim); font-size: 0.9em; }
-.year-label { color: var(--text-dim); margin-top: 20px; }
-.list-alpha { list-style-type: lower-alpha; }
-.card-accent {
-    border-left: 4px solid var(--accent);
-}
-.card-green { border-left: 4px solid var(--green); }
-.card-red { border-left: 4px solid var(--red); }
-.card-yellow { border-left: 4px solid var(--yellow); }
-
-.highlight-box {
-    background: linear-gradient(135deg, rgba(108,140,255,0.1), rgba(78,205,196,0.1));
-    border: 1px solid rgba(108,140,255,0.3);
-    border-radius: 12px;
-    padding: 28px;
-    margin: 24px 0;
-    text-align: center;
-}
-.highlight-box .big-number {
-    font-size: 2.5em;
     font-weight: 700;
+}
+h3 { color: var(--accent2); margin-top: 28px; }
+
+/* Highlight box children */
+.highlight-box { text-align: center; }
+.highlight-box .big-number {
+    font-size: var(--text-3xl);
+    font-weight: 800;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
-.highlight-box .label { color: var(--text-dim); font-size: 0.95em; }
+.highlight-box .label { color: var(--text-dim); font-size: var(--text-sm); }
 
+/* Formula blocks */
 .formula {
     background: var(--surface2);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     padding: 14px 18px;
     margin: 10px 0;
-    font-family: 'Courier New', monospace;
-    font-size: 0.95em;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
     color: var(--accent2);
     overflow-x: auto;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 16px 0;
-    font-size: 0.95em;
-}
-caption {
-    caption-side: top;
-    text-align: left;
-    color: var(--text-dim);
-    font-size: 0.85em;
-    padding: 0 0 6px;
+/* Analogy blocks — gold accent */
+.analogy {
+    background: var(--gold-dim);
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    margin: 12px 0;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     font-style: italic;
+    color: var(--text-secondary);
 }
-th {
-    background: var(--surface2);
-    color: var(--accent);
-    padding: 12px 14px;
-    text-align: left;
-    font-weight: 600;
-    border-bottom: 2px solid var(--border);
-}
-td {
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--border);
-}
-tr:hover td { background: rgba(108,140,255,0.05); }
-.table-wrap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: 8px;
-    margin: 16px 0;
-}
-.num-cell { text-align: right; font-variant-numeric: tabular-nums; }
-.win { color: var(--green); }
-.loss { color: var(--red); }
+.param-value { color: var(--accent2); font-weight: 600; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-.tag {
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 12px;
-    font-size: 0.85em;
-    font-weight: 600;
-}
-.tag-green { background: rgba(78,203,113,0.2); color: var(--green); }
-.tag-red { background: rgba(255,107,107,0.2); color: var(--red); }
-.tag-yellow { background: rgba(255,217,61,0.2); color: var(--yellow); }
-.tag-blue { background: rgba(108,140,255,0.2); color: var(--accent); }
-
-.flow-chart {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-}
+/* Flow chart */
+.flow-chart { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; margin: 20px 0; }
 .flow-step {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     padding: 14px 18px;
     text-align: center;
     min-width: 120px;
+    transition: transform var(--duration-normal) var(--ease-out), border-color var(--duration-normal);
 }
-.flow-step .step-num {
-    font-size: 0.75em;
-    color: var(--text-dim);
-    margin-bottom: 4px;
-}
-.flow-step .step-title {
-    font-weight: 600;
-    font-size: 0.95em;
-}
-.flow-arrow {
-    color: var(--text-dim);
-    font-size: 1.5em;
-}
+.flow-step:hover { transform: translateY(-2px); border-color: rgba(124,141,255,0.25); }
+.flow-step .step-num { font-size: var(--text-xs); color: var(--text-dim); margin-bottom: 4px; }
+.flow-step .step-title { font-weight: 600; font-size: var(--text-sm); }
+.flow-arrow { color: var(--text-dim); font-size: 1.5em; }
 
-.grade-table td:first-child {
-    font-weight: 700;
-    font-size: 1.1em;
-    text-align: center;
-    width: 60px;
-}
+/* Grade colors */
+.grade-table td:first-child { font-weight: 700; font-size: 1.1em; text-align: center; width: 60px; }
 .grade-A { color: var(--green); }
 .grade-B { color: #8be9a0; }
 .grade-C { color: var(--yellow); }
 .grade-D { color: var(--orange); }
 .grade-F { color: var(--red); }
 
-.toc {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px 32px;
-    margin: 32px 0;
-}
-.toc h3 { margin-top: 0; color: var(--text); }
-.toc ol { padding-left: 20px; }
-.toc li { margin: 6px 0; }
-.toc a {
-    color: var(--accent);
-    text-decoration: none;
-}
-.toc a:hover { text-decoration: underline; }
-.toc-group {
-    font-weight: 700;
-    font-size: 0.95em;
-    color: var(--text-dim);
-    margin: 16px 0 6px;
-    letter-spacing: 0.05em;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 4px;
-}
-.toc-group:first-of-type { margin-top: 0; }
+/* Win/loss text */
+.win { color: var(--green); }
+.loss { color: var(--red); }
 
-.analogy {
-    background: rgba(255,217,61,0.08);
-    border-left: 3px solid var(--yellow);
-    padding: 14px 18px;
-    margin: 12px 0;
-    border-radius: 0 8px 8px 0;
-    font-style: italic;
-    color: var(--text-dim);
-}
-
-.param-value {
-    color: var(--accent2);
-    font-weight: 600;
-}
-
+/* Lists */
 ul, ol { margin: 8px 0 14px 24px; }
 li { margin: 4px 0; }
 
-.two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}
-/* ── Hero Metrics ── */
-.hero-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-    margin: 24px 0 16px;
-}
-.hero-stat {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 12px;
-    text-align: center;
-}
-.hero-value {
-    display: block;
-    font-size: 1.8em;
-    font-weight: 800;
-    line-height: 1.2;
-}
-.hero-value.accent { color: var(--accent); }
-.hero-value.green, span.green { color: var(--green); }
-.hero-value.accent2 { color: var(--accent2); }
-.hero-label {
-    display: block;
-    font-size: 0.8em;
-    color: var(--text-dim);
-    margin-top: 4px;
-}
-.cta-row {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    margin: 0 0 32px;
-}
-.btn-primary, .btn-secondary {
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 1em;
-    transition: transform 0.15s, box-shadow 0.15s;
-}
-.btn-primary { background: var(--accent); color: #fff; }
-.btn-secondary { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
-.btn-primary:hover, .btn-secondary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(108,140,255,0.3);
-    text-decoration: none;
-}
-/* ── Hamburger Menu ── */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text);
-    font-size: 1.5em;
-    cursor: pointer;
-    padding: 4px 8px;
-}
-@media (max-width: 700px) {
+/* TOC overrides for numbered list structure */
+.toc { padding: 24px 32px; }
+.toc h3 { margin-top: 0; color: var(--text); }
+.toc ol { padding-left: 20px; }
+.toc li { margin: 6px 0; }
+.toc ol a { display: inline; padding: 0; border-left: none; }
+
+@media (max-width: 768px) {
     .two-col { grid-template-columns: 1fr; }
     .flow-chart { flex-direction: column; }
     .flow-arrow { transform: rotate(90deg); }
-    .container { padding: 24px 16px; }
-    h1 { font-size: 1.6em; }
-    h2 { font-size: 1.25em; margin-top: 36px; }
-    .highlight-box { padding: 20px 16px; }
-    .highlight-box .big-number { font-size: 1.8em; }
-    .card { padding: 18px 16px; }
     .toc { padding: 18px 20px; }
-    table { font-size: 0.85em; }
-    th, td { padding: 8px 6px; }
-    .top-nav { padding: 10px 16px; margin-left: -16px; margin-right: -16px; }
-    .nav-links { display: none; width: 100%; flex-direction: column; gap: 8px; padding-top: 8px; }
-    .nav-links.open { display: flex; }
-    .menu-toggle { display: block; }
-    .hero-grid { grid-template-columns: repeat(3, 1fr); }
-    .hero-value { font-size: 1.4em; }
-    .cta-row { flex-direction: column; align-items: center; }
-    .scroll-top { bottom: 16px; right: 16px; }
-}
-
-/* ── Accessibility ── */
-:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-    border-radius: 4px;
-}
-:focus:not(:focus-visible) { outline: none; }
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        transition-duration: 0.01ms !important;
-    }
-    html { scroll-behavior: auto; }
-}
-
-.footer {
-    margin-top: 60px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    color: var(--text-dim);
-    font-size: 0.85em;
-    text-align: center;
 }
 @media print {
-    .top-nav, .scroll-top, .skip-nav, .toc { display: none !important; }
-    body { background: #fff !important; color: #000 !important; font-size: 12pt; }
-    .container { max-width: 100%; padding: 0; }
-    h1, h2, h3 { color: #000 !important; page-break-after: avoid; }
-    table { page-break-inside: avoid; border-collapse: collapse; }
-    th, td { border: 1px solid #ccc !important; padding: 4px 8px; color: #000 !important; }
-    a { color: #000 !important; text-decoration: underline; }
-    .card, .highlight-box, .exit-grid > div { border: 1px solid #ccc !important; background: #fff !important; color: #000 !important; }
+    .toc { display: none !important; }
 }
 </style>
 <script type="application/ld+json">
@@ -488,7 +147,7 @@ li { margin: 4px 0; }
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"這套系統是全自動交易嗎？","acceptedAnswer":{"@type":"Answer","text":"不是。Sovereign V25 是一個掃描+建議系統。它每天自動掃描全市場並產生訊號，但最終的下單操作需要人工執行。"}},{"@type":"Question","name":"我需要盯盤嗎？","acceptedAnswer":{"@type":"Answer","text":"不太需要。出場條件都是預設價位，可以在券商設定好價格單後離開。每天只需在收盤後看一次掃描結果即可。"}},{"@type":"Question","name":"為什麼有些年份報酬差異這麼大？","acceptedAnswer":{"@type":"Answer","text":"因為系統採用全倉+複利。在連勝時資金快速膨脹，每筆交易金額跟著變大，導致獲利加速。這是全倉策略的固有特性。"}},{"@type":"Question","name":"回測結果等於實際結果嗎？","acceptedAnswer":{"@type":"Answer","text":"不完全等同。實際交易會有滑價、流動性、心理因素等差異。一般認為實際交易績效約為回測結果的50-70%。"}},{"@type":"Question","name":"Profit Factor 是什麼？","acceptedAnswer":{"@type":"Answer","text":"Profit Factor = 總獲利金額 / 總虧損金額。PF > 1 代表獲利大於虧損，PF = 2 代表每虧 $1 能賺 $2。一般認為 PF > 1.5 是不錯的策略。"}},{"@type":"Question","name":"最大回撤 42% 很恐怖，能承受嗎？","acceptedAnswer":{"@type":"Answer","text":"這是回測中從最高點到最低點的帳面回撤，不代表一定會經歷。全倉策略在連續虧損時會有較大帳面波動，可考慮降低倉位比例或只做 A/B 評級訊號。"}},{"@type":"Question","name":"為什麼最大單筆獲利都是 +15%？","acceptedAnswer":{"@type":"Answer","text":"因為系統設有固定停利 15%。一旦股價漲到停利價就自動出場，追求高頻率地拿到固定利潤，獲利來自勝率和交易次數的累積。"}},{"@type":"Question","name":"系統的參數是怎麼得到的？","acceptedAnswer":{"@type":"Answer","text":"所有參數經過多年份交叉驗證優化得出，確保參數在不同年份都能穩定表現而非只在特定年份表現好，有助於減少過度擬合的風險。"}},{"@type":"Question","name":"需要多少資金才能使用？","acceptedAnswer":{"@type":"Answer","text":"理論上最低 $1,000 美元即可開始，但建議至少 $5,000-$10,000。系統的回測是以 $10,000 起始計算的。"}}]}
 </script>
 </head>
-<body>
+<body data-page="index">
 <a href="#main-content" class="skip-nav">跳至主要內容</a>
 <div class="container">
 
@@ -506,25 +165,25 @@ li { margin: 4px 0; }
 
 <main id="main-content" role="main">
 <noscript><div style="padding:20px;text-align:center;color:#8b90a5;background:#1a1d27;border-radius:8px;margin:20px 0;">部分功能需要 JavaScript 支援。請啟用 JavaScript 以獲得最佳體驗。</div></noscript>
-<h1>Sovereign V25</h1>
-<p class="subtitle">動能突破交易系統 &mdash; 完整技術文件</p>
+<h1 class="reveal">Sovereign V25</h1>
+<p class="subtitle reveal">動能突破交易系統 &mdash; 完整技術文件</p>
 
-<div class="hero-grid">
-    <div class="hero-stat"><span class="hero-value accent">452</span><span class="hero-label">交易總數</span></div>
-    <div class="hero-stat"><span class="hero-value green">66.81%</span><span class="hero-label">勝率</span></div>
-    <div class="hero-stat"><span class="hero-value accent2">3.37</span><span class="hero-label">獲利因子 (PF)</span></div>
-    <div class="hero-stat"><span class="hero-value green">$185.2B</span><span class="hero-label">$10K &rarr; 最終</span></div>
-    <div class="hero-stat"><span class="hero-value">6.43%</span><span class="hero-label">固定倉 MDD</span></div>
+<div class="kpi-grid reveal reveal-delay-1">
+    <div class="kpi-card"><div class="kpi-label">交易總數</div><div class="kpi-value accent" data-count="452">0</div></div>
+    <div class="kpi-card"><div class="kpi-label">勝率</div><div class="kpi-value green" data-count="66.81" data-suffix="%">0%</div></div>
+    <div class="kpi-card"><div class="kpi-label">獲利因子 (PF)</div><div class="kpi-value gold" data-count="3.37">0</div></div>
+    <div class="kpi-card"><div class="kpi-label">$10K &rarr; 最終</div><div class="kpi-value green">$185.2B</div></div>
+    <div class="kpi-card"><div class="kpi-label">固定倉 MDD</div><div class="kpi-value" data-count="6.43" data-suffix="%">0%</div></div>
 </div>
-<div class="cta-row">
+<div class="hero-cta reveal reveal-delay-2">
     <a href="backtest.html" class="btn-primary">查看完整回測報告</a>
     <a href="picks.html" class="btn-secondary">查看今日選股</a>
 </div>
 
 <!-- TOC -->
-<div class="toc">
+<div class="toc card reveal">
 <h3>目錄</h3>
-<div class="toc-group">一、策略基礎</div>
+<div class="toc-group-title">一、策略基礎</div>
 <ol>
     <li><a href="#overview">概述</a></li>
     <li><a href="#philosophy">核心理念</a></li>
@@ -535,13 +194,13 @@ li { margin: 4px 0; }
     <li><a href="#position">倉位管理</a></li>
     <li><a href="#quality">突破品質評估</a></li>
 </ol>
-<div class="toc-group">二、績效驗證</div>
+<div class="toc-group-title">二、績效驗證</div>
 <ol start="9">
     <li><a href="#backtest">回測結果</a></li>
     <li><a href="#faq">常見問題 FAQ</a></li>
     <li><a href="#scan-winrate">每日掃描勝率分析</a></li>
 </ol>
-<div class="toc-group">三、版本演化</div>
+<div class="toc-group-title">三、版本演化</div>
 <ol start="12">
     <li><a href="#v20">V20 更新 &mdash; 五大升級</a>
         <ol class="list-alpha">
@@ -605,9 +264,9 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- 1. 概述 -->
 <!-- ================================================================ -->
-<h2 id="overview"><span class="num">1</span>概述</h2>
+<h2 id="overview" class="reveal"><span class="num">1</span>概述</h2>
 
-<div class="highlight-box">
+<div class="highlight-box reveal">
     <div class="label">一句話說明</div>
     <p style="font-size:1.2em; margin-top:8px; margin-bottom:0">
         Sovereign V25 是一套<strong>全自動美股每日掃描系統</strong>，專門尋找「價格已經盤整收斂、突然放量突破」的股票，在突破瞬間進場，並以嚴格的停損停利機制管理風險。
@@ -4979,22 +4638,8 @@ li { margin: 4px 0; }
 </div>
 
 <button class="scroll-top" id="scrollTop" aria-label="回到頂部">&uarr;</button>
+<script src="premium.js"></script>
 <script>
-// Scroll-to-top
-const btn = document.getElementById('scrollTop');
-if (btn) {
-    btn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
-    window.addEventListener('scroll', () => {
-        btn.classList.toggle('show', window.scrollY > 300);
-    });
-}
-// Mobile hamburger menu toggle
-document.querySelector('.menu-toggle')?.addEventListener('click', function() {
-    const nav = document.querySelector('.nav-links');
-    const open = nav.classList.toggle('open');
-    this.setAttribute('aria-expanded', open);
-    this.innerHTML = open ? '&times;' : '&#9776;';
-});
 // Auto-wrap tables for mobile overflow
 document.querySelectorAll('.container table').forEach(t => {
     if (!t.parentElement.classList.contains('table-wrap')) {
@@ -5004,13 +4649,23 @@ document.querySelectorAll('.container table').forEach(t => {
         wrap.appendChild(t);
     }
 });
-
-// ── Site Info: 更新時間戳 + Nav Brand ──
-fetch('data/site-info.json?t='+Date.now()).then(r=>r.json()).then(info=>{
-    const b=document.querySelector('.brand');if(b)b.textContent=info.label;
-    const ts=info.updated&&info.updated.index;
-    if(ts){const d=new Date(ts);document.getElementById('site-updated').textContent='最後更新：'+d.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' '+d.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit',hour12:false});}
-}).catch(()=>{});
+// Hero KPI counter animation
+if (window.animateValue) {
+    document.querySelectorAll('[data-count]').forEach(el => {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseFloat(el.dataset.count);
+                    const suffix = el.dataset.suffix || '';
+                    const decimals = String(target).includes('.') ? String(target).split('.')[1].length : 0;
+                    window.animateValue(el, 0, target, 1200, decimals, suffix);
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        observer.observe(el);
+    });
+}
 </script>
 </body>
 </html>
