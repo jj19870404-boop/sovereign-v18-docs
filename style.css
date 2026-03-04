@@ -574,6 +574,16 @@ label.sr-only { position: absolute; width:1px; height:1px; padding:0; margin:-1p
 }
 :focus:not(:focus-visible) { outline: none; }
 
+/* ── Copy Protection ── */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+img { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
+
 /* ── 23. News Page ── */
 .hour-group { margin-bottom: 24px; }
 .hour-header {

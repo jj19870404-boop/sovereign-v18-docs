@@ -82,6 +82,27 @@
     })
     .catch(() => {});
 
+  // ── 6. Copy Protection ──
+  // Disable right-click context menu
+  document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+  // Block copy/cut/selectAll/save/viewSource/devTools shortcuts
+  document.addEventListener('keydown', function (e) {
+    // Ctrl+C, Ctrl+X, Ctrl+A, Ctrl+S, Ctrl+U, Ctrl+P
+    if (e.ctrlKey && /^[cxasup]$/i.test(e.key)) { e.preventDefault(); return; }
+    // Ctrl+Shift+I (DevTools), Ctrl+Shift+J (Console), Ctrl+Shift+C (Inspector)
+    if (e.ctrlKey && e.shiftKey && /^[ijc]$/i.test(e.key)) { e.preventDefault(); return; }
+    // F12 (DevTools)
+    if (e.key === 'F12') { e.preventDefault(); return; }
+  });
+
+  // Disable drag
+  document.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+  // Disable copy/cut events
+  document.addEventListener('copy', function (e) { e.preventDefault(); });
+  document.addEventListener('cut', function (e) { e.preventDefault(); });
+
   // ── Init ──
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initReveal);
