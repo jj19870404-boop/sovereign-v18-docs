@@ -31,7 +31,6 @@
 </script>
 <style>
 /* ── Analyzer-specific styles ── */
-.container { max-width: 900px; }
 h1 { text-align: center; }
 
 /* ── Search ── */
@@ -320,7 +319,7 @@ h1 { text-align: center; }
 }
 
 @media print {
-    .nav-bar, .scroll-top, .search-wrap, .menu-toggle { display: none !important; }
+    .top-nav, .scroll-top, .search-wrap, .menu-toggle { display: none !important; }
     body { background: #fff; color: #000; }
     .result-section.visible { break-inside: avoid; }
 }
@@ -328,9 +327,11 @@ h1 { text-align: center; }
 </head>
 <body data-page="analyzer">
 <a href="#main-content" class="skip-nav">跳至主要內容</a>
-<div class="nav-bar" role="navigation" aria-label="主要導航">
-    <div class="brand">Sovereign V25</div>
-    <button class="menu-toggle" aria-expanded="false" aria-label="切換選單">&#9776;</button>
+<div class="container">
+
+<div class="top-nav" role="navigation" aria-label="主要導航">
+    <a href="index.html" class="brand">Sovereign V25</a>
+    <button class="menu-toggle" aria-label="開啟選單" aria-expanded="false">&#9776;</button>
     <div class="nav-links">
         <a href="index.html">首頁</a>
         <a href="picks.html">每日選股</a>
@@ -342,7 +343,7 @@ h1 { text-align: center; }
     </div>
 </div>
 
-<main id="main-content" role="main" class="container">
+<main id="main-content" role="main">
 <h1 class="reveal">V25 股票分析器</h1>
 <p class="reveal reveal-delay-1" style="text-align:center;color:var(--text-dim);margin-bottom:24px;">輸入任意美股代碼，即時分析 V25 篩選結果</p>
 
@@ -396,6 +397,8 @@ h1 { text-align: center; }
 </div>
 
 </main>
+
+</div>
 
 <button class="scroll-top" id="scrollTop" aria-label="回到頂部">&uarr;</button>
 <script src="premium.js"></script>
