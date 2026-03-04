@@ -1,15 +1,26 @@
 {
-  "updated": "2026-03-04T06:00:43+08:00",
+  "updated": "2026-03-04T11:10:16+08:00",
   "summary": {
     "total": 100,
-    "wins": 67,
+    "wins": 66,
     "losses": 27,
     "be": 2,
-    "open": 4,
-    "win_rate": 71.3,
-    "avg_return": 4.67
+    "open": 5,
+    "win_rate": 71.0,
+    "avg_return": 4.63
   },
   "tracks": [
+    {
+      "date": "2026-03-04",
+      "symbol": "INVX",
+      "entry": 25.81,
+      "tp": 29.68,
+      "sl": 23.71,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 25.81
+    },
     {
       "date": "2026-03-03",
       "symbol": "INVX",
@@ -1192,18 +1203,6 @@
       "return_pct": 7.39,
       "days": 8,
       "exit_price": 23.38,
-      "exit_type": "TRAIL"
-    },
-    {
-      "date": "2025-03-03",
-      "symbol": "RMNI",
-      "entry": 3.66,
-      "tp": 4.21,
-      "sl": 3.66,
-      "status": "WIN",
-      "return_pct": 8.36,
-      "days": 5,
-      "exit_price": 3.97,
       "exit_type": "TRAIL"
     }
   ]
