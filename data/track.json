@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-06T11:10:10+08:00",
+  "updated": "2026-03-07T06:00:33+08:00",
   "summary": {
     "total": 100,
     "wins": 45,
@@ -24,13 +24,13 @@
     {
       "date": "2026-03-05",
       "symbol": "ECO",
-      "entry": 51.33,
-      "tp": 59.03,
-      "sl": 47.83,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 51.33
+      "entry": 47.15,
+      "tp": 54.22,
+      "sl": 43.65,
+      "status": "OPEN",
+      "return_pct": 1.15,
+      "days": 1,
+      "current": 47.69
     },
     {
       "date": "2026-03-04",
@@ -39,9 +39,9 @@
       "tp": 30.33,
       "sl": 24.27,
       "status": "OPEN",
-      "return_pct": 2.09,
-      "days": 1,
-      "current": 26.92
+      "return_pct": 3.79,
+      "days": 2,
+      "current": 27.37
     },
     {
       "date": "2026-03-03",
@@ -50,9 +50,9 @@
       "tp": 29.38,
       "sl": 23.45,
       "status": "OPEN",
-      "return_pct": 5.36,
-      "days": 2,
-      "current": 26.92
+      "return_pct": 7.12,
+      "days": 3,
+      "current": 27.37
     },
     {
       "date": "2026-03-02",
