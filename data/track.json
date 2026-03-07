@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-07T11:10:10+08:00",
+  "updated": "2026-03-08T06:00:22+08:00",
   "summary": {
     "total": 100,
     "wins": 45,
@@ -13,13 +13,13 @@
     {
       "date": "2026-03-06",
       "symbol": "INVX",
-      "entry": 25.81,
-      "tp": 29.68,
-      "sl": 23.71,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 25.81
+      "entry": 26.92,
+      "tp": 30.96,
+      "sl": 24.82,
+      "status": "OPEN",
+      "return_pct": 1.67,
+      "days": 1,
+      "current": 27.37
     },
     {
       "date": "2026-03-05",
