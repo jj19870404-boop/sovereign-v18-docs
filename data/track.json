@@ -1,13 +1,13 @@
 {
-  "updated": "2026-03-11T11:10:12+08:00",
+  "updated": "2026-03-12T06:00:37+08:00",
   "summary": {
     "total": 100,
-    "wins": 44,
-    "losses": 35,
+    "wins": 45,
+    "losses": 36,
     "be": 16,
-    "open": 5,
-    "win_rate": 55.7,
-    "avg_return": 2.89
+    "open": 3,
+    "win_rate": 55.6,
+    "avg_return": 2.77
   },
   "tracks": [
     {
@@ -24,13 +24,13 @@
     {
       "date": "2026-03-10",
       "symbol": "INVX",
-      "entry": 25.81,
-      "tp": 29.68,
-      "sl": 23.71,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 25.81
+      "entry": 25.83,
+      "tp": 29.7,
+      "sl": 23.73,
+      "status": "OPEN",
+      "return_pct": 1.05,
+      "days": 1,
+      "current": 26.1
     },
     {
       "date": "2026-03-09",
@@ -39,9 +39,9 @@
       "tp": 30.61,
       "sl": 24.52,
       "status": "OPEN",
-      "return_pct": -2.18,
-      "days": 1,
-      "current": 26.04
+      "return_pct": -1.95,
+      "days": 2,
+      "current": 26.1
     },
     {
       "date": "2026-03-06",
@@ -49,10 +49,11 @@
       "entry": 27.73,
       "tp": 31.89,
       "sl": 25.63,
-      "status": "OPEN",
-      "return_pct": -6.09,
-      "days": 2,
-      "current": 26.04
+      "status": "LOSS",
+      "return_pct": -6.96,
+      "days": 3,
+      "exit_price": 25.8,
+      "exit_type": "SL"
     },
     {
       "date": "2026-03-05",
@@ -60,10 +61,11 @@
       "entry": 47.15,
       "tp": 54.22,
       "sl": 43.65,
-      "status": "OPEN",
-      "return_pct": 4.41,
-      "days": 3,
-      "current": 49.23
+      "status": "WIN",
+      "return_pct": 1.17,
+      "days": 4,
+      "exit_price": 47.7,
+      "exit_type": "TRAIL"
     },
     {
       "date": "2026-03-04",
