@@ -1411,7 +1411,7 @@ function buildPlanHTML(p, vMode) {
             <li><span class="step-num">4</span><span class="step-text">漲 +${(PARAMS.breakeven_trigger*100).toFixed(1)}% (<span style="color:var(--accent2)">$${fmt(be_price)}</span>) &rarr; 停損移至成本價 (保本)</span></li>
             <li><span class="step-num">5</span><span class="step-text">漲 +${(PARAMS.trail_activation*100).toFixed(1)}% (<span style="color:var(--accent2)">$${fmt(trail_price)}</span>) &rarr; 啟動 ${(PARAMS.trail_distance*100).toFixed(1)}% 追蹤停損</span></li>
             <li><span class="step-num">6</span><span class="step-text">停利 @ <span style="color:var(--green)">$${fmt(p.tp_price)}</span> (+${(PARAMS.tp_target*100).toFixed(0)}%)</span></li>
-            <li><span class="step-num">D2</span><span class="step-text"><strong>Day 2 利潤鎖定</strong>：若 Day 2 開盤漲幅 &ge; +3.5% &rarr; 啟動 2.0% 追蹤停損保護利潤</span></li>
+            <li><span class="step-num">D2</span><span class="step-text"><strong>Day 2 利潤鎖定</strong>：若 Day 2 開盤漲幅 &ge; +2.5% &rarr; 啟動 1.5% 追蹤停損保護利潤</span></li>
             <li><span class="step-num">7</span><span class="step-text">持倉 ${PARAMS.stale_days} 天若仍虧損 &gt;${Math.abs(PARAMS.stale_threshold*100).toFixed(0)}%，收盤出場 (停滯出場)</span></li>
             <li><span class="step-num">8</span><span class="step-text">最長持有 ${PARAMS.time_stop} 個交易日，到期收盤出場</span></li>
         </ol>`;
@@ -1437,7 +1437,7 @@ function buildPlanHTML(p, vMode) {
             <li><span class="step-num">5</span><span class="step-text">漲 +2.0% 達 <span style="color:var(--accent2)">$${fmt(notp_trail_start)}</span> &rarr; 啟動 Tiered ATR 追蹤停損</span></li>
         </ol>
         <div style="margin:4px 0;padding:6px 10px;background:rgba(0,255,127,0.06);border-radius:6px;font-size:0.82em;color:var(--text-dim)">
-            <strong style="color:var(--green)">Day 2 利潤鎖定：</strong>若 Day 2 開盤漲幅 &ge; +3.5%，啟動 2.0% 追蹤停損保護隔夜利潤。
+            <strong style="color:var(--green)">Day 2 利潤鎖定：</strong>若 Day 2 開盤漲幅 &ge; +2.5%，啟動 1.5% 追蹤停損保護隔夜利潤。
         </div>
         <div style="margin:8px 0 4px;font-size:0.85em;color:var(--orange);font-weight:600">&#9733; Tiered ATR 追蹤停損 — 無固定停利上限，讓贏家持續奔跑</div>
         <table class="tiered-table">
@@ -1474,7 +1474,7 @@ function buildPlanHTML(p, vMode) {
                 </div>
                 <ul>
                     <li>固定停利 +${(PARAMS.tp_target*100).toFixed(0)}%</li>
-                    <li>保本觸發 +0.6%</li>
+                    <li>保本觸發 +${(PARAMS.breakeven_trigger*100).toFixed(1)}%</li>
                     <li>追蹤停損 ${(PARAMS.trail_distance*100).toFixed(1)}%</li>
                     <li>市場強勢時快速兌現</li>
                     <li>資金輪轉更快</li>
@@ -1737,15 +1737,15 @@ function renderQuickRef() {
         <div class="quick-ref-title">快速參考</div>
         <div class="quick-ref-row">
             <span class="qr-label" style="color:var(--green)">最佳訊號:</span>
-            <span class="qr-items">量比 1.7-2.0x (83%) | 52周 95-100% (85%) | 20日動能 10-20% (79%) | RS 25-50名 (80%)</span>
+            <span class="qr-items">量比 1.7-2.0x | 52周 95-100% | 20日動能 10-20% | RS 25-50名</span>
         </div>
         <div class="quick-ref-row">
             <span class="qr-label" style="color:var(--red)">紅旗警告:</span>
-            <span class="qr-items">量比 2.5-3.0x (36%) | 5日動能 &lt;-5% (40%) | 52周 80-85% (47%) | 跳空 &gt;10% (33%)</span>
+            <span class="qr-items">量比 2.5-3.0x | 5日動能 &lt;-5% | 52周 80-85% | 跳空 &gt;10%</span>
         </div>
         <div class="quick-ref-row">
             <span class="qr-label" style="color:var(--accent)">TP 模式:</span>
-            <span class="qr-items">SL=ATR&times;1.3 | 保本 +0.6% | 追蹤 +1.8% (3.1%) | 停利 +15% | 停滯 9天&gt;5% | 時間停 10天</span>
+            <span class="qr-items">SL=ATR&times;1.3 | 保本 +0.3% | 追蹤 +1.8% (3.1%) | 停利 +8% | 停滯 9天&gt;5% | 時間停 10天</span>
         </div>
         <div class="quick-ref-row">
             <span class="qr-label" style="color:var(--orange)">NoTP 模式:</span>

@@ -746,16 +746,16 @@ function renderEntry(s) {
         '<div class="op-card"><h3>Day 1 操作計畫</h3><ul>' +
         '<li>進場: 開盤掛限價 $' + fmt(lv.entry) + '</li>' +
         '<li>停損: $' + fmt(lv.sl_day1) + ' (1.5x ATR 寬鬆)</li>' +
-        '<li>止盈: $' + fmt(lv.tp) + ' (15%)</li>' +
+        '<li>止盈: $' + fmt(lv.tp) + ' (8%)</li>' +
         '<li>模式: <b>強制 TP</b> (Day 1 固定)</li>' +
-        '<li>BE 觸發: $' + fmt(lv.be_price) + ' (+0.6%)</li>' +
+        '<li>BE 觸發: $' + fmt(lv.be_price) + ' (+0.3%)</li>' +
         '</ul></div>' +
         '<div class="op-card"><h3>Day 2+ 操作計畫</h3><ul>' +
         '<li>停損收緊: $' + fmt(lv.sl_day2) + ' (1.3x ATR)</li>' +
         '<li>風報比: ' + fmt(lv.rr_day2, 2) + '</li>' +
         '<li>追蹤啟動: $' + fmt(lv.trail_price) + ' (+1.8%)</li>' +
         '<li>追蹤距離: 3.1%</li>' +
-        '<li>獲利鎖定: +3.5% → 2.0% 追蹤</li>' +
+        '<li>獲利鎖定: +2.5% → 1.5% 追蹤</li>' +
         '<li>時間停損: 10 天</li>' +
         '</ul></div>' +
         '</div>';
