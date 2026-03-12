@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Sovereign V18-V25 演化歷史 — 完整版本進化紀錄</title>
+<title>Sovereign V18-V26 演化歷史 — 完整版本進化紀錄</title>
 <meta name="description" content="Sovereign 動能突破交易系統 V18 到 V25 的完整演化歷史 — 7 個版本的回測數據對比、參數優化過程、每日選股勝率分析，見證系統從 V18 到 V25 的逐步進化。">
-<meta property="og:title" content="Sovereign V18-V25 演化歷史 — 完整版本進化紀錄">
+<meta property="og:title" content="Sovereign V18-V26 演化歷史 — 完整版本進化紀錄">
 <meta property="og:description" content="Sovereign 動能突破交易系統 V18 到 V25 的完整演化歷史，包含所有回測數據、參數變化、每日選股勝率分析">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html">
@@ -15,7 +15,7 @@
 <meta property="og:image:height" content="1350">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sovereign V18-V25 演化歷史 — 完整版本進化紀錄">
+<meta name="twitter:title" content="Sovereign V18-V26 演化歷史 — 完整版本進化紀錄">
 <meta name="twitter:description" content="Sovereign 動能突破交易系統 V18 到 V25 的完整演化歷史，包含所有回測數據、參數變化、每日選股勝率分析">
 <meta name="twitter:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
 <link rel="canonical" href="https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html">
@@ -127,7 +127,7 @@ li { margin: 4px 0; }
 }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V18-V25 演化歷史","description":"Sovereign 動能突破交易系統 V18 到 V25 的完整演化歷史，包含所有回測數據、參數變化、每日選股勝率分析","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V25","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
+{"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V18-V26 演化歷史","description":"Sovereign 動能突破交易系統 V18 到 V25 的完整演化歷史，包含所有回測數據、參數變化、每日選股勝率分析","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V25","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/"},{"@type":"ListItem","position":2,"name":"版本演化","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html"}]}
@@ -154,13 +154,13 @@ li { margin: 4px 0; }
 <main id="main-content" role="main">
 <noscript><div style="padding:20px;text-align:center;color:#8b90a5;background:#1a1d27;border-radius:8px;margin:20px 0;">部分功能需要 JavaScript 支援。請啟用 JavaScript 以獲得最佳體驗。</div></noscript>
 <h1>Sovereign V18 &rarr; V25</h1>
-<p class="subtitle">完整版本演化歷史 &mdash; 從 $14.7M 到 $185.2B 的進化之路</p>
+<p class="subtitle">完整版本演化歷史 &mdash; 從 V18 到 V26 的進化之路 — 真實填成模型</p>
 
 <!-- Hero -->
 <div class="highlight-box">
     <div class="label">7 個版本 &bull; 40+ 輪研究 &bull; 350+ 實驗 &bull; 12M+ 數據列</div>
-    <div class="big-number">$10K &rarr; $185.2B</div>
-    <div class="label" style="margin-top: 8px;">V18 $14.7M &rarr; V20 $49.6M &rarr; V23 $44.2B &rarr; V24 $92.2B &rarr; V25 $185.2B</div>
+    <div class="big-number">$10K &rarr; $2.87M (V26 真實填成)</div>
+    <div class="label" style="margin-top: 8px;">V18-V25: 舊引擎（理想化填成） | V26: 真實填成模型 $2.87M</div>
 </div>
 
 <!-- TOC -->
@@ -276,7 +276,7 @@ li { margin: 4px 0; }
     <div class="flow-step" style="text-align: left; border-color: var(--green); background: rgba(0,255,127,0.05);">
         <div class="step-num">2026 年 2 月</div>
         <div class="step-title" style="color: var(--green);">V25 — Day 2 利潤鎖定</div>
-        <div style="font-size:0.85em; color: var(--text-dim); margin-top:4px;">Day 2 Profit Lock + 降低 BE | $10K &rarr; $185.2B | <strong style="color:var(--green);">3,734x V20</strong></div>
+        <div style="font-size:0.85em; color: var(--text-dim); margin-top:4px;">Day 2 Profit Lock + 降低 BE | $10K &rarr; $2.87M (V26 真實填成) | <strong style="color:var(--green);">3,734x V20</strong></div>
     </div>
 </div>
 
@@ -298,7 +298,8 @@ li { margin: 4px 0; }
         <th class="num-cell">V20</th>
         <th class="num-cell">V23</th>
         <th class="num-cell">V24</th>
-        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V25</th>
+        <th class="num-cell">V25</th>
+        <th class="num-cell" style="background:rgba(255,165,0,0.12);">V26 &#x1f4a1;</th>
     </tr>
     </thead>
     <tbody>
@@ -434,7 +435,8 @@ li { margin: 4px 0; }
         <th class="num-cell">V20</th>
         <th class="num-cell">V23</th>
         <th class="num-cell">V24</th>
-        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V25</th>
+        <th class="num-cell">V25</th>
+        <th class="num-cell" style="background:rgba(255,165,0,0.12);">V26 &#x1f4a1;</th>
     </tr>
     </thead>
     <tbody>
@@ -561,7 +563,8 @@ li { margin: 4px 0; }
         <th class="num-cell">V20</th>
         <th class="num-cell">V23</th>
         <th class="num-cell">V24</th>
-        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V25</th>
+        <th class="num-cell">V25</th>
+        <th class="num-cell" style="background:rgba(255,165,0,0.12);">V26 &#x1f4a1;</th>
     </tr>
     </thead>
     <tbody>
@@ -642,7 +645,8 @@ li { margin: 4px 0; }
         <th class="num-cell">V20</th>
         <th class="num-cell">V23</th>
         <th class="num-cell">V24</th>
-        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V25</th>
+        <th class="num-cell">V25</th>
+        <th class="num-cell" style="background:rgba(255,165,0,0.12);">V26 &#x1f4a1;</th>
     </tr>
     </thead>
     <tbody>
@@ -652,7 +656,8 @@ li { margin: 4px 0; }
         <td class="num-cell"><span class="param-value">$49,600,000</span></td>
         <td class="num-cell"><span class="param-value">$44,201,654,798</span></td>
         <td class="num-cell"><span class="param-value">$92,197,639,578</span></td>
-        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>$185,200,000,000</strong></td>
+        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>$185.2B</strong> (舊引擎)</td>
+        <td class="num-cell" style="background:rgba(255,165,0,0.08);"><strong>$2,868,232</strong></td>
     </tr>
     <tr>
         <td>6 年複利報酬率</td>
@@ -661,6 +666,7 @@ li { margin: 4px 0; }
         <td class="num-cell"><span class="param-value">+442,016,448%</span></td>
         <td class="num-cell"><span class="param-value">+921,976,296%</span></td>
         <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>+1,851,999,900%</strong></td>
+        <td class="num-cell" style="background:rgba(255,165,0,0.08);"><strong>+28,582%</strong></td>
     </tr>
     <tr>
         <td>vs V20 倍數</td>
@@ -669,6 +675,7 @@ li { margin: 4px 0; }
         <td class="num-cell"><span class="param-value">891x</span></td>
         <td class="num-cell"><span class="param-value">1,859x</span></td>
         <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>3,734x</strong></td>
+        <td class="num-cell" style="background:rgba(255,165,0,0.08);"><strong>57.8x</strong></td>
     </tr>
     <tr>
         <td>總交易數</td>
@@ -676,7 +683,8 @@ li { margin: 4px 0; }
         <td class="num-cell">316</td>
         <td class="num-cell">433</td>
         <td class="num-cell">434</td>
-        <td class="num-cell" style="background:rgba(0,255,127,0.08);">452</td>
+        <td class="num-cell" >452</td>
+        <td class="num-cell" style="background:rgba(255,165,0,0.08);"><strong>325</strong></td>
     </tr>
     <tr>
         <td>勝率 (WR)</td>
@@ -684,7 +692,8 @@ li { margin: 4px 0; }
         <td class="num-cell">69.6%</td>
         <td class="num-cell">63.0%</td>
         <td class="num-cell">65.4%</td>
-        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>66.81%</strong></td>
+        <td class="num-cell win" ><strong>66.81%</strong></td>
+        <td class="num-cell" style="background:rgba(255,165,0,0.08);"><strong>51.7%</strong></td>
     </tr>
     <tr>
         <td>盈虧比 (PF)</td>
@@ -692,7 +701,8 @@ li { margin: 4px 0; }
         <td class="num-cell">3.98</td>
         <td class="num-cell">3.08</td>
         <td class="num-cell">3.26</td>
-        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>3.37</strong></td>
+        <td class="num-cell win" ><strong>3.37</strong></td>
+        <td class="num-cell" style="background:rgba(255,165,0,0.08);"><strong>1.80</strong></td>
     </tr>
     <tr>
         <td>最大回撤 (MDD)</td>
@@ -700,7 +710,8 @@ li { margin: 4px 0; }
         <td class="num-cell loss">54.2%</td>
         <td class="num-cell">13.3%</td>
         <td class="num-cell win">6.37%</td>
-        <td class="num-cell" style="background:rgba(0,255,127,0.08);">6.43%</td>
+        <td class="num-cell" >6.43%</td>
+        <td class="num-cell" style="background:rgba(255,165,0,0.08);">34.2%</td>
     </tr>
     <tr>
         <td>Calmar Ratio</td>
@@ -708,7 +719,8 @@ li { margin: 4px 0; }
         <td class="num-cell">&mdash;</td>
         <td class="num-cell">79.6</td>
         <td class="num-cell">166.3</td>
-        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>288.0</strong></td>
+        <td class="num-cell win" ><strong>288.0</strong></td>
+        <td class="num-cell" style="background:rgba(255,165,0,0.08);">&mdash;</td>
     </tr>
     <tr>
         <td>Walk-Forward 一致性</td>
@@ -716,7 +728,8 @@ li { margin: 4px 0; }
         <td class="num-cell">&mdash;</td>
         <td class="num-cell">1.02</td>
         <td class="num-cell">1.08</td>
-        <td class="num-cell win" style="background:rgba(0,255,127,0.08);"><strong>1.13</strong></td>
+        <td class="num-cell win" ><strong>1.13</strong></td>
+        <td class="num-cell" style="background:rgba(255,165,0,0.08);">&mdash;</td>
     </tr>
     </tbody>
 </table>
@@ -732,7 +745,8 @@ li { margin: 4px 0; }
         <th class="num-cell">V20</th>
         <th class="num-cell">V23</th>
         <th class="num-cell">V24</th>
-        <th class="num-cell" style="background:rgba(0,255,127,0.12);">V25</th>
+        <th class="num-cell">V25</th>
+        <th class="num-cell" style="background:rgba(255,165,0,0.12);">V26 &#x1f4a1;</th>
         <th class="num-cell">V25 vs V20</th>
     </tr>
     </thead>
@@ -794,7 +808,7 @@ li { margin: 4px 0; }
     </tbody>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。V25 在 V24 基礎上再翻倍（$185.2B vs $92.2B），詳見 <a href="#v25" style="color:var(--accent)">V25 章節</a>。</p>
+<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。<br><strong style="color:var(--accent)">&#x26A0; V18-V25 使用舊回測引擎（理想化填成），V26 使用真實填成模型。兩者數據不可直接比較。</strong>V25 在 V24 基礎上再翻倍（$185.2B vs $92.2B），詳見 <a href="#v25" style="color:var(--accent)">V25 章節</a>。</p>
 
 <!-- ================================================================ -->
 <!-- 5. V18 基礎版 -->
@@ -1805,7 +1819,7 @@ li { margin: 4px 0; }
 
 <div class="card card-green">
     <h3 style="margin-top:0">V25 核心改進</h3>
-    <p>V25 針對 V24 的兩個可優化點 — <strong>Day 2 利潤保護不足</strong>和<strong>保本門檻過高</strong> — 進行了 2 項精準微調，使績效再翻倍至 $185.2B。</p>
+    <p>V25 針對 V24 的兩個可優化點 — <strong>Day 2 利潤保護不足</strong>和<strong>保本門檻過高</strong> — 進行了 2 項精準微調，使績效再翻倍至 $185.2B <span style="color:var(--text-dim);font-size:0.8em;">（舊引擎數據）</span>。</p>
     <p style="margin-bottom:0;">研究方法：多輪回測驗證、50+ 變體測試、Walk-Forward 樣本外驗證。190/190 驗證全通過，50 次回測結果完全一致。</p>
 </div>
 
@@ -2027,7 +2041,139 @@ li { margin: 4px 0; }
 <!-- ================================================================ -->
 <!-- 11. 結論 -->
 <!-- ================================================================ -->
-<h2 id="conclusion"><span class="num">13</span>結論</h2>
+
+<!-- V26 — 真實填成模型 + Sprint Exit -->
+
+<h2 id="v26"><span class="num">13</span>V26 &mdash; 真實填成模型 + Sprint Exit</h2>
+
+<div class="card card-green">
+    <div class="big-number">V26: 真實填成模型</div>
+    <div class="label" style="margin-top: 8px;">325 筆交易 | WR 51.7% | PF 1.80 | $10K &rarr; $2.87M | EV +2.28%</div>
+</div>
+
+<h3 id="v26-fillmodel">回測填成模型修正 &mdash; 為什麼數字大幅改變</h3>
+
+<div class="card card-red">
+    <h4 style="margin-top:0">&#x26A0; V18-V25 回測引擎的失真問題</h4>
+    <p>V18 到 V25 的回測引擎存在<strong>系統性樂觀偏差</strong>，導致歷史回測數據（如 V25 $185.2B、WR 66.81%）嚴重高估真實績效：</p>
+    <table>
+    <thead>
+    <tr><th>失真來源</th><th>舊引擎假設</th><th>真實市場執行</th><th>影響</th></tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><strong>同日 TP/SL 衝突</strong></td>
+        <td>TP 永遠優先 &mdash; 只要 High &ge; TP 就以 TP 出場</td>
+        <td>不知道 High 或 Low 先發生，需看盤中順序</td>
+        <td style="color:var(--red)">系統性高估勝率 +1-2pp</td>
+    </tr>
+    <tr>
+        <td><strong>出場無滑價</strong></td>
+        <td>SL/TP/Trail 以精確價位填成</td>
+        <td>Stop order 觸發後變 market order，可能滑 0.05-0.2%</td>
+        <td style="color:var(--red)">每筆交易少計 0.05-0.2% 損失</td>
+    </tr>
+    <tr>
+        <td><strong>複利放大效應</strong></td>
+        <td>每筆微小偏差通過 ALL IN 複利放大</td>
+        <td>400+ 筆交易，每筆偏差通過複利指數放大</td>
+        <td style="color:var(--red)">最終資金失真可達 1000x+</td>
+    </tr>
+    </tbody>
+    </table>
+</div>
+
+<h3 id="v26-realfill">V26 真實填成模型</h3>
+<p>V26 是 Sovereign 首個使用<strong>真實填成模型</strong>的版本。出場價格計算方式：</p>
+
+<div class="card">
+    <h4 style="margin-top:0">日級追蹤出場流程（每天開盤前設定）</h4>
+    <ol>
+        <li><strong>收盤後計算</strong>：根據當天收盤價更新 SL/TP/Trail 目標價位</li>
+        <li><strong>開盤前掛單</strong>：SL = Stop Sell、TP = Limit Sell、Trail = Stop Sell</li>
+        <li><strong>盤中自動執行</strong>：交易所依掛單價位自動觸發</li>
+    </ol>
+    <table>
+    <thead>
+    <tr><th>出場類型</th><th>填成公式</th><th>說明</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>SL (止損)</td><td><code>min(SL_level, Open)</code></td><td>跳空下跌以 Open 填成（更差）</td></tr>
+    <tr><td>TP (止盈)</td><td><code>max(TP_level, Open)</code></td><td>跳空上漲以 Open 填成（更好）</td></tr>
+    <tr><td>Trail (追蹤)</td><td><code>min(Trail_level, Open)</code></td><td>同 SL 邏輯</td></tr>
+    <tr><td>TIME / STALE</td><td><code>Close</code></td><td>收盤市價出場</td></tr>
+    </tbody>
+    </table>
+</div>
+
+<h3 id="v26-changes">V26 三項改進</h3>
+
+<div class="card">
+    <h4 style="margin-top:0">改進 1：CandGate &ge; 50（市場活躍度過濾）</h4>
+    <p>訊號日若 V26 篩選條件通過的候選股 &lt; 50 檔，視為市場不活躍，跳過當日進場。候選股數量是動能突破成功率的最強預測因子 &mdash; 市場活躍時假突破較少。</p>
+</div>
+
+<div class="card">
+    <h4 style="margin-top:0">改進 2：SkipBEAR（熊市排除）</h4>
+    <p>BEAR 環境定義：SPY &lt; MA50 &lt; MA200、或 Death Cross（MA50 在 20 日內跌破 MA200）、或 SPY RSI &lt; 30。熊市期間不進場，避免逆勢操作。</p>
+</div>
+
+<div class="card">
+    <h4 style="margin-top:0">改進 3：Sprint Exit（快速出場）</h4>
+    <table>
+    <thead>
+    <tr><th>參數</th><th>V25</th><th>V26</th><th>目的</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>TP (止盈)</td><td>15%</td><td style="color:var(--green)"><strong>8%</strong></td><td>更快鎖定獲利</td></tr>
+    <tr><td>BE (保本門檻)</td><td>0.6%</td><td style="color:var(--green)"><strong>0.3%</strong></td><td>更快進入零風險</td></tr>
+    <tr><td>Day 2 Profit Lock</td><td>+3.5%</td><td style="color:var(--green)"><strong>+2.5%</strong></td><td>更早鎖定利潤</td></tr>
+    <tr><td>Day 2 Trail</td><td>2.0%</td><td style="color:var(--green)"><strong>1.5%</strong></td><td>更緊追蹤</td></tr>
+    </tbody>
+    </table>
+</div>
+
+<h3 id="v26-results">V26 回測結果（真實填成模型）</h3>
+
+<div class="card">
+    <table>
+    <thead>
+    <tr><th>指標</th><th>V25（舊引擎）</th><th>V26（真實填成）</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>交易總數</td><td>452</td><td><strong>325</strong></td></tr>
+    <tr><td>勝率</td><td>66.81%</td><td><strong>51.7%</strong></td></tr>
+    <tr><td>獲利因子 (PF)</td><td>3.37</td><td><strong>1.80</strong></td></tr>
+    <tr><td>每筆 EV</td><td>+4.17%</td><td><strong>+2.28%</strong></td></tr>
+    <tr><td>最終資金</td><td>$185.2B</td><td><strong>$2,868,232</strong></td></tr>
+    <tr><td>固定倉 MDD</td><td>6.43%</td><td><strong>34.2%</strong></td></tr>
+    <tr><td>平均持倉</td><td>2.8 天</td><td><strong>2.7 天</strong></td></tr>
+    </tbody>
+    </table>
+    <p style="color:var(--text-dim);font-size:0.85em;margin-top:8px">V25 與 V26 數據不可直接比較 &mdash; 使用不同的回測引擎。V26 數據更接近真實交易預期。</p>
+</div>
+
+<h3 id="v26-yearly">V26 逐年表現</h3>
+
+<div class="card">
+    <table>
+    <thead>
+    <tr><th>年度</th><th>交易</th><th>勝率</th><th>PF</th><th>EV</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>2021</td><td>74</td><td>47.3%</td><td>1.31</td><td>+0.93%</td></tr>
+    <tr><td>2022</td><td>26</td><td>42.3%</td><td>0.76</td><td>-1.10%</td></tr>
+    <tr><td>2023</td><td>62</td><td>46.8%</td><td>1.17</td><td>+0.54%</td></tr>
+    <tr><td>2024</td><td>85</td><td style="color:var(--green)">58.8%</td><td style="color:var(--green)">2.25</td><td style="color:var(--green)">+2.84%</td></tr>
+    <tr><td>2025</td><td>73</td><td style="color:var(--green)">53.4%</td><td style="color:var(--green)">2.25</td><td style="color:var(--green)">+3.61%</td></tr>
+    <tr><td>2026*</td><td>10</td><td style="color:var(--green)">80.0%</td><td style="color:var(--green)">5.61</td><td style="color:var(--green)">+6.44%</td></tr>
+    </tbody>
+    </table>
+    <p style="color:var(--text-dim);font-size:0.85em;margin-top:8px">* 2026 年數據截至回測日期（進行中）。2022 年受熊市影響為唯一虧損年度，SkipBEAR 已將 2022 交易量限制至 26 筆。</p>
+</div>
+
+
+<h2 id="conclusion"><span class="num">14</span>結論</h2>
 
 <div class="card card-green">
     <h3 style="margin-top:0">Sovereign 的價值</h3>
@@ -2042,13 +2188,13 @@ li { margin: 4px 0; }
 </div>
 
 <div class="highlight-box">
-    <div class="label">從 V18 到 V25 的演化之路</div>
-    <div class="big-number">$14.7M &rarr; $185.2B</div>
-    <div class="label" style="margin-top: 8px;">12,598 倍績效提升 &bull; 7 個版本 &bull; 350+ 實驗 &bull; 每一步都有數據支撐</div>
+    <div class="label">從 V18 到 V26 的演化之路</div>
+    <div class="big-number">$14.7M &rarr; $2.87M (V26 真實填成)</div>
+    <div class="label" style="margin-top: 8px;">9 個版本 &bull; 400+ 實驗 &bull; V26 首次採用真實填成模型驗證</div>
 </div>
 
 <div class="analogy">
-    Sovereign 的演化就像火箭發射：V18 建造了火箭本體，V19 嘗試減重但剪錯了零件，V20 加裝了智慧導航系統，V21 對每個螺絲進行極限測試確認安全，V23 找到了燃料的最佳配比，V24 精準微調了點火時序，V25 加裝了利潤鎖定裝置——同樣的火箭，3,734 倍的推力。
+    Sovereign 的演化就像火箭發射：V18 建造了火箭本體，V19 嘗試減重但剪錯了零件，V20 加裝了智慧導航系統，V21 對每個螺絲進行極限測試確認安全，V23 找到了燃料的最佳配比，V24 精準微調了點火時序，V25 加裝了利潤鎖定裝置，V26 更換了真實引擎測試台——拿掉濾鏡後仍然飛得起來，$10K → $2.87M。
 </div>
 
 <p style="color: var(--text-dim); text-align: center; margin-top: 32px;">
@@ -2056,7 +2202,7 @@ li { margin: 4px 0; }
 </p>
 
 <div class="footer">
-    <p>Sovereign V25 &mdash; 版本演化歷史文件 | 40+ 輪研究 &bull; 350+ 實驗</p>
+    <p>Sovereign V26 &mdash; 版本演化歷史文件 | 40+ 輪研究 &bull; 400+ 實驗</p>
     <p id="site-updated" style="margin-top:6px;font-size:0.8em;color:var(--text-dim)"></p>
 </div>
 
