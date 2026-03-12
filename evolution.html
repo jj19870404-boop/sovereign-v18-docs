@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Sovereign V18-V26 演化歷史 — 完整版本進化紀錄</title>
-<meta name="description" content="Sovereign 動能突破交易系統 V18 到 V25 的完整演化歷史 — 7 個版本的回測數據對比、參數優化過程、每日選股勝率分析，見證系統從 V18 到 V25 的逐步進化。">
+<meta name="description" content="Sovereign 動能突破交易系統 V18 到 V26 的完整演化歷史 — 9 個版本的回測數據對比、參數優化過程、V26 真實填成模型驗證，見證系統從 V18 到 V26 的逐步進化。">
 <meta property="og:title" content="Sovereign V18-V26 演化歷史 — 完整版本進化紀錄">
-<meta property="og:description" content="Sovereign 動能突破交易系統 V18 到 V25 的完整演化歷史，包含所有回測數據、參數變化、每日選股勝率分析">
+<meta property="og:description" content="Sovereign 動能突破交易系統 V18 到 V26 的完整演化歷史，包含所有回測數據、參數變化、V26 真實填成模型驗證">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html">
 <meta property="og:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
@@ -16,7 +16,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sovereign V18-V26 演化歷史 — 完整版本進化紀錄">
-<meta name="twitter:description" content="Sovereign 動能突破交易系統 V18 到 V25 的完整演化歷史，包含所有回測數據、參數變化、每日選股勝率分析">
+<meta name="twitter:description" content="Sovereign 動能突破交易系統 V18 到 V26 的完整演化歷史，包含所有回測數據、參數變化、V26 真實填成模型驗證">
 <meta name="twitter:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
 <link rel="canonical" href="https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html">
 <link rel="icon" type="image/png" href="images/sovereign_v18_20260211.png">
@@ -127,7 +127,7 @@ li { margin: 4px 0; }
 }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V18-V26 演化歷史","description":"Sovereign 動能突破交易系統 V18 到 V25 的完整演化歷史，包含所有回測數據、參數變化、每日選股勝率分析","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V25","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
+{"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V18-V26 演化歷史","description":"Sovereign 動能突破交易系統 V18 到 V26 的完整演化歷史，包含所有回測數據、參數變化、V26 真實填成模型驗證","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V26","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/"},{"@type":"ListItem","position":2,"name":"版本演化","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html"}]}
@@ -138,7 +138,7 @@ li { margin: 4px 0; }
 <div class="container">
 
 <div class="top-nav" role="navigation" aria-label="主要導航">
-    <a href="index.html" class="brand">Sovereign V25</a>
+    <a href="index.html" class="brand">Sovereign V26</a>
     <button class="menu-toggle" aria-label="開啟選單" aria-expanded="false">&#9776;</button>
     <div class="nav-links">
         <a href="index.html">首頁</a>
@@ -153,7 +153,7 @@ li { margin: 4px 0; }
 
 <main id="main-content" role="main">
 <noscript><div style="padding:20px;text-align:center;color:#8b90a5;background:#1a1d27;border-radius:8px;margin:20px 0;">部分功能需要 JavaScript 支援。請啟用 JavaScript 以獲得最佳體驗。</div></noscript>
-<h1>Sovereign V18 &rarr; V25</h1>
+<h1>Sovereign V18 &rarr; V26</h1>
 <p class="subtitle">完整版本演化歷史 &mdash; 從 V18 到 V26 的進化之路 — 真實填成模型</p>
 
 <!-- Hero -->
@@ -179,6 +179,7 @@ li { margin: 4px 0; }
     <li><a href="#v24">V24 — Day 1 優化</a></li>
     <li><a href="#v25">V25 — Day 2 利潤鎖定</a></li>
     <li><a href="#scan">每日掃描勝率演化</a></li>
+    <li><a href="#v26">V26 — 真實填成模型 + Sprint Exit</a></li>
     <li><a href="#conclusion">結論</a></li>
 </ol>
 </div>
