@@ -1,13 +1,13 @@
 {
-  "updated": "2026-03-15T11:10:14+08:00",
+  "updated": "2026-03-16T06:00:38+08:00",
   "summary": {
     "total": 21,
-    "wins": 11,
-    "losses": 8,
+    "wins": 12,
+    "losses": 7,
     "be": 1,
     "open": 1,
-    "win_rate": 57.9,
-    "avg_return": 1.61
+    "win_rate": 63.2,
+    "avg_return": 1.65
   },
   "tracks": [
     {
@@ -28,9 +28,9 @@
       "tp": 27.87,
       "sl": 23.71,
       "status": "LOSS",
-      "return_pct": -7.05,
+      "return_pct": -6.51,
       "days": 2,
-      "exit_price": 23.99,
+      "exit_price": 24.13,
       "exit_type": "SL"
     },
     {
@@ -52,9 +52,9 @@
       "tp": 28.75,
       "sl": 24.52,
       "status": "LOSS",
-      "return_pct": -6.84,
+      "return_pct": -6.31,
       "days": 3,
-      "exit_price": 24.8,
+      "exit_price": 24.94,
       "exit_type": "SL"
     },
     {
@@ -64,9 +64,9 @@
       "tp": 29.95,
       "sl": 25.63,
       "status": "LOSS",
-      "return_pct": -6.96,
-      "days": 3,
-      "exit_price": 25.8,
+      "return_pct": -6.06,
+      "days": 2,
+      "exit_price": 26.05,
       "exit_type": "SL"
     },
     {
@@ -76,9 +76,9 @@
       "tp": 50.92,
       "sl": 43.65,
       "status": "WIN",
-      "return_pct": 2.85,
+      "return_pct": 3.37,
       "days": 4,
-      "exit_price": 48.49,
+      "exit_price": 48.74,
       "exit_type": "TRAIL"
     },
     {
@@ -88,9 +88,9 @@
       "tp": 28.48,
       "sl": 24.27,
       "status": "WIN",
-      "return_pct": 2.24,
+      "return_pct": 2.75,
       "days": 3,
-      "exit_price": 26.96,
+      "exit_price": 27.1,
       "exit_type": "TRAIL"
     },
     {
@@ -100,9 +100,9 @@
       "tp": 27.59,
       "sl": 23.45,
       "status": "WIN",
-      "return_pct": 3.78,
+      "return_pct": 4.31,
       "days": 3,
-      "exit_price": 26.52,
+      "exit_price": 26.65,
       "exit_type": "TRAIL"
     },
     {
@@ -112,10 +112,10 @@
       "tp": 27.73,
       "sl": 23.86,
       "status": "WIN",
-      "return_pct": 7.98,
-      "days": 5,
-      "exit_price": 27.73,
-      "exit_type": "TP"
+      "return_pct": 1.35,
+      "days": 3,
+      "exit_price": 26.03,
+      "exit_type": "TRAIL"
     },
     {
       "date": "2026-02-27",
@@ -123,11 +123,11 @@
       "entry": 26.38,
       "tp": 28.49,
       "sl": 24.56,
-      "status": "LOSS",
-      "return_pct": -2.77,
-      "days": 2,
-      "exit_price": 25.65,
-      "exit_type": "SL"
+      "status": "WIN",
+      "return_pct": 0.54,
+      "days": 6,
+      "exit_price": 26.52,
+      "exit_type": "TRAIL"
     },
     {
       "date": "2026-02-26",
@@ -244,9 +244,9 @@
       "tp": 2.16,
       "sl": 1.82,
       "status": "LOSS",
-      "return_pct": -7.8,
+      "return_pct": -7.2,
       "days": 2,
-      "exit_price": 1.84,
+      "exit_price": 1.86,
       "exit_type": "SL"
     },
     {
