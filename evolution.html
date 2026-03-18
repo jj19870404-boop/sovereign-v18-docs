@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Sovereign V18-V26 演化歷史 — 完整版本進化紀錄</title>
-<meta name="description" content="Sovereign 動能突破交易系統 V18 到 V26 的完整演化歷史 — 9 個版本的回測數據對比、參數優化過程、V26 真實填成模型驗證，見證系統從 V18 到 V26 的逐步進化。">
-<meta property="og:title" content="Sovereign V18-V26 演化歷史 — 完整版本進化紀錄">
-<meta property="og:description" content="Sovereign 動能突破交易系統 V18 到 V26 的完整演化歷史，包含所有回測數據、參數變化、V26 真實填成模型驗證">
+<title>Sovereign V18-V28 演化歷史 — 完整版本進化紀錄</title>
+<meta name="description" content="Sovereign 動能突破交易系統 V18 到 V28 的完整演化歷史 — 11 個版本的回測數據對比、參數優化過程、V28 真實填成模型驗證，見證系統從 V18 到 V28 的逐步進化。">
+<meta property="og:title" content="Sovereign V18-V28 演化歷史 — 完整版本進化紀錄">
+<meta property="og:description" content="Sovereign 動能突破交易系統 V18 到 V28 的完整演化歷史，包含所有回測數據、參數變化、V28 真實填成模型驗證">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html">
 <meta property="og:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
@@ -15,8 +15,8 @@
 <meta property="og:image:height" content="1350">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sovereign V18-V26 演化歷史 — 完整版本進化紀錄">
-<meta name="twitter:description" content="Sovereign 動能突破交易系統 V18 到 V26 的完整演化歷史，包含所有回測數據、參數變化、V26 真實填成模型驗證">
+<meta name="twitter:title" content="Sovereign V18-V28 演化歷史 — 完整版本進化紀錄">
+<meta name="twitter:description" content="Sovereign 動能突破交易系統 V18 到 V28 的完整演化歷史，包含所有回測數據、參數變化、V28 真實填成模型驗證">
 <meta name="twitter:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
 <link rel="canonical" href="https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html">
 <link rel="icon" type="image/png" href="images/sovereign_v18_20260211.png">
@@ -127,7 +127,7 @@ li { margin: 4px 0; }
 }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V18-V26 演化歷史","description":"Sovereign 動能突破交易系統 V18 到 V26 的完整演化歷史，包含所有回測數據、參數變化、V26 真實填成模型驗證","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V26","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
+{"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V18-V28 演化歷史","description":"Sovereign 動能突破交易系統 V18 到 V28 的完整演化歷史，包含所有回測數據、參數變化、V28 真實填成模型驗證","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V28","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/"},{"@type":"ListItem","position":2,"name":"版本演化","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/evolution.html"}]}
@@ -138,7 +138,7 @@ li { margin: 4px 0; }
 <div class="container">
 
 <div class="top-nav" role="navigation" aria-label="主要導航">
-    <a href="index.html" class="brand">Sovereign V26</a>
+    <a href="index.html" class="brand">Sovereign V28</a>
     <button class="menu-toggle" aria-label="開啟選單" aria-expanded="false">&#9776;</button>
     <div class="nav-links">
         <a href="index.html">首頁</a>
@@ -153,14 +153,14 @@ li { margin: 4px 0; }
 
 <main id="main-content" role="main">
 <noscript><div style="padding:20px;text-align:center;color:#8b90a5;background:#1a1d27;border-radius:8px;margin:20px 0;">部分功能需要 JavaScript 支援。請啟用 JavaScript 以獲得最佳體驗。</div></noscript>
-<h1>Sovereign V18 &rarr; V26</h1>
-<p class="subtitle">完整版本演化歷史 &mdash; 從 V18 到 V26 的進化之路 — 真實填成模型</p>
+<h1>Sovereign V18 &rarr; V28</h1>
+<p class="subtitle">完整版本演化歷史 &mdash; 從 V18 到 V28 的進化之路 — 真實填成模型</p>
 
 <!-- Hero -->
 <div class="highlight-box">
-    <div class="label">7 個版本 &bull; 40+ 輪研究 &bull; 350+ 實驗 &bull; 12M+ 數據列</div>
-    <div class="big-number">$10K &rarr; $2.87M (V26 真實填成)</div>
-    <div class="label" style="margin-top: 8px;">V18-V25: 舊引擎（理想化填成） | V26: 真實填成模型 $2.87M</div>
+    <div class="label">11 個版本 &bull; 40+ 輪研究 &bull; 1700+ 實驗 &bull; 12M+ 數據列</div>
+    <div class="big-number">$10K &rarr; $180.6M (V28 真實填成)</div>
+    <div class="label" style="margin-top: 8px;">V18-V25: 舊引擎（理想化填成） | V26-V28: 真實填成模型 | V28 $180.6M</div>
 </div>
 
 <!-- TOC -->
@@ -180,6 +180,8 @@ li { margin: 4px 0; }
     <li><a href="#v25">V25 — Day 2 利潤鎖定</a></li>
     <li><a href="#scan">每日掃描勝率演化</a></li>
     <li><a href="#v26">V26 — 真實填成模型 + Sprint Exit</a></li>
+    <li><a href="#v27">V27 — 七項參數優化 (35.8x V26)</a></li>
+    <li><a href="#v28">V28 — 出場微調 (3.16x V27)</a></li>
     <li><a href="#conclusion">結論</a></li>
 </ol>
 </div>
@@ -278,6 +280,18 @@ li { margin: 4px 0; }
         <div class="step-num">2026 年 2 月</div>
         <div class="step-title" style="color: var(--green);">V25 — Day 2 利潤鎖定</div>
         <div style="font-size:0.85em; color: var(--text-dim); margin-top:4px;">Day 2 Profit Lock + 降低 BE | $10K &rarr; $2.87M (V26 真實填成) | <strong style="color:var(--green);">3,734x V20</strong></div>
+    </div>
+    <div class="flow-arrow" style="align-self: center;">&darr;</div>
+    <div class="flow-step" style="text-align: left;">
+        <div class="step-num">2026 年 3 月</div>
+        <div class="step-title" style="color: var(--accent);">V27 — 七項參數優化</div>
+        <div style="font-size:0.85em; color: var(--text-dim); margin-top:4px;">ATR&ge;3.5% + CG70 + SkipMar + 出場優化 | $10K &rarr; $57.1M | <strong>35.8x V26</strong></div>
+    </div>
+    <div class="flow-arrow" style="align-self: center;">&darr;</div>
+    <div class="flow-step" style="text-align: left; border-color: var(--gold); background: rgba(212,168,67,0.05);">
+        <div class="step-num">2026 年 3 月</div>
+        <div class="step-title" style="color: var(--gold);">V28 — 出場微調</div>
+        <div style="font-size:0.85em; color: var(--text-dim); margin-top:4px;">time_stop 7天 + D2Trail 0.8% | $10K &rarr; $180.6M | <strong style="color:var(--gold);">3.16x V27</strong></div>
     </div>
 </div>
 
@@ -809,7 +823,7 @@ li { margin: 4px 0; }
     </tbody>
 </table>
 </div>
-<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。<br><strong style="color:var(--accent)">&#x26A0; V18-V25 使用舊回測引擎（理想化填成），V26 使用真實填成模型。兩者數據不可直接比較。</strong>V25 在 V24 基礎上再翻倍（$185.2B vs $92.2B），詳見 <a href="#v25" style="color:var(--accent)">V25 章節</a>。</p>
+<p style="color: var(--text-dim); font-size: 0.85em;">* 2026 年數據截至回測日期（進行中）。<br><strong style="color:var(--accent)">&#x26A0; V18-V25 使用舊回測引擎（理想化填成），V26-V28 使用真實填成模型。V18-V25 與 V26+ 數據不可直接比較。</strong>V25 在 V24 基礎上再翻倍（$185.2B vs $92.2B），詳見 <a href="#v25" style="color:var(--accent)">V25 章節</a>。</p>
 
 <!-- ================================================================ -->
 <!-- 5. V18 基礎版 -->
@@ -2192,7 +2206,128 @@ li { margin: 4px 0; }
 </div>
 
 
-<h2 id="conclusion"><span class="num">14</span>結論</h2>
+<!-- V27 — 七項參數優化 -->
+
+<h2 id="v27"><span class="num">14</span>V27 &mdash; 七項參數優化 (35.8x V26)</h2>
+
+<div class="card card-green">
+    <div class="big-number">V27: $57.1M</div>
+    <div class="label" style="margin-top: 8px;">313 筆交易 | WR 58.8% | PF 2.30 | $10K &rarr; $57,125,665 | EV +3.36%</div>
+</div>
+
+<h3 id="v27-changes">V27 七項改進</h3>
+
+<div class="card">
+    <p>V27 基於 ~1,200 組配置、6 層 Tier 研究、18+ 腳本的全面驗證，找到 V26 的強化版本。核心改變：提高波動率門檻 + 收緊 CandGate + 優化出場參數。</p>
+    <table>
+    <thead>
+    <tr><th>參數</th><th>V26</th><th>V27</th><th>目的</th></tr>
+    </thead>
+    <tbody>
+    <tr><td><strong>ATR 波動率門檻</strong></td><td>無</td><td style="color:var(--green)"><strong>&ge; 3.5%</strong></td><td>只交易高波動股，提高爆發力</td></tr>
+    <tr><td>CandGate</td><td>50</td><td style="color:var(--green)"><strong>70</strong></td><td>更嚴格的市場活躍度過濾</td></tr>
+    <tr><td>Skip March</td><td>無</td><td style="color:var(--green)"><strong>啟用</strong></td><td>3 月歷史性弱月排除</td></tr>
+    <tr><td>BE (保本門檻)</td><td>0.3%</td><td style="color:var(--green)"><strong>0.8%</strong></td><td>適度放寬，減少過早被震出</td></tr>
+    <tr><td>Day 2 Profit Lock</td><td>+2.5%</td><td style="color:var(--green)"><strong>+1.2%</strong></td><td>更早鎖定利潤</td></tr>
+    <tr><td>Day 2 Trail</td><td>1.5%</td><td style="color:var(--green)"><strong>1.0%</strong></td><td>更緊追蹤</td></tr>
+    <tr><td>SL (止損倍數)</td><td>1.3x ATR</td><td style="color:var(--green)"><strong>1.2x ATR</strong></td><td>收緊止損</td></tr>
+    </tbody>
+    </table>
+</div>
+
+<h3 id="v27-results">V27 回測結果</h3>
+
+<div class="card">
+    <table>
+    <thead>
+    <tr><th>指標</th><th>V26</th><th>V27</th><th>變化</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>交易總數</td><td>325</td><td><strong>313</strong></td><td>-12</td></tr>
+    <tr><td>勝率</td><td>51.7%</td><td style="color:var(--green)"><strong>58.8%</strong></td><td style="color:var(--green)">+7.1pp</td></tr>
+    <tr><td>獲利因子 (PF)</td><td>1.80</td><td style="color:var(--green)"><strong>2.30</strong></td><td style="color:var(--green)">+0.50</td></tr>
+    <tr><td>每筆 EV</td><td>+2.28%</td><td style="color:var(--green)"><strong>+3.36%</strong></td><td style="color:var(--green)">+1.08pp</td></tr>
+    <tr><td>最終資金</td><td>$2.87M</td><td style="color:var(--green)"><strong>$57,125,665</strong></td><td style="color:var(--green)"><strong>35.8x</strong></td></tr>
+    <tr><td>固定倉 MDD</td><td>34.2%</td><td style="color:var(--green)">20.49%</td><td style="color:var(--green)">-13.7pp</td></tr>
+    <tr><td>平均持倉</td><td>2.7 天</td><td><strong>2.5 天</strong></td><td>-0.2 天</td></tr>
+    </tbody>
+    </table>
+    <p style="color:var(--text-dim);font-size:0.85em;margin-top:8px">V26 和 V27 均使用真實填成模型，數據可直接比較。V27 透過篩選品質更高的交易 (ATR &ge; 3.5%) 和更積極的利潤鎖定，實現 35.8 倍的複利提升，同時 MDD 從 34.2% 降至 20.49%。</p>
+</div>
+
+<h3 id="v27-results-summary">V27 績效摘要</h3>
+
+<div class="card">
+    <p><strong>313 筆交易</strong>，WR 58.79%，PF 2.30，EV +3.36%，MDD 20.49%</p>
+    <p><strong>出場分佈</strong>：TP 131 (41.9%), SL 113 (36.1%), TRAIL 65 (20.8%), TIME 3 (1.0%), STALE 1 (0.3%)</p>
+    <p><strong>35.8x V26</strong>（V26 同數據基準 $1.60M）</p>
+    <p style="color:var(--text-dim);font-size:0.85em;margin-top:8px">V27 在提升複利 35.8 倍的同時，MDD 從 34.2% 降至 20.49%，風險報酬比大幅改善。</p>
+</div>
+
+
+<!-- V28 — 出場微調 -->
+
+<h2 id="v28"><span class="num">15</span>V28 &mdash; 出場微調 (3.16x V27)</h2>
+
+<div class="card card-green">
+    <div class="big-number">V28: $180.6M</div>
+    <div class="label" style="margin-top: 8px;">333 筆交易 | WR 60.96% | PF 2.39 | $10K &rarr; $180,607,184 | EV +3.50%</div>
+</div>
+
+<h3 id="v28-changes">V28 兩項改進</h3>
+
+<div class="card">
+    <p>V28 在 V27 的基礎上，僅微調兩項出場參數。縮短 time_stop 加速資金輪轉，收緊 Day 2 追蹤距離鎖住更多利潤。經 4,662 項驗證，0 錯誤。</p>
+    <table>
+    <thead>
+    <tr><th>參數</th><th>V27</th><th>V28</th><th>目的</th></tr>
+    </thead>
+    <tbody>
+    <tr><td><strong>time_stop (最大持倉天數)</strong></td><td>10 天</td><td style="color:var(--green)"><strong>7 天</strong></td><td>更快釋放資金，減少滯留</td></tr>
+    <tr><td><strong>day2_trail_distance</strong></td><td>1.0%</td><td style="color:var(--green)"><strong>0.8%</strong></td><td>更緊追蹤，鎖住利潤</td></tr>
+    </tbody>
+    </table>
+</div>
+
+<h3 id="v28-results">V28 回測結果</h3>
+
+<div class="card">
+    <table>
+    <thead>
+    <tr><th>指標</th><th>V27</th><th>V28</th><th>變化</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>交易總數</td><td>313</td><td><strong>333</strong></td><td>+20</td></tr>
+    <tr><td>勝率</td><td>58.8%</td><td style="color:var(--green)"><strong>60.96%</strong></td><td style="color:var(--green)">+2.2pp</td></tr>
+    <tr><td>獲利因子 (PF)</td><td>2.30</td><td style="color:var(--green)"><strong>2.39</strong></td><td style="color:var(--green)">+0.09</td></tr>
+    <tr><td>每筆 EV</td><td>+3.36%</td><td style="color:var(--green)"><strong>+3.50%</strong></td><td style="color:var(--green)">+0.14pp</td></tr>
+    <tr><td>最終資金</td><td>$57.1M</td><td style="color:var(--green)"><strong>$180,607,184</strong></td><td style="color:var(--green)"><strong>3.16x</strong></td></tr>
+    <tr><td>固定倉 MDD</td><td>20.49%</td><td style="color:var(--green)">20.44%</td><td style="color:var(--green)">-0.05pp</td></tr>
+    <tr><td>平均持倉</td><td>2.5 天</td><td><strong>2.3 天</strong></td><td>-0.2 天</td></tr>
+    </tbody>
+    </table>
+    <p style="color:var(--text-dim);font-size:0.85em;margin-top:8px">V28 透過縮短 time_stop 從 10 天降至 7 天，加速資金輪轉，同時收緊 Day 2 追蹤距離鎖住更多利潤。結果增加 20 筆交易（主要是 TIME 出場轉為更快結清），複利提升 3.16 倍。</p>
+</div>
+
+<h3 id="v28-exits">V28 出場分佈</h3>
+
+<div class="card">
+    <table>
+    <thead>
+    <tr><th>出場方式</th><th>V27</th><th>V28</th></tr>
+    </thead>
+    <tbody>
+    <tr><td><span class="tag tag-green">TP 停利</span></td><td>131 (41.9%)</td><td><strong>147 (44.1%)</strong></td></tr>
+    <tr><td><span class="tag tag-red">SL 停損</span></td><td>113 (36.1%)</td><td><strong>112 (33.6%)</strong></td></tr>
+    <tr><td><span class="tag tag-blue">TRAIL 追蹤</span></td><td>65 (20.8%)</td><td><strong>63 (18.9%)</strong></td></tr>
+    <tr><td><span class="tag tag-yellow">TIME 時間</span></td><td>3 (1.0%)</td><td><strong>11 (3.3%)</strong></td></tr>
+    </tbody>
+    </table>
+    <p style="color:var(--text-dim);font-size:0.85em;margin-top:8px">TIME 出場從 3 筆增至 11 筆，反映 time_stop 從 10 天縮短至 7 天的效果。TP 佔比提升至 44.1%，SL 佔比降至 33.6%，整體出場品質改善。</p>
+</div>
+
+
+<h2 id="conclusion"><span class="num">16</span>結論</h2>
 
 <div class="card card-green">
     <h3 style="margin-top:0">Sovereign 的價值</h3>
@@ -2207,13 +2342,13 @@ li { margin: 4px 0; }
 </div>
 
 <div class="highlight-box">
-    <div class="label">從 V18 到 V26 的演化之路</div>
-    <div class="big-number">$14.7M &rarr; $2.87M (V26 真實填成)</div>
-    <div class="label" style="margin-top: 8px;">9 個版本 &bull; 400+ 實驗 &bull; V26 首次採用真實填成模型驗證</div>
+    <div class="label">從 V18 到 V28 的演化之路</div>
+    <div class="big-number">$14.7M &rarr; $180.6M (V28 真實填成)</div>
+    <div class="label" style="margin-top: 8px;">11 個版本 &bull; 1600+ 實驗 &bull; V26 首次採用真實填成模型 &bull; V27 七項優化 &bull; V28 出場微調</div>
 </div>
 
 <div class="analogy">
-    Sovereign 的演化就像火箭發射：V18 建造了火箭本體，V19 嘗試減重但剪錯了零件，V20 加裝了智慧導航系統，V21 對每個螺絲進行極限測試確認安全，V23 找到了燃料的最佳配比，V24 精準微調了點火時序，V25 加裝了利潤鎖定裝置，V26 更換了真實引擎測試台——拿掉濾鏡後仍然飛得起來，$10K → $2.87M。
+    Sovereign 的演化就像火箭發射：V18 建造了火箭本體，V19 嘗試減重但剪錯了零件，V20 加裝了智慧導航系統，V21 對每個螺絲進行極限測試確認安全，V23 找到了燃料的最佳配比，V24 精準微調了點火時序，V25 加裝了利潤鎖定裝置，V26 更換了真實引擎測試台，V27 對引擎進行七項參數全面優化，V28 微調出場時機達到最佳效率——$10K &rarr; $180.6M。
 </div>
 
 <p style="color: var(--text-dim); text-align: center; margin-top: 32px;">
@@ -2221,7 +2356,7 @@ li { margin: 4px 0; }
 </p>
 
 <div class="footer">
-    <p>Sovereign V26 &mdash; 版本演化歷史文件 | 40+ 輪研究 &bull; 400+ 實驗</p>
+    <p>Sovereign V28 &mdash; 版本演化歷史文件 | 40+ 輪研究 &bull; 1700+ 實驗</p>
     <p id="site-updated" style="margin-top:6px;font-size:0.8em;color:var(--text-dim)"></p>
 </div>
 

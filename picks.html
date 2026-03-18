@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Sovereign V26 - 每日選股報告</title>
-<meta name="description" content="Sovereign V26 動能突破交易系統每日選股報告 — 全自動美股掃描選股結果、A-F 品質評級、進場價與停損價、TP/NoTP 動態操作計畫、完整候選股清單。">
-<meta property="og:title" content="Sovereign V26 - 每日選股報告">
-<meta property="og:description" content="Sovereign V26 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫">
+<title>Sovereign V28 - 每日選股報告</title>
+<meta name="description" content="Sovereign V28 動能突破交易系統每日選股報告 — 全自動美股掃描選股結果、A-F 品質評級、進場價與停損價、TP/NoTP 動態操作計畫、完整候選股清單。">
+<meta property="og:title" content="Sovereign V28 - 每日選股報告">
+<meta property="og:description" content="Sovereign V28 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html">
 <meta property="og:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
@@ -15,8 +15,8 @@
 <meta property="og:image:height" content="1350">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sovereign V26 - 每日選股報告">
-<meta name="twitter:description" content="Sovereign V26 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫">
+<meta name="twitter:title" content="Sovereign V28 - 每日選股報告">
+<meta name="twitter:description" content="Sovereign V28 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫">
 <meta name="twitter:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
 <link rel="canonical" href="https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html">
 <link rel="icon" type="image/png" href="images/sovereign_v18_20260211.png">
@@ -742,7 +742,7 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V26 - 每日選股報告","description":"Sovereign V26 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V26","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
+{"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V28 - 每日選股報告","description":"Sovereign V28 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V28","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/"},{"@type":"ListItem","position":2,"name":"每日選股","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html"}]}
@@ -754,7 +754,7 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 
 <!-- Top Nav -->
 <div class="top-nav" role="navigation" aria-label="主要導航">
-    <a href="index.html" class="brand">Sovereign V26</a>
+    <a href="index.html" class="brand">Sovereign V28</a>
     <button class="menu-toggle" aria-label="開啟選單" aria-expanded="false">&#9776;</button>
     <div class="nav-links">
         <a href="index.html">首頁</a>
@@ -846,7 +846,7 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
     <a href="index.html">&larr; 系統文件</a> &nbsp;|&nbsp;
     <a href="track.html">選股追蹤</a> &nbsp;|&nbsp;
     <a href="news.html">整點快報 &rarr;</a>
-    <p style="margin-top:8px">Sovereign &mdash; 動能突破交易系統 (V26 動態切換)</p>
+    <p style="margin-top:8px">Sovereign &mdash; 動能突破交易系統 (V28 動態切換)</p>
     <p id="site-updated" style="margin-top:6px;font-size:0.8em;color:var(--text-dim)"></p>
 </div>
 
@@ -854,21 +854,21 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 
 <script>
 /* ═══════════════════════════════════════════════════
-   Sovereign V26 Daily Picks — Full Scanner Report
+   Sovereign V28 Daily Picks — Full Scanner Report
    ═══════════════════════════════════════════════════ */
 
 // ── Strategy Parameters (constants) ─────────────
 const PARAMS = {
-    breakeven_trigger: 0.003,     // V26 Sprint Exit
+    breakeven_trigger: 0.008,     // V28
     trail_activation: 0.018,
     trail_distance: 0.031,
     gap_reject_pct: 0.03,
-    tp_target: 0.08,              // V26 Sprint Exit
+    tp_target: 0.08,              // V28
     stale_days: 9,
     stale_threshold: -0.05,
-    time_stop: 10,
+    time_stop: 7,                   // V28 (was 10)
     max_loss: -0.20,
-    atr_sl: 1.3,
+    atr_sl: 1.2,                  // V28
     atr_sl_day1: 1.5,
     force_tp_day1: true,
     slippage: 0.001,
@@ -879,10 +879,11 @@ const PARAMS = {
     spy_rsi_oversold_52wk: 0.90,
     spy_rsi_overbought: 70,
     spy_rsi_overbought_vz: 1.3,
-    day2_profit_lock: 0.025,      // V26 Sprint Exit
-    day2_trail_distance: 0.015,   // V26 Sprint Exit
-    cand_gate: 50,                // V26 CandGate
-    skip_bear: true,              // V26 Skip BEAR
+    day2_profit_lock: 0.012,      // V28
+    day2_trail_distance: 0.008,   // V28 (was 0.010)
+    cand_gate: 70,                // V28 CandGate
+    skip_bear: true,              // V28 Skip BEAR
+    skip_march: true,             // V28 Skip March
     notp_breakeven_trigger: 0.008,
     notp_trail_activation: 0.020,
 };
@@ -1161,7 +1162,7 @@ function renderAll(data) {
     renderExits(data.recent_exits || []);
     renderOpenTrades(data.open_trades || []);
     const picks = data.picks || [];
-    const vMode = data.v26 || data.v25 || data.v22 || data.v23 || data.v20;
+    const vMode = data.v28 || data.v27 || data.v26 || data.v25 || data.v22 || data.v23 || data.v20;
     if (picks.length === 0 || data.no_picks) {
         renderNoPicks(data.date);
     } else {
@@ -1174,7 +1175,7 @@ function renderAll(data) {
 
 // ── Dashboard ────────────────────────────────────
 function renderDashboard(data) {
-    const v = data.v26 || data.v25 || data.v22 || data.v23 || data.v20 || {};
+    const v = data.v28 || data.v27 || data.v26 || data.v25 || data.v22 || data.v23 || data.v20 || {};
     const p = data.performance || {};
 
     const modeEl = $('s-mode');
@@ -1389,7 +1390,7 @@ function buildPlanHTML(p, vMode) {
     const trail_price = entry * (1 + PARAMS.trail_activation);
     const atr = p.atr || 0;
 
-    // Determine current mode from v25 data
+    // Determine current mode from v28 data
     const isTP = !vMode || vMode.mode !== 'NoTP';
     const modeLabel = isTP ? 'TP 模式' : 'NoTP 模式';
     const modeClass = isTP ? 'tp-mode' : 'notp-mode';
@@ -1579,7 +1580,7 @@ function buildAdvancedHTML(p) {
 function renderNoPicks(date) {
     const html = `<div class="card" style="text-align:center;padding:32px">
         <h3 style="color:var(--yellow);margin-bottom:12px">今日無符合條件的標的</h3>
-        <p style="color:var(--text-dim)">這是正常的 — V26 平均每年約 54 個訊號（CandGate + SkipBEAR 過濾後）</p>
+        <p style="color:var(--text-dim)">這是正常的 — V28 平均每年約 64 個訊號（CandGate + SkipBEAR + SkipMar 過濾後）</p>
         <p style="color:var(--text-dim);font-size:0.85em;margin-top:12px">
             策略等待以下條件同時滿足：量能突增 >= 1.5x ・ 量能Z分 >= 1.0σ ・ 接近52週高點 >= 80% ・ SMA20 上升 ・ 盤整收斂
         </p>
