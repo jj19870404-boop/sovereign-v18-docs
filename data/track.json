@@ -1,13 +1,13 @@
 {
-  "updated": "2026-03-19T11:10:12+08:00",
+  "updated": "2026-03-20T06:00:43+08:00",
   "summary": {
     "total": 100,
-    "wins": 64,
+    "wins": 65,
     "losses": 32,
     "be": 3,
-    "open": 1,
-    "win_rate": 66.7,
-    "avg_return": 4.76
+    "open": 0,
+    "win_rate": 67.0,
+    "avg_return": 4.72
   },
   "tracks": [
     {
@@ -16,10 +16,11 @@
       "entry": 24.17,
       "tp": 26.1,
       "sl": 22.07,
-      "status": "OPEN",
-      "return_pct": 2.07,
-      "days": 4,
-      "current": 24.67
+      "status": "WIN",
+      "return_pct": 0.55,
+      "days": 5,
+      "exit_price": 24.3,
+      "exit_type": "TRAIL"
     },
     {
       "date": "2026-03-11",
