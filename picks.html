@@ -860,7 +860,7 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 // ── Strategy Parameters (constants) ─────────────
 const PARAMS = {
     breakeven_trigger: 0.008,     // V28
-    trail_activation: 0.018,
+    trail_activation: 0.031,     // V29
     trail_distance: 0.031,
     gap_reject_pct: 0.03,
     tp_target: 0.08,              // V28
@@ -869,7 +869,7 @@ const PARAMS = {
     time_stop: 7,                   // V28 (was 10)
     max_loss: -0.20,
     atr_sl: 1.2,                  // V28
-    atr_sl_day1: 1.5,
+    atr_sl_day1: 1.39,             // V30
     force_tp_day1: true,
     slippage: 0.001,
     min_pct_52wk: 0.80,
@@ -1408,7 +1408,7 @@ function buildPlanHTML(p, vMode) {
         <div class="plan-warn">&raquo; 若開盤 &lt; $${fmt(gap_threshold)} (跳空 &gt;3%)，放棄本次訊號</div>
         <ol class="plan-steps" start="2">
             <li><span class="step-num">2</span><span class="step-text">進場買進 @ ~$${fmt(entry)} (ALL-IN)</span></li>
-            <li><span class="step-num">3</span><span class="step-text">設定停損 @ <span style="color:var(--red)">$${fmt(p.sl_price)}</span> (Day 1: ATR &times; 1.5, Day 2 起收緊至 ATR &times; ${PARAMS.atr_sl})</span></li>
+            <li><span class="step-num">3</span><span class="step-text">設定停損 @ <span style="color:var(--red)">$${fmt(p.sl_price)}</span> (Day 1: ATR &times; 1.39, Day 2 起收緊至 ATR &times; ${PARAMS.atr_sl})</span></li>
             <li><span class="step-num">4</span><span class="step-text">漲 +${(PARAMS.breakeven_trigger*100).toFixed(1)}% (<span style="color:var(--accent2)">$${fmt(be_price)}</span>) &rarr; 停損移至成本價 (保本)</span></li>
             <li><span class="step-num">5</span><span class="step-text">漲 +${(PARAMS.trail_activation*100).toFixed(1)}% (<span style="color:var(--accent2)">$${fmt(trail_price)}</span>) &rarr; 啟動 ${(PARAMS.trail_distance*100).toFixed(1)}% 追蹤停損</span></li>
             <li><span class="step-num">6</span><span class="step-text">停利 @ <span style="color:var(--green)">$${fmt(p.tp_price)}</span> (+${(PARAMS.tp_target*100).toFixed(0)}%)</span></li>
@@ -1433,7 +1433,7 @@ function buildPlanHTML(p, vMode) {
         <div class="plan-warn">&raquo; 若開盤 &lt; $${fmt(gap_threshold)} (跳空 &gt;3%)，放棄本次訊號</div>
         <ol class="plan-steps" start="2">
             <li><span class="step-num">2</span><span class="step-text">進場買進 @ ~$${fmt(entry)} (ALL-IN)</span></li>
-            <li><span class="step-num">3</span><span class="step-text">設定停損 @ <span style="color:var(--red)">$${fmt(p.sl_price)}</span> (Day 1: ATR &times; 1.5, Day 2 起收緊至 ATR &times; ${PARAMS.atr_sl})</span></li>
+            <li><span class="step-num">3</span><span class="step-text">設定停損 @ <span style="color:var(--red)">$${fmt(p.sl_price)}</span> (Day 1: ATR &times; 1.39, Day 2 起收緊至 ATR &times; ${PARAMS.atr_sl})</span></li>
             <li><span class="step-num">4</span><span class="step-text">漲 +0.8% 達 <span style="color:var(--accent2)">$${fmt(notp_be)}</span> &rarr; 停損移至成本價 $${fmt(entry)} (保本)</span></li>
             <li><span class="step-num">5</span><span class="step-text">漲 +2.0% 達 <span style="color:var(--accent2)">$${fmt(notp_trail_start)}</span> &rarr; 啟動 Tiered ATR 追蹤停損</span></li>
         </ol>
