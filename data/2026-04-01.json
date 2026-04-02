@@ -346,7 +346,38 @@
   "recent_exits": [],
   "picks": [],
   "no_picks": true,
-  "market_regime": "",
+  "market_regime": "BEAR",
   "death_cross": false,
-  "spy_rsi": 0.0
+  "spy_rsi": 44.3,
+  "reference_picks": [
+    {
+      "rank": 1,
+      "symbol": "SNX",
+      "close": 186.29,
+      "entry_price": 186.48,
+      "tp_price": 201.39,
+      "sl_price": 176.63,
+      "shares": 53,
+      "risk_pct": 5.28,
+      "reward_pct": 8.0,
+      "rs_rank": 1825,
+      "pct_from_52wk": 100.0,
+      "tightness": 5.93,
+      "vol_ratio": 2.94,
+      "mom_20": 16.24,
+      "sma20_slope": 1.0138,
+      "atr": 7.08,
+      "rsi_14": 80.2,
+      "close_position": 98.6,
+      "vol_zscore": 2.14,
+      "quality_grade": "D",
+      "quality_score": 48.0,
+      "sector": "Technology",
+      "sector_rank": 7,
+      "market_regime": "BEAR",
+      "death_cross": false,
+      "spy_rsi": 44.3
+    }
+  ],
+  "reject_reason": "CandGate (1<70) | SkipBEAR"
 }
