@@ -702,6 +702,30 @@ th { color: var(--accent); text-align: left; }
 }
 tr:first-child td { background: rgba(108,140,255,0.08); }
 
+/* ── Reference Picks (no-picks day) ── */
+.ref-picks-warning {
+    background: rgba(255,159,67,0.12);
+    border: 1px solid rgba(255,159,67,0.4);
+    border-radius: var(--radius-lg);
+    color: #ffb347;
+    font-weight: 600;
+    font-size: 0.95em;
+    padding: 10px 16px;
+    margin-bottom: 14px;
+    text-align: center;
+}
+.ref-picks-table {
+    border: 1px solid rgba(255,159,67,0.35);
+    border-radius: var(--radius-lg);
+}
+.ref-picks-table th {
+    color: #ffb347;
+    border-bottom: 1px solid rgba(255,159,67,0.25);
+}
+.ref-picks-table td {
+    opacity: 0.85;
+}
+
 /* ── Empty / Loading State ── */
 .state-msg p { font-size: 1.05em; }
 
@@ -1164,7 +1188,7 @@ function renderAll(data) {
     const picks = data.picks || [];
     const vMode = data.v28 || data.v27 || data.v26 || data.v25 || data.v22 || data.v23 || data.v20;
     if (picks.length === 0 || data.no_picks) {
-        renderNoPicks(data.date);
+        renderNoPicks(data);
     } else {
         renderSignal(picks[0], vMode);
         renderPicksDetail(picks, vMode);
@@ -1577,17 +1601,64 @@ function buildAdvancedHTML(p) {
 }
 
 // ── No Picks Message ─────────────────────────────
-function renderNoPicks(date) {
-    const html = `<div class="card" style="text-align:center;padding:32px">
-        <h3 style="color:var(--yellow);margin-bottom:12px">今日無符合條件的標的</h3>
-        <p style="color:var(--text-dim)">這是正常的 — V30 平均每年約 64 個訊號（CandGate + SkipBEAR + SkipMar 過濾後）</p>
+function renderNoPicks(data) {
+    const refPicks = data.reference_picks || [];
+    const rejectReason = data.reject_reason || '';
+
+    let html = `<div class="card" style="text-align:center;padding:32px">
+        <h3 style="color:var(--yellow);margin-bottom:12px">今日無符合條件的標的</h3>`;
+
+    if (rejectReason) {
+        html += `<p style="margin-bottom:8px"><span style="background:rgba(255,159,67,0.15);color:var(--orange);padding:4px 12px;border-radius:6px;font-size:0.9em;font-weight:600">過濾原因：${escHtml(rejectReason)}</span></p>`;
+    }
+
+    html += `<p style="color:var(--text-dim)">這是正常的 — V30 平均每年約 64 個訊號（CandGate + SkipBEAR + SkipMar 過濾後）</p>
         <p style="color:var(--text-dim);font-size:0.85em;margin-top:12px">
             策略等待以下條件同時滿足：量能突增 >= 1.5x ・ 量能Z分 >= 1.0σ ・ 接近52週高點 >= 80% ・ SMA20 上升 ・ 盤整收斂
         </p>
     </div>`;
     $('signal').innerHTML = html;
     $('picks-detail').innerHTML = '';
-    $('picks-table').innerHTML = '';
+
+    if (refPicks.length > 0) {
+        const rows = refPicks.map(p => {
+            const gc = gradeColor(p.quality_grade);
+            return `<tr>
+                <td class="num">${p.rank}</td>
+                <td><strong>${escHtml(p.symbol)}</strong></td>
+                <td class="num">$${fmt(p.close)}</td>
+                <td class="num">$${fmt(p.entry_price)}</td>
+                <td class="num" style="color:var(--green)">$${fmt(p.tp_price)}</td>
+                <td class="num" style="color:var(--red)">$${fmt(p.sl_price)}</td>
+                <td class="num">${p.rs_rank}</td>
+                <td class="num">${pct(p.pct_from_52wk, 1)}</td>
+                <td class="num">${fmt(p.vol_ratio)}</td>
+                <td class="num">${fmt(p.rsi_14, 1)}</td>
+                <td><span class="grade-badge" style="background:${gc}22;color:${gc}">${escHtml(p.quality_grade)}</span></td>
+            </tr>`;
+        }).join('');
+
+        $('picks-table').innerHTML = `
+            <div class="ref-picks-warning">&#9888; 以下為模型篩選前十名，僅供參考，不構成進場建議</div>
+            <table class="ref-picks-table">
+                <thead><tr>
+                    <th class="num">#</th>
+                    <th>代碼</th>
+                    <th class="num">收盤</th>
+                    <th class="num">進場</th>
+                    <th class="num">停利</th>
+                    <th class="num">停損</th>
+                    <th class="num">RS</th>
+                    <th class="num">52W%</th>
+                    <th class="num">量比</th>
+                    <th class="num">RSI</th>
+                    <th>評級</th>
+                </tr></thead>
+                <tbody>${rows}</tbody>
+            </table>`;
+    } else {
+        $('picks-table').innerHTML = '';
+    }
 }
 
 // ── Signal Card (#1 Pick - Full Report) ──────────
