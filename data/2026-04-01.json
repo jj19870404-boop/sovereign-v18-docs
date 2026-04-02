@@ -1274,6 +1274,17 @@
             "signal": "Neutral"
           }
         }
+      },
+      "validation": {
+        "checks": 121,
+        "passed": 121,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "DTI": {
@@ -1917,6 +1928,17 @@
             "signal": "Sell"
           }
         }
+      },
+      "validation": {
+        "checks": 121,
+        "passed": 121,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "VIST": {
@@ -2560,6 +2582,17 @@
             "signal": "Buy"
           }
         }
+      },
+      "validation": {
+        "checks": 121,
+        "passed": 121,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "SSL": {
@@ -3221,6 +3254,17 @@
             "signal": "Sell"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "YPF": {
@@ -3882,6 +3926,17 @@
             "signal": "Buy"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "TDAY": {
@@ -4543,6 +4598,17 @@
             "signal": "Buy"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "CNQ": {
@@ -5186,6 +5252,17 @@
             "signal": "Neutral"
           }
         }
+      },
+      "validation": {
+        "checks": 121,
+        "passed": 121,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "PNRG": {
@@ -5829,6 +5906,17 @@
             "signal": "Buy"
           }
         }
+      },
+      "validation": {
+        "checks": 121,
+        "passed": 121,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "XOM": {
@@ -6490,6 +6578,17 @@
             "signal": "Buy"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "ADTN": {
@@ -7151,6 +7250,17 @@
             "signal": "Sell"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     }
   },
@@ -7795,6 +7905,17 @@
           "signal": "Neutral"
         }
       }
+    },
+    "validation": {
+      "checks": 121,
+      "passed": 121,
+      "errors": 0,
+      "warnings": 0,
+      "status": "PASS",
+      "error_list": [],
+      "warning_list": [],
+      "indicator_count": 103,
+      "empty_signals": 0
     }
   }
 }
