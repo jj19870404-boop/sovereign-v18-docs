@@ -704,5 +704,1292 @@
         }
       }
     }
+  },
+  "deep_analyses": {
+    "GLDD": {
+      "symbol": "GLDD",
+      "date": "2026-02-11",
+      "bars_available": 1534,
+      "tradingview_rating": {
+        "summary": {
+          "signal": "Strong Buy",
+          "score": 0.69,
+          "buy": 18,
+          "sell": 0,
+          "neutral": 8
+        },
+        "oscillators": {
+          "signal": "Buy",
+          "score": 0.27,
+          "buy": 3,
+          "sell": 0,
+          "neutral": 8,
+          "details": {
+            "RSI(14)": {
+              "value": 72.2,
+              "signal": 0
+            },
+            "Stoch(14,3,3)": {
+              "value": null,
+              "signal": 0
+            },
+            "CCI(20)": {
+              "value": 230.6,
+              "signal": 0
+            },
+            "ADX(14)": {
+              "value": null,
+              "signal": 0
+            },
+            "AO": {
+              "value": 1.53,
+              "signal": 1
+            },
+            "Momentum(10)": {
+              "value": 1.58,
+              "signal": 1
+            },
+            "MACD(12,26,9)": {
+              "value": null,
+              "signal": 0
+            },
+            "StochRSI(3,3,14,14)": {
+              "value": null,
+              "signal": 0
+            },
+            "W%R(14)": {
+              "value": -3.8,
+              "signal": 0
+            },
+            "BBP(13)": {
+              "value": 2.86,
+              "signal": 1
+            },
+            "UO(7,14,28)": {
+              "value": 60.8,
+              "signal": 0
+            }
+          }
+        },
+        "moving_averages": {
+          "signal": "Strong Buy",
+          "score": 1.0,
+          "buy": 15,
+          "sell": 0,
+          "neutral": 0,
+          "details": {
+            "SMA(10)": {
+              "value": 15.54,
+              "signal": 1
+            },
+            "SMA(20)": {
+              "value": 15.11,
+              "signal": 1
+            },
+            "SMA(30)": {
+              "value": 14.5,
+              "signal": 1
+            },
+            "SMA(50)": {
+              "value": 14.02,
+              "signal": 1
+            },
+            "SMA(100)": {
+              "value": 12.91,
+              "signal": 1
+            },
+            "SMA(200)": {
+              "value": 12.09,
+              "signal": 1
+            },
+            "EMA(10)": {
+              "value": 15.69,
+              "signal": 1
+            },
+            "EMA(20)": {
+              "value": 15.16,
+              "signal": 1
+            },
+            "EMA(30)": {
+              "value": 14.76,
+              "signal": 1
+            },
+            "EMA(50)": {
+              "value": 14.18,
+              "signal": 1
+            },
+            "EMA(100)": {
+              "value": 13.3,
+              "signal": 1
+            },
+            "EMA(200)": {
+              "value": 12.37,
+              "signal": 1
+            },
+            "HMA(9)": {
+              "value": 16.48,
+              "signal": 1
+            },
+            "VWMA(20)": {
+              "value": 15.62,
+              "signal": 1
+            },
+            "Ichimoku(9,26,52)": {
+              "value": 15.39,
+              "signal": 1
+            }
+          }
+        }
+      },
+      "extended_rating": {
+        "summary": {
+          "signal": "Buy",
+          "score": 0.42,
+          "buy": 54,
+          "sell": 11,
+          "neutral": 38
+        },
+        "categories": {
+          "trend": {
+            "signal": "Strong Buy",
+            "score": 0.89,
+            "buy": 8,
+            "sell": 0,
+            "neutral": 1
+          },
+          "momentum": {
+            "signal": "Strong Buy",
+            "score": 0.6,
+            "buy": 4,
+            "sell": 1,
+            "neutral": 0
+          },
+          "volatility": {
+            "signal": "Neutral",
+            "score": 0.06,
+            "buy": 4,
+            "sell": 3,
+            "neutral": 9
+          },
+          "volume": {
+            "signal": "Buy",
+            "score": 0.3,
+            "buy": 6,
+            "sell": 3,
+            "neutral": 1
+          },
+          "pattern": {
+            "signal": "Neutral",
+            "score": 0.07,
+            "buy": 4,
+            "sell": 2,
+            "neutral": 21
+          },
+          "support_resistance": {
+            "signal": "Strong Buy",
+            "score": 0.84,
+            "buy": 17,
+            "sell": 1,
+            "neutral": 1
+          },
+          "relative": {
+            "signal": "Strong Buy",
+            "score": 1.0,
+            "buy": 6,
+            "sell": 0,
+            "neutral": 0
+          },
+          "statistical": {
+            "signal": "Buy",
+            "score": 0.29,
+            "buy": 3,
+            "sell": 1,
+            "neutral": 3
+          },
+          "time_based": {
+            "signal": "Buy",
+            "score": 0.5,
+            "buy": 2,
+            "sell": 0,
+            "neutral": 2
+          }
+        }
+      },
+      "indicators": {
+        "trend": {
+          "parabolic_sar": {
+            "value": 14.92,
+            "signal": "Buy"
+          },
+          "supertrend": {
+            "value": 14.9,
+            "signal": "Buy"
+          },
+          "aroon_up": {
+            "value": 100.0,
+            "signal": "Buy"
+          },
+          "aroon_down": {
+            "value": 16.0,
+            "signal": "Buy"
+          },
+          "aroon_osc": {
+            "value": 84.0,
+            "signal": "Buy"
+          },
+          "vortex_plus": {
+            "value": 1.058,
+            "signal": "Buy"
+          },
+          "vortex_minus": {
+            "value": 0.76,
+            "signal": "Buy"
+          },
+          "lr_slope": {
+            "value": 0.1085,
+            "signal": "Buy"
+          },
+          "r_squared": {
+            "value": 0.632,
+            "signal": "Normal"
+          }
+        },
+        "momentum": {
+          "roc_14": {
+            "value": 15.67,
+            "signal": "Buy"
+          },
+          "tsi": {
+            "value": 0.0,
+            "signal": "Sell"
+          },
+          "coppock": {
+            "value": 17.75,
+            "signal": "Buy"
+          },
+          "ppo": {
+            "value": 4.4,
+            "signal": "Buy"
+          },
+          "dpo": {
+            "value": 0.21,
+            "signal": "Buy"
+          }
+        },
+        "volatility": {
+          "atr_14": {
+            "value": 0.69,
+            "signal": "Normal"
+          },
+          "atr_pct": {
+            "value": 4.09,
+            "signal": "Normal"
+          },
+          "bb_upper": {
+            "value": 16.68,
+            "signal": "Sell"
+          },
+          "bb_middle": {
+            "value": 15.11,
+            "signal": "Buy"
+          },
+          "bb_lower": {
+            "value": 13.54,
+            "signal": "Neutral"
+          },
+          "bb_width": {
+            "value": 20.83,
+            "signal": "Normal"
+          },
+          "bb_pctb": {
+            "value": 1.069,
+            "signal": "Buy"
+          },
+          "keltner_upper": {
+            "value": 16.52,
+            "signal": "Sell"
+          },
+          "keltner_lower": {
+            "value": 13.8,
+            "signal": "Neutral"
+          },
+          "donchian_high": {
+            "value": 16.99,
+            "signal": "Buy"
+          },
+          "donchian_low": {
+            "value": 13.19,
+            "signal": "Neutral"
+          },
+          "hv_20": {
+            "value": 56.3,
+            "signal": "Normal"
+          },
+          "stddev_20": {
+            "value": 0.79,
+            "signal": "Normal"
+          },
+          "chaikin_vol": {
+            "value": -8.0,
+            "signal": "Falling"
+          },
+          "mass_index": {
+            "value": 25.0,
+            "signal": "Normal"
+          },
+          "ulcer_index": {
+            "value": 1.87,
+            "signal": "Low Risk"
+          }
+        },
+        "volume": {
+          "volume": {
+            "value": 6437594,
+            "signal": "High"
+          },
+          "obv": {
+            "value": 5726539,
+            "signal": "Buy"
+          },
+          "ad_line": {
+            "value": -10267038,
+            "signal": "Sell"
+          },
+          "cmf_20": {
+            "value": -0.132,
+            "signal": "Sell"
+          },
+          "mfi_14": {
+            "value": 78.5,
+            "signal": "Neutral"
+          },
+          "vpt": {
+            "value": 1541896,
+            "signal": "Buy"
+          },
+          "force_index": {
+            "value": 828087.0,
+            "signal": "Buy"
+          },
+          "vol_osc": {
+            "value": 40.4,
+            "signal": "Buy"
+          },
+          "nvi": {
+            "value": 423.4,
+            "signal": "Buy"
+          },
+          "pvi": {
+            "value": 3423.4,
+            "signal": "Buy"
+          }
+        },
+        "pattern": {
+          "close_position": {
+            "value": 10.0,
+            "signal": "Sell"
+          },
+          "body_ratio": {
+            "value": 30.0,
+            "signal": "Normal"
+          },
+          "upper_shadow": {
+            "value": 60.0,
+            "signal": "Sell"
+          },
+          "lower_shadow": {
+            "value": 10.0,
+            "signal": "Neutral"
+          },
+          "gap_pct": {
+            "value": 4.89,
+            "signal": "Buy"
+          },
+          "intraday_range": {
+            "value": 0.59,
+            "signal": "Low"
+          },
+          "doji": {
+            "value": "False",
+            "signal": "Neutral"
+          },
+          "engulfing": {
+            "value": "None",
+            "signal": "Neutral"
+          },
+          "hammer": {
+            "value": "False",
+            "signal": "Neutral"
+          },
+          "inside_bar": {
+            "value": "False",
+            "signal": "Neutral"
+          },
+          "outside_bar": {
+            "value": "False",
+            "signal": "Neutral"
+          },
+          "morning_star": {
+            "value": "False",
+            "signal": "Neutral"
+          },
+          "evening_star": {
+            "value": "False",
+            "signal": "Neutral"
+          },
+          "pattern_name": {
+            "value": "None",
+            "signal": "Neutral"
+          },
+          "double_bottom": {
+            "value": true,
+            "signal": "Buy",
+            "detail": "Bot1=$13.2 Bot2=$13.0 Peak=$13.8"
+          },
+          "chart_pattern": {
+            "value": "Double Bottom",
+            "signal": "Buy"
+          },
+          "head_shoulders": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "inv_head_shoulders": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "double_top": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "sym_triangle": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "asc_triangle": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "desc_triangle": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "rising_wedge": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "falling_wedge": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "bull_flag": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "bear_flag": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "cup_handle": {
+            "value": false,
+            "signal": "Neutral"
+          }
+        },
+        "support_resistance": {
+          "pivot": {
+            "value": 16.93,
+            "signal": "Sell"
+          },
+          "r1": {
+            "value": 16.96,
+            "signal": "Near"
+          },
+          "s1": {
+            "value": 16.86,
+            "signal": "Near"
+          },
+          "r2": {
+            "value": 17.03,
+            "signal": "Near"
+          },
+          "s2": {
+            "value": 16.83,
+            "signal": "Near"
+          },
+          "r3": {
+            "value": 17.06,
+            "signal": "Near"
+          },
+          "s3": {
+            "value": 16.76,
+            "signal": "Near"
+          },
+          "high_52wk": {
+            "value": 16.99,
+            "signal": "Near"
+          },
+          "low_52wk": {
+            "value": 7.51,
+            "signal": "Neutral"
+          },
+          "ath": {
+            "value": 16.99,
+            "signal": "Near ATH"
+          },
+          "ath_dist": {
+            "value": 99.5,
+            "signal": "Near ATH"
+          },
+          "fib_0": {
+            "value": 12.34,
+            "signal": "Support"
+          },
+          "fib_236": {
+            "value": 13.44,
+            "signal": "Support"
+          },
+          "fib_382": {
+            "value": 14.12,
+            "signal": "Support"
+          },
+          "fib_500": {
+            "value": 14.66,
+            "signal": "Support"
+          },
+          "fib_618": {
+            "value": 15.21,
+            "signal": "Support"
+          },
+          "fib_786": {
+            "value": 15.99,
+            "signal": "Support"
+          },
+          "fib_100": {
+            "value": 16.99,
+            "signal": "Near"
+          },
+          "vpoc": {
+            "value": 15.4,
+            "signal": "Support"
+          }
+        },
+        "relative": {
+          "rs_line": {
+            "value": 0.0245,
+            "signal": "Buy"
+          },
+          "rs_line_trend": {
+            "value": "Rising",
+            "signal": "Buy"
+          },
+          "beta_60": {
+            "value": 0.36,
+            "signal": "Low"
+          },
+          "correlation_spy": {
+            "value": 0.11,
+            "signal": "Low"
+          },
+          "alpha_60": {
+            "value": 123.2,
+            "signal": "Buy"
+          },
+          "info_ratio": {
+            "value": 2.77,
+            "signal": "Buy"
+          }
+        },
+        "statistical": {
+          "sharpe_60": {
+            "value": 3.15,
+            "signal": "Buy"
+          },
+          "sortino_60": {
+            "value": 4.51,
+            "signal": "Buy"
+          },
+          "mdd_60": {
+            "value": -9.6,
+            "signal": "Normal"
+          },
+          "skewness": {
+            "value": 1.74,
+            "signal": "Buy"
+          },
+          "kurtosis": {
+            "value": 6.61,
+            "signal": "High Risk"
+          },
+          "var_95": {
+            "value": -3.11,
+            "signal": "Normal"
+          },
+          "cvar_95": {
+            "value": -3.35,
+            "signal": "Normal"
+          }
+        },
+        "time_based": {
+          "consec_up": {
+            "value": 4,
+            "signal": "Buy"
+          },
+          "consec_down": {
+            "value": 0,
+            "signal": "Neutral"
+          },
+          "day_of_week": {
+            "value": "Wed",
+            "signal": "Neutral"
+          },
+          "days_since_high": {
+            "value": 0,
+            "signal": "Buy"
+          }
+        }
+      }
+    },
+    "BBEM": {
+      "symbol": "BBEM",
+      "date": "2026-02-11",
+      "bars_available": 673,
+      "tradingview_rating": {
+        "summary": {
+          "signal": "Strong Buy",
+          "score": 0.58,
+          "buy": 17,
+          "sell": 2,
+          "neutral": 7
+        },
+        "oscillators": {
+          "signal": "Neutral",
+          "score": 0.0,
+          "buy": 2,
+          "sell": 2,
+          "neutral": 7,
+          "details": {
+            "RSI(14)": {
+              "value": 69.7,
+              "signal": 0
+            },
+            "Stoch(14,3,3)": {
+              "value": null,
+              "signal": 0
+            },
+            "CCI(20)": {
+              "value": 134.9,
+              "signal": 0
+            },
+            "ADX(14)": {
+              "value": null,
+              "signal": 0
+            },
+            "AO": {
+              "value": 2.55,
+              "signal": 1
+            },
+            "Momentum(10)": {
+              "value": 0.12,
+              "signal": -1
+            },
+            "MACD(12,26,9)": {
+              "value": null,
+              "signal": 0
+            },
+            "StochRSI(3,3,14,14)": {
+              "value": null,
+              "signal": 0
+            },
+            "W%R(14)": {
+              "value": -16.8,
+              "signal": -1
+            },
+            "BBP(13)": {
+              "value": 3.4,
+              "signal": 1
+            },
+            "UO(7,14,28)": {
+              "value": 54.3,
+              "signal": 0
+            }
+          }
+        },
+        "moving_averages": {
+          "signal": "Strong Buy",
+          "score": 1.0,
+          "buy": 15,
+          "sell": 0,
+          "neutral": 0,
+          "details": {
+            "SMA(10)": {
+              "value": 69.04,
+              "signal": 1
+            },
+            "SMA(20)": {
+              "value": 68.49,
+              "signal": 1
+            },
+            "SMA(30)": {
+              "value": 67.43,
+              "signal": 1
+            },
+            "SMA(50)": {
+              "value": 65.49,
+              "signal": 1
+            },
+            "SMA(100)": {
+              "value": 63.71,
+              "signal": 1
+            },
+            "SMA(200)": {
+              "value": 59.4,
+              "signal": 1
+            },
+            "EMA(10)": {
+              "value": 69.18,
+              "signal": 1
+            },
+            "EMA(20)": {
+              "value": 68.33,
+              "signal": 1
+            },
+            "EMA(30)": {
+              "value": 67.52,
+              "signal": 1
+            },
+            "EMA(50)": {
+              "value": 66.22,
+              "signal": 1
+            },
+            "EMA(100)": {
+              "value": 63.82,
+              "signal": 1
+            },
+            "EMA(200)": {
+              "value": 60.31,
+              "signal": 1
+            },
+            "HMA(9)": {
+              "value": 70.31,
+              "signal": 1
+            },
+            "VWMA(20)": {
+              "value": 68.42,
+              "signal": 1
+            },
+            "Ichimoku(9,26,52)": {
+              "value": 68.61,
+              "signal": 1
+            }
+          }
+        }
+      },
+      "extended_rating": {
+        "summary": {
+          "signal": "Buy",
+          "score": 0.46,
+          "buy": 57,
+          "sell": 10,
+          "neutral": 36
+        },
+        "categories": {
+          "trend": {
+            "signal": "Strong Buy",
+            "score": 0.89,
+            "buy": 8,
+            "sell": 0,
+            "neutral": 1
+          },
+          "momentum": {
+            "signal": "Buy",
+            "score": 0.2,
+            "buy": 3,
+            "sell": 2,
+            "neutral": 0
+          },
+          "volatility": {
+            "signal": "Strong Buy",
+            "score": 0.56,
+            "buy": 10,
+            "sell": 1,
+            "neutral": 5
+          },
+          "volume": {
+            "signal": "Neutral",
+            "score": 0.0,
+            "buy": 5,
+            "sell": 5,
+            "neutral": 0
+          },
+          "pattern": {
+            "signal": "Buy",
+            "score": 0.11,
+            "buy": 4,
+            "sell": 1,
+            "neutral": 22
+          },
+          "support_resistance": {
+            "signal": "Strong Buy",
+            "score": 0.68,
+            "buy": 14,
+            "sell": 1,
+            "neutral": 4
+          },
+          "relative": {
+            "signal": "Strong Buy",
+            "score": 1.0,
+            "buy": 6,
+            "sell": 0,
+            "neutral": 0
+          },
+          "statistical": {
+            "signal": "Strong Buy",
+            "score": 0.71,
+            "buy": 5,
+            "sell": 0,
+            "neutral": 2
+          },
+          "time_based": {
+            "signal": "Buy",
+            "score": 0.5,
+            "buy": 2,
+            "sell": 0,
+            "neutral": 2
+          }
+        }
+      },
+      "indicators": {
+        "trend": {
+          "parabolic_sar": {
+            "value": 67.75,
+            "signal": "Buy"
+          },
+          "supertrend": {
+            "value": 67.82,
+            "signal": "Buy"
+          },
+          "aroon_up": {
+            "value": 100.0,
+            "signal": "Buy"
+          },
+          "aroon_down": {
+            "value": 0.0,
+            "signal": "Buy"
+          },
+          "aroon_osc": {
+            "value": 100.0,
+            "signal": "Buy"
+          },
+          "vortex_plus": {
+            "value": 0.89,
+            "signal": "Buy"
+          },
+          "vortex_minus": {
+            "value": 0.76,
+            "signal": "Buy"
+          },
+          "lr_slope": {
+            "value": 0.1413,
+            "signal": "Buy"
+          },
+          "r_squared": {
+            "value": 0.454,
+            "signal": "Normal"
+          }
+        },
+        "momentum": {
+          "roc_14": {
+            "value": 5.87,
+            "signal": "Buy"
+          },
+          "tsi": {
+            "value": 0.0,
+            "signal": "Sell"
+          },
+          "coppock": {
+            "value": 5.35,
+            "signal": "Buy"
+          },
+          "ppo": {
+            "value": 1.75,
+            "signal": "Sell"
+          },
+          "dpo": {
+            "value": 1.74,
+            "signal": "Buy"
+          }
+        },
+        "volatility": {
+          "atr_14": {
+            "value": 1.0,
+            "signal": "Low"
+          },
+          "atr_pct": {
+            "value": 1.42,
+            "signal": "Low"
+          },
+          "bb_upper": {
+            "value": 70.91,
+            "signal": "Neutral"
+          },
+          "bb_middle": {
+            "value": 68.49,
+            "signal": "Buy"
+          },
+          "bb_lower": {
+            "value": 66.08,
+            "signal": "Neutral"
+          },
+          "bb_width": {
+            "value": 7.06,
+            "signal": "Squeeze"
+          },
+          "bb_pctb": {
+            "value": 0.886,
+            "signal": "Buy"
+          },
+          "keltner_upper": {
+            "value": 70.2,
+            "signal": "Sell"
+          },
+          "keltner_lower": {
+            "value": 66.45,
+            "signal": "Neutral"
+          },
+          "donchian_high": {
+            "value": 70.9,
+            "signal": "Buy"
+          },
+          "donchian_low": {
+            "value": 66.43,
+            "signal": "Neutral"
+          },
+          "hv_20": {
+            "value": 19.4,
+            "signal": "Low"
+          },
+          "stddev_20": {
+            "value": 1.21,
+            "signal": "Low"
+          },
+          "chaikin_vol": {
+            "value": 22.1,
+            "signal": "Rising"
+          },
+          "mass_index": {
+            "value": 25.0,
+            "signal": "Normal"
+          },
+          "ulcer_index": {
+            "value": 1.83,
+            "signal": "Low Risk"
+          }
+        },
+        "volume": {
+          "volume": {
+            "value": 145260,
+            "signal": "High"
+          },
+          "obv": {
+            "value": 10220663,
+            "signal": "Buy"
+          },
+          "ad_line": {
+            "value": -8005642,
+            "signal": "Sell"
+          },
+          "cmf_20": {
+            "value": -0.91,
+            "signal": "Sell"
+          },
+          "mfi_14": {
+            "value": 18.6,
+            "signal": "Buy"
+          },
+          "vpt": {
+            "value": 19497,
+            "signal": "Buy"
+          },
+          "force_index": {
+            "value": -64664.0,
+            "signal": "Sell"
+          },
+          "vol_osc": {
+            "value": -47.3,
+            "signal": "Sell"
+          },
+          "nvi": {
+            "value": 1062.5,
+            "signal": "Buy"
+          },
+          "pvi": {
+            "value": 1542.8,
+            "signal": "Buy"
+          }
+        },
+        "pattern": {
+          "close_position": {
+            "value": 0.0,
+            "signal": "Sell"
+          },
+          "body_ratio": {
+            "value": 100.0,
+            "signal": "Strong"
+          },
+          "upper_shadow": {
+            "value": 0.0,
+            "signal": "Neutral"
+          },
+          "lower_shadow": {
+            "value": 0.0,
+            "signal": "Neutral"
+          },
+          "gap_pct": {
+            "value": 1.14,
+            "signal": "Buy"
+          },
+          "intraday_range": {
+            "value": 0.76,
+            "signal": "Low"
+          },
+          "doji": {
+            "value": "False",
+            "signal": "Neutral"
+          },
+          "engulfing": {
+            "value": "None",
+            "signal": "Neutral"
+          },
+          "hammer": {
+            "value": "False",
+            "signal": "Neutral"
+          },
+          "inside_bar": {
+            "value": "False",
+            "signal": "Neutral"
+          },
+          "outside_bar": {
+            "value": "False",
+            "signal": "Neutral"
+          },
+          "morning_star": {
+            "value": "False",
+            "signal": "Neutral"
+          },
+          "evening_star": {
+            "value": "False",
+            "signal": "Neutral"
+          },
+          "pattern_name": {
+            "value": "None",
+            "signal": "Neutral"
+          },
+          "chart_pattern": {
+            "value": "Uptrend (無經典型態)",
+            "signal": "Buy"
+          },
+          "head_shoulders": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "inv_head_shoulders": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "double_top": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "double_bottom": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "sym_triangle": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "asc_triangle": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "desc_triangle": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "rising_wedge": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "falling_wedge": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "bull_flag": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "bear_flag": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "cup_handle": {
+            "value": false,
+            "signal": "Neutral"
+          }
+        },
+        "support_resistance": {
+          "pivot": {
+            "value": 70.54,
+            "signal": "Sell"
+          },
+          "r1": {
+            "value": 70.72,
+            "signal": "Near"
+          },
+          "s1": {
+            "value": 70.18,
+            "signal": "Near"
+          },
+          "r2": {
+            "value": 71.08,
+            "signal": "Neutral"
+          },
+          "s2": {
+            "value": 70.0,
+            "signal": "Near"
+          },
+          "r3": {
+            "value": 71.26,
+            "signal": "Neutral"
+          },
+          "s3": {
+            "value": 69.64,
+            "signal": "Neutral"
+          },
+          "high_52wk": {
+            "value": 70.9,
+            "signal": "Near"
+          },
+          "low_52wk": {
+            "value": 44.19,
+            "signal": "Neutral"
+          },
+          "ath": {
+            "value": 70.9,
+            "signal": "Near ATH"
+          },
+          "ath_dist": {
+            "value": 99.2,
+            "signal": "Near ATH"
+          },
+          "fib_0": {
+            "value": 61.49,
+            "signal": "Support"
+          },
+          "fib_236": {
+            "value": 63.71,
+            "signal": "Support"
+          },
+          "fib_382": {
+            "value": 65.09,
+            "signal": "Support"
+          },
+          "fib_500": {
+            "value": 66.2,
+            "signal": "Support"
+          },
+          "fib_618": {
+            "value": 67.31,
+            "signal": "Support"
+          },
+          "fib_786": {
+            "value": 68.89,
+            "signal": "Support"
+          },
+          "fib_100": {
+            "value": 70.9,
+            "signal": "Near"
+          },
+          "vpoc": {
+            "value": 68.21,
+            "signal": "Support"
+          }
+        },
+        "relative": {
+          "rs_line": {
+            "value": 0.102,
+            "signal": "Buy"
+          },
+          "rs_line_trend": {
+            "value": "Rising",
+            "signal": "Buy"
+          },
+          "beta_60": {
+            "value": 0.07,
+            "signal": "Low"
+          },
+          "correlation_spy": {
+            "value": 0.05,
+            "signal": "Low"
+          },
+          "alpha_60": {
+            "value": 44.2,
+            "signal": "Buy"
+          },
+          "info_ratio": {
+            "value": 1.62,
+            "signal": "Buy"
+          }
+        },
+        "statistical": {
+          "sharpe_60": {
+            "value": 2.96,
+            "signal": "Buy"
+          },
+          "sortino_60": {
+            "value": 3.57,
+            "signal": "Buy"
+          },
+          "mdd_60": {
+            "value": -4.2,
+            "signal": "Low Risk"
+          },
+          "skewness": {
+            "value": 0.26,
+            "signal": "Neutral"
+          },
+          "kurtosis": {
+            "value": 1.19,
+            "signal": "Normal"
+          },
+          "var_95": {
+            "value": -1.1,
+            "signal": "Low Risk"
+          },
+          "cvar_95": {
+            "value": -1.68,
+            "signal": "Low Risk"
+          }
+        },
+        "time_based": {
+          "consec_up": {
+            "value": 4,
+            "signal": "Buy"
+          },
+          "consec_down": {
+            "value": 0,
+            "signal": "Neutral"
+          },
+          "day_of_week": {
+            "value": "Wed",
+            "signal": "Neutral"
+          },
+          "days_since_high": {
+            "value": 0,
+            "signal": "Buy"
+          }
+        }
+      }
+    }
   }
 }
