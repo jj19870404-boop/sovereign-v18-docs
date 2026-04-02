@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-02T21:47:52+08:00",
+  "updated": "2026-04-02T22:09:24+08:00",
   "summary": {
     "total": 100,
     "wins": 57,
@@ -13,13 +13,13 @@
     {
       "date": "2026-04-01",
       "symbol": "WDC",
-      "entry": 298.03,
-      "tp": 321.87,
-      "sl": 265.08,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 298.03,
+      "entry": 279.91,
+      "tp": 302.3,
+      "sl": 246.96,
+      "status": "OPEN",
+      "return_pct": 3.66,
+      "days": 1,
+      "current": 290.15,
       "is_ref": true,
       "reject_reason": "CandGate (1<70) | SkipBEAR"
     },
@@ -58,9 +58,9 @@
       "tp": 61.69,
       "sl": 51.64,
       "status": "OPEN",
-      "return_pct": 1.42,
+      "return_pct": 2.94,
       "days": 4,
-      "current": 57.93,
+      "current": 58.8,
       "is_ref": true,
       "reject_reason": "CandGate (3<70) | SkipBEAR | SkipMonth (三月)"
     },
