@@ -764,6 +764,183 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 .signal-card:hover {
     box-shadow: 0 0 40px rgba(124,141,255,0.15);
 }
+
+/* ══ Deep Technical Analysis ══ */
+.deep-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-top: 24px;
+}
+.deep-section h2 {
+    margin-top: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.deep-section h3 {
+    font-size: 1em;
+    color: var(--accent);
+    margin: 20px 0 12px;
+}
+
+/* Gauge row */
+.tv-gauge-row {
+    display: flex;
+    gap: 16px;
+    margin: 16px 0;
+}
+.tv-gauge {
+    flex: 1;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    min-width: 0;
+}
+.tv-gauge .gauge-title {
+    font-size: 0.8em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.gauge-signal {
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.gauge-signal.strong-buy { color: #22c55e; }
+.gauge-signal.buy { color: #4ade80; }
+.gauge-signal.neutral { color: #6b7280; }
+.gauge-signal.sell { color: #f87171; }
+.gauge-signal.strong-sell { color: #ef4444; }
+
+/* Gauge meter bar */
+.gauge-meter {
+    position: relative;
+    height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #ef4444 0%, #f87171 20%, #6b7280 40%, #6b7280 60%, #4ade80 80%, #22c55e 100%);
+    margin: 10px 0 8px;
+    overflow: visible;
+}
+.gauge-marker {
+    position: absolute;
+    top: -4px;
+    width: 4px;
+    height: 18px;
+    background: #fff;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 4px rgba(0,0,0,0.5);
+    transition: left 0.3s ease;
+}
+.gauge-counts {
+    font-size: 0.78em;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+.gauge-counts .gc-buy { color: #4ade80; }
+.gauge-counts .gc-neutral { color: #6b7280; }
+.gauge-counts .gc-sell { color: #f87171; }
+
+/* Indicator tables */
+.indicator-category {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+.indicator-category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: var(--surface2);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.92em;
+    user-select: none;
+    transition: background 0.2s;
+}
+.indicator-category-header:hover {
+    background: var(--surface3);
+}
+.indicator-category-header .cat-count {
+    font-size: 0.8em;
+    color: var(--text-dim);
+    font-weight: 400;
+}
+.indicator-category-header .cat-arrow {
+    font-size: 0.75em;
+    color: var(--text-dim);
+    transition: transform 0.2s;
+}
+.indicator-category.open .cat-arrow {
+    transform: rotate(90deg);
+}
+.indicator-category-body {
+    display: none;
+    padding: 0;
+}
+.indicator-category.open .indicator-category-body {
+    display: block;
+}
+.indicator-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+}
+.indicator-table th {
+    background: var(--surface);
+    color: var(--accent);
+    padding: 6px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9em;
+    border-bottom: 1px solid var(--border);
+}
+.indicator-table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(38,42,61,0.6);
+    font-variant-numeric: tabular-nums;
+}
+.indicator-table tr:hover td {
+    background: rgba(124,141,255,0.04);
+}
+
+/* Signal pill */
+.signal-pill {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 0.82em;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.signal-pill.pill-strong-buy { background: rgba(34,197,94,0.2); color: #22c55e; }
+.signal-pill.pill-buy { background: rgba(74,222,128,0.18); color: #4ade80; }
+.signal-pill.pill-neutral { background: rgba(107,114,128,0.2); color: #9ca3af; }
+.signal-pill.pill-sell { background: rgba(248,113,113,0.18); color: #f87171; }
+.signal-pill.pill-strong-sell { background: rgba(239,68,68,0.2); color: #ef4444; }
+.signal-pill.pill-bullish { background: rgba(34,197,94,0.15); color: #4ade80; }
+.signal-pill.pill-bearish { background: rgba(248,113,113,0.15); color: #f87171; }
+.signal-pill.pill-yes { background: rgba(34,197,94,0.15); color: #4ade80; }
+.signal-pill.pill-no { background: rgba(107,114,128,0.15); color: #9ca3af; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tv-gauge-row { flex-direction: column; }
+    .indicator-table { font-size: 0.8em; }
+    .deep-section { padding: 16px; }
+}
+@media (max-width: 480px) {
+    .deep-section { padding: 12px; }
+    .tv-gauge { padding: 12px; }
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V30 - 每日選股報告","description":"Sovereign V30 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V30","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
@@ -857,6 +1034,9 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 <!-- All Picks Detail -->
 <h2>全部候選股詳細報告 <span class="dim" id="pick-count"></span></h2>
 <div id="picks-detail" role="region" aria-live="polite" aria-label="選股結果"></div>
+
+<!-- Deep Technical Analysis -->
+<div id="deep-analysis"></div>
 
 <!-- Quick Ref -->
 <div id="quick-ref"></div>
@@ -1194,6 +1374,7 @@ function renderAll(data) {
         renderPicksDetail(picks, vMode);
         renderPicks(picks);
     }
+    renderDeepAnalysis(data);
     renderQuickRef();
 }
 
@@ -1883,6 +2064,330 @@ function renderPicks(picks) {
     </table>`;
 }
 
+// ── Deep Technical Analysis ──────────────────────
+const INDICATOR_NAMES = {
+    // Trend
+    "parabolic_sar": "Parabolic SAR",
+    "supertrend": "SuperTrend",
+    "aroon_up": "Aroon Up",
+    "aroon_down": "Aroon Down",
+    "aroon_osc": "Aroon Oscillator",
+    "vortex_plus": "Vortex VI+",
+    "vortex_minus": "Vortex VI-",
+    "lr_slope": "Linear Regression Slope",
+    "r_squared": "R Squared",
+    // Momentum
+    "roc_14": "ROC(14)",
+    "kst": "KST",
+    "tsi": "TSI",
+    "coppock": "Coppock Curve",
+    "ppo": "PPO",
+    "dpo": "DPO",
+    "ac": "AC Oscillator",
+    // Volatility
+    "atr_14": "ATR(14)",
+    "atr_pct": "ATR %",
+    "bb_upper": "Bollinger Upper",
+    "bb_middle": "Bollinger Middle",
+    "bb_lower": "Bollinger Lower",
+    "bb_width": "Bollinger Width %",
+    "bb_pctb": "Bollinger %B",
+    "keltner_upper": "Keltner Upper",
+    "keltner_lower": "Keltner Lower",
+    "donchian_high": "Donchian High",
+    "donchian_low": "Donchian Low",
+    "hv_20": "HV(20)",
+    "stddev_20": "StdDev(20)",
+    "chaikin_vol": "Chaikin Volatility",
+    "mass_index": "Mass Index",
+    "ulcer_index": "Ulcer Index",
+    // Volume
+    "volume": "Volume",
+    "obv": "OBV",
+    "ad_line": "A/D Line",
+    "cmf_20": "CMF(20)",
+    "mfi_14": "MFI(14)",
+    "vpt": "VPT",
+    "force_index": "Force Index(13)",
+    "vol_osc": "Volume Oscillator",
+    "nvi": "NVI",
+    "pvi": "PVI",
+    // Pattern
+    "close_position": "K Position %",
+    "body_ratio": "Body Ratio %",
+    "upper_shadow": "Upper Shadow %",
+    "lower_shadow": "Lower Shadow %",
+    "gap_pct": "Gap %",
+    "intraday_range": "Intraday Range %",
+    "doji": "Doji",
+    "engulfing": "Engulfing",
+    "hammer": "Hammer",
+    "inside_bar": "Inside Bar",
+    "outside_bar": "Outside Bar",
+    "morning_star": "Morning Star",
+    "evening_star": "Evening Star",
+    "pattern_name": "Pattern",
+    // Support/Resistance
+    "pivot": "Pivot PP",
+    "r1": "R1", "r2": "R2", "r3": "R3",
+    "s1": "S1", "s2": "S2", "s3": "S3",
+    "high_52wk": "52W High",
+    "low_52wk": "52W Low",
+    "ath": "ATH",
+    "ath_dist": "ATH Dist %",
+    "fib_0": "Fib 0%", "fib_236": "Fib 23.6%", "fib_382": "Fib 38.2%",
+    "fib_500": "Fib 50%", "fib_618": "Fib 61.8%", "fib_786": "Fib 78.6%", "fib_100": "Fib 100%",
+    "vpoc": "VPOC",
+    // Relative
+    "rs_line": "RS Line",
+    "rs_line_trend": "RS Trend",
+    "beta_60": "Beta(60)",
+    "correlation_spy": "SPY Corr",
+    "alpha_60": "Alpha(60) %",
+    "info_ratio": "Info Ratio",
+    // Statistical
+    "sharpe_60": "Sharpe(60)",
+    "sortino_60": "Sortino(60)",
+    "mdd_60": "MDD(60) %",
+    "skewness": "Skewness",
+    "kurtosis": "Kurtosis",
+    "var_95": "VaR(95%) %",
+    "cvar_95": "CVaR(95%) %",
+    // Time-based
+    "consec_up": "Consec Up",
+    "consec_down": "Consec Down",
+    "day_of_week": "Day of Week",
+    "days_since_high": "Days Since High",
+    // TradingView standard
+    "RSI": "RSI(14)", "Stoch.K": "Stochastic %K", "Stoch.D": "Stochastic %D",
+    "CCI": "CCI(20)", "ADX": "ADX(14)", "AO": "Awesome Osc",
+    "Mom": "Momentum(10)", "MACD.macd": "MACD Level", "MACD.signal": "MACD Signal",
+    "W.R": "Williams %R", "UO": "Ultimate Osc",
+    "EMA10": "EMA(10)", "SMA10": "SMA(10)",
+    "EMA20": "EMA(20)", "SMA20": "SMA(20)",
+    "EMA30": "EMA(30)", "SMA30": "SMA(30)",
+    "EMA50": "EMA(50)", "SMA50": "SMA(50)",
+    "EMA100": "EMA(100)", "SMA100": "SMA(100)",
+    "EMA200": "EMA(200)", "SMA200": "SMA(200)",
+    "Ichimoku": "Ichimoku Base", "VWMA": "VWMA(20)", "HullMA": "Hull MA(9)",
+};
+
+const INDICATOR_NAMES_ZH = {
+    "parabolic_sar": "拋物線轉向 SAR", "supertrend": "超級趨勢", "aroon_up": "Aroon Up",
+    "aroon_down": "Aroon Down", "aroon_osc": "Aroon 震盪器", "vortex_plus": "Vortex VI+",
+    "vortex_minus": "Vortex VI-", "lr_slope": "線性回歸斜率", "r_squared": "R² 決定係數",
+    "roc_14": "變動率 ROC(14)", "kst": "KST 指標", "tsi": "真實強度 TSI",
+    "coppock": "Coppock 曲線", "ppo": "百分比價格震盪 PPO", "dpo": "去趨勢震盪 DPO",
+    "ac": "加速震盪器 AC", "atr_14": "平均真實範圍 ATR(14)", "atr_pct": "ATR 百分比",
+    "bb_upper": "布林帶上軌", "bb_middle": "布林帶中軌", "bb_lower": "布林帶下軌",
+    "bb_width": "布林帶寬度 %", "bb_pctb": "布林帶 %B", "keltner_upper": "肯特納上軌",
+    "keltner_lower": "肯特納下軌", "donchian_high": "唐奇安高點", "donchian_low": "唐奇安低點",
+    "hv_20": "歷史波動率(20)", "stddev_20": "標準差(20)", "chaikin_vol": "Chaikin 波動率",
+    "mass_index": "Mass Index", "ulcer_index": "Ulcer Index",
+    "volume": "成交量", "obv": "能量潮 OBV", "ad_line": "累積分配線 A/D",
+    "cmf_20": "Chaikin 資金流 CMF(20)", "mfi_14": "資金流量指數 MFI(14)",
+    "vpt": "量價趨勢 VPT", "force_index": "Force Index(13)", "vol_osc": "成交量震盪器",
+    "nvi": "負量指標 NVI", "pvi": "正量指標 PVI",
+    "close_position": "K線位置 %", "body_ratio": "實體比例 %",
+    "upper_shadow": "上影線 %", "lower_shadow": "下影線 %",
+    "gap_pct": "跳空幅度 %", "intraday_range": "日內振幅 %",
+    "doji": "十字星", "engulfing": "吞噬型態", "hammer": "鎚子線",
+    "inside_bar": "內含線", "outside_bar": "外包線",
+    "morning_star": "晨星", "evening_star": "暮星", "pattern_name": "主要型態",
+    "pivot": "樞紐點 PP", "r1": "壓力 R1", "r2": "壓力 R2", "r3": "壓力 R3",
+    "s1": "支撐 S1", "s2": "支撐 S2", "s3": "支撐 S3",
+    "high_52wk": "52週最高", "low_52wk": "52週最低",
+    "ath": "歷史最高", "ath_dist": "距歷史高 %",
+    "fib_0": "Fib 0%", "fib_236": "Fib 23.6%", "fib_382": "Fib 38.2%",
+    "fib_500": "Fib 50%", "fib_618": "Fib 61.8%", "fib_786": "Fib 78.6%", "fib_100": "Fib 100%",
+    "vpoc": "量能密集區 VPOC",
+    "rs_line": "相對強度線", "rs_line_trend": "RS 趨勢",
+    "beta_60": "Beta(60)", "correlation_spy": "SPY 相關性",
+    "alpha_60": "Alpha(60) %", "info_ratio": "資訊比率",
+    "sharpe_60": "Sharpe(60)", "sortino_60": "Sortino(60)", "mdd_60": "最大回撤(60) %",
+    "skewness": "偏度", "kurtosis": "峰度", "var_95": "VaR(95%) %", "cvar_95": "CVaR(95%) %",
+    "consec_up": "連漲天數", "consec_down": "連跌天數",
+    "day_of_week": "星期", "days_since_high": "距高點天數",
+    "RSI": "RSI(14)", "Stoch.K": "隨機指標 %K", "Stoch.D": "隨機指標 %D",
+    "CCI": "CCI(20)", "ADX": "ADX(14)", "AO": "Awesome 震盪器",
+    "Mom": "動量(10)", "MACD.macd": "MACD 值", "MACD.signal": "MACD 訊號",
+    "W.R": "威廉指標 %R", "UO": "終極震盪器",
+    "EMA10": "EMA(10)", "SMA10": "SMA(10)", "EMA20": "EMA(20)", "SMA20": "SMA(20)",
+    "EMA30": "EMA(30)", "SMA30": "SMA(30)", "EMA50": "EMA(50)", "SMA50": "SMA(50)",
+    "EMA100": "EMA(100)", "SMA100": "SMA(100)", "EMA200": "EMA(200)", "SMA200": "SMA(200)",
+    "Ichimoku": "一目均衡表", "VWMA": "VWMA(20)", "HullMA": "Hull MA(9)",
+};
+
+const CATEGORY_NAMES_ZH = {
+    trend: "趨勢指標", momentum: "動能指標", volatility: "波動率指標",
+    volume: "成交量指標", pattern: "K線型態", support_resistance: "支撐壓力",
+    relative: "相對強弱", statistical: "統計指標", time_based: "時間序列",
+};
+
+function _deepFmtVal(v) {
+    if (v == null) return '--';
+    if (typeof v === 'boolean') return v ? 'Yes' : 'No';
+    if (typeof v === 'string') return escHtml(v);
+    if (typeof v === 'number') {
+        if (Number.isInteger(v) && Math.abs(v) < 1e6) return String(v);
+        return v.toFixed(2);
+    }
+    return String(v);
+}
+
+function _signalPill(sig) {
+    if (!sig) return '';
+    const s = String(sig).toLowerCase().replace(/\s+/g, '_');
+    const map = {
+        'strong_buy': ['Strong Buy', 'pill-strong-buy'],
+        'buy': ['Buy', 'pill-buy'],
+        'neutral': ['Neutral', 'pill-neutral'],
+        'sell': ['Sell', 'pill-sell'],
+        'strong_sell': ['Strong Sell', 'pill-strong-sell'],
+        'bullish': ['Bullish', 'pill-bullish'],
+        'bearish': ['Bearish', 'pill-bearish'],
+        'true': ['Yes', 'pill-yes'],
+        'false': ['No', 'pill-no'],
+    };
+    const m = map[s];
+    if (m) return `<span class="signal-pill ${m[1]}">${m[0]}</span>`;
+    return `<span class="signal-pill pill-neutral">${escHtml(sig)}</span>`;
+}
+
+function _signalClass(sig) {
+    if (!sig) return 'neutral';
+    return String(sig).toLowerCase().replace(/\s+/g, '-');
+}
+
+function _gaugeHTML(title, rating) {
+    if (!rating) return '';
+    const sig = rating.signal || 'Neutral';
+    const score = rating.score != null ? rating.score : 0;
+    const pct = ((score + 1) / 2 * 100).toFixed(1);
+    const cls = _signalClass(sig);
+    const buy = rating.buy || 0;
+    const neutral = rating.neutral || 0;
+    const sell = rating.sell || 0;
+    return `<div class="tv-gauge">
+        <div class="gauge-title">${escHtml(title)}</div>
+        <div class="gauge-signal ${cls}">${escHtml(sig)}</div>
+        <div class="gauge-meter"><div class="gauge-marker" style="left:${pct}%"></div></div>
+        <div class="gauge-counts"><span class="gc-buy">${buy} Buy</span> / <span class="gc-neutral">${neutral} Neutral</span> / <span class="gc-sell">${sell} Sell</span></div>
+    </div>`;
+}
+
+function _indicatorTableHTML(indicators, title) {
+    if (!indicators || indicators.length === 0) return '';
+    const rows = indicators.map(ind => {
+        const name = INDICATOR_NAMES_ZH[ind.name] || INDICATOR_NAMES[ind.name] || ind.name;
+        return `<tr>
+            <td>${escHtml(name)}</td>
+            <td style="text-align:right">${_deepFmtVal(ind.value)}</td>
+            <td>${_signalPill(ind.signal)}</td>
+        </tr>`;
+    }).join('');
+    return `<table class="indicator-table">
+        <thead><tr><th>指標</th><th style="text-align:right">數值</th><th>訊號</th></tr></thead>
+        <tbody>${rows}</tbody>
+    </table>`;
+}
+
+function _categoryHTML(key, catData) {
+    const catName = CATEGORY_NAMES_ZH[key] || key;
+    const items = catData.indicators || [];
+    if (items.length === 0) return '';
+    const rows = items.map(ind => {
+        const name = INDICATOR_NAMES_ZH[ind.name] || INDICATOR_NAMES[ind.name] || ind.name;
+        const sigCell = ind.signal ? _signalPill(ind.signal) : '';
+        return `<tr>
+            <td>${escHtml(name)}</td>
+            <td style="text-align:right">${_deepFmtVal(ind.value)}</td>
+            <td>${sigCell}</td>
+        </tr>`;
+    }).join('');
+    return `<div class="indicator-category">
+        <div class="indicator-category-header">
+            <span>${escHtml(catName)} <span class="cat-count">(${items.length})</span></span>
+            <span class="cat-arrow">&#9654;</span>
+        </div>
+        <div class="indicator-category-body">
+            <table class="indicator-table">
+                <thead><tr><th>指標</th><th style="text-align:right">數值</th><th>訊號</th></tr></thead>
+                <tbody>${rows}</tbody>
+            </table>
+        </div>
+    </div>`;
+}
+
+function renderDeepAnalysis(data) {
+    const container = $('deep-analysis');
+    if (!container) return;
+    const da = data.deep_analysis;
+    if (!da) { container.innerHTML = ''; return; }
+
+    const symbol = da.symbol || '';
+    const barCount = da.bar_count || '';
+    let html = `<div class="deep-section">`;
+    html += `<h2>深度技術分析 — ${escHtml(symbol)} <span class="dim">${barCount ? '(' + barCount + ' bars)' : ''}</span></h2>`;
+
+    // TradingView Ratings
+    const tv = da.tradingview;
+    if (tv) {
+        html += `<h3>TradingView 技術評級</h3>`;
+        html += `<div class="tv-gauge-row">`;
+        html += _gaugeHTML('Summary', tv.summary);
+        html += _gaugeHTML('Oscillators', tv.oscillators);
+        html += _gaugeHTML('Moving Averages', tv.moving_averages);
+        html += `</div>`;
+
+        // Detail tables
+        if (tv.oscillators && tv.oscillators.indicators) {
+            html += `<div class="indicator-category open">
+                <div class="indicator-category-header">
+                    <span>Oscillators <span class="cat-count">(${tv.oscillators.indicators.length})</span></span>
+                    <span class="cat-arrow">&#9654;</span>
+                </div>
+                <div class="indicator-category-body">
+                    ${_indicatorTableHTML(tv.oscillators.indicators)}
+                </div>
+            </div>`;
+        }
+        if (tv.moving_averages && tv.moving_averages.indicators) {
+            html += `<div class="indicator-category open">
+                <div class="indicator-category-header">
+                    <span>Moving Averages <span class="cat-count">(${tv.moving_averages.indicators.length})</span></span>
+                    <span class="cat-arrow">&#9654;</span>
+                </div>
+                <div class="indicator-category-body">
+                    ${_indicatorTableHTML(tv.moving_averages.indicators)}
+                </div>
+            </div>`;
+        }
+    }
+
+    // 9 Category Tables
+    const categories = da.categories;
+    if (categories) {
+        html += `<h3>擴展指標分析</h3>`;
+        const catOrder = ['trend','momentum','volatility','volume','pattern','support_resistance','relative','statistical','time_based'];
+        for (const key of catOrder) {
+            if (categories[key]) {
+                html += _categoryHTML(key, categories[key]);
+            }
+        }
+    }
+
+    html += `</div>`;
+    container.innerHTML = html;
+
+    // Attach collapse/expand handlers
+    container.querySelectorAll('.indicator-category-header').forEach(hdr => {
+        hdr.addEventListener('click', function() {
+            this.parentElement.classList.toggle('open');
+        });
+    });
+}
+
 // ── State Messages ───────────────────────────────
 function showState(title, desc) {
     $('exits-section').style.display = 'none';
@@ -1891,6 +2396,7 @@ function showState(title, desc) {
     $('picks-table').innerHTML = '';
     $('picks-detail').innerHTML = '';
     $('pick-count').textContent = '';
+    $('deep-analysis').innerHTML = '';
     $('quick-ref').innerHTML = '';
     ['s-mode','s-rwr','s-grade','s-count','s-open'].forEach(id => { $(id).textContent = '--'; $(id).style.color = ''; });
     $('regime-warning').style.display = 'none';
