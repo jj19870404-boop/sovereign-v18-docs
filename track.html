@@ -455,7 +455,7 @@ function renderTable(tracks) {
         }
 
         const rowClass = isRef ? 'ref-row' : '';
-        const symDisplay = isRef ? `<span style="color:#f59e0b" title="僅供參考，未進場">${escHtml(t.symbol)} ⚠</span>` : escHtml(t.symbol);
+        const symDisplay = isRef ? `<span style="color:#f59e0b" title="僅供參考，不計入勝率">${escHtml(t.symbol)} ⚠</span>` : escHtml(t.symbol);
 
         html += `<tr class="${rowClass}">
             <td style="color:var(--text-dim)">${i + 1}</td>
@@ -466,9 +466,9 @@ function renderTable(tracks) {
             <td class="mono hide-mobile">$${safeFmt(t.tp)}</td>
             <td class="mono hide-mobile">$${safeFmt(t.sl)}</td>
             <td class="mono">${exitPrice}</td>
-            <td class="${isRef ? 'ret-zero' : retClass}">${isRef ? '--' : retStr}</td>
+            <td class="${retClass}">${retStr}</td>
             <td>${statusBadge}</td>
-            <td class="hide-mobile">${isRef ? '--' : (t.days || 0) + 'd'}</td>
+            <td class="hide-mobile">${(t.days || 0)}d</td>
         </tr>`;
     });
 
