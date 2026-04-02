@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-02T22:09:24+08:00",
+  "updated": "2026-04-03T06:01:05+08:00",
   "summary": {
     "total": 100,
     "wins": 57,
@@ -17,9 +17,9 @@
       "tp": 302.3,
       "sl": 246.96,
       "status": "OPEN",
-      "return_pct": 3.66,
+      "return_pct": 5.38,
       "days": 1,
-      "current": 290.15,
+      "current": 294.97,
       "is_ref": true,
       "reject_reason": "CandGate (1<70) | SkipBEAR"
     },
@@ -58,9 +58,9 @@
       "tp": 61.69,
       "sl": 51.64,
       "status": "OPEN",
-      "return_pct": 2.94,
+      "return_pct": 0.98,
       "days": 4,
-      "current": 58.8,
+      "current": 57.68,
       "is_ref": true,
       "reject_reason": "CandGate (3<70) | SkipBEAR | SkipMonth (三月)"
     },
