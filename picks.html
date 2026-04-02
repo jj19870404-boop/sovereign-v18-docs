@@ -2263,6 +2263,10 @@ function _signalPill(sig) {
         'near_ath': ['Near ATH', 'pill-buy'],
         'high_risk': ['High Risk', 'pill-sell'],
         'low_risk': ['Low Risk', 'pill-buy'],
+        'strong': ['Strong', 'pill-buy'],
+        'weak': ['Weak', 'pill-sell'],
+        'support': ['Support', 'pill-buy'],
+        'resistance': ['Resistance', 'pill-sell'],
         'none': ['—', 'pill-neutral'],
         'true': ['Yes', 'pill-buy'],
         'false': ['No', 'pill-neutral'],
@@ -2318,11 +2322,11 @@ function _categoryHTML(key, catData) {
     const rows = entries.map(([indKey, indData]) => {
         const name = INDICATOR_NAMES_ZH[indKey] || INDICATOR_NAMES[indKey] || indKey;
         const val = indData.value !== undefined ? indData.value : indData;
-        const sig = indData.signal || indData.trend || '';
+        const sig = indData.signal || indData.trend || null;
         return `<tr>
             <td>${escHtml(name)}</td>
             <td style="text-align:right">${_deepFmtVal(val)}</td>
-            <td>${sig ? _signalPill(sig) : ''}</td>
+            <td>${sig ? _signalPill(sig) : '<span class="signal-pill pill-neutral">—</span>'}</td>
         </tr>`;
     }).join('');
     return `<div class="indicator-category">
