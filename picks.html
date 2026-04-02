@@ -7,7 +7,7 @@
 <title>Sovereign V30 - 每日選股報告</title>
 <meta name="description" content="Sovereign V30 動能突破交易系統每日選股報告 — 全自動美股掃描選股結果、A-F 品質評級、進場價與停損價、TP/NoTP 動態操作計畫、完整候選股清單。">
 <meta property="og:title" content="Sovereign V30 - 每日選股報告">
-<meta property="og:description" content="Sovereign V28 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫">
+<meta property="og:description" content="Sovereign V30 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html">
 <meta property="og:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
@@ -16,7 +16,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sovereign V30 - 每日選股報告">
-<meta name="twitter:description" content="Sovereign V28 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫">
+<meta name="twitter:description" content="Sovereign V30 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫">
 <meta name="twitter:image" content="https://jj19870404-boop.github.io/sovereign-v18-docs/images/sovereign_v18_20260211.png">
 <link rel="canonical" href="https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html">
 <link rel="icon" type="image/png" href="images/sovereign_v18_20260211.png">
@@ -742,7 +742,7 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V30 - 每日選股報告","description":"Sovereign V28 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V30","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
+{"@context":"https://schema.org","@type":"WebPage","name":"Sovereign V30 - 每日選股報告","description":"Sovereign V30 每日選股報告 — 全自動美股掃描、品質評級、TP/NoTP 動態操作計畫","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html","inLanguage":"zh-TW","isPartOf":{"@type":"WebSite","name":"Sovereign V30","url":"https://jj19870404-boop.github.io/sovereign-v18-docs/"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/"},{"@type":"ListItem","position":2,"name":"每日選股","item":"https://jj19870404-boop.github.io/sovereign-v18-docs/picks.html"}]}
@@ -846,7 +846,7 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
     <a href="index.html">&larr; 系統文件</a> &nbsp;|&nbsp;
     <a href="track.html">選股追蹤</a> &nbsp;|&nbsp;
     <a href="news.html">整點快報 &rarr;</a>
-    <p style="margin-top:8px">Sovereign &mdash; 動能突破交易系統 (V28 動態切換)</p>
+    <p style="margin-top:8px">Sovereign &mdash; 動能突破交易系統 (V30 動態切換)</p>
     <p id="site-updated" style="margin-top:6px;font-size:0.8em;color:var(--text-dim)"></p>
 </div>
 
@@ -854,21 +854,21 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
 
 <script>
 /* ═══════════════════════════════════════════════════
-   Sovereign V28 Daily Picks — Full Scanner Report
+   Sovereign V30 Daily Picks — Full Scanner Report
    ═══════════════════════════════════════════════════ */
 
 // ── Strategy Parameters (constants) ─────────────
 const PARAMS = {
-    breakeven_trigger: 0.008,     // V28
+    breakeven_trigger: 0.008,     // V30
     trail_activation: 0.031,     // V29
     trail_distance: 0.031,
     gap_reject_pct: 0.03,
-    tp_target: 0.08,              // V28
+    tp_target: 0.08,              // V30
     stale_days: 9,
     stale_threshold: -0.05,
-    time_stop: 7,                   // V28 (was 10)
+    time_stop: 7,                   // V30 (was 10)
     max_loss: -0.20,
-    atr_sl: 1.2,                  // V28
+    atr_sl: 1.2,                  // V30
     atr_sl_day1: 1.39,             // V30
     force_tp_day1: true,
     slippage: 0.001,
@@ -879,11 +879,11 @@ const PARAMS = {
     spy_rsi_oversold_52wk: 0.90,
     spy_rsi_overbought: 70,
     spy_rsi_overbought_vz: 1.3,
-    day2_profit_lock: 0.012,      // V28
-    day2_trail_distance: 0.008,   // V28 (was 0.010)
-    cand_gate: 70,                // V28 CandGate
-    skip_bear: true,              // V28 Skip BEAR
-    skip_march: true,             // V28 Skip March
+    day2_profit_lock: 0.012,      // V30
+    day2_trail_distance: 0.008,   // V30 (was 0.010)
+    cand_gate: 70,                // V30 CandGate
+    skip_bear: true,              // V30 Skip BEAR
+    skip_march: true,             // V30 Skip March
     notp_breakeven_trigger: 0.008,
     notp_trail_activation: 0.020,
 };
@@ -1580,7 +1580,7 @@ function buildAdvancedHTML(p) {
 function renderNoPicks(date) {
     const html = `<div class="card" style="text-align:center;padding:32px">
         <h3 style="color:var(--yellow);margin-bottom:12px">今日無符合條件的標的</h3>
-        <p style="color:var(--text-dim)">這是正常的 — V28 平均每年約 64 個訊號（CandGate + SkipBEAR + SkipMar 過濾後）</p>
+        <p style="color:var(--text-dim)">這是正常的 — V30 平均每年約 64 個訊號（CandGate + SkipBEAR + SkipMar 過濾後）</p>
         <p style="color:var(--text-dim);font-size:0.85em;margin-top:12px">
             策略等待以下條件同時滿足：量能突增 >= 1.5x ・ 量能Z分 >= 1.0σ ・ 接近52週高點 >= 80% ・ SMA20 上升 ・ 盤整收斂
         </p>
