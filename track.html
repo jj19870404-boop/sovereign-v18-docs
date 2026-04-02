@@ -112,6 +112,8 @@
 .badge-open { background: rgba(251,191,36,0.12); color: var(--yellow); box-shadow: inset 0 0 0 1px rgba(251,191,36,0.2); }
 .badge-be { background: rgba(107,113,148,0.15); color: var(--text-dim); box-shadow: inset 0 0 0 1px rgba(107,113,148,0.2); }
 .badge-pending { background: var(--accent-dim); color: var(--accent); box-shadow: inset 0 0 0 1px rgba(124,141,255,0.2); }
+.badge-ref { background: rgba(245,158,11,0.15); color: #f59e0b; box-shadow: inset 0 0 0 1px rgba(245,158,11,0.3); }
+.ref-row { opacity: 0.7; border-left: 3px solid #f59e0b; }
 
 /* ── Return Colors ── */
 .ret-pos { color: var(--green); font-weight: 600; }
@@ -417,6 +419,7 @@ function renderTable(tracks) {
     </tr></thead><tbody>`;
 
     tracks.forEach((t, i) => {
+        const isRef = t.is_ref === true;
         const ret = (t.return_pct != null && !isNaN(t.return_pct)) ? t.return_pct : 0;
         const retClass = ret > 0 ? 'ret-pos' : ret < 0 ? 'ret-neg' : 'ret-zero';
         const retStr = (ret >= 0 ? '+' : '') + ret.toFixed(2) + '%';
@@ -426,7 +429,12 @@ function renderTable(tracks) {
 
         let statusBadge, exitPrice;
         const exitTypeTag = t.exit_type ? ' <span style="font-size:0.7em;color:var(--text-dim)">' + escHtml(t.exit_type) + '</span>' : '';
-        if (t.status === 'WIN') {
+        if (isRef) {
+            // 參考選股 — 不進場，僅供參考
+            const reason = t.reject_reason || 'No entry';
+            statusBadge = `<span class="badge badge-ref" title="${escHtml(reason)}">REF</span> <span style="font-size:0.65em;color:#f59e0b">${escHtml(reason).substring(0,20)}</span>`;
+            exitPrice = '--';
+        } else if (t.status === 'WIN') {
             statusBadge = '<span class="badge badge-win">WIN</span>' + exitTypeTag;
             exitPrice = '$' + safeFmt(t.exit_price);
         } else if (t.status === 'LOSS') {
@@ -446,18 +454,21 @@ function renderTable(tracks) {
             exitPrice = '--';
         }
 
-        html += `<tr>
+        const rowClass = isRef ? 'ref-row' : '';
+        const symDisplay = isRef ? `<span style="color:#f59e0b" title="僅供參考，未進場">${escHtml(t.symbol)} ⚠</span>` : escHtml(t.symbol);
+
+        html += `<tr class="${rowClass}">
             <td style="color:var(--text-dim)">${i + 1}</td>
             <td class="mono">${escHtml((t.date || '').slice(5))}</td>
-            <td class="sym">${escHtml(t.symbol)}</td>
+            <td class="sym">${symDisplay}</td>
             <td>${gradeHtml}</td>
             <td class="mono">$${safeFmt(t.entry)}</td>
             <td class="mono hide-mobile">$${safeFmt(t.tp)}</td>
             <td class="mono hide-mobile">$${safeFmt(t.sl)}</td>
             <td class="mono">${exitPrice}</td>
-            <td class="${retClass}">${retStr}</td>
+            <td class="${isRef ? 'ret-zero' : retClass}">${isRef ? '--' : retStr}</td>
             <td>${statusBadge}</td>
-            <td class="hide-mobile">${t.days || 0}d</td>
+            <td class="hide-mobile">${isRef ? '--' : (t.days || 0) + 'd'}</td>
         </tr>`;
     });
 
