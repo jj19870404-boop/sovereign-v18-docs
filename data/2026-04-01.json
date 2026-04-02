@@ -767,6 +767,80 @@
         }
       }
     },
+    "extended_rating": {
+      "summary": {
+        "signal": "Buy",
+        "score": 0.2,
+        "buy": 34,
+        "sell": 16,
+        "neutral": 40
+      },
+      "categories": {
+        "trend": {
+          "signal": "Buy",
+          "score": 0.11,
+          "buy": 4,
+          "sell": 3,
+          "neutral": 2
+        },
+        "momentum": {
+          "signal": "Buy",
+          "score": 0.2,
+          "buy": 3,
+          "sell": 2,
+          "neutral": 0
+        },
+        "volatility": {
+          "signal": "Neutral",
+          "score": -0.06,
+          "buy": 2,
+          "sell": 3,
+          "neutral": 11
+        },
+        "volume": {
+          "signal": "Buy",
+          "score": 0.4,
+          "buy": 6,
+          "sell": 2,
+          "neutral": 2
+        },
+        "pattern": {
+          "signal": "Buy",
+          "score": 0.14,
+          "buy": 3,
+          "sell": 1,
+          "neutral": 10
+        },
+        "support_resistance": {
+          "signal": "Buy",
+          "score": 0.37,
+          "buy": 8,
+          "sell": 1,
+          "neutral": 10
+        },
+        "relative": {
+          "signal": "Strong Buy",
+          "score": 0.67,
+          "buy": 5,
+          "sell": 1,
+          "neutral": 0
+        },
+        "statistical": {
+          "signal": "Neutral",
+          "score": 0.0,
+          "buy": 3,
+          "sell": 3,
+          "neutral": 1
+        },
+        "time_based": {
+          "signal": "Neutral",
+          "score": 0.0,
+          "buy": 0,
+          "sell": 0,
+          "neutral": 4
+        }
+      }
+    },
     "indicators": {
       "trend": {
         "parabolic_sar": {
