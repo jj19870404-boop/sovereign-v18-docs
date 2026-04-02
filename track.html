@@ -230,7 +230,7 @@
 
 <!-- Grade Stats -->
 <div class="grade-stats reveal" id="grade-stats" role="region" aria-live="polite" aria-label="等級統計" style="display:none;">
-    <h3>評級勝率參考 — V30 回測統計 (全美股 11,000+, 332 筆交易, 真實填成模型, 原始 ATR 止損距離分級)</h3>
+    <h3>評級勝率參考 — V30 回測統計 (全美股 11,000+, 330 筆交易, 真實填成模型, 原始 ATR 止損距離分級)</h3>
     <div class="table-wrap">
     <table class="grade-stats-table" id="grade-stats-table">
         <thead><tr>
@@ -252,7 +252,7 @@
 
     <p class="grade-stats-note">
         SL% = (進場價 - 停損價) / 進場價。SL% 越低代表停損越緊、單筆風險越低。<br>
-        評級基於進場時的原始 ATR 止損距離計算 (SL = 進場價 - 1.2×ATR)，反映該筆交易的風險程度。全部 332 筆交易均有完整 ATR 數據，可精確計算原始 SL%。<br>
+        評級基於進場時的原始 ATR 止損距離計算 (SL = 進場價 - 1.2×ATR)，反映該筆交易的風險程度。全部 330 筆交易均有完整 ATR 數據，可精確計算原始 SL%。<br>
         注意：S/D 級樣本極少，統計參考價值有限；A/B 為主力分佈，統計較穩定。
     </p>
 </div>
@@ -308,24 +308,24 @@ function calcGrade(entry, tp, sl) {
     return { slPct: Math.round(slPct * 10) / 10, grade };
 }
 
-// ── Historical Grade Stats (V30, 332 trades) ──
+// ── Historical Grade Stats (V30, 330 trades) ──
 const HIST = {
     overall: {
-        S: { count: 31, wins: 13, wr: 41.9, avg_ret: 0.73, tp_rate: 6 },
-        A: { count: 175, wins: 114, wr: 65.1, avg_ret: 3.57, tp_rate: 18 },
-        B: { count: 191, wins: 130, wr: 68.1, avg_ret: 4.27, tp_rate: 24 },
-        C: { count: 51, wins: 41, wr: 80.4, avg_ret: 7.03, tp_rate: 43 },
-        D: { count: 4, wins: 4, wr: 100.0, avg_ret: 9.25, tp_rate: 50 },
+        S: { count: 129, wins: 84, wr: 65.1, avg_ret: 5.17, tp_rate: 22 },
+        A: { count: 91, wins: 43, wr: 47.3, avg_ret: 0.81, tp_rate: 45 },
+        B: { count: 87, wins: 56, wr: 64.4, avg_ret: 3.64, tp_rate: 63 },
+        C: { count: 14, wins: 9, wr: 64.3, avg_ret: 3.14, tp_rate: 64 },
+        D: { count: 9, wins: 7, wr: 77.8, avg_ret: 8.30, tp_rate: 78 },
     },
     yearly: {
-        '2021': { S:{n:9,wr:44.4}, A:{n:33,wr:72.7}, B:{n:41,wr:70.7}, C:{n:7,wr:57.1}, D:{n:1,wr:100.0}, total:{n:91,wr:68.1} },
-        '2022': { S:{n:11,wr:45.5}, A:{n:43,wr:53.5}, B:{n:28,wr:60.7}, C:{n:4,wr:75.0}, D:{n:0,wr:0}, total:{n:86,wr:55.8} },
-        '2023': { S:{n:3,wr:33.3}, A:{n:29,wr:65.5}, B:{n:39,wr:64.1}, C:{n:11,wr:90.9}, D:{n:1,wr:100.0}, total:{n:83,wr:67.5} },
-        '2024': { S:{n:4,wr:25.0}, A:{n:37,wr:59.5}, B:{n:36,wr:72.2}, C:{n:16,wr:87.5}, D:{n:0,wr:0}, total:{n:93,wr:67.7} },
-        '2025': { S:{n:3,wr:66.7}, A:{n:31,wr:77.4}, B:{n:43,wr:69.8}, C:{n:12,wr:75.0}, D:{n:2,wr:100.0}, total:{n:91,wr:73.6} },
-        '2026': { S:{n:1,wr:0.0}, A:{n:2,wr:100.0}, B:{n:4,wr:75.0}, C:{n:1,wr:100.0}, D:{n:0,wr:0}, total:{n:8,wr:75.0} },
+        '2021': { S:{n:32,wr:65.6}, A:{n:28,wr:46.4}, B:{n:14,wr:50.0}, C:{n:2,wr:100.0}, D:{n:0,wr:0.0}, total:{n:76,wr:56.6} },
+        '2022': { S:{n:9,wr:77.8}, A:{n:9,wr:0.0}, B:{n:5,wr:80.0}, C:{n:0,wr:0.0}, D:{n:0,wr:0.0}, total:{n:23,wr:47.8} },
+        '2023': { S:{n:25,wr:56.0}, A:{n:15,wr:46.7}, B:{n:15,wr:73.3}, C:{n:3,wr:33.3}, D:{n:0,wr:0.0}, total:{n:58,wr:56.9} },
+        '2024': { S:{n:33,wr:63.6}, A:{n:12,wr:41.7}, B:{n:28,wr:60.7}, C:{n:2,wr:100.0}, D:{n:3,wr:66.7}, total:{n:78,wr:60.3} },
+        '2025': { S:{n:26,wr:69.2}, A:{n:21,wr:61.9}, B:{n:22,wr:63.6}, C:{n:5,wr:40.0}, D:{n:5,wr:80.0}, total:{n:79,wr:64.6} },
+        '2026': { S:{n:4,wr:75.0}, A:{n:6,wr:83.3}, B:{n:3,wr:100.0}, C:{n:2,wr:100.0}, D:{n:1,wr:100.0}, total:{n:16,wr:87.5} },
     },
-    total_trades: 332
+    total_trades: 330
 };
 
 const GRADE_META = {
