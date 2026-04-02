@@ -1108,10 +1108,28 @@ async function renderDeep(sym) {
             }
         }
 
+        // Extended Rating Gauges
+        var er = da.extended_rating;
+        if (er) {
+            html += '<h3>擴展指標總覽</h3>';
+            html += '<div class="tv-gauge-row">';
+            html += _gaugeHTML('總評級', er.summary);
+            html += '</div>';
+            var catOrder2 = ['trend','momentum','volatility','volume','pattern','support_resistance','relative','statistical','time_based'];
+            var catLabels = {trend:'趨勢',momentum:'動能',volatility:'波動率',volume:'成交量',pattern:'K線型態',support_resistance:'支撐壓力',relative:'相對強弱',statistical:'統計',time_based:'時間'};
+            html += '<div class="tv-gauge-row" style="flex-wrap:wrap">';
+            catOrder2.forEach(function(ck) {
+                if (er.categories && er.categories[ck]) {
+                    html += _gaugeHTML(catLabels[ck] || ck, er.categories[ck]);
+                }
+            });
+            html += '</div>';
+        }
+
         // 9 category tables
         var categories = da.indicators;
         if (categories) {
-            html += '<h3>擴展指標分析</h3>';
+            html += '<h3>擴展指標明細</h3>';
             var catOrder = ['trend','momentum','volatility','volume','pattern','support_resistance','relative','statistical','time_based'];
             catOrder.forEach(function(key) {
                 if (categories[key]) {

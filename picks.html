@@ -2391,10 +2391,29 @@ function renderDeepAnalysis(data) {
         }
     }
 
+    // Extended Rating Gauges
+    const er = da.extended_rating;
+    if (er) {
+        html += `<h3>擴展指標總覽</h3>`;
+        html += `<div class="tv-gauge-row">`;
+        html += _gaugeHTML('總評級', er.summary);
+        html += `</div>`;
+        // 9 category mini gauges (3 per row)
+        const catOrder2 = ['trend','momentum','volatility','volume','pattern','support_resistance','relative','statistical','time_based'];
+        const catLabels = {trend:'趨勢',momentum:'動能',volatility:'波動率',volume:'成交量',pattern:'K線型態',support_resistance:'支撐壓力',relative:'相對強弱',statistical:'統計',time_based:'時間'};
+        html += `<div class="tv-gauge-row" style="flex-wrap:wrap">`;
+        for (const ck of catOrder2) {
+            if (er.categories && er.categories[ck]) {
+                html += _gaugeHTML(catLabels[ck] || ck, er.categories[ck]);
+            }
+        }
+        html += `</div>`;
+    }
+
     // 9 Category Tables
     const categories = da.indicators;
     if (categories) {
-        html += `<h3>擴展指標分析</h3>`;
+        html += `<h3>擴展指標明細</h3>`;
         const catOrder = ['trend','momentum','volatility','volume','pattern','support_resistance','relative','statistical','time_based'];
         for (const key of catOrder) {
             if (categories[key]) {
