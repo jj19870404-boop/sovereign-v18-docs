@@ -479,7 +479,24 @@
         }
       }
     },
-    "chart_patterns": [],
+    "chart_patterns": [
+      {
+        "name": "強勢上升趨勢",
+        "type": "trend",
+        "direction": "Buy",
+        "reliability": "趨勢判定 (20日 +27.2%, 50日 +82.7%)",
+        "description": "近 20 日漲幅 +27.2%，走勢極強，均線多頭排列 (價格 > MA20 > MA50)。漲勢過猛導致近期無明顯回檔形成經典整理型態。",
+        "current_status": "收盤 $73.80 | MA20 $65.52 | MA50 $52.15 | 多頭排列 (價格 > MA20 > MA50)",
+        "price_target": 65.52,
+        "target_logic": "第一支撐 MA20 = $65.52，第二支撐 MA50 = $52.15",
+        "prediction": "趨勢持續看多。但注意短期漲幅過大可能出現技術性回檔。MA20 ($65.52) 為第一支撐，跌破則看 MA50 ($52.15)。",
+        "key_levels": {
+          "ma20": 65.52,
+          "ma50": 52.15,
+          "current": 73.8
+        }
+      }
+    ],
     "indicators": {
       "trend": {
         "parabolic_sar": {
@@ -707,7 +724,7 @@
           "signal": "Buy"
         },
         "chart_pattern": {
-          "value": "Uptrend (無經典型態)",
+          "value": "強勢上升趨勢",
           "signal": "Buy"
         },
         "head_shoulders": {
@@ -911,6 +928,19 @@
           "signal": "Sell"
         }
       }
+    },
+    "validation": {
+      "checks": 123,
+      "passed": 123,
+      "errors": 0,
+      "warnings": 1,
+      "status": "PASS",
+      "error_list": [],
+      "warning_list": [
+        "chart_pattern '強勢上升趨勢': Buy but target $65.52 < current $73.80"
+      ],
+      "indicator_count": 103,
+      "empty_signals": 0
     }
   },
   "deep_analyses": {
@@ -1123,7 +1153,24 @@
           }
         }
       },
-      "chart_patterns": [],
+      "chart_patterns": [
+        {
+          "name": "強勢上升趨勢",
+          "type": "trend",
+          "direction": "Buy",
+          "reliability": "趨勢判定 (20日 +27.2%, 50日 +82.7%)",
+          "description": "近 20 日漲幅 +27.2%，走勢極強，均線多頭排列 (價格 > MA20 > MA50)。漲勢過猛導致近期無明顯回檔形成經典整理型態。",
+          "current_status": "收盤 $73.80 | MA20 $65.52 | MA50 $52.15 | 多頭排列 (價格 > MA20 > MA50)",
+          "price_target": 65.52,
+          "target_logic": "第一支撐 MA20 = $65.52，第二支撐 MA50 = $52.15",
+          "prediction": "趨勢持續看多。但注意短期漲幅過大可能出現技術性回檔。MA20 ($65.52) 為第一支撐，跌破則看 MA50 ($52.15)。",
+          "key_levels": {
+            "ma20": 65.52,
+            "ma50": 52.15,
+            "current": 73.8
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -1351,7 +1398,7 @@
             "signal": "Buy"
           },
           "chart_pattern": {
-            "value": "Uptrend (無經典型態)",
+            "value": "強勢上升趨勢",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -1555,6 +1602,19 @@
             "signal": "Sell"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 1,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [
+          "chart_pattern '強勢上升趨勢': Buy but target $65.52 < current $73.80"
+        ],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "NESR": {
@@ -1766,7 +1826,24 @@
           }
         }
       },
-      "chart_patterns": [],
+      "chart_patterns": [
+        {
+          "name": "強勢上升趨勢",
+          "type": "trend",
+          "direction": "Buy",
+          "reliability": "趨勢判定 (20日 +48.1%, 50日 +75.3%)",
+          "description": "近 20 日漲幅 +48.1%，走勢極強，均線多頭排列 (價格 > MA20 > MA50)。漲勢過猛導致近期無明顯回檔形成經典整理型態。",
+          "current_status": "收盤 $24.17 | MA20 $19.63 | MA50 $16.80 | 多頭排列 (價格 > MA20 > MA50)",
+          "price_target": 19.63,
+          "target_logic": "第一支撐 MA20 = $19.63，第二支撐 MA50 = $16.80",
+          "prediction": "趨勢持續看多。但注意短期漲幅過大可能出現技術性回檔。MA20 ($19.63) 為第一支撐，跌破則看 MA50 ($16.80)。",
+          "key_levels": {
+            "ma20": 19.63,
+            "ma50": 16.8,
+            "current": 24.17
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -1994,7 +2071,7 @@
             "signal": "Neutral"
           },
           "chart_pattern": {
-            "value": "Uptrend (無經典型態)",
+            "value": "強勢上升趨勢",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -2198,6 +2275,19 @@
             "signal": "Buy"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 1,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [
+          "chart_pattern '強勢上升趨勢': Buy but target $19.63 < current $24.17"
+        ],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "MKSI": {
@@ -2409,7 +2499,24 @@
           }
         }
       },
-      "chart_patterns": [],
+      "chart_patterns": [
+        {
+          "name": "強勢上升趨勢",
+          "type": "trend",
+          "direction": "Buy",
+          "reliability": "趨勢判定 (20日 +49.2%, 50日 +83.1%)",
+          "description": "近 20 日漲幅 +49.2%，走勢極強，均線多頭排列 (價格 > MA20 > MA50)。漲勢過猛導致近期無明顯回檔形成經典整理型態。",
+          "current_status": "收盤 $262.94 | MA20 $217.61 | MA50 $182.61 | 多頭排列 (價格 > MA20 > MA50)",
+          "price_target": 217.61,
+          "target_logic": "第一支撐 MA20 = $217.61，第二支撐 MA50 = $182.61",
+          "prediction": "趨勢持續看多。但注意短期漲幅過大可能出現技術性回檔。MA20 ($217.61) 為第一支撐，跌破則看 MA50 ($182.61)。",
+          "key_levels": {
+            "ma20": 217.61,
+            "ma50": 182.61,
+            "current": 262.94
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -2637,7 +2744,7 @@
             "signal": "Neutral"
           },
           "chart_pattern": {
-            "value": "Uptrend (無經典型態)",
+            "value": "強勢上升趨勢",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -2841,6 +2948,19 @@
             "signal": "Buy"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 1,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [
+          "chart_pattern '強勢上升趨勢': Buy but target $217.61 < current $262.94"
+        ],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "NRXS": {
@@ -3052,7 +3172,24 @@
           }
         }
       },
-      "chart_patterns": [],
+      "chart_patterns": [
+        {
+          "name": "強勢上升趨勢",
+          "type": "trend",
+          "direction": "Buy",
+          "reliability": "趨勢判定 (20日 +21.4%, 50日 +105.7%)",
+          "description": "近 20 日漲幅 +21.4%，走勢極強，均線多頭排列 (價格 > MA20 > MA50)。漲勢過猛導致近期無明顯回檔形成經典整理型態。",
+          "current_status": "收盤 $5.39 | MA20 $4.72 | MA50 $3.85 | 多頭排列 (價格 > MA20 > MA50)",
+          "price_target": 4.72,
+          "target_logic": "第一支撐 MA20 = $4.72，第二支撐 MA50 = $3.85",
+          "prediction": "趨勢持續看多。但注意短期漲幅過大可能出現技術性回檔。MA20 ($4.72) 為第一支撐，跌破則看 MA50 ($3.85)。",
+          "key_levels": {
+            "ma20": 4.72,
+            "ma50": 3.85,
+            "current": 5.39
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -3280,7 +3417,7 @@
             "signal": "Neutral"
           },
           "chart_pattern": {
-            "value": "Uptrend (無經典型態)",
+            "value": "強勢上升趨勢",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -3484,6 +3621,19 @@
             "signal": "Sell"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 1,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [
+          "chart_pattern '強勢上升趨勢': Buy but target $4.72 < current $5.39"
+        ],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "NBR": {
@@ -3695,7 +3845,24 @@
           }
         }
       },
-      "chart_patterns": [],
+      "chart_patterns": [
+        {
+          "name": "強勢上升趨勢",
+          "type": "trend",
+          "direction": "Buy",
+          "reliability": "趨勢判定 (20日 +18.9%, 50日 +44.3%)",
+          "description": "近 20 日漲幅 +18.9%，走勢極強，均線多頭排列 (價格 > MA20 > MA50)。漲勢過猛導致近期無明顯回檔形成經典整理型態。",
+          "current_status": "收盤 $71.91 | MA20 $66.22 | MA50 $59.58 | 多頭排列 (價格 > MA20 > MA50)",
+          "price_target": 66.22,
+          "target_logic": "第一支撐 MA20 = $66.22，第二支撐 MA50 = $59.58",
+          "prediction": "趨勢持續看多。但注意短期漲幅過大可能出現技術性回檔。MA20 ($66.22) 為第一支撐，跌破則看 MA50 ($59.58)。",
+          "key_levels": {
+            "ma20": 66.22,
+            "ma50": 59.58,
+            "current": 71.91
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -3923,7 +4090,7 @@
             "signal": "Neutral"
           },
           "chart_pattern": {
-            "value": "Uptrend (無經典型態)",
+            "value": "強勢上升趨勢",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -4127,6 +4294,19 @@
             "signal": "Sell"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 1,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [
+          "chart_pattern '強勢上升趨勢': Buy but target $66.22 < current $71.91"
+        ],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "TWIN": {
@@ -4338,7 +4518,24 @@
           }
         }
       },
-      "chart_patterns": [],
+      "chart_patterns": [
+        {
+          "name": "穩健上升趨勢",
+          "type": "trend",
+          "direction": "Buy",
+          "reliability": "趨勢判定 (20日 +8.7%, 50日 +23.3%)",
+          "description": "近 20 日漲幅 +8.7%，均線多頭排列 (價格 > MA20 > MA50)。價格沿趨勢上行，暫無明確的反轉或整理型態形成。",
+          "current_status": "收盤 $18.07 | MA20 $17.62 | MA50 $16.67 | 多頭排列 (價格 > MA20 > MA50)",
+          "price_target": 17.62,
+          "target_logic": "第一支撐 MA20 = $17.62，第二支撐 MA50 = $16.67",
+          "prediction": "趨勢看多。回檔至 MA20 ($17.62) 附近為買入機會。跌破 MA50 ($16.67) 則趨勢轉弱。",
+          "key_levels": {
+            "ma20": 17.62,
+            "ma50": 16.67,
+            "current": 18.07
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -4566,7 +4763,7 @@
             "signal": "Neutral"
           },
           "chart_pattern": {
-            "value": "Uptrend (無經典型態)",
+            "value": "穩健上升趨勢",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -4770,6 +4967,19 @@
             "signal": "Neutral"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 1,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [
+          "chart_pattern '穩健上升趨勢': Buy but target $17.62 < current $18.07"
+        ],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "GOEX": {
@@ -4981,7 +5191,24 @@
           }
         }
       },
-      "chart_patterns": [],
+      "chart_patterns": [
+        {
+          "name": "盤整震盪",
+          "type": "trend",
+          "direction": "Neutral",
+          "reliability": "趨勢判定 (20日 +6.1%, 50日 +39.7%)",
+          "description": "近 20 日漲跌 +6.1%，均線糾結，無明確方向。價格在 MA20 ($93.56) 和 MA50 ($84.31) 之間來回。",
+          "current_status": "收盤 $92.41 | MA20 $93.56 | MA50 $84.31 | 均線糾結",
+          "price_target": null,
+          "target_logic": "上方壓力 MA20 = $93.56，下方支撐 MA50 = $84.31",
+          "prediction": "等待方向。突破 MA20 ($93.56) 看多，跌破 MA50 ($84.31) 看空。量能放大時關注突破方向。",
+          "key_levels": {
+            "ma20": 93.56,
+            "ma50": 84.31,
+            "current": 92.41
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -5209,7 +5436,7 @@
             "signal": "Neutral"
           },
           "chart_pattern": {
-            "value": "Consolidation (無經典型態)",
+            "value": "盤整震盪",
             "signal": "Neutral"
           },
           "head_shoulders": {
@@ -5413,6 +5640,17 @@
             "signal": "Neutral"
           }
         }
+      },
+      "validation": {
+        "checks": 122,
+        "passed": 122,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "SRL": {
@@ -6074,6 +6312,17 @@
             "signal": "Sell"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "TAYD": {
@@ -6285,7 +6534,24 @@
           }
         }
       },
-      "chart_patterns": [],
+      "chart_patterns": [
+        {
+          "name": "強勢上升趨勢",
+          "type": "trend",
+          "direction": "Buy",
+          "reliability": "趨勢判定 (20日 +22.9%, 50日 +73.9%)",
+          "description": "近 20 日漲幅 +22.9%，走勢極強，均線多頭排列 (價格 > MA20 > MA50)。漲勢過猛導致近期無明顯回檔形成經典整理型態。",
+          "current_status": "收盤 $84.71 | MA20 $75.64 | MA50 $64.87 | 多頭排列 (價格 > MA20 > MA50)",
+          "price_target": 75.64,
+          "target_logic": "第一支撐 MA20 = $75.64，第二支撐 MA50 = $64.87",
+          "prediction": "趨勢持續看多。但注意短期漲幅過大可能出現技術性回檔。MA20 ($75.64) 為第一支撐，跌破則看 MA50 ($64.87)。",
+          "key_levels": {
+            "ma20": 75.64,
+            "ma50": 64.87,
+            "current": 84.71
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -6513,7 +6779,7 @@
             "signal": "Buy"
           },
           "chart_pattern": {
-            "value": "Uptrend (無經典型態)",
+            "value": "強勢上升趨勢",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -6717,6 +6983,19 @@
             "signal": "Buy"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 1,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [
+          "chart_pattern '強勢上升趨勢': Buy but target $75.64 < current $84.71"
+        ],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "DHC": {
@@ -6928,7 +7207,24 @@
           }
         }
       },
-      "chart_patterns": [],
+      "chart_patterns": [
+        {
+          "name": "強勢上升趨勢",
+          "type": "trend",
+          "direction": "Buy",
+          "reliability": "趨勢判定 (20日 +29.2%, 50日 +48.3%)",
+          "description": "近 20 日漲幅 +29.2%，走勢極強，均線多頭排列 (價格 > MA20 > MA50)。漲勢過猛導致近期無明顯回檔形成經典整理型態。",
+          "current_status": "收盤 $6.69 | MA20 $5.78 | MA50 $5.21 | 多頭排列 (價格 > MA20 > MA50)",
+          "price_target": 5.78,
+          "target_logic": "第一支撐 MA20 = $5.78，第二支撐 MA50 = $5.21",
+          "prediction": "趨勢持續看多。但注意短期漲幅過大可能出現技術性回檔。MA20 ($5.78) 為第一支撐，跌破則看 MA50 ($5.21)。",
+          "key_levels": {
+            "ma20": 5.78,
+            "ma50": 5.21,
+            "current": 6.69
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -7156,7 +7452,7 @@
             "signal": "Neutral"
           },
           "chart_pattern": {
-            "value": "Uptrend (無經典型態)",
+            "value": "強勢上升趨勢",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -7360,6 +7656,19 @@
             "signal": "Sell"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 1,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [
+          "chart_pattern '強勢上升趨勢': Buy but target $5.78 < current $6.69"
+        ],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     }
   }

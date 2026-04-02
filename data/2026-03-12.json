@@ -765,7 +765,24 @@
         }
       }
     },
-    "chart_patterns": [],
+    "chart_patterns": [
+      {
+        "name": "盤整震盪",
+        "type": "trend",
+        "direction": "Neutral",
+        "reliability": "趨勢判定 (20日 -3.9%, 50日 +10.9%)",
+        "description": "近 20 日漲跌 -3.9%，均線糾結，無明確方向。價格在 MA20 ($26.16) 和 MA50 ($24.64) 之間來回。",
+        "current_status": "收盤 $24.13 | MA20 $26.16 | MA50 $24.64 | 均線糾結",
+        "price_target": null,
+        "target_logic": "上方壓力 MA20 = $26.16，下方支撐 MA50 = $24.64",
+        "prediction": "等待方向。突破 MA20 ($26.16) 看多，跌破 MA50 ($24.64) 看空。量能放大時關注突破方向。",
+        "key_levels": {
+          "ma20": 26.16,
+          "ma50": 24.64,
+          "current": 24.13
+        }
+      }
+    ],
     "indicators": {
       "trend": {
         "parabolic_sar": {
@@ -993,7 +1010,7 @@
           "signal": "Neutral"
         },
         "chart_pattern": {
-          "value": "Consolidation (無經典型態)",
+          "value": "盤整震盪",
           "signal": "Neutral"
         },
         "head_shoulders": {
@@ -1197,6 +1214,17 @@
           "signal": "Sell"
         }
       }
+    },
+    "validation": {
+      "checks": 122,
+      "passed": 122,
+      "errors": 0,
+      "warnings": 0,
+      "status": "PASS",
+      "error_list": [],
+      "warning_list": [],
+      "indicator_count": 103,
+      "empty_signals": 0
     }
   },
   "deep_analyses": {
@@ -1409,7 +1437,24 @@
           }
         }
       },
-      "chart_patterns": [],
+      "chart_patterns": [
+        {
+          "name": "盤整震盪",
+          "type": "trend",
+          "direction": "Neutral",
+          "reliability": "趨勢判定 (20日 -3.9%, 50日 +10.9%)",
+          "description": "近 20 日漲跌 -3.9%，均線糾結，無明確方向。價格在 MA20 ($26.16) 和 MA50 ($24.64) 之間來回。",
+          "current_status": "收盤 $24.13 | MA20 $26.16 | MA50 $24.64 | 均線糾結",
+          "price_target": null,
+          "target_logic": "上方壓力 MA20 = $26.16，下方支撐 MA50 = $24.64",
+          "prediction": "等待方向。突破 MA20 ($26.16) 看多，跌破 MA50 ($24.64) 看空。量能放大時關注突破方向。",
+          "key_levels": {
+            "ma20": 26.16,
+            "ma50": 24.64,
+            "current": 24.13
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -1637,7 +1682,7 @@
             "signal": "Neutral"
           },
           "chart_pattern": {
-            "value": "Consolidation (無經典型態)",
+            "value": "盤整震盪",
             "signal": "Neutral"
           },
           "head_shoulders": {
@@ -1841,6 +1886,17 @@
             "signal": "Sell"
           }
         }
+      },
+      "validation": {
+        "checks": 122,
+        "passed": 122,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     },
     "LNT": {
@@ -2501,6 +2557,17 @@
             "signal": "Neutral"
           }
         }
+      },
+      "validation": {
+        "checks": 123,
+        "passed": 123,
+        "errors": 0,
+        "warnings": 0,
+        "status": "PASS",
+        "error_list": [],
+        "warning_list": [],
+        "indicator_count": 103,
+        "empty_signals": 0
       }
     }
   }
