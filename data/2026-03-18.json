@@ -345,7 +345,38 @@
   "recent_exits": [],
   "picks": [],
   "no_picks": true,
-  "market_regime": "",
+  "market_regime": "BEAR",
   "death_cross": false,
-  "spy_rsi": 0.0
+  "spy_rsi": 33.1,
+  "reference_picks": [
+    {
+      "rank": 1,
+      "symbol": "OVID",
+      "close": 2.32,
+      "entry_price": 2.32,
+      "tp_price": 2.5,
+      "sl_price": 2.06,
+      "shares": 0,
+      "risk_pct": 11.09,
+      "reward_pct": 8.0,
+      "rs_rank": 279,
+      "pct_from_52wk": 100.0,
+      "tightness": 6.6,
+      "vol_ratio": 7.55,
+      "mom_20": 58.56,
+      "sma20_slope": 1.086,
+      "atr": 0.18,
+      "rsi_14": 81.7,
+      "close_position": 42.3,
+      "vol_zscore": 3.86,
+      "quality_grade": "A",
+      "quality_score": 60,
+      "sector": "",
+      "sector_rank": 0,
+      "market_regime": "BEAR",
+      "death_cross": false,
+      "spy_rsi": 33.1
+    }
+  ],
+  "reject_reason": "CandGate (1<70) | SkipBEAR | SkipMonth (三月)"
 }
