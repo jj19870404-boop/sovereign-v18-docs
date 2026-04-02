@@ -430,10 +430,18 @@ function renderTable(tracks) {
         let statusBadge, exitPrice;
         const exitTypeTag = t.exit_type ? ' <span style="font-size:0.7em;color:var(--text-dim)">' + escHtml(t.exit_type) + '</span>' : '';
         if (isRef) {
-            // 參考選股 — 不進場，僅供參考
+            // 參考選股 — 不進場，僅供參考（但顯示實際報酬追蹤）
             const reason = t.reject_reason || 'No entry';
-            statusBadge = `<span class="badge badge-ref" title="${escHtml(reason)}">REF</span> <span style="font-size:0.65em;color:#f59e0b">${escHtml(reason).substring(0,20)}</span>`;
-            exitPrice = '--';
+            const refStatus = t.status || 'PENDING';
+            const refStatusColor = refStatus === 'WIN' ? '#22c55e' : (refStatus === 'LOSS' ? '#ef4444' : '#f59e0b');
+            statusBadge = `<span class="badge badge-ref" title="${escHtml(reason)}">REF</span> <span style="font-size:0.65em;color:${refStatusColor}">${escHtml(refStatus)}</span>`;
+            if (t.exit_price) {
+                exitPrice = '$' + safeFmt(t.exit_price);
+            } else if (t.current) {
+                exitPrice = '$' + safeFmt(t.current);
+            } else {
+                exitPrice = '--';
+            }
         } else if (t.status === 'WIN') {
             statusBadge = '<span class="badge badge-win">WIN</span>' + exitTypeTag;
             exitPrice = '$' + safeFmt(t.exit_price);
