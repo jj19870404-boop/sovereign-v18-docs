@@ -316,6 +316,15 @@ h1 { text-align: center; }
     margin: 20px 0 12px;
 }
 
+/* Chart Pattern Cards */
+.chart-patterns-section { margin-bottom: 20px; }
+.chart-pattern-card { background: #1a1d27; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; }
+.cp-header { font-size: 1.1em; margin-bottom: 6px; }
+.cp-desc { margin: 8px 0; line-height: 1.6; color: #d1d5db; }
+.cp-status { margin: 6px 0; }
+.cp-target { margin: 6px 0; font-size: 0.95em; }
+.cp-prediction { line-height: 1.6; color: #e5e7eb; }
+
 /* Gauge row */
 .tv-gauge-row {
     display: flex;
@@ -1093,6 +1102,35 @@ async function renderDeep(sym) {
         loading.style.display = 'none';
 
         var html = '<div class="deep-section">';
+
+        // Chart Patterns
+        var cp = da.chart_patterns;
+        if (cp && cp.length > 0) {
+            html += '<div class="chart-patterns-section">';
+            html += '<h4 style="color:#f59e0b;margin:0 0 12px">圖表型態辨識 (' + cp.length + ' 個型態)</h4>';
+            cp.forEach(function(pat) {
+                var dirColor = pat.direction === 'Buy' ? '#22c55e' : (pat.direction === 'Sell' ? '#ef4444' : '#9ca3af');
+                var dirIcon = pat.direction === 'Buy' ? '🟢' : (pat.direction === 'Sell' ? '🔴' : '⚪');
+                var pillCls = pat.direction==='Buy' ? 'pill-buy' : (pat.direction==='Sell' ? 'pill-sell' : 'pill-neutral');
+                html += '<div class="chart-pattern-card" style="border-left:3px solid ' + dirColor + '">';
+                html += '<div class="cp-header">' + dirIcon + ' <strong>' + escHtml(pat.name) + '</strong> <span class="signal-pill ' + pillCls + '">' + escHtml(pat.direction) + '</span></div>';
+                html += '<div class="cp-reliability" style="color:#9ca3af;font-size:0.85em">可靠度: ' + escHtml(pat.reliability) + '</div>';
+                html += '<div class="cp-desc">' + escHtml(pat.description) + '</div>';
+                html += '<div class="cp-status" style="color:#60a5fa">📍 ' + escHtml(pat.current_status) + '</div>';
+                if (pat.price_target) {
+                    html += '<div class="cp-target">🎯 目標價: <strong style="color:' + dirColor + '">$' + pat.price_target + '</strong> <span class="dim">(' + escHtml(pat.target_logic) + ')</span></div>';
+                }
+                html += '<div class="cp-prediction" style="margin-top:6px;padding:8px;background:rgba(255,255,255,0.03);border-radius:4px">📊 <strong>預測:</strong> ' + escHtml(pat.prediction) + '</div>';
+                if (pat.key_levels) {
+                    var levels = Object.entries(pat.key_levels).map(function(e) { return e[0].replace(/_/g,' ') + ': $' + e[1]; }).join(' | ');
+                    html += '<div class="cp-levels dim" style="font-size:0.8em;margin-top:4px">關鍵價位: ' + escHtml(levels) + '</div>';
+                }
+                html += '</div>';
+            });
+            html += '</div>';
+        } else {
+            html += '<div class="chart-patterns-section"><h4 style="color:#6b7280;margin:0 0 8px">圖表型態辨識</h4><p class="dim">目前無經典圖表型態</p></div>';
+        }
 
         // TradingView Ratings
         var tv = da.tradingview_rating;

@@ -761,6 +761,7 @@
         }
       }
     },
+    "chart_patterns": [],
     "indicators": {
       "trend": {
         "parabolic_sar": {
@@ -1404,6 +1405,7 @@
           }
         }
       },
+      "chart_patterns": [],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -2046,6 +2048,55 @@
           }
         }
       },
+      "chart_patterns": [
+        {
+          "name": "頭肩底 Inverse Head & Shoulders",
+          "type": "reversal",
+          "direction": "Buy",
+          "reliability": "高 (經典底部反轉，成功率 ~70%)",
+          "description": "價格形成三個低點：左肩 $64.30、頭部 $63.87（最低）、右肩 $66.15。突破頸線 $67.63 確認反轉上漲。",
+          "current_status": "已突破頸線 $67.63，型態確認",
+          "price_target": 71.39,
+          "target_logic": "目標價 = 頸線 $67.63 + (頸線 - 頭部 $63.87) = $71.39",
+          "prediction": "看多。預期上漲至 $71.39 附近（漲幅 -0.3%）。停損設在頸線 $67.63 下方。",
+          "key_levels": {
+            "neckline": 67.63,
+            "head": 63.87,
+            "target": 71.39
+          }
+        },
+        {
+          "name": "上升三角 Ascending Triangle",
+          "type": "continuation",
+          "direction": "Buy",
+          "reliability": "高 (看多延續型態，突破成功率 ~75%)",
+          "description": "水平壓力 $67.63 + 上升支撐線（低點越來越高 $66.15）。買盤逐步增強，賣壓固定。",
+          "current_status": "買盤持續推高低點，逼近壓力 $67.63",
+          "price_target": 69.11,
+          "target_logic": "目標價 = 壓力 + 三角高度 = $69.11",
+          "prediction": "看多。突破 $67.63 後預期漲至 $69.11（漲幅 -3.5%）。停損設在最近低點 $66.15 下方。",
+          "key_levels": {
+            "resistance": 67.63,
+            "support": 66.15,
+            "target": 69.11
+          }
+        },
+        {
+          "name": "上升楔形 Rising Wedge",
+          "type": "reversal",
+          "direction": "Sell",
+          "reliability": "中高 (看空反轉，成功率 ~65%)",
+          "description": "高點和低點都在上升，但上升幅度逐漸收窄（收斂）。上漲動能正在衰竭，量能通常遞減。",
+          "current_status": "價格在收窄的上升通道中，動能減弱",
+          "price_target": 64.67,
+          "target_logic": "跌破下緣後，目標 = 楔形起點附近 $64.67",
+          "prediction": "看空反轉。若跌破下緣 $66.15，預期回測楔形起點 $64.67（跌幅 9.7%）。放量下跌確認性更強。",
+          "key_levels": {
+            "wedge_low": 66.15,
+            "target": 64.67
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -2274,21 +2325,18 @@
           },
           "inv_head_shoulders": {
             "value": true,
-            "signal": "Buy",
-            "detail": "LS=$64.3 H=$63.9 RS=$66.2 Neck=$67.6"
+            "signal": "Buy"
           },
           "asc_triangle": {
             "value": true,
-            "signal": "Buy",
-            "detail": "Flat resistance + rising support"
+            "signal": "Buy"
           },
           "rising_wedge": {
             "value": true,
-            "signal": "Sell",
-            "detail": "Both slopes up but converging — bearish reversal"
+            "signal": "Sell"
           },
           "chart_pattern": {
-            "value": "Inv Head & Shoulders + Ascending Triangle + Rising Wedge",
+            "value": "頭肩底 Inverse Head & Shoulders + 上升三角 Ascending Triangle + 上升楔形 Rising Wedge",
             "signal": "Buy"
           },
           "head_shoulders": {

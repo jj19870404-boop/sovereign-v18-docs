@@ -271,6 +271,25 @@
         }
       }
     },
+    "chart_patterns": [
+      {
+        "name": "雙底 Double Bottom (W 底)",
+        "type": "reversal",
+        "direction": "Buy",
+        "reliability": "高 (經典看多反轉，成功率 ~65%)",
+        "description": "價格兩次觸及相近低點 $13.23 和 $12.98，形成 W 字型。突破中間峰頂 $13.80 確認反轉。",
+        "current_status": "已突破峰頂壓力 $13.80，型態確認",
+        "price_target": 14.62,
+        "target_logic": "目標價 = 峰頂 $13.80 + (峰頂 - 底部) = $14.62",
+        "prediction": "看多。預期上漲至 $14.62（漲幅 -13.5%）。停損設在 $12.98 下方。",
+        "key_levels": {
+          "bottom1": 13.23,
+          "bottom2": 12.98,
+          "peak": 13.8,
+          "target": 14.62
+        }
+      }
+    ],
     "indicators": {
       "trend": {
         "parabolic_sar": {
@@ -499,11 +518,10 @@
         },
         "double_bottom": {
           "value": true,
-          "signal": "Buy",
-          "detail": "Bot1=$13.2 Bot2=$13.0 Peak=$13.8"
+          "signal": "Buy"
         },
         "chart_pattern": {
-          "value": "Double Bottom",
+          "value": "雙底 Double Bottom",
           "signal": "Buy"
         },
         "head_shoulders": {
@@ -915,6 +933,25 @@
           }
         }
       },
+      "chart_patterns": [
+        {
+          "name": "雙底 Double Bottom (W 底)",
+          "type": "reversal",
+          "direction": "Buy",
+          "reliability": "高 (經典看多反轉，成功率 ~65%)",
+          "description": "價格兩次觸及相近低點 $13.23 和 $12.98，形成 W 字型。突破中間峰頂 $13.80 確認反轉。",
+          "current_status": "已突破峰頂壓力 $13.80，型態確認",
+          "price_target": 14.62,
+          "target_logic": "目標價 = 峰頂 $13.80 + (峰頂 - 底部) = $14.62",
+          "prediction": "看多。預期上漲至 $14.62（漲幅 -13.5%）。停損設在 $12.98 下方。",
+          "key_levels": {
+            "bottom1": 13.23,
+            "bottom2": 12.98,
+            "peak": 13.8,
+            "target": 14.62
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -1143,11 +1180,10 @@
           },
           "double_bottom": {
             "value": true,
-            "signal": "Buy",
-            "detail": "Bot1=$13.2 Bot2=$13.0 Peak=$13.8"
+            "signal": "Buy"
           },
           "chart_pattern": {
-            "value": "Double Bottom",
+            "value": "雙底 Double Bottom",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -1558,6 +1594,7 @@
           }
         }
       },
+      "chart_patterns": [],
       "indicators": {
         "trend": {
           "parabolic_sar": {

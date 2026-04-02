@@ -840,6 +840,7 @@
         }
       }
     },
+    "chart_patterns": [],
     "indicators": {
       "trend": {
         "parabolic_sar": {
@@ -1483,6 +1484,7 @@
           }
         }
       },
+      "chart_patterns": [],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -2125,6 +2127,25 @@
           }
         }
       },
+      "chart_patterns": [
+        {
+          "name": "杯柄型態 Cup & Handle",
+          "type": "continuation",
+          "direction": "Buy",
+          "reliability": "高 (William O'Neil 經典，成功率 ~65%)",
+          "description": "U 形回升（杯深 23.6%，回復 180.0%）+ 小幅回檔（柄深 11.2%）。杯底 $4.44，右緣 $10.46。",
+          "current_status": "杯柄形成中，關注突破右緣 $10.46",
+          "price_target": 16.48,
+          "target_logic": "目標 = 右緣 $10.46 + 杯深 = $16.48",
+          "prediction": "看多。突破 $10.46 後預期漲至 $16.48（漲幅 70.2%）。放量突破確認。停損在柄底 $9.29。",
+          "key_levels": {
+            "cup_low": 4.44,
+            "rim": 10.46,
+            "handle_low": 9.29,
+            "target": 16.48
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -2353,11 +2374,10 @@
           },
           "cup_handle": {
             "value": true,
-            "signal": "Buy",
-            "detail": "Cup depth 23.6%, recovery 180.0%, handle 11.2%"
+            "signal": "Buy"
           },
           "chart_pattern": {
-            "value": "Cup & Handle",
+            "value": "杯柄型態 Cup & Handle",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -2768,6 +2788,25 @@
           }
         }
       },
+      "chart_patterns": [
+        {
+          "name": "雙底 Double Bottom (W 底)",
+          "type": "reversal",
+          "direction": "Buy",
+          "reliability": "高 (經典看多反轉，成功率 ~65%)",
+          "description": "價格兩次觸及相近低點 $363.90 和 $357.67，形成 W 字型。突破中間峰頂 $436.89 確認反轉。",
+          "current_status": "已突破峰頂壓力 $436.89，型態確認",
+          "price_target": 516.11,
+          "target_logic": "目標價 = 峰頂 $436.89 + (峰頂 - 底部) = $516.11",
+          "prediction": "看多。預期上漲至 $516.11（漲幅 16.2%）。停損設在 $357.67 下方。",
+          "key_levels": {
+            "bottom1": 363.9,
+            "bottom2": 357.67,
+            "peak": 436.89,
+            "target": 516.11
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -2996,11 +3035,10 @@
           },
           "double_bottom": {
             "value": true,
-            "signal": "Buy",
-            "detail": "Bot1=$363.9 Bot2=$357.7 Peak=$436.9"
+            "signal": "Buy"
           },
           "chart_pattern": {
-            "value": "Double Bottom",
+            "value": "雙底 Double Bottom",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -3411,6 +3449,7 @@
           }
         }
       },
+      "chart_patterns": [],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -4053,6 +4092,7 @@
           }
         }
       },
+      "chart_patterns": [],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -4695,6 +4735,24 @@
           }
         }
       },
+      "chart_patterns": [
+        {
+          "name": "上升三角 Ascending Triangle",
+          "type": "continuation",
+          "direction": "Buy",
+          "reliability": "高 (看多延續型態，突破成功率 ~75%)",
+          "description": "水平壓力 $15.00 + 上升支撐線（低點越來越高 $12.53）。買盤逐步增強，賣壓固定。",
+          "current_status": "買盤持續推高低點，逼近壓力 $15.00",
+          "price_target": 17.47,
+          "target_logic": "目標價 = 壓力 + 三角高度 = $17.47",
+          "prediction": "看多。突破 $15.00 後預期漲至 $17.47（漲幅 10.8%）。停損設在最近低點 $12.53 下方。",
+          "key_levels": {
+            "resistance": 15.0,
+            "support": 12.53,
+            "target": 17.47
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -4923,11 +4981,10 @@
           },
           "asc_triangle": {
             "value": true,
-            "signal": "Buy",
-            "detail": "Flat resistance + rising support"
+            "signal": "Buy"
           },
           "chart_pattern": {
-            "value": "Ascending Triangle",
+            "value": "上升三角 Ascending Triangle",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -5338,6 +5395,40 @@
           }
         }
       },
+      "chart_patterns": [
+        {
+          "name": "上升楔形 Rising Wedge",
+          "type": "reversal",
+          "direction": "Sell",
+          "reliability": "中高 (看空反轉，成功率 ~65%)",
+          "description": "高點和低點都在上升，但上升幅度逐漸收窄（收斂）。上漲動能正在衰竭，量能通常遞減。",
+          "current_status": "價格在收窄的上升通道中，動能減弱",
+          "price_target": 50.08,
+          "target_logic": "跌破下緣後，目標 = 楔形起點附近 $50.08",
+          "prediction": "看空反轉。若跌破下緣 $54.79，預期回測楔形起點 $50.08（跌幅 31.4%）。放量下跌確認性更強。",
+          "key_levels": {
+            "wedge_low": 54.79,
+            "target": 50.08
+          }
+        },
+        {
+          "name": "杯柄型態 Cup & Handle",
+          "type": "continuation",
+          "direction": "Buy",
+          "reliability": "高 (William O'Neil 經典，成功率 ~65%)",
+          "description": "U 形回升（杯深 15.3%，回復 120.9%）+ 小幅回檔（柄深 5.8%）。杯底 $43.88，右緣 $62.59。",
+          "current_status": "杯柄形成中，關注突破右緣 $62.59",
+          "price_target": 81.3,
+          "target_logic": "目標 = 右緣 $62.59 + 杯深 = $81.30",
+          "prediction": "看多。突破 $62.59 後預期漲至 $81.30（漲幅 11.4%）。放量突破確認。停損在柄底 $58.94。",
+          "key_levels": {
+            "cup_low": 43.88,
+            "rim": 62.59,
+            "handle_low": 58.94,
+            "target": 81.3
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -5566,16 +5657,14 @@
           },
           "rising_wedge": {
             "value": true,
-            "signal": "Sell",
-            "detail": "Both slopes up but converging — bearish reversal"
+            "signal": "Sell"
           },
           "cup_handle": {
             "value": true,
-            "signal": "Buy",
-            "detail": "Cup depth 15.3%, recovery 120.9%, handle 5.8%"
+            "signal": "Buy"
           },
           "chart_pattern": {
-            "value": "Rising Wedge + Cup & Handle",
+            "value": "上升楔形 Rising Wedge + 杯柄型態 Cup & Handle",
             "signal": "Sell"
           },
           "head_shoulders": {
@@ -5982,6 +6071,7 @@
           }
         }
       },
+      "chart_patterns": [],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -6624,6 +6714,7 @@
           }
         }
       },
+      "chart_patterns": [],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -7266,6 +7357,57 @@
           }
         }
       },
+      "chart_patterns": [
+        {
+          "name": "雙底 Double Bottom (W 底)",
+          "type": "reversal",
+          "direction": "Buy",
+          "reliability": "高 (經典看多反轉，成功率 ~65%)",
+          "description": "價格兩次觸及相近低點 $78.75 和 $77.00，形成 W 字型。突破中間峰頂 $87.44 確認反轉。",
+          "current_status": "已突破峰頂壓力 $87.44，型態確認",
+          "price_target": 97.88,
+          "target_logic": "目標價 = 峰頂 $87.44 + (峰頂 - 底部) = $97.88",
+          "prediction": "看多。預期上漲至 $97.88（漲幅 -3.7%）。停損設在 $77.00 下方。",
+          "key_levels": {
+            "bottom1": 78.75,
+            "bottom2": 77.0,
+            "peak": 87.44,
+            "target": 97.88
+          }
+        },
+        {
+          "name": "下降楔形 Falling Wedge",
+          "type": "reversal",
+          "direction": "Buy",
+          "reliability": "中高 (看多反轉，成功率 ~65%)",
+          "description": "高點和低點都在下降，但下降幅度逐漸收窄。下跌動能衰竭，是底部形成的徵兆。",
+          "current_status": "價格在收窄的下降通道中，跌勢趨緩",
+          "price_target": 97.88,
+          "target_logic": "突破上緣後，目標 = 楔形起點附近 $97.88",
+          "prediction": "看多反轉。突破上緣 $87.44 後，預期反彈至 $97.88（漲幅 -3.7%）。放量突破確認性更強。",
+          "key_levels": {
+            "wedge_high": 87.44,
+            "target": 97.88
+          }
+        },
+        {
+          "name": "杯柄型態 Cup & Handle",
+          "type": "continuation",
+          "direction": "Buy",
+          "reliability": "高 (William O'Neil 經典，成功率 ~65%)",
+          "description": "U 形回升（杯深 15.9%，回復 101.8%）+ 小幅回檔（柄深 5.1%）。杯底 $80.20，右緣 $97.05。",
+          "current_status": "杯柄形成中，關注突破右緣 $97.05",
+          "price_target": 113.9,
+          "target_logic": "目標 = 右緣 $97.05 + 杯深 = $113.90",
+          "prediction": "看多。突破 $97.05 後預期漲至 $113.90（漲幅 12.0%）。放量突破確認。停損在柄底 $92.09。",
+          "key_levels": {
+            "cup_low": 80.2,
+            "rim": 97.05,
+            "handle_low": 92.09,
+            "target": 113.9
+          }
+        }
+      ],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -7494,21 +7636,18 @@
           },
           "double_bottom": {
             "value": true,
-            "signal": "Buy",
-            "detail": "Bot1=$78.8 Bot2=$77.0 Peak=$87.4"
+            "signal": "Buy"
           },
           "falling_wedge": {
             "value": true,
-            "signal": "Buy",
-            "detail": "Both slopes down but converging — bullish reversal"
+            "signal": "Buy"
           },
           "cup_handle": {
             "value": true,
-            "signal": "Buy",
-            "detail": "Cup depth 15.9%, recovery 101.8%, handle 5.1%"
+            "signal": "Buy"
           },
           "chart_pattern": {
-            "value": "Double Bottom + Falling Wedge + Cup & Handle",
+            "value": "雙底 Double Bottom + 下降楔形 Falling Wedge + 杯柄型態 Cup & Handle",
             "signal": "Buy"
           },
           "head_shoulders": {
