@@ -2236,7 +2236,11 @@ function _deepFmtVal(v) {
 }
 
 function _signalPill(sig) {
-    if (!sig) return '';
+    if (sig === null || sig === undefined) return '';
+    // Handle integer signals from TradingView (1=Buy, 0=Neutral, -1=Sell)
+    if (sig === 1) return `<span class="signal-pill pill-buy">Buy</span>`;
+    if (sig === -1) return `<span class="signal-pill pill-sell">Sell</span>`;
+    if (sig === 0) return `<span class="signal-pill pill-neutral">Neutral</span>`;
     const s = String(sig).toLowerCase().replace(/\s+/g, '_');
     const map = {
         'strong_buy': ['Strong Buy', 'pill-strong-buy'],
@@ -2244,10 +2248,13 @@ function _signalPill(sig) {
         'neutral': ['Neutral', 'pill-neutral'],
         'sell': ['Sell', 'pill-sell'],
         'strong_sell': ['Strong Sell', 'pill-strong-sell'],
-        'bullish': ['Bullish', 'pill-bullish'],
-        'bearish': ['Bearish', 'pill-bearish'],
-        'true': ['Yes', 'pill-yes'],
-        'false': ['No', 'pill-no'],
+        'bullish': ['Bullish', 'pill-buy'],
+        'bearish': ['Bearish', 'pill-sell'],
+        'rising': ['Rising', 'pill-buy'],
+        'falling': ['Falling', 'pill-sell'],
+        'none': ['—', 'pill-neutral'],
+        'true': ['Yes', 'pill-buy'],
+        'false': ['No', 'pill-neutral'],
     };
     const m = map[s];
     if (m) return `<span class="signal-pill ${m[1]}">${m[0]}</span>`;
@@ -2294,20 +2301,22 @@ function _indicatorTableHTML(indicators, title) {
 
 function _categoryHTML(key, catData) {
     const catName = CATEGORY_NAMES_ZH[key] || key;
-    const items = catData.indicators || [];
-    if (items.length === 0) return '';
-    const rows = items.map(ind => {
-        const name = INDICATOR_NAMES_ZH[ind.name] || INDICATOR_NAMES[ind.name] || ind.name;
-        const sigCell = ind.signal ? _signalPill(ind.signal) : '';
+    // catData is a dict: {indicator_key: {value, signal, trend, ...}}
+    const entries = Object.entries(catData || {});
+    if (entries.length === 0) return '';
+    const rows = entries.map(([indKey, indData]) => {
+        const name = INDICATOR_NAMES_ZH[indKey] || INDICATOR_NAMES[indKey] || indKey;
+        const val = indData.value !== undefined ? indData.value : indData;
+        const sig = indData.signal || indData.trend || '';
         return `<tr>
             <td>${escHtml(name)}</td>
-            <td style="text-align:right">${_deepFmtVal(ind.value)}</td>
-            <td>${sigCell}</td>
+            <td style="text-align:right">${_deepFmtVal(val)}</td>
+            <td>${sig ? _signalPill(sig) : ''}</td>
         </tr>`;
     }).join('');
     return `<div class="indicator-category">
         <div class="indicator-category-header">
-            <span>${escHtml(catName)} <span class="cat-count">(${items.length})</span></span>
+            <span>${escHtml(catName)} <span class="cat-count">(${entries.length})</span></span>
             <span class="cat-arrow">&#9654;</span>
         </div>
         <div class="indicator-category-body">
@@ -2326,12 +2335,12 @@ function renderDeepAnalysis(data) {
     if (!da) { container.innerHTML = ''; return; }
 
     const symbol = da.symbol || '';
-    const barCount = da.bar_count || '';
+    const barCount = da.bars_available || '';
     let html = `<div class="deep-section">`;
     html += `<h2>深度技術分析 — ${escHtml(symbol)} <span class="dim">${barCount ? '(' + barCount + ' bars)' : ''}</span></h2>`;
 
     // TradingView Ratings
-    const tv = da.tradingview;
+    const tv = da.tradingview_rating;
     if (tv) {
         html += `<h3>TradingView 技術評級</h3>`;
         html += `<div class="tv-gauge-row">`;
@@ -2340,33 +2349,35 @@ function renderDeepAnalysis(data) {
         html += _gaugeHTML('Moving Averages', tv.moving_averages);
         html += `</div>`;
 
-        // Detail tables
-        if (tv.oscillators && tv.oscillators.indicators) {
+        // Detail tables (details is a dict: {name: {value, signal}})
+        if (tv.oscillators && tv.oscillators.details) {
+            const oscItems = Object.entries(tv.oscillators.details).map(([k,v]) => ({name:k, value:v.value, signal:v.signal}));
             html += `<div class="indicator-category open">
                 <div class="indicator-category-header">
-                    <span>Oscillators <span class="cat-count">(${tv.oscillators.indicators.length})</span></span>
+                    <span>振盪器 Oscillators <span class="cat-count">(${oscItems.length})</span></span>
                     <span class="cat-arrow">&#9654;</span>
                 </div>
                 <div class="indicator-category-body">
-                    ${_indicatorTableHTML(tv.oscillators.indicators)}
+                    ${_indicatorTableHTML(oscItems)}
                 </div>
             </div>`;
         }
-        if (tv.moving_averages && tv.moving_averages.indicators) {
+        if (tv.moving_averages && tv.moving_averages.details) {
+            const maItems = Object.entries(tv.moving_averages.details).map(([k,v]) => ({name:k, value:v.value, signal:v.signal}));
             html += `<div class="indicator-category open">
                 <div class="indicator-category-header">
-                    <span>Moving Averages <span class="cat-count">(${tv.moving_averages.indicators.length})</span></span>
+                    <span>移動平均 Moving Averages <span class="cat-count">(${maItems.length})</span></span>
                     <span class="cat-arrow">&#9654;</span>
                 </div>
                 <div class="indicator-category-body">
-                    ${_indicatorTableHTML(tv.moving_averages.indicators)}
+                    ${_indicatorTableHTML(maItems)}
                 </div>
             </div>`;
         }
     }
 
     // 9 Category Tables
-    const categories = da.categories;
+    const categories = da.indicators;
     if (categories) {
         html += `<h3>擴展指標分析</h3>`;
         const catOrder = ['trend','momentum','volatility','volume','pattern','support_resistance','relative','statistical','time_based'];
