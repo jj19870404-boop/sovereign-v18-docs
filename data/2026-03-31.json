@@ -913,7 +913,7 @@
         },
         "bb_upper": {
           "value": 23.8,
-          "signal": ""
+          "signal": "Neutral"
         },
         "bb_middle": {
           "value": 21.55,
@@ -921,7 +921,7 @@
         },
         "bb_lower": {
           "value": 19.3,
-          "signal": ""
+          "signal": "Neutral"
         },
         "bb_width": {
           "value": 20.92,
@@ -933,19 +933,19 @@
         },
         "keltner_upper": {
           "value": 24.63,
-          "signal": ""
+          "signal": "Neutral"
         },
         "keltner_lower": {
           "value": 17.37,
-          "signal": ""
+          "signal": "Neutral"
         },
         "donchian_high": {
           "value": 25.17,
-          "signal": ""
+          "signal": "Neutral"
         },
         "donchian_low": {
           "value": 18.56,
-          "signal": ""
+          "signal": "Neutral"
         },
         "hv_20": {
           "value": 86.7,
@@ -1021,11 +1021,11 @@
         },
         "upper_shadow": {
           "value": 18.6,
-          "signal": ""
+          "signal": "Neutral"
         },
         "lower_shadow": {
           "value": 11.5,
-          "signal": ""
+          "signal": "Neutral"
         },
         "gap_pct": {
           "value": 1.85,
@@ -1037,35 +1037,35 @@
         },
         "doji": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "engulfing": {
           "value": "None",
-          "signal": ""
+          "signal": "Neutral"
         },
         "hammer": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "inside_bar": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "outside_bar": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "morning_star": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "evening_star": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "pattern_name": {
           "value": "None",
-          "signal": ""
+          "signal": "Neutral"
         }
       },
       "support_resistance": {
@@ -1075,43 +1075,43 @@
         },
         "r1": {
           "value": 23.68,
-          "signal": ""
+          "signal": "Neutral"
         },
         "s1": {
           "value": 20.64,
-          "signal": ""
+          "signal": "Neutral"
         },
         "r2": {
           "value": 24.89,
-          "signal": ""
+          "signal": "Neutral"
         },
         "s2": {
           "value": 18.8,
-          "signal": ""
+          "signal": "Neutral"
         },
         "r3": {
           "value": 26.73,
-          "signal": ""
+          "signal": "Neutral"
         },
         "s3": {
           "value": 17.59,
-          "signal": ""
+          "signal": "Neutral"
         },
         "high_52wk": {
           "value": 25.17,
-          "signal": ""
+          "signal": "Neutral"
         },
         "low_52wk": {
           "value": 1.6,
-          "signal": ""
+          "signal": "Neutral"
         },
         "ath": {
           "value": 25.17,
-          "signal": ""
+          "signal": "Neutral"
         },
         "ath_dist": {
           "value": 89.3,
-          "signal": ""
+          "signal": "Neutral"
         },
         "fib_0": {
           "value": 13.91,
@@ -1209,7 +1209,7 @@
         },
         "consec_down": {
           "value": 0,
-          "signal": ""
+          "signal": "Neutral"
         },
         "day_of_week": {
           "value": "Tue",

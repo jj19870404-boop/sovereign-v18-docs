@@ -351,7 +351,7 @@
         },
         "bb_lower": {
           "value": 13.54,
-          "signal": ""
+          "signal": "Neutral"
         },
         "bb_width": {
           "value": 20.83,
@@ -367,7 +367,7 @@
         },
         "keltner_lower": {
           "value": 13.8,
-          "signal": ""
+          "signal": "Neutral"
         },
         "donchian_high": {
           "value": 16.99,
@@ -375,7 +375,7 @@
         },
         "donchian_low": {
           "value": 13.19,
-          "signal": ""
+          "signal": "Neutral"
         },
         "hv_20": {
           "value": 56.3,
@@ -455,7 +455,7 @@
         },
         "lower_shadow": {
           "value": 10.0,
-          "signal": ""
+          "signal": "Neutral"
         },
         "gap_pct": {
           "value": 4.89,
@@ -467,35 +467,35 @@
         },
         "doji": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "engulfing": {
           "value": "None",
-          "signal": ""
+          "signal": "Neutral"
         },
         "hammer": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "inside_bar": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "outside_bar": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "morning_star": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "evening_star": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "pattern_name": {
           "value": "None",
-          "signal": ""
+          "signal": "Neutral"
         }
       },
       "support_resistance": {
@@ -533,7 +533,7 @@
         },
         "low_52wk": {
           "value": 7.51,
-          "signal": ""
+          "signal": "Neutral"
         },
         "ath": {
           "value": 16.99,
@@ -639,7 +639,7 @@
         },
         "consec_down": {
           "value": 0,
-          "signal": ""
+          "signal": "Neutral"
         },
         "day_of_week": {
           "value": "Wed",

@@ -707,7 +707,7 @@
         },
         "bb_lower": {
           "value": 38.9,
-          "signal": ""
+          "signal": "Neutral"
         },
         "bb_width": {
           "value": 27.18,
@@ -723,7 +723,7 @@
         },
         "keltner_lower": {
           "value": 40.23,
-          "signal": ""
+          "signal": "Neutral"
         },
         "donchian_high": {
           "value": 53.49,
@@ -731,7 +731,7 @@
         },
         "donchian_low": {
           "value": 39.01,
-          "signal": ""
+          "signal": "Neutral"
         },
         "hv_20": {
           "value": 54.7,
@@ -807,7 +807,7 @@
         },
         "upper_shadow": {
           "value": 18.6,
-          "signal": ""
+          "signal": "Neutral"
         },
         "lower_shadow": {
           "value": 50.3,
@@ -823,23 +823,23 @@
         },
         "doji": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "engulfing": {
           "value": "None",
-          "signal": ""
+          "signal": "Neutral"
         },
         "hammer": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "inside_bar": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "outside_bar": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "morning_star": {
           "value": "True",
@@ -847,7 +847,7 @@
         },
         "evening_star": {
           "value": "False",
-          "signal": ""
+          "signal": "Neutral"
         },
         "pattern_name": {
           "value": "Morning Star",
@@ -861,27 +861,27 @@
         },
         "r1": {
           "value": 54.02,
-          "signal": ""
+          "signal": "Neutral"
         },
         "s1": {
           "value": 51.52,
-          "signal": ""
+          "signal": "Neutral"
         },
         "r2": {
           "value": 55.01,
-          "signal": ""
+          "signal": "Neutral"
         },
         "s2": {
           "value": 50.0,
-          "signal": ""
+          "signal": "Neutral"
         },
         "r3": {
           "value": 56.52,
-          "signal": ""
+          "signal": "Neutral"
         },
         "s3": {
           "value": 49.01,
-          "signal": ""
+          "signal": "Neutral"
         },
         "high_52wk": {
           "value": 53.49,
@@ -889,7 +889,7 @@
         },
         "low_52wk": {
           "value": 12.78,
-          "signal": ""
+          "signal": "Neutral"
         },
         "ath": {
           "value": 53.49,
@@ -995,7 +995,7 @@
         },
         "consec_down": {
           "value": 0,
-          "signal": ""
+          "signal": "Neutral"
         },
         "day_of_week": {
           "value": "Thu",
