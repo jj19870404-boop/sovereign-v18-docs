@@ -784,6 +784,22 @@ tr:first-child td { background: rgba(108,140,255,0.08); }
     margin: 20px 0 12px;
 }
 
+/* Symbol tabs */
+.deep-symbol-tabs {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;
+}
+.deep-tab {
+    padding: 6px 14px; border: 1px solid #333; border-radius: 6px;
+    background: #1a1d27; color: #9ca3af; cursor: pointer; font-size: 0.85em;
+    transition: all 0.2s;
+}
+.deep-tab small { display: block; font-size: 0.75em; margin-top: 2px; }
+.deep-tab.active { border-color: #4ade80; color: #e5e7eb; background: #1f2937; }
+.deep-tab.tab-buy { border-left: 3px solid #22c55e; }
+.deep-tab.tab-sell { border-left: 3px solid #ef4444; }
+.deep-tab.tab-neutral { border-left: 3px solid #6b7280; }
+.deep-tab:hover { background: #1f2937; }
+
 /* Gauge row */
 .tv-gauge-row {
     display: flex;
@@ -2352,13 +2368,58 @@ function _categoryHTML(key, catData) {
 function renderDeepAnalysis(data) {
     const container = $('deep-analysis');
     if (!container) return;
-    const da = data.deep_analysis;
-    if (!da) { container.innerHTML = ''; return; }
+    const allDa = data.deep_analyses || {};
+    const singleDa = data.deep_analysis;
+    const symbols = Object.keys(allDa);
+    // Fallback: 只有 deep_analysis (舊格式)
+    if (symbols.length === 0 && singleDa) {
+        allDa[singleDa.symbol] = singleDa;
+        symbols.push(singleDa.symbol);
+    }
+    if (symbols.length === 0) { container.innerHTML = ''; return; }
 
+    // 股票選擇器 + 內容區
+    let html = `<div class="deep-section">`;
+    html += `<h2>深度技術分析 <span class="dim">(${symbols.length} 支)</span></h2>`;
+    html += `<div class="deep-symbol-tabs">`;
+    symbols.forEach((sym, i) => {
+        const da = allDa[sym];
+        const tv = da.tradingview_rating?.summary;
+        const sig = tv?.signal || '';
+        const cls = sig.includes('Buy') ? 'tab-buy' : (sig.includes('Sell') ? 'tab-sell' : 'tab-neutral');
+        html += `<button class="deep-tab ${cls} ${i === 0 ? 'active' : ''}" data-sym="${escHtml(sym)}">#${i+1} ${escHtml(sym)} <small>${escHtml(sig)}</small></button>`;
+    });
+    html += `</div>`;
+    symbols.forEach((sym, i) => {
+        html += `<div class="deep-tab-content" id="deep-${escHtml(sym)}" style="display:${i === 0 ? 'block' : 'none'}">`;
+        html += _renderOneDeep(allDa[sym]);
+        html += `</div>`;
+    });
+    html += `</div>`;
+    container.innerHTML = html;
+
+    // Tab click handlers
+    container.querySelectorAll('.deep-tab').forEach(btn => {
+        btn.addEventListener('click', function() {
+            container.querySelectorAll('.deep-tab').forEach(b => b.classList.remove('active'));
+            container.querySelectorAll('.deep-tab-content').forEach(c => c.style.display = 'none');
+            this.classList.add('active');
+            const target = container.querySelector('#deep-' + this.dataset.sym);
+            if (target) target.style.display = 'block';
+        });
+    });
+    // Attach collapse handlers
+    container.querySelectorAll('.indicator-category-header').forEach(hdr => {
+        hdr.addEventListener('click', function() { this.parentElement.classList.toggle('open'); });
+    });
+}
+
+function _renderOneDeep(da) {
+    if (!da) return '';
     const symbol = da.symbol || '';
     const barCount = da.bars_available || '';
-    let html = `<div class="deep-section">`;
-    html += `<h2>深度技術分析 — ${escHtml(symbol)} <span class="dim">${barCount ? '(' + barCount + ' bars)' : ''}</span></h2>`;
+    let html = '';
+    html += `<h3>${escHtml(symbol)} <span class="dim">${barCount ? '(' + barCount + ' bars)' : ''}</span></h3>`;
 
     // TradingView Ratings
     const tv = da.tradingview_rating;
@@ -2428,15 +2489,7 @@ function renderDeepAnalysis(data) {
         }
     }
 
-    html += `</div>`;
-    container.innerHTML = html;
-
-    // Attach collapse/expand handlers
-    container.querySelectorAll('.indicator-category-header').forEach(hdr => {
-        hdr.addEventListener('click', function() {
-            this.parentElement.classList.toggle('open');
-        });
-    });
+    return html;
 }
 
 // ── State Messages ───────────────────────────────
