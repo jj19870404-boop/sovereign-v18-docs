@@ -762,10 +762,10 @@
     "extended_rating": {
       "summary": {
         "signal": "Buy",
-        "score": 0.3,
-        "buy": 45,
+        "score": 0.29,
+        "buy": 44,
         "sell": 14,
-        "neutral": 44
+        "neutral": 45
       },
       "categories": {
         "trend": {
@@ -797,11 +797,11 @@
           "neutral": 2
         },
         "pattern": {
-          "signal": "Buy",
-          "score": 0.11,
-          "buy": 5,
+          "signal": "Neutral",
+          "score": 0.07,
+          "buy": 4,
           "sell": 2,
-          "neutral": 20
+          "neutral": 21
         },
         "support_resistance": {
           "signal": "Strong Buy",
@@ -834,22 +834,6 @@
       }
     },
     "chart_patterns": [
-      {
-        "name": "上升三角 Ascending Triangle",
-        "type": "continuation",
-        "direction": "Buy",
-        "reliability": "高 (看多延續型態，突破成功率 ~75%)",
-        "description": "水平壓力 $5.00 + 上升支撐線（低點越來越高 $4.15）。買盤逐步增強，賣壓固定。",
-        "current_status": "買盤持續推高低點，逼近壓力 $5.00",
-        "price_target": 5.85,
-        "target_logic": "目標價 = 壓力 + 三角高度 = $5.85",
-        "prediction": "看多。突破 $5.00 後預期漲至 $5.85（漲幅 4.7%）。停損設在最近低點 $4.15 下方。",
-        "key_levels": {
-          "resistance": 5.0,
-          "support": 4.15,
-          "target": 5.85
-        }
-      },
       {
         "name": "杯柄型態 Cup & Handle",
         "type": "continuation",
@@ -1094,16 +1078,12 @@
           "value": "Outside Bar",
           "signal": "Neutral"
         },
-        "asc_triangle": {
-          "value": true,
-          "signal": "Buy"
-        },
         "cup_handle": {
           "value": true,
           "signal": "Buy"
         },
         "chart_pattern": {
-          "value": "上升三角 Ascending Triangle + 杯柄型態 Cup & Handle",
+          "value": "杯柄型態 Cup & Handle",
           "signal": "Buy"
         },
         "head_shoulders": {
@@ -1123,6 +1103,10 @@
           "signal": "Neutral"
         },
         "sym_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "asc_triangle": {
           "value": false,
           "signal": "Neutral"
         },
@@ -1440,10 +1424,10 @@
       "extended_rating": {
         "summary": {
           "signal": "Buy",
-          "score": 0.3,
-          "buy": 45,
+          "score": 0.29,
+          "buy": 44,
           "sell": 14,
-          "neutral": 44
+          "neutral": 45
         },
         "categories": {
           "trend": {
@@ -1475,11 +1459,11 @@
             "neutral": 2
           },
           "pattern": {
-            "signal": "Buy",
-            "score": 0.11,
-            "buy": 5,
+            "signal": "Neutral",
+            "score": 0.07,
+            "buy": 4,
             "sell": 2,
-            "neutral": 20
+            "neutral": 21
           },
           "support_resistance": {
             "signal": "Strong Buy",
@@ -1512,22 +1496,6 @@
         }
       },
       "chart_patterns": [
-        {
-          "name": "上升三角 Ascending Triangle",
-          "type": "continuation",
-          "direction": "Buy",
-          "reliability": "高 (看多延續型態，突破成功率 ~75%)",
-          "description": "水平壓力 $5.00 + 上升支撐線（低點越來越高 $4.15）。買盤逐步增強，賣壓固定。",
-          "current_status": "買盤持續推高低點，逼近壓力 $5.00",
-          "price_target": 5.85,
-          "target_logic": "目標價 = 壓力 + 三角高度 = $5.85",
-          "prediction": "看多。突破 $5.00 後預期漲至 $5.85（漲幅 4.7%）。停損設在最近低點 $4.15 下方。",
-          "key_levels": {
-            "resistance": 5.0,
-            "support": 4.15,
-            "target": 5.85
-          }
-        },
         {
           "name": "杯柄型態 Cup & Handle",
           "type": "continuation",
@@ -1772,16 +1740,12 @@
             "value": "Outside Bar",
             "signal": "Neutral"
           },
-          "asc_triangle": {
-            "value": true,
-            "signal": "Buy"
-          },
           "cup_handle": {
             "value": true,
             "signal": "Buy"
           },
           "chart_pattern": {
-            "value": "上升三角 Ascending Triangle + 杯柄型態 Cup & Handle",
+            "value": "杯柄型態 Cup & Handle",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -1801,6 +1765,10 @@
             "signal": "Neutral"
           },
           "sym_triangle": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "asc_triangle": {
             "value": false,
             "signal": "Neutral"
           },
@@ -4064,10 +4032,10 @@
       "extended_rating": {
         "summary": {
           "signal": "Buy",
-          "score": 0.32,
-          "buy": 46,
+          "score": 0.33,
+          "buy": 47,
           "sell": 13,
-          "neutral": 44
+          "neutral": 43
         },
         "categories": {
           "trend": {
@@ -4100,10 +4068,10 @@
           },
           "pattern": {
             "signal": "Buy",
-            "score": 0.11,
-            "buy": 5,
+            "score": 0.15,
+            "buy": 6,
             "sell": 2,
-            "neutral": 20
+            "neutral": 19
           },
           "support_resistance": {
             "signal": "Buy",
@@ -4136,23 +4104,6 @@
         }
       },
       "chart_patterns": [
-        {
-          "name": "對稱三角 Symmetrical Triangle",
-          "type": "continuation",
-          "direction": "Neutral",
-          "reliability": "中 (方向不確定，等突破確認)",
-          "description": "高點逐步降低、低點逐步升高，形成三角收斂。壓力 $29.00 / 支撐 $22.59。價格波動幅度從 $12.46 收窄至 $6.41。",
-          "current_status": "價格在三角形內收斂，即將突破",
-          "price_target": 35.41,
-          "target_logic": "突破方向 ± 三角形高度 $6.41",
-          "prediction": "中性等待。向上突破 $29.00 → 看多目標 $35.41；向下跌破 $22.59 → 看空目標 $16.18。通常在三角形 2/3 處突破。",
-          "key_levels": {
-            "resistance": 29.0,
-            "support": 22.59,
-            "up_target": 35.41,
-            "down_target": 16.18
-          }
-        },
         {
           "name": "杯柄型態 Cup & Handle",
           "type": "continuation",
@@ -4397,17 +4348,13 @@
             "value": "Morning Star",
             "signal": "Buy"
           },
-          "sym_triangle": {
-            "value": true,
-            "signal": "Neutral"
-          },
           "cup_handle": {
             "value": true,
             "signal": "Buy"
           },
           "chart_pattern": {
-            "value": "對稱三角 Symmetrical Triangle + 杯柄型態 Cup & Handle",
-            "signal": "Neutral"
+            "value": "杯柄型態 Cup & Handle",
+            "signal": "Buy"
           },
           "head_shoulders": {
             "value": false,
@@ -4422,6 +4369,10 @@
             "signal": "Neutral"
           },
           "double_bottom": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "sym_triangle": {
             "value": false,
             "signal": "Neutral"
           },
@@ -7350,10 +7301,10 @@
       "extended_rating": {
         "summary": {
           "signal": "Buy",
-          "score": 0.37,
-          "buy": 47,
-          "sell": 9,
-          "neutral": 47
+          "score": 0.4,
+          "buy": 48,
+          "sell": 7,
+          "neutral": 48
         },
         "categories": {
           "trend": {
@@ -7385,11 +7336,11 @@
             "neutral": 2
           },
           "pattern": {
-            "signal": "Neutral",
-            "score": 0.0,
-            "buy": 3,
-            "sell": 3,
-            "neutral": 21
+            "signal": "Buy",
+            "score": 0.11,
+            "buy": 4,
+            "sell": 1,
+            "neutral": 22
           },
           "support_resistance": {
             "signal": "Strong Buy",
@@ -7422,21 +7373,6 @@
         }
       },
       "chart_patterns": [
-        {
-          "name": "上升楔形 Rising Wedge",
-          "type": "reversal",
-          "direction": "Sell",
-          "reliability": "中高 (看空反轉，成功率 ~65%)",
-          "description": "高點和低點都在上升，但上升幅度逐漸收窄（收斂）。上漲動能正在衰竭，量能通常遞減。",
-          "current_status": "價格在收窄的上升通道中，動能減弱",
-          "price_target": 50.08,
-          "target_logic": "跌破下緣後，目標 = 楔形起點附近 $50.08",
-          "prediction": "看空反轉。若跌破下緣 $54.79，預期回測楔形起點 $50.08（跌幅 27.5%）。放量下跌確認性更強。",
-          "key_levels": {
-            "wedge_low": 54.79,
-            "target": 50.08
-          }
-        },
         {
           "name": "杯柄型態 Cup & Handle",
           "type": "continuation",
@@ -7681,17 +7617,13 @@
             "value": "None",
             "signal": "Neutral"
           },
-          "rising_wedge": {
-            "value": true,
-            "signal": "Sell"
-          },
           "cup_handle": {
             "value": true,
             "signal": "Buy"
           },
           "chart_pattern": {
-            "value": "上升楔形 Rising Wedge + 杯柄型態 Cup & Handle",
-            "signal": "Sell"
+            "value": "杯柄型態 Cup & Handle",
+            "signal": "Buy"
           },
           "head_shoulders": {
             "value": false,
@@ -7718,6 +7650,10 @@
             "signal": "Neutral"
           },
           "desc_triangle": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "rising_wedge": {
             "value": false,
             "signal": "Neutral"
           },

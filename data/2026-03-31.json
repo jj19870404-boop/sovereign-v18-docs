@@ -3986,10 +3986,10 @@
       "extended_rating": {
         "summary": {
           "signal": "Buy",
-          "score": 0.19,
-          "buy": 37,
+          "score": 0.18,
+          "buy": 36,
           "sell": 17,
-          "neutral": 49
+          "neutral": 50
         },
         "categories": {
           "trend": {
@@ -4022,10 +4022,10 @@
           },
           "pattern": {
             "signal": "Neutral",
-            "score": 0.04,
-            "buy": 4,
+            "score": 0.0,
+            "buy": 3,
             "sell": 3,
-            "neutral": 20
+            "neutral": 21
           },
           "support_resistance": {
             "signal": "Buy",
@@ -4072,21 +4072,6 @@
             "resistance": 27.98,
             "support": 24.56,
             "target": 21.14
-          }
-        },
-        {
-          "name": "下降楔形 Falling Wedge",
-          "type": "reversal",
-          "direction": "Buy",
-          "reliability": "中高 (看多反轉，成功率 ~65%)",
-          "description": "高點和低點都在下降，但下降幅度逐漸收窄。下跌動能衰竭，是底部形成的徵兆。",
-          "current_status": "價格在收窄的下降通道中，跌勢趨緩",
-          "price_target": 31.4,
-          "target_logic": "突破上緣後，目標 = 楔形起點附近 $31.40",
-          "prediction": "看多反轉。突破上緣 $27.98 後，預期反彈至 $31.40（漲幅 4.6%）。放量突破確認性更強。",
-          "key_levels": {
-            "wedge_high": 27.98,
-            "target": 31.4
           }
         }
       ],
@@ -4320,12 +4305,8 @@
             "value": true,
             "signal": "Sell"
           },
-          "falling_wedge": {
-            "value": true,
-            "signal": "Buy"
-          },
           "chart_pattern": {
-            "value": "下降三角 Descending Triangle + 下降楔形 Falling Wedge",
+            "value": "下降三角 Descending Triangle",
             "signal": "Sell"
           },
           "head_shoulders": {
@@ -4353,6 +4334,10 @@
             "signal": "Neutral"
           },
           "rising_wedge": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "falling_wedge": {
             "value": false,
             "signal": "Neutral"
           },
@@ -4661,10 +4646,10 @@
       "extended_rating": {
         "summary": {
           "signal": "Buy",
-          "score": 0.3,
-          "buy": 45,
+          "score": 0.29,
+          "buy": 44,
           "sell": 14,
-          "neutral": 44
+          "neutral": 45
         },
         "categories": {
           "trend": {
@@ -4697,10 +4682,10 @@
           },
           "pattern": {
             "signal": "Buy",
-            "score": 0.15,
-            "buy": 5,
+            "score": 0.11,
+            "buy": 4,
             "sell": 1,
-            "neutral": 21
+            "neutral": 22
           },
           "support_resistance": {
             "signal": "Buy",
@@ -4732,24 +4717,7 @@
           }
         }
       },
-      "chart_patterns": [
-        {
-          "name": "上升三角 Ascending Triangle",
-          "type": "continuation",
-          "direction": "Buy",
-          "reliability": "高 (看多延續型態，突破成功率 ~75%)",
-          "description": "水平壓力 $3.90 + 上升支撐線（低點越來越高 $3.29）。買盤逐步增強，賣壓固定。",
-          "current_status": "買盤持續推高低點，逼近壓力 $3.90",
-          "price_target": 4.51,
-          "target_logic": "目標價 = 壓力 + 三角高度 = $4.51",
-          "prediction": "看多。突破 $3.90 後預期漲至 $4.51（漲幅 4.1%）。停損設在最近低點 $3.29 下方。",
-          "key_levels": {
-            "resistance": 3.9,
-            "support": 3.29,
-            "target": 4.51
-          }
-        }
-      ],
+      "chart_patterns": [],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -4976,12 +4944,8 @@
             "value": "None",
             "signal": "Neutral"
           },
-          "asc_triangle": {
-            "value": true,
-            "signal": "Buy"
-          },
           "chart_pattern": {
-            "value": "上升三角 Ascending Triangle",
+            "value": "Uptrend (無經典型態)",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -5001,6 +4965,10 @@
             "signal": "Neutral"
           },
           "sym_triangle": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "asc_triangle": {
             "value": false,
             "signal": "Neutral"
           },
@@ -7268,10 +7236,10 @@
       "extended_rating": {
         "summary": {
           "signal": "Buy",
-          "score": 0.36,
+          "score": 0.37,
           "buy": 46,
-          "sell": 9,
-          "neutral": 48
+          "sell": 8,
+          "neutral": 49
         },
         "categories": {
           "trend": {
@@ -7303,11 +7271,11 @@
             "neutral": 2
           },
           "pattern": {
-            "signal": "Neutral",
-            "score": 0.07,
+            "signal": "Buy",
+            "score": 0.11,
             "buy": 4,
-            "sell": 2,
-            "neutral": 21
+            "sell": 1,
+            "neutral": 22
           },
           "support_resistance": {
             "signal": "Buy",
@@ -7354,21 +7322,6 @@
             "resistance": 3.63,
             "support": 3.9,
             "target": 3.36
-          }
-        },
-        {
-          "name": "上升楔形 Rising Wedge",
-          "type": "reversal",
-          "direction": "Sell",
-          "reliability": "中高 (看空反轉，成功率 ~65%)",
-          "description": "高點和低點都在上升，但上升幅度逐漸收窄（收斂）。上漲動能正在衰竭，量能通常遞減。",
-          "current_status": "價格在收窄的上升通道中，動能減弱",
-          "price_target": 4.17,
-          "target_logic": "跌破下緣後，目標 = 楔形起點附近 $4.17",
-          "prediction": "看空反轉。若跌破下緣 $3.90，預期回測楔形起點 $4.17（跌幅 6.7%）。放量下跌確認性更強。",
-          "key_levels": {
-            "wedge_low": 3.9,
-            "target": 4.17
           }
         }
       ],
@@ -7602,12 +7555,8 @@
             "value": true,
             "signal": "Buy"
           },
-          "rising_wedge": {
-            "value": true,
-            "signal": "Sell"
-          },
           "chart_pattern": {
-            "value": "上升三角 Ascending Triangle + 上升楔形 Rising Wedge",
+            "value": "上升三角 Ascending Triangle",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -7631,6 +7580,10 @@
             "signal": "Neutral"
           },
           "desc_triangle": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "rising_wedge": {
             "value": false,
             "signal": "Neutral"
           },

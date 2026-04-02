@@ -2057,10 +2057,10 @@
       "extended_rating": {
         "summary": {
           "signal": "Buy",
-          "score": 0.26,
-          "buy": 41,
+          "score": 0.25,
+          "buy": 40,
           "sell": 14,
-          "neutral": 48
+          "neutral": 49
         },
         "categories": {
           "trend": {
@@ -2093,10 +2093,10 @@
           },
           "pattern": {
             "signal": "Neutral",
-            "score": -0.04,
-            "buy": 2,
+            "score": -0.07,
+            "buy": 1,
             "sell": 3,
-            "neutral": 22
+            "neutral": 23
           },
           "support_resistance": {
             "signal": "Buy",
@@ -2128,25 +2128,7 @@
           }
         }
       },
-      "chart_patterns": [
-        {
-          "name": "雙底 Double Bottom (W 底)",
-          "type": "reversal",
-          "direction": "Buy",
-          "reliability": "高 (經典看多反轉，成功率 ~65%)",
-          "description": "價格兩次觸及相近低點 $9.23 和 $9.45，形成 W 字型。突破中間峰頂 $10.40 確認反轉。",
-          "current_status": "已突破峰頂壓力 $10.40，型態確認",
-          "price_target": 11.57,
-          "target_logic": "目標價 = 峰頂 $10.40 + (峰頂 - 底部) = $11.57",
-          "prediction": "看多。預期上漲至 $11.57（漲幅 -29.0%）。停損設在 $9.23 下方。",
-          "key_levels": {
-            "bottom1": 9.23,
-            "bottom2": 9.45,
-            "peak": 10.4,
-            "target": 11.57
-          }
-        }
-      ],
+      "chart_patterns": [],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -2373,12 +2355,8 @@
             "value": "Inside Bar",
             "signal": "Neutral"
           },
-          "double_bottom": {
-            "value": true,
-            "signal": "Buy"
-          },
           "chart_pattern": {
-            "value": "雙底 Double Bottom",
+            "value": "Uptrend (無經典型態)",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -2390,6 +2368,10 @@
             "signal": "Neutral"
           },
           "double_top": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "double_bottom": {
             "value": false,
             "signal": "Neutral"
           },

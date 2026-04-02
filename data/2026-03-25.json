@@ -2093,10 +2093,10 @@
       "extended_rating": {
         "summary": {
           "signal": "Buy",
-          "score": 0.43,
-          "buy": 55,
+          "score": 0.44,
+          "buy": 56,
           "sell": 11,
-          "neutral": 37
+          "neutral": 36
         },
         "categories": {
           "trend": {
@@ -2129,10 +2129,10 @@
           },
           "pattern": {
             "signal": "Buy",
-            "score": 0.15,
-            "buy": 4,
+            "score": 0.19,
+            "buy": 5,
             "sell": 0,
-            "neutral": 23
+            "neutral": 22
           },
           "support_resistance": {
             "signal": "Strong Buy",
@@ -2165,6 +2165,23 @@
         }
       },
       "chart_patterns": [
+        {
+          "name": "雙底 Double Bottom (W 底)",
+          "type": "reversal",
+          "direction": "Buy",
+          "reliability": "高 (經典看多反轉，成功率 ~65%)",
+          "description": "價格兩次觸及相近低點 $39.15 和 $38.82，形成 W 字型。突破中間峰頂 $42.97 確認反轉。",
+          "current_status": "已突破峰頂壓力 $42.97，型態確認",
+          "price_target": 47.12,
+          "target_logic": "目標價 = 峰頂 $42.97 + (峰頂 - 底部) = $47.12",
+          "prediction": "看多。預期上漲至 $47.12（漲幅 -10.9%）。停損設在 $38.82 下方。",
+          "key_levels": {
+            "bottom1": 39.15,
+            "bottom2": 38.82,
+            "peak": 42.97,
+            "target": 47.12
+          }
+        },
         {
           "name": "杯柄型態 Cup & Handle",
           "type": "continuation",
@@ -2409,12 +2426,16 @@
             "value": "None",
             "signal": "Neutral"
           },
+          "double_bottom": {
+            "value": true,
+            "signal": "Buy"
+          },
           "cup_handle": {
             "value": true,
             "signal": "Buy"
           },
           "chart_pattern": {
-            "value": "杯柄型態 Cup & Handle",
+            "value": "雙底 Double Bottom + 杯柄型態 Cup & Handle",
             "signal": "Buy"
           },
           "head_shoulders": {
@@ -2426,10 +2447,6 @@
             "signal": "Neutral"
           },
           "double_top": {
-            "value": false,
-            "signal": "Neutral"
-          },
-          "double_bottom": {
             "value": false,
             "signal": "Neutral"
           },
@@ -4700,10 +4717,10 @@
       "extended_rating": {
         "summary": {
           "signal": "Buy",
-          "score": 0.16,
-          "buy": 37,
+          "score": 0.17,
+          "buy": 38,
           "sell": 21,
-          "neutral": 45
+          "neutral": 44
         },
         "categories": {
           "trend": {
@@ -4735,11 +4752,11 @@
             "neutral": 0
           },
           "pattern": {
-            "signal": "Neutral",
-            "score": 0.07,
-            "buy": 4,
+            "signal": "Buy",
+            "score": 0.11,
+            "buy": 5,
             "sell": 2,
-            "neutral": 21
+            "neutral": 20
           },
           "support_resistance": {
             "signal": "Buy",
@@ -4771,25 +4788,7 @@
           }
         }
       },
-      "chart_patterns": [
-        {
-          "name": "對稱三角 Symmetrical Triangle",
-          "type": "continuation",
-          "direction": "Neutral",
-          "reliability": "中 (方向不確定，等突破確認)",
-          "description": "高點逐步降低、低點逐步升高，形成三角收斂。壓力 $1.47 / 支撐 $1.12。價格波動幅度從 $0.53 收窄至 $0.35。",
-          "current_status": "價格在三角形內收斂，即將突破",
-          "price_target": 1.81,
-          "target_logic": "突破方向 ± 三角形高度 $0.35",
-          "prediction": "中性等待。向上突破 $1.47 → 看多目標 $1.81；向下跌破 $1.12 → 看空目標 $0.77。通常在三角形 2/3 處突破。",
-          "key_levels": {
-            "resistance": 1.47,
-            "support": 1.12,
-            "up_target": 1.81,
-            "down_target": 0.77
-          }
-        }
-      ],
+      "chart_patterns": [],
       "indicators": {
         "trend": {
           "parabolic_sar": {
@@ -5016,13 +5015,9 @@
             "value": "Outside Bar",
             "signal": "Neutral"
           },
-          "sym_triangle": {
-            "value": true,
-            "signal": "Neutral"
-          },
           "chart_pattern": {
-            "value": "對稱三角 Symmetrical Triangle",
-            "signal": "Neutral"
+            "value": "Uptrend (無經典型態)",
+            "signal": "Buy"
           },
           "head_shoulders": {
             "value": false,
@@ -5037,6 +5032,10 @@
             "signal": "Neutral"
           },
           "double_bottom": {
+            "value": false,
+            "signal": "Neutral"
+          },
+          "sym_triangle": {
             "value": false,
             "signal": "Neutral"
           },
