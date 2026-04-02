@@ -545,11 +545,11 @@
     },
     "extended_rating": {
       "summary": {
-        "signal": "Sell",
-        "score": -0.11,
+        "signal": "Neutral",
+        "score": -0.1,
         "buy": 21,
         "sell": 31,
-        "neutral": 38
+        "neutral": 51
       },
       "categories": {
         "trend": {
@@ -582,10 +582,10 @@
         },
         "pattern": {
           "signal": "Neutral",
-          "score": -0.07,
+          "score": -0.04,
           "buy": 1,
           "sell": 2,
-          "neutral": 11
+          "neutral": 24
         },
         "support_resistance": {
           "signal": "Buy",
@@ -841,6 +841,59 @@
         },
         "pattern_name": {
           "value": "None",
+          "signal": "Neutral"
+        },
+        "sym_triangle": {
+          "value": true,
+          "signal": "Neutral",
+          "detail": "Converging — breakout imminent"
+        },
+        "chart_pattern": {
+          "value": "Symmetrical Triangle",
+          "signal": "Neutral"
+        },
+        "head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "inv_head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_top": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_bottom": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "asc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "desc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "rising_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "falling_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bull_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bear_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "cup_handle": {
+          "value": false,
           "signal": "Neutral"
         }
       },

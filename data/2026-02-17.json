@@ -408,10 +408,10 @@
     "extended_rating": {
       "summary": {
         "signal": "Buy",
-        "score": 0.28,
-        "buy": 41,
+        "score": 0.25,
+        "buy": 42,
         "sell": 16,
-        "neutral": 33
+        "neutral": 45
       },
       "categories": {
         "trend": {
@@ -444,10 +444,10 @@
         },
         "pattern": {
           "signal": "Buy",
-          "score": 0.14,
-          "buy": 4,
+          "score": 0.11,
+          "buy": 5,
           "sell": 2,
-          "neutral": 8
+          "neutral": 20
         },
         "support_resistance": {
           "signal": "Buy",
@@ -704,6 +704,58 @@
         "pattern_name": {
           "value": "Bullish Engulfing",
           "signal": "Buy"
+        },
+        "chart_pattern": {
+          "value": "Uptrend (無經典型態)",
+          "signal": "Buy"
+        },
+        "head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "inv_head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_top": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_bottom": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "sym_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "asc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "desc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "rising_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "falling_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bull_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bear_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "cup_handle": {
+          "value": false,
+          "signal": "Neutral"
         }
       },
       "support_resistance": {

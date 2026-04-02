@@ -694,10 +694,10 @@
     "extended_rating": {
       "summary": {
         "signal": "Sell",
-        "score": -0.22,
+        "score": -0.19,
         "buy": 14,
         "sell": 34,
-        "neutral": 42
+        "neutral": 55
       },
       "categories": {
         "trend": {
@@ -729,11 +729,11 @@
           "neutral": 2
         },
         "pattern": {
-          "signal": "Sell",
-          "score": -0.14,
+          "signal": "Neutral",
+          "score": -0.07,
           "buy": 1,
           "sell": 3,
-          "neutral": 10
+          "neutral": 23
         },
         "support_resistance": {
           "signal": "Sell",
@@ -989,6 +989,58 @@
         },
         "pattern_name": {
           "value": "None",
+          "signal": "Neutral"
+        },
+        "chart_pattern": {
+          "value": "Consolidation (無經典型態)",
+          "signal": "Neutral"
+        },
+        "head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "inv_head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_top": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_bottom": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "sym_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "asc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "desc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "rising_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "falling_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bull_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bear_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "cup_handle": {
+          "value": false,
           "signal": "Neutral"
         }
       },

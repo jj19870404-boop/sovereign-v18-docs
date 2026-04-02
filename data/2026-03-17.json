@@ -762,10 +762,10 @@
     "extended_rating": {
       "summary": {
         "signal": "Buy",
-        "score": 0.31,
-        "buy": 42,
+        "score": 0.3,
+        "buy": 45,
         "sell": 14,
-        "neutral": 34
+        "neutral": 44
       },
       "categories": {
         "trend": {
@@ -797,11 +797,11 @@
           "neutral": 2
         },
         "pattern": {
-          "signal": "Neutral",
-          "score": 0.0,
-          "buy": 2,
+          "signal": "Buy",
+          "score": 0.11,
+          "buy": 5,
           "sell": 2,
-          "neutral": 10
+          "neutral": 20
         },
         "support_resistance": {
           "signal": "Strong Buy",
@@ -1057,6 +1057,60 @@
         },
         "pattern_name": {
           "value": "Outside Bar",
+          "signal": "Neutral"
+        },
+        "asc_triangle": {
+          "value": true,
+          "signal": "Buy",
+          "detail": "Flat resistance + rising support"
+        },
+        "cup_handle": {
+          "value": true,
+          "signal": "Buy",
+          "detail": "Cup depth 22.5%, recovery 147.7%, handle 10.6%"
+        },
+        "chart_pattern": {
+          "value": "Ascending Triangle + Cup & Handle",
+          "signal": "Buy"
+        },
+        "head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "inv_head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_top": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_bottom": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "sym_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "desc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "rising_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "falling_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bull_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bear_flag": {
+          "value": false,
           "signal": "Neutral"
         }
       },

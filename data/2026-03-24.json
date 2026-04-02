@@ -770,10 +770,10 @@
     "extended_rating": {
       "summary": {
         "signal": "Sell",
-        "score": -0.18,
-        "buy": 18,
-        "sell": 34,
-        "neutral": 38
+        "score": -0.17,
+        "buy": 19,
+        "sell": 36,
+        "neutral": 48
       },
       "categories": {
         "trend": {
@@ -806,10 +806,10 @@
         },
         "pattern": {
           "signal": "Sell",
-          "score": -0.29,
-          "buy": 0,
-          "sell": 4,
-          "neutral": 10
+          "score": -0.19,
+          "buy": 1,
+          "sell": 6,
+          "neutral": 20
         },
         "support_resistance": {
           "signal": "Neutral",
@@ -1066,6 +1066,60 @@
         "pattern_name": {
           "value": "Bearish Engulfing",
           "signal": "Sell"
+        },
+        "desc_triangle": {
+          "value": true,
+          "signal": "Sell",
+          "detail": "Falling resistance + flat support"
+        },
+        "falling_wedge": {
+          "value": true,
+          "signal": "Buy",
+          "detail": "Both slopes down but converging — bullish reversal"
+        },
+        "chart_pattern": {
+          "value": "Descending Triangle + Falling Wedge",
+          "signal": "Sell"
+        },
+        "head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "inv_head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_top": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_bottom": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "sym_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "asc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "rising_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bull_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bear_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "cup_handle": {
+          "value": false,
+          "signal": "Neutral"
         }
       },
       "support_resistance": {

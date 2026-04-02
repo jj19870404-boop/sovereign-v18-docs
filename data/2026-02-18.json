@@ -409,9 +409,9 @@
       "summary": {
         "signal": "Neutral",
         "score": 0.1,
-        "buy": 32,
-        "sell": 23,
-        "neutral": 35
+        "buy": 34,
+        "sell": 24,
+        "neutral": 45
       },
       "categories": {
         "trend": {
@@ -444,10 +444,10 @@
         },
         "pattern": {
           "signal": "Buy",
-          "score": 0.14,
-          "buy": 3,
-          "sell": 1,
-          "neutral": 10
+          "score": 0.11,
+          "buy": 5,
+          "sell": 2,
+          "neutral": 20
         },
         "support_resistance": {
           "signal": "Buy",
@@ -703,6 +703,60 @@
         },
         "pattern_name": {
           "value": "None",
+          "signal": "Neutral"
+        },
+        "asc_triangle": {
+          "value": true,
+          "signal": "Buy",
+          "detail": "Flat resistance + rising support"
+        },
+        "rising_wedge": {
+          "value": true,
+          "signal": "Sell",
+          "detail": "Both slopes up but converging — bearish reversal"
+        },
+        "chart_pattern": {
+          "value": "Ascending Triangle + Rising Wedge",
+          "signal": "Buy"
+        },
+        "head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "inv_head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_top": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_bottom": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "sym_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "desc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "falling_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bull_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bear_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "cup_handle": {
+          "value": false,
           "signal": "Neutral"
         }
       },

@@ -845,9 +845,9 @@
       "summary": {
         "signal": "Buy",
         "score": 0.12,
-        "buy": 32,
+        "buy": 33,
         "sell": 21,
-        "neutral": 37
+        "neutral": 49
       },
       "categories": {
         "trend": {
@@ -880,10 +880,10 @@
         },
         "pattern": {
           "signal": "Sell",
-          "score": -0.29,
-          "buy": 1,
+          "score": -0.11,
+          "buy": 2,
           "sell": 5,
-          "neutral": 8
+          "neutral": 20
         },
         "support_resistance": {
           "signal": "Neutral",
@@ -1140,6 +1140,58 @@
         "pattern_name": {
           "value": "Evening Star",
           "signal": "Sell"
+        },
+        "chart_pattern": {
+          "value": "Uptrend (無經典型態)",
+          "signal": "Buy"
+        },
+        "head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "inv_head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_top": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_bottom": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "sym_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "asc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "desc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "rising_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "falling_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bull_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bear_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "cup_handle": {
+          "value": false,
+          "signal": "Neutral"
         }
       },
       "support_resistance": {

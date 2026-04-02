@@ -769,11 +769,11 @@
     },
     "extended_rating": {
       "summary": {
-        "signal": "Sell",
-        "score": -0.11,
+        "signal": "Neutral",
+        "score": -0.1,
         "buy": 19,
         "sell": 29,
-        "neutral": 42
+        "neutral": 55
       },
       "categories": {
         "trend": {
@@ -806,10 +806,10 @@
         },
         "pattern": {
           "signal": "Sell",
-          "score": -0.21,
+          "score": -0.11,
           "buy": 1,
           "sell": 4,
-          "neutral": 9
+          "neutral": 22
         },
         "support_resistance": {
           "signal": "Neutral",
@@ -1066,6 +1066,58 @@
         "pattern_name": {
           "value": "Bearish Engulfing",
           "signal": "Sell"
+        },
+        "chart_pattern": {
+          "value": "Consolidation (無經典型態)",
+          "signal": "Neutral"
+        },
+        "head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "inv_head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_top": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_bottom": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "sym_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "asc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "desc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "rising_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "falling_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bull_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bear_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "cup_handle": {
+          "value": false,
+          "signal": "Neutral"
         }
       },
       "support_resistance": {

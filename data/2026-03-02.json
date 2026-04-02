@@ -753,10 +753,10 @@
     "extended_rating": {
       "summary": {
         "signal": "Buy",
-        "score": 0.22,
-        "buy": 37,
+        "score": 0.2,
+        "buy": 38,
         "sell": 17,
-        "neutral": 36
+        "neutral": 48
       },
       "categories": {
         "trend": {
@@ -789,10 +789,10 @@
         },
         "pattern": {
           "signal": "Buy",
-          "score": 0.29,
-          "buy": 5,
+          "score": 0.19,
+          "buy": 6,
           "sell": 1,
-          "neutral": 8
+          "neutral": 20
         },
         "support_resistance": {
           "signal": "Buy",
@@ -1049,6 +1049,58 @@
         "pattern_name": {
           "value": "Morning Star",
           "signal": "Buy"
+        },
+        "chart_pattern": {
+          "value": "Uptrend (無經典型態)",
+          "signal": "Buy"
+        },
+        "head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "inv_head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_top": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_bottom": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "sym_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "asc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "desc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "rising_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "falling_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bull_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bear_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "cup_handle": {
+          "value": false,
+          "signal": "Neutral"
         }
       },
       "support_resistance": {

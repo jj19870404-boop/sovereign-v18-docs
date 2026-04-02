@@ -755,9 +755,9 @@
       "summary": {
         "signal": "Buy",
         "score": 0.14,
-        "buy": 30,
+        "buy": 31,
         "sell": 17,
-        "neutral": 43
+        "neutral": 55
       },
       "categories": {
         "trend": {
@@ -790,10 +790,10 @@
         },
         "pattern": {
           "signal": "Buy",
-          "score": 0.14,
-          "buy": 2,
+          "score": 0.11,
+          "buy": 3,
           "sell": 0,
-          "neutral": 12
+          "neutral": 24
         },
         "support_resistance": {
           "signal": "Buy",
@@ -1049,6 +1049,58 @@
         },
         "pattern_name": {
           "value": "None",
+          "signal": "Neutral"
+        },
+        "chart_pattern": {
+          "value": "Uptrend (無經典型態)",
+          "signal": "Buy"
+        },
+        "head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "inv_head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_top": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_bottom": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "sym_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "asc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "desc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "rising_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "falling_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bull_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bear_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "cup_handle": {
+          "value": false,
           "signal": "Neutral"
         }
       },

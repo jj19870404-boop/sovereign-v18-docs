@@ -757,7 +757,7 @@
         "score": -0.01,
         "buy": 24,
         "sell": 25,
-        "neutral": 41
+        "neutral": 54
       },
       "categories": {
         "trend": {
@@ -790,10 +790,10 @@
         },
         "pattern": {
           "signal": "Sell",
-          "score": -0.21,
+          "score": -0.11,
           "buy": 0,
           "sell": 3,
-          "neutral": 11
+          "neutral": 24
         },
         "support_resistance": {
           "signal": "Neutral",
@@ -1049,6 +1049,58 @@
         },
         "pattern_name": {
           "value": "Doji",
+          "signal": "Neutral"
+        },
+        "chart_pattern": {
+          "value": "Consolidation (無經典型態)",
+          "signal": "Neutral"
+        },
+        "head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "inv_head_shoulders": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_top": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "double_bottom": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "sym_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "asc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "desc_triangle": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "rising_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "falling_wedge": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bull_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "bear_flag": {
+          "value": false,
+          "signal": "Neutral"
+        },
+        "cup_handle": {
+          "value": false,
           "signal": "Neutral"
         }
       },
