@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-03T06:25:30+08:00",
+  "updated": "2026-04-03T08:17:55+08:00",
   "summary": {
     "total": 100,
     "wins": 57,
@@ -12,16 +12,16 @@
   "tracks": [
     {
       "date": "2026-04-02",
-      "symbol": "HIBS",
-      "entry": 46.4,
-      "tp": 50.11,
-      "sl": 40.93,
+      "symbol": "BODI",
+      "entry": 11.91,
+      "tp": 12.86,
+      "sl": 10.26,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 46.4,
+      "current": 11.91,
       "is_ref": true,
-      "reject_reason": "CandGate (1<70) | SkipBEAR"
+      "reject_reason": "CandGate (0<70) | SkipBEAR"
     },
     {
       "date": "2026-04-01",
