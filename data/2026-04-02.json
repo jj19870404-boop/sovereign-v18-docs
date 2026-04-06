@@ -371,7 +371,7 @@
       "shares": 839,
       "risk_pct": 13.85,
       "reward_pct": 8.0,
-      "rs_rank": 242,
+      "rs_rank": 243,
       "pct_from_52wk": 96.7,
       "tightness": 4.23,
       "vol_ratio": 1.8,
@@ -402,13 +402,13 @@
       "rs_rank": 281,
       "pct_from_52wk": 100.0,
       "tightness": 7.45,
-      "vol_ratio": 1.97,
+      "vol_ratio": 1.78,
       "mom_20": 37.2,
       "sma20_slope": 1.0446,
       "atr": 1.73,
       "rsi_14": 75.6,
       "close_position": 97.9,
-      "vol_zscore": 2.05,
+      "vol_zscore": 1.72,
       "quality_grade": "C",
       "quality_score": 54.0,
       "sector": "Communication Services",
@@ -483,7 +483,7 @@
       "shares": 850,
       "risk_pct": 7.57,
       "reward_pct": 8.0,
-      "rs_rank": 436,
+      "rs_rank": 437,
       "pct_from_52wk": 87.8,
       "tightness": 2.06,
       "vol_ratio": 1.77,
@@ -511,7 +511,7 @@
       "shares": 218,
       "risk_pct": 5.33,
       "reward_pct": 8.0,
-      "rs_rank": 650,
+      "rs_rank": 651,
       "pct_from_52wk": 100.0,
       "tightness": 1.42,
       "vol_ratio": 1.55,
@@ -539,7 +539,7 @@
       "shares": 42,
       "risk_pct": 7.13,
       "reward_pct": 8.0,
-      "rs_rank": 762,
+      "rs_rank": 763,
       "pct_from_52wk": 97.4,
       "tightness": 3.34,
       "vol_ratio": 1.75,
@@ -567,7 +567,7 @@
       "shares": 249,
       "risk_pct": 12.97,
       "reward_pct": 8.0,
-      "rs_rank": 913,
+      "rs_rank": 914,
       "pct_from_52wk": 94.7,
       "tightness": 6.46,
       "vol_ratio": 1.86,
@@ -595,7 +595,7 @@
       "shares": 247,
       "risk_pct": 2.79,
       "reward_pct": 8.0,
-      "rs_rank": 1575,
+      "rs_rank": 1577,
       "pct_from_52wk": 100.0,
       "tightness": 1.57,
       "vol_ratio": 2.22,
@@ -623,7 +623,7 @@
       "shares": 301,
       "risk_pct": 2.98,
       "reward_pct": 8.0,
-      "rs_rank": 1705,
+      "rs_rank": 1707,
       "pct_from_52wk": 97.0,
       "tightness": 0.92,
       "vol_ratio": 1.65,
@@ -1441,7 +1441,7 @@
               "signal": 1
             },
             "VWMA(20)": {
-              "value": 27.1,
+              "value": 27.04,
               "signal": 1
             },
             "Ichimoku(9,26,52)": {
@@ -1672,35 +1672,35 @@
         },
         "volume": {
           "volume": {
-            "value": 3899731,
+            "value": 3499392,
             "signal": "Normal"
           },
           "obv": {
-            "value": -12163011,
+            "value": -12563350,
             "signal": "Buy"
           },
           "ad_line": {
-            "value": -27504631,
+            "value": -27888376,
             "signal": "Buy"
           },
           "cmf_20": {
-            "value": 0.216,
+            "value": 0.209,
             "signal": "Buy"
           },
           "mfi_14": {
-            "value": 57.7,
+            "value": 57.1,
             "signal": "Neutral"
           },
           "vpt": {
-            "value": -2300887,
+            "value": -2361808,
             "signal": "Buy"
           },
           "force_index": {
-            "value": 2979853.0,
+            "value": 2731643.0,
             "signal": "Buy"
           },
           "vol_osc": {
-            "value": 16.2,
+            "value": 13.3,
             "signal": "Buy"
           },
           "nvi": {
