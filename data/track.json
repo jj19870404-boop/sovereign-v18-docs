@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-07T06:01:05+08:00",
+  "updated": "2026-04-07T06:18:25+08:00",
   "summary": {
     "total": 100,
     "wins": 56,
@@ -12,14 +12,14 @@
   "tracks": [
     {
       "date": "2026-04-06",
-      "symbol": "PRLD",
-      "entry": 3.68,
-      "tp": 3.98,
-      "sl": 3.24,
+      "symbol": "PLPC",
+      "entry": 292.39,
+      "tp": 315.78,
+      "sl": 272.97,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 3.68,
+      "current": 292.39,
       "is_ref": true,
       "reject_reason": "CandGate (1<70) | SkipBEAR"
     },
