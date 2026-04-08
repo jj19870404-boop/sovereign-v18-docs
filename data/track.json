@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-09T06:00:48+08:00",
+  "updated": "2026-04-09T06:18:17+08:00",
   "summary": {
     "total": 100,
     "wins": 54,
@@ -12,16 +12,16 @@
   "tracks": [
     {
       "date": "2026-04-08",
-      "symbol": "FORM",
-      "entry": 117.92,
-      "tp": 127.35,
-      "sl": 107.23,
+      "symbol": "NESR",
+      "entry": 24.07,
+      "tp": 26.0,
+      "sl": 22.29,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 117.92,
+      "current": 24.07,
       "is_ref": true,
-      "reject_reason": "CandGate (36<70)"
+      "reject_reason": "CandGate (20<70)"
     },
     {
       "date": "2026-04-07",
