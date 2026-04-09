@@ -1,38 +1,51 @@
 {
-  "updated": "2026-04-09T11:10:25+08:00",
+  "updated": "2026-04-10T06:00:38+08:00",
   "summary": {
     "total": 100,
-    "wins": 54,
+    "wins": 53,
     "losses": 25,
     "be": 3,
-    "open": 2,
-    "win_rate": 68.4,
-    "avg_return": 4.91
+    "open": 3,
+    "win_rate": 67.9,
+    "avg_return": 4.87
   },
   "tracks": [
     {
-      "date": "2026-04-08",
-      "symbol": "NESR",
-      "entry": 24.07,
-      "tp": 26.0,
-      "sl": 22.29,
+      "date": "2026-04-09",
+      "symbol": "STTK",
+      "entry": 7.41,
+      "tp": 8.0,
+      "sl": 6.79,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 24.07,
+      "current": 7.41,
+      "is_ref": true,
+      "reject_reason": "CandGate (16<70)"
+    },
+    {
+      "date": "2026-04-08",
+      "symbol": "NESR",
+      "entry": 23.71,
+      "tp": 25.61,
+      "sl": 21.93,
+      "status": "OPEN",
+      "return_pct": 0.42,
+      "days": 1,
+      "current": 23.81,
       "is_ref": true,
       "reject_reason": "CandGate (20<70)"
     },
     {
       "date": "2026-04-07",
       "symbol": "TERN",
-      "entry": 52.65,
-      "tp": 56.86,
-      "sl": 50.19,
+      "entry": 52.68,
+      "tp": 56.89,
+      "sl": 50.22,
       "status": "OPEN",
-      "return_pct": 0.02,
-      "days": 1,
-      "current": 52.66,
+      "return_pct": -0.23,
+      "days": 2,
+      "current": 52.56,
       "is_ref": true,
       "reject_reason": "CandGate (4<70) | SkipBEAR"
     },
@@ -1231,18 +1244,6 @@
       "days": 3,
       "exit_price": 24.3,
       "exit_type": "TRAIL"
-    },
-    {
-      "date": "2025-06-27",
-      "symbol": "TDUP",
-      "entry": 7.42,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 8.0,
-      "days": 1,
-      "exit_price": 8.01,
-      "exit_type": "TP"
     }
   ]
 }
