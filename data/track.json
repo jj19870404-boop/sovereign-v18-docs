@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-10T11:10:30+08:00",
+  "updated": "2026-04-11T06:01:13+08:00",
   "summary": {
     "total": 100,
     "wins": 53,
@@ -13,13 +13,13 @@
     {
       "date": "2026-04-09",
       "symbol": "INTT",
-      "entry": 15.59,
-      "tp": 16.83,
-      "sl": 14.07,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 15.59,
+      "entry": 16.27,
+      "tp": 17.57,
+      "sl": 14.75,
+      "status": "OPEN",
+      "return_pct": -2.89,
+      "days": 1,
+      "current": 15.8,
       "is_ref": true,
       "reject_reason": "CandGate (13<70)"
     },
@@ -30,9 +30,9 @@
       "tp": 25.61,
       "sl": 21.93,
       "status": "OPEN",
-      "return_pct": 0.42,
-      "days": 1,
-      "current": 23.81,
+      "return_pct": -2.99,
+      "days": 2,
+      "current": 23.0,
       "is_ref": true,
       "reject_reason": "CandGate (20<70)"
     },
@@ -43,9 +43,9 @@
       "tp": 56.89,
       "sl": 50.22,
       "status": "OPEN",
-      "return_pct": -0.23,
-      "days": 2,
-      "current": 52.56,
+      "return_pct": -0.09,
+      "days": 3,
+      "current": 52.63,
       "is_ref": true,
       "reject_reason": "CandGate (4<70) | SkipBEAR"
     },
