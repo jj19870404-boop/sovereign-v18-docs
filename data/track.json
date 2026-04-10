@@ -1,15 +1,28 @@
 {
-  "updated": "2026-04-11T06:01:13+08:00",
+  "updated": "2026-04-11T06:24:20+08:00",
   "summary": {
     "total": 100,
-    "wins": 53,
+    "wins": 52,
     "losses": 25,
     "be": 3,
-    "open": 3,
-    "win_rate": 67.9,
-    "avg_return": 4.87
+    "open": 4,
+    "win_rate": 67.5,
+    "avg_return": 4.91
   },
   "tracks": [
+    {
+      "date": "2026-04-10",
+      "symbol": "INTT",
+      "entry": 15.82,
+      "tp": 17.08,
+      "sl": 14.27,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 15.82,
+      "is_ref": true,
+      "reject_reason": "CandGate (3<70)"
+    },
     {
       "date": "2026-04-09",
       "symbol": "INTT",
@@ -1232,18 +1245,6 @@
       "days": 5,
       "exit_price": 0.82,
       "exit_type": "TP"
-    },
-    {
-      "date": "2025-06-30",
-      "symbol": "CYD",
-      "entry": 23.84,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 1.93,
-      "days": 3,
-      "exit_price": 24.3,
-      "exit_type": "TRAIL"
     }
   ]
 }
