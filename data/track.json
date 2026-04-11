@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-11T11:10:31+08:00",
+  "updated": "2026-04-12T06:00:40+08:00",
   "summary": {
     "total": 100,
     "wins": 52,
@@ -13,13 +13,13 @@
     {
       "date": "2026-04-10",
       "symbol": "INTT",
-      "entry": 15.82,
-      "tp": 17.08,
-      "sl": 14.27,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 15.82,
+      "entry": 16.27,
+      "tp": 17.57,
+      "sl": 14.72,
+      "status": "OPEN",
+      "return_pct": -2.89,
+      "days": 1,
+      "current": 15.8,
       "is_ref": true,
       "reject_reason": "CandGate (3<70)"
     },
