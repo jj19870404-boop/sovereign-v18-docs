@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-15T06:00:39+08:00",
+  "updated": "2026-04-15T06:18:07+08:00",
   "summary": {
     "total": 100,
     "wins": 50,
@@ -12,16 +12,16 @@
   "tracks": [
     {
       "date": "2026-04-14",
-      "symbol": "PRAX",
-      "entry": 343.94,
-      "tp": 371.46,
-      "sl": 315.91,
+      "symbol": "GSAT",
+      "entry": 79.99,
+      "tp": 86.39,
+      "sl": 71.5,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 343.94,
+      "current": 79.99,
       "is_ref": true,
-      "reject_reason": "CandGate (25<70)"
+      "reject_reason": "CandGate (14<70)"
     },
     {
       "date": "2026-04-13",
