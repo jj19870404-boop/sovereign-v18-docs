@@ -1,25 +1,38 @@
 {
-  "updated": "2026-04-14T11:10:30+08:00",
+  "updated": "2026-04-15T06:00:39+08:00",
   "summary": {
     "total": 100,
-    "wins": 51,
+    "wins": 50,
     "losses": 25,
     "be": 3,
-    "open": 5,
-    "win_rate": 67.1,
-    "avg_return": 4.86
+    "open": 6,
+    "win_rate": 66.7,
+    "avg_return": 4.68
   },
   "tracks": [
     {
-      "date": "2026-04-13",
-      "symbol": "ALTO",
-      "entry": 5.11,
-      "tp": 5.51,
-      "sl": 4.66,
+      "date": "2026-04-14",
+      "symbol": "PRAX",
+      "entry": 343.94,
+      "tp": 371.46,
+      "sl": 315.91,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 5.11,
+      "current": 343.94,
+      "is_ref": true,
+      "reject_reason": "CandGate (25<70)"
+    },
+    {
+      "date": "2026-04-13",
+      "symbol": "ALTO",
+      "entry": 5.1,
+      "tp": 5.51,
+      "sl": 4.65,
+      "status": "OPEN",
+      "return_pct": -4.51,
+      "days": 1,
+      "current": 4.87,
       "is_ref": true,
       "reject_reason": "CandGate (9<70)"
     },
@@ -30,9 +43,9 @@
       "tp": 16.74,
       "sl": 13.95,
       "status": "OPEN",
-      "return_pct": -1.94,
-      "days": 1,
-      "current": 15.2,
+      "return_pct": -0.58,
+      "days": 2,
+      "current": 15.41,
       "is_ref": true,
       "reject_reason": "CandGate (3<70)"
     },
@@ -43,9 +56,9 @@
       "tp": 17.57,
       "sl": 14.75,
       "status": "OPEN",
-      "return_pct": -6.58,
-      "days": 2,
-      "current": 15.2,
+      "return_pct": -5.29,
+      "days": 3,
+      "current": 15.41,
       "is_ref": true,
       "reject_reason": "CandGate (13<70)"
     },
@@ -56,9 +69,9 @@
       "tp": 25.61,
       "sl": 21.93,
       "status": "OPEN",
-      "return_pct": -2.11,
-      "days": 3,
-      "current": 23.21,
+      "return_pct": -1.94,
+      "days": 4,
+      "current": 23.25,
       "is_ref": true,
       "reject_reason": "CandGate (20<70)"
     },
@@ -69,9 +82,9 @@
       "tp": 56.89,
       "sl": 50.22,
       "status": "OPEN",
-      "return_pct": -0.13,
-      "days": 4,
-      "current": 52.61,
+      "return_pct": 0.0,
+      "days": 5,
+      "current": 52.68,
       "is_ref": true,
       "reject_reason": "CandGate (4<70) | SkipBEAR"
     },
@@ -1234,18 +1247,6 @@
       "days": 2,
       "exit_price": 3.4,
       "exit_type": "SL"
-    },
-    {
-      "date": "2025-07-14",
-      "symbol": "RAYA",
-      "entry": 548.35,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 19.16,
-      "days": 1,
-      "exit_price": 653.4,
-      "exit_type": "TP"
     }
   ]
 }
