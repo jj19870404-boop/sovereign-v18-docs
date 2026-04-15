@@ -1,15 +1,28 @@
 {
-  "updated": "2026-04-16T06:00:39+08:00",
+  "updated": "2026-04-16T06:30:28+08:00",
   "summary": {
     "total": 100,
     "wins": 50,
-    "losses": 25,
+    "losses": 24,
     "be": 3,
-    "open": 4,
-    "win_rate": 66.7,
-    "avg_return": 4.68
+    "open": 5,
+    "win_rate": 67.6,
+    "avg_return": 4.75
   },
   "tracks": [
+    {
+      "date": "2026-04-15",
+      "symbol": "BOF",
+      "entry": 4.4,
+      "tp": 4.76,
+      "sl": 3.99,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 4.4,
+      "is_ref": true,
+      "reject_reason": "CandGate (24<70)"
+    },
     {
       "date": "2026-04-14",
       "symbol": "GSAT",
@@ -1237,18 +1250,6 @@
       "days": 1,
       "exit_price": 20.38,
       "exit_type": "TP"
-    },
-    {
-      "date": "2025-07-15",
-      "symbol": "MSGM",
-      "entry": 3.43,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "LOSS",
-      "return_pct": -0.97,
-      "days": 2,
-      "exit_price": 3.4,
-      "exit_type": "SL"
     }
   ]
 }
