@@ -3,7 +3,7 @@
   "v28": {
     "mode": "NoTP",
     "label": "NoTP",
-    "rolling_wr": 45.0
+    "rolling_wr": 50.0
   },
   "performance": {
     "trade_history": [
@@ -351,13 +351,14 @@
       "W",
       "L",
       "L",
+      "W",
       "L",
       "L"
     ],
-    "total_trades": 346,
-    "wins": 206,
+    "total_trades": 347,
+    "wins": 207,
     "losses": 140,
-    "win_rate": 59.5
+    "win_rate": 59.7
   },
   "open_trades": [],
   "recent_exits": [],
@@ -389,8 +390,8 @@
       "vol_zscore": 2.05,
       "quality_grade": "B",
       "quality_score": 68.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Communication Services",
+      "sector_rank": 8,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 73.5
@@ -585,8 +586,8 @@
       "vol_zscore": 1.89,
       "quality_grade": "B",
       "quality_score": 75.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Industrials",
+      "sector_rank": 5,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 73.5
@@ -641,14 +642,14 @@
       "vol_zscore": 1.91,
       "quality_grade": "B",
       "quality_score": 66.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Industrials",
+      "sector_rank": 5,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 73.5
     }
   ],
-  "reject_reason": "CandGate (33<70)",
+  "reject_reason": "CandGate (25<70)",
   "deep_analyses": {
     "DIBS": {
       "symbol": "DIBS",
