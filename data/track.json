@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-17T06:00:40+08:00",
+  "updated": "2026-04-17T06:19:01+08:00",
   "summary": {
     "total": 100,
     "wins": 49,
@@ -21,7 +21,7 @@
       "days": 0,
       "current": 5.96,
       "is_ref": true,
-      "reject_reason": "CandGate (33<70)"
+      "reject_reason": "CandGate (25<70)"
     },
     {
       "date": "2026-04-15",
