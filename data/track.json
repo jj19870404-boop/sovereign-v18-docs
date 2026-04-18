@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-18T06:24:40+08:00",
+  "updated": "2026-04-18T08:18:47+08:00",
   "summary": {
     "total": 100,
     "wins": 48,
@@ -12,16 +12,16 @@
   "tracks": [
     {
       "date": "2026-04-17",
-      "symbol": "PPBT",
-      "entry": 4.87,
-      "tp": 5.26,
-      "sl": 4.41,
+      "symbol": "BOF",
+      "entry": 4.67,
+      "tp": 5.05,
+      "sl": 4.25,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 4.87,
+      "current": 4.67,
       "is_ref": true,
-      "reject_reason": "CandGate (63<70)"
+      "reject_reason": "CandGate (42<70)"
     },
     {
       "date": "2026-04-16",
