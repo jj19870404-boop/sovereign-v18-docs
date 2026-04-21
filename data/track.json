@@ -1,25 +1,38 @@
 {
-  "updated": "2026-04-21T11:10:38+08:00",
+  "updated": "2026-04-22T06:17:17+08:00",
   "summary": {
     "total": 100,
     "wins": 47,
-    "losses": 24,
+    "losses": 23,
     "be": 3,
-    "open": 3,
-    "win_rate": 66.2,
-    "avg_return": 3.77
+    "open": 2,
+    "win_rate": 67.1,
+    "avg_return": 3.96
   },
   "tracks": [
+    {
+      "date": "2026-04-21",
+      "symbol": "LION",
+      "entry": 11.53,
+      "tp": 12.45,
+      "sl": 10.76,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 11.53,
+      "is_ref": true,
+      "reject_reason": "CandGate (33<70)"
+    },
     {
       "date": "2026-04-20",
       "symbol": "DIBS",
       "entry": 6.16,
       "tp": 6.65,
       "sl": 5.86,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 6.16,
+      "status": "OPEN",
+      "return_pct": -2.44,
+      "days": 1,
+      "current": 6.01,
       "is_ref": true,
       "reject_reason": "CandGate (17<70)"
     },
@@ -29,10 +42,11 @@
       "entry": 4.6,
       "tp": 4.97,
       "sl": 4.18,
-      "status": "OPEN",
-      "return_pct": -3.7,
-      "days": 1,
-      "current": 4.43,
+      "status": "LOSS",
+      "return_pct": -7.88,
+      "days": 2,
+      "exit_price": 4.24,
+      "exit_type": "SL",
       "is_ref": true,
       "reject_reason": "CandGate (42<70)"
     },
@@ -42,10 +56,11 @@
       "entry": 6.01,
       "tp": 6.49,
       "sl": 5.73,
-      "status": "OPEN",
-      "return_pct": 2.33,
-      "days": 2,
-      "current": 6.15,
+      "status": "WIN",
+      "return_pct": 1.51,
+      "days": 3,
+      "exit_price": 6.1,
+      "exit_type": "TRAIL",
       "is_ref": true,
       "reject_reason": "CandGate (25<70)"
     },
@@ -1245,18 +1260,6 @@
       "return_pct": -15.71,
       "days": 1,
       "exit_price": 3.41,
-      "exit_type": "SL"
-    },
-    {
-      "date": "2025-07-29",
-      "symbol": "DBVT",
-      "entry": 10.2,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "LOSS",
-      "return_pct": -10.31,
-      "days": 1,
-      "exit_price": 9.15,
       "exit_type": "SL"
     }
   ]
