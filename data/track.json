@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-21T08:17:25+08:00",
+  "updated": "2026-04-21T11:10:38+08:00",
   "summary": {
     "total": 100,
     "wins": 47,
@@ -220,13 +220,13 @@
     {
       "date": "2026-03-27",
       "symbol": "ANAB",
-      "entry": 57.12,
-      "tp": 61.69,
-      "sl": 51.64,
+      "entry": 38.08,
+      "tp": 41.13,
+      "sl": 32.6,
       "status": "WIN",
-      "return_pct": 8.0,
+      "return_pct": 8.01,
       "days": 5,
-      "exit_price": 61.69,
+      "exit_price": 41.13,
       "exit_type": "TP",
       "is_ref": true,
       "reject_reason": "CandGate (3<70) | SkipBEAR | SkipMonth (三月)"
