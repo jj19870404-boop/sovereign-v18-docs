@@ -1,11 +1,11 @@
 {
-  "updated": "2026-04-24T12:34:07+08:00",
+  "updated": "2026-04-25T06:01:17+08:00",
   "summary": {
     "total": 100,
     "wins": 47,
     "losses": 22,
     "be": 3,
-    "open": 1,
+    "open": 0,
     "win_rate": 68.1,
     "avg_return": 4.23
   },
@@ -13,13 +13,14 @@
     {
       "date": "2026-04-23",
       "symbol": "FIX",
-      "entry": 1733.48,
-      "tp": 1872.16,
-      "sl": 1648.85,
-      "status": "OPEN",
-      "return_pct": 2.33,
+      "entry": 1775.91,
+      "tp": 1917.98,
+      "sl": 1691.28,
+      "status": "LOSS",
+      "return_pct": -4.77,
       "days": 1,
-      "current": 1773.91,
+      "exit_price": 1691.28,
+      "exit_type": "SL",
       "is_ref": true,
       "reject_reason": "CandGate (32<70)"
     },
