@@ -1,9 +1,9 @@
 {
   "date": "2026-04-24",
   "v28": {
-    "mode": "NoTP",
-    "label": "NoTP",
-    "rolling_wr": 50.0
+    "mode": "TP",
+    "label": "TP",
+    "rolling_wr": 55.0
   },
   "performance": {
     "trade_history": [
@@ -361,12 +361,13 @@
       "L",
       "L",
       "L",
-      "L"
+      "L",
+      "W"
     ],
-    "total_trades": 355,
-    "wins": 211,
+    "total_trades": 356,
+    "wins": 212,
     "losses": 144,
-    "win_rate": 59.4
+    "win_rate": 59.6
   },
   "open_trades": [],
   "recent_exits": [],
