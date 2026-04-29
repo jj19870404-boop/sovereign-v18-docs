@@ -567,8 +567,8 @@
       "vol_zscore": 1.47,
       "quality_grade": "C",
       "quality_score": 51.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Industrials",
+      "sector_rank": 5,
       "market_regime": "NEUTRAL",
       "death_cross": false,
       "spy_rsi": 83.5
@@ -658,7 +658,7 @@
       "spy_rsi": 83.5
     }
   ],
-  "reject_reason": "CandGate (38<70)",
+  "reject_reason": "CandGate (30<70)",
   "deep_analyses": {
     "UCTT": {
       "symbol": "UCTT",
