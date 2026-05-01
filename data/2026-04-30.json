@@ -369,7 +369,25 @@
     "losses": 145,
     "win_rate": 59.3
   },
-  "open_trades": [],
+  "open_trades": [
+    {
+      "symbol": "STX",
+      "signal_date": "2026-04-30",
+      "entry_date": "2026-04-30",
+      "entry_price": 655.2696,
+      "tp": 707.6912,
+      "sl": 655.2696,
+      "days": 1,
+      "highest": 673.6400146484375,
+      "be_set": true,
+      "trail_on": false,
+      "use_tp": true,
+      "trail_mode": "fixed",
+      "atr": 35.21,
+      "trail": 0,
+      "trail_tier": null
+    }
+  ],
   "recent_exits": [],
   "picks": [],
   "no_picks": true,
