@@ -372,7 +372,17 @@
     "win_rate": 59.5
   },
   "open_trades": [],
-  "recent_exits": [],
+  "recent_exits": [
+    {
+      "symbol": "WDC",
+      "entry_price": 406.2859,
+      "exit_price": 438.79,
+      "exit_date": "2026-05-01",
+      "exit_reason": "TP",
+      "return_pct": 8.0,
+      "result": "WIN"
+    }
+  ],
   "picks": [],
   "no_picks": true,
   "market_regime": "BULL",
@@ -401,8 +411,8 @@
       "vol_zscore": 3.33,
       "quality_grade": "D",
       "quality_score": 41.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Technology",
+      "sector_rank": 2,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 80.7
@@ -569,8 +579,8 @@
       "vol_zscore": 2.44,
       "quality_grade": "C",
       "quality_score": 58.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Utilities",
+      "sector_rank": 3,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 80.7
@@ -660,7 +670,7 @@
       "spy_rsi": 80.7
     }
   ],
-  "reject_reason": "CandGate (44<70)",
+  "reject_reason": "CandGate (33<70)",
   "deep_analyses": {
     "HTCR": {
       "symbol": "HTCR",
