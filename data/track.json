@@ -1,11 +1,11 @@
 {
-  "updated": "2026-05-02T11:10:39+08:00",
+  "updated": "2026-05-03T06:00:54+08:00",
   "summary": {
     "total": 100,
     "wins": 44,
     "losses": 19,
     "be": 3,
-    "open": 2,
+    "open": 1,
     "win_rate": 69.8,
     "avg_return": 4.43
   },
@@ -13,13 +13,14 @@
     {
       "date": "2026-05-01",
       "symbol": "HTCR",
-      "entry": 3.56,
-      "tp": 3.85,
-      "sl": 3.08,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 3.56,
+      "entry": 3.08,
+      "tp": 3.33,
+      "sl": 2.6,
+      "status": "WIN",
+      "return_pct": 8.12,
+      "days": 1,
+      "exit_price": 3.33,
+      "exit_type": "TP",
       "is_ref": true,
       "reject_reason": "CandGate (33<70)"
     },
