@@ -1,26 +1,38 @@
 {
-  "updated": "2026-05-04T11:10:38+08:00",
+  "updated": "2026-05-05T06:00:47+08:00",
   "summary": {
     "total": 100,
-    "wins": 44,
+    "wins": 43,
     "losses": 19,
     "be": 3,
-    "open": 1,
-    "win_rate": 69.8,
-    "avg_return": 4.43
+    "open": 3,
+    "win_rate": 69.4,
+    "avg_return": 4.37
   },
   "tracks": [
     {
+      "date": "2026-05-04",
+      "symbol": "ICHR",
+      "entry": 69.79,
+      "tp": 75.37,
+      "sl": 63.72,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 69.79,
+      "is_ref": true,
+      "reject_reason": "CandGate (49<70)"
+    },
+    {
       "date": "2026-05-01",
       "symbol": "HTCR",
-      "entry": 3.08,
-      "tp": 3.33,
-      "sl": 2.6,
-      "status": "WIN",
-      "return_pct": 8.12,
+      "entry": 3.52,
+      "tp": 3.8,
+      "sl": 3.04,
+      "status": "OPEN",
+      "return_pct": -1.99,
       "days": 1,
-      "exit_price": 3.33,
-      "exit_type": "TP",
+      "current": 3.45,
       "is_ref": true,
       "reject_reason": "CandGate (33<70)"
     },
@@ -31,9 +43,9 @@
       "tp": 8.43,
       "sl": 6.27,
       "status": "OPEN",
-      "return_pct": -12.68,
-      "days": 1,
-      "current": 6.82,
+      "return_pct": -4.99,
+      "days": 2,
+      "current": 7.42,
       "is_ref": true,
       "reject_reason": "CandGate (54<70)"
     },
@@ -1264,18 +1276,6 @@
       "days": 1,
       "exit_price": 11.57,
       "exit_type": "SL"
-    },
-    {
-      "date": "2025-08-14",
-      "symbol": "TOI",
-      "entry": 3.7,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 8.0,
-      "days": 1,
-      "exit_price": 3.99,
-      "exit_type": "TP"
     }
   ]
 }
