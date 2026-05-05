@@ -1,25 +1,39 @@
 {
-  "updated": "2026-05-05T11:10:39+08:00",
+  "updated": "2026-05-06T06:00:47+08:00",
   "summary": {
     "total": 100,
     "wins": 43,
-    "losses": 19,
+    "losses": 18,
     "be": 3,
     "open": 3,
-    "win_rate": 69.4,
-    "avg_return": 4.37
+    "win_rate": 70.5,
+    "avg_return": 4.7
   },
   "tracks": [
     {
-      "date": "2026-05-04",
-      "symbol": "ICHR",
-      "entry": 69.79,
-      "tp": 75.37,
-      "sl": 63.72,
+      "date": "2026-05-05",
+      "symbol": "ALTO",
+      "entry": 6.0,
+      "tp": 6.48,
+      "sl": 5.58,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 69.79,
+      "current": 6.0,
+      "is_ref": true,
+      "reject_reason": "CandGate (56<70)"
+    },
+    {
+      "date": "2026-05-04",
+      "symbol": "ICHR",
+      "entry": 61.09,
+      "tp": 65.98,
+      "sl": 55.02,
+      "status": "WIN",
+      "return_pct": 8.0,
+      "days": 1,
+      "exit_price": 65.98,
+      "exit_type": "TP",
       "is_ref": true,
       "reject_reason": "CandGate (44<70)"
     },
@@ -30,9 +44,9 @@
       "tp": 3.8,
       "sl": 3.04,
       "status": "OPEN",
-      "return_pct": -1.99,
-      "days": 1,
-      "current": 3.45,
+      "return_pct": -8.24,
+      "days": 2,
+      "current": 3.23,
       "is_ref": true,
       "reject_reason": "CandGate (33<70)"
     },
@@ -43,9 +57,9 @@
       "tp": 8.43,
       "sl": 6.27,
       "status": "OPEN",
-      "return_pct": -4.99,
-      "days": 2,
-      "current": 7.42,
+      "return_pct": -13.7,
+      "days": 3,
+      "current": 6.74,
       "is_ref": true,
       "reject_reason": "CandGate (54<70)"
     },
@@ -1264,18 +1278,6 @@
       "days": 2,
       "exit_price": 4.29,
       "exit_type": "TRAIL"
-    },
-    {
-      "date": "2025-08-15",
-      "symbol": "FWDI",
-      "entry": 13.81,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "LOSS",
-      "return_pct": -16.23,
-      "days": 1,
-      "exit_price": 11.57,
-      "exit_type": "SL"
     }
   ]
 }
