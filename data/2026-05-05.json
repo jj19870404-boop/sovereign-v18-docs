@@ -364,12 +364,13 @@
       "L",
       "L",
       "W",
+      "W",
       "W"
     ],
-    "total_trades": 358,
-    "wins": 213,
+    "total_trades": 359,
+    "wins": 214,
     "losses": 145,
-    "win_rate": 59.5
+    "win_rate": 59.6
   },
   "open_trades": [
     {
@@ -447,8 +448,8 @@
       "vol_zscore": 2.67,
       "quality_grade": "B",
       "quality_score": 67.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Utilities",
+      "sector_rank": 4,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 77.8
@@ -503,8 +504,8 @@
       "vol_zscore": 1.2,
       "quality_grade": "C",
       "quality_score": 62.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Technology",
+      "sector_rank": 2,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 77.8
@@ -678,7 +679,7 @@
       "spy_rsi": 77.8
     }
   ],
-  "reject_reason": "CandGate (56<70)",
+  "reject_reason": "CandGate (48<70)",
   "deep_analyses": {
     "ALTO": {
       "symbol": "ALTO",
