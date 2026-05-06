@@ -1,15 +1,26 @@
 {
-  "updated": "2026-05-07T06:00:49+08:00",
+  "updated": "2026-05-07T06:26:34+08:00",
   "summary": {
     "total": 100,
     "wins": 43,
-    "losses": 18,
+    "losses": 17,
     "be": 3,
-    "open": 1,
-    "win_rate": 70.5,
-    "avg_return": 4.7
+    "open": 2,
+    "win_rate": 71.7,
+    "avg_return": 4.78
   },
   "tracks": [
+    {
+      "date": "2026-05-06",
+      "symbol": "TROX",
+      "entry": 10.13,
+      "tp": 10.94,
+      "sl": 9.39,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 10.13
+    },
     {
       "date": "2026-05-05",
       "symbol": "ALTO",
@@ -1268,18 +1279,6 @@
       "days": 1,
       "exit_price": 3.59,
       "exit_type": "TP"
-    },
-    {
-      "date": "2025-08-18",
-      "symbol": "ZONE",
-      "entry": 4.31,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "LOSS",
-      "return_pct": -0.5,
-      "days": 2,
-      "exit_price": 4.29,
-      "exit_type": "TRAIL"
     }
   ]
 }
