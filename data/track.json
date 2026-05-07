@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07T06:26:34+08:00",
+  "updated": "2026-05-07T08:16:09+08:00",
   "summary": {
     "total": 100,
     "wins": 43,
@@ -12,14 +12,16 @@
   "tracks": [
     {
       "date": "2026-05-06",
-      "symbol": "TROX",
-      "entry": 10.13,
-      "tp": 10.94,
-      "sl": 9.39,
+      "symbol": "LITE",
+      "entry": 945.22,
+      "tp": 1020.84,
+      "sl": 852.9,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 10.13
+      "current": 945.22,
+      "is_ref": true,
+      "reject_reason": "CandGate (60<70)"
     },
     {
       "date": "2026-05-05",
