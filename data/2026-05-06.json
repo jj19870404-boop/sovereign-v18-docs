@@ -374,26 +374,18 @@
     "losses": 147,
     "win_rate": 59.3
   },
-  "open_trades": [
+  "open_trades": [],
+  "recent_exits": [
     {
       "symbol": "TROX",
-      "signal_date": "2026-05-06",
-      "entry_date": "2026-05-06",
       "entry_price": 10.01,
-      "tp": 10.8108,
-      "sl": 10.01,
-      "days": 1,
-      "highest": 10.119999885559082,
-      "be_set": true,
-      "trail_on": false,
-      "use_tp": true,
-      "trail_mode": "fixed",
-      "atr": 0.53,
-      "trail": 0,
-      "trail_tier": null
+      "exit_price": 10.0,
+      "exit_date": "2026-05-06",
+      "exit_reason": "SL",
+      "return_pct": -0.1,
+      "result": "LOSS"
     }
   ],
-  "recent_exits": [],
   "picks": [],
   "no_picks": true,
   "market_regime": "BULL",
