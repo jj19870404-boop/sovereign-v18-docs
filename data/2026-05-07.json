@@ -375,7 +375,17 @@
     "win_rate": 59.3
   },
   "open_trades": [],
-  "recent_exits": [],
+  "recent_exits": [
+    {
+      "symbol": "ENLT",
+      "entry_price": 89.049,
+      "exit_price": 83.85,
+      "exit_date": "2026-05-07",
+      "exit_reason": "SL",
+      "return_pct": -5.84,
+      "result": "LOSS"
+    }
+  ],
   "picks": [],
   "no_picks": true,
   "market_regime": "BULL",
