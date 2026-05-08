@@ -1,15 +1,28 @@
 {
-  "updated": "2026-05-09T06:01:35+08:00",
+  "updated": "2026-05-09T06:29:03+08:00",
   "summary": {
     "total": 100,
-    "wins": 42,
+    "wins": 41,
     "losses": 17,
     "be": 3,
-    "open": 2,
-    "win_rate": 71.2,
-    "avg_return": 4.71
+    "open": 3,
+    "win_rate": 70.7,
+    "avg_return": 4.49
   },
   "tracks": [
+    {
+      "date": "2026-05-08",
+      "symbol": "KLIC",
+      "entry": 102.76,
+      "tp": 110.98,
+      "sl": 96.55,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 102.76,
+      "is_ref": true,
+      "reject_reason": "CandGate (36<70)"
+    },
     {
       "date": "2026-05-07",
       "symbol": "SSP",
@@ -1271,18 +1284,6 @@
       "days": 6,
       "exit_price": 4.34,
       "exit_type": "SL"
-    },
-    {
-      "date": "2025-08-22",
-      "symbol": "ZONE",
-      "entry": 4.83,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 17.69,
-      "days": 1,
-      "exit_price": 5.69,
-      "exit_type": "TP"
     }
   ]
 }
