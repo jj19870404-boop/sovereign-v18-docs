@@ -573,8 +573,8 @@
       "vol_zscore": 1.41,
       "quality_grade": "C",
       "quality_score": 62.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Communication Services",
+      "sector_rank": 5,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 72.1
@@ -664,7 +664,7 @@
       "spy_rsi": 72.1
     }
   ],
-  "reject_reason": "CandGate (36<70)",
+  "reject_reason": "CandGate (33<70)",
   "deep_analyses": {
     "KLIC": {
       "symbol": "KLIC",
