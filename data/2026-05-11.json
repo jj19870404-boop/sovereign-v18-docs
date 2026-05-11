@@ -366,14 +366,15 @@
       "W",
       "W",
       "L",
+      "L",
       "W",
       "L",
       "W"
     ],
-    "total_trades": 362,
+    "total_trades": 363,
     "wins": 215,
-    "losses": 147,
-    "win_rate": 59.4
+    "losses": 148,
+    "win_rate": 59.2
   },
   "open_trades": [],
   "recent_exits": [],
@@ -489,8 +490,8 @@
       "vol_zscore": 2.01,
       "quality_grade": "D",
       "quality_score": 46.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Industrials",
+      "sector_rank": 6,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 74.5
@@ -664,7 +665,7 @@
       "spy_rsi": 74.5
     }
   ],
-  "reject_reason": "CandGate (53<70)",
+  "reject_reason": "CandGate (50<70)",
   "deep_analyses": {
     "LITE": {
       "symbol": "LITE",
