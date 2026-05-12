@@ -377,7 +377,17 @@
     "win_rate": 59.2
   },
   "open_trades": [],
-  "recent_exits": [],
+  "recent_exits": [
+    {
+      "symbol": "TH",
+      "entry_price": 16.1061,
+      "exit_price": 17.39,
+      "exit_date": "2026-05-11",
+      "exit_reason": "TP",
+      "return_pct": 8.0,
+      "result": "WIN"
+    }
+  ],
   "picks": [],
   "no_picks": true,
   "market_regime": "BULL",
