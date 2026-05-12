@@ -1,25 +1,38 @@
 {
-  "updated": "2026-05-12T11:10:43+08:00",
+  "updated": "2026-05-13T06:00:51+08:00",
   "summary": {
     "total": 100,
     "wins": 41,
-    "losses": 16,
+    "losses": 15,
     "be": 3,
-    "open": 3,
-    "win_rate": 71.9,
-    "avg_return": 4.72
+    "open": 2,
+    "win_rate": 73.2,
+    "avg_return": 4.99
   },
   "tracks": [
     {
-      "date": "2026-05-11",
-      "symbol": "LITE",
-      "entry": 1054.14,
-      "tp": 1138.47,
-      "sl": 947.79,
+      "date": "2026-05-12",
+      "symbol": "BODI",
+      "entry": 12.96,
+      "tp": 14.0,
+      "sl": 10.85,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 1054.14,
+      "current": 12.96,
+      "is_ref": true,
+      "reject_reason": "CandGate (37<70)"
+    },
+    {
+      "date": "2026-05-11",
+      "symbol": "LITE",
+      "entry": 1019.25,
+      "tp": 1100.79,
+      "sl": 912.9,
+      "status": "OPEN",
+      "return_pct": -2.64,
+      "days": 1,
+      "current": 992.37,
       "is_ref": true,
       "reject_reason": "CandGate (50<70)"
     },
@@ -29,10 +42,11 @@
       "entry": 102.76,
       "tp": 110.98,
       "sl": 96.55,
-      "status": "OPEN",
-      "return_pct": 1.48,
-      "days": 1,
-      "current": 104.28,
+      "status": "LOSS",
+      "return_pct": -0.68,
+      "days": 2,
+      "exit_price": 102.06,
+      "exit_type": "SL",
       "is_ref": true,
       "reject_reason": "CandGate (33<70)"
     },
@@ -56,10 +70,11 @@
       "entry": 916.89,
       "tp": 990.24,
       "sl": 824.57,
-      "status": "OPEN",
-      "return_pct": 14.85,
-      "days": 3,
-      "current": 1053.09,
+      "status": "WIN",
+      "return_pct": 11.05,
+      "days": 4,
+      "exit_price": 1018.23,
+      "exit_type": "TRAIL",
       "is_ref": true,
       "reject_reason": "CandGate (60<70)"
     },
@@ -1273,18 +1288,6 @@
       "return_pct": -7.6,
       "days": 1,
       "exit_price": 57.84,
-      "exit_type": "SL"
-    },
-    {
-      "date": "2025-09-03",
-      "symbol": "XTKG",
-      "entry": 13.21,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "LOSS",
-      "return_pct": -10.84,
-      "days": 3,
-      "exit_price": 11.78,
       "exit_type": "SL"
     }
   ]
