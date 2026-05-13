@@ -1,25 +1,38 @@
 {
-  "updated": "2026-05-13T11:10:44+08:00",
+  "updated": "2026-05-14T06:01:25+08:00",
   "summary": {
     "total": 100,
     "wins": 41,
-    "losses": 15,
+    "losses": 14,
     "be": 3,
-    "open": 2,
-    "win_rate": 73.2,
-    "avg_return": 4.99
+    "open": 3,
+    "win_rate": 74.5,
+    "avg_return": 5.2
   },
   "tracks": [
     {
-      "date": "2026-05-12",
-      "symbol": "BODI",
-      "entry": 12.96,
-      "tp": 14.0,
-      "sl": 10.85,
+      "date": "2026-05-13",
+      "symbol": "SILC",
+      "entry": 46.98,
+      "tp": 50.74,
+      "sl": 40.69,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 12.96,
+      "current": 46.98,
+      "is_ref": true,
+      "reject_reason": "CandGate (51<70)"
+    },
+    {
+      "date": "2026-05-12",
+      "symbol": "BODI",
+      "entry": 13.03,
+      "tp": 14.07,
+      "sl": 10.92,
+      "status": "OPEN",
+      "return_pct": -3.22,
+      "days": 1,
+      "current": 12.61,
       "is_ref": true,
       "reject_reason": "CandGate (30<70)"
     },
@@ -30,9 +43,9 @@
       "tp": 1100.79,
       "sl": 912.9,
       "status": "OPEN",
-      "return_pct": -2.64,
-      "days": 1,
-      "current": 992.37,
+      "return_pct": 1.09,
+      "days": 2,
+      "current": 1030.37,
       "is_ref": true,
       "reject_reason": "CandGate (50<70)"
     },
@@ -1277,18 +1290,6 @@
       "days": 1,
       "exit_price": 6.06,
       "exit_type": "TP"
-    },
-    {
-      "date": "2025-09-08",
-      "symbol": "CELC",
-      "entry": 62.59,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "LOSS",
-      "return_pct": -7.6,
-      "days": 1,
-      "exit_price": 57.84,
-      "exit_type": "SL"
     }
   ]
 }
