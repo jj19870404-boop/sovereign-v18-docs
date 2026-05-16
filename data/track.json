@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-16T11:10:44+08:00",
+  "updated": "2026-05-17T06:00:54+08:00",
   "summary": {
     "total": 100,
     "wins": 39,
@@ -13,13 +13,13 @@
     {
       "date": "2026-05-15",
       "symbol": "LITE",
-      "entry": 971.67,
-      "tp": 1049.4,
-      "sl": 855.36,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 971.67,
+      "entry": 942.24,
+      "tp": 1017.62,
+      "sl": 825.93,
+      "status": "OPEN",
+      "return_pct": 3.02,
+      "days": 1,
+      "current": 970.7,
       "is_ref": true,
       "reject_reason": "CandGate (24<70)"
     },
@@ -235,13 +235,13 @@
     {
       "date": "2026-04-23",
       "symbol": "FIX",
-      "entry": 1775.91,
-      "tp": 1917.98,
-      "sl": 1691.28,
+      "entry": 1775.22,
+      "tp": 1917.24,
+      "sl": 1690.59,
       "status": "LOSS",
       "return_pct": -4.77,
       "days": 1,
-      "exit_price": 1691.28,
+      "exit_price": 1690.59,
       "exit_type": "SL",
       "is_ref": true,
       "reject_reason": "CandGate (32<70)"
