@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-20T06:28:55+08:00",
+  "updated": "2026-05-20T11:10:45+08:00",
   "summary": {
     "total": 100,
     "wins": 37,
@@ -12,16 +12,16 @@
   "tracks": [
     {
       "date": "2026-05-19",
-      "symbol": "BWET",
-      "entry": 190.83,
-      "tp": 206.1,
-      "sl": 168.81,
+      "symbol": "BORR",
+      "entry": 6.17,
+      "tp": 6.66,
+      "sl": 5.75,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 190.83,
+      "current": 6.17,
       "is_ref": true,
-      "reject_reason": "CandGate (17<70)"
+      "reject_reason": "CandGate (15<70)"
     },
     {
       "date": "2026-05-18",
