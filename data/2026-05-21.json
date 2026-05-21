@@ -3,7 +3,7 @@
   "v28": {
     "mode": "NoTP",
     "label": "NoTP",
-    "rolling_wr": 40.0
+    "rolling_wr": 35.0
   },
   "performance": {
     "trade_history": [
@@ -376,12 +376,14 @@
       "L",
       "W",
       "W",
+      "L",
+      "L",
       "L"
     ],
-    "total_trades": 370,
+    "total_trades": 372,
     "wins": 218,
-    "losses": 152,
-    "win_rate": 58.9
+    "losses": 154,
+    "win_rate": 58.6
   },
   "open_trades": [],
   "recent_exits": [],
@@ -413,8 +415,8 @@
       "vol_zscore": 2.79,
       "quality_grade": "B",
       "quality_score": 76.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Financial Services",
+      "sector_rank": 7,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 72.3
@@ -469,8 +471,8 @@
       "vol_zscore": 1.55,
       "quality_grade": "B",
       "quality_score": 72.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Communication Services",
+      "sector_rank": 5,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 72.3
@@ -672,7 +674,7 @@
       "spy_rsi": 72.3
     }
   ],
-  "reject_reason": "CandGate (21<70)",
+  "reject_reason": "CandGate (16<70)",
   "deep_analyses": {
     "ASST": {
       "symbol": "ASST",
