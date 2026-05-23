@@ -499,8 +499,8 @@
       "vol_zscore": 2.17,
       "quality_grade": "C",
       "quality_score": 59.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Technology",
+      "sector_rank": 1,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 70.6
@@ -674,7 +674,7 @@
       "spy_rsi": 70.6
     }
   ],
-  "reject_reason": "CandGate (30<70)",
+  "reject_reason": "CandGate (28<70)",
   "deep_analyses": {
     "ATEX": {
       "symbol": "ATEX",
