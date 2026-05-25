@@ -2,6 +2,24 @@
   "date": "2026-05-25",
   "posts": [
     {
+      "time": "11:00",
+      "timestamp": "2026-05-25T11:00:10.580354",
+      "items": [
+        {
+          "headline": "J.M. Smucker面臨預期下調，摩根大通削減目標價。由於J.M. Smucker未來獲利預期下調，摩根大通因此調降其目標價，反映對其盈利能力的擔憂。",
+          "impact": "消費必需品公司的獲利前景若不佳，可能影響股價，建議仔細審視其基本面與競爭優勢。"
+        },
+        {
+          "headline": "Mid-America Apartment Communities租金成長預期降低。豐業銀行指出，Mid-America Apartment Communities面臨較低的租金成長預期，可能影響其未來收益。",
+          "impact": "房地產投資信託（REITs）的租金成長放緩，可能衝擊其股息發放能力，建議評估其估值。"
+        },
+        {
+          "headline": "Roth Capital上調Target目標價，但警告Q1表現恐為「金髮女孩」。Roth Capital雖調升塔吉特百貨目標價，但也提醒其第一季表現可能過於理想，未來成長面臨挑戰。",
+          "impact": "零售業面臨宏觀經濟不確定性，Q1強勁表現不保證持續，建議留意後續財報表現。"
+        }
+      ]
+    },
+    {
       "time": "10:00",
       "timestamp": "2026-05-25T10:00:12.281061",
       "items": [
@@ -200,5 +218,5 @@
       ]
     }
   ],
-  "total": 11
+  "total": 12
 }
