@@ -1,15 +1,28 @@
 {
-  "updated": "2026-05-27T06:00:54+08:00",
+  "updated": "2026-05-27T06:27:36+08:00",
   "summary": {
     "total": 100,
-    "wins": 34,
+    "wins": 33,
     "losses": 14,
     "be": 3,
-    "open": 3,
-    "win_rate": 70.8,
-    "avg_return": 3.74
+    "open": 4,
+    "win_rate": 70.2,
+    "avg_return": 3.59
   },
   "tracks": [
+    {
+      "date": "2026-05-26",
+      "symbol": "ASST",
+      "entry": 18.12,
+      "tp": 19.57,
+      "sl": 16.11,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 18.12,
+      "is_ref": true,
+      "reject_reason": "CandGate (53<70)"
+    },
     {
       "date": "2026-05-22",
       "symbol": "ATEX",
@@ -1292,18 +1305,6 @@
       "days": 4,
       "exit_price": 56.73,
       "exit_type": "TRAIL"
-    },
-    {
-      "date": "2025-10-06",
-      "symbol": "WBX",
-      "entry": 5.85,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 11.02,
-      "days": 1,
-      "exit_price": 6.49,
-      "exit_type": "TP"
     }
   ]
 }
