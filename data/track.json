@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-26T11:10:48+08:00",
+  "updated": "2026-05-27T06:00:54+08:00",
   "summary": {
     "total": 100,
     "wins": 34,
@@ -13,13 +13,13 @@
     {
       "date": "2026-05-22",
       "symbol": "ATEX",
-      "entry": 60.24,
-      "tp": 65.06,
-      "sl": 55.47,
+      "entry": 64.67,
+      "tp": 69.84,
+      "sl": 59.9,
       "status": "OPEN",
-      "return_pct": 5.53,
+      "return_pct": -1.45,
       "days": 1,
-      "current": 63.57,
+      "current": 63.73,
       "is_ref": true,
       "reject_reason": "CandGate (28<70)"
     },
@@ -30,9 +30,9 @@
       "tp": 20.7,
       "sl": 17.22,
       "status": "OPEN",
-      "return_pct": -5.01,
-      "days": 1,
-      "current": 18.21,
+      "return_pct": -5.58,
+      "days": 2,
+      "current": 18.1,
       "is_ref": true,
       "reject_reason": "CandGate (16<70)"
     },
@@ -43,9 +43,9 @@
       "tp": 51.83,
       "sl": 41.43,
       "status": "OPEN",
-      "return_pct": 3.17,
-      "days": 2,
-      "current": 49.51,
+      "return_pct": 12.09,
+      "days": 3,
+      "current": 53.79,
       "is_ref": true,
       "reject_reason": "CandGate (31<70)"
     },
