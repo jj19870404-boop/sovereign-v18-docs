@@ -667,14 +667,14 @@
       "vol_zscore": 2.61,
       "quality_grade": "C",
       "quality_score": 57.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Technology",
+      "sector_rank": 1,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 70.6
     }
   ],
-  "reject_reason": "CandGate (53<70)",
+  "reject_reason": "CandGate (52<70)",
   "deep_analyses": {
     "ASST": {
       "symbol": "ASST",
