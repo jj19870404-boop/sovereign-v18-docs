@@ -1,25 +1,38 @@
 {
-  "updated": "2026-05-28T11:10:48+08:00",
+  "updated": "2026-05-29T06:00:57+08:00",
   "summary": {
     "total": 100,
-    "wins": 32,
+    "wins": 31,
     "losses": 14,
     "be": 3,
-    "open": 3,
-    "win_rate": 69.6,
-    "avg_return": 3.62
+    "open": 4,
+    "win_rate": 68.9,
+    "avg_return": 3.35
   },
   "tracks": [
     {
-      "date": "2026-05-27",
-      "symbol": "PL",
-      "entry": 50.53,
-      "tp": 54.57,
-      "sl": 45.07,
+      "date": "2026-05-28",
+      "symbol": "CPIX",
+      "entry": 5.99,
+      "tp": 6.46,
+      "sl": 5.41,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 50.53,
+      "current": 5.99,
+      "is_ref": true,
+      "reject_reason": "CandGate (31<70)"
+    },
+    {
+      "date": "2026-05-27",
+      "symbol": "PL",
+      "entry": 50.2,
+      "tp": 54.22,
+      "sl": 44.74,
+      "status": "OPEN",
+      "return_pct": 2.39,
+      "days": 1,
+      "current": 51.4,
       "is_ref": true,
       "reject_reason": "CandGate (37<70)"
     },
@@ -30,9 +43,9 @@
       "tp": 19.19,
       "sl": 15.76,
       "status": "OPEN",
-      "return_pct": 0.28,
-      "days": 1,
-      "current": 17.82,
+      "return_pct": 0.17,
+      "days": 2,
+      "current": 17.8,
       "is_ref": true,
       "reject_reason": "CandGate (52<70)"
     },
@@ -43,9 +56,9 @@
       "tp": 69.84,
       "sl": 59.9,
       "status": "OPEN",
-      "return_pct": -1.48,
-      "days": 2,
-      "current": 63.71,
+      "return_pct": 0.57,
+      "days": 3,
+      "current": 65.04,
       "is_ref": true,
       "reject_reason": "CandGate (28<70)"
     },
@@ -1296,18 +1309,6 @@
       "days": 1,
       "exit_price": 12.55,
       "exit_type": "SL"
-    },
-    {
-      "date": "2025-10-14",
-      "symbol": "TGEN",
-      "entry": 10.21,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 16.55,
-      "days": 1,
-      "exit_price": 11.9,
-      "exit_type": "TP"
     }
   ]
 }
