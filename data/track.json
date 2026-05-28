@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-28T08:15:30+08:00",
+  "updated": "2026-05-28T11:10:48+08:00",
   "summary": {
     "total": 100,
     "wins": 32,
@@ -784,13 +784,13 @@
     {
       "date": "2026-03-05",
       "symbol": "ECO",
-      "entry": 47.15,
-      "tp": 50.92,
-      "sl": 43.65,
+      "entry": 45.39,
+      "tp": 49.02,
+      "sl": 41.89,
       "status": "WIN",
-      "return_pct": 3.58,
+      "return_pct": 3.57,
       "days": 4,
-      "exit_price": 48.84,
+      "exit_price": 47.01,
       "exit_type": "TRAIL"
     },
     {
