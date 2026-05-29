@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-29T06:16:44+08:00",
+  "updated": "2026-05-29T08:16:15+08:00",
   "summary": {
     "total": 100,
     "wins": 31,
@@ -12,16 +12,16 @@
   "tracks": [
     {
       "date": "2026-05-28",
-      "symbol": "CPIX",
-      "entry": 5.99,
-      "tp": 6.46,
-      "sl": 5.41,
+      "symbol": "STRL",
+      "entry": 843.8,
+      "tp": 911.31,
+      "sl": 735.47,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 5.99,
+      "current": 843.8,
       "is_ref": true,
-      "reject_reason": "CandGate (31<70)"
+      "reject_reason": "CandGate (27<70)"
     },
     {
       "date": "2026-05-27",
