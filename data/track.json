@@ -1,15 +1,28 @@
 {
-  "updated": "2026-05-30T06:01:09+08:00",
+  "updated": "2026-05-30T06:27:14+08:00",
   "summary": {
     "total": 100,
     "wins": 31,
-    "losses": 14,
+    "losses": 13,
     "be": 3,
-    "open": 3,
-    "win_rate": 68.9,
-    "avg_return": 3.35
+    "open": 4,
+    "win_rate": 70.5,
+    "avg_return": 3.86
   },
   "tracks": [
+    {
+      "date": "2026-05-29",
+      "symbol": "UCTT",
+      "entry": 85.66,
+      "tp": 92.51,
+      "sl": 77.2,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 85.66,
+      "is_ref": true,
+      "reject_reason": "CandGate (52<70)"
+    },
     {
       "date": "2026-05-28",
       "symbol": "STRL",
@@ -1298,18 +1311,6 @@
       "days": 7,
       "exit_price": 94.25,
       "exit_type": "TIME"
-    },
-    {
-      "date": "2025-10-15",
-      "symbol": "AMPX",
-      "entry": 15.78,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "LOSS",
-      "return_pct": -20.45,
-      "days": 1,
-      "exit_price": 12.55,
-      "exit_type": "SL"
     }
   ]
 }
