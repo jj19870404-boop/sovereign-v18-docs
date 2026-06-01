@@ -3,7 +3,7 @@
   "v28": {
     "mode": "NoTP",
     "label": "NoTP",
-    "rolling_wr": 40.0
+    "rolling_wr": 35.0
   },
   "performance": {
     "trade_history": [
@@ -381,12 +381,14 @@
       "L",
       "W",
       "L",
+      "L",
+      "L",
       "L"
     ],
-    "total_trades": 375,
+    "total_trades": 377,
     "wins": 219,
-    "losses": 156,
-    "win_rate": 58.4
+    "losses": 158,
+    "win_rate": 58.1
   },
   "open_trades": [],
   "recent_exits": [],
@@ -418,8 +420,8 @@
       "vol_zscore": 2.63,
       "quality_grade": "C",
       "quality_score": 54.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Consumer Cyclical",
+      "sector_rank": 3,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 71.3
@@ -446,8 +448,8 @@
       "vol_zscore": 2.53,
       "quality_grade": "F",
       "quality_score": 30.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Financial Services",
+      "sector_rank": 6,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 71.3
@@ -474,8 +476,8 @@
       "vol_zscore": 1.24,
       "quality_grade": "D",
       "quality_score": 45.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Technology",
+      "sector_rank": 1,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 71.3
