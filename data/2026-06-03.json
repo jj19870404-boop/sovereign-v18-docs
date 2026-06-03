@@ -3,7 +3,7 @@
   "v28": {
     "mode": "NoTP",
     "label": "NoTP",
-    "rolling_wr": 35.0
+    "rolling_wr": 40.0
   },
   "performance": {
     "trade_history": [
@@ -383,12 +383,14 @@
       "L",
       "L",
       "L",
-      "L"
+      "L",
+      "W",
+      "W"
     ],
-    "total_trades": 377,
-    "wins": 219,
+    "total_trades": 379,
+    "wins": 221,
     "losses": 158,
-    "win_rate": 58.1
+    "win_rate": 58.3
   },
   "open_trades": [],
   "recent_exits": [],
@@ -679,7 +681,7 @@
       "spy_rsi": 64.8
     }
   ],
-  "reject_reason": "CandGate (18<70)",
+  "reject_reason": "CandGate (17<70)",
   "deep_analyses": {
     "TLYS": {
       "symbol": "TLYS",
