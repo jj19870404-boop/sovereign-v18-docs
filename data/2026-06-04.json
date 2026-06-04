@@ -3,7 +3,7 @@
   "v28": {
     "mode": "NoTP",
     "label": "NoTP",
-    "rolling_wr": 40.0
+    "rolling_wr": 45.0
   },
   "performance": {
     "trade_history": [
@@ -385,12 +385,13 @@
       "L",
       "L",
       "W",
+      "W",
       "W"
     ],
-    "total_trades": 379,
-    "wins": 221,
+    "total_trades": 380,
+    "wins": 222,
     "losses": 158,
-    "win_rate": 58.3
+    "win_rate": 58.4
   },
   "open_trades": [],
   "recent_exits": [],
@@ -562,8 +563,8 @@
       "vol_zscore": 3.55,
       "quality_grade": "D",
       "quality_score": 48.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Healthcare",
+      "sector_rank": 8,
       "market_regime": "BULL",
       "death_cross": false,
       "spy_rsi": 65.5
@@ -681,7 +682,7 @@
       "spy_rsi": 65.5
     }
   ],
-  "reject_reason": "CandGate (22<70)",
+  "reject_reason": "CandGate (20<70)",
   "deep_analyses": {
     "PL": {
       "symbol": "PL",
