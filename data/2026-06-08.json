@@ -453,8 +453,8 @@
       "vol_zscore": 2.11,
       "quality_grade": "D",
       "quality_score": 41.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Industrials",
+      "sector_rank": 3,
       "market_regime": "NEUTRAL",
       "death_cross": false,
       "spy_rsi": 43.6
@@ -509,8 +509,8 @@
       "vol_zscore": 2.87,
       "quality_grade": "C",
       "quality_score": 50.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Consumer Cyclical",
+      "sector_rank": 6,
       "market_regime": "NEUTRAL",
       "death_cross": false,
       "spy_rsi": 43.6
@@ -537,8 +537,8 @@
       "vol_zscore": 1.13,
       "quality_grade": "C",
       "quality_score": 55.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Healthcare",
+      "sector_rank": 5,
       "market_regime": "NEUTRAL",
       "death_cross": false,
       "spy_rsi": 43.6
@@ -593,8 +593,8 @@
       "vol_zscore": 2.08,
       "quality_grade": "B",
       "quality_score": 65.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Industrials",
+      "sector_rank": 3,
       "market_regime": "NEUTRAL",
       "death_cross": false,
       "spy_rsi": 43.6
@@ -621,8 +621,8 @@
       "vol_zscore": 1.8,
       "quality_grade": "C",
       "quality_score": 55.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Consumer Cyclical",
+      "sector_rank": 6,
       "market_regime": "NEUTRAL",
       "death_cross": false,
       "spy_rsi": 43.6
@@ -684,7 +684,7 @@
       "spy_rsi": 43.6
     }
   ],
-  "reject_reason": "CandGate (16<70)",
+  "reject_reason": "CandGate (15<70)",
   "deep_analyses": {
     "NINE": {
       "symbol": "NINE",
