@@ -3,7 +3,7 @@
   "v28": {
     "mode": "NoTP",
     "label": "NoTP",
-    "rolling_wr": 40.0
+    "rolling_wr": 35.0
   },
   "performance": {
     "trade_history": [
@@ -388,12 +388,13 @@
       "W",
       "L",
       "W",
+      "L",
       "L"
     ],
-    "total_trades": 382,
+    "total_trades": 383,
     "wins": 222,
-    "losses": 160,
-    "win_rate": 58.1
+    "losses": 161,
+    "win_rate": 58.0
   },
   "open_trades": [],
   "recent_exits": [],
@@ -425,8 +426,8 @@
       "vol_zscore": 2.31,
       "quality_grade": "C",
       "quality_score": 51.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Consumer Cyclical",
+      "sector_rank": 6,
       "market_regime": "NEUTRAL",
       "death_cross": false,
       "spy_rsi": 48.3
@@ -481,8 +482,8 @@
       "vol_zscore": 2.71,
       "quality_grade": "F",
       "quality_score": 26.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Technology",
+      "sector_rank": 1,
       "market_regime": "NEUTRAL",
       "death_cross": false,
       "spy_rsi": 48.3
