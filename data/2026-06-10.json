@@ -389,12 +389,13 @@
       "L",
       "W",
       "L",
-      "L"
+      "L",
+      "W"
     ],
-    "total_trades": 383,
-    "wins": 222,
+    "total_trades": 384,
+    "wins": 223,
     "losses": 161,
-    "win_rate": 58.0
+    "win_rate": 58.1
   },
   "open_trades": [],
   "recent_exits": [],
@@ -685,7 +686,7 @@
       "spy_rsi": 44.0
     }
   ],
-  "reject_reason": "CandGate (13<70)",
+  "reject_reason": "CandGate (11<70)",
   "deep_analyses": {
     "BFLY": {
       "symbol": "BFLY",
