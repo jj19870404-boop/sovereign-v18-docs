@@ -1,25 +1,38 @@
 {
-  "updated": "2026-06-11T11:10:51+08:00",
+  "updated": "2026-06-12T06:01:02+08:00",
   "summary": {
     "total": 100,
-    "wins": 27,
+    "wins": 26,
     "losses": 9,
     "be": 2,
-    "open": 3,
-    "win_rate": 75.0,
-    "avg_return": 4.77
+    "open": 4,
+    "win_rate": 74.3,
+    "avg_return": 4.68
   },
   "tracks": [
     {
-      "date": "2026-06-10",
-      "symbol": "BFLY",
-      "entry": 5.4,
-      "tp": 5.83,
-      "sl": 4.86,
+      "date": "2026-06-11",
+      "symbol": "NDLS",
+      "entry": 14.25,
+      "tp": 15.39,
+      "sl": 12.7,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 5.4,
+      "current": 14.25,
+      "is_ref": true,
+      "reject_reason": "CandGate (34<70)"
+    },
+    {
+      "date": "2026-06-10",
+      "symbol": "BFLY",
+      "entry": 5.56,
+      "tp": 6.0,
+      "sl": 5.02,
+      "status": "OPEN",
+      "return_pct": 2.16,
+      "days": 1,
+      "current": 5.68,
       "is_ref": true,
       "reject_reason": "CandGate (11<70)"
     },
@@ -44,9 +57,9 @@
       "tp": 10.97,
       "sl": 9.24,
       "status": "OPEN",
-      "return_pct": -1.87,
-      "days": 2,
-      "current": 9.97,
+      "return_pct": -1.57,
+      "days": 3,
+      "current": 10.0,
       "is_ref": true,
       "reject_reason": "CandGate (15<70)"
     },
@@ -1315,18 +1328,6 @@
       "return_pct": 26.74,
       "days": 1,
       "exit_price": 40.0,
-      "exit_type": "TP"
-    },
-    {
-      "date": "2025-12-04",
-      "symbol": "ABVX",
-      "entry": 109.86,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 8.0,
-      "days": 1,
-      "exit_price": 118.65,
       "exit_type": "TP"
     }
   ]
