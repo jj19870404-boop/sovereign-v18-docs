@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13T11:10:51+08:00",
+  "updated": "2026-06-14T06:01:07+08:00",
   "summary": {
     "total": 100,
     "wins": 25,
@@ -13,13 +13,13 @@
     {
       "date": "2026-06-12",
       "symbol": "PSIG",
-      "entry": 10.31,
-      "tp": 11.14,
-      "sl": 9.69,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 10.31,
+      "entry": 10.06,
+      "tp": 10.86,
+      "sl": 9.44,
+      "status": "OPEN",
+      "return_pct": 2.39,
+      "days": 1,
+      "current": 10.3,
       "is_ref": true,
       "reject_reason": "CandGate (18<70)"
     },
