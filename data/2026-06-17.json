@@ -456,8 +456,8 @@
       "vol_zscore": 2.75,
       "quality_grade": "C",
       "quality_score": 54.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Consumer Cyclical",
+      "sector_rank": 6,
       "market_regime": "NEUTRAL",
       "death_cross": false,
       "spy_rsi": 42.5
@@ -687,7 +687,7 @@
       "spy_rsi": 42.5
     }
   ],
-  "reject_reason": "CandGate (27<70)",
+  "reject_reason": "CandGate (26<70)",
   "deep_analyses": {
     "COOK": {
       "symbol": "COOK",
