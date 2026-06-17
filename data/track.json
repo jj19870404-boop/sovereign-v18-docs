@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-17T06:25:04+08:00",
+  "updated": "2026-06-17T08:17:23+08:00",
   "summary": {
     "total": 100,
     "wins": 23,
@@ -12,16 +12,16 @@
   "tracks": [
     {
       "date": "2026-06-16",
-      "symbol": "ADV",
-      "entry": 37.77,
-      "tp": 40.79,
-      "sl": 33.46,
+      "symbol": "MODD",
+      "entry": 4.91,
+      "tp": 5.31,
+      "sl": 4.06,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 37.77,
+      "current": 4.91,
       "is_ref": true,
-      "reject_reason": "CandGate (26<70)"
+      "reject_reason": "CandGate (25<70)"
     },
     {
       "date": "2026-06-15",
