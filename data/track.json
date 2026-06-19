@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T08:16:16+08:00",
+  "updated": "2026-06-19T11:11:00+08:00",
   "summary": {
     "total": 100,
     "wins": 23,
@@ -400,13 +400,13 @@
     {
       "date": "2026-05-08",
       "symbol": "KLIC",
-      "entry": 102.76,
-      "tp": 110.98,
-      "sl": 96.55,
+      "entry": 102.58,
+      "tp": 110.79,
+      "sl": 96.37,
       "status": "LOSS",
       "return_pct": -0.68,
       "days": 2,
-      "exit_price": 102.06,
+      "exit_price": 101.88,
       "exit_type": "SL",
       "is_ref": true,
       "reject_reason": "CandGate (33<70)"
