@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-19T11:11:00+08:00",
+  "updated": "2026-06-20T06:01:14+08:00",
   "summary": {
     "total": 100,
     "wins": 23,
@@ -13,13 +13,13 @@
     {
       "date": "2026-06-18",
       "symbol": "SYRE",
-      "entry": 88.43,
-      "tp": 95.5,
-      "sl": 81.77,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 88.43
+      "entry": 89.64,
+      "tp": 96.81,
+      "sl": 82.98,
+      "status": "OPEN",
+      "return_pct": -1.45,
+      "days": 1,
+      "current": 88.34
     },
     {
       "date": "2026-06-17",
