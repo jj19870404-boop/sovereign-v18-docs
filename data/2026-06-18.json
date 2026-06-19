@@ -329,6 +329,8 @@
       "W",
       "W",
       "W",
+      "W",
+      "W",
       "L",
       "L",
       "L",
@@ -393,16 +395,16 @@
       "W",
       "L"
     ],
-    "total_trades": 385,
-    "wins": 222,
+    "total_trades": 387,
+    "wins": 224,
     "losses": 163,
-    "win_rate": 57.7
+    "win_rate": 57.9
   },
   "open_trades": [],
   "recent_exits": [],
   "picks": [
     {
-      "rank": 6,
+      "rank": 4,
       "symbol": "SYRE",
       "close": 88.34,
       "entry_price": 88.43,
@@ -430,7 +432,7 @@
       "spy_rsi": 44.9
     },
     {
-      "rank": 10,
+      "rank": 7,
       "symbol": "MTRN",
       "close": 274.98,
       "entry_price": 275.25,
