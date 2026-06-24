@@ -1,25 +1,38 @@
 {
-  "updated": "2026-06-24T11:10:56+08:00",
+  "updated": "2026-06-25T06:01:09+08:00",
   "summary": {
     "total": 100,
-    "wins": 23,
+    "wins": 22,
     "losses": 7,
     "be": 1,
-    "open": 3,
-    "win_rate": 76.7,
-    "avg_return": 4.48
+    "open": 4,
+    "win_rate": 75.9,
+    "avg_return": 4.36
   },
   "tracks": [
+    {
+      "date": "2026-06-24",
+      "symbol": "COOK",
+      "entry": 78.57,
+      "tp": 84.85,
+      "sl": 68.06,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 78.57,
+      "is_ref": true,
+      "reject_reason": "CandGate (67<70)"
+    },
     {
       "date": "2026-06-23",
       "symbol": "PENG",
       "entry": 67.03,
       "tp": 72.39,
       "sl": 56.21,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 67.03,
+      "status": "OPEN",
+      "return_pct": -3.45,
+      "days": 1,
+      "current": 64.72,
       "is_ref": true,
       "reject_reason": "CandGate (26<70)"
     },
@@ -30,9 +43,9 @@
       "tp": 19.0,
       "sl": 14.89,
       "status": "OPEN",
-      "return_pct": 3.18,
-      "days": 1,
-      "current": 18.15,
+      "return_pct": 7.05,
+      "days": 2,
+      "current": 18.83,
       "is_ref": true,
       "reject_reason": "CandGate (41<70)"
     },
@@ -1329,18 +1342,6 @@
       "return_pct": 26.61,
       "days": 1,
       "exit_price": 20.95,
-      "exit_type": "TP"
-    },
-    {
-      "date": "2026-01-02",
-      "symbol": "AXTI",
-      "entry": 17.09,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 8.0,
-      "days": 1,
-      "exit_price": 18.45,
       "exit_type": "TP"
     }
   ]
