@@ -402,7 +402,25 @@
     "losses": 163,
     "win_rate": 58.1
   },
-  "open_trades": [],
+  "open_trades": [
+    {
+      "symbol": "NWPX",
+      "signal_date": "2026-06-24",
+      "entry_date": "2026-06-24",
+      "entry_price": 140.3202,
+      "tp": 151.5458,
+      "sl": 140.3202,
+      "days": 1,
+      "highest": 143.52999877929688,
+      "be_set": true,
+      "trail_on": false,
+      "use_tp": true,
+      "trail_mode": "fixed",
+      "atr": 5.71,
+      "trail": 0,
+      "trail_tier": null
+    }
+  ],
   "recent_exits": [],
   "picks": [],
   "no_picks": true,
