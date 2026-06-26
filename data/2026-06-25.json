@@ -3,7 +3,7 @@
   "v28": {
     "mode": "NoTP",
     "label": "NoTP",
-    "rolling_wr": 45.0
+    "rolling_wr": 50.0
   },
   "performance": {
     "trade_history": [
@@ -396,11 +396,13 @@
       "W",
       "L",
       "W",
+      "W",
+      "L",
       "W"
     ],
-    "total_trades": 390,
-    "wins": 227,
-    "losses": 163,
+    "total_trades": 392,
+    "wins": 228,
+    "losses": 164,
     "win_rate": 58.2
   },
   "open_trades": [],
