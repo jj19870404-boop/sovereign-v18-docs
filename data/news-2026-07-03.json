@@ -2,6 +2,24 @@
   "date": "2026-07-03",
   "posts": [
     {
+      "time": "14:00",
+      "timestamp": "2026-07-03T14:00:10.861725",
+      "items": [
+        {
+          "headline": "JMP Securities重申對微軟的「看漲」評級，肯定其推出Copilot Cowork後的增長前景。AI整合業務被視為未來營收關鍵驅動因素。",
+          "impact": "微軟作為AI領域領頭羊，其業務發展動態持續受關注，建議逢低配置，長期持有優質科技龍頭股。"
+        },
+        {
+          "headline": "UBS重申對博通的「買入」評級，強調其在AI ASIC設計需求強勁，並受惠於OpenAI與Anthropic等AI公司成長。AI晶片需求是關鍵。",
+          "impact": "博通作為AI基礎設施供應商，前景持續看好，建議關注其在數據中心及AI晶片客製化領域的進展。"
+        },
+        {
+          "headline": "Wolfe Research肯定Palantir Technologies在企業AI領域的領先地位，儘管承認其估值偏高。AI數據分析服務需求強勁。",
+          "impact": "Palantir在AI數據分析市場具獨特優勢，但高估值帶來風險，建議分批少量佈局，並密切關注其營收增長。"
+        }
+      ]
+    },
+    {
       "time": "13:00",
       "timestamp": "2026-07-03T13:00:14.640419",
       "items": [
@@ -254,5 +272,5 @@
       ]
     }
   ],
-  "total": 14
+  "total": 15
 }
