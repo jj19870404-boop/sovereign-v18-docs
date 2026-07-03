@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-03T11:10:58+08:00",
+  "updated": "2026-07-04T06:01:16+08:00",
   "summary": {
     "total": 100,
     "wins": 18,
@@ -13,13 +13,13 @@
     {
       "date": "2026-07-02",
       "symbol": "SIF",
-      "entry": 24.67,
-      "tp": 26.65,
-      "sl": 22.37,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 24.67,
+      "entry": 25.65,
+      "tp": 27.7,
+      "sl": 23.35,
+      "status": "OPEN",
+      "return_pct": -3.9,
+      "days": 1,
+      "current": 24.65,
       "is_ref": true,
       "reject_reason": "CandGate (19<70)"
     },
