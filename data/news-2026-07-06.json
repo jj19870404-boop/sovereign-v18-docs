@@ -2,6 +2,24 @@
   "date": "2026-07-06",
   "posts": [
     {
+      "time": "19:00",
+      "timestamp": "2026-07-06T19:00:10.964219",
+      "items": [
+        {
+          "headline": "Booz Allen Hamilton宣布以7.2億美元收購Ultra I&C Mission Solutions業務，強化其在國防與情報領域的技術能力。此舉有助於拓展其政府服務市場。",
+          "impact": "對BAH股價短期利好，反映國防IT服務領域的整合趨勢，可關注此類專精公司的成長。"
+        },
+        {
+          "headline": "Firefly Aerospace宣布戰略收購Space-ng，旨在擴展其在太空技術與服務領域的能力，強化端到端太空任務解決方案。",
+          "impact": "顯示太空產業加速整合，對Firefly長期發展具正面意義，可關注相關產業鏈的併購機會。"
+        },
+        {
+          "headline": "儲能技術公司Eos Energy Enterprise在新設施啟動商業化生產，標誌著其產能擴張並進軍大規模儲能市場。",
+          "impact": "對EOSE營收與市場份額具積極影響，反映綠色能源儲存領域的增長潛力，可關注相關供應鏈。"
+        }
+      ]
+    },
+    {
       "time": "18:00",
       "timestamp": "2026-07-06T18:00:15.262931",
       "items": [
@@ -344,5 +362,5 @@
       ]
     }
   ],
-  "total": 19
+  "total": 20
 }
