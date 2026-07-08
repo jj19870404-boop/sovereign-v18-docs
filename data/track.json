@@ -1,25 +1,38 @@
 {
-  "updated": "2026-07-08T11:11:00+08:00",
+  "updated": "2026-07-09T06:01:14+08:00",
   "summary": {
     "total": 100,
-    "wins": 17,
+    "wins": 16,
     "losses": 5,
     "be": 1,
     "open": 4,
-    "win_rate": 77.3,
-    "avg_return": 3.35
+    "win_rate": 76.2,
+    "avg_return": 3.42
   },
   "tracks": [
     {
-      "date": "2026-07-07",
-      "symbol": "XLO",
-      "entry": 9.32,
-      "tp": 10.06,
-      "sl": 8.66,
+      "date": "2026-07-08",
+      "symbol": "ADV",
+      "entry": 39.45,
+      "tp": 42.61,
+      "sl": 33.84,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 9.32,
+      "current": 39.45,
+      "is_ref": true,
+      "reject_reason": "CandGate (22<70)"
+    },
+    {
+      "date": "2026-07-07",
+      "symbol": "XLO",
+      "entry": 9.15,
+      "tp": 9.88,
+      "sl": 8.49,
+      "status": "OPEN",
+      "return_pct": 1.42,
+      "days": 1,
+      "current": 9.28,
       "is_ref": true,
       "reject_reason": "CandGate (22<70)"
     },
@@ -57,10 +70,11 @@
       "entry": 25.65,
       "tp": 27.7,
       "sl": 23.35,
-      "status": "OPEN",
-      "return_pct": 0.23,
-      "days": 3,
-      "current": 25.71,
+      "status": "LOSS",
+      "return_pct": -7.74,
+      "days": 4,
+      "exit_price": 23.66,
+      "exit_type": "SL",
       "is_ref": true,
       "reject_reason": "CandGate (29<70)"
     },
@@ -85,9 +99,9 @@
       "tp": 123.24,
       "sl": 99.07,
       "status": "OPEN",
-      "return_pct": -5.82,
-      "days": 5,
-      "current": 107.47,
+      "return_pct": -2.03,
+      "days": 6,
+      "current": 111.79,
       "is_ref": true,
       "reject_reason": "CandGate (37<70)"
     },
@@ -1345,18 +1359,6 @@
       "days": 2,
       "exit_price": 317.04,
       "exit_type": "TP"
-    },
-    {
-      "date": "2026-02-04",
-      "symbol": "MU",
-      "entry": 369.99,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 1.83,
-      "days": 2,
-      "exit_price": 376.76,
-      "exit_type": "TRAIL"
     }
   ]
 }
