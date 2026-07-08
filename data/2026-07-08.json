@@ -465,8 +465,8 @@
       "vol_zscore": 3.19,
       "quality_grade": "B",
       "quality_score": 67.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Consumer Cyclical",
+      "sector_rank": 6,
       "market_regime": "NEUTRAL",
       "death_cross": false,
       "spy_rsi": 46.3
@@ -661,8 +661,8 @@
       "vol_zscore": 1.87,
       "quality_grade": "C",
       "quality_score": 63.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Healthcare",
+      "sector_rank": 4,
       "market_regime": "NEUTRAL",
       "death_cross": false,
       "spy_rsi": 46.3
