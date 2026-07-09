@@ -1,25 +1,38 @@
 {
-  "updated": "2026-07-09T11:11:02+08:00",
+  "updated": "2026-07-10T06:01:54+08:00",
   "summary": {
     "total": 100,
-    "wins": 16,
+    "wins": 15,
     "losses": 5,
     "be": 1,
-    "open": 4,
-    "win_rate": 76.2,
-    "avg_return": 3.42
+    "open": 3,
+    "win_rate": 75.0,
+    "avg_return": 3.11
   },
   "tracks": [
     {
-      "date": "2026-07-08",
-      "symbol": "ADV",
-      "entry": 39.45,
-      "tp": 42.61,
-      "sl": 33.84,
+      "date": "2026-07-09",
+      "symbol": "DHX",
+      "entry": 3.96,
+      "tp": 4.28,
+      "sl": 3.58,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 39.45,
+      "current": 3.96,
+      "is_ref": true,
+      "reject_reason": "CandGate (11<70)"
+    },
+    {
+      "date": "2026-07-08",
+      "symbol": "ADV",
+      "entry": 39.98,
+      "tp": 43.18,
+      "sl": 34.37,
+      "status": "OPEN",
+      "return_pct": -1.05,
+      "days": 1,
+      "current": 39.56,
       "is_ref": true,
       "reject_reason": "CandGate (22<70)"
     },
@@ -29,10 +42,11 @@
       "entry": 9.15,
       "tp": 9.88,
       "sl": 8.49,
-      "status": "OPEN",
-      "return_pct": 1.42,
-      "days": 1,
-      "current": 9.28,
+      "status": "BE",
+      "return_pct": 0.0,
+      "days": 2,
+      "exit_price": 9.15,
+      "exit_type": "SL",
       "is_ref": true,
       "reject_reason": "CandGate (22<70)"
     },
@@ -98,10 +112,11 @@
       "entry": 114.11,
       "tp": 123.24,
       "sl": 99.07,
-      "status": "OPEN",
-      "return_pct": -2.03,
-      "days": 6,
-      "current": 111.79,
+      "status": "WIN",
+      "return_pct": 1.37,
+      "days": 7,
+      "exit_price": 115.67,
+      "exit_type": "TIME",
       "is_ref": true,
       "reject_reason": "CandGate (37<70)"
     },
@@ -1347,18 +1362,6 @@
       "return_pct": 0.0,
       "days": 0,
       "current": 16.92
-    },
-    {
-      "date": "2026-02-09",
-      "symbol": "CIEN",
-      "entry": 288.37,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 9.94,
-      "days": 2,
-      "exit_price": 317.04,
-      "exit_type": "TP"
     }
   ]
 }
