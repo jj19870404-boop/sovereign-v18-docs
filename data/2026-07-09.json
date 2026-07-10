@@ -1,9 +1,9 @@
 {
   "date": "2026-07-09",
   "v28": {
-    "mode": "NoTP",
-    "label": "NoTP",
-    "rolling_wr": 50.0
+    "mode": "TP",
+    "label": "TP",
+    "rolling_wr": 55.0
   },
   "performance": {
     "trade_history": [
@@ -399,14 +399,15 @@
       "W",
       "L",
       "W",
+      "W",
       "L",
       "W",
       "L"
     ],
-    "total_trades": 395,
-    "wins": 229,
+    "total_trades": 396,
+    "wins": 230,
     "losses": 166,
-    "win_rate": 58.0
+    "win_rate": 58.1
   },
   "open_trades": [],
   "recent_exits": [],
