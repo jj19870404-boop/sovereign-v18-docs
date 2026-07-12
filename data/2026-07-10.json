@@ -3,7 +3,7 @@
   "v28": {
     "mode": "TP",
     "label": "TP",
-    "rolling_wr": 55.0
+    "rolling_wr": 60.0
   },
   "performance": {
     "trade_history": [
@@ -400,12 +400,13 @@
       "W",
       "L",
       "W",
-      "L"
+      "L",
+      "W"
     ],
-    "total_trades": 394,
-    "wins": 229,
+    "total_trades": 395,
+    "wins": 230,
     "losses": 165,
-    "win_rate": 58.1
+    "win_rate": 58.2
   },
   "open_trades": [],
   "recent_exits": [],
