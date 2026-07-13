@@ -1,25 +1,38 @@
 {
-  "updated": "2026-07-13T11:11:05+08:00",
+  "updated": "2026-07-14T06:01:35+08:00",
   "summary": {
     "total": 100,
     "wins": 15,
-    "losses": 5,
+    "losses": 4,
     "be": 1,
-    "open": 4,
-    "win_rate": 75.0,
-    "avg_return": 3.11
+    "open": 5,
+    "win_rate": 78.9,
+    "avg_return": 3.65
   },
   "tracks": [
     {
+      "date": "2026-07-13",
+      "symbol": "AWP",
+      "entry": 11.97,
+      "tp": 12.93,
+      "sl": 11.78,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 11.97,
+      "is_ref": true,
+      "reject_reason": "CandGate (15<70)"
+    },
+    {
       "date": "2026-07-10",
       "symbol": "AMWL",
-      "entry": 9.1,
-      "tp": 9.83,
-      "sl": 8.35,
+      "entry": 9.93,
+      "tp": 10.72,
+      "sl": 9.18,
       "status": "WIN",
-      "return_pct": 8.02,
+      "return_pct": 7.96,
       "days": 1,
-      "exit_price": 9.83,
+      "exit_price": 10.72,
       "exit_type": "TP",
       "is_ref": true,
       "reject_reason": "CandGate (14<70)"
@@ -31,9 +44,9 @@
       "tp": 4.33,
       "sl": 3.63,
       "status": "OPEN",
-      "return_pct": 0.0,
-      "days": 1,
-      "current": 4.01,
+      "return_pct": -2.74,
+      "days": 2,
+      "current": 3.9,
       "is_ref": true,
       "reject_reason": "CandGate (11<70)"
     },
@@ -44,9 +57,9 @@
       "tp": 43.18,
       "sl": 34.37,
       "status": "OPEN",
-      "return_pct": -0.23,
-      "days": 2,
-      "current": 39.89,
+      "return_pct": 3.0,
+      "days": 3,
+      "current": 41.18,
       "is_ref": true,
       "reject_reason": "CandGate (22<70)"
     },
@@ -1351,18 +1364,6 @@
       "days": 2,
       "exit_price": 21.4,
       "exit_type": "TP"
-    },
-    {
-      "date": "2026-02-12",
-      "symbol": "IAUX",
-      "entry": 2.0,
-      "tp": 2.16,
-      "sl": 1.82,
-      "status": "LOSS",
-      "return_pct": -7.77,
-      "days": 2,
-      "exit_price": 1.84,
-      "exit_type": "SL"
     }
   ]
 }
