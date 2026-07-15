@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-15T11:11:26+08:00",
+  "updated": "2026-07-16T06:01:38+08:00",
   "summary": {
     "total": 100,
     "wins": 14,
@@ -13,13 +13,13 @@
     {
       "date": "2026-07-14",
       "symbol": "COOK",
-      "entry": 66.86,
-      "tp": 72.21,
-      "sl": 57.21,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 66.86,
+      "entry": 68.82,
+      "tp": 74.33,
+      "sl": 59.17,
+      "status": "OPEN",
+      "return_pct": -0.39,
+      "days": 1,
+      "current": 68.55,
       "is_ref": true,
       "reject_reason": "CandGate (14<70)"
     },
@@ -31,7 +31,7 @@
       "sl": 11.83,
       "status": "OPEN",
       "return_pct": -0.25,
-      "days": 1,
+      "days": 2,
       "current": 11.99,
       "is_ref": true,
       "reject_reason": "CandGate (15<70)"
@@ -57,9 +57,9 @@
       "tp": 4.33,
       "sl": 3.63,
       "status": "OPEN",
-      "return_pct": -1.5,
-      "days": 3,
-      "current": 3.95,
+      "return_pct": 1.25,
+      "days": 4,
+      "current": 4.06,
       "is_ref": true,
       "reject_reason": "CandGate (11<70)"
     },
