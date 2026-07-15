@@ -1,15 +1,28 @@
 {
-  "updated": "2026-07-16T06:01:38+08:00",
+  "updated": "2026-07-16T06:26:41+08:00",
   "summary": {
     "total": 100,
-    "wins": 14,
+    "wins": 13,
     "losses": 4,
     "be": 1,
-    "open": 5,
-    "win_rate": 77.8,
-    "avg_return": 3.4
+    "open": 6,
+    "win_rate": 76.5,
+    "avg_return": 3.14
   },
   "tracks": [
+    {
+      "date": "2026-07-15",
+      "symbol": "NXPL",
+      "entry": 6.62,
+      "tp": 7.15,
+      "sl": 5.65,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 6.62,
+      "is_ref": true,
+      "reject_reason": "CandGate (17<70)"
+    },
     {
       "date": "2026-07-14",
       "symbol": "COOK",
@@ -1354,18 +1367,6 @@
       "days": 2,
       "exit_price": 10.64,
       "exit_type": "TRAIL"
-    },
-    {
-      "date": "2026-02-17",
-      "symbol": "SLGL",
-      "entry": 73.27,
-      "tp": 79.13,
-      "sl": 62.14,
-      "status": "WIN",
-      "return_pct": 8.0,
-      "days": 1,
-      "exit_price": 79.13,
-      "exit_type": "TP"
     }
   ]
 }
