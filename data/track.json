@@ -1,25 +1,38 @@
 {
-  "updated": "2026-07-16T11:11:25+08:00",
+  "updated": "2026-07-17T06:31:45+08:00",
   "summary": {
     "total": 100,
-    "wins": 13,
+    "wins": 12,
     "losses": 4,
     "be": 1,
     "open": 6,
-    "win_rate": 76.5,
-    "avg_return": 3.14
+    "win_rate": 75.0,
+    "avg_return": 3.1
   },
   "tracks": [
     {
-      "date": "2026-07-15",
-      "symbol": "NXPL",
-      "entry": 6.62,
-      "tp": 7.15,
-      "sl": 5.65,
+      "date": "2026-07-16",
+      "symbol": "AGL",
+      "entry": 121.34,
+      "tp": 131.05,
+      "sl": 107.25,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 6.62,
+      "current": 121.34,
+      "is_ref": true,
+      "reject_reason": "CandGate (21<70)"
+    },
+    {
+      "date": "2026-07-15",
+      "symbol": "NXPL",
+      "entry": 6.46,
+      "tp": 6.98,
+      "sl": 5.49,
+      "status": "OPEN",
+      "return_pct": -6.19,
+      "days": 1,
+      "current": 6.06,
       "is_ref": true,
       "reject_reason": "CandGate (17<70)"
     },
@@ -30,9 +43,9 @@
       "tp": 74.33,
       "sl": 59.17,
       "status": "OPEN",
-      "return_pct": -0.39,
-      "days": 1,
-      "current": 68.55,
+      "return_pct": 0.73,
+      "days": 2,
+      "current": 69.32,
       "is_ref": true,
       "reject_reason": "CandGate (14<70)"
     },
@@ -43,9 +56,9 @@
       "tp": 12.98,
       "sl": 11.83,
       "status": "OPEN",
-      "return_pct": -0.25,
-      "days": 2,
-      "current": 11.99,
+      "return_pct": 1.91,
+      "days": 3,
+      "current": 12.25,
       "is_ref": true,
       "reject_reason": "CandGate (15<70)"
     },
@@ -69,10 +82,11 @@
       "entry": 4.01,
       "tp": 4.33,
       "sl": 3.63,
-      "status": "OPEN",
-      "return_pct": 1.25,
-      "days": 4,
-      "current": 4.06,
+      "status": "BE",
+      "return_pct": 0.0,
+      "days": 5,
+      "exit_price": 4.01,
+      "exit_type": "SL",
       "is_ref": true,
       "reject_reason": "CandGate (11<70)"
     },
@@ -1355,18 +1369,6 @@
       "days": 1,
       "exit_price": 59.69,
       "exit_type": "TP"
-    },
-    {
-      "date": "2026-02-18",
-      "symbol": "KLRS",
-      "entry": 10.24,
-      "tp": 11.06,
-      "sl": 9.13,
-      "status": "WIN",
-      "return_pct": 3.9,
-      "days": 2,
-      "exit_price": 10.64,
-      "exit_type": "TRAIL"
     }
   ]
 }
