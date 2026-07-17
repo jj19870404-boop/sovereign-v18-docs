@@ -1,15 +1,28 @@
 {
-  "updated": "2026-07-18T06:01:46+08:00",
+  "updated": "2026-07-18T06:34:06+08:00",
   "summary": {
     "total": 100,
-    "wins": 12,
+    "wins": 11,
     "losses": 4,
     "be": 1,
-    "open": 5,
-    "win_rate": 75.0,
-    "avg_return": 3.1
+    "open": 6,
+    "win_rate": 73.3,
+    "avg_return": 2.79
   },
   "tracks": [
+    {
+      "date": "2026-07-17",
+      "symbol": "COOK",
+      "entry": 69.26,
+      "tp": 74.8,
+      "sl": 61.54,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 69.26,
+      "is_ref": true,
+      "reject_reason": "CandGate (13<70)"
+    },
     {
       "date": "2026-07-16",
       "symbol": "AGL",
@@ -1357,18 +1370,6 @@
       "return_pct": 8.03,
       "days": 2,
       "exit_price": 8.74,
-      "exit_type": "TP"
-    },
-    {
-      "date": "2026-02-19",
-      "symbol": "FET",
-      "entry": 55.27,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 8.0,
-      "days": 1,
-      "exit_price": 59.69,
       "exit_type": "TP"
     }
   ]
