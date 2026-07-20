@@ -1,15 +1,28 @@
 {
-  "updated": "2026-07-21T06:02:04+08:00",
+  "updated": "2026-07-21T06:50:27+08:00",
   "summary": {
     "total": 100,
-    "wins": 11,
+    "wins": 10,
     "losses": 4,
     "be": 1,
-    "open": 6,
-    "win_rate": 73.3,
-    "avg_return": 2.79
+    "open": 7,
+    "win_rate": 71.4,
+    "avg_return": 2.44
   },
   "tracks": [
+    {
+      "date": "2026-07-20",
+      "symbol": "VG",
+      "entry": 14.3,
+      "tp": 15.45,
+      "sl": 13.32,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 14.3,
+      "is_ref": true,
+      "reject_reason": "CandGate (2<70) | SkipBEAR"
+    },
     {
       "date": "2026-07-17",
       "symbol": "COOK",
@@ -1358,18 +1371,6 @@
       "return_pct": 24.9,
       "days": 1,
       "exit_price": 12.19,
-      "exit_type": "TP"
-    },
-    {
-      "date": "2026-02-20",
-      "symbol": "USAS",
-      "entry": 8.09,
-      "tp": 8.74,
-      "sl": 7.06,
-      "status": "WIN",
-      "return_pct": 8.03,
-      "days": 2,
-      "exit_price": 8.74,
       "exit_type": "TP"
     }
   ]
