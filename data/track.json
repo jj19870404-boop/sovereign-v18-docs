@@ -1,25 +1,38 @@
 {
-  "updated": "2026-07-21T11:11:24+08:00",
+  "updated": "2026-07-22T06:01:39+08:00",
   "summary": {
     "total": 100,
-    "wins": 10,
+    "wins": 9,
     "losses": 4,
     "be": 1,
     "open": 7,
-    "win_rate": 71.4,
-    "avg_return": 2.44
+    "win_rate": 69.2,
+    "avg_return": 0.84
   },
   "tracks": [
     {
-      "date": "2026-07-20",
-      "symbol": "VG",
-      "entry": 14.3,
-      "tp": 15.45,
-      "sl": 13.32,
+      "date": "2026-07-21",
+      "symbol": "ROMA",
+      "entry": 9.56,
+      "tp": 10.32,
+      "sl": 8.37,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 14.3,
+      "current": 9.56,
+      "is_ref": true,
+      "reject_reason": "CandGate (8<70)"
+    },
+    {
+      "date": "2026-07-20",
+      "symbol": "VG",
+      "entry": 14.21,
+      "tp": 15.35,
+      "sl": 13.23,
+      "status": "OPEN",
+      "return_pct": -1.06,
+      "days": 1,
+      "current": 14.06,
       "is_ref": true,
       "reject_reason": "CandGate (2<70) | SkipBEAR"
     },
@@ -29,10 +42,11 @@
       "entry": 69.26,
       "tp": 74.8,
       "sl": 61.54,
-      "status": "OPEN",
-      "return_pct": -3.47,
-      "days": 1,
-      "current": 66.86,
+      "status": "LOSS",
+      "return_pct": -9.62,
+      "days": 2,
+      "exit_price": 62.6,
+      "exit_type": "SL",
       "is_ref": true,
       "reject_reason": "CandGate (13<70)"
     },
@@ -57,9 +71,9 @@
       "tp": 6.97,
       "sl": 5.48,
       "status": "OPEN",
-      "return_pct": -11.01,
-      "days": 3,
-      "current": 5.74,
+      "return_pct": -6.98,
+      "days": 4,
+      "current": 6.0,
       "is_ref": true,
       "reject_reason": "CandGate (17<70)"
     },
@@ -70,9 +84,9 @@
       "tp": 74.33,
       "sl": 59.17,
       "status": "OPEN",
-      "return_pct": -2.85,
-      "days": 4,
-      "current": 66.86,
+      "return_pct": 0.41,
+      "days": 5,
+      "current": 69.1,
       "is_ref": true,
       "reject_reason": "CandGate (14<70)"
     },
@@ -83,9 +97,9 @@
       "tp": 12.98,
       "sl": 11.83,
       "status": "OPEN",
-      "return_pct": 2.08,
-      "days": 5,
-      "current": 12.27,
+      "return_pct": 2.5,
+      "days": 6,
+      "current": 12.32,
       "is_ref": true,
       "reject_reason": "CandGate (15<70)"
     },
@@ -1359,18 +1373,6 @@
       "return_pct": 8.0,
       "days": 3,
       "exit_price": 4.65,
-      "exit_type": "TP"
-    },
-    {
-      "date": "2026-02-23",
-      "symbol": "ARMP",
-      "entry": 9.76,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 24.9,
-      "days": 1,
-      "exit_price": 12.19,
       "exit_type": "TP"
     }
   ]
