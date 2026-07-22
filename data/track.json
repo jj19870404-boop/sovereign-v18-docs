@@ -1,15 +1,28 @@
 {
-  "updated": "2026-07-23T06:01:18+08:00",
+  "updated": "2026-07-23T06:25:03+08:00",
   "summary": {
     "total": 100,
-    "wins": 9,
+    "wins": 8,
     "losses": 4,
     "be": 1,
-    "open": 6,
-    "win_rate": 69.2,
-    "avg_return": 0.84
+    "open": 7,
+    "win_rate": 66.7,
+    "avg_return": 0.29
   },
   "tracks": [
+    {
+      "date": "2026-07-22",
+      "symbol": "LQDA",
+      "entry": 87.13,
+      "tp": 94.1,
+      "sl": 79.96,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 87.13,
+      "is_ref": true,
+      "reject_reason": "CandGate (16<70)"
+    },
     {
       "date": "2026-07-21",
       "symbol": "ROMA",
@@ -1362,18 +1375,6 @@
       "return_pct": 7.96,
       "days": 2,
       "exit_price": 11.26,
-      "exit_type": "TP"
-    },
-    {
-      "date": "2026-02-24",
-      "symbol": "RLMD",
-      "entry": 4.3,
-      "tp": 0.0,
-      "sl": 0.0,
-      "status": "WIN",
-      "return_pct": 8.0,
-      "days": 3,
-      "exit_price": 4.65,
       "exit_type": "TP"
     }
   ]
