@@ -700,7 +700,7 @@
       "spy_rsi": 51.5
     }
   ],
-  "reject_reason": "CandGate (16<70)",
+  "reject_reason": "CandGate (15<70)",
   "deep_analyses": {
     "LQDA": {
       "symbol": "LQDA",
