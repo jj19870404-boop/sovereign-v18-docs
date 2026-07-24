@@ -1,15 +1,28 @@
 {
-  "updated": "2026-07-25T06:01:32+08:00",
+  "updated": "2026-07-25T06:38:03+08:00",
   "summary": {
     "total": 100,
     "wins": 7,
     "losses": 4,
-    "be": 1,
-    "open": 3,
+    "be": 0,
+    "open": 4,
     "win_rate": 63.6,
-    "avg_return": -0.35
+    "avg_return": -0.39
   },
   "tracks": [
+    {
+      "date": "2026-07-24",
+      "symbol": "OII",
+      "entry": 52.78,
+      "tp": 57.01,
+      "sl": 49.8,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 52.78,
+      "is_ref": true,
+      "reject_reason": "CandGate (4<70) | SkipBEAR"
+    },
     {
       "date": "2026-07-23",
       "symbol": "VG",
@@ -1370,18 +1383,6 @@
       "days": 3,
       "exit_price": 41.59,
       "exit_type": "TRAIL"
-    },
-    {
-      "date": "2026-02-26",
-      "symbol": "INVX",
-      "entry": 26.48,
-      "tp": 28.6,
-      "sl": 24.66,
-      "status": "BE",
-      "return_pct": 0.0,
-      "days": 6,
-      "exit_price": 26.48,
-      "exit_type": "SL"
     }
   ]
 }
