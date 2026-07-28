@@ -446,8 +446,8 @@
       "vol_zscore": 1.1,
       "quality_grade": "B",
       "quality_score": 66.0,
-      "sector": "None",
-      "sector_rank": 0,
+      "sector": "Healthcare",
+      "sector_rank": 1,
       "market_regime": "BEAR",
       "death_cross": false,
       "spy_rsi": 45.7
@@ -705,7 +705,7 @@
       "spy_rsi": 45.7
     }
   ],
-  "reject_reason": "CandGate (8<70) | SkipBEAR",
+  "reject_reason": "CandGate (7<70) | SkipBEAR",
   "deep_analyses": {
     "ADIL": {
       "symbol": "ADIL",
