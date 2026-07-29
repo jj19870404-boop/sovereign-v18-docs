@@ -1,11 +1,11 @@
 {
-  "updated": "2026-07-29T11:11:04+08:00",
+  "updated": "2026-07-30T06:01:38+08:00",
   "summary": {
     "total": 100,
     "wins": 5,
     "losses": 4,
     "be": 0,
-    "open": 4,
+    "open": 3,
     "win_rate": 55.6,
     "avg_return": -0.79
   },
@@ -13,13 +13,14 @@
     {
       "date": "2026-07-28",
       "symbol": "ADIL",
-      "entry": 2.95,
-      "tp": 3.19,
-      "sl": 2.72,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
-      "current": 2.95,
+      "entry": 2.87,
+      "tp": 3.1,
+      "sl": 2.64,
+      "status": "WIN",
+      "return_pct": 8.01,
+      "days": 1,
+      "exit_price": 3.1,
+      "exit_type": "TP",
       "is_ref": true,
       "reject_reason": "CandGate (7<70) | SkipBEAR"
     },
@@ -30,9 +31,9 @@
       "tp": 34.5,
       "sl": 25.74,
       "status": "OPEN",
-      "return_pct": -5.29,
-      "days": 1,
-      "current": 30.25,
+      "return_pct": -12.3,
+      "days": 2,
+      "current": 28.01,
       "is_ref": true,
       "reject_reason": "CandGate (3<70) | SkipBEAR"
     },
