@@ -1,15 +1,28 @@
 {
-  "updated": "2026-07-30T06:01:38+08:00",
+  "updated": "2026-07-30T06:39:29+08:00",
   "summary": {
     "total": 100,
-    "wins": 5,
+    "wins": 4,
     "losses": 4,
     "be": 0,
-    "open": 3,
-    "win_rate": 55.6,
-    "avg_return": -0.79
+    "open": 4,
+    "win_rate": 50.0,
+    "avg_return": -1.46
   },
   "tracks": [
+    {
+      "date": "2026-07-29",
+      "symbol": "ADIL",
+      "entry": 3.15,
+      "tp": 3.41,
+      "sl": 2.92,
+      "status": "PENDING",
+      "return_pct": 0.0,
+      "days": 0,
+      "current": 3.15,
+      "is_ref": true,
+      "reject_reason": "CandGate (11<70) | SkipBEAR"
+    },
     {
       "date": "2026-07-28",
       "symbol": "ADIL",
@@ -1375,18 +1388,6 @@
       "return_pct": 2.96,
       "days": 3,
       "exit_price": 27.15,
-      "exit_type": "TRAIL"
-    },
-    {
-      "date": "2026-03-03",
-      "symbol": "INVX",
-      "entry": 25.55,
-      "tp": 27.59,
-      "sl": 23.45,
-      "status": "WIN",
-      "return_pct": 4.52,
-      "days": 3,
-      "exit_price": 26.7,
       "exit_type": "TRAIL"
     }
   ]
