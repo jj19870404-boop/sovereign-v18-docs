@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-30T06:39:29+08:00",
+  "updated": "2026-07-30T08:14:50+08:00",
   "summary": {
     "total": 100,
     "wins": 4,
@@ -21,7 +21,7 @@
       "days": 0,
       "current": 3.15,
       "is_ref": true,
-      "reject_reason": "CandGate (11<70) | SkipBEAR"
+      "reject_reason": "CandGate (10<70) | SkipBEAR"
     },
     {
       "date": "2026-07-28",
