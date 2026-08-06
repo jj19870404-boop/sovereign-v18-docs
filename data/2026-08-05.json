@@ -328,7 +328,6 @@
       "W",
       "W",
       "L",
-      "L",
       "W",
       "L",
       "W",
@@ -407,12 +406,14 @@
       "L",
       "W",
       "L",
+      "L",
+      "W",
       "L"
     ],
-    "total_trades": 401,
-    "wins": 230,
+    "total_trades": 402,
+    "wins": 231,
     "losses": 171,
-    "win_rate": 57.4
+    "win_rate": 57.5
   },
   "open_trades": [],
   "recent_exits": [],
