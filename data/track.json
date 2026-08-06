@@ -1,25 +1,39 @@
 {
-  "updated": "2026-08-06T11:11:04+08:00",
+  "updated": "2026-08-07T06:01:18+08:00",
   "summary": {
     "total": 100,
     "wins": 2,
-    "losses": 1,
+    "losses": 0,
     "be": 0,
     "open": 3,
-    "win_rate": 66.7,
-    "avg_return": -1.41
+    "win_rate": 100.0,
+    "avg_return": 1.39
   },
   "tracks": [
     {
-      "date": "2026-08-05",
-      "symbol": "NCI",
-      "entry": 11.77,
-      "tp": 12.71,
-      "sl": 10.87,
+      "date": "2026-08-06",
+      "symbol": "DHX",
+      "entry": 4.13,
+      "tp": 4.46,
+      "sl": 3.73,
       "status": "PENDING",
       "return_pct": 0.0,
       "days": 0,
-      "current": 11.77,
+      "current": 4.13,
+      "is_ref": true,
+      "reject_reason": "CandGate (32<70)"
+    },
+    {
+      "date": "2026-08-05",
+      "symbol": "NCI",
+      "entry": 11.76,
+      "tp": 12.7,
+      "sl": 10.86,
+      "status": "LOSS",
+      "return_pct": -7.65,
+      "days": 1,
+      "exit_price": 10.86,
+      "exit_type": "SL",
       "is_ref": true,
       "reject_reason": "CandGate (37<70)"
     },
@@ -1388,18 +1402,6 @@
       "days": 5,
       "exit_price": 24.3,
       "exit_type": "TRAIL"
-    },
-    {
-      "date": "2026-03-11",
-      "symbol": "INVX",
-      "entry": 25.81,
-      "tp": 27.87,
-      "sl": 23.71,
-      "status": "LOSS",
-      "return_pct": -7.02,
-      "days": 2,
-      "exit_price": 24.0,
-      "exit_type": "SL"
     }
   ]
 }
