@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-07T08:17:05+08:00",
+  "updated": "2026-08-07T11:11:04+08:00",
   "summary": {
     "total": 100,
     "wins": 2,
@@ -626,13 +626,13 @@
     {
       "date": "2026-06-02",
       "symbol": "SIMO",
-      "entry": 305.3,
-      "tp": 329.72,
-      "sl": 277.33,
+      "entry": 304.69,
+      "tp": 329.07,
+      "sl": 276.72,
       "status": "LOSS",
-      "return_pct": -7.91,
+      "return_pct": -7.93,
       "days": 3,
-      "exit_price": 281.15,
+      "exit_price": 280.54,
       "exit_type": "SL",
       "is_ref": true,
       "reject_reason": "CandGate (26<70)"
