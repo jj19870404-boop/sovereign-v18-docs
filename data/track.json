@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-08T11:11:03+08:00",
+  "updated": "2026-08-09T06:01:26+08:00",
   "summary": {
     "total": 100,
     "wins": 1,
@@ -13,12 +13,12 @@
     {
       "date": "2026-08-07",
       "symbol": "NCT",
-      "entry": 3.5,
-      "tp": 3.78,
-      "sl": 2.97,
-      "status": "PENDING",
-      "return_pct": 0.0,
-      "days": 0,
+      "entry": 3.52,
+      "tp": 3.8,
+      "sl": 2.99,
+      "status": "OPEN",
+      "return_pct": -0.57,
+      "days": 1,
       "current": 3.5,
       "is_ref": true,
       "reject_reason": "CandGate (22<70)"
